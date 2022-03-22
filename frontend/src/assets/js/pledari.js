@@ -7,9 +7,6 @@ $(document).ready(function() {
 	/*Get the current locale value*/
 	locale = $('html').attr('lang');
 
-	/*Get the user name*/
-	u_name = $('#u_name').text();
-
 	checkMobile();
 
 	if (window.devicePixelRatio) {
@@ -54,33 +51,12 @@ $(document).ready(function() {
 	});
 
 	function checkMobile() {
-
 		if ($(window).width() < 768) {
 			startMobile();
-		} else if ($(window).width() >= 768) {
-			stopMobile();
 		}
-
 	}
 
 	function startMobile() {
-
-		/*Rename dictionary names*/
-		$('#sm_brand_title').html('<a href="/surmiran">SM</a>');
-		$('#st_brand_title').html('<a href="/sutsilvan">ST</a>');
-		$('#rm_brand_title').html('<a href="/rumantschgrischun">RG</a>');
-		$('#pt_brand_title').html('<a href="/puter">PT</a>');
-		$('#vl_brand_title').html('<a href="/vallader">VL</a>');
-		$('#sr_brand_title').html('<a href="/sursilvan">SR</a>');
-
-		/*Remove link to grammar PDF*/
-		$('#grammatica').hide();
-
-
-		var short_u_name = u_name.replace('/[^\w+]/g');
-		short_u_name = short_u_name.substring(0, 2);
-		$('#u_name').text(short_u_name);
-
 		var paths = window.location.pathname.split('/');
 		var selected = paths[paths.length-1];
 		$('#dict_descript').remove();
@@ -115,31 +91,6 @@ $(document).ready(function() {
 			}
 		}
 
-	}
-
-	function stopMobile() {
-		/*Reverse settings from startMobile function*/
-
-		if(locale == "rm") {
-			$('#sm_brand_title').html('<a href="/surmiran">surmiran</a>');
-			$('#st_brand_title').html('<a href="/sutsilvan">sutsilvan</a>');
-			$('#rm_brand_title').html('<a href="/rumantschgrischun">rumantsch grischun</a>');
-			$('#pt_brand_title').html('<a href="/puter">puter</a>');
-			$('#vl_brand_title').html('<a href="/vallader">vallader</a>');
-			$('#sr_brand_title').html('<a href="/sursilvan">sursilvan</a>');
-		} else {
-			$('#sm_brand_title').html('<a href="/surmiran">Surmiran</a>');
-			$('#st_brand_title').html('<a href="/sutsilvan">Sutsilvan</a>');
-			$('#rm_brand_title').html('<a href="/rumantschgrischun">Rumantsch Grischun</a>');
-			$('#pt_brand_title').html('<a href="/puter">Puter</a>');
-			$('#vl_brand_title').html('<a href="/vallader">Vallader</a>');
-			$('#sr_brand_title').html('<a href="/sursilvan">Sursilvan</a>');
-		}
-
-		$('#u_name').text(u_name);
-
-
-		$('#grammatica').show();
 	}
 
 	function initCustomElements() {

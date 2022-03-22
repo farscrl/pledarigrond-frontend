@@ -3,3 +3,27 @@
 @import url(scss/fontawesome.scss);
 @import url(scss/bootstrap.scss);
 @import url(scss/main.scss);
+
+@media all and (min-width: 768px) {
+  .show-mobile {
+    display: none;
+  }
+  .hide-mobile {
+    display: block;
+  }
+  span.hide-mobile {
+    display: inline;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .show-mobile {
+    display: block;
+  }
+  span.show-mobile {
+    display: inline;
+  }
+  .hide-mobile {
+    display: none;
+  }
+}

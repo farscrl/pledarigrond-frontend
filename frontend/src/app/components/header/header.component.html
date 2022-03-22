@@ -1,13 +1,13 @@
 <div id="navi_head">
 
 	<div id="languages-widget">
-		<a id="rmLocale" href="?locale=rm" class="lang_selected">R</a>
+		<a class="navi_a_common" [class.lang_selected]="frontendLanguage === 'rm'" (click)="changeFrontendLanguage('rm')">R</a>
 		<span class="navi_a_common"> | </span>
-		<a id="deLocale" href="?locale=de" class="navi_a_common">D</a>
+		<a class="navi_a_common" [class.lang_selected]="frontendLanguage === 'de'" (click)="changeFrontendLanguage('de')">D</a>
 	</div>
 
 	<div id="brand_title">
-		<a class="brand active" href="/rumantschgrischun">PLEDARI GROND</a>
+		<a class="brand active" [routerLink]="'/' + selectedLanguageService.getSelectedLanguageUrlSegment()">PLEDARI GROND</a>
 	</div>
 
 	<div id="login-widget" *ngIf="!isLoggedIn">
@@ -17,11 +17,14 @@
 	</div>
 
   <div id="login-widget" *ngIf="isLoggedIn">
-		<a href="#" class="navi_a_common" title="gion-andri">
-			<span id="u_name">{{ loggedInUser }}</span>
+		<a href="#" class="navi_a_common" title="{{ loggedInUser }}">
+			<span id="u_name" class="hide-mobile">{{ loggedInUser }}</span>
+      <span id="u_name" class="show-mobile">{{ loggedInUserShort }}</span>
 		</a>
 		<span class="navi_a_common"> | </span>
 		<a id="maalr-current-user" title="Logout" class="navi_a_common login-icon" (click)="logout()"></a>
 	</div>
 
 </div>
+
+<div id="dict_descript">rumantsch grischun</div>

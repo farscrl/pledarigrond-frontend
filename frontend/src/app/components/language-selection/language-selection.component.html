@@ -1,8 +1,26 @@
 <div id="dic_navi_head">
-	<div id="pt_brand_title" class="dict_navi_item"><a href="/puter">puter</a></div>
-	<div id="rm_brand_title" class="dict_navi_item selected"><a href="/rumantschgrischun">rumantsch grischun</a></div>
-	<div id="sm_brand_title" class="dict_navi_item"><a href="/surmiran">surmiran</a></div>
-	<div id="sr_brand_title" class="dict_navi_item"><a href="/sursilvan">sursilvan</a></div>
-	<div id="st_brand_title" class="dict_navi_item"><a href="/sutsilvan">sutsilvan</a></div>
-	<div id="vl_brand_title" class="dict_navi_item"><a href="/vallader">vallader</a></div>
+	<div id="pt_brand_title" class="dict_navi_item" [class.selected]="idiom === 'puter'"><a routerLink="/puter">
+    <span class="show-mobile">PT</span>
+    <span class="hide-mobile">{{ 'languages.puter' | translate }}</span>
+  </a></div>
+	<div id="rm_brand_title" class="dict_navi_item" [class.selected]="idiom === 'rumgr'"><a routerLink="/rumantschgrischun">
+    <span class="show-mobile">RG</span>
+    <span class="hide-mobile">{{ 'languages.rumantschgrischun' | translate }}</span>
+  </a></div>
+	<div id="sm_brand_title" class="dict_navi_item" [class.selected]="idiom === 'surmiran'"><a routerLink="/surmiran">
+    <span class="show-mobile">SM</span>
+    <span class="hide-mobile">{{ 'languages.surmiran' | translate }}</span>
+  </a></div>
+	<div id="sr_brand_title" class="dict_navi_item" [class.selected]="idiom === 'sursilv'"><a routerLink="/sursilvan">
+    <span class="show-mobile">SR</span>
+    <span class="hide-mobile">{{ 'languages.sursilvan' | translate }}</span>
+  </a></div>
+	<div id="st_brand_title" class="dict_navi_item" [class.selected]="idiom === 'sutsilv'"><a routerLink="/sutsilvan">
+    <span class="show-mobile">ST</span>
+    <span class="hide-mobile">{{ 'languages.sutsilvan' | translate }}</span>
+  </a></div>
+	<div id="vl_brand_title" class="dict_navi_item" [class.selected]="idiom === 'vallader'"><a routerLink="/vallader">
+    <span class="show-mobile">VL</span>
+    <span class="hide-mobile">{{ 'languages.vallader' | translate }}</span>
+  </a></div>
 </div>
