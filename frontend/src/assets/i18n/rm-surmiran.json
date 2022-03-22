@@ -6,5 +6,55 @@
     "sursilvan": "sursilvan",
     "sutsilvan": "sutsilvan",
     "vallader": "vallader"
+  },
+  "search": {
+    "results": "{0} (resultats {1} anfignen {2} da {3})",
+    "search": "tschartger",
+    "noresults_header": "Nigns resultats per \"{0}\".",
+    "noresults_hint": "Cliche sen 'far ena nova proposta' per proponer en pled u en'expressiun ubagn modifitge la vossa tschertga."
+  },
+  "index": {
+    "letter_link": "pleds tgi antschevan cun {0}",
+    "letter_page": "pleds tgi antschevan cun {0}, pagina {1}",
+    "translations_of": "translaziuns da",
+    "language": "index per ",
+    "entry_header": "translaziuns da",
+    "dict_title": "{0} dicziunari",
+    "dict_title_ext": "{0} dicziunari - '{1}' anfignen '{2}'",
+    "indexLang": {
+      "romansh": "rumantsch",
+      "german": "tudestg"
+    }
+  },
+  "header": {
+    "login": "s'annunztgier",
+    "logout": "{0} sorteir"
+  },
+  "footer": {
+    "help": "ageid",
+    "info": "infos",
+    "grammatica": "grammatica",
+    "suggest": "far ena nova proposta",
+    "maalr": "sustignia da Maalr"
+  },
+  "login": {
+    "header": "annunztga",
+    "welcome": "Igl è pussebel d'utilisar igl Vocabulari surmiran online er sainza s'annunztgier. L'annunztga è voluntaria e facilitescha unicamaintg igl contact via e-mail, schi vous faschez propostas u remarcas. Datas sensiblas (an spezial pleds-clav) na vignan betg memorisadas.",
+    "error": "La connexiun n'è betg reuscheida. Amprue danovamaintg p. pl.",
+    "name": "e-mail",
+    "pwd": "pled-clav",
+    "sendButton": "tarmetter l'annunztga"
+  },
+  "registration": {
+    "signup": "registrar"
+  },
+  "promo": {
+    "ulteriurs": "ulteriours dicziunaris",
+    "glossary": "glossaris",
+    "readmore": "legia dapli"
+  },
+  "update": {
+    "last_update": "Davosa actualisaziun: {0}",
+    "entry_count": "{0} andataziuns"
   }
 }

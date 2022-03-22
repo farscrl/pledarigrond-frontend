@@ -6,5 +6,55 @@
     "sursilvan": "sursilvan",
     "sutsilvan": "sutsilvan",
     "vallader": "vallader"
+  },
+  "search": {
+    "results": "{0} (resultats {1} fin {2} da {3})",
+    "search": "tschartgear",
+    "noresults_header": "Nigns resultats par \"{0}\".",
+    "noresults_hint": "Clicad sen 'far egna nova proposta' par proponer egn pled near egn'expressiùn near modifitgead Vossa tscheartga."
+  },
+  "index": {
+    "letter_link": "pleds ca antschevan cun {0}",
+    "letter_page": "pleds ca antschevan cun {0}, pagina {1}",
+    "translations_of": "translaziùns da",
+    "language": "index par ",
+    "entry_header": "translaziùns da",
+    "dict_title": "{0} dicziunari",
+    "dict_title_ext": "{0} dicziunari - '{1}' antocen '{2}'",
+    "indexLang": {
+      "romansh": "rumàntsch",
+      "german": "tudestg"
+    }
+  },
+  "header": {
+    "login": "s'anunztgear",
+    "logout": "{0} sortir"
+  },
+  "footer": {
+    "help": "agid",
+    "info": "infos",
+    "grammatica": "gramatica",
+    "suggest": "far egna nova proposta",
+    "maalr": "sustagnieu da Maalr"
+  },
+  "login": {
+    "header": "anunztga",
+    "welcome": "Igl e pussevel da duvrar igl Pledari Grond ear sainza s'anunztgear. L'anunztga e voluntaria a leavgescha suletameing igl contact via e-mail, scha Vus fagez propostas near remartgas. Datas sensiblas (an spezial pleds-clav) vegnan betga memorisadas.",
+    "error": "La conexiun e betga gartageada. Ampruvad p.pl. danovameing.",
+    "name": "email",
+    "pwd": "pled-clav",
+    "sendButton": "tarmeter l'anunztga"
+  },
+  "registration": {
+    "signup": "registrar"
+  },
+  "promo": {
+    "ulteriurs": "ulteriurs dicziunaris",
+    "glossary": "glossaris",
+    "readmore": "legia dapli"
+  },
+  "update": {
+    "last_update": "Davosa actualisaziùn: {0}",
+    "entry_count": "{0} andataziùns"
   }
 }

@@ -6,5 +6,55 @@
     "sursilvan": "Sursilvan",
     "sutsilvan": "Sutsilvan",
     "vallader": "Vallader"
+  },
+  "search": {
+    "results": "{0} (Ergebnisse {1} bis {2} von {3})",
+    "search": "Suche",
+    "noresults_header": "Es sind keine Einträge für \"{0}\" vorhanden.",
+    "noresults_hint": "Klicken Sie auf 'Neuer Eintrag', um einen Eintrag vorzuschlagen, oder modifizieren Sie Ihre Suche."
+  },
+  "index": {
+    "letter_link": "Wörter beginnend mit {0}",
+    "letter_page": "Wörter beginnend mit {0}, Seite {1}",
+    "translations_of": "Übersetzungen von",
+    "language": "Index auf ",
+    "entry_header": "Übersetzungen von",
+    "dict_title": "{0} Wörterbuch",
+    "dict_title_ext": "{0} Wörterbuch - '{1}' bis '{2}'",
+    "indexLang": {
+      "romansh": "rumantsch",
+      "german": "deutsch"
+    }
+  },
+  "header": {
+    "login": "Anmelden",
+    "logout": "{0} abmelden"
+  },
+  "footer": {
+    "help": "Hilfe",
+    "info": "Info",
+    "grammatica": "Grammatik",
+    "suggest": "Neuer Eintrag",
+    "maalr": "Provided by Maalr"
+  },
+  "login": {
+    "header": "Anmeldung",
+    "welcome": "Sie können diese Webseite auch ohne Anmeldung in vollem Umfang nutzen. Die freiwillige Anmeldung dient ausschließlich der Kontaktaufnahme per Mail, wenn Sie Vorschläge oder Anmerkungen eingeben. Sensible Daten (insbesondere Passwörter) werden nicht gespeichert. ",
+    "error": "Ihr Anmeldeversuch war nicht erfolgreich, bitte versuchen Sie es erneut.",
+    "name": "E-Mail",
+    "pwd": "Passwort",
+    "sendButton": "Senden"
+  },
+  "registration": {
+    "signup": "Registrieren"
+  },
+  "promo": {
+    "ulteriurs": "Andere Wörterbücher",
+    "glossary": "Glossare",
+    "readmore": "legia dapli"
+  },
+  "update": {
+    "last_update": "Letzte Aktualisierung: {0}",
+    "entry_count": "{0} Einträge"
   }
 }

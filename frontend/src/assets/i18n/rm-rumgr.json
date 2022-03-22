@@ -6,5 +6,55 @@
     "sursilvan": "sursilvan",
     "sutsilvan": "sutsilvan",
     "vallader": "vallader"
+  },
+  "search": {
+    "results": "{0} (resultats {1} fin {2} da {3})",
+    "search": "tschertgar",
+    "noresults_header": "Nagins resultats per \"{0}\".",
+    "noresults_hint": "Cliccai sin 'far ina nova proposta' per proponer in pled u in'expressiun ubain modifitgai Vossa tschertga."
+  },
+  "index": {
+    "letter_link": "pleds che entschaivan cun {0}",
+    "letter_page": "pleds che entschaivan cun {0}, pagina {1}",
+    "translations_of": "translaziuns da",
+    "language": "index per ",
+    "entry_header": "translaziuns da",
+    "dict_title": "{0} dicziunari",
+    "dict_title_ext": "{0} dicziunari - '{1}' fin '{2}'",
+    "indexLang": {
+      "romansh": "rumantsch",
+      "german": "tudestg"
+    }
+  },
+  "header": {
+    "login": "s'annunziar",
+    "logout": "{0} sortir"
+  },
+  "footer": {
+    "help": "agid",
+    "info": "infos",
+    "grammatica": "grammatica",
+    "suggest": "far ina nova proposta",
+    "maalr": "sustegnì da Maalr"
+  },
+  "login": {
+    "header": "annunzia",
+    "welcome": "Igl è pussaivel d'utilisar il Pledari Grond era senza s'annunziar. L'annunzia è voluntara e facilitescha unicamain il contact via e-mail, sche Vus faschais propostas u remartgas. Datas sensiblas (en spezial pleds-clav) na vegnan betg memorisadas.",
+    "error": "La connexiun n'è betg reussida. Empruvai p.pl. danovamain.",
+    "name": "e-mail",
+    "pwd": "pled-clav",
+    "sendButton": "trametter l'annunzia"
+  },
+  "registration": {
+    "signup": "registrar"
+  },
+  "promo": {
+    "ulteriurs": "ulteriurs dicziunaris",
+    "glossary": "glossaris",
+    "readmore": "legia dapli"
+  },
+  "update": {
+    "last_update": "Ultima actualisaziun: {0}",
+    "entry_count": "{0} endataziuns"
   }
 }
