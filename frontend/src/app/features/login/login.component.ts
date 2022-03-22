@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.reset();
       this.redirect();
     }, error => {
-      console.log(error);
+      console.error(error);
       this.hasLoginError = true;
     });
   }

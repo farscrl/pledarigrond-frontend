@@ -41,7 +41,6 @@ export class SelectedLanguageService {
     }
     this.idiomSubject.next(idiom);
     this.changeUiLanguage();
-    console.log(idiom);
   }
 
   getSelectedLanguageUrlSegment(): string {

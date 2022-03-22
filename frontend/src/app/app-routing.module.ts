@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import { LoginComponent } from './features/login/login.component';
+import { PuterPlaceholderComponent } from './features/puter-placeholder/puter-placeholder.component';
 import { SearchComponent } from './features/search/search.component';
+import { SursilvanPlaceholderComponent } from './features/sursilvan-placeholder/sursilvan-placeholder.component';
+import { ValladerPlaceholderComponent } from './features/vallader-placeholder/vallader-placeholder.component';
 
 const routes: Routes = [
   {
@@ -10,12 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: SearchComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-        canActivate: [UserNotLoggedInGuard]
+        component: PuterPlaceholderComponent
       }
     ]
   },
@@ -52,12 +50,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: SearchComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-        canActivate: [UserNotLoggedInGuard]
+        component: SursilvanPlaceholderComponent
       }
     ]
   },
@@ -80,12 +73,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: SearchComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-        canActivate: [UserNotLoggedInGuard]
+        component: ValladerPlaceholderComponent
       }
     ]
   },

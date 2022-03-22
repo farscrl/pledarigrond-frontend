@@ -22,6 +22,9 @@ import { UserLoggedInGuard } from './auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { PuterPlaceholderComponent } from './features/puter-placeholder/puter-placeholder.component';
+import { SursilvanPlaceholderComponent } from './features/sursilvan-placeholder/sursilvan-placeholder.component';
+import { ValladerPlaceholderComponent } from './features/vallader-placeholder/vallader-placeholder.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -46,7 +49,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     InfoComponent,
     SearchContentComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PuterPlaceholderComponent,
+    SursilvanPlaceholderComponent,
+    ValladerPlaceholderComponent
   ],
   imports: [
     BrowserModule,
