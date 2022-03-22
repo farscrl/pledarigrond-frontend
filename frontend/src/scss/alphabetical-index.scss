@@ -1,0 +1,45 @@
+/* Alphabetical List */
+.alpha_navi {
+	width: 92%;
+	margin: 0 auto;
+	font-size: 8px;
+	margin-top: 132px;
+}
+
+.alpha_navi.chars,.alpha_navi.letters {
+	overflow: hidden;
+	text-align: center;
+}
+
+.alpha_navi.chars .item,.alpha_navi.letters .item {
+	display: inline;
+	width: 22px;
+	text-align: center;
+}
+
+.alpha_navi+.alpha_navi {
+	margin-top: 0;
+}
+
+.alpha_sub_navi {
+	overflow: hidden;
+	width: 100%;
+}
+
+.alpha_navi td {
+	width: 15px;
+	text-align: center;
+	padding-top: 5px;
+}
+
+/* Alphabetical List */
+.alphatable table {
+	border-spacing: 0px;
+	margin: 0px auto;
+}
+
+.alphatable td {
+	border: 0px;
+	width: 200px;
+	padding: 5px;
+}

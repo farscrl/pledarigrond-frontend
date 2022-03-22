@@ -1,0 +1,60 @@
+/* NEW (ADDITIONAL) NAVI HEAD */
+#dic_navi_head {
+	position: absolute;
+	width: 100%;
+	height: 28px;
+	z-index: 1000;
+	top: 48px;
+	background-color: rgb(188, 188, 188);
+	background-image: linear-gradient(bottom, rgb(167, 167, 167) 0%,
+		rgb(188, 188, 188) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(167, 167, 167) 0%,
+		rgb(188, 188, 188) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(167, 167, 167) 0%,
+		rgb(188, 188, 188) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(167, 167, 167) 0%,
+		rgb(188, 188, 188) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(167, 167, 167) 0%,
+		rgb(188, 188, 188) 100%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(167,
+		167, 167)), color-stop(1, rgb(188, 188, 188)));
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+#dic_navi_head div {
+	flex: 1;
+}
+
+.dict_navi_item {
+	width: 33.33%;
+	text-align: center;
+	padding-top: 8px;
+	font-size: 10.6px;
+  border-right: 1px solid #FFFFFF;
+
+  &:hover {
+    background-color: rgb(21, 233, 177);
+  }
+
+  &:last-of-type {
+    border-right: 0px;
+  }
+}
+
+.selected {
+	background-color: rgb(21, 233, 177);
+}
+
+.dict_navi_item a {
+	text-decoration: none;
+	color: #FFFFFF;
+	letter-spacing: 1.2px;
+}
+
+@media all and (max-width: 767px) {
+  .dict_navi_item {
+		font-size: 10.0px;
+	}
+}
