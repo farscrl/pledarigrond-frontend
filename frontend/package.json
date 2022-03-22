@@ -18,6 +18,8 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@auth0/angular-jwt": "^5.0.2",
+    "jquery": "^1.11.0",
     "modern-css-reset": "^1.4.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

@@ -10,10 +10,18 @@
 		<a class="brand active" href="/rumantschgrischun">PLEDARI GROND</a>
 	</div>
 
-	<div id="login-widget">
-		<a href="/rumantschgrischun/login.html" class="navi_a_common login-icon" title="s'annunziar">
+	<div id="login-widget" *ngIf="!isLoggedIn">
+		<a class="navi_a_common login-icon" title="s'annunziar" (click)="login()">
 			LOG
 		</a>
+	</div>
+
+  <div id="login-widget" *ngIf="isLoggedIn">
+		<a href="#" class="navi_a_common" title="gion-andri">
+			<span id="u_name">{{ loggedInUser }}</span>
+		</a>
+		<span class="navi_a_common"> | </span>
+		<a id="maalr-current-user" title="Logout" class="navi_a_common login-icon" (click)="logout()"></a>
 	</div>
 
 </div>

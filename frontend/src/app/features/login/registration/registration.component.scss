@@ -1,0 +1,37 @@
+#signupDialog {
+	height: 440px !important;
+	top: 33% !important;
+}
+
+#buttonGroupSignup {
+  width: 100%;
+  text-align: right;
+}
+
+#registerSubmit {
+	margin-left: 16px;
+	background: rgb(0, 200, 255) !important;
+	color: white;
+}
+
+@media all and (max-width: 767px) {
+  #signupDialog {
+		height: 530px !important;
+		top: 30% !important;
+	}
+
+	.sign-up-input {
+		width: 100%;
+	}
+
+  #registerSubmit {
+    width: 100%;
+    background: rgb(0, 200, 255);
+    color: white;
+    margin-left: 0;
+  }
+
+  #cancelButton {
+		width: 100%;
+	}
+}

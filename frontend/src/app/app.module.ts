@@ -14,6 +14,18 @@ import { GridWrapperComponent } from './features/search/grid-wrapper/grid-wrappe
 import { HelpComponent } from './features/help/help.component';
 import { InfoComponent } from './features/info/info.component';
 import { SearchContentComponent } from './features/search/search-content/search-content.component';
+import { LoginComponent } from './features/login/login.component';
+import { RegistrationComponent } from './features/login/registration/registration.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
+import { UserLoggedInGuard } from './auth/logged-in.guard';
+import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
+
+
+const TOKEN_KEY = 'jwt';
+export function tokenGetter() {
+  return localStorage.getItem(TOKEN_KEY);
+}
 
 @NgModule({
   declarations: [
@@ -26,15 +38,27 @@ import { SearchContentComponent } from './features/search/search-content/search-
     GridWrapperComponent,
     HelpComponent,
     InfoComponent,
-    SearchContentComponent
+    SearchContentComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.apiHost],
+        disallowedRoutes: [environment.apiUrl + '/users/token']
+      }
+    }),
   ],
-  providers: [],
+  providers: [
+    UserLoggedInGuard,
+    UserNotLoggedInGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
