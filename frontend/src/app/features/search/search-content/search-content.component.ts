@@ -9,6 +9,8 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class SearchContentComponent implements OnInit {
 
+
+
   searchPhrase: string = "";
   searchResults: LemmaVersion[] = [];
 
@@ -22,5 +24,7 @@ export class SearchContentComponent implements OnInit {
       this.searchResults = data.entries;
     });
   }
+
+
 
 }

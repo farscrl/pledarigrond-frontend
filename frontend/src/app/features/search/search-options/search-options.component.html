@@ -1,0 +1,116 @@
+<div class="span4" [class.open]="showDetails">
+  <div class="well" id="search_panel">
+    <form target="BSFormPanel_de.uni_koeln.spinfo.maalr.user_1" class="form-inline">
+      <div id="searchoptions" [class.open]="showDetails">
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label">pled u expressiun tgi vous tschartgez</label>
+            <input type="text" id="searchPhrase" >
+            <a class="btn" style="margin-left: 10px;">tschartger</a>
+          </div>
+          <div class="control-group" *ngIf="showDetails">
+            <label class="control-label">lungatgs</label>
+            <table cellspacing="0" cellpadding="0" id="language">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;">
+                    <label class="radio" for="gwt-uid-47">
+                      <div class="styledControl styledRadio checked"></div>
+                      <input type="radio" name="language" value="on" id="gwt-uid-47" tabindex="0" checked="" style="display: none;">
+                      <span>tudestg e rumantsch</span>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">
+                    <label class="radio" for="gwt-uid-48">
+                      <div class="styledControl styledRadio"></div>
+                      <input type="radio" name="language" value="on" id="gwt-uid-48" tabindex="0" style="display: none;">
+                      <span>rumantsch-tudestg</span>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">
+                    <label class="radio" for="gwt-uid-49">
+                      <div class="styledControl styledRadio"></div>
+                      <input type="radio" name="language" value="on" id="gwt-uid-49" tabindex="0" style="display: none;">
+                      <span>tudestg-rumantsch</span>
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="control-group" *ngIf="showDetails">
+            <label class="control-label">pussebladads da tschartger</label>
+            <table cellspacing="0" cellpadding="0" id="method">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;">
+                    <label class="radio" for="gwt-uid-50">
+                      <div class="styledControl styledRadio checked"></div>
+                      <input type="radio" name="method" value="on" id="gwt-uid-50" tabindex="0" checked="" style="display: none;">
+                      <span>normal</span>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">
+                    <label class="radio" for="gwt-uid-51">
+                      <div class="styledControl styledRadio"></div>
+                      <input type="radio" name="method" value="on" id="gwt-uid-51" tabindex="0" style="display: none;">
+                      <span>dapertot</span>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">
+                    <label class="radio" for="gwt-uid-52">
+                      <div class="styledControl styledRadio"></div>
+                      <input type="radio" name="method" value="on" id="gwt-uid-52" tabindex="0" style="display: none;">
+                      <span>antschatta</span>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">
+                    <label class="radio" for="gwt-uid-53">
+                      <div class="styledControl styledRadio"></div>
+                      <input type="radio" name="method" value="on" id="gwt-uid-53" tabindex="0" style="display: none;">
+                      <span>finiziuns</span>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">
+                    <label class="radio" for="gwt-uid-54">
+                      <div class="styledControl styledRadio"></div>
+                      <input type="radio" name="method" value="on" id="gwt-uid-54" tabindex="0" style="display: none;">
+                      <span>exact</span>
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="control-group" *ngIf="showDetails">
+            <label class="checkbox" for="gwt-uid-55" id="highlight">
+              <div class="styledControl styledCheckbox"></div>
+              <input type="checkbox" value="on" id="gwt-uid-55" tabindex="0" style="display: none;">
+              <span>marcar igl pled u l'expressiun tgi vous tschartgez</span>
+            </label>
+          </div>
+          <div class="control-group" *ngIf="showDetails">
+            <label class="checkbox" for="gwt-uid-56" id="suggestions">
+              <div class="styledControl styledCheckbox"></div>
+              <input type="checkbox" value="on" id="gwt-uid-56" tabindex="0" style="display: none;">
+              <span>marcar novas propostas u modificaziuns</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+      <a class="btn" (click)="toggleDetails()"><i></i> dapli opziuns </a>
+    </form>
+  </div>
+</div>

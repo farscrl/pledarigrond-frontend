@@ -25,6 +25,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { PuterPlaceholderComponent } from './features/puter-placeholder/puter-placeholder.component';
 import { SursilvanPlaceholderComponent } from './features/sursilvan-placeholder/sursilvan-placeholder.component';
 import { ValladerPlaceholderComponent } from './features/vallader-placeholder/vallader-placeholder.component';
+import { SearchOptionsComponent } from './features/search/search-options/search-options.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -52,7 +53,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegistrationComponent,
     PuterPlaceholderComponent,
     SursilvanPlaceholderComponent,
-    ValladerPlaceholderComponent
+    ValladerPlaceholderComponent,
+    SearchOptionsComponent
   ],
   imports: [
     BrowserModule,

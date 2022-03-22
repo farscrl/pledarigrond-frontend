@@ -3,22 +3,7 @@
 
   <div class="container-fluid" style="margin-top: 75px;">
     <div class="row-fluid">
-      <div class="span4">
-        <div class="well" id="search_panel">
-          <form target="BSFormPanel_de.uni_koeln.spinfo.maalr.user_1" class="form-inline">
-            <div id="searchoptions">
-              <fieldset>
-                <div class="control-group">
-                  <label class="control-label">pled u expressiun che Vus tschertgais</label>
-                  <div class="controls"></div>
-                  <input type="text" id="searchPhrase" (keyup)="search($event)" [(ngModel)]="searchPhrase" [ngModelOptions]="{standalone: true}">
-                  <a href="javascript:;" class="btn" style="margin-left: 10px;"><i></i> tschertgar </a>
-                </div>
-              </fieldset>
-            </div><a href="javascript:;" class="btn"><i></i> dapli opziuns </a>
-          </form>
-        </div>
-      </div>
+      <app-search-options></app-search-options>
       <div class="span8" id="resultWrapper">
         <div class="well" *ngIf="searchResults.length > 0">
           <table cellspacing="0" cellpadding="0" style="width: 100%;">
@@ -63,7 +48,7 @@
                             </thead>
                             <tbody style="">
                               <ng-container *ngFor="let result of searchResults">
-                                <tr>
+                                <tr class="search-result">
                                   <td>
                                     <div style="outline-style:none;"></div>
                                   </td>
