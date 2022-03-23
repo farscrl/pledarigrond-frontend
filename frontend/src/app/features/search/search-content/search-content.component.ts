@@ -12,7 +12,7 @@ export class SearchContentComponent implements OnInit {
 
 
 
-  searchPhrase: string = "";
+  searchCriteria: SearchCriteria = new SearchCriteria();
   searchResults: LemmaVersion[] = [];
 
   constructor(private searchService: SearchService) { }
@@ -21,7 +21,7 @@ export class SearchContentComponent implements OnInit {
   }
 
   search(data: SearchCriteria) {
-    console.log(data);
+    this.searchCriteria = data;
     this.searchService.getResults(data).subscribe(data => {
       this.searchResults = data.entries;
     });

@@ -9,6 +9,7 @@
   },
   "search": {
     "results": "{0} (resultats {1} anfignen {2} da {3})",
+    "not_found": "La tschertga da \"{{searchPhrase}}\" n'ò do nigns resultats.",
     "search": "tschartger",
     "noresults_header": "Nigns resultats per \"{0}\".",
     "noresults_hint": "Cliche sen 'far ena nova proposta' per proponer en pled u en'expressiun ubagn modifitge la vossa tschertga.",

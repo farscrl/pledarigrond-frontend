@@ -9,6 +9,7 @@
   },
   "search": {
     "results": "{0} (resultats {1} fin {2} da {3})",
+    "not_found": "La tscheartga da \"{{searchPhrase}}\" â do nigns resultats.",
     "search": "tschartgear",
     "noresults_header": "Nigns resultats par \"{0}\".",
     "noresults_hint": "Clicad sen 'far egna nova proposta' par proponer egn pled near egn'expressiùn near modifitgead Vossa tscheartga.",

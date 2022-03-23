@@ -1,4 +1,4 @@
-<div id="content" class="content" [class.search-centered] = "searchResults.length === 0 && searchPhrase === ''">
+<div id="content" class="content" [class.search-centered]="searchResults.length === 0 && searchCriteria.searchPhrase === ''">
 
 
   <div class="container-fluid" style="margin-top: 75px;">
@@ -9,7 +9,7 @@
           <table cellspacing="0" cellpadding="0" style="width: 100%;">
             <tbody>
               <tr>
-                <td align="left" style="vertical-align: top;">
+                <td style="vertical-align: top;">
                   <div class="container-fluid">
                     <div class="row-fluid">
                       <div class="span12">
@@ -21,11 +21,11 @@
                 </td>
               </tr>
               <tr>
-                <td align="center" width="100%" style="vertical-align: top;">
+                <td width="100%" style="vertical-align: top;">
                   <table cellspacing="0" cellpadding="0">
                     <tbody>
                       <tr>
-                        <td align="left" width="100%" style="vertical-align: top;">
+                        <td width="100%" style="vertical-align: top;">
                           <table __gwtcellbasedwidgetimpldispatchingfocus="true" __gwtcellbasedwidgetimpldispatchingblur="true"
                             class="table resultlist" cellspacing="0" style="width: 100%;">
                             <colgroup>
@@ -71,7 +71,7 @@
                             </tbody>
                             <tbody style="display: none;">
                               <tr>
-                                <td align="center" colspan="5">
+                                <td colspan="5">
                                   <div>
                                     <div style="width: 100%; height: 100%; padding: 0px; margin: 0px;">
                                       <div style="width: 100%; height: 100%;"></div>
@@ -92,7 +92,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td align="left" style="vertical-align: top;">
+                        <td style="vertical-align: top;">
                           <div>
                             <div class="pagination pagination-centered">
                               <ul>
@@ -110,6 +110,26 @@
                       </tr>
                     </tbody>
                   </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="well" *ngIf="searchResults.length === 0 && searchCriteria.searchPhrase !== ''">
+          <table cellspacing="0" cellpadding="0" style="width: 100%;">
+            <tbody>
+              <tr>
+                <td style="vertical-align: top;">
+                  <div class="container-fluid">
+                    <div class="row-fluid">
+                      <div class="span12">
+                        <div>
+                          {{ 'search.not_found' | translate:{ searchPhrase: searchCriteria.searchPhrase } }}
+                        </div>
+                        <a href="javascript:;" class="btn"><i class="icon-info-sign"></i>far ina proposta </a>
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>

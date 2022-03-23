@@ -9,6 +9,7 @@
   },
   "search": {
     "results": "{0} (resultats {1} fin {2} da {3})",
+    "not_found": "La tschertga da \"{{searchPhrase}}\" n'ha dà nagins resultats.",
     "search": "tschertgar",
     "noresults_header": "Nagins resultats per \"{0}\".",
     "noresults_hint": "Cliccai sin 'far ina nova proposta' per proponer in pled u in'expressiun ubain modifitgai Vossa tschertga.",
