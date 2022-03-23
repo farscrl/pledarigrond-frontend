@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { SearchCriteria } from 'src/app/models/search-criteria';
 
 @Component({
   selector: 'app-search-options',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchOptionsComponent implements OnInit {
 
-  showDetails = false;
+  @Output()
+  searchEvent = new EventEmitter<SearchCriteria>();
+
+  searchCriteria: SearchCriteria = new SearchCriteria();
+
+  showDetails = true;
 
   constructor() { }
 
@@ -16,5 +22,10 @@ export class SearchOptionsComponent implements OnInit {
 
   toggleDetails() {
     this.showDetails = !this.showDetails;
+    console.log("toggle")
+  }
+
+  emitSearch() {
+    this.searchEvent.emit(this.searchCriteria);
   }
 }

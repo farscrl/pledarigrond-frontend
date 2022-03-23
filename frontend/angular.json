@@ -35,7 +35,6 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/js/jquery.screwDefaultButtonsV2.min.js",
               "src/assets/js/pledari.js",
               "src/assets/js/bootstrap.min.js"
             ]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LemmaVersion } from 'src/app/models/lemma-version';
+import { SearchCriteria } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -19,8 +20,9 @@ export class SearchContentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  search(data: any) {
-    this.searchService.getResults(this.searchPhrase).subscribe(data => {
+  search(data: SearchCriteria) {
+    console.log(data);
+    this.searchService.getResults(data).subscribe(data => {
       this.searchResults = data.entries;
     });
   }

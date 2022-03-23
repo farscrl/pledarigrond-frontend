@@ -3,7 +3,7 @@
 
   <div class="container-fluid" style="margin-top: 75px;">
     <div class="row-fluid">
-      <app-search-options></app-search-options>
+      <app-search-options (searchEvent)="search($event)"></app-search-options>
       <div class="span8" id="resultWrapper">
         <div class="well" *ngIf="searchResults.length > 0">
           <table cellspacing="0" cellpadding="0" style="width: 100%;">

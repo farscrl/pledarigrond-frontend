@@ -370,24 +370,6 @@ h1 {
 	color: white;
 }
 
-#searchoptions fieldset .control-group:nth-child(4) {
-  margin-bottom:8px;
-}
-
-#searchoptions label {
-	margin-top: 4px;
-	line-height: 16px;
-	cursor: pointer;
-}
-
-#searchoptions label input {
-	margin: 0 6px 0 0;
-}
-
-#searchoptions label span {
-	margin-top: -2px;
-}
-
 #content.content .row-fluid .span4 {
 	float: none;
 	margin: 0 auto;
@@ -418,44 +400,6 @@ h1 {
 	display: none;
 }
 
-#content.content .control-group a.btn {
-	text-transform: lowercase;
-	color: rgb(132, 132, 132);
-	position: absolute;
-	top: 26px;
-	right: 42px;
-	display: block;
-	width: 37px;
-	height: 18px;
-	padding: 0;
-	margin: 0;
-	font-size: 13px;
-	line-height: 18px;
-	text-align: left;
-	text-shadow: none;
-	vertical-align: middle;
-	cursor: pointer;
-	background-color: transparent;
-	background-image: none;
-	border: 0 none;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
-	filter: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-
-#content.content .control-group a.btn:hover {
-	color: rgb(21, 233, 177);
-}
-
-#content.content .control-group+.control-group,#content.content .control-group+.control-group+.control-group
-	{
-	/*	display: none; */
-
-}
 
 #content.content .row-fluid .span4 .well form>a {
 	position: relative;
@@ -718,99 +662,6 @@ tr.search-result td:nth-child(5)
 
 tr.search-result td:nth-child(6) {
   width: 0%;
-}
-
-/* RADIO BUTTONS */
-#searchoptions .control-group {
-	text-align: center;
-	margin-left: -12px;
-}
-
-#searchoptions .control-group:first-child {
-	text-align: left;
-	margin-left: 0;
-}
-
-#searchoptions .control-group:nth-child(2) {
-  margin-top: 24px;
-}
-
-#searchoptions .control-group table {
-	position: relative;
-	margin: 0 auto;
-	left: -8px;
-}
-
-#searchoptions .control-group tr {
-	display: inline-block;
-}
-
-#searchoptions .control-group tr td {
-	display: inline-block;
-	padding: 0 6px;
-}
-
-#searchoptions .control-group span {
-	color: rgb(132, 132, 132);
-	cursor: pointer;
-}
-
-#searchoptions .control-group span:hover {
-	/* color: rgb(0, 200, 255); */
-}
-
-#searchoptions input#searchPhrase {
-	border-radius: 24px;
-	width: 312px;
-	height: 32px;
-	margin: 0 auto;
-	display: block;
-}
-
-#searchoptions .styledRadio,#searchoptions .styledCheckbox {
-	width: 16px;
-	height: 16px;
-	float: left;
-	margin-right: 4px;
-	margin-top: -1px;
-	background-size: 16px 32px;
-}
-
-#searchoptions .styledRadio {
-	background-image:	url(/assets/img/radiobutton_sprite.png);
-	background-position: 0px 0px;
-}
-@media
-(-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-  #searchoptions .styledRadio {
-    background-image:	url(/assets/img/radiobutton_sprite2x.png);
-  }
-}
-
-#searchoptions .styledCheckbox {
-	background-image: url(/assets/img/checkbox_sprite.png);
-	background-position: 0px 0px;
-}
-@media
-(-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-  #searchoptions .styledCheckbox {
-    background-image: url(/assets/img/checkbox_sprite2x.png);
-  }
-}
-
-#searchoptions .styledRadio.checked {
-	background-position: 0px 16px;
-}
-
-#searchoptions .styledCheckbox.checked {
-	background-position: 0px 16px;
-}
-
-#searchoptions .styledRadio.checked+input+span,#searchoptions .styledCheckbox.checked+input+span
-	{
-	color: rgb(0, 200, 255);
 }
 
 /* MODAL */
@@ -1373,51 +1224,7 @@ a.simpleLink:hover {
 	#content.content .row-fluid .span4 .well form {
 		margin: 0;
 	}
-	#content.content .row-fluid .span4 .well form #searchoptions input[type="text"]
-		{
-		display: block;
-		width: 80%;
-		padding-left: 12px;
-		padding-right: 12px;
-		margin: 0 auto;
-		margin-top: 20px;
-	}
-	#content.content .row-fluid .span4 .well form #searchoptions input[type="text"]+a.btn
-		{
-		display: none;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		width: auto;
-		text-align: center;
-		margin: 0 !important;
-	}
-	#content.content .row-fluid .span4 .well form #searchoptions+a.btn {
-		top: 0px;
-		width: 52px;
-		height: 52px;
-	}
-	#content.content .row-fluid .span4 .well form #searchoptions .control-group
-		{
-		width: 80%;
-		margin: 0 auto;
-	}
-	#content.content .row-fluid .span4 .well form #searchoptions .control-group:first-child
-		{
-		width: auto;
-		margin-bottom: 12px;
-	}
-	#content.content .row-fluid .span4 .well form #searchoptions+a.btn:after
-		{
-		position: absolute;
-		display: block;
-		top: 0;
-		left: auto;
-	}
-	#content.content .row-fluid .span4 .well form #searchoptions+a.btn i {
-		display: none;
-	}
+
 	#content.content .row-fluid .span8 {
 		width: 84%;
 		margin: 0 auto;
@@ -1559,11 +1366,6 @@ a.simpleLink:hover {
 		width: 100% !important;
 	}
 
-	#searchoptions .control-group span {
-		/*font-size: 10px;*/
-
-	}
-
 	#content.search-centered .container-fluid:last-child .span4.open {
 		position: relative;
 		margin-top: 22px;
@@ -1571,10 +1373,6 @@ a.simpleLink:hover {
 
 	.container_entry {
 		width: 90%;
-	}
-
-	#searchoptions .styledRadio,#searchoptions .styledCheckbox {
-		margin-top: 1px;
 	}
 
 	#feed_container {
