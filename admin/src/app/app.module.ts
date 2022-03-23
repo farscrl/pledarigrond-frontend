@@ -7,20 +7,34 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { de_DE } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { LoginComponent } from './features/login/login.component';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { UserAdministrationComponent } from './features/user-administration/user-administration.component';
+import { UserLoggedInGuard } from './auth/logged-in.guard';
+import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
+import { environment } from 'src/environments/environment';
+import { JwtModule } from '@auth0/angular-jwt';
 
 registerLocaleData(de);
 
+const TOKEN_KEY = 'jwt';
+export function tokenGetter() {
+  return localStorage.getItem(TOKEN_KEY);
+}
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NavigationComponent
+    NavigationComponent,
+    LoginComponent,
+    MainLayoutComponent,
+    UserAdministrationComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +43,20 @@ registerLocaleData(de);
     HttpClientModule,
     BrowserAnimationsModule,
     NgZorroAntdModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.apiHost],
+        disallowedRoutes: [environment.apiUrl + '/users/token']
+      }
+    }),
+    ReactiveFormsModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: de_DE }],
+  providers: [
+    UserLoggedInGuard,
+    UserNotLoggedInGuard,
+    { provide: NZ_I18N, useValue: de_DE }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
