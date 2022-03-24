@@ -19,32 +19,32 @@
 <nz-card class="stats-card">
   <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(74520 | number)!" [nzTitle]="'Entries'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfEntries| number)!" [nzTitle]="'Entries'"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(75800 | number)!" [nzTitle]="'Versions'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfLemmata| number)!" [nzTitle]="'Versions'"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(74508 | number)!" [nzTitle]="'Approved'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfApproved| number)!" [nzTitle]="'Approved'"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(15 | number)!" [nzTitle]="'Suggested'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfSuggestions| number)!" [nzTitle]="'Suggested'"></nz-statistic>
     </nz-col>
   </nz-row>
   <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(204 | number)!" [nzTitle]="'Deleted'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfDeleted| number)!" [nzTitle]="'Deleted'"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(1073 | number)!" [nzTitle]="'Outdated'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfOutdated| number)!" [nzTitle]="'Outdated'"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'Other'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfUndefined| number)!" [nzTitle]="'Other'"></nz-statistic>
     </nz-col>
   </nz-row>
   <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="24" style="text-align: right;">
-      <button nz-button nzType="primary">Refresh</button>
+      <button nz-button nzType="primary" (click)="loadDbStats()" [nzLoading]="isLoadingDbInfos">Refresh</button>
     </nz-col>
   </nz-row>
 </nz-card>

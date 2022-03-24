@@ -1,3 +1,13 @@
+export class DbInfos {
+  numberOfLemmata: number = 0;
+  numberOfEntries: number = 0;
+  numberOfSuggestions: number = 0;
+  numberOfApproved: number = 0;
+  numberOfDeleted: number = 0;
+  numberOfUndefined: number = 0;
+  numberOfOutdated: number = 0;
+}
+
 export class BackupInfos {
   infos: BackupFile[] = [];
   backupLocation: string = "";

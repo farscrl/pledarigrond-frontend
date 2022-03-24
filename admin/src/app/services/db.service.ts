@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BackupInfos, IndexInfos } from '../models/db-infos';
+import { BackupInfos, DbInfos, IndexInfos } from '../models/db-infos';
 import { environment } from './../../environments/environment';
 
 @Injectable({
@@ -11,6 +11,11 @@ export class DbService {
   private dbBasePath = '/admin/db/';
 
   constructor(private httpClient: HttpClient) { }
+
+  getDbInfos(): Observable<DbInfos> {
+    return this.httpClient.get<DbInfos>(this.generateUrl('db_stats'));
+  }
+
 
   getBackupInfos(): Observable<BackupInfos> {
     return this.httpClient.get<BackupInfos>(this.generateUrl('backup_infos'));

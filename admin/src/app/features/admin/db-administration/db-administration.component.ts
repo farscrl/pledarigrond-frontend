@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackupInfos } from 'src/app/models/db-infos';
+import { BackupInfos, DbInfos } from 'src/app/models/db-infos';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -9,16 +9,31 @@ import { DbService } from 'src/app/services/db.service';
 })
 export class DbAdministrationComponent implements OnInit {
 
+  dbInfos: DbInfos = new DbInfos();
+  isLoadingDbInfos = false;
   backupInfos: BackupInfos = new BackupInfos();
 
   constructor(private dbService: DbService) { }
 
   ngOnInit(): void {
+    this.loadDbStats();
     this.dbService.getBackupInfos().subscribe(data => {
       this.backupInfos = data;
     },
     error => {
-      console.error(error)
+      console.error(error);
+    });
+  }
+
+  loadDbStats() {
+    this.isLoadingDbInfos = true;
+    this.dbService.getDbInfos().subscribe(data => {
+      this.dbInfos = data;
+      this.isLoadingDbInfos = false;
+    },
+    error => {
+      this.isLoadingDbInfos = false;
+      console.error(error);
     });
   }
 
