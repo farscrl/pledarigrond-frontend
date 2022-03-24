@@ -1,0 +1,29 @@
+<nz-page-header [nzGhost]="false">
+  <nz-page-header-title>Index</nz-page-header-title>
+  <nz-page-header-subtitle>Lucene index administration</nz-page-header-subtitle>
+  <nz-page-header-extra>
+    <button nz-button nzType="primary" nzDanger>Rebuild index</button>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<nz-card class="stats-card">
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(74520 | number)!" [nzTitle]="'Indexed'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(75800 | number)!" [nzTitle]="'Approved'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(74508 | number)!" [nzTitle]="'Unverified'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(15 | number)!" [nzTitle]="'Other'"></nz-statistic>
+    </nz-col>
+  </nz-row>
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="24" style="text-align: right;">
+      <button nz-button nzType="primary">Refresh stats</button>
+    </nz-col>
+  </nz-row>
+</nz-card>

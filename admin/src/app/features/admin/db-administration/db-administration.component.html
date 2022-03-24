@@ -1,0 +1,78 @@
+<nz-page-header [nzGhost]="false">
+  <nz-page-header-title>Database</nz-page-header-title>
+  <nz-page-header-subtitle>Database administration</nz-page-header-subtitle>
+  <nz-page-header-extra>
+    <button nz-button nzType="primary">Backup</button>
+    <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0" nzPlacement="bottomRight">
+      <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
+    </button>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item nzDanger>Import</li>
+        <li nz-menu-item nzDanger>Reload</li>
+        <li nz-menu-item nzDanger>Drop</li>
+      </ul>
+    </nz-dropdown-menu>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<nz-card class="stats-card">
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(74520 | number)!" [nzTitle]="'Entries'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(75800 | number)!" [nzTitle]="'Versions'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(74508 | number)!" [nzTitle]="'Approved'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(15 | number)!" [nzTitle]="'Suggested'"></nz-statistic>
+    </nz-col>
+  </nz-row>
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(204 | number)!" [nzTitle]="'Deleted'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(1073 | number)!" [nzTitle]="'Outdated'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'Other'"></nz-statistic>
+    </nz-col>
+  </nz-row>
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="24" style="text-align: right;">
+      <button nz-button nzType="primary">Refresh</button>
+    </nz-col>
+  </nz-row>
+</nz-card>
+
+
+<nz-page-header [nzGhost]="false">
+  <nz-page-header-title>Backup</nz-page-header-title>
+  <nz-page-header-subtitle>Information about DB backups</nz-page-header-subtitle>
+</nz-page-header>
+
+<nz-card class="stats-card">
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="12">
+      <nz-statistic [nzValue]="backupInfos.triggerTime" [nzTitle]="'Frequency'"></nz-statistic>
+      <nz-statistic [nzValue]="(backupInfos.backupNums| number)!" [nzTitle]="'Max backups'"></nz-statistic>
+      <nz-statistic [nzValue]="backupInfos.backupLocation" [nzTitle]="'Location'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="12">
+      <nz-timeline>
+        <nz-timeline-item nzColor="green" *ngFor="let backupInfo of backupInfos.infos">
+          <p>
+            {{ backupInfo.creationDate }}<br>
+            s{{ backupInfo.name }}<br>
+            Size: {{ backupInfo.size }}<br>
+            <a (click)="downloadBackupFile()">Download</a>
+          </p>
+        </nz-timeline-item>
+      </nz-timeline>
+    </nz-col>
+  </nz-row>
+</nz-card>

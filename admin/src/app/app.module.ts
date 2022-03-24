@@ -23,6 +23,10 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { EditComponent } from './features/user-administration/edit/edit.component';
 import { IdiomNavigationComponent } from './components/navigation/idiom-navigation/idiom-navigation.component';
 import { UsersNavigationComponent } from './components/navigation/users-navigation/users-navigation.component';
+import { DbAdministrationComponent } from './features/admin/db-administration/db-administration.component';
+import { EditorComponent } from './features/editor/editor.component';
+import { AdminComponent } from './features/admin/admin.component';
+import { IndexAdministrationComponent } from './features/admin/index-administration/index-administration.component';
 
 registerLocaleData(de);
 
@@ -40,7 +44,11 @@ export function tokenGetter() {
     UserAdministrationComponent,
     EditComponent,
     IdiomNavigationComponent,
-    UsersNavigationComponent
+    UsersNavigationComponent,
+    DbAdministrationComponent,
+    EditorComponent,
+    AdminComponent,
+    IndexAdministrationComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,10 @@ import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { IdiomNavigationComponent } from './components/navigation/idiom-navigation/idiom-navigation.component';
 import { UsersNavigationComponent } from './components/navigation/users-navigation/users-navigation.component';
+import { AdminComponent } from './features/admin/admin.component';
+import { DbAdministrationComponent } from './features/admin/db-administration/db-administration.component';
+import { IndexAdministrationComponent } from './features/admin/index-administration/index-administration.component';
+import { EditorComponent } from './features/editor/editor.component';
 import { LoginComponent } from './features/login/login.component';
 import { UserAdministrationComponent } from './features/user-administration/user-administration.component';
 
@@ -28,7 +32,21 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            component: UserAdministrationComponent
+            component: EditorComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
           }
         ]
       },
@@ -38,7 +56,21 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            component: UserAdministrationComponent
+            component: EditorComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
           }
         ]
       },
@@ -48,7 +80,21 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            component: UserAdministrationComponent
+            component: EditorComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
           }
         ]
       },
@@ -58,7 +104,21 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            component: UserAdministrationComponent
+            component: EditorComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
           }
         ]
       },
@@ -68,7 +128,21 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            component: UserAdministrationComponent
+            component: EditorComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
           }
         ]
       },
@@ -78,7 +152,21 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            component: UserAdministrationComponent
+            component: EditorComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
           }
         ]
       },
@@ -88,7 +176,21 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            component: UserAdministrationComponent
+            component: EditorComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
           }
         ]
       },
@@ -99,6 +201,20 @@ const routes: Routes = [
           {
             path: "",
             component: UserAdministrationComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
           }
         ]
       }
