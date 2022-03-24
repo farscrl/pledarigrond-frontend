@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackupInfos } from 'src/app/models/backup-infos';
+import { BackupInfos } from 'src/app/models/db-infos';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({

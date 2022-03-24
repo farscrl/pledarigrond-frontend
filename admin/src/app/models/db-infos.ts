@@ -13,3 +13,12 @@ export class BackupFile {
   creationDate: string = "";
   lastModified: string = "";
 }
+
+export class IndexInfos {
+  numberOfEntries: number = 0;
+  approvedEntries: number = 0;
+  unverifiedEntries: number = 0;
+  unknown: number = 0;
+  lastUpdated: number = 0;
+  overlayCount: any;
+}
