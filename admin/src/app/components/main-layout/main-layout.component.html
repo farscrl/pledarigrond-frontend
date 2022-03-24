@@ -1,18 +1,4 @@
 <nz-layout>
   <app-header></app-header>
-  <nz-layout class="main-layout">
-    <nz-sider nzWidth="200px" nzTheme="light">
-      <app-navigation></app-navigation>
-    </nz-sider>
-    <nz-layout class="inner-layout">
-      <nz-breadcrumb>
-        <nz-breadcrumb-item>PG-Admin</nz-breadcrumb-item>
-        <nz-breadcrumb-item>List</nz-breadcrumb-item>
-        <nz-breadcrumb-item>App</nz-breadcrumb-item>
-      </nz-breadcrumb>
-      <nz-content>
-        <router-outlet></router-outlet>
-      </nz-content>
-    </nz-layout>
-  </nz-layout>
+  <router-outlet></router-outlet>
 </nz-layout>

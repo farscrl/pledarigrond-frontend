@@ -1,8 +1,16 @@
 .header-menu, .header-menu-right {
   line-height: 64px;
   display: inline-block;
+  user-select: none;
 }
 
 .header-menu-right {
   float: right;
+}
+
+.logout {
+  margin-left: 15px;
+  i:hover {
+    color: #1890ff;
+  }
 }

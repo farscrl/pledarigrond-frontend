@@ -20,6 +20,9 @@ import { UserLoggedInGuard } from './auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import { environment } from 'src/environments/environment';
 import { JwtModule } from '@auth0/angular-jwt';
+import { EditComponent } from './features/user-administration/edit/edit.component';
+import { IdiomNavigationComponent } from './components/navigation/idiom-navigation/idiom-navigation.component';
+import { UsersNavigationComponent } from './components/navigation/users-navigation/users-navigation.component';
 
 registerLocaleData(de);
 
@@ -34,7 +37,10 @@ export function tokenGetter() {
     NavigationComponent,
     LoginComponent,
     MainLayoutComponent,
-    UserAdministrationComponent
+    UserAdministrationComponent,
+    EditComponent,
+    IdiomNavigationComponent,
+    UsersNavigationComponent
   ],
   imports: [
     BrowserModule,

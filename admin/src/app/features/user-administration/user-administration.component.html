@@ -1,1 +1,42 @@
-<p>user-administration works!</p>
+<nz-page-header [nzGhost]="false">
+  <nz-page-header-title>Utilisaders</nz-page-header-title>
+  <nz-page-header-subtitle>Quai èn tut ils utilisaders dal Pledari Grond</nz-page-header-subtitle>
+  <nz-page-header-extra>
+    <button nz-button nzType="primary" (click)="newOrEdit()">New</button>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<nz-table #basicTable [nzData]="listOfUsers">
+  <thead>
+    <tr>
+      <th>E-Mail</th>
+      <th nzAlign="center">Admin</th>
+      <th nzAlign="center">PT</th>
+      <th nzAlign="center">RG</th>
+      <th nzAlign="center">SM</th>
+      <th nzAlign="center">SR</th>
+      <th nzAlign="center">ST</th>
+      <th nzAlign="center">VL</th>
+      <th nzAlign="center">Nums</th>
+      <th nzAlign="center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.email }}</td>
+      <td nzAlign="center"><i nz-icon nzType="check-circle" nzTheme="outline" *ngIf="data.admin"></i><i nz-icon nzType="stop" nzTheme="outline" *ngIf="!data.admin"></i></td>
+      <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.puterRole)">{{ data.roles.puterRole }}</nz-tag></td>
+      <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.rumantschgrischunRole)">{{ data.roles.rumantschgrischunRole }}</nz-tag></td>
+      <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.surmiranRole)">{{ data.roles.surmiranRole }}</nz-tag></td>
+      <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.sursilvanRole)">{{ data.roles.sursilvanRole }}</nz-tag></td>
+      <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.sutsilvanRole)">{{ data.roles.sutsilvanRole }}</nz-tag></td>
+      <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.valladerRole)">{{ data.roles.valladerRole }}</nz-tag></td>
+      <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.namesRole)">{{ data.roles.namesRole }}</nz-tag></td>
+      <td>
+        <a (click)="newOrEdit(data.email)">Edit</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="delete(data.email)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

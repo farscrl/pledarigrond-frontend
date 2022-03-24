@@ -22,7 +22,6 @@ export class SearchOptionsComponent implements OnInit {
 
   toggleDetails() {
     this.showDetails = !this.showDetails;
-    console.log("toggle")
   }
 
   emitSearch() {

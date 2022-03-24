@@ -1,0 +1,109 @@
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+      <input nz-input formControlName="email" id="email" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item *ngIf="!email">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">Password</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+      <input nz-input type="password" formControlName="password" id="password" />
+      <ng-template #errorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
+        <ng-container *ngIf="control.hasError('minlength')">The password must contain at least 6 caracters!</ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="admin">is Admin?</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <label nz-checkbox formControlName="admin"></label>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="rolePuter">Role Puter</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select formControlName="rolePuter">
+        <nz-option nzValue="INTERNAL" nzLabel="internal"></nz-option>
+        <nz-option nzValue="EXTERNAL" nzLabel="external"></nz-option>
+        <nz-option nzValue="NONE" nzLabel="no access"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleRumantschgrischun">Role Rumantsch Grischun</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select formControlName="roleRumantschgrischun">
+        <nz-option nzValue="INTERNAL" nzLabel="internal"></nz-option>
+        <nz-option nzValue="EXTERNAL" nzLabel="external"></nz-option>
+        <nz-option nzValue="NONE" nzLabel="no access"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSurmiran">Role Surmiran</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select formControlName="roleSurmiran">
+        <nz-option nzValue="INTERNAL" nzLabel="internal"></nz-option>
+        <nz-option nzValue="EXTERNAL" nzLabel="external"></nz-option>
+        <nz-option nzValue="NONE" nzLabel="no access"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSursilvan">Role Sursilvan</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select formControlName="roleSursilvan">
+        <nz-option nzValue="INTERNAL" nzLabel="internal"></nz-option>
+        <nz-option nzValue="EXTERNAL" nzLabel="external"></nz-option>
+        <nz-option nzValue="NONE" nzLabel="no access"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSutsilvan">Role Sutsilvan</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select formControlName="roleSutsilvan">
+        <nz-option nzValue="INTERNAL" nzLabel="internal"></nz-option>
+        <nz-option nzValue="EXTERNAL" nzLabel="external"></nz-option>
+        <nz-option nzValue="NONE" nzLabel="no access"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleVallader">Role Vallader</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select formControlName="roleVallader">
+        <nz-option nzValue="INTERNAL" nzLabel="internal"></nz-option>
+        <nz-option nzValue="EXTERNAL" nzLabel="external"></nz-option>
+        <nz-option nzValue="NONE" nzLabel="no access"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleNames">Role Names</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select formControlName="roleNames">
+        <nz-option nzValue="INTERNAL" nzLabel="internal"></nz-option>
+        <nz-option nzValue="EXTERNAL" nzLabel="external"></nz-option>
+        <nz-option nzValue="NONE" nzLabel="no access"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+</form>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
+  <button nz-button nzType="primary" (click)="save()" [nzLoading]="isLoading">{{ !!email ? 'Save' : 'Create' }}</button>
+</div>

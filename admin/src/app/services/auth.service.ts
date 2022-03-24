@@ -103,11 +103,6 @@ export class AuthService {
     const jwtToken = this.jwtHelperService.decodeToken(token);
     this.isLoggedInSubject.next(true);
     this.usernameSubject.next(jwtToken.sub);
-    this.role = jwtToken.role;
-    const languages: Array<Language> = jwtToken.languages;
-    languages.forEach(language => {
-      this.langages.push(language)
-    });
   }
 
   hasSystemRole(role: Role) {

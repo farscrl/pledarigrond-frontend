@@ -1,14 +1,17 @@
 <nz-header>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-    <li nz-menu-item nzDisabled="true">Puter</li>
-    <li nz-menu-item nzSelected>Rumantsch Grischun</li>
-    <li nz-menu-item>Surmiran</li>
-    <li nz-menu-item nzDisabled="true">Sursilvan</li>
-    <li nz-menu-item>Sutsilvan</li>
-    <li nz-menu-item nzDisabled="true">Vallader</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/puter" nzDisabled="true" >Puter</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/rumantschgrischun">Rumantsch Grischun</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/surmiran">Surmiran</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sursilvan" nzDisabled="true" >Sursilvan</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sutsilvan">Sutsilvan</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/vallader" nzDisabled="true" >Vallader</li>
   </ul>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu-right">
-    <li nz-menu-item>Nums</li>
-    <li nz-menu-item>Admin</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/names">Nums</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users">Utilisaders</li>
+    <span class="logout" (click)="logout()">
+      <i nz-icon nzType="logout" nzTheme="outline"></i>
+    </span>
   </ul>
 </nz-header>

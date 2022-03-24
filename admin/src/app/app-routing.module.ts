@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserLoggedInGuard } from './auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { IdiomNavigationComponent } from './components/navigation/idiom-navigation/idiom-navigation.component';
+import { UsersNavigationComponent } from './components/navigation/users-navigation/users-navigation.component';
 import { LoginComponent } from './features/login/login.component';
 import { UserAdministrationComponent } from './features/user-administration/user-administration.component';
 
@@ -22,35 +24,83 @@ const routes: Routes = [
     children: [
       {
         path: 'puter',
-        component: UserAdministrationComponent
+        component: IdiomNavigationComponent,
+        children: [
+          {
+            path: "",
+            component: UserAdministrationComponent
+          }
+        ]
       },
       {
         path: 'rumantschgrischun',
-        component: UserAdministrationComponent
+        component: IdiomNavigationComponent,
+        children: [
+          {
+            path: "",
+            component: UserAdministrationComponent
+          }
+        ]
       },
       {
         path: 'surmiran',
-        component: UserAdministrationComponent
+        component: IdiomNavigationComponent,
+        children: [
+          {
+            path: "",
+            component: UserAdministrationComponent
+          }
+        ]
       },
       {
         path: 'sursilvan',
-        component: UserAdministrationComponent
+        component: IdiomNavigationComponent,
+        children: [
+          {
+            path: "",
+            component: UserAdministrationComponent
+          }
+        ]
       },
       {
-        path: 'puter',
-        component: UserAdministrationComponent
+        path: 'sutsilvan',
+        component: IdiomNavigationComponent,
+        children: [
+          {
+            path: "",
+            component: UserAdministrationComponent
+          }
+        ]
       },
       {
         path: 'vallader',
-        component: UserAdministrationComponent
+        component: IdiomNavigationComponent,
+        children: [
+          {
+            path: "",
+            component: UserAdministrationComponent
+          }
+        ]
       },
       {
-        path: 'nums',
-        component: UserAdministrationComponent
+        path: 'names',
+        component: UsersNavigationComponent,
+        children: [
+          {
+            path: "",
+            component: UserAdministrationComponent
+          }
+        ]
       },
       {
         path: 'users',
-        component: UserAdministrationComponent
+        component: UsersNavigationComponent,
+        children: [
+          {
+            path: "",
+            component: UserAdministrationComponent
+          }
+        ]
       }
     ]
   },
