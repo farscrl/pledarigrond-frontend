@@ -13,6 +13,8 @@ export class DbAdministrationComponent implements OnInit {
 
   dbInfos: DbInfos = new DbInfos();
   isLoadingDbInfos = false;
+  isDownloadingDb = false;
+  isReloadingDemoData = false;
   backupInfos: BackupInfos = new BackupInfos();
 
   constructor(private dbService: DbService, private languageSelectionService: LanguageSelectionService) { }
@@ -43,4 +45,34 @@ export class DbAdministrationComponent implements OnInit {
     console.log("implement me");
   }
 
+  exportDb() {
+    this.isDownloadingDb = true;
+    this.dbService.exportDb(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
+      this.isDownloadingDb = false;
+      console.log(data);
+      const a = document.createElement('a')
+      const objectUrl = URL.createObjectURL(data)
+      a.href = objectUrl
+      a.download = 'pledarigrond-export.zip';
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+    }, error => {
+      console.error(error);
+      this.isDownloadingDb = false;
+    })
+  }
+
+  reloadDemoData() {
+    // TODO: implement modal to ask.
+    return;
+
+    this.isReloadingDemoData = true;
+    this.dbService.reloadDemoData(this.languageSelectionService.getCurrentLanguage()).subscribe(() => {
+      this.isReloadingDemoData = false;
+    },
+    error => {
+      this.isReloadingDemoData = false;
+      console.error(error);
+    });
+  }
 }
