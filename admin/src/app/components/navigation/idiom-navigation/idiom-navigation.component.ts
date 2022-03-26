@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
   selector: 'app-idiom-navigation',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdiomNavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
+    this.languageSelectionService.setNewUrl(this.router.url);
   }
 
 }

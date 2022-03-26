@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackupInfos, DbInfos } from 'src/app/models/db-infos';
+import { Language } from 'src/app/models/security';
 import { DbService } from 'src/app/services/db.service';
+import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
   selector: 'app-db-administration',
@@ -13,11 +15,11 @@ export class DbAdministrationComponent implements OnInit {
   isLoadingDbInfos = false;
   backupInfos: BackupInfos = new BackupInfos();
 
-  constructor(private dbService: DbService) { }
+  constructor(private dbService: DbService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
     this.loadDbStats();
-    this.dbService.getBackupInfos().subscribe(data => {
+    this.dbService.getBackupInfos(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
       this.backupInfos = data;
     },
     error => {
@@ -27,7 +29,7 @@ export class DbAdministrationComponent implements OnInit {
 
   loadDbStats() {
     this.isLoadingDbInfos = true;
-    this.dbService.getDbInfos().subscribe(data => {
+    this.dbService.getDbInfos(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
       this.dbInfos = data;
       this.isLoadingDbInfos = false;
     },

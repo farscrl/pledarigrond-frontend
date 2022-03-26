@@ -6,12 +6,12 @@ export enum Role {
 }
 
 export enum Language {
-  PUTER,
-  RUMANTSCHGRISCHUN,
-  SURMIRAN,
-  SURSILVAN,
-  SUTSILVAN,
-  VALLADER,
+  PUTER = "puter",
+  RUMANTSCHGRISCHUN = "rumantschgrischun",
+  SURMIRAN = "surmiran",
+  SURSILVAN = "sursilvan",
+  SUTSILVAN = "sutsilvan",
+  VALLADER = "vallader",
 }
 
 export class Credentials {

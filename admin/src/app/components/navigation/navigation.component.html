@@ -1,16 +1,16 @@
 <ul nz-menu nzMode="inline" class="sider-menu">
-  <li nz-submenu nzOpen nzIcon="user" nzTitle="Editor">
+  <li nz-submenu [nzOpen]="isEditorSubnaviOpen" nzIcon="user" nzTitle="Editor">
     <ul>
-      <li nz-menu-item>Suggestion Editor</li>
-      <li nz-menu-item>Verificaton History</li>
-      <li nz-menu-item>Lexicon Editor</li>
-      <li nz-menu-item>Automatic changes</li>
+      <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/suggestions'">Suggestion Editor</li>
+      <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/history'">Verificaton History</li>
+      <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/lexicon'">Lexicon Editor</li>
+      <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/automatic'">Automatic changes</li>
     </ul>
   </li>
-  <li nz-submenu nzIcon="laptop" nzTitle="Admin">
+  <li nz-submenu [nzOpen]="isAdminSubnaviOpen" nzIcon="laptop" nzTitle="Admin">
     <ul>
-      <li nz-menu-item>Database</li>
-      <li nz-menu-item>Index</li>
+      <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/database'">Database</li>
+      <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/index'">Index</li>
     </ul>
   </li>
 </ul>

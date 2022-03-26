@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IndexInfos } from 'src/app/models/db-infos';
+import { Language } from 'src/app/models/security';
 import { DbService } from 'src/app/services/db.service';
+import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
   selector: 'app-index-administration',
@@ -13,7 +15,7 @@ export class IndexAdministrationComponent implements OnInit {
   isLoading: boolean = false;
   isRebuilding: boolean = false;
 
-  constructor(private dbService: DbService) { }
+  constructor(private dbService: DbService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
     this.loadIndexInfos();
@@ -21,7 +23,7 @@ export class IndexAdministrationComponent implements OnInit {
 
   loadIndexInfos() {
     this.isLoading = true;
-    this.dbService.getIndexInfos().subscribe(data => {
+    this.dbService.getIndexInfos(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
       this.indexInfos = data;
       this.isLoading = false;
     }, error => {
@@ -32,7 +34,7 @@ export class IndexAdministrationComponent implements OnInit {
 
   rebuildIndex() {
     this.isRebuilding = true;
-    this.dbService.rebuildIndex().subscribe(data => {
+    this.dbService.rebuildIndex(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
       this.isRebuilding = false;
       this.loadIndexInfos();
     }, error => {

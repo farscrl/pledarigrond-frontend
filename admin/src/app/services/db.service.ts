@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BackupInfos, DbInfos, IndexInfos } from '../models/db-infos';
+import { Language } from '../models/security';
 import { environment } from './../../environments/environment';
 
 @Injectable({
@@ -12,24 +13,31 @@ export class DbService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getDbInfos(): Observable<DbInfos> {
-    return this.httpClient.get<DbInfos>(this.generateUrl('db_stats'));
+  getDbInfos(language: Language): Observable<DbInfos> {
+    return this.httpClient.get<DbInfos>(this.generateUrl(language, 'db_stats'));
   }
 
-
-  getBackupInfos(): Observable<BackupInfos> {
-    return this.httpClient.get<BackupInfos>(this.generateUrl('backup_infos'));
+  exportDb(language: Language): Observable<Blob> {
+    return this.httpClient.post(this.generateUrl(language, 'export_db'), null, { responseType: 'blob' });
   }
 
-  getIndexInfos(): Observable<IndexInfos> {
-    return this.httpClient.get<IndexInfos>(this.generateUrl('index_stats'));
+  reloadDemoData(language: Language): Observable<void> {
+    return this.httpClient.post<void>(this.generateUrl(language, 'import_db'), null);
   }
 
-  rebuildIndex(): Observable<void> {
-    return this.httpClient.post<void>(this.generateUrl('rebuild_index'), null);
+  getBackupInfos(language: Language): Observable<BackupInfos> {
+    return this.httpClient.get<BackupInfos>(this.generateUrl(language, 'backup_infos'));
   }
 
-  private generateUrl(segment: string) {
-    return environment.apiUrl + this.dbBasePath + segment;
+  getIndexInfos(language: Language): Observable<IndexInfos> {
+    return this.httpClient.get<IndexInfos>(this.generateUrl(language, 'index_stats'));
+  }
+
+  rebuildIndex(language: Language): Observable<void> {
+    return this.httpClient.post<void>(this.generateUrl(language, 'rebuild_index'), null);
+  }
+
+  private generateUrl(language: Language, segment: string) {
+    return environment.apiUrl + "/" + language + this.dbBasePath + segment;
   }
 }
