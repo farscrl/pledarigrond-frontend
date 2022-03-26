@@ -49,7 +49,6 @@ export class DbAdministrationComponent implements OnInit {
     this.isDownloadingDb = true;
     this.dbService.exportDb(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
       this.isDownloadingDb = false;
-      console.log(data);
       const a = document.createElement('a')
       const objectUrl = URL.createObjectURL(data)
       a.href = objectUrl

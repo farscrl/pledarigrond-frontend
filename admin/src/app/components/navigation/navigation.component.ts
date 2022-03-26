@@ -27,7 +27,6 @@ export class NavigationComponent implements OnInit {
     const segments = url.split('/');
 
       if (segments.length >= 4) {
-        console.log(segments);
         if (segments[3] === 'editor') {
           this.isEditorSubnaviOpen = true;
           this.isAdminSubnaviOpen = false;

@@ -13,7 +13,6 @@ export class LanguageSelectionService {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.setNewUrl(val.url);
-        console.log(val.url);
       }
     });
   }
@@ -52,7 +51,6 @@ export class LanguageSelectionService {
   private setCurrentLanguage(language: Language) {
     if (this.currentLanguage !== language) {
       this.currentLanguage = language;
-      console.log('Current language changed to: ' + language);
     }
   }
 }
