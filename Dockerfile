@@ -4,9 +4,9 @@ WORKDIR /app
 COPY . .
 RUN cd frontend && npm install
 #RUN cd frontend && npm run build --prod
-RUN cd frontend && (node_modules/.bin/ng -c=test)
+RUN cd frontend && (node_modules/.bin/ng build -c=test)
 RUN cd admin && npm install
-RUN cd admin && (node_modules/.bin/ng -c=test)
+RUN cd admin && (node_modules/.bin/ng build -c=test)
 
 
 #stage 2
