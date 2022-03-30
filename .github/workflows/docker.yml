@@ -25,7 +25,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: docker build
         run: |
-          docker build -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}} .
+          docker build -t pledarigrond/pledari-grond-frontend:latest -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}} .
       - name: docker push
         run: |
-          docker push pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}
+          docker push pledarigrond/pledari-grond-frontend -t pledarigrond/pledari-grond-frontend
