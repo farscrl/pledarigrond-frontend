@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://pg-api.jcloud-ver-jpc.ik-server.com',
-  apiHost: 'pg-api.jcloud-ver-jpc.ik-server.com',
-  adminBackendUrl: 'http://localhost:4222',
+  apiUrl: 'https://pledarigrond-api-test.hidora.com/',
+  apiHost: 'pledarigrond-api-test.hidora.com',
+  adminBackendUrl: 'https://pledarigrond-test.hidora.com/admin',
 };
