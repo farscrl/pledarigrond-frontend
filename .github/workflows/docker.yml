@@ -1,0 +1,19 @@
+name: Docker Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: docker build
+        run: |
+          docker build -t pledarigrond/pledari-grond-frontend .
