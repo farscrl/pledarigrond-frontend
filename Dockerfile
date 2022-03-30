@@ -14,3 +14,5 @@ FROM nginx:alpine
 EXPOSE 80
 COPY --from=node /app/dist /usr/share/nginx/html
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+# Fix for a Jelastic issue (see: https://guillermo.at/jelastic-docker-cmd)
+CMD nginx -g "daemon off;"
