@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { QueryResult } from '../models/query-result';
 import { SearchCriteria } from '../models/search-criteria';
+import { Language } from '../models/security';
 import { environment } from './../../environments/environment';
 import { SelectedLanguageService } from './selected-language.service';
 
@@ -13,7 +14,7 @@ export class SearchService {
 
   constructor(private httpClient: HttpClient, private selectedLanguageService: SelectedLanguageService) { }
 
-  getResults(searchCriteria: SearchCriteria): Observable<QueryResult> {
+  getResults(language: string, searchCriteria: SearchCriteria): Observable<QueryResult> {
     let params: HttpParams = new HttpParams();
 
     if (!!searchCriteria.searchPhrase && searchCriteria.searchPhrase !== "") {
@@ -36,10 +37,10 @@ export class SearchService {
       params: params
     };
 
-    return this.httpClient.get<QueryResult>(this.getSearchUrl(), httpOptions);
+    return this.httpClient.get<QueryResult>(this.getSearchUrl(language), httpOptions);
   }
 
-  private getSearchUrl(): string {
-    return environment.apiUrl + "/user/search";
+  private getSearchUrl(language: string): string {
+    return environment.apiUrl + "/" + language + "/user/search";
   }
 }
