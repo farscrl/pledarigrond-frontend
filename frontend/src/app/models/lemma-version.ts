@@ -1,6 +1,6 @@
 export class LemmaVersion {
   userInfo: any;
-  entryValues: any;
+  entryValues: EntryValues = new EntryValues();
   maalrValues: any;
   ip: any;
   timestamp: any;
@@ -12,4 +12,15 @@ export class LemmaVersion {
   internalId: any;
   verifierId: any;
   lexEntryId: any;
+}
+
+export class EntryValues {
+  DStichwort?: string;
+  DSubsemantik?: string;
+  DGenus?: string;
+  RStichwort?: string;
+  RFlex?: string;
+  RSubsemantik?: string;
+  RGenus?: string;
+  maalr_overlay_lang2?: string;
 }

@@ -8,10 +8,12 @@
     "vallader": "Vallader"
   },
   "search": {
-    "results": "{0} (Ergebnisse {1} bis {2} von {3})",
+    "header_rm": "Romanisch",
+    "header_de": "Deutsch",
+    "results": "(Ergebnisse {{start}} bis {{end}} von {{total}})",
     "not_found": "Die Suche nach \"{{searchPhrase}}\" lieferte keine Ergebnisse.",
     "search": "Suche",
-    "noresults_header": "Es sind keine Einträge für \"{0}\" vorhanden.",
+    "noresults_header": "Es sind keine Einträge für \"{{searchPhrase}}\" vorhanden.",
     "noresults_hint": "Klicken Sie auf 'Neuer Eintrag', um einen Eintrag vorzuschlagen, oder modifizieren Sie Ihre Suche.",
     "searchPhrase": "Suchbegriff",
     "searchPhrase_submit": "Suchen",

@@ -8,10 +8,12 @@
     "vallader": "vallader"
   },
   "search": {
-    "results": "{0} (resultats {1} fin {2} da {3})",
+    "header_rm": "rumàntsch",
+    "header_de": "tudestg",
+    "results": "(resultats {{start}} fin {{end}} da {{total}})",
     "not_found": "La tscheartga da \"{{searchPhrase}}\" â do nigns resultats.",
     "search": "tschartgear",
-    "noresults_header": "Nigns resultats par \"{0}\".",
+    "noresults_header": "Nigns resultats par \"{{searchPhrase}}\".",
     "noresults_hint": "Clicad sen 'far egna nova proposta' par proponer egn pled near egn'expressiùn near modifitgead Vossa tscheartga.",
     "searchPhrase": "pled near expressiùn ca Vus tschartgeaz",
     "searchPhrase_submit": "tschartgear",

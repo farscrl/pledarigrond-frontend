@@ -114,12 +114,6 @@ textarea:focus {
 	visibility: visible;
 }
 
-.maalr_overlay {
-	text-decoration: underline;
-	color: #002994;
-	cursor: pointer;
-}
-
 /* SPRINGEN & CO. */
 /* GENERAL */
 body {
@@ -902,23 +896,13 @@ blockquote h4 {
 	background-color: #f5f5f5;
 }
 
-.maalr_overlay_V {
+.verb_overlay {
 	background-color: rgb(0, 200, 255);
 	color: white;
 	text-decoration: none;
 	padding: 0 5px 0 6px;
-	/* 	margin-left: 14px; */
 	margin-right: 6px;
-}
-
-.maalr_overlay_I {
-	/* background-color: rgb(0, 200, 155); */
-	background-color: rgb(255, 215, 0);
-	color: white;
-	text-decoration: none;
-	padding: 0 7px 0 8px;
-	margin-left: 14px;
-	margin-right: 6px;
+  cursor: pointer;
 }
 
 .table tbody tr:hover td,.table tbody tr:hover th,.table tbody tr:active td,.table tbody tr:active th
@@ -1276,8 +1260,7 @@ a.simpleLink:hover {
 		width: 1px;
 	}
 
-	.maalr_overlay_V {
-		/* display: none; */
+	.verb_overlay {
 		margin-left: 0;
 		padding: 0 2px;
 	}
