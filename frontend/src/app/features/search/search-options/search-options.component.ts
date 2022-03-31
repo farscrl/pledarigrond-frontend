@@ -13,7 +13,7 @@ export class SearchOptionsComponent implements OnInit {
 
   searchCriteria: SearchCriteria = new SearchCriteria();
 
-  showDetails = true;
+  showDetails = false;
 
   constructor() { }
 

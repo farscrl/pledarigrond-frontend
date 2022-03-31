@@ -185,13 +185,7 @@ h1 {
 	background-color: transparent;
 }
 
-#content.search-centered .container-fluid:last-child .span4 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -271px;
-	margin-top: -54px;
-}
+
 
 #info-box {
 	/* 	position: relative; */ /* 	margin: 125px auto; */
@@ -364,15 +358,7 @@ h1 {
 	color: white;
 }
 
-#content.content .row-fluid .span4 {
-	float: none;
-	margin: 0 auto;
-	width: 542px;
-}
 
-#content.content .row-fluid .span4 .well form {
-	margin-bottom: 6px;
-}
 
 #content.content .row-fluid .span8 {
 	width: 662px;
@@ -384,57 +370,7 @@ h1 {
 	margin: 0 auto;
 }
 
-#content.content .row-fluid .span4 .well {
-	margin-bottom: 42px;
-	position: relative;
-	background-color: transparent;
-}
 
-#content.content .row-fluid .span4 label.control-label {
-	display: none;
-}
-
-
-#content.content .row-fluid .span4 .well form>a {
-	position: relative;
-	top: 0px;
-	display: block;
-	margin: 0 auto;
-	width: 42px;
-	height: 42px;
-	color: transparent;
-	font-weight: 100;
-	padding: 0;
-	text-shadow: none;
-	vertical-align: middle;
-	cursor: pointer;
-	background-color: transparent;
-	background-image: url(/assets/img/more_inactive.png);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 22px 22px;
-	border: 0 none;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
-	filter: none;
-	filter: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-
-#content.content .row-fluid .span4.open .well form>a {
-	background-image: url(/assets/img/less_inactive.png);
-}
-
-#content.content .row-fluid .span4 .well form>a:hover {
-	background-image: url(/assets/img/more_active.png);
-}
-
-#content.content .row-fluid .span4.open .well form>a:hover {
-	background-image: url(/assets/img/less_active.png);
-}
 
 #content.content .row-fluid .span8 .gwt-HTML span {
 	font-size: 13px !important;
@@ -454,13 +390,6 @@ h1 {
 
 #content.content .row-fluid .span8 table {
 	width: 100%;
-}
-
-#content.content .row-fluid .span8 .maalr_result_title {
-	font-size: 13px !important;
-	line-height: 22px !important;
-	font-weight: 400 !important;
-	color: rgb(132, 132, 132) !important;
 }
 
 #content.content .row-fluid .span8 th {
@@ -506,10 +435,6 @@ h1 {
 
 #content.content .row-fluid .span8 .container-fluid {
 	padding: 0;
-}
-
-.maalr_result_title {
-	color: rgb(163, 163, 163);
 }
 
 .span8 .well .span12 a.btn {
@@ -1006,100 +931,6 @@ a.btn.btn-danger:hover {
 	justify-content: space-between;
 }
 
-#ext_links_container {
-	width: 15%;
-	text-align: left;
-	padding-left: 50px;
-	z-index: 1000;
-}
-
-#ext_links_container>a {
-	text-decoration: none;
-	line-height: 25px;
-	display: block;
-}
-
-#ext_links_container>a:hover {
-	color: rgb(21, 233, 177);
-}
-
-#ext_links_container a:before {
-	content: "→ ";
-	color: #848484;
-}
-
-#feed_container {
-	/* 	visibility: hidden; */
-	z-index: 1000;
-	width: 18%;
-	text-align: right;
-	padding-right: 50px;
-	line-height: 1.2;
-}
-
-.feed {
-	position: absolute;
-	width: 16.3%;
-	min-height: 76px;
-	font-family: "europa", sans-serif;
-	color: white;
-	margin-right: 50px;
-	background-color: rgb(188, 188, 188);
-	padding: 10px 10px 0 10px;
-	text-align: left;
-	font-size: 12px;
-	box-shadow: 2px 2px 5px #999;
-}
-
-.feed a {
-	color: white;
-	text-align: left;
-}
-
-.feed a.readMore:hover {
-	text-decoration: none;
-	/*color:rgb(21, 233, 177);*/
-/* 	color: #999; */
-}
-
-.feed a.readMore:before {
-	content: "↳ ";
-	color: white;
-}
-
-.pubDate {
-	width: auto;
-	position: relative;
-	letter-spacing: 0.2em;
-	font-size: 14px;
-	min-height: 14px;
-	padding : 0 0 10px 4px;
-	font-weight: lighter;
-/* 	padding: 0 0 10px 4px; */
-	padding: 10px 0 10px 4px;
-}
-
-.excerpt {
-	width: auto;
-	position: relative;
-	font-size: 11px;
-	min-height: 22px;
-	padding: 0 0 10px 4px;
-}
-
-.feedLinkWrap {
-	position: relative;
-	min-height: 12px;
-	padding: 0 0 10px 4px;
-	width: auto;
-}
-
-.readMore {
-	/* 	position: absolute; */
-	/* 	left: 10px; */
-	/* 	bottom: 10px; */
-	/* 	padding: 0 0 10px 4px; */
-}
 
 #moc_middle_container {
 	width: 70%;
@@ -1146,24 +977,8 @@ a.simpleLink:hover {
 	padding-top: 10%;
 }
 
-.feedMargeMore {
-	width: 84% !important;
-	min-height: 180px;
-	margin: 10px auto !important;
-	padding-right: 0px !important;
-	border-radius: 11px;
-}
-
 /* MOBILE */
 @media all and (max-width: 767px) {
-	#dict_descript {
-		color: rgb(21, 233, 177);
-		/* 		color: rgb(132, 132, 132); */
-		margin-top: 97px;
-		text-align: center;
-		letter-spacing: 2px;
-		font-weight: lighter;
-	}
 
 	#info-box {
 		/* 		margin: 125px auto; */ /*  	margin-top: -13em; */
@@ -1188,26 +1003,7 @@ a.simpleLink:hover {
 		min-height: 0px;
 	}
 
-	#content.search-centered .container-fluid:last-child .span4 {
-		/* 		margin-top: -82px; */
-		/* 		top: 33%; */
-		margin: 0px;
-		position: inherit;
-	}
-	#content.content .row-fluid .span4 {
-		width: 100%;
-		left: auto !important;
-		margin-left: 0 !important;
-		margin-top: 22px;
-	}
-	#content.content .row-fluid .span4 .well {
-		margin: 0;
-		padding-left: 0;
-		padding-right: 0;
-	}
-	#content.content .row-fluid .span4 .well form {
-		margin: 0;
-	}
+
 
 	#content.content .row-fluid .span8 {
 		width: 84%;
@@ -1250,14 +1046,6 @@ a.simpleLink:hover {
 
 	.pagination a {
 		padding: 0 4px;
-	}
-
-	.GKHQX3BBGC div button {
-		display: none;
-	}
-
-	.GKHQX3BBGC {
-		width: 1px;
 	}
 
 	.verb_overlay {
@@ -1349,48 +1137,14 @@ a.simpleLink:hover {
 		width: 100% !important;
 	}
 
-	#content.search-centered .container-fluid:last-child .span4.open {
-		position: relative;
-		margin-top: 22px;
-	}
+
 
 	.container_entry {
 		width: 90%;
 	}
-
-	#feed_container {
-	    z-index: 1000;
-	    text-align: right;
-	    line-height: 1.2;
-	    padding-bottom: 50px;
-	    position: relative;
-	    margin: 0 auto !important;
-	    width: 70% !important;
-	    top: 20px;
-	}
-
-	.feed {
-	    position: absolute;
-	    height: auto;
-	    font-family: "europa", sans-serif;
-	    color: white;
-	    text-align: left;
-	    font-size: 12px;
-	    box-shadow: 2px 2px 5px #999;
-	    width: 92%;
-	    padding: 4%;
-    }
-
-	.feed a.readMore:hover {
-		text-decoration: none;
-	}
 }
 @media all and (width: 768px) {
-	#content.content .row-fluid .span4 {
-		float: none;
-		margin: 100px auto;
-		width: 542px;
-	}
+
 	#content.content .row-fluid .span8 {
 		width: 662px;
 		float: none;

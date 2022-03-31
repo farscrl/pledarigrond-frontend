@@ -1,5 +1,5 @@
-<div class="span4" [class.open]="showDetails">
-  <div class="well" id="search_panel">
+<div [class.open]="showDetails" id="search-options">
+  <div id="search_panel">
     <form>
       <div class="search_options">
         <div class="search-phrase-container">
@@ -8,7 +8,7 @@
             <label class="control-label">{{ 'search.searchPhrase' | translate }}</label>
             <input type="text" name="searchPhrase" id="searchPhrase" [(ngModel)]="searchCriteria.searchPhrase" (keyup)="emitSearch()">
           </div>
-          <div class="small">
+          <div class="small" style="margin-left: 32px;">
             <button (click)="emitSearch()">{{ 'search.search' | translate }}</button>
           </div>
         </div>

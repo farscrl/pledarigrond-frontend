@@ -1,0 +1,31 @@
+#ext_links_container {
+	margin-left: 20px;
+  margin-top: 20px;
+}
+
+#ext_links_container>a {
+	text-decoration: none;
+	line-height: 25px;
+	display: block;
+}
+
+#ext_links_container>a:hover {
+	color: rgb(21, 233, 177);
+}
+
+#ext_links_container a:before {
+	content: "→ ";
+	color: #848484;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1180px) {
+  :host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+}

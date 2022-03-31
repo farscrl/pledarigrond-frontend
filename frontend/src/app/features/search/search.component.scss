@@ -1,0 +1,67 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-top: 76px;
+  margin-bottom: 300px;
+}
+
+#search_area {
+  min-height: 350px;
+}
+
+#glossary_links_area_2 {
+  display: none;
+}
+
+@media (min-width: 768px) {
+	#glossary_links_area {
+    display: none;
+  }
+
+  #glossary_links_area_2 {
+    display: block;
+  }
+
+  #rss_feed_area {
+    display: flex;
+    flex-direction: row-reverse;
+
+    div {
+      flex: 1 1 0px;
+    }
+  }
+}
+
+@media (min-width: 1180px) {
+  :host {
+    flex-direction: row;
+    width: 100vw;
+    margin-bottom: 40px;
+    min-height: calc(100vh - 76px - 70px);
+  }
+
+  #search_area {
+    order: 2;
+  }
+
+	#glossary_links_area {
+    display: block;
+    order: 1;
+    flex: 1 1 0px;
+  }
+
+  #glossary_links_area_2 {
+    display: none;
+  }
+
+  #rss_feed_area {
+    display: block;
+    order: 3;
+    flex: 1 1 0px;
+
+    div {
+      flex-grow: unset;
+      height: 100%;
+    }
+  }
+}

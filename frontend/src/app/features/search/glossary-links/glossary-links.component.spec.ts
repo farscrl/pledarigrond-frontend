@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GridWrapperComponent } from './grid-wrapper.component';
+import { GlossaryLinksComponent } from './glossary-links.component';
 
-describe('GridWrapperComponent', () => {
-  let component: GridWrapperComponent;
-  let fixture: ComponentFixture<GridWrapperComponent>;
+describe('GlossaryLinksComponent', () => {
+  let component: GlossaryLinksComponent;
+  let fixture: ComponentFixture<GlossaryLinksComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GridWrapperComponent ]
+      declarations: [ GlossaryLinksComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GridWrapperComponent);
+    fixture = TestBed.createComponent(GlossaryLinksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

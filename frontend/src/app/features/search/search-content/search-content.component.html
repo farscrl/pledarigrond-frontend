@@ -1,132 +1,92 @@
-<div id="content" class="content" [class.search-centered]="searchResults.length === 0 && searchCriteria.searchPhrase === ''">
+<div class="search-main" [class.center-search]="searchResults.length === 0 && searchCriteria.searchPhrase === ''">
+  <app-search-options (searchEvent)="search($event)"></app-search-options>
 
+  <div class="result-container" *ngIf="searchResults.length > 0">
+    <div class="search-results">
+      <span id="searchphrase"> {{ searchCriteria.searchPhrase }}</span>
+      <span id="searchStats">
+        {{ 'search.results' | translate:{ start: startIndex, end: stopIndex, total: totalEntries } }}
+      </span>
 
-  <div class="container-fluid" style="margin-top: 75px;">
-    <div class="row-fluid">
-      <app-search-options (searchEvent)="search($event)"></app-search-options>
-      <div class="span8" id="resultWrapper">
+      <table class="resultlist">
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              <span class="column_title">
+                {{ getLanguageName(true) }}
+              </span>
+            </th>
+            <th></th>
+            <th>
+              <span class="column_title">
+                {{ getLanguageName(false) }}
+              </span>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of searchResults">
+            <td>
+              <div>
+                <span class="verb_overlay" *ngIf="hasVerbLink(result, true)">V</span>
+              </div>
+            </td>
+            <td>
+              <div [innerHtml]="getLemma(result, true)"></div>
+            </td>
+            <td>
+              <div>
+                <span class="verb_overlay" *ngIf="hasVerbLink(result, false)">V</span>
+              </div>
+            </td>
+            <td>
+              <div [innerHtml]="getLemma(result, false)"></div>
+            </td>
+            <td class="change-button">
+              <div>
+                <button type="button" class="btn  btn-mini" tabindex="-1"><i class="icon-edit"></i> modifitgar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <div class="well" *ngIf="searchResults.length > 0">
-          <table style="width: 100%;" aria-hidden="false">
-            <tbody>
-              <tr>
-                <td style="vertical-align: top;">
-                  <div class="container-fluid">
-                    <div class="row-fluid">
-                      <div class="span12">
-                        <div class="gwt-HTML">
-                          <span id="searchphrase"> {{ searchCriteria.searchPhrase }}</span>
-                          <span style="font-size: large; font-weight: bold; text-align: left;">
-                            {{ 'search.results' | translate:{ start: startIndex, end: stopIndex, total: totalEntries } }}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style="vertical-align: top;" width="100%">
-                  <table class="GDPXEMADOP">
-                    <tbody>
-                      <tr>
-                        <td style="vertical-align: top;" width="100%">
-                          <table class="table resultlist" style="width: 100%;">
-                            <thead>
-                              <tr __gwt_header_row="0">
-                                <th colspan="1" class="GDPXEMADAC GDPXEMADIC"></th>
-                                <th colspan="1" class="GDPXEMADAC GDPXEMADOB">
-                                  <span class="maalr_result_title">
-                                    {{ getLanguageName(true) }}
-                                  </span>
-                                </th>
-                                <th colspan="1" class="GDPXEMADAC GDPXEMADIC"></th>
-                                <th colspan="1" class="GDPXEMADAC">
-                                  <span class="maalr_result_title">
-                                    {{ getLanguageName(false) }}
-                                  </span>
-                                </th>
-                                <th colspan="1" class="GDPXEMADAC GDPXEMADIC"></th>
-                              </tr>
-                            </thead>
-                            <tfoot style="display: none;" aria-hidden="true"></tfoot>
-                            <tbody>
-                              <tr  class="GDPXEMADKB" *ngFor="let result of searchResults">
-                                <td class="GKHQX3BBJB GKHQX3BBLC GKHQX3BBMB">
-                                  <div>
-                                    <span class="verb_overlay" *ngIf="hasVerbLink(result, true)">V</span>
-                                  </div>
-                                </td>
-                                <td class="GDPXEMADJB GDPXEMADLB GDPXEMADMB">
-                                  <div [innerHtml]="getLemma(result, true)"></div>
-                                </td>
-                                <td class="GKHQX3BBJB GKHQX3BBLC GKHQX3BBMB">
-                                  <div>
-                                    <span class="verb_overlay" *ngIf="hasVerbLink(result, false)">V</span>
-                                  </div>
-                                </td>
-                                <td class="GDPXEMADJB GDPXEMADLB">
-                                  <div [innerHtml]="getLemma(result, false)"></div>
-                                </td>
-                                <td class="GKHQX3BBJB GKHQX3BBLC GKHQX3BBGC">
-                                  <div>
-                                    <button type="button" class="btn  btn-mini" tabindex="-1"><i class="icon-edit"></i> modifitgar</button>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
+      <div class="pagination pagination-centered" *ngIf="pagination.showPagination">
+        <ul>
+          <li [class.disabled]="pagination.isFirst"><a (click)="goToPage(1)"><i></i> emprima </a></li>
+          <li [class.disabled]="pagination.isFirst"><a (click)="goToPage(pagination.currentPage - 1)"><i class="icon-chevron-left"></i>&nbsp;</a></li>
 
-                      <tr *ngIf="pagination.showPagination">
-                        <td style="vertical-align: top;">
-                          <div style="" aria-hidden="false">
-                            <div class="pagination pagination-centered">
-                              <ul>
-                                <li [class.disabled]="pagination.isFirst"><a (click)="goToPage(1)"><i></i> emprima </a></li>
-                                <li [class.disabled]="pagination.isFirst"><a (click)="goToPage(pagination.currentPage - 1)"><i class="icon-chevron-left"></i>&nbsp;</a></li>
+          <li class="a_pag" [class.active]="el.isActive" width="20" *ngFor="let el of pagination.elements">
+            <a (click)="goToPage(el.index)">{{ el.index }}</a>
+          </li>
 
-                                <li class="a_pag" [class.active]="el.isActive" width="20" *ngFor="let el of pagination.elements">
-                                  <a (click)="goToPage(el.index)">{{ el.index }}</a>
-                                </li>
-
-                                <li [class.disabled]="pagination.isLast"><a (click)="goToPage(pagination.currentPage + 1)"><i class="icon-chevron-right"></i>&nbsp;</a></li>
-                                <li [class.disabled]="pagination.isLast"><a (click)="goToPage(pagination.lastPage)"><i></i> davosa </a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="well" *ngIf="searchResults.length === 0 && searchCriteria.searchPhrase !== ''">
-          <table cellspacing="0" cellpadding="0" style="width: 100%;">
-            <tbody>
-              <tr>
-                <td style="vertical-align: top;">
-                  <div class="container-fluid">
-                    <div class="row-fluid">
-                      <div class="span12">
-                        <div>
-                          {{ 'search.not_found' | translate:{ searchPhrase: searchCriteria.searchPhrase } }}
-                        </div>
-                        <a href="javascript:;" class="btn"><i class="icon-info-sign"></i>far ina proposta </a>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <li [class.disabled]="pagination.isLast"><a (click)="goToPage(pagination.currentPage + 1)"><i class="icon-chevron-right"></i>&nbsp;</a></li>
+          <li [class.disabled]="pagination.isLast"><a (click)="goToPage(pagination.lastPage)"><i></i> davosa </a></li>
+        </ul>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="searchResults.length === 0 && searchCriteria.searchPhrase !== ''">
+    <table cellspacing="0" cellpadding="0" style="width: 100%;">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">
+            <div class="container-fluid">
+              <div class="row-fluid">
+                <div class="span12">
+                  <div>
+                    {{ 'search.not_found' | translate:{ searchPhrase: searchCriteria.searchPhrase } }}
+                  </div>
+                  <a href="javascript:;" class="btn"><i class="icon-info-sign"></i>far ina proposta </a>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

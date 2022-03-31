@@ -10,7 +10,6 @@ import { LanguageSelectionComponent } from './components/language-selection/lang
 import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './features/search/search.component';
-import { GridWrapperComponent } from './features/search/grid-wrapper/grid-wrapper.component';
 import { HelpComponent } from './features/help/help.component';
 import { InfoComponent } from './features/info/info.component';
 import { SearchContentComponent } from './features/search/search-content/search-content.component';
@@ -26,6 +25,8 @@ import { PuterPlaceholderComponent } from './features/puter-placeholder/puter-pl
 import { SursilvanPlaceholderComponent } from './features/sursilvan-placeholder/sursilvan-placeholder.component';
 import { ValladerPlaceholderComponent } from './features/vallader-placeholder/vallader-placeholder.component';
 import { SearchOptionsComponent } from './features/search/search-options/search-options.component';
+import { GlossaryLinksComponent } from './features/search/glossary-links/glossary-links.component';
+import { RssFeedComponent } from './features/search/rss-feed/rss-feed.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -45,7 +46,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainComponent,
     FooterComponent,
     SearchComponent,
-    GridWrapperComponent,
     HelpComponent,
     InfoComponent,
     SearchContentComponent,
@@ -54,7 +54,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     PuterPlaceholderComponent,
     SursilvanPlaceholderComponent,
     ValladerPlaceholderComponent,
-    SearchOptionsComponent
+    SearchOptionsComponent,
+    GlossaryLinksComponent,
+    RssFeedComponent
   ],
   imports: [
     BrowserModule,
