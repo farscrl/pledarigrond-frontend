@@ -21,10 +21,8 @@ export class UserAdministrationComponent implements OnInit {
 
   roleToColor(role: EditorRole) {
     switch(role) {
-      case 'INTERNAL':
+      case 'EDITOR':
         return 'green';
-      case 'EXTERNAL':
-        return 'yellow';
       case 'NONE':
         return 'red';
     }

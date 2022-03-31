@@ -7,7 +7,6 @@ import { Credentials, Language, Role } from '../models/security';
 
 const TOKEN_KEY = 'jwt';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -74,16 +73,32 @@ export class AuthService {
     return this.hasSystemRole(Role.ROLE_ADMIN);
   }
 
-  isInternal() {
-    return this.hasSystemRole(Role.ROLE_INTERNAL);
+  isEditorPuter() {
+    return this.hasSystemRole(Role.ROLE_EDITOR_PUTER);
   }
 
-  isExternal() {
-    return this.hasSystemRole(Role.ROLE_EXTERNAL);
+  isEditorRumantschgrischun() {
+    return this.hasSystemRole(Role.ROLE_EDITOR_RUMANTSCHGRISCHUN);
   }
 
-  isGuest() {
-    return this.hasSystemRole(Role.ROLE_GUEST);
+  isEditorSurmiran() {
+    return this.hasSystemRole(Role.ROLE_EDITOR_SURMIRAN);
+  }
+
+  isEditorSursilvan() {
+    return this.hasSystemRole(Role.ROLE_EDITOR_SURSILVAN);
+  }
+
+  isEditorSutsilvan() {
+    return this.hasSystemRole(Role.ROLE_EDITOR_SUTSILVAN);
+  }
+
+  isEditorVallader() {
+    return this.hasSystemRole(Role.ROLE_EDITOR_VALLADER);
+  }
+
+  isEditorNames() {
+    return this.hasSystemRole(Role.ROLE_EDITOR_NAMES);
   }
 
   private setToken(token: string|null) {
