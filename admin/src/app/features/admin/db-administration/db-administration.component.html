@@ -8,9 +8,9 @@
     </button>
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu>
-        <li nz-menu-item nzDanger>Import</li>
+        <li nz-menu-item nzDanger (click)="importDb()">Import</li>
         <li nz-menu-item nzDanger (click)="reloadDemoData()" [nzDisabled]="isReloadingDemoData">Reload Demo-Data</li>
-        <li nz-menu-item nzDanger>Drop</li>
+        <li nz-menu-item nzDanger (click)="dropDb()">Drop</li>
       </ul>
     </nz-dropdown-menu>
   </nz-page-header-extra>

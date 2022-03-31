@@ -1,0 +1,13 @@
+<p>Select a database dump which will replace all currently stored entries. Note that this operation cannot be undone.</p>
+
+<nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+  <button nz-button>
+    <i nz-icon nzType="upload"></i>
+    Select File
+  </button>
+</nz-upload>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
+  <button nz-button nzType="primary" (click)="handleUpload()" [nzLoading]="uploading" [disabled]="fileList.length === 0">{{ uploading ? 'Uploading' : 'Start Upload' }}</button>
+</div>

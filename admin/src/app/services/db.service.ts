@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BackupInfos, DbInfos, IndexInfos } from '../models/db-infos';
@@ -21,8 +21,16 @@ export class DbService {
     return this.httpClient.post(this.generateUrl(language, 'export_db'), null, { responseType: 'blob' });
   }
 
+  importDb(language: Language, formData: FormData): Observable<void> {
+    return this.httpClient.post<void>(this.generateUrl(language, 'import_db'), formData);
+  }
+
   reloadDemoData(language: Language): Observable<void> {
-    return this.httpClient.post<void>(this.generateUrl(language, 'import_db'), null);
+    return this.httpClient.post<void>(this.generateUrl(language, 'import_demo_db'), null);
+  }
+
+  dropDb(language: Language): Observable<void> {
+    return this.httpClient.post<void>(this.generateUrl(language, 'drop_db'), null);
   }
 
   getBackupInfos(language: Language): Observable<BackupInfos> {

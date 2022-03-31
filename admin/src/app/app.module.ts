@@ -27,6 +27,7 @@ import { DbAdministrationComponent } from './features/admin/db-administration/db
 import { EditorComponent } from './features/editor/editor.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { IndexAdministrationComponent } from './features/admin/index-administration/index-administration.component';
+import { ImportDumpComponent } from './features/admin/db-administration/import-dump/import-dump.component';
 
 registerLocaleData(de);
 
@@ -48,7 +49,8 @@ export function tokenGetter() {
     DbAdministrationComponent,
     EditorComponent,
     AdminComponent,
-    IndexAdministrationComponent
+    IndexAdministrationComponent,
+    ImportDumpComponent
   ],
   imports: [
     BrowserModule,
