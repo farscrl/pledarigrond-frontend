@@ -43,6 +43,16 @@ td.change-button {
   color: rgb(163, 163, 163);
 }
 
+.pagination {
+  li {
+    cursor: pointer;
+
+    &.disabled {
+      cursor: auto;
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .search-main {
     margin-top: 60px;

@@ -3,18 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QueryResult } from '../models/query-result';
 import { SearchCriteria } from '../models/search-criteria';
-import { Language } from '../models/security';
 import { environment } from './../../environments/environment';
-import { SelectedLanguageService } from './selected-language.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  constructor(private httpClient: HttpClient, private selectedLanguageService: SelectedLanguageService) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getResults(language: string, searchCriteria: SearchCriteria): Observable<QueryResult> {
+  getResults(language: string, searchCriteria: SearchCriteria, page = 1): Observable<QueryResult> {
     let params: HttpParams = new HttpParams();
 
     if (!!searchCriteria.searchPhrase && searchCriteria.searchPhrase !== "") {
@@ -31,6 +29,10 @@ export class SearchService {
 
     if (!!searchCriteria.suggestions && (searchCriteria.suggestions)) {
       params = params.set('suggestions', searchCriteria.suggestions);
+    }
+
+    if (page !== 1) {
+      params = params.set('page', page);
     }
 
     const httpOptions = {

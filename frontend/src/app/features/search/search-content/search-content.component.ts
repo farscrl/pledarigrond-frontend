@@ -29,20 +29,11 @@ export class SearchContentComponent implements OnInit {
 
   search(data: SearchCriteria) {
     this.searchCriteria = data;
-    this.searchService.getResults(this.selectedLanguageService.getSelectedLanguageUrlSegment(), data).subscribe(data => {
-      this.searchResults = data.entries;
-      this.pageSize = data.pageSize;
-      this.startIndex = ((data.currentPage - 1) * data.pageSize) + 1;
-      this.stopIndex = Math.min(data.totalEntries, data.currentPage * data.pageSize);
-      this.totalEntries = data.totalEntries;
-      this.currentPage = data.currentPage;
-
-      this.generatePagination();
-    });
+    this.executeSarch();
   }
 
   goToPage(pageNr: number) {
-    console.log('go to page: ' + pageNr);
+    this.executeSarch(pageNr);
   }
 
   getLanguageName(isFirst: boolean) {
@@ -100,6 +91,19 @@ export class SearchContentComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  private executeSarch(page = 1) {
+    this.searchService.getResults(this.selectedLanguageService.getSelectedLanguageUrlSegment(), this.searchCriteria, page).subscribe(data => {
+      this.searchResults = data.entries;
+      this.pageSize = data.pageSize;
+      this.startIndex = ((data.currentPage - 1) * data.pageSize) + 1;
+      this.stopIndex = Math.min(data.totalEntries, data.currentPage * data.pageSize);
+      this.totalEntries = data.totalEntries;
+      this.currentPage = data.currentPage;
+
+      this.generatePagination();
+    });
   }
 
   private generatePagination() {
