@@ -9,6 +9,10 @@ import { AdminComponent } from './features/admin/admin.component';
 import { DbAdministrationComponent } from './features/admin/db-administration/db-administration.component';
 import { IndexAdministrationComponent } from './features/admin/index-administration/index-administration.component';
 import { EditorComponent } from './features/editor/editor.component';
+import { HistoryComponent } from './features/editor/history/history.component';
+import { LexiconComponent } from './features/editor/lexicon/lexicon.component';
+import { ReviewAutoChangesComponent } from './features/editor/review-auto-changes/review-auto-changes.component';
+import { SuggestionsComponent } from './features/editor/suggestions/suggestions.component';
 import { LoginComponent } from './features/login/login.component';
 import { UserAdministrationComponent } from './features/user-administration/user-administration.component';
 
@@ -31,8 +35,26 @@ const routes: Routes = [
         component: IdiomNavigationComponent,
         children: [
           {
-            path: "",
-            component: EditorComponent
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
           },
           {
             path: "admin",
@@ -55,8 +77,26 @@ const routes: Routes = [
         component: IdiomNavigationComponent,
         children: [
           {
-            path: "",
-            component: EditorComponent
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
           },
           {
             path: "admin",
@@ -79,8 +119,26 @@ const routes: Routes = [
         component: IdiomNavigationComponent,
         children: [
           {
-            path: "",
-            component: EditorComponent
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
           },
           {
             path: "admin",
@@ -103,8 +161,26 @@ const routes: Routes = [
         component: IdiomNavigationComponent,
         children: [
           {
-            path: "",
-            component: EditorComponent
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
           },
           {
             path: "admin",
@@ -127,8 +203,26 @@ const routes: Routes = [
         component: IdiomNavigationComponent,
         children: [
           {
-            path: "",
-            component: EditorComponent
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
           },
           {
             path: "admin",
@@ -151,8 +245,26 @@ const routes: Routes = [
         component: IdiomNavigationComponent,
         children: [
           {
-            path: "",
-            component: EditorComponent
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
           },
           {
             path: "admin",

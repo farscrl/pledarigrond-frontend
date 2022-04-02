@@ -1,0 +1,20 @@
+<nz-range-picker
+  [nzShowTime]="{ nzFormat: 'HH:mm' }"
+  nzFormat="yyyy-MM-dd HH:mm"
+  [(ngModel)]="selectedDuration"
+  [nzPlaceHolder]="[
+    'sta',
+    'end'
+  ]"
+  ></nz-range-picker>
+
+<div class="search-area">
+  <button nz-button nzType="default" (click)="resetDate()">
+    <i nz-icon [nzRotate]="230" nzType="redo"></i>
+    Reset
+  </button>
+  <button nz-button nzType="primary" (click)="filter()" [disabled]="selectedDuration.length !== 2">
+    <i nz-icon nzType="search"></i>
+    Search
+  </button>
+</div>

@@ -1,0 +1,21 @@
+<div nz-row [nzGutter]="16">
+  <div nz-col nzSpan="9" class="left-side">
+    <nz-content class="duration-filter">
+      <nz-page-header [nzGhost]="false">
+        <nz-page-header-title>Lexikon</nz-page-header-title>
+        <nz-page-header-subtitle>Find and modify all entries</nz-page-header-subtitle>
+      </nz-page-header>
+      <app-lexicon-filter></app-lexicon-filter>
+    </nz-content>
+
+    <nz-content>
+      <app-version-history></app-version-history>
+    </nz-content>
+  </div>
+
+  <div nz-col nzSpan="15" class="right-side">
+    <nz-content>
+      <app-lemma-list></app-lemma-list>
+    </nz-content>
+  </div>
+</div>

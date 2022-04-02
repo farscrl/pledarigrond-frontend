@@ -1,0 +1,42 @@
+// style header
+.header-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+
+  .options {
+    text-align: right;
+
+    button {
+      margin-left: 16px;
+    }
+  }
+}
+
+// style table
+::ng-deep {
+  table {
+    tr {
+      button {
+        visibility: hidden;
+      }
+
+      &:hover {
+        button {
+          visibility:visible;
+        }
+      }
+    }
+  }
+
+}
+
+// style footer
+.footer-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 24px;
+}

@@ -1,0 +1,35 @@
+<nz-table
+  nzSize="small"
+  #rowSelectionTable
+  nzShowPagination="false"
+  nzShowSizeChanger
+  [nzData]="versionHistory"
+>
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>User</th>
+      <th>Entry</th>
+      <th>Changed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of rowSelectionTable.data">
+      <td>
+        <nz-tag [nzColor]="'red'">Unverified</nz-tag><br>
+        <nz-tag>Modified</nz-tag>
+      </td>
+      <td>
+        <nz-tag [nzColor]="'geekblue'">Guest</nz-tag><br>
+        10.160.10.88
+      </td>
+      <td>
+        Haus ⇔ chasa
+      </td>
+      <td>
+        02-04-2022<br>
+        13:45:32
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

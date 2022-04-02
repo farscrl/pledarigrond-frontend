@@ -28,6 +28,14 @@ import { EditorComponent } from './features/editor/editor.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { IndexAdministrationComponent } from './features/admin/index-administration/index-administration.component';
 import { ImportDumpComponent } from './features/admin/db-administration/import-dump/import-dump.component';
+import { SuggestionsComponent } from './features/editor/suggestions/suggestions.component';
+import { LexiconComponent } from './features/editor/lexicon/lexicon.component';
+import { ReviewAutoChangesComponent } from './features/editor/review-auto-changes/review-auto-changes.component';
+import { HistoryComponent } from './features/editor/history/history.component';
+import { DurationComponent } from './components/filters/duration/duration.component';
+import { VersionHistoryComponent } from './components/version-history/version-history.component';
+import { LemmaListComponent } from './components/lemma-list/lemma-list.component';
+import { LexiconFilterComponent } from './components/filters/lexicon-filter/lexicon-filter.component';
 
 registerLocaleData(de);
 
@@ -50,7 +58,15 @@ export function tokenGetter() {
     EditorComponent,
     AdminComponent,
     IndexAdministrationComponent,
-    ImportDumpComponent
+    ImportDumpComponent,
+    SuggestionsComponent,
+    LexiconComponent,
+    ReviewAutoChangesComponent,
+    HistoryComponent,
+    DurationComponent,
+    VersionHistoryComponent,
+    LemmaListComponent,
+    LexiconFilterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,67 @@
+<form
+  nz-form
+  nzLayout="vertical"
+  >
+  <nz-form-item>
+    <nz-form-label>Search Term</nz-form-label>
+    <nz-form-control>
+      <input nz-input [(ngModel)]="searchCriteria.searchPhrase" name="searchPhrase" nzSize="small"/>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <label nz-checkbox [(ngModel)]="searchCriteria.highlight" name="highligt" nzSize="small">Highligt search results</label>
+  </nz-form-item>
+
+  <nz-divider [nzText]="showSearchDetails ? showLess : showMore" (click)="toggleDetails()">
+    <ng-template #showMore>
+      <i nz-icon nzType="plus"></i>
+      More search options
+    </ng-template>
+    <ng-template #showLess>
+      <i nz-icon nzType="minus"></i>
+      Less search options
+    </ng-template>
+  </nz-divider>
+
+  <ng-container *ngIf="showSearchDetails">
+    <nz-form-item>
+      <nz-form-label>Category</nz-form-label>
+      <nz-form-control>
+        <input nz-input [(ngModel)]="searchCriteria.category" name="category" nzSize="small"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Semantic</nz-form-label>
+      <nz-form-control>
+        <input nz-input [(ngModel)]="searchCriteria.semantic" name="semantic" nzSize="small" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Genus</nz-form-label>
+      <nz-select ngModel="lucy" nzSize="small" name="genus">
+        <nz-option nzValue="a" nzLabel="a"></nz-option>
+        <nz-option nzValue="b" nzLabel="b"></nz-option>
+        <nz-option nzValue="v" nzLabel="v"></nz-option>
+      </nz-select>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Grammar</nz-form-label>
+      <nz-select ngModel="lucy" nzSize="small" name="grammar">
+        <nz-option nzValue="a" nzLabel="a"></nz-option>
+        <nz-option nzValue="b" nzLabel="b"></nz-option>
+        <nz-option nzValue="v" nzLabel="v"></nz-option>
+      </nz-select>
+    </nz-form-item>
+  </ng-container>
+
+  <nz-form-item>
+    <nz-form-control >
+      <button nz-button nzType="primary">Submit</button>
+      <button nz-button nzType="default">Reset</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
