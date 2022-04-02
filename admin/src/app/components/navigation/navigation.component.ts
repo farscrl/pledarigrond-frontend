@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-navigation',
@@ -9,31 +9,11 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 })
 export class NavigationComponent implements OnInit {
 
-  isEditorSubnaviOpen = false;
-  isAdminSubnaviOpen = false;
+  constructor(public languageSelectionService: LanguageSelectionService) { }
 
-  constructor(public languageSelectionService: LanguageSelectionService, private router: Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        this.checkOpenSubnavi(val.url);
-      }
-    });
-    this.checkOpenSubnavi(this.router.url);
-  }
-
-  private checkOpenSubnavi(url: string) {
-    const segments = url.split('/');
-
-      if (segments.length >= 4) {
-        if (segments[3] === 'editor') {
-          this.isEditorSubnaviOpen = true;
-          this.isAdminSubnaviOpen = false;
-        } else if (segments[3] === 'admin') {
-          this.isAdminSubnaviOpen = true;
-          this.isEditorSubnaviOpen = false;
-        }
-      }
+  openFe() {
+    window.open(environment.frontendUrl + "/" + this.languageSelectionService.getCurrentLanguage(), '_blank');
   }
 }
