@@ -48,7 +48,7 @@
     <tr>
       <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="showCheckMultiple" nzLeft></th>
       <th *ngIf="showUserColumn" nzLeft>User</th>
-      <th *ngIf="showFilterColumn">Age</th>
+      <th *ngIf="showFilterColumn">Filter</th>
       <th *ngIf="showEntryColumn">Entry</th>
       <th *ngIf="showOptionsColumn">Options</th>
       <th *ngIf="showStateColumn">State</th>
@@ -68,30 +68,30 @@
         *ngIf="showCheckMultiple"
       ></td>
       <td *ngIf="showUserColumn" nzLeft>
-        <nz-tag [nzColor]="'geekblue'">Guest</nz-tag><br>
+        <nz-tag [nzColor]="'geekblue'">{{ data.current.creatorRole }}</nz-tag><br>
         10.160.10.88
       </td>
       <td *ngIf="showFilterColumn">
         <button nz-button nzSize="small" nzType="default">Filter User</button>
       </td>
       <td *ngIf="showEntryColumn">
-        Haus ⇔ chasa
+        {{ data.current.entryValues.DStichwort }} ⇔ {{ data.current.entryValues.RStichwort }}
       </td>
       <td *ngIf="showOptionsColumn">
         <button nz-button nzSize="small" nzType="primary">Edit</button><br>
         <button nz-button nzSize="small" nzType="primary" nzDanger>Delete</button>
       </td>
       <td *ngIf="showStateColumn">
-        <nz-tag [nzColor]="'red'">Unverified</nz-tag><br>
-        <nz-tag>Modified</nz-tag>
+        <nz-tag [nzColor]="'red'">{{ data.current.verification }}</nz-tag><br>
+        <nz-tag>{{ data.current.status }}</nz-tag>
       </td>
       <td *ngIf="showCreatedColumn">
         02-04-2022<br>
         13:45:32
       </td>
-      <td *ngIf="showGermanColumn">Haus</td>
-      <td *ngIf="showRomanshColumn">chasa</td>
-      <td *ngIf="showCommentColumn">-</td>
+      <td *ngIf="showGermanColumn">{{ data.current.entryValues.DStichwort }}</td>
+      <td *ngIf="showRomanshColumn">{{ data.current.entryValues.RStichwort }}</td>
+      <td *ngIf="showCommentColumn">{{ data.current.entryValues.comment }}</td>
     </tr>
   </tbody>
 </nz-table>

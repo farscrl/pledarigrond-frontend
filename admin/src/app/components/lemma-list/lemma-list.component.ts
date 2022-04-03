@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
+import { Page } from 'src/app/models/page';
 
 @Component({
   selector: 'app-lemma-list',
@@ -13,6 +14,17 @@ export class LemmaListComponent implements OnInit {
 
   @Input()
   showDetailedColumns = false;
+
+  @Input() set lexEntries(page: Page<LexEntry> | undefined) {
+    this.resultPage = page;
+    if (!!page) {
+      this.listOfLexEntries = page.content as LexEntryUi[];
+    }
+ }
+
+ get lexEntries(): Page<LexEntry> | undefined {
+     return this.resultPage;
+ }
 
   // column options
   // // creator
@@ -40,10 +52,11 @@ export class LemmaListComponent implements OnInit {
   // // commands
   showCheckMultiple = false;
 
+  resultPage?: Page<LexEntry>;
   checked = false;
   loading = false;
   indeterminate = false;
-  listOfLexEntries: readonly LexEntryUi[] = [new LexEntryUi(), new LexEntryUi(), new LexEntryUi(), new LexEntryUi(), new LexEntryUi(), new LexEntryUi(), new LexEntryUi(), new LexEntryUi(), new LexEntryUi(), new LexEntryUi()];
+  listOfLexEntries: readonly LexEntryUi[] = [];
   setOfCheckedId = new Set<string>();
 
   constructor() { }
