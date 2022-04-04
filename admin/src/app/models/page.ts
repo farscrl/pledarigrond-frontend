@@ -6,7 +6,7 @@ export class Page<T> {
   totalElements: number = 0;
   first: boolean = true;
   size: number = 1;
-  number: number = 1;
+  number: number = 0;
   sort: any;
   numberOfElements: number = 0;
   empty: boolean = true;

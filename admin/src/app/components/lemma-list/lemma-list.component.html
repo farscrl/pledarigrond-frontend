@@ -1,6 +1,10 @@
 <div class="header-actions">
   <div>
-    Displaying entries 1 to 10 of 26
+    <span *ngIf="resultPage && resultPage.totalElements > 0">
+      Displaying entries {{ (resultPage.number*resultPage.size) + 1 }}
+      to {{ math.min((resultPage.number + 1) * resultPage.size, resultPage.totalElements) }}
+      of {{ resultPage.totalElements }}
+    </span>
   </div>
   <div class="options">
     <button nz-button nz-dropdown [nzDropdownMenu]="menu4">
@@ -112,6 +116,11 @@
     <button nz-button nzType="primary" nzDanger *ngIf="showCheckMultiple && setOfCheckedId.size !== 0">Reject selected</button>
   </div>
 
-  <nz-pagination [nzPageIndex]="1" [nzTotal]="500"></nz-pagination>
+  <nz-pagination
+    [nzPageIndex]="(resultPage!.number) + 1"
+    [nzPageSize]="resultPage.size"
+    [nzTotal]="resultPage.totalElements"
+    *ngIf="resultPage && resultPage.totalElements > 0"
+    (nzPageIndexChange)="changePage($event)"></nz-pagination>
 </div>
 

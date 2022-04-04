@@ -5,7 +5,7 @@
         <nz-page-header-title>Suggestions</nz-page-header-title>
         <nz-page-header-subtitle>Review pending suggestions</nz-page-header-subtitle>
       </nz-page-header>
-      <app-duration></app-duration>
+      <app-duration (dateRangeSelected)="search($event)"></app-duration>
     </nz-content>
 
     <nz-content>
@@ -15,7 +15,7 @@
 
   <div nz-col nzSpan="15" class="right-side">
     <nz-content>
-      <app-lemma-list [lexEntries]="results"></app-lemma-list>
+      <app-lemma-list [lexEntries]="results" (updatePage)="changePage($event)"></app-lemma-list>
     </nz-content>
   </div>
 </div>

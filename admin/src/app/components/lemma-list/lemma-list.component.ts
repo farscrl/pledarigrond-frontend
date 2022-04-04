@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ExportComponent } from 'src/app/features/editor/export/export.component';
 import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
@@ -22,11 +22,16 @@ export class LemmaListComponent implements OnInit {
     if (!!page) {
       this.listOfLexEntries = page.content as LexEntryUi[];
     }
- }
+  }
+  get lexEntries(): Page<LexEntry> | undefined {
+      return this.resultPage;
+  }
 
- get lexEntries(): Page<LexEntry> | undefined {
-     return this.resultPage;
- }
+  @Output()
+  updatePage = new EventEmitter<number>();
+
+  // used to pass math functions to template
+  math = Math;
 
   // column options
   // // creator
@@ -83,6 +88,10 @@ export class LemmaListComponent implements OnInit {
       nzComponentParams: {
       },
     });
+  }
+
+  changePage(pageNumber: number) {
+    this.updatePage.emit(pageNumber - 1);
   }
 
 

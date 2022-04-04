@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditorQuery } from 'src/app/models/editor-query';
 import { LexEntry } from 'src/app/models/lex-entry';
 import { Page } from 'src/app/models/page';
 import { EditorService } from 'src/app/services/editor.service';
@@ -14,13 +15,25 @@ export class SuggestionsComponent implements OnInit {
 
   results: Page<LexEntry>  = new Page<LexEntry>();
 
+  currentEditorQuery?: EditorQuery;
+
   constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
-    this.editorService.getAllLexEntries(this.languageSelectionService.getCurrentLanguage()).subscribe(page => {
-      console.log(page);
+  }
+
+  search(editorQuery: EditorQuery) {
+    console.log(editorQuery);
+
+    // only unverified entries
+    editorQuery.verification = 'UNVERIFIED';
+    this.currentEditorQuery = editorQuery;
+    this.changePage(0);
+  }
+
+  changePage(page: number) {
+    this.editorService.getAllLexEntries(this.languageSelectionService.getCurrentLanguage(), this.currentEditorQuery!, page).subscribe(page => {
       this.results = page;
     });
   }
-
 }
