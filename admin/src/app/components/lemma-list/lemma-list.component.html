@@ -44,9 +44,7 @@
   nzSize="small"
   #rowSelectionTable
   nzShowPagination="false"
-  nzShowSizeChanger
   [nzData]="listOfLexEntries"
-  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
 >
   <thead>
     <tr>
@@ -63,7 +61,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of rowSelectionTable.data">
+    <tr *ngFor="let data of listOfLexEntries">
       <td
         nzLeft
         [nzChecked]="setOfCheckedId.has(data.id)"
@@ -72,30 +70,31 @@
         *ngIf="showCheckMultiple"
       ></td>
       <td *ngIf="showUserColumn" nzLeft>
-        <nz-tag [nzColor]="'geekblue'">{{ data.current.creatorRole }}</nz-tag><br>
+        <nz-tag [nzColor]="'geekblue'">{{ data.mostRecent.creatorRole }}</nz-tag><br>
         10.160.10.88
       </td>
       <td *ngIf="showFilterColumn">
         <button nz-button nzSize="small" nzType="default">Filter User</button>
+        <button nz-button nzSize="small" nzType="default">Filter Verifier</button>
       </td>
       <td *ngIf="showEntryColumn">
-        {{ data.current.entryValues.DStichwort }} ⇔ {{ data.current.entryValues.RStichwort }}
+        {{ data.mostRecent.entryValues.DStichwort }} ⇔ {{ data.mostRecent.entryValues.RStichwort }}
       </td>
       <td *ngIf="showOptionsColumn">
         <button nz-button nzSize="small" nzType="primary">Edit</button><br>
         <button nz-button nzSize="small" nzType="primary" nzDanger>Delete</button>
       </td>
       <td *ngIf="showStateColumn">
-        <nz-tag [nzColor]="'red'">{{ data.current.verification }}</nz-tag><br>
-        <nz-tag>{{ data.current.status }}</nz-tag>
+        <nz-tag [nzColor]="'red'">{{ data.mostRecent.verification }}</nz-tag><br>
+        <nz-tag>{{ data.mostRecent.status }}</nz-tag>
       </td>
       <td *ngIf="showCreatedColumn">
         02-04-2022<br>
         13:45:32
       </td>
-      <td *ngIf="showGermanColumn">{{ data.current.entryValues.DStichwort }}</td>
-      <td *ngIf="showRomanshColumn">{{ data.current.entryValues.RStichwort }}</td>
-      <td *ngIf="showCommentColumn">{{ data.current.entryValues.comment }}</td>
+      <td *ngIf="showGermanColumn">{{ data.mostRecent.entryValues.DStichwort }}</td>
+      <td *ngIf="showRomanshColumn">{{ data.mostRecent.entryValues.RStichwort }}</td>
+      <td *ngIf="showCommentColumn">{{ data.mostRecent.entryValues.maalr_comment }}</td>
     </tr>
   </tbody>
 </nz-table>

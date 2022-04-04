@@ -26,7 +26,7 @@ export class EntryValues {
   RGenus?: string;
   maalr_overlay_lang2?: string;
   maalr_email?: string;
-  comment?: string;
+  maalr_comment?: string;
 }
 
 export class MaalrValues {

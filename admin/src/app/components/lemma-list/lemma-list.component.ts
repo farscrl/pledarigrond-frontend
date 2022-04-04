@@ -63,7 +63,7 @@ export class LemmaListComponent implements OnInit {
   checked = false;
   loading = false;
   indeterminate = false;
-  listOfLexEntries: readonly LexEntryUi[] = [];
+  listOfLexEntries: LexEntryUi[] = [];
   setOfCheckedId = new Set<string>();
 
   constructor(private modalService: NzModalService, private viewContainerRef: ViewContainerRef) { }
@@ -103,11 +103,6 @@ export class LemmaListComponent implements OnInit {
 
 
 
-
-  onCurrentPageDataChange(listOfCurrentPageData: readonly LexEntryUi[]): void {
-    this.listOfLexEntries = listOfCurrentPageData;
-    this.refreshCheckedStatus();
-  }
 
   refreshCheckedStatus(): void {
     const listOfEnabledData = this.listOfLexEntries.filter(({ disabled }) => !disabled);

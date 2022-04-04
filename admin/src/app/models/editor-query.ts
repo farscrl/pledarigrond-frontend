@@ -6,4 +6,5 @@ export class EditorQuery {
   startTime?: number;
   endTime?: number;
   verification?: Verification;
+  verifier?: string;
 }
