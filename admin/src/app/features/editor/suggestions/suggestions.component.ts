@@ -17,7 +17,7 @@ export class SuggestionsComponent implements OnInit {
   constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
-    this.editorService.getAgetLexEntriesll(this.languageSelectionService.getCurrentLanguage()).subscribe(page => {
+    this.editorService.getAllLexEntries(this.languageSelectionService.getCurrentLanguage()).subscribe(page => {
       console.log(page);
       this.results = page;
     });

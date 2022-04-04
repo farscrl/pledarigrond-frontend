@@ -15,8 +15,8 @@ export class EditorService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAgetLexEntriesll(language: Language): Observable<Page<LexEntry>> {
-    return this.httpClient.post<Page<LexEntry>>(this.generateUrl(language, 'search'), null);
+  getAllLexEntries(language: Language): Observable<Page<LexEntry>> {
+    return this.httpClient.get<Page<LexEntry>>(this.generateUrl(language, 'lex_entries'));
   }
 
   private generateUrl(language: Language, segment: string) {

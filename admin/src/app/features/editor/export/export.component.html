@@ -1,0 +1,17 @@
+<div style="border-bottom: 1px solid rgb(233, 233, 233);">
+  <label
+    nz-checkbox
+    [(ngModel)]="allChecked"
+    (ngModelChange)="updateAllChecked()"
+    [nzIndeterminate]="indeterminate"
+  >
+    Check all
+  </label>
+</div>
+<br />
+<nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="updateSingleChecked()"></nz-checkbox-group>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
+  <button nz-button nzType="primary" (click)="export()" [nzLoading]="isExporting">Export</button>
+</div>

@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { ExportComponent } from 'src/app/features/editor/export/export.component';
 import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
 import { Page } from 'src/app/models/page';
 
@@ -59,7 +61,7 @@ export class LemmaListComponent implements OnInit {
   listOfLexEntries: readonly LexEntryUi[] = [];
   setOfCheckedId = new Set<string>();
 
-  constructor() { }
+  constructor(private modalService: NzModalService, private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit(): void {
     if (this.showCreatorData) {
@@ -70,6 +72,17 @@ export class LemmaListComponent implements OnInit {
       this.showStateColumn = true;
       this.showCreatedColumn = true;
     }
+  }
+
+  exportResults() {
+    const modal = this.modalService.create({
+      nzTitle: 'Select fields to export',
+      nzContent: ExportComponent,
+      nzClosable: false,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+      },
+    });
   }
 
 

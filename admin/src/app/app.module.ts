@@ -36,6 +36,7 @@ import { DurationComponent } from './components/filters/duration/duration.compon
 import { VersionHistoryComponent } from './components/version-history/version-history.component';
 import { LemmaListComponent } from './components/lemma-list/lemma-list.component';
 import { LexiconFilterComponent } from './components/filters/lexicon-filter/lexicon-filter.component';
+import { ExportComponent } from './features/editor/export/export.component';
 
 registerLocaleData(de);
 
@@ -66,7 +67,8 @@ export function tokenGetter() {
     DurationComponent,
     VersionHistoryComponent,
     LemmaListComponent,
-    LexiconFilterComponent
+    LexiconFilterComponent,
+    ExportComponent
   ],
   imports: [
     BrowserModule,
