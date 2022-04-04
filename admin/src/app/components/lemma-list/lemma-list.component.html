@@ -71,11 +71,11 @@
       ></td>
       <td *ngIf="showUserColumn" nzLeft>
         <nz-tag [nzColor]="'geekblue'">{{ data.mostRecent.creatorRole }}</nz-tag><br>
-        10.160.10.88
+        {{ data.mostRecent.ip }}
       </td>
       <td *ngIf="showFilterColumn">
-        <button nz-button nzSize="small" nzType="default">Filter User</button>
-        <button nz-button nzSize="small" nzType="default">Filter Verifier</button>
+        <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();">Filter User</button>
+        <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" *ngIf="data.mostRecent.verifierId">Filter Verifier</button>
       </td>
       <td *ngIf="showEntryColumn">
         {{ data.mostRecent.entryValues.DStichwort }} ⇔ {{ data.mostRecent.entryValues.RStichwort }}

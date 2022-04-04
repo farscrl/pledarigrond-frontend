@@ -19,6 +19,9 @@ export class SuggestionsComponent implements OnInit {
 
   selectedLexEntry?: LexEntryUi;
 
+  userFilter?: string;
+  verifierFilter?: string;
+
   constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {

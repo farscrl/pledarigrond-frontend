@@ -5,7 +5,11 @@
         <nz-page-header-title>Suggestions</nz-page-header-title>
         <nz-page-header-subtitle>Review pending suggestions</nz-page-header-subtitle>
       </nz-page-header>
-      <app-duration (dateRangeSelected)="search($event)"></app-duration>
+      <app-duration
+        (dateRangeSelected)="search($event)"
+        [userFilter]="userFilter"
+        [verifierFilter]="verifierFilter"
+        ></app-duration>
     </nz-content>
 
     <nz-content>
@@ -25,6 +29,8 @@
         [lexEntries]="results"
         (updatePage)="changePage($event)"
         (showDetailsForLexEntry)="showLexEntryDetails($event)"
+        (addUserFilter)="userFilter = $event"
+        (addVerifierFilter)="verifierFilter = $event"
         ></app-lemma-list>
     </nz-content>
   </div>

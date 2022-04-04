@@ -33,6 +33,11 @@ export class LemmaListComponent implements OnInit {
   @Output()
   showDetailsForLexEntry = new EventEmitter<LexEntryUi>();
 
+  @Output()
+  addUserFilter = new EventEmitter<string>();
+  @Output()
+  addVerifierFilter = new EventEmitter<string>();
+
   // used to pass math functions to template
   math = Math;
 
@@ -111,7 +116,13 @@ export class LemmaListComponent implements OnInit {
     }
   }
 
+  filterUser(user?: string) {
+    this.addUserFilter.emit(user);
+  }
 
+  filterVerifier(verifier?: string) {
+    this.addVerifierFilter.emit(verifier);
+  }
 
 
 

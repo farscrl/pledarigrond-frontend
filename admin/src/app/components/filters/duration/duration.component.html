@@ -1,12 +1,43 @@
-<nz-range-picker
-  [nzShowTime]="{ nzFormat: 'HH:mm' }"
-  nzFormat="yyyy-MM-dd HH:mm"
-  [(ngModel)]="selectedDuration"
-  [nzPlaceHolder]="[
-    'sta',
-    'end'
-  ]"
-  ></nz-range-picker>
+
+
+<nz-form-item>
+  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Date interval</nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24">
+    <nz-range-picker
+      [nzShowTime]="{ nzFormat: 'HH:mm' }"
+      nzFormat="yyyy-MM-dd HH:mm"
+      [(ngModel)]="selectedDuration"
+      [nzPlaceHolder]="[
+        'sta',
+        'end'
+      ]"
+      ></nz-range-picker>
+  </nz-form-control>
+</nz-form-item>
+
+<nz-form-item *ngIf="selectedUserFilter">
+  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">User IP</nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24">
+    <nz-input-group [nzSuffix]="userFilterSuffixTemplate">
+      <input nz-input id="user" [value]="selectedUserFilter" [disabled]="true"/>
+    </nz-input-group>
+    <ng-template #userFilterSuffixTemplate>
+      <i nz-icon nz-tooltip nzTooltipTitle="Remove user filter" nzType="close-circle" (click)="removeUserFilter()"></i>
+    </ng-template>
+  </nz-form-control>
+</nz-form-item>
+
+<nz-form-item *ngIf="selectedVerifierFilter">
+  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Verifier</nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24">
+    <nz-input-group [nzSuffix]="verifierFilterSuffixTemplate">
+      <input nz-input id="verifier" [value]="selectedVerifierFilter" [disabled]="true"/>
+    </nz-input-group>
+    <ng-template #verifierFilterSuffixTemplate>
+      <i nz-icon nz-tooltip nzTooltipTitle="Remove verifier filter" nzType="close-circle" (click)="removeVerifierFilter()"></i>
+    </ng-template>
+  </nz-form-control>
+</nz-form-item>
 
 <div class="search-area">
   <button nz-button nzType="default" (click)="resetDate()">
