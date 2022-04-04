@@ -14,4 +14,5 @@ export class LexEntry {
 
 export class LexEntryUi extends LexEntry {
   disabled: boolean = false;
+  selected: boolean = false;
 }

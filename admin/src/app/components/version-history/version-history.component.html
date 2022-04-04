@@ -14,17 +14,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of rowSelectionTable.data">
+    <tr *ngFor="let data of versionHistory">
       <td>
-        <nz-tag [nzColor]="'red'">Unverified</nz-tag><br>
-        <nz-tag>Modified</nz-tag>
+        <nz-tag [nzColor]="'red'">{{ data.verification }}</nz-tag><br>
+        <nz-tag>{{ data.status }}</nz-tag>
       </td>
       <td>
-        <nz-tag [nzColor]="'geekblue'">Guest</nz-tag><br>
-        10.160.10.88
+        <nz-tag [nzColor]="'geekblue'">{{ data.userId }}</nz-tag><br>
+        {{ data.ip }}
       </td>
       <td>
-        Haus ⇔ chasa
+        {{ data.entryValues.DStichwort }} ⇔ {{ data.entryValues.RStichwort }}
       </td>
       <td>
         02-04-2022<br>

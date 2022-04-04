@@ -30,6 +30,9 @@ export class LemmaListComponent implements OnInit {
   @Output()
   updatePage = new EventEmitter<number>();
 
+  @Output()
+  showDetailsForLexEntry = new EventEmitter<LexEntryUi>();
+
   // used to pass math functions to template
   math = Math;
 
@@ -92,6 +95,20 @@ export class LemmaListComponent implements OnInit {
 
   changePage(pageNumber: number) {
     this.updatePage.emit(pageNumber - 1);
+  }
+
+  selectRow(lexEntry: LexEntryUi) {
+    const isSelected = lexEntry.selected;
+    this.listOfLexEntries.forEach(e => {
+      e.selected = false;
+    });
+    lexEntry.selected = !isSelected;
+
+    if (lexEntry.selected) {
+      this.showDetailsForLexEntry.emit(lexEntry);
+    } else {
+      this.showDetailsForLexEntry.emit(undefined);
+    }
   }
 
 

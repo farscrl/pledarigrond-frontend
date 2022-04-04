@@ -29,6 +29,18 @@
         }
       }
     }
+
+    tr.selected {
+      background-color: rgb(213, 213, 255) !important;
+
+      td.ant-table-cell-fix-left {
+        background-color: transparent;
+      }
+    }
+
+    tr.ant-table-row.selected:hover>td {
+      background-color: transparent;
+    }
   }
 
 }

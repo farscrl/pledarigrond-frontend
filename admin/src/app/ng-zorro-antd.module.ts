@@ -18,6 +18,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzNoAnimationModule } from 'ng-zorro-antd/core/no-animation';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NzTransButtonModule } from 'ng-zorro-antd/core/trans-button';
 import { NzWaveModule } from 'ng-zorro-antd/core/wave';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -108,6 +109,7 @@ import { NzPipesModule } from 'ng-zorro-antd/pipes';
     NzMessageModule,
     NzModalModule,
     NzNoAnimationModule,
+    NoopAnimationsModule,
     NzNotificationModule,
     NzPageHeaderModule,
     NzPaginationModule,

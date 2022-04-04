@@ -9,7 +9,7 @@ import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -37,6 +37,7 @@ import { VersionHistoryComponent } from './components/version-history/version-hi
 import { LemmaListComponent } from './components/lemma-list/lemma-list.component';
 import { LexiconFilterComponent } from './components/filters/lexicon-filter/lexicon-filter.component';
 import { ExportComponent } from './features/editor/export/export.component';
+import { NoopAnimationPlayer } from '@angular/animations';
 
 registerLocaleData(de);
 
@@ -75,7 +76,7 @@ export function tokenGetter() {
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    NoopAnimationsModule,
     NgZorroAntdModule,
     JwtModule.forRoot({
       config: {

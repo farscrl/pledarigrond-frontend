@@ -61,7 +61,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of listOfLexEntries">
+    <tr *ngFor="let data of listOfLexEntries" (click)="selectRow(data)" [class.selected]="data.selected">
       <td
         nzLeft
         [nzChecked]="setOfCheckedId.has(data.id)"

@@ -9,13 +9,23 @@
     </nz-content>
 
     <nz-content>
-      <app-version-history></app-version-history>
+      <nz-page-header [nzGhost]="false">
+        <nz-page-header-title>Lemma History</nz-page-header-title>
+        <nz-page-header-subtitle>See all the changes to the selected lemma</nz-page-header-subtitle>
+      </nz-page-header>
+      <app-version-history
+      [lexEntry]="selectedLexEntry"
+      ></app-version-history>
     </nz-content>
   </div>
 
   <div nz-col nzSpan="15" class="right-side">
     <nz-content>
-      <app-lemma-list [lexEntries]="results" (updatePage)="changePage($event)"></app-lemma-list>
+      <app-lemma-list
+        [lexEntries]="results"
+        (updatePage)="changePage($event)"
+        (showDetailsForLexEntry)="showLexEntryDetails($event)"
+        ></app-lemma-list>
     </nz-content>
   </div>
 </div>

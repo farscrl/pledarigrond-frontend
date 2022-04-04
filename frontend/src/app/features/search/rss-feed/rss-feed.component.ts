@@ -42,7 +42,6 @@ export class RssFeedComponent implements OnInit, OnDestroy {
   loadRssFeedEntries() {
     this.feedService.getFeed(this.language).subscribe(values => {
       this.feedEntries = values;
-      console.log(values);
     });
   }
 
