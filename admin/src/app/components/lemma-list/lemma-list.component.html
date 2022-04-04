@@ -71,7 +71,8 @@
       ></td>
       <td *ngIf="showUserColumn" nzLeft class="small">
         <nz-tag [nzColor]="'geekblue'">{{ data.mostRecent.creatorRole }}</nz-tag><br>
-        {{ data.mostRecent.ip }}
+        <ng-container *ngIf="data.mostRecent.userId">{{ data.mostRecent.userId }}</ng-container>
+        {{ data.mostRecent.ip ? data.mostRecent.ip : '-' }}
       </td>
       <td *ngIf="showFilterColumn" class="button-column">
         <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();">Filter User</button>

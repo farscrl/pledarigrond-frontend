@@ -13,8 +13,10 @@ export class DurationComponent implements OnInit {
   dateRangeSelected = new EventEmitter<EditorQuery>();
 
   @Input()  set userFilter(userFilter: string | undefined)  { this.selectedUserFilter = userFilter; this.filter(); };
+  @Output() userFilterChange = new EventEmitter<string | undefined>();
 
   @Input()  set verifierFilter(verifierFilter: string | undefined) { this.selectedVerifierFilter = verifierFilter; this.filter(); };
+  @Output() verifierFilterChange = new EventEmitter<string | undefined>();
 
   selectedDuration: Date[] = [];
   selectedUserFilter?: string;
@@ -42,16 +44,18 @@ export class DurationComponent implements OnInit {
       moment().subtract(6, 'months').toDate(),
       moment().toDate()
     ]
-    this.selectedUserFilter = undefined;
-    this.selectedVerifierFilter = undefined;
+    this.removeUserFilter()
+    this.removeVerifierFilter();
     this.filter();
   }
 
   removeUserFilter() {
     this.userFilter = undefined;
+    this.userFilterChange.emit(undefined);
   }
 
   removeVerifierFilter() {
     this.verifierFilter = undefined;
+    this.verifierFilterChange.emit(undefined);
   }
 }

@@ -5,7 +5,11 @@
         <nz-page-header-title>Verification</nz-page-header-title>
         <nz-page-header-subtitle>Review the last changes</nz-page-header-subtitle>
       </nz-page-header>
-      <app-duration></app-duration>
+      <app-duration
+        (dateRangeSelected)="search($event)"
+        [(userFilter)]="userFilter"
+        [(verifierFilter)]="verifierFilter"
+        ></app-duration>
     </nz-content>
 
     <nz-content>
@@ -13,13 +17,21 @@
         <nz-page-header-title>Lemma History</nz-page-header-title>
         <nz-page-header-subtitle>See all the changes to the selected lemma</nz-page-header-subtitle>
       </nz-page-header>
-      <app-version-history></app-version-history>
+      <app-version-history
+      [lexEntry]="selectedLexEntry"
+      ></app-version-history>
     </nz-content>
   </div>
 
   <div nz-col nzSpan="15" class="right-side">
     <nz-content>
-      <app-lemma-list></app-lemma-list>
+      <app-lemma-list
+        [lexEntries]="results"
+        (updatePage)="changePage($event)"
+        (showDetailsForLexEntry)="showLexEntryDetails($event)"
+        (addUserFilter)="userFilter = $event"
+        (addVerifierFilter)="verifierFilter = $event"
+        ></app-lemma-list>
     </nz-content>
   </div>
 </div>
