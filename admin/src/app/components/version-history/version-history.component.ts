@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntryUi } from 'src/app/models/lex-entry';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-version-history',
   templateUrl: './version-history.component.html',
@@ -29,5 +31,13 @@ export class VersionHistoryComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  formateDate(timestamp: number): string {
+    return moment(timestamp).format("DD-MM-YYYY");
+  }
+
+  formateTime(timestamp: number): string {
+    return moment(timestamp).format("hh:mm:ss")
   }
 }

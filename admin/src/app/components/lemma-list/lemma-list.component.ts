@@ -4,6 +4,8 @@ import { ExportComponent } from 'src/app/features/editor/export/export.component
 import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
 import { Page } from 'src/app/models/page';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-lemma-list',
   templateUrl: './lemma-list.component.html',
@@ -22,6 +24,7 @@ export class LemmaListComponent implements OnInit {
     if (!!page) {
       this.listOfLexEntries = page.content as LexEntryUi[];
     }
+    this.showDetailsForLexEntry.emit(undefined);
   }
   get lexEntries(): Page<LexEntry> | undefined {
       return this.resultPage;
@@ -124,14 +127,6 @@ export class LemmaListComponent implements OnInit {
     this.addVerifierFilter.emit(verifier);
   }
 
-
-
-
-
-
-
-
-
   refreshCheckedStatus(): void {
     const listOfEnabledData = this.listOfLexEntries.filter(({ disabled }) => !disabled);
     this.checked = listOfEnabledData.every(({ id }) => this.setOfCheckedId.has(id));
@@ -158,4 +153,11 @@ export class LemmaListComponent implements OnInit {
     }
   }
 
+  formateDate(timestamp: number): string {
+    return moment(timestamp).format("DD-MM-YYYY");
+  }
+
+  formateTime(timestamp: number): string {
+    return moment(timestamp).format("hh:mm:ss")
+  }
 }

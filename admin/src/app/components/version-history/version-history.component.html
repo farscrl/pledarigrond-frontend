@@ -27,8 +27,8 @@
         {{ data.entryValues.DStichwort }} ⇔ {{ data.entryValues.RStichwort }}
       </td>
       <td>
-        02-04-2022<br>
-        13:45:32
+        {{ formateDate(data.timestamp) }}<br>
+        {{ formateTime(data.timestamp) }}
       </td>
     </tr>
   </tbody>

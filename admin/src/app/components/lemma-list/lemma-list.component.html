@@ -49,12 +49,12 @@
   <thead>
     <tr>
       <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="showCheckMultiple" nzLeft></th>
-      <th *ngIf="showUserColumn" nzLeft>User</th>
-      <th *ngIf="showFilterColumn">Filter</th>
-      <th *ngIf="showEntryColumn">Entry</th>
-      <th *ngIf="showOptionsColumn">Options</th>
-      <th *ngIf="showStateColumn">State</th>
-      <th *ngIf="showCreatedColumn">Created</th>
+      <th *ngIf="showUserColumn" nzLeft nzWidth="120px">User</th>
+      <th *ngIf="showFilterColumn" nzWidth="110px">Filter</th>
+      <th *ngIf="showEntryColumn" nzWidth="200px">Entry</th>
+      <th *ngIf="showOptionsColumn" nzWidth="110px">Actions</th>
+      <th *ngIf="showStateColumn" nzWidth="120px">State</th>
+      <th *ngIf="showCreatedColumn" nzWidth="120px">Created</th>
       <th *ngIf="showGermanColumn">German</th>
       <th *ngIf="showRomanshColumn">Romansh</th>
       <th *ngIf="showCommentColumn">Comment</th>
@@ -69,28 +69,28 @@
         (nzCheckedChange)="onItemChecked(data.id, $event)"
         *ngIf="showCheckMultiple"
       ></td>
-      <td *ngIf="showUserColumn" nzLeft>
+      <td *ngIf="showUserColumn" nzLeft class="small">
         <nz-tag [nzColor]="'geekblue'">{{ data.mostRecent.creatorRole }}</nz-tag><br>
         {{ data.mostRecent.ip }}
       </td>
-      <td *ngIf="showFilterColumn">
+      <td *ngIf="showFilterColumn" class="button-column">
         <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();">Filter User</button>
-        <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" *ngIf="data.mostRecent.verifierId">Filter Verifier</button>
+        <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" *ngIf="data.mostRecent.verifierId" style="margin-top: 4px;">Filter Verifier</button>
       </td>
       <td *ngIf="showEntryColumn">
         {{ data.mostRecent.entryValues.DStichwort }} ⇔ {{ data.mostRecent.entryValues.RStichwort }}
       </td>
-      <td *ngIf="showOptionsColumn">
+      <td *ngIf="showOptionsColumn" class="button-column">
         <button nz-button nzSize="small" nzType="primary">Edit</button><br>
         <button nz-button nzSize="small" nzType="primary" nzDanger>Delete</button>
       </td>
-      <td *ngIf="showStateColumn">
+      <td *ngIf="showStateColumn" class="small">
         <nz-tag [nzColor]="'red'">{{ data.mostRecent.verification }}</nz-tag><br>
         <nz-tag>{{ data.mostRecent.status }}</nz-tag>
       </td>
-      <td *ngIf="showCreatedColumn">
-        02-04-2022<br>
-        13:45:32
+      <td *ngIf="showCreatedColumn" class="small">
+        {{ formateDate(data.mostRecent.timestamp) }}<br>
+        {{ formateTime(data.mostRecent.timestamp) }}
       </td>
       <td *ngIf="showGermanColumn">{{ data.mostRecent.entryValues.DStichwort }}</td>
       <td *ngIf="showRomanshColumn">{{ data.mostRecent.entryValues.RStichwort }}</td>
@@ -107,7 +107,7 @@
     [nzCheckedChildren]="checkedTemplate"
     [nzUnCheckedChildren]="unCheckedTemplate"
     ></nz-switch>
-    <label>Enable Multi edit</label>
+    <label style="margin-left: 12px;">Enable Multi edit</label>
     <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
     <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
     <br>
