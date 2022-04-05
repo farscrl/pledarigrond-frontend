@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { HeaderComponent } from './components/header/header.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { LoginComponent } from './features/login/login.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { UserAdministrationComponent } from './features/user-administration/user-administration.component';
@@ -48,7 +47,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     HeaderComponent,
-    NavigationComponent,
     LoginComponent,
     MainLayoutComponent,
     UserAdministrationComponent,
