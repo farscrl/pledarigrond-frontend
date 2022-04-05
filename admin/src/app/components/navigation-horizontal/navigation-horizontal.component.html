@@ -1,0 +1,29 @@
+<ul nz-menu nzMode="horizontal" [nzSelectable]="false">
+  <i nz-icon nzType="user" nzTheme="outline"></i>
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/suggestions'">
+    Suggestions
+  </li>
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/history'">
+    History
+  </li>
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/lexicon'">
+    Lexicon
+  </li>
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/automatic'">
+    Review
+  </li>
+
+  <nz-divider nzType="vertical"></nz-divider>
+  <i nz-icon nzType="laptop" nzTheme="outline"></i>
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/database'">
+    Database
+  </li>
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/index'">
+    Index
+  </li>
+  <nz-divider nzType="vertical"></nz-divider>
+  <i nz-icon nzType="expand-alt" nzTheme="outline"></i>
+  <li nz-menu-item [nzMatchRouterExact]="true" [nzSelected]="false" (click)="openFe()">
+    Frontend
+  </li>
+</ul>

@@ -60,7 +60,7 @@
     <nz-col [nzSpan]="12">
       <nz-statistic [nzValue]="backupInfos.triggerTime" [nzTitle]="'Frequency'"></nz-statistic>
       <nz-statistic [nzValue]="(backupInfos.backupNums| number)!" [nzTitle]="'Max backups'"></nz-statistic>
-      <nz-statistic [nzValue]="backupInfos.backupLocation" [nzTitle]="'Location'"></nz-statistic>
+      <nz-statistic [nzValue]="backupInfos.backupLocation ? backupInfos.backupLocation : '-'" [nzTitle]="'Location'"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="12">
       <nz-timeline>

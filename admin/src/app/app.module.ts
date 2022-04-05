@@ -21,8 +21,6 @@ import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import { environment } from 'src/environments/environment';
 import { JwtModule } from '@auth0/angular-jwt';
 import { EditComponent } from './features/user-administration/edit/edit.component';
-import { IdiomNavigationComponent } from './components/navigation/idiom-navigation/idiom-navigation.component';
-import { UsersNavigationComponent } from './components/navigation/users-navigation/users-navigation.component';
 import { DbAdministrationComponent } from './features/admin/db-administration/db-administration.component';
 import { EditorComponent } from './features/editor/editor.component';
 import { AdminComponent } from './features/admin/admin.component';
@@ -38,6 +36,7 @@ import { LemmaListComponent } from './components/lemma-list/lemma-list.component
 import { LexiconFilterComponent } from './components/filters/lexicon-filter/lexicon-filter.component';
 import { ExportComponent } from './features/editor/export/export.component';
 import { NoopAnimationPlayer } from '@angular/animations';
+import { NavigationHorizontalComponent } from './components/navigation-horizontal/navigation-horizontal.component';
 
 registerLocaleData(de);
 
@@ -54,8 +53,6 @@ export function tokenGetter() {
     MainLayoutComponent,
     UserAdministrationComponent,
     EditComponent,
-    IdiomNavigationComponent,
-    UsersNavigationComponent,
     DbAdministrationComponent,
     EditorComponent,
     AdminComponent,
@@ -69,7 +66,8 @@ export function tokenGetter() {
     VersionHistoryComponent,
     LemmaListComponent,
     LexiconFilterComponent,
-    ExportComponent
+    ExportComponent,
+    NavigationHorizontalComponent
   ],
   imports: [
     BrowserModule,

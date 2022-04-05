@@ -1,3 +1,11 @@
+.main-layout {
+  min-height: calc(100vh - 64px);
+}
+
+.inner-layout {
+  padding: 24px;
+}
+
 nz-content {
   background: #fff;
   padding: 24px;

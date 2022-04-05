@@ -1,4 +1,10 @@
-<nz-content>
-  <router-outlet></router-outlet>
-</nz-content>
-
+<nz-layout>
+  <app-navigation-horizontal></app-navigation-horizontal>
+</nz-layout>
+<nz-layout class="main-layout">
+  <nz-layout class="inner-layout">
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
