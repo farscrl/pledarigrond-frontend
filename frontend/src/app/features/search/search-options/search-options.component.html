@@ -64,6 +64,13 @@
             <span>{{ 'search.suffix' | translate }}</span>
             <span class="checkmark"></span>
           </label>
+
+          <label class="radio">
+            <input type="radio" name="searchMethod" value="EXACT"
+              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch()">
+            <span>{{ 'search.exact' | translate }}</span>
+            <span class="checkmark"></span>
+          </label>
         </div>
 
         <div class="horizontal-options">
