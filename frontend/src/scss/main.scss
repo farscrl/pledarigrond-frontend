@@ -17,6 +17,7 @@ a {
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"],
 textarea {
 	appearance: none;
@@ -40,6 +41,7 @@ textarea {
 }
 
 input[type="text"]:focus,
+input[type="email"]:focus,
 input[type="password"]:focus,
 textarea:focus {
 	border: 1px solid rgb(21, 233, 177);
@@ -627,7 +629,9 @@ tr.search-result td:nth-child(6) {
 	height: auto;
 }
 
-.modal-body input[type="text"]:focus,.modal-body textarea:focus {
+.modal-body input[type="text"]:focus,
+.modal-body input[type="email"]:focus,
+.modal-body textarea:focus {
 	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 	-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 	-moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -1058,7 +1062,8 @@ a.simpleLink:hover {
 		max-width: none !important;
 	}
 
-	.modal input[type="text"] {
+	.modal input[type="text"],
+  .modal input[type="email"] {
 		box-sizing: border-box !important;
 		height: 32px;
 		margin-bottom: 0;

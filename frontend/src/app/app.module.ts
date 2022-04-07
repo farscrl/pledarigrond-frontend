@@ -44,6 +44,7 @@ import { HelpSutsilvComponent } from './features/static/help/sutsilv/help-sutsil
 import { HelpSurmiranComponent } from './features/static/help/surmiran/help-surmiran/help-surmiran.component';
 import { HelpRumgrComponent } from './features/static/help/rumgr/help-rumgr/help-rumgr.component';
 import { InfoSurmiranDeComponent } from './features/static/info/surmiran/info-surmiran-de/info-surmiran-de.component';
+import { SuggestionComponent } from './components/footer/suggestion/suggestion.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -90,7 +91,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HelpSutsilvComponent,
     HelpSurmiranComponent,
     HelpRumgrComponent,
-    InfoSurmiranDeComponent
+    InfoSurmiranDeComponent,
+    SuggestionComponent
   ],
   imports: [
     BrowserModule,

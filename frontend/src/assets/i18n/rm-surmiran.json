@@ -124,7 +124,12 @@
     "failure": "La vossa proposta n'è betg neida memorisada.",
     "success": "Angraztg fitg!",
     "comment": "remartga u dumonda",
-    "email": "adressa dad e-mail"
+    "email": "adressa dad e-mail",
+    "error": {
+      "field": "Aglmanc egn digls camps stò esser amplania!",
+      "comment": "Deplorablamaintg n'ègl betg pussebel da transmetter la modificaziun. Igl voss commentari è mengia lung, el na dastga betg surpassar 500 segns.",
+      "lemma": "Deplorablamaintg n'ègl betg pussebel da transmetter la modificaziun. La vossa proposta è mengia lunga, ella na dastga betg surpassar 200 segns."
+    }
   },
   "verbOverlayPopup": {
     "verbs": "conjugaziuns da verbs",

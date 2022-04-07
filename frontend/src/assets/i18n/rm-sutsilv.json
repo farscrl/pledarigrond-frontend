@@ -124,7 +124,12 @@
     "failure": "Vossa proposta e betga vagnida memorisada.",
     "success": "Graztga fetg!",
     "comment": "remartga near amparada",
-    "email": "adressa dad e-mail"
+    "email": "adressa dad e-mail",
+    "error": {
+      "field": "Seglmains egn digls tgomps sto easser amplanieu!",
+      "comment": "Deplorablameing e'gl betga pussevel da transmeter la modificaziùn. Igl voss comentari e megna lùng, el astga betga surpassar 500 anzenas.",
+      "lemma": "Deplorablameing e'gl betga pussevel da transmeter la modificaziùn. La vossa proposta e megna lùnga, ella astga betga surpassar 200 anzenas."
+    }
   },
   "verbOverlayPopup": {
     "verbs": "conjugaziùns da verbs",

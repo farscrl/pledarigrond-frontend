@@ -124,7 +124,12 @@
     "failure": "Ihr Vorschlag konnte nicht gespeichert werden.",
     "success": "Vielen Dank!",
     "comment": "Anmerkung oder Frage",
-    "email": "Email-Adresse"
+    "email": "Email-Adresse",
+    "error": {
+      "field": "Mindestens eines der Felder muss ausgefüllt sein!",
+      "comment": "Es ist leider nicht möglich, die Änderung weiterzuleiten. Ihr Kommentar ist zu lang, er sollte 500 Zeichen nicht überschreiten.",
+      "lemma": "Es ist leider nicht möglich, die Änderung weiterzuleiten. Einträge können 200 Zeichen nicht überschreiten."
+    }
   },
   "verbOverlayPopup": {
     "verbs": "Verbkonjugationen",
