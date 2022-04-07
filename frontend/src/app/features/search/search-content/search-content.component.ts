@@ -22,6 +22,8 @@ export class SearchContentComponent implements OnInit {
 
   pagination = new PaginationDisplay();
 
+  lemmaVersionToModify?: LemmaVersion;
+
   constructor(private searchService: SearchService, private selectedLanguageService: SelectedLanguageService, private translateService: TranslateService) { }
 
   ngOnInit(): void {
@@ -30,6 +32,12 @@ export class SearchContentComponent implements OnInit {
   search(data: SearchCriteria) {
     this.searchCriteria = data;
     this.executeSarch();
+  }
+
+  modify(version: LemmaVersion) {
+    this.lemmaVersionToModify = version;
+    console.log(version);
+    (jQuery('#suggestChangeModal') as any).modal('show');
   }
 
   goToPage(pageNr: number) {

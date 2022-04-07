@@ -45,9 +45,9 @@
               <div [innerHtml]="getLemma(result, false)"></div>
             </td>
             <td class="change-button">
-              <div>
-                <button type="button" class="btn  btn-mini" tabindex="-1"><i class="icon-edit"></i> {{ 'search.result_modify' | translate }} </button>
-              </div>
+              <button type="button" class="btn  btn-mini" tabindex="-1" (click)="modify(result)">
+                {{ 'search.result_modify' | translate }}
+              </button>
             </td>
           </tr>
         </tbody>
@@ -78,3 +78,5 @@
     </div>
   </div>
 </div>
+
+<app-suggest-modification [lemmaVersion]="lemmaVersionToModify"></app-suggest-modification>

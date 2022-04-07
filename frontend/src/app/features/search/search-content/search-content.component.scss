@@ -30,7 +30,7 @@
   }
 
   td:nth-of-type(2) {
-    width: 260px;
+    width: 240px;
   }
 
   td:nth-of-type(3) {
@@ -38,11 +38,15 @@
   }
 
   td:nth-of-type(4) {
-    width: 260px;
+    width: 240px;
   }
 
   td:nth-of-type(5) {
-    width: 40px;
+    width: 80px;
+  }
+
+  tr:hover .change-button button {
+    visibility: visible;
   }
 }
 
@@ -50,8 +54,19 @@ th {
   text-align: left;
 }
 
-td.change-button {
-  display: none;
+.change-button button {
+  visibility: hidden;
+  border: 0 none;
+  color: white;
+  background: none;
+  background-image: none;
+  background-color: rgb(0, 200, 255);
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 0;
+  font-size: 10px !important;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
 }
 
 .column_title {
@@ -156,6 +171,10 @@ td.change-button {
       display: none;
     }
   }
+}
+
+.change-button {
+
 }
 
 @media (min-width: 768px) {
