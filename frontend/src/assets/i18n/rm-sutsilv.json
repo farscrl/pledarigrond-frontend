@@ -36,7 +36,10 @@
     "less_options": "mains opziùns",
     "grammar": "gramatica",
     "category": "categoreia",
-    "subSemantics": "semantica"
+    "subSemantics": "semantica",
+    "result_modify": "modifitgear",
+    "results_first_page": "amprema",
+    "results_last_page": "davosa"
   },
   "index": {
     "letter_link": "pleds ca antschevan cun {0}",
@@ -81,5 +84,75 @@
   "update": {
     "last_update": "Davosa actualisaziùn: {0}",
     "entry_count": "{0} andataziùns"
+  },
+  "lemma": {
+    "DStichwort": "tudestg",
+    "DGrammatik": "gramatica",
+    "DSemantik": "Semantik",
+    "DSubsemantik": "semantica",
+    "DGenus": "genus",
+    "Bearbeitungshinweis": "categoreia",
+    "category": "categoreia",
+    "RStichwort": "sutsilvan",
+    "RGrammatik": "gramatica",
+    "RGenus": "genus",
+    "RSubsemantik": "semantica",
+    "DStichwort_sort": "zavrada",
+    "RStichwort_sort": "zavrada",
+    "RFlex": "conjugaziùn",
+    "RTags": "tearms da tscheartga suplementars",
+    "redirect_a": "culiaziùn (\"searchPhrase",
+    "redirect_b": "culiaziùn (\"searchPhrase",
+    "maalr_comment": "comentari"
+  },
+  "suggest": {
+    "title": "Mànca anzatge?",
+    "suggest": "Faged egna proposta",
+    "button": "far egna proposta"
+  },
+  "modify": {
+    "title": "D'egn oter meni?",
+    "modify": "Faged egna proposta da modifitgear quella andataziùn"
+  },
+  "button": {
+    "clear": "reinizialisar",
+    "cancel": "interumper",
+    "ok": "tarmeter "
+  },
+  "dialog": {
+    "saving": "memorisar",
+    "failure": "Vossa proposta e betga vagnida memorisada.",
+    "success": "Graztga fetg!",
+    "comment": "remartga near amparada",
+    "email": "adressa dad e-mail"
+  },
+  "verbOverlayPopup": {
+    "verbs": "conjugaziùns da verbs",
+    "closeButton": "sarar",
+    "type": "tip",
+    "present": "Preschaint",
+    "imperfect": "Imperfect",
+    "conjunctive": "Conjunctiv",
+    "particip": "Particip Perfect",
+    "conditional": "Cundiziunal",
+    "future": "Futur",
+    "gerund": "Gerundi",
+    "imperative": "Imperativ"
+  },
+  "editor": {
+    "modify": {
+      "subtitle": "modifitgear"
+    },
+    "suggest": {
+      "title": "nova andataziùn"
+    }
+  },
+  "mail": {
+    "subject": "Vossa amparada agl Pledari Grond",
+    "comment": "Remartgas",
+    "cc": "pg@rumantsch.ch"
+  },
+  "pg": {
+    "version": "versiùn"
   }
 }

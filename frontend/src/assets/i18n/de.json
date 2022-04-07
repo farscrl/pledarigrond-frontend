@@ -36,7 +36,10 @@
     "less_options": "Weniger Optionen",
     "grammar": "Grammatik",
     "category": "Kategorie",
-    "subSemantics": "Semantik"
+    "subSemantics": "Semantik",
+    "result_modify": "Bearbeiten",
+    "results_first_page": "Erste",
+    "results_last_page": "Letzte"
   },
   "index": {
     "letter_link": "Wörter beginnend mit {0}",
@@ -81,5 +84,75 @@
   "update": {
     "last_update": "Letzte Aktualisierung: {0}",
     "entry_count": "{0} Einträge"
+  },
+  "lemma": {
+    "DStichwort": "Deutsch",
+    "DGrammatik": "Grammatik",
+    "DSemantik": "Semantik",
+    "DSubsemantik": "Semantik",
+    "Bearbeitungshinweis": "Kategorie",
+    "category": "Kategorie",
+    "DGenus": "Genus",
+    "RStichwort": "Rumantsch",
+    "RGrammatik": "Grammatik",
+    "RGenus": "Genus",
+    "RSubsemantik": "Semantik",
+    "DStichwort_sort": "Sortierung",
+    "RStichwort_sort": "Sortierung",
+    "RFlex": "Konjugation",
+    "RTags": "zusätzliche Suchterme",
+    "redirect_a": "Verweis (\"searchPhrase",
+    "redirect_b": "Verweis (\"searchPhrase",
+    "maalr_comment": "Kommentar"
+  },
+  "suggest": {
+    "title": "Fehlt etwas?",
+    "suggest": "Schlagen Sie einen neuen Eintrag vor",
+    "button": "Vorschlagen"
+  },
+  "modify": {
+    "title": "Anderer Meinung?",
+    "modify": "Schlagen Sie eine Änderung dieses Eintrags vor"
+  },
+  "button": {
+    "clear": "Zurücksetzen",
+    "cancel": "Abbrechen",
+    "ok": "Senden"
+  },
+  "dialog": {
+    "saving": "Speichere",
+    "failure": "Ihr Vorschlag konnte nicht gespeichert werden.",
+    "success": "Vielen Dank!",
+    "comment": "Anmerkung oder Frage",
+    "email": "Email-Adresse"
+  },
+  "verbOverlayPopup": {
+    "verbs": "Verbkonjugationen",
+    "closeButton": "Schließen",
+    "type": "Typ",
+    "present": "Präsens",
+    "imperfect": "Imperfekt",
+    "conjunctive": "Konjunktiv",
+    "particip": "Partizip Perfekt",
+    "conditional": "Konditional",
+    "future": "Futur",
+    "gerund": "Gerundium",
+    "imperative": "Imperativ"
+  },
+  "editor": {
+    "modify": {
+      "subtitle": "Modify entry"
+    },
+    "suggest": {
+      "title": "New Entry"
+    }
+  },
+  "mail": {
+    "subject": "Ihre Anfrage an Pledari Grond",
+    "comment": "Anmerkung",
+    "cc": "pg@rumantsch.ch"
+  },
+  "pg": {
+    "version": "Version"
   }
 }

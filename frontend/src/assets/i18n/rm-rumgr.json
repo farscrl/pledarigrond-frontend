@@ -36,7 +36,10 @@
     "less_options": "damain opziuns",
     "grammar": "grammatica",
     "category": "categoria",
-    "subSemantics": "semantica"
+    "subSemantics": "semantica",
+    "result_modify": "modifitgar",
+    "results_first_page": "emprima",
+    "results_last_page": "davosa"
   },
   "index": {
     "letter_link": "pleds che entschaivan cun {0}",
@@ -81,5 +84,75 @@
   "update": {
     "last_update": "Ultima actualisaziun: {0}",
     "entry_count": "{0} endataziuns"
+  },
+  "lemma": {
+    "DStichwort": "tudestg",
+    "DGrammatik": "grammatica",
+    "DSemantik": "Semantik",
+    "DSubsemantik": "semantica",
+    "DGenus": "genus",
+    "Bearbeitungshinweis": "categoria",
+    "category": "categoria",
+    "RStichwort": "rumantsch",
+    "RGrammatik": "grammatica",
+    "RGenus": "genus",
+    "RSubsemantik": "semantica",
+    "DStichwort_sort": "zavrada",
+    "RStichwort_sort": "zavrada",
+    "RFlex": ">>>conjugaziun<<<",
+    "RTags": ">>>tearms da tscheartga suplementars<<<",
+    "redirect_a": "colliaziun (\"searchPhrase",
+    "redirect_b": "colliaziun (\"searchPhrase",
+    "maalr_comment": "commentari"
+  },
+  "suggest": {
+    "title": "Manca insatge?",
+    "suggest": "Faschai ina proposta",
+    "button": "far ina proposta"
+  },
+  "modify": {
+    "title": "Da differenta opiniun?",
+    "modify": "Faschai ina proposta da modifitgar questa endataziun"
+  },
+  "button": {
+    "clear": "reinizialisar",
+    "cancel": "interrumper",
+    "ok": "trametter "
+  },
+  "dialog": {
+    "saving": "memorisar",
+    "failure": "Vossa proposta n'è betg vegnida memorisada.",
+    "success": "Grazia fitg!",
+    "comment": "remartga u dumonda",
+    "email": "adressa dad e-mail"
+  },
+  "verbOverlayPopup": {
+    "verbs": "conjugaziuns da verbs",
+    "closeButton": "serrar",
+    "type": "tip",
+    "present": "Preschent",
+    "imperfect": "Imperfect",
+    "conjunctive": "Conjunctiv",
+    "particip": "Particip Perfect",
+    "conditional": "Cundiziunal",
+    "future": "Futur",
+    "gerund": "Gerundi",
+    "imperative": "Imperativ"
+  },
+  "editor": {
+    "modify": {
+      "subtitle": "modifitgar"
+    },
+    "suggest": {
+      "title": "nova endataziun"
+    }
+  },
+  "mail": {
+    "subject": "Vossa dumonda al Pledari Grond",
+    "comment": "Remartgas",
+    "cc": "pg@rumantsch.ch"
+  },
+  "pg": {
+    "version": "versiun"
   }
 }

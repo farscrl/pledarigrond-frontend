@@ -36,7 +36,10 @@
     "less_options": "damanc opziuns",
     "grammar": "grammatica",
     "category": "categoria",
-    "subSemantics": "semantica"
+    "subSemantics": "semantica",
+    "result_modify": "modifitgier",
+    "results_first_page": "amprema",
+    "results_last_page": "davosa"
   },
   "index": {
     "letter_link": "pleds tgi antschevan cun {0}",
@@ -81,5 +84,75 @@
   "update": {
     "last_update": "Davosa actualisaziun: {0}",
     "entry_count": "{0} andataziuns"
+  },
+  "lemma": {
+    "DStichwort": "tudestg",
+    "RStichwort": "surmiran",
+    "DGrammatik": "grammatica",
+    "DSemantik": "Semantik",
+    "DSubsemantik": "semantica",
+    "DGenus": "genus",
+    "Bearbeitungshinweis": "categoria",
+    "category": "categoria",
+    "RGrammatik": "grammatica",
+    "RGenus": "genus",
+    "RSubsemantik": "semantica",
+    "DStichwort_sort": "zavrada",
+    "RStichwort_sort": "zavrada",
+    "RFlex": "conjugaziun",
+    "RTags": ">>>tearms da tscheartga suplementars<<<",
+    "redirect_a": "colliaziun (\"searchPhrase",
+    "redirect_b": "colliaziun (\"searchPhrase",
+    "maalr_comment": "commentari"
+  },
+  "suggest": {
+    "title": "Mantga ensatge?",
+    "suggest": "Fasche ena proposta",
+    "button": "far ena proposta"
+  },
+  "modify": {
+    "title": "Da differenta opiniun?",
+    "modify": "Fasche ena proposta da modifitgier chesta andataziun"
+  },
+  "button": {
+    "clear": "reinizialisar",
+    "cancel": "interromper",
+    "ok": "tarmetter "
+  },
+  "dialog": {
+    "saving": "memorisar",
+    "failure": "La vossa proposta n'è betg neida memorisada.",
+    "success": "Angraztg fitg!",
+    "comment": "remartga u dumonda",
+    "email": "adressa dad e-mail"
+  },
+  "verbOverlayPopup": {
+    "verbs": "conjugaziuns da verbs",
+    "closeButton": "sarar",
+    "type": "tip",
+    "present": "Preschaint",
+    "imperfect": "Imperfect",
+    "conjunctive": "Conjunctiv",
+    "particip": "Particip Perfect",
+    "conditional": "Cundiziunal",
+    "future": "Futur",
+    "gerund": "Gerundi",
+    "imperative": "Imperativ"
+  },
+  "editor": {
+    "modify": {
+      "subtitle": "modifitgier"
+    },
+    "suggest": {
+      "title": "nova andataziun"
+    }
+  },
+  "mail": {
+    "subject": "La vossa dumonda agl Vocabulari surmiran",
+    "comment": "Remartgas",
+    "cc": "pg@rumantsch.ch"
+  },
+  "pg": {
+    "version": "versiun"
   }
 }
