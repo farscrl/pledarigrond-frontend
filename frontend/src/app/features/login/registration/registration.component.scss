@@ -1,5 +1,5 @@
 #signupDialog {
-	height: 440px !important;
+	height: 360px !important;
 	top: 33% !important;
 }
 
@@ -12,6 +12,20 @@
 	margin-left: 16px;
 	background: rgb(0, 200, 255) !important;
 	color: white;
+}
+
+.registration-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+
+  span {
+    margin-right: 16px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 @media all and (max-width: 767px) {

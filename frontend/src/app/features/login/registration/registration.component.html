@@ -1,50 +1,30 @@
 <div id="signupDialog" class="modal hide fade vertical-center" tabindex="-1" aria-hidden="true" style="display: none;">
-	<h3>registraziun</h3>
 	<div class="modal-body" style="overflow-y: hidden; overflow-x: hidden; max-height: 480px;">
-		<div class="row-fluid">
-			<div class="span12">
-				<form id="registrationForm" class="form-horizontal">
-					<div class="form-group">
-						<label class="col-sm-3 control-label" style="padding-right: 1em; text-align: left !important;">e-mail</label>
-						<div class="col-sm-9">
-							<input class="form-control sign-up-input" type="text" name="email">
-						</div>
-					</div>
-					<div class="form-group" style="margin-top: 15px;">
-            <label class="col-sm-3 control-label" style="padding-right: 1em; text-align: left !important;">pled-clav</label>
-            <div class="col-sm-9">
-              <input class="form-control sign-up-input" type="password" name="password">
-            </div>
-          </div>
-          <div class="form-group" style="margin-top: 15px;">
-          	<label class="col-sm-3 control-label" style="padding-right: 1em; text-align: left !important;">repeter il pled-clav</label>
-            <div class="col-sm-9">
-              <input class="form-control sign-up-input" type="password" name="confirm">
-            </div>
-          </div>
-          <div class="form-group" style="margin-top: 40px;">
-            <div id="buttonGroupSignup" class="col-sm-offset-3 col-sm-9 pull-right">
-              <a class="btn btn-default" href="#" data-dismiss="modal" data-target="#signupDialog" id="cancelButton">
-                interrumper
-              </a>
-              <a class="btn btn-default" href="#" id="registerSubmit">
-                tarmetter
-              </a>
-						</div>
-            <div class="col-sm-offset-3 col-sm-9">
-							<span id="errorMessage" style="margin-left:8px; color: red;"></span>
-						</div>
-          </div>
-				</form>
-			</div>
-		</div>
+    <h3>{{ 'registration.header' | translate }}</h3>
 
-		<div class="row-fluid">
-			<div class="span12">
-				<span class="glyphicon icon-info-sign"></span>
-				<p style="padding-top: 5px;">
-					Endatai p.pl. in'adressa dad e-mail valaivla. Tscherni suenter in pled-clav (min. 6 segns).</p>
-			</div>
-		</div>
+    <div class="registration-info">
+      <span class="glyphicon icon-info-sign"></span>
+      <p>{{ 'registration.information' | translate }}</p>
+    </div>
+
+    <label>{{ 'login.email' | translate }}</label>
+    <input class="form-control sign-up-input" type="text" name="reg_email" [(ngModel)]="email">
+
+    <label>{{ 'login.pwd' | translate }}</label>
+    <input type="password" name="reg_password" [(ngModel)]="password">
+
+    <label>{{ 'registration.repeat_pw' | translate }}</label>
+    <input type="password" name="reg_confirm" [(ngModel)]="repeatedPassword">
+
+    <span id="errorMessage" style="margin-left:8px; color: red;">{{ errorMessage }}</span>
+
+    <div id="buttonGroupSignup" class="col-sm-offset-3 col-sm-9 pull-right">
+      <a class="btn btn-default" (click)="cancel()" id="cancelButton">
+        {{ 'registration.cancel' | translate }}
+      </a>
+      <a class="btn btn-default" (click)="save()" id="registerSubmit">
+        {{ 'registration.submit' | translate }}
+      </a>
+    </div>
 	</div>
 </div>

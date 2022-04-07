@@ -69,12 +69,24 @@
     "header": "Anmeldung",
     "welcome": "Sie können diese Webseite auch ohne Anmeldung in vollem Umfang nutzen. Die freiwillige Anmeldung dient ausschließlich der Kontaktaufnahme per Mail, wenn Sie Vorschläge oder Anmerkungen eingeben. Sensible Daten (insbesondere Passwörter) werden nicht gespeichert. ",
     "error": "Ihr Anmeldeversuch war nicht erfolgreich, bitte versuchen Sie es erneut.",
-    "name": "E-Mail",
+    "email": "E-Mail",
     "pwd": "Passwort",
     "sendButton": "Senden"
   },
   "registration": {
-    "signup": "Registrieren"
+    "signup": "Registrieren",
+    "header": "Registrierung",
+    "information": "Bitte geben Sie eine gültige E-Mail-Adresse ein. Wählen Sie danach ein Passwort (min. 6 Zeichen).",
+    "submit": "Senden",
+    "cancel": "Abbrechen",
+    "repeat_pw": "Passwort wiederholen",
+    "error": {
+      "email_or_pw_missing": "Passwort oder Email ist leer!",
+      "pw_too_short": "Das Passwort ist zu kurz (min. 6 Zeichen)!",
+      "pw_not_same": "Passwort stimmt nicht überein!",
+      "already_exists": "Die Email-Adresse ist bereits registriert!",
+      "email_invalid": "Email-Adresse ist nicht gültig!"
+    }
   },
   "promo": {
     "ulteriurs": "Andere Wörterbücher",

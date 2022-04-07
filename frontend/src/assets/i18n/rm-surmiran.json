@@ -69,12 +69,24 @@
     "header": "annunztga",
     "welcome": "Igl è pussebel d'utilisar igl Vocabulari surmiran online er sainza s'annunztgier. L'annunztga è voluntaria e facilitescha unicamaintg igl contact via e-mail, schi vous faschez propostas u remarcas. Datas sensiblas (an spezial pleds-clav) na vignan betg memorisadas.",
     "error": "La connexiun n'è betg reuscheida. Amprue danovamaintg p. pl.",
-    "name": "e-mail",
+    "email": "e-mail",
     "pwd": "pled-clav",
     "sendButton": "tarmetter l'annunztga"
   },
   "registration": {
-    "signup": "registrar"
+    "signup": "registrar",
+    "header": "registraziun",
+    "information": "Andate p.pl. en'adressa dad e-mail valevla. Tscharni siva en pled-clav (min. 6 segns).",
+    "submit": "tarmetter",
+    "cancel": "interromper",
+    "repeat_pw": "repeter igl pled-clav",
+    "error": {
+      "email_or_pw_missing": "Igl pled-clav u l'adressa dad e-mail mantga!",
+      "pw_too_short": "Igl pled-clav è mengia curt (min. 6 segns)!",
+      "pw_not_same": "Igl pled-clav na corresponda betg!",
+      "already_exists": "L'adressa dad e-mail è gio registrada!",
+      "email_invalid": "L'adressa dad e-mail n'è betg valevla!"
+    }
   },
   "promo": {
     "ulteriurs": "ulteriours dicziunaris",

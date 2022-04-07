@@ -69,12 +69,24 @@
     "header": "anunztga",
     "welcome": "Igl e pussevel da duvrar igl Pledari Grond ear sainza s'anunztgear. L'anunztga e voluntaria a leavgescha suletameing igl contact via e-mail, scha Vus fagez propostas near remartgas. Datas sensiblas (an spezial pleds-clav) vegnan betga memorisadas.",
     "error": "La conexiun e betga gartageada. Ampruvad p.pl. danovameing.",
-    "name": "email",
+    "email": "email",
     "pwd": "pled-clav",
     "sendButton": "tarmeter l'anunztga"
   },
   "registration": {
-    "signup": "registrar"
+    "signup": "registrar",
+    "header": "registraziùn",
+    "information": "Andatad p.pl. egn'adressa dad e-mail valevla. Tscharned suainter egn pled-clav (min. 6 segns).",
+    "submit": "tarmeter",
+    "cancel": "interrumper",
+    "repeat_pw": "repeter igl pled-clav",
+    "error": {
+      "email_or_pw_missing": "Igl pled-clav near l'adressa dad e-mail mànca!",
+      "pw_too_short": "Igl pled-clav e megna curt (min. 6 segns)!",
+      "pw_not_same": "Igl pled-clav coraspunda betg!",
+      "already_exists": "L'adressa dad e-mail e gea registrada!",
+      "email_invalid": "L'adressa dad e-mail e betga valevla!"
+    }
   },
   "promo": {
     "ulteriurs": "ulteriurs dicziunaris",

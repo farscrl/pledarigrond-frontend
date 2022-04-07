@@ -69,12 +69,24 @@
     "header": "annunzia",
     "welcome": "Igl è pussaivel d'utilisar il Pledari Grond era senza s'annunziar. L'annunzia è voluntara e facilitescha unicamain il contact via e-mail, sche Vus faschais propostas u remartgas. Datas sensiblas (en spezial pleds-clav) na vegnan betg memorisadas.",
     "error": "La connexiun n'è betg reussida. Empruvai p.pl. danovamain.",
-    "name": "e-mail",
+    "email": "e-mail",
     "pwd": "pled-clav",
     "sendButton": "trametter l'annunzia"
   },
   "registration": {
-    "signup": "registrar"
+    "signup": "registrar",
+    "header": "registraziun",
+    "information": "Endatai p.pl. in'adressa dad e-mail valaivla. Tscherni suenter in pled-clav (min. 6 segns).",
+    "submit": "tarmetter",
+    "cancel": "interrumper",
+    "repeat_pw": "repeter il pled-clav",
+    "error": {
+      "email_or_pw_missing": "Il pled-clav u l'adressa dad e-mail manca!",
+      "pw_too_short": "Il pled-clav è memia curt (min. 6 segns)!",
+      "pw_not_same": "Il pled-clav na correspunda betg!",
+      "already_exists": "L'adressa dad e-mail è gia registrada!",
+      "email_invalid": "L'adressa dad e-mail n'è betg valaivla!"
+    }
   },
   "promo": {
     "ulteriurs": "ulteriurs dicziunaris",

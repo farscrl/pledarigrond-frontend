@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Credentials, Language, Role } from '../models/security';
+import { User } from '../models/user';
 
 const TOKEN_KEY = 'jwt';
 
@@ -59,6 +60,10 @@ export class AuthService {
 
     this.token = '';
     localStorage.removeItem(TOKEN_KEY);
+  }
+
+  register(user: User): Observable<any> {
+    return this.httpClient.post(this.getAuthRestUrl(this.authBasePath) + "/register", user);
   }
 
   authSuccess(token: string): void {
