@@ -158,6 +158,6 @@ export class LemmaListComponent implements OnInit {
   }
 
   formateTime(timestamp: number): string {
-    return moment(timestamp).format("hh:mm:ss")
+    return moment(timestamp).format("HH:mm:ss")
   }
 }
