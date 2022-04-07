@@ -1,12 +1,25 @@
 <div id="navi_bottom">
 	<ul id="navi_bottom_menu">
-		<li><a href="#" id="propose_navi" class="anchorwrapper">far ina nova proposta</a></li>
-		<li><a href="/rumantschgrischun/help.html">agid</a></li>
-		<li><a href="/rumantschgrischun/infos.html">infos</a></li>
-		<li><a href="/rumantschgrischun/assets/binary/grammatica.pdf" id="grammatica" target="_blank" class="hide-mobile">grammatica</a></li>
-		<li><a href="/rumantschgrischun/browse.html">a – z</a></li>
-		<li><a href="http://www.liarumantscha.ch" target="_blank">© Lia Rumantscha 1980 – 2022</a></li>
-		<li><a href="http://spinfo.phil-fak.uni-koeln.de/maalr.html" target="_blank">sustegnì da Maalr</a></li>
-		<li><a href="#exportDialog" id="exportData" data-toggle="modal"><span>export</span></a></li>
+		<li>
+      <a href="#" id="propose_navi" class="anchorwrapper">far ina nova proposta</a>
+    </li>
+		<li>
+      <a [routerLink]="'/' + idiomLong + '/help'">agid</a>
+    </li>
+		<li>
+      <a [routerLink]="'/' + idiomLong + '/info'">infos</a>
+    </li>
+		<li *ngIf="idiom === 'rumgr'">
+      <a href="/rumantschgrischun/assets/binary/grammatica.pdf" id="grammatica" target="_blank" class="hide-mobile">grammatica</a>
+    </li>
+		<li>
+      <a href="http://www.liarumantscha.ch" target="_blank">© Lia Rumantscha 1980 – {{ currentYear }}</a>
+    </li>
+		<li>
+      <a href="http://spinfo.phil-fak.uni-koeln.de/maalr.html" target="_blank">sustegnì da Maalr</a>
+    </li>
+		<li>
+      <a href="#exportDialog" id="exportData" data-toggle="modal"><span>export</span></a>
+    </li>
 	</ul>
 </div>

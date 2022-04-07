@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Idiom, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  idiom: Idiom = 'rumgr';
+  idiomLong: string = 'rumantschgrischun';
+
+  private languageSubscription?: Subscription;
+
+  constructor(private selectedLanguageService: SelectedLanguageService) { }
 
   ngOnInit(): void {
+    this.languageSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(value => {
+      this.idiom = value;
+      this.idiomLong = this.selectedLanguageService.getSelectedLanguageUrlSegment();
+    });
   }
 
+  ngOnDestroy(): void {
+      if (this.languageSubscription) {
+        this.languageSubscription.unsubscribe();
+      }
+  }
+
+  get currentYear() {
+    return (new Date()).getFullYear();
+  }
 }
