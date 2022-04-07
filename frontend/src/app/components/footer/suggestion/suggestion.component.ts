@@ -4,6 +4,7 @@ import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 
 import * as $ from 'jquery';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-suggestion',
@@ -21,21 +22,29 @@ export class SuggestionComponent implements OnInit {
 
 
 
-  constructor(private modificationService: ModificationService, private selectedLanguageService: SelectedLanguageService) { }
+  constructor(
+    private modificationService: ModificationService,
+    private selectedLanguageService: SelectedLanguageService,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
-    this.reset();
+    const that = this;
+    jQuery('#suggestionModal').on('show', function () {
+      that.reset();
+    });
   }
 
   cancel() {
-
+    (jQuery('#suggestionModal') as any).modal('hide');
+    this.reset();
   }
 
   reset() {
     this.DStichwort = '';
     this.RStichwort = '';
     this.comment = '';
-    this.email = '';
+    this.email = this.authService.getUsername();
   }
 
   send() {
@@ -52,10 +61,9 @@ export class SuggestionComponent implements OnInit {
     lv.entryValues.maalr_email = this.email;
 
     this.modificationService.create(this.selectedLanguageService.getSelectedLanguageUrlSegment(), lv).subscribe(data => {
-      this.reset();
-      (jQuery('#suggestionModal') as any).modal('hide')
+      this.cancel();
     }, error => {
-      console.error();
+      console.error(error);
     })
   }
 }

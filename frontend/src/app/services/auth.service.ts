@@ -136,7 +136,7 @@ export class AuthService {
   public getUsername() {
     if (this.token) {
       const jwtToken = this.jwtHelperService.decodeToken(this.token);
-      return jwtToken.email;
+      return jwtToken.sub;
     }
     return '';
   }
