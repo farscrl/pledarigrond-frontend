@@ -19,12 +19,31 @@
 
 #searchStats {
   color: rgb(163, 163, 163);
-  margin-top: 12px;
   margin-bottom: 24px;
 }
 
 .resultlist {
   width: 100%;
+
+  td:nth-of-type(1) {
+    width: 20px;
+  }
+
+  td:nth-of-type(2) {
+    width: 260px;
+  }
+
+  td:nth-of-type(3) {
+    width: 20px;
+  }
+
+  td:nth-of-type(4) {
+    width: 260px;
+  }
+
+  td:nth-of-type(5) {
+    width: 40px;
+  }
 }
 
 th {
@@ -44,6 +63,9 @@ td.change-button {
 }
 
 .pagination {
+  font-size: 10px;
+  margin-top: 40px;
+
   li {
     cursor: pointer;
 
@@ -51,11 +73,65 @@ td.change-button {
       cursor: auto;
     }
   }
+
+  a {
+    padding: 0 4px;
+    color: #999;
+    border-color: rgb(163, 163, 163);
+
+    &[disabled=""], &[disabled=""] * {
+      -webkit-text-shadow: none !important;
+      -moz-text-shadow: none !important;
+      -ms-text-shadow: none !important;
+      text-shadow: none !important;
+      filter: none;
+    }
+  }
+
+  ul {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    box-shadow: none !important;
+
+    li {
+      a {
+        background-color: transparent;
+        min-width: 22px;
+
+        &:hover {
+          color: rgb(0, 200, 255);
+        }
+      }
+
+      &.active a {
+        background-color: white;
+      }
+
+      &.disabled {
+        a, a:hover {
+          color: rgb(192, 192, 192);
+        }
+      }
+      &.active a:hover {
+        background-color: #f5f5f5;
+      }
+    }
+
+  }
 }
 
 @media (min-width: 768px) {
   .search-main {
     margin-top: 60px;
+  }
+
+  .pagination {
+    font-size: 13px;
+
+    a {
+      padding: 4px 12px;
+    }
   }
 }
 
@@ -65,5 +141,14 @@ td.change-button {
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    width: 670px;
+  }
+
+  .search-main {
+    width: 100%;
+  }
+
+  .result-container {
+    min-height: 400px;
   }
 }
