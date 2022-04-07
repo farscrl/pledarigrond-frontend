@@ -46,6 +46,7 @@ import { HelpRumgrComponent } from './features/static/help/rumgr/help-rumgr/help
 import { InfoSurmiranDeComponent } from './features/static/info/surmiran/info-surmiran-de/info-surmiran-de.component';
 import { SuggestionComponent } from './components/footer/suggestion/suggestion.component';
 import { SuggestModificationComponent } from './features/search/suggest-modification/suggest-modification.component';
+import { VerbsModalComponent } from './features/search/verbs-modal/verbs-modal.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -94,7 +95,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HelpRumgrComponent,
     InfoSurmiranDeComponent,
     SuggestionComponent,
-    SuggestModificationComponent
+    SuggestModificationComponent,
+    VerbsModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,92 @@
+<div id="verbsModal" class="modal hide fade" tabindex="-1" aria-hidden="false" style="width: 1000px; margin-left: -500px;">
+  <div></div>
+  <div *ngIf="lemmaVersion">
+    <div>
+
+      <h3>{{ lemmaVersion.entryValues.RStichwort }}</h3>
+      <br>
+      <table style="width:100%">
+        <tbody>
+          <tr valign="top">
+            <td width="50%">
+              <b>{{ 'verbOverlayPopup.present' | translate }}</b><br>
+              {{ lemmaVersion.entryValues.preschentsing1 }}<br>
+              {{ lemmaVersion.entryValues.preschentsing2 }}<br>
+              {{ lemmaVersion.entryValues.preschentsing3 }}<br>
+              {{ lemmaVersion.entryValues.preschentplural1 }}<br>
+              {{ lemmaVersion.entryValues.preschentplural2 }}<br>
+              {{ lemmaVersion.entryValues.preschentplural3 }}<br>
+              <br>
+            </td>
+            <td width="50%">
+              <b>{{ 'verbOverlayPopup.imperfect' | translate }}</b><br>
+              {{ lemmaVersion.entryValues.imperfectsing1 }}<br>
+              {{ lemmaVersion.entryValues.imperfectsing2 }}<br>
+              {{ lemmaVersion.entryValues.imperfectsing3 }}<br>
+              {{ lemmaVersion.entryValues.imperfectplural1 }}<br>
+              {{ lemmaVersion.entryValues.imperfectplural2 }}<br>
+              {{ lemmaVersion.entryValues.imperfectplural3 }}<br>
+              <br>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <b>{{ 'verbOverlayPopup.conjunctive' | translate }}</b><br>
+              {{ lemmaVersion.entryValues.conjunctivsing1 }}<br>
+              {{ lemmaVersion.entryValues.conjunctivsing2 }}<br>
+              {{ lemmaVersion.entryValues.conjunctivsing3 }}<br>
+              {{ lemmaVersion.entryValues.conjunctivplural1 }}<br>
+              {{ lemmaVersion.entryValues.conjunctivplural2 }}<br>
+              {{ lemmaVersion.entryValues.conjunctivplural3 }}<br>
+              <br>
+            </td>
+            <td width="50%">
+              <b>{{ 'verbOverlayPopup.conditional' | translate }}</b><br>
+              {{ lemmaVersion.entryValues.cundizionalsing1 }}<br>
+              {{ lemmaVersion.entryValues.cundizionalsing2 }}<br>
+              {{ lemmaVersion.entryValues.cundizionalsing3 }}<br>
+              {{ lemmaVersion.entryValues.cundizionalplural1 }}<br>
+              {{ lemmaVersion.entryValues.cundizionalplural2 }}<br>
+              {{ lemmaVersion.entryValues.cundizionalplural3 }}<br>
+              <br>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <b>{{ 'verbOverlayPopup.future' | translate }}</b><br>
+              {{ lemmaVersion.entryValues.futursing1 }}<br>
+              {{ lemmaVersion.entryValues.futursing2 }}<br>
+              {{ lemmaVersion.entryValues.futursing3 }}<br>
+              {{ lemmaVersion.entryValues.futurplural1 }}<br>
+              {{ lemmaVersion.entryValues.futurplural2 }}<br>
+              {{ lemmaVersion.entryValues.futurplural3 }}<br>
+              <br>
+            </td>
+            <td width="50%">
+              <b>{{ 'verbOverlayPopup.particip' | translate }}</b><br>
+              {{ lemmaVersion.entryValues.participperfectms }}<br>
+              {{ lemmaVersion.entryValues.participperfectfs }}<br>
+              {{ lemmaVersion.entryValues.participperfectmp }}<br>
+              {{ lemmaVersion.entryValues.participperfectfp }}<br>
+              <br>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <b>{{ 'verbOverlayPopup.imperative' | translate }}</b><br>
+              {{ lemmaVersion.entryValues.imperativ1 }}<br>
+              {{ lemmaVersion.entryValues.imperativ2 }}<br>
+              <br>
+            </td>
+            <td width="50%">
+              <b>{{ 'verbOverlayPopup.gerund' | translate }}</b><br>
+              {{ lemmaVersion.entryValues.gerundium }}<br>
+              <br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer"><a data-dismiss="modal" class="btn"><i></i> {{ 'verbOverlayPopup.closeButton' | translate }} </a></div>
+</div>

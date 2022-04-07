@@ -38,7 +38,7 @@
             </td>
             <td>
               <div>
-                <span class="verb_overlay" *ngIf="hasVerbLink(result, false)">V</span>
+                <span class="verb_overlay" *ngIf="hasVerbLink(result, false)" (click)="showVerbsModal(result)">V</span>
               </div>
             </td>
             <td>
@@ -80,3 +80,4 @@
 </div>
 
 <app-suggest-modification [lemmaVersion]="lemmaVersionToModify"></app-suggest-modification>
+<app-verbs-modal [lemmaVersion]="lemmaVersionForVerbs"></app-verbs-modal>

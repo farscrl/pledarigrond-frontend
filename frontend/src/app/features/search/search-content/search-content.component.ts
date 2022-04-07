@@ -23,6 +23,7 @@ export class SearchContentComponent implements OnInit {
   pagination = new PaginationDisplay();
 
   lemmaVersionToModify?: LemmaVersion;
+  lemmaVersionForVerbs?: LemmaVersion;
 
   constructor(private searchService: SearchService, private selectedLanguageService: SelectedLanguageService, private translateService: TranslateService) { }
 
@@ -36,8 +37,12 @@ export class SearchContentComponent implements OnInit {
 
   modify(version: LemmaVersion) {
     this.lemmaVersionToModify = version;
-    console.log(version);
     (jQuery('#suggestChangeModal') as any).modal('show');
+  }
+
+  showVerbsModal(version: LemmaVersion) {
+    this.lemmaVersionForVerbs = version;
+    (jQuery('#verbsModal') as any).modal('show');
   }
 
   goToPage(pageNr: number) {
@@ -89,7 +94,7 @@ export class SearchContentComponent implements OnInit {
   }
 
   hasVerbLink(lemma: LemmaVersion, isFirst: boolean): boolean {
-    if (!lemma.entryValues.maalr_overlay_lang2) {
+    if (!lemma.entryValues.rm_flex_type) {
       return false;
     }
 
