@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-info-surmiran-rm',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoSurmiranRmComponent implements OnInit {
 
+  @Input()
+  nbrEntries?: number;
+  
   constructor() { }
 
   ngOnInit(): void {
