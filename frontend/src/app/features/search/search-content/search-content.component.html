@@ -46,7 +46,7 @@
             </td>
             <td class="change-button">
               <div>
-                <button type="button" class="btn  btn-mini" tabindex="-1"><i class="icon-edit"></i> modifitgar</button>
+                <button type="button" class="btn  btn-mini" tabindex="-1"><i class="icon-edit"></i> {{ 'search.result_modify' | translate }} </button>
               </div>
             </td>
           </tr>
@@ -55,7 +55,7 @@
 
       <div class="pagination pagination-centered" *ngIf="pagination.showPagination">
         <ul>
-          <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(1)"><i></i> emprima </a></li>
+          <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(1)"><i></i> {{ 'search.results_first_page' | translate }} </a></li>
           <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(pagination.currentPage - 1)"><i class="icon-chevron-left"></i>&nbsp;</a></li>
 
           <li class="a_pag" [class.active]="el.isActive" width="20" *ngFor="let el of pagination.elements">
@@ -63,30 +63,18 @@
           </li>
 
           <li [class.disabled]="pagination.isLast"><a (click)="!pagination.isLast && goToPage(pagination.currentPage + 1)"><i class="icon-chevron-right"></i>&nbsp;</a></li>
-          <li [class.disabled]="pagination.isLast"><a (click)="!pagination.isLast && goToPage(pagination.lastPage)"><i></i> davosa </a></li>
+          <li [class.disabled]="pagination.isLast"><a (click)="!pagination.isLast && goToPage(pagination.lastPage)"><i></i> {{ 'search.results_last_page' | translate }} </a></li>
         </ul>
       </div>
     </div>
   </div>
 
   <div *ngIf="searchResults.length === 0 && searchCriteria.searchPhrase !== ''">
-    <table cellspacing="0" cellpadding="0" style="width: 100%;">
-      <tbody>
-        <tr>
-          <td style="vertical-align: top;">
-            <div class="container-fluid">
-              <div class="row-fluid">
-                <div class="span12">
-                  <div>
-                    {{ 'search.not_found' | translate:{ searchPhrase: searchCriteria.searchPhrase } }}
-                  </div>
-                  <a href="javascript:;" class="btn"><i class="icon-info-sign"></i>far ina proposta </a>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="not-found">
+      <div>
+        {{ 'search.not_found' | translate:{ searchPhrase: searchCriteria.searchPhrase } }}
+      </div>
+      <a href="#suggestionModal" data-toggle="modal" class="btn"><i class="icon-info-sign"></i>far ina proposta </a>
+    </div>
   </div>
 </div>

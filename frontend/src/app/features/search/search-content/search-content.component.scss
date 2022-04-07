@@ -121,6 +121,43 @@ td.change-button {
   }
 }
 
+.not-found {
+  background-color: #e3e3e3;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px;
+  line-height: 22px;
+
+  a.btn {
+    text-transform: lowercase;
+    font-size: 13px;
+    text-shadow: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: none;
+    border: 0 none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    filter: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background-color: rgb(21, 233, 177);
+    color: white;
+    padding: 2px 6px;
+    margin-top: 12px;
+
+    &:hover {
+      color: white !important;
+    }
+
+    i {
+      display: none;
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .search-main {
     margin-top: 60px;
