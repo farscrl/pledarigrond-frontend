@@ -97,6 +97,9 @@
             },
             "development": {
               "browserTarget": "frontend:build:development"
+            },
+            "test": {
+              "browserTarget": "frontend:build:test"
             }
           },
           "defaultConfiguration": "development"
