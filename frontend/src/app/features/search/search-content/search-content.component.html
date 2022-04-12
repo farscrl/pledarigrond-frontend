@@ -55,15 +55,15 @@
 
       <div class="pagination pagination-centered" *ngIf="pagination.showPagination">
         <ul>
-          <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(1)"><i></i> {{ 'search.results_first_page' | translate }} </a></li>
+          <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(0)"><i></i> {{ 'search.results_first_page' | translate }} </a></li>
           <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(pagination.currentPage - 1)"><i class="icon-chevron-left"></i>&nbsp;</a></li>
 
           <li class="a_pag" [class.active]="el.isActive" width="20" *ngFor="let el of pagination.elements">
-            <a (click)="goToPage(el.index)">{{ el.index }}</a>
+            <a (click)="goToPage(el.index - 1)">{{ el.index }}</a>
           </li>
 
-          <li [class.disabled]="pagination.isLast"><a (click)="!pagination.isLast && goToPage(pagination.currentPage + 1)"><i class="icon-chevron-right"></i>&nbsp;</a></li>
-          <li [class.disabled]="pagination.isLast"><a (click)="!pagination.isLast && goToPage(pagination.lastPage)"><i></i> {{ 'search.results_last_page' | translate }} </a></li>
+          <li [class.disabled]="pagination.isLast"><a (click)="!pagination.isLast && goToPage(pagination.currentPage)"><i class="icon-chevron-right"></i>&nbsp;</a></li>
+          <li [class.disabled]="pagination.isLast"><a (click)="!pagination.isLast && goToPage(pagination.lastPage - 1)"><i></i> {{ 'search.results_last_page' | translate }} </a></li>
         </ul>
       </div>
     </div>

@@ -20,7 +20,7 @@ export class SearchContentComponent implements OnInit {
   startIndex = 1;
   stopIndex = 15;
   totalEntries = 1;
-  currentPage = 1;
+  currentPage = 0;
   pageSize = 15;
 
   pagination = new PaginationDisplay();
@@ -110,14 +110,15 @@ export class SearchContentComponent implements OnInit {
     return true;
   }
 
-  private executeSarch(page = 1) {
+  private executeSarch(page = 0) {
     this.searchService.getResults(this.selectedLanguageService.getSelectedLanguageUrlSegment(), this.searchCriteria, page).subscribe(data => {
-      this.searchResults = data.entries;
-      this.pageSize = data.pageSize;
-      this.startIndex = ((data.currentPage - 1) * data.pageSize) + 1;
-      this.stopIndex = Math.min(data.totalEntries, data.currentPage * data.pageSize);
-      this.totalEntries = data.totalEntries;
-      this.currentPage = data.currentPage;
+      console.log(data);
+      this.searchResults = data.content;
+      this.pageSize = data.size;
+      this.startIndex = (data.number * data.size) + 1;
+      this.stopIndex = Math.min(data.totalElements, (data.number + 1) * data.size);
+      this.totalEntries = data.totalElements;
+      this.currentPage = data.number;
 
       this.generatePagination();
     });
@@ -127,10 +128,10 @@ export class SearchContentComponent implements OnInit {
     const pagination = new PaginationDisplay();
     pagination.showPagination = this.searchResults.length < this.totalEntries;
     pagination.firstPage = 1;
-    pagination.currentPage = this.currentPage;
+    pagination.currentPage = this.currentPage + 1;
     pagination.lastPage = Math.ceil(this.totalEntries / this.pageSize);
-    pagination.isFirst = (this.currentPage === pagination.firstPage);
-    pagination.isLast = (this.currentPage === pagination.lastPage);
+    pagination.isFirst = (pagination.currentPage === pagination.firstPage);
+    pagination.isLast = (pagination.currentPage === pagination.lastPage);
 
     for (let i = Math.max(1, pagination.currentPage - 2); i <= Math.min(pagination.lastPage, pagination.currentPage + 2); i++) {
       const el = new PaginationDisplayElement();
