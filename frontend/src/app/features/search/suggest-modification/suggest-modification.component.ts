@@ -2,17 +2,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
-
-import * as $ from 'jquery';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
 
 @Component({
   selector: 'app-suggest-modification',
   templateUrl: './suggest-modification.component.html',
   styleUrls: ['./suggest-modification.component.scss']
 })
-export class SuggestModificationComponent implements OnInit {
+export class SuggestModificationComponent extends SimpleModalComponent<{lemmaVersion: LemmaVersion}, null> implements OnInit {
 
   @Input()
   set lemmaVersion(lemmaVersion: LemmaVersion | undefined) {
@@ -29,18 +27,17 @@ export class SuggestModificationComponent implements OnInit {
     private modificationService: ModificationService,
     private selectedLanguageService: SelectedLanguageService,
     private authService: AuthService,
-  ) { }
+    private simpleModalService: SimpleModalService,
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    const that = this;
-    jQuery('#suggestChangeModal').on('show', function () {
-      that.reset();
-    });
+    this.reset();
   }
 
   cancel() {
-    (jQuery('#suggestChangeModal') as any).modal('hide');
-    this.reset();
+    this.simpleModalService.removeAll();
   }
 
   reset() {

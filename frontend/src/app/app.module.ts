@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SimpleModalModule, defaultSimpleModalOptions } from 'ngx-simple-modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -117,7 +118,21 @@ export function HttpLoaderFactory(http: HttpClient) {
           deps: [HttpClient]
       },
       defaultLanguage: 'rm-rumgr'
-  })
+    }),
+    SimpleModalModule.forRoot(
+      {container: 'modal-container'},
+      {
+        ...defaultSimpleModalOptions,
+        ...{
+          closeOnEscape: true,
+          closeOnClickOutside: true,
+          wrapperDefaultClasses: 'pg-modal pg-modal--fade',
+          wrapperClass: 'pg-modal--fade-in',
+          animationDuration: 0,
+          autoFocus: true
+        }
+      }
+    ),
   ],
   providers: [
     UserLoggedInGuard,

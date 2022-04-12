@@ -23,7 +23,7 @@
 
   <div id="openid_login">
     <div class="input_wrapper">
-      <a id="signUp" href="#signupDialog" data-toggle="modal">{{ 'registration.signup' | translate }}</a>
+      <a id="signUp" (click)="openRegistrationModal()">{{ 'registration.signup' | translate }}</a>
     </div>
   </div>
 
@@ -32,5 +32,3 @@
     <p>{{ 'login.welcome' | translate }}</p>
   </div>
 </div>
-
-<app-registration></app-registration>

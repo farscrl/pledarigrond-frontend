@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import url(../node_modules/modern-css-reset/dist/reset.min.css);
-@import url(scss/bootstrap.scss);
-@import url(scss/fontawesome.scss);
-@import url(scss/main.scss);
+@use '../node_modules/modern-css-reset/dist/reset.min.css';
+@use 'scss/bootstrap.scss';
+@use 'scss/fontawesome.scss';
+@use 'scss/main.scss';
+@use 'scss/modal.scss';
 
 @media all and (min-width: 768px) {
   .show-mobile {

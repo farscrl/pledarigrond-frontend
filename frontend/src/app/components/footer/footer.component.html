@@ -1,7 +1,7 @@
 <div id="navi_bottom">
 	<ul id="navi_bottom_menu">
 		<li>
-      <a href="#suggestionModal" data-toggle="modal">far ina nova proposta</a>
+      <a (click)="openSuggestionModal()" style="cursor: pointer;">far ina nova proposta</a>
     </li>
 		<li>
       <a [routerLink]="'/' + idiomLong + '/help'">agid</a>
@@ -23,5 +23,3 @@
     </li>
 	</ul>
 </div>
-
-<app-suggestion></app-suggestion>

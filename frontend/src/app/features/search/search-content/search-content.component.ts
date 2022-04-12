@@ -4,6 +4,9 @@ import { LemmaVersion } from 'src/app/models/lemma-version';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
+import { SimpleModalService } from "ngx-simple-modal";
+import { VerbsModalComponent } from '../verbs-modal/verbs-modal.component';
+import { SuggestModificationComponent } from '../suggest-modification/suggest-modification.component';
 
 @Component({
   selector: 'app-search-content',
@@ -22,10 +25,11 @@ export class SearchContentComponent implements OnInit {
 
   pagination = new PaginationDisplay();
 
-  lemmaVersionToModify?: LemmaVersion;
-  lemmaVersionForVerbs?: LemmaVersion;
-
-  constructor(private searchService: SearchService, private selectedLanguageService: SelectedLanguageService, private translateService: TranslateService) { }
+  constructor(
+    private searchService: SearchService,
+    private selectedLanguageService: SelectedLanguageService,
+    private translateService: TranslateService,
+    private simpleModalService: SimpleModalService) { }
 
   ngOnInit(): void {
   }
@@ -36,13 +40,13 @@ export class SearchContentComponent implements OnInit {
   }
 
   modify(version: LemmaVersion) {
-    this.lemmaVersionToModify = version;
-    (jQuery('#suggestChangeModal') as any).modal('show');
+    this.simpleModalService.addModal(SuggestModificationComponent, { lemmaVersion: version })
+      .subscribe();
   }
 
   showVerbsModal(version: LemmaVersion) {
-    this.lemmaVersionForVerbs = version;
-    (jQuery('#verbsModal') as any).modal('show');
+    this.simpleModalService.addModal(VerbsModalComponent, { lemmaVersion: version })
+      .subscribe();
   }
 
   goToPage(pageNr: number) {

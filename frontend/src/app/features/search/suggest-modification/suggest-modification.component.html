@@ -1,107 +1,52 @@
-<div id="suggestChangeModal" class="modal hide fade" tabindex="-1" aria-hidden="false" style="width: 850px; margin-left: -425px; margin-right: -425px;">
-  <div></div>
-  <div class="modal-body" *ngIf="!!changedLemmaVersion">
-    <table cellspacing="0" cellpadding="0">
-      <tbody>
-        <tr>
-          <td style="vertical-align: top;">
-            <div class="page-header">
-              <h1>{{ 'suggest.title' | translate }} <small>{{ 'suggest.suggest' | translate }}</small></h1>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">
-            <div>{{ 'suggest.suggest' | translate }}</div>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">
-            <div><br>
-              <ng-container *ngIf="showFormError">
-                <div style="color: red;">
-                  <br>
-                  {{ 'dialog.error.field' | translate }}
-                  <br><br>
-                </div>
-              </ng-container>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">
-            <div class="lemma-editor">
-              <table cellspacing="0" cellpadding="0" style="width: 98%; margin: 1%;">
-                <tbody>
-                  <tr>
-                    <td style="vertical-align: top;">
-                      <table cellspacing="0" cellpadding="0" style="width: 100%;">
-                        <tbody>
-                          <tr>
-                            <td style="vertical-align: top;">
-                              <fieldset class="form-horizontal">
-                                <div class="control-group">
-                                  <label class="control-label">{{ 'search.header_de' | translate }}</label>
-                                  <div class="controls">
-                                    <input type="text" id="DStichwort" [(ngModel)]="changedLemmaVersion!.entryValues.DStichwort">
-                                    <span class="help-inline"></span>
-                                  </div>
-                                </div>
-                              </fieldset>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                    <td style="vertical-align: top;">
-                      <table cellspacing="0" cellpadding="0" style="width: 100%;">
-                        <tbody>
-                          <tr>
-                            <td style="vertical-align: top;">
-                              <fieldset class="form-horizontal">
-                                <div class="control-group">
-                                  <label class="control-label">{{ 'search.header_rm' | translate }}</label>
-                                  <div class="controls">
-                                    <input type="text" id="RStichwort" [(ngModel)]="changedLemmaVersion!.entryValues.RStichwort">
-                                    <span class="help-inline"></span>
-                                  </div>
-                                </div>
-                              </fieldset>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">
-            <fieldset>
-              <div class="control-group">
-                <label class="control-label">{{ 'dialog.comment' | translate }}</label>
-                <textarea  class="gwt-TextArea" rows="3" style="width: 100%; resize: none;" [(ngModel)]="changedLemmaVersion!.entryValues.maalr_comment"></textarea>
-                <span class="help-inline"></span>
-              </div>
-              <div class="control-group">
-                <label class="control-label">{{ 'dialog.email' | translate }}</label>
-                <input type="email" style="width: 100%;" [(ngModel)]="changedLemmaVersion!.entryValues.maalr_email"></div>
-            </fieldset>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">
-            <div class="btn-group"></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="pg-modal-wrapper">
+  <div class="modal-content">
+    <h3>{{ 'modify.title' | translate }}</h3>
+
+    <div>{{ 'modify.modify' | translate }}</div>
+
+    <ng-container *ngIf="showFormError">
+      <div style="color: red;">
+        <br>
+        {{ 'dialog.error.field' | translate }}
+        <br><br>
+      </div>
+    </ng-container>
+
+    <div class="double-row">
+      <div class="control-group">
+        <label class="control-label">{{ 'search.header_de' | translate }}</label>
+        <div class="controls">
+          <input type="text" id="DStichwort" [(ngModel)]="changedLemmaVersion!.entryValues.DStichwort">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">{{ 'search.header_rm' | translate }}</label>
+        <div class="controls">
+          <input type="text" id="RStichwort" [(ngModel)]="changedLemmaVersion!.entryValues.RStichwort">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+    </div>
+
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label">{{ 'dialog.comment' | translate }}</label>
+        <textarea  class="gwt-TextArea" rows="3" style="width: 100%; resize: none;" [(ngModel)]="changedLemmaVersion!.entryValues.maalr_comment"></textarea>
+        <span class="help-inline"></span>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">{{ 'dialog.email' | translate }}</label>
+        <input type="email" style="width: 100%;" [(ngModel)]="changedLemmaVersion!.entryValues.maalr_email">
+      </div>
+    </fieldset>
   </div>
-  <div class="modal-footer">
+
+  <div class="pg-modal-footer">
     <a class="btn" (click)="cancel()"><i></i> {{ 'button.cancel' | translate }} </a>
     <a class="btn" (click)="reset()"><i></i> {{ 'button.clear' | translate }} </a>
-    <a class="btn btn-primary" (click)="send()"><i></i> {{ 'button.ok' | translate }} </a></div>
+    <a class="btn btn-primary" (click)="send()"><i></i> {{ 'button.ok' | translate }} </a>
+  </div>
 </div>

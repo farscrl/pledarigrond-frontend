@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Idiom, SelectedLanguageService } from 'src/app/services/selected-language.service';
+import { SimpleModalService } from "ngx-simple-modal";
+import { SuggestionComponent } from './suggestion/suggestion.component';
 
 @Component({
   selector: 'app-footer',
@@ -14,7 +16,7 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   private languageSubscription?: Subscription;
 
-  constructor(private selectedLanguageService: SelectedLanguageService) { }
+  constructor(private selectedLanguageService: SelectedLanguageService, private simpleModalService: SimpleModalService) { }
 
   ngOnInit(): void {
     this.languageSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(value => {
@@ -31,5 +33,10 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   get currentYear() {
     return (new Date()).getFullYear();
+  }
+
+  openSuggestionModal() {
+    this.simpleModalService.addModal(SuggestionComponent, null)
+      .subscribe();
   }
 }

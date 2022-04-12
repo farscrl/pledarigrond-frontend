@@ -1,3 +1,21 @@
-#verbsModal {
+.pg-modal-wrapper {
+  max-width: 600px;
+}
+
+.modal-content {
   line-height: 18px;
+}
+
+tr, td {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  tr {
+    display: table-row;
+  }
+
+  td {
+    display: table-cell;
+  }
 }

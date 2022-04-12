@@ -1,0 +1,98 @@
+.pg-modal {
+  background-color: rgba(245, 245, 245, .8);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  outline: 0;
+  padding: 0 16px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.pg-modal-wrapper {
+  height: auto;
+  background: rgb(227, 227, 227);
+  position: absolute;
+  top: 112px;
+  left: 22px;
+  right: 22px;
+  bottom: auto;
+  width: auto;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 12px;
+
+  h3 {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .modal-content {
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+  }
+
+  .pg-modal-footer {
+    margin-top: 16px;
+    text-align: right;
+
+    a.btn {
+      margin-top: 16px;
+    }
+  }
+
+  a.btn {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    text-transform: lowercase;
+    display: block;
+
+    &.btn-primary {
+      background: rgb(0, 200, 255);
+      color: white;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    &:hover {
+      color: rgb(0, 200, 255);
+    }
+  }
+}
+::-webkit-scrollbar {
+  //background: rgba(0,0,0,0);
+}
+::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
+
+@media (min-width: 768px) {
+  .pg-modal-wrapper a.btn {
+    display: inline-block;
+  }
+
+  .pg-modal-footer {
+    a.btn {
+      margin-left: 16px;
+      margin-top: auto;
+    }
+  }
+}

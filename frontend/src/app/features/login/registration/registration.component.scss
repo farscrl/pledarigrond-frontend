@@ -1,6 +1,11 @@
-#signupDialog {
-	height: 360px !important;
-	top: 33% !important;
+.pg-modal-wrapper {
+  max-width: 600px;
+  height: 360px;
+	top: 33%;
+
+  .modal-content {
+    overflow-y: initial;
+  }
 }
 
 #buttonGroupSignup {
@@ -10,7 +15,7 @@
 
 #registerSubmit {
 	margin-left: 16px;
-	background: rgb(0, 200, 255) !important;
+	background: rgb(0, 200, 255);
 	color: white;
 }
 
@@ -30,8 +35,8 @@
 
 @media all and (max-width: 767px) {
   #signupDialog {
-		height: 530px !important;
-		top: 30% !important;
+		height: 530px;
+		top: 30%;
 	}
 
 	.sign-up-input {

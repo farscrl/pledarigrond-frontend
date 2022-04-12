@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
+import { SimpleModalService } from "ngx-simple-modal";
+import { RegistrationComponent } from './registration/registration.component';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,12 @@ export class LoginComponent implements OnInit {
 
   hasLoginError = false;
 
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private simpleModalService: SimpleModalService,
+  ) { }
 
   ngOnInit(): void {
     this.reset();
@@ -49,5 +56,10 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['../'], { relativeTo: this.route });
     }
     this.router.navigateByUrl(decodeURI(redirect));
+  }
+
+  openRegistrationModal() {
+    this.simpleModalService.addModal(RegistrationComponent, null)
+      .subscribe();
   }
 }

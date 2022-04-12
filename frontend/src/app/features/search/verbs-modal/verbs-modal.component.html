@@ -1,9 +1,6 @@
-<div id="verbsModal" class="modal hide fade" tabindex="-1" aria-hidden="false" style="width: 1000px; margin-left: -500px;">
-  <div></div>
-  <div *ngIf="lemmaVersion">
-    <div>
-
-      <h3>{{ lemmaVersion.entryValues.RStichwort }}</h3>
+<div class="pg-modal-wrapper">
+  <div class="modal-content" *ngIf="lemmaVersion">
+    <h3>{{ lemmaVersion.entryValues.RStichwort }}</h3>
       <br>
       <table style="width:100%">
         <tbody>
@@ -86,7 +83,8 @@
           </tr>
         </tbody>
       </table>
-    </div>
   </div>
-  <div class="modal-footer"><a data-dismiss="modal" class="btn"><i></i> {{ 'verbOverlayPopup.closeButton' | translate }} </a></div>
+  <div class="pg-modal-footer">
+    <a class="btn" (click)="closeOverlay()">{{ 'verbOverlayPopup.closeButton' | translate }}</a>
+  </div>
 </div>

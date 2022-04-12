@@ -1,0 +1,20 @@
+.pg-modal-wrapper {
+  max-width: 600px;
+}
+
+.double-row {
+  margin-top: 16px;
+  display: flex;
+
+  div {
+    flex-grow: 1;
+
+    &:nth-of-type(2) {
+      margin-left: 8px;
+    }
+  }
+}
+
+textarea {
+  height: auto;
+}
