@@ -21,6 +21,7 @@ export class EntryValues {
   DGrammatik?: string;
   DSubsemantik?: string;
   DGenus?: string;
+
   RStichwort?: string;
   RGrammatik?: string;
   RFlex?: string;

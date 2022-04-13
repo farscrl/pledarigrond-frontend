@@ -45,7 +45,7 @@ export class LexiconComponent implements OnInit {
 
   showLexEntryDetails(lexEntry: LexEntryUi) {
     // as we only have fake lex-entries, we load the complete lex-entry to show the details
-    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id).subscribe((data) => {
+    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!).subscribe((data) => {
       this.selectedLexEntry = data as LexEntryUi;
     });
   }

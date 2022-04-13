@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { LemmaListColumn } from 'src/app/models/lemma-list-column';
+import { MainEntryComponent } from 'src/app/features/modify-entry/main-entry/main-entry.component';
 
 @Component({
   selector: 'app-lemma-list',
@@ -101,14 +102,14 @@ export class LemmaListComponent implements OnInit {
 
   refreshCheckedStatus(): void {
     const listOfEnabledData = this.listOfLexEntries.filter(({ disabled }) => !disabled);
-    this.checked = listOfEnabledData.every(({ id }) => this.setOfCheckedId.has(id));
-    this.indeterminate = listOfEnabledData.some(({ id }) => this.setOfCheckedId.has(id)) && !this.checked;
+    this.checked = listOfEnabledData.every(({ id }) => this.setOfCheckedId.has(id!));
+    this.indeterminate = listOfEnabledData.some(({ id }) => this.setOfCheckedId.has(id!)) && !this.checked;
   }
 
   onAllChecked(checked: boolean): void {
     this.listOfLexEntries
       .filter(({ disabled }) => !disabled)
-      .forEach(({ id }) => this.updateCheckedSet(id, checked));
+      .forEach(({ id }) => this.updateCheckedSet(id!, checked));
     this.refreshCheckedStatus();
   }
 
@@ -133,9 +134,32 @@ export class LemmaListComponent implements OnInit {
     return moment(timestamp).format("HH:mm:ss")
   }
 
+  addEntry() {
+    this.openLemmaModal();
+  }
+
+  editEntry(entryId: string) {
+    this.openLemmaModal(entryId);
+  }
+
   dropEntry(entryId: string) {
     this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe(() => {
       this.updatePage.emit(this.resultPage!.number);
     })
+  }
+
+  private openLemmaModal(entryId?: string) {
+    const modal = this.modalService.create({
+      nzTitle: !!entryId ? 'Edit lemma' : 'Add lemma',
+      nzContent: MainEntryComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lexEntryId: entryId,
+      },
+      nzOnOk: () => this.updatePage.emit(this.resultPage!.number)
+    });
   }
 }

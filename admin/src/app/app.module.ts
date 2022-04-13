@@ -39,6 +39,7 @@ import { NavigationHorizontalComponent } from './components/navigation-horizonta
 import { UserRoleComponent } from './components/data/user-role/user-role.component';
 import { StatusComponent } from './components/data/status/status.component';
 import { VerificationComponent } from './components/data/verification/verification.component';
+import { MainEntryComponent } from './features/modify-entry/main-entry/main-entry.component';
 
 registerLocaleData(de);
 
@@ -71,7 +72,8 @@ export function tokenGetter() {
     NavigationHorizontalComponent,
     UserRoleComponent,
     StatusComponent,
-    VerificationComponent
+    VerificationComponent,
+    MainEntryComponent
   ],
   imports: [
     BrowserModule,

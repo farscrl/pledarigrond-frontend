@@ -4,7 +4,7 @@ export class LexEntry {
   versionHistory: LemmaVersion[] = [];
   currentId: number = 0;
   current: LemmaVersion = new LemmaVersion();
-  id: string = "";
+  id?: string;
   changeStamp: string = "";
   status: Status = 'UNDEFINED';
   mostRecent: LemmaVersion = new LemmaVersion();

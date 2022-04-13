@@ -35,6 +35,7 @@ export class UserAdministrationComponent implements OnInit {
       nzTitle: 'Modal Title',
       nzContent: EditComponent,
       nzClosable: false,
+      nzMaskClosable: false,  
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
         email: email,

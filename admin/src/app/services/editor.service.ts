@@ -68,6 +68,11 @@ export class EditorService {
     return this.httpClient.get<LexEntry>(this.generateUrl(language, 'lex_entries/' + id));
   }
 
+  newLexEntry(language: Language, lexEntry: LexEntry) {
+    const body: any = Object.assign({}, lexEntry);
+    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/'), body);
+  }
+
   dropEntry(language: Language, entryId: string) {
     return this.httpClient.delete<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId));
   }

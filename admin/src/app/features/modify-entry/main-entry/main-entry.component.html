@@ -1,0 +1,204 @@
+
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <h1>German</h1>
+  <div nz-row>
+    <div nz-col nzSpan="12">
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DStichwort">German</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="DStichwort" id="DStichwort" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGenus" nzRequired>Gender</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <nz-select formControlName="DGenus" id="DGenus">
+            <nz-option nzValue="f" nzLabel="f"></nz-option>
+            <nz-option nzValue="f(m)" nzLabel="f(m)"></nz-option>
+            <nz-option nzValue="f(n)" nzLabel="f(n)"></nz-option>
+            <nz-option nzValue="f(pl)" nzLabel="f(pl)"></nz-option>
+            <nz-option nzValue="f,m" nzLabel="f,m"></nz-option>
+            <nz-option nzValue="f,m,n" nzLabel="f,m,n"></nz-option>
+            <nz-option nzValue="f,n" nzLabel="f,n"></nz-option>
+            <nz-option nzValue="m" nzLabel="m"></nz-option>
+            <nz-option nzValue="m(f)" nzLabel="m(f)"></nz-option>
+            <nz-option nzValue="m(pl)" nzLabel="m(pl)"></nz-option>
+            <nz-option nzValue="m,f" nzLabel="m,f"></nz-option>
+            <nz-option nzValue="m,n" nzLabel="m,n"></nz-option>
+            <nz-option nzValue="m/n" nzLabel="m/n"></nz-option>
+            <nz-option nzValue="n" nzLabel="n"></nz-option>
+            <nz-option nzValue="n(f)" nzLabel="n(f)"></nz-option>
+            <nz-option nzValue="n(pl)" nzLabel="n(pl)"></nz-option>
+            <nz-option nzValue="n,f" nzLabel="n,f"></nz-option>
+            <nz-option nzValue="n,m" nzLabel="n,m"></nz-option>
+            <nz-option nzValue="pl" nzLabel="pl"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Bearbeitungshinweis">Category</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="Bearbeitungshinweis" id="Bearbeitungshinweis" />
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
+    <div nz-col nzSpan="12">
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik" nzRequired>Grammar</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <nz-select formControlName="DGrammatik" id="DGrammatik">
+            <nz-option nzValue="adj" nzLabel="adj"></nz-option>
+            <nz-option nzValue="adv" nzLabel="adv"></nz-option>
+            <nz-option nzValue="art" nzLabel="art"></nz-option>
+            <nz-option nzValue="cj" nzLabel="cj"></nz-option>
+            <nz-option nzValue="cumpos" nzLabel="cumpos"></nz-option>
+            <nz-option nzValue="int" nzLabel="int"></nz-option>
+            <nz-option nzValue="interj" nzLabel="interj"></nz-option>
+            <nz-option nzValue="inv" nzLabel="inv"></nz-option>
+            <nz-option nzValue="n.l" nzLabel="n.l"></nz-option>
+            <nz-option nzValue="n.p" nzLabel="n.p"></nz-option>
+            <nz-option nzValue="num" nzLabel="num"></nz-option>
+            <nz-option nzValue="prep" nzLabel="prep"></nz-option>
+            <nz-option nzValue="pron" nzLabel="pron"></nz-option>
+            <nz-option nzValue="refl" nzLabel="refl"></nz-option>
+            <nz-option nzValue="subst" nzLabel="subst"></nz-option>
+            <nz-option nzValue="tr" nzLabel="tr"></nz-option>
+            <nz-option nzValue="tr/int" nzLabel="tr/int"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DSubsemantik">Semantics</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="DSubsemantik" id="DSubsemantik" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="redirect_a">Link</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="redirect_a" id="redirect_a" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <nz-divider></nz-divider>
+
+  <h1>Romansh</h1>
+  <div nz-row>
+    <div nz-col nzSpan="12">
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RStichwort">Romansh</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="RStichwort" id="RStichwort" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGenus" nzRequired>Gender</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <nz-select formControlName="RGenus" id="RGenus">
+            <nz-option nzValue="(coll)m" nzLabel="(coll)m"></nz-option>
+            <nz-option nzValue="(f)m" nzLabel="(f)m"></nz-option>
+            <nz-option nzValue="(m)f" nzLabel="(m)f"></nz-option>
+            <nz-option nzValue="(pl)f" nzLabel="(pl)f"></nz-option>
+            <nz-option nzValue="coll" nzLabel="coll"></nz-option>
+            <nz-option nzValue="f" nzLabel="f"></nz-option>
+            <nz-option nzValue="f(pl)" nzLabel="f(pl)"></nz-option>
+            <nz-option nzValue="f.pl" nzLabel="f.pl"></nz-option>
+            <nz-option nzValue="f/m" nzLabel="f/m"></nz-option>
+            <nz-option nzValue="f/m.pl" nzLabel="f/m.pl"></nz-option>
+            <nz-option nzValue="m" nzLabel="m"></nz-option>
+            <nz-option nzValue="m(f)" nzLabel="m(f)"></nz-option>
+            <nz-option nzValue="m(f)pl" nzLabel="m(f)pl"></nz-option>
+            <nz-option nzValue="m(pl)" nzLabel="m(pl)"></nz-option>
+            <nz-option nzValue="m,f" nzLabel="m,f"></nz-option>
+            <nz-option nzValue="m.(pl)" nzLabel="m.(pl)"></nz-option>
+            <nz-option nzValue="m.pl" nzLabel="m.pl"></nz-option>
+            <nz-option nzValue="m/f" nzLabel="m/f"></nz-option>
+            <nz-option nzValue="m/f.pl" nzLabel="m/f.pl"></nz-option>
+            <nz-option nzValue="pl" nzLabel="pl"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="redirect_b">Link</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="redirect_b" id="redirect_b" />
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
+    <div nz-col nzSpan="12">
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGrammatik" nzRequired>Grammar</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <nz-select formControlName="RGrammatik" id="RGrammatik">
+            <nz-option nzValue="(refl) tr" nzLabel="(refl) tr"></nz-option>
+            <nz-option nzValue="abs/tr" nzLabel="abs/tr"></nz-option>
+            <nz-option nzValue="adj" nzLabel="adj"></nz-option>
+            <nz-option nzValue="adv" nzLabel="adv"></nz-option>
+            <nz-option nzValue="art" nzLabel="art"></nz-option>
+            <nz-option nzValue="cj" nzLabel="cj"></nz-option>
+            <nz-option nzValue="int" nzLabel="int"></nz-option>
+            <nz-option nzValue="interj" nzLabel="interj"></nz-option>
+            <nz-option nzValue="inv" nzLabel="inv"></nz-option>
+            <nz-option nzValue="n.l" nzLabel="n.l"></nz-option>
+            <nz-option nzValue="n.p" nzLabel="n.p"></nz-option>
+            <nz-option nzValue="num" nzLabel="num"></nz-option>
+            <nz-option nzValue="prep" nzLabel="prep"></nz-option>
+            <nz-option nzValue="pron" nzLabel="pron"></nz-option>
+            <nz-option nzValue="refl" nzLabel="refl"></nz-option>
+            <nz-option nzValue="subst" nzLabel="subst"></nz-option>
+            <nz-option nzValue="tr" nzLabel="tr"></nz-option>
+            <nz-option nzValue="tr/int" nzLabel="tr/int"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RSubsemantik">Semantics</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="RSubsemantik" id="RSubsemantik" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RFlex">Conjugation</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="RFlex" id="RFlex" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <nz-divider></nz-divider>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="maalr_comment">Comment</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <textarea nz-input formControlName="maalr_comment" id="maalr_comment" ></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="maalr_email">E-Mail</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="maalr_email" id="maalr_email" />
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
+  <button nz-button nzType="default" (click)="reset()">Reset</button>
+  <button nz-button nzType="primary" (click)="save()" [nzLoading]="isLoading">{{ !!lexEntryId ? 'Save' : 'Create' }}</button>
+</div>
+
