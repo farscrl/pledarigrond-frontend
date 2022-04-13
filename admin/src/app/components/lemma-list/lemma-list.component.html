@@ -13,16 +13,29 @@
     </button>
     <nz-dropdown-menu #menu4="nzDropdownMenu">
       <ul nz-menu>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showUserColumn">User</label></li>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showFilterColumn">Filter</label></li>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showEntryColumn">Entry</label></li>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showOptionsColumn">Options</label></li>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showStateColumn">State</label></li>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showCreatedColumn">Creation date</label></li>
+        <li nz-menu-item *ngIf="columns.user.allowed"><label nz-checkbox [(ngModel)]="columns.user.active">User</label></li>
+        <li nz-menu-item *ngIf="columns.verifier.allowed"><label nz-checkbox [(ngModel)]="columns.verifier.active">Verifier</label></li>
+        <li nz-menu-item *ngIf="columns.filter.allowed"><label nz-checkbox [(ngModel)]="columns.filter.active">Filter</label></li>
+        <li nz-menu-item *ngIf="columns.entry.allowed"><label nz-checkbox [(ngModel)]="columns.entry.active">Entry</label></li>
+        <li nz-menu-item *ngIf="columns.options.allowed"><label nz-checkbox [(ngModel)]="columns.options.active">Options</label></li>
+        <li nz-menu-item *ngIf="columns.order.allowed"><label nz-checkbox [(ngModel)]="columns.order.active">Options</label></li>
+        <li nz-menu-item *ngIf="columns.state.allowed"><label nz-checkbox [(ngModel)]="columns.state.active">State</label></li>
+        <li nz-menu-item *ngIf="columns.created.allowed"><label nz-checkbox [(ngModel)]="columns.created.active">Creation date</label></li>
         <nz-divider></nz-divider>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showGermanColumn">German</label></li>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showRomanshColumn">Romansh</label></li>
-        <li nz-menu-item><label nz-checkbox [(ngModel)]="showCommentColumn">Comment</label></li>
+        <li nz-menu-item *ngIf="columns.german.allowed"><label nz-checkbox [(ngModel)]="columns.german.active">German</label></li>
+        <li nz-menu-item *ngIf="columns.germanGrammar.allowed"><label nz-checkbox [(ngModel)]="columns.germanGrammar.active">Grammar (de)</label></li>
+        <li nz-menu-item *ngIf="columns.germanGender.allowed"><label nz-checkbox [(ngModel)]="columns.germanGender.active">Gender (de)</label></li>
+        <li nz-menu-item *ngIf="columns.germanSemantics.allowed"><label nz-checkbox [(ngModel)]="columns.germanSemantics.active">Semantics (de)</label></li>
+        <li nz-menu-item *ngIf="columns.germanLink.allowed"><label nz-checkbox [(ngModel)]="columns.germanLink.active">Link (de)</label></li>
+        <li nz-menu-item *ngIf="columns.romansh.allowed"><label nz-checkbox [(ngModel)]="columns.romansh.active">Romansh</label></li>
+        <li nz-menu-item *ngIf="columns.romanshGrammar.allowed"><label nz-checkbox [(ngModel)]="columns.romanshGrammar.active">Grammar (rm)</label></li>
+        <li nz-menu-item *ngIf="columns.romanshGender.allowed"><label nz-checkbox [(ngModel)]="columns.romanshGender.active">Gender (rm)</label></li>
+        <li nz-menu-item *ngIf="columns.romanshSemantics.allowed"><label nz-checkbox [(ngModel)]="columns.romanshSemantics.active">Semantics (rm)</label></li>
+        <li nz-menu-item *ngIf="columns.romanshLink.allowed"><label nz-checkbox [(ngModel)]="columns.romanshLink.active">Link (rm)</label></li>
+        <li nz-menu-item *ngIf="columns.romanshConjugation.allowed"><label nz-checkbox [(ngModel)]="columns.romanshConjugation.active">Conjugation (rm)</label></li>
+        <li nz-menu-item *ngIf="columns.romanshAdditionalSearchTerms.allowed"><label nz-checkbox [(ngModel)]="columns.romanshAdditionalSearchTerms.active">Additional search terms (rm)</label></li>
+        <li nz-menu-item *ngIf="columns.category.allowed"><label nz-checkbox [(ngModel)]="columns.category.active">Category</label></li>
+        <li nz-menu-item *ngIf="columns.comment.allowed"><label nz-checkbox [(ngModel)]="columns.comment.active">Comment</label></li>
       </ul>
     </nz-dropdown-menu>
 
@@ -48,16 +61,30 @@
 >
   <thead>
     <tr>
-      <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="showCheckMultiple" nzLeft></th>
-      <th *ngIf="showUserColumn" nzLeft nzWidth="120px">User</th>
-      <th *ngIf="showFilterColumn" nzWidth="110px">Filter</th>
-      <th *ngIf="showEntryColumn" nzWidth="200px">Entry</th>
-      <th *ngIf="showOptionsColumn" nzWidth="110px">Actions</th>
-      <th *ngIf="showStateColumn" nzWidth="120px">State</th>
-      <th *ngIf="showCreatedColumn" nzWidth="120px">Created</th>
-      <th *ngIf="showGermanColumn">German</th>
-      <th *ngIf="showRomanshColumn">Romansh</th>
-      <th *ngIf="showCommentColumn">Comment</th>
+      <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="columns.checkMultiple.active" nzLeft nzWidth="70px"></th>
+      <th *ngIf="columns.user.active" nzLeft nzWidth="120px">User</th>
+      <th *ngIf="columns.verifier.active" nzLeft nzWidth="120px">Verifier</th>
+      <th *ngIf="columns.filter.active" nzWidth="110px">Filter</th>
+      <th *ngIf="columns.entry.active" nzWidth="200px">Entry</th>
+      <th *ngIf="columns.options.active" nzWidth="110px">Actions</th>
+      <th *ngIf="columns.order.active" nzWidth="110px">Order</th>
+      <th *ngIf="columns.state.active" nzWidth="120px">State</th>
+      <th *ngIf="columns.created.active" nzWidth="120px">Created</th>
+      <th *ngIf="columns.german.active">German</th>
+      <th *ngIf="columns.germanGrammar.active">Grammar (de)</th>
+      <th *ngIf="columns.germanGender.active">Gender (de)</th>
+      <th *ngIf="columns.germanSemantics.active">Semantics (de)</th>
+      <th *ngIf="columns.germanLink.active">Link (de)</th>
+      <th *ngIf="columns.romansh.active">Romansh</th>
+      <th *ngIf="columns.romanshGrammar.active">Grammar (rm)</th>
+      <th *ngIf="columns.romanshGender.active">Gender (rm)</th>
+      <th *ngIf="columns.romanshSemantics.active">Semantics (rm)</th>
+      <th *ngIf="columns.romanshLink.active">Link (rm)</th>
+      <th *ngIf="columns.romanshConjugation.active">Conjugation (rm)</th>
+      <th *ngIf="columns.romanshAdditionalSearchTerms.active">Additional search terms (rm)</th>
+      <th *ngIf="columns.category.active">Category</th>
+      <th *ngIf="columns.comment.active">Comment</th>
+      <th><!--empty columnt to take up space--></th>
     </tr>
   </thead>
   <tbody>
@@ -67,35 +94,54 @@
         [nzChecked]="setOfCheckedId.has(data.id)"
         [nzDisabled]="data.disabled"
         (nzCheckedChange)="onItemChecked(data.id, $event)"
-        *ngIf="showCheckMultiple"
+        *ngIf="columns.checkMultiple.active"
       ></td>
-      <td *ngIf="showUserColumn" nzLeft class="small">
+      <td *ngIf="columns.user.active" nzLeft class="small">
         <nz-tag [nzColor]="'geekblue'">{{ data.mostRecent.creatorRole }}</nz-tag><br>
         <ng-container *ngIf="data.mostRecent.userId">{{ data.mostRecent.userId }}</ng-container>
         {{ data.mostRecent.ip ? data.mostRecent.ip : '-' }}
       </td>
-      <td *ngIf="showFilterColumn" class="button-column">
+      <td *ngIf="columns.verifier.active" nzLeft class="small">
+        {{ data.mostRecent.verifierId }}
+      </td>
+      <td *ngIf="columns.filter.active" class="button-column">
         <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();">Filter User</button>
         <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" *ngIf="data.mostRecent.verifierId" style="margin-top: 4px;">Filter Verifier</button>
       </td>
-      <td *ngIf="showEntryColumn">
+      <td *ngIf="columns.entry.active">
         {{ data.mostRecent.entryValues.DStichwort }} ⇔ {{ data.mostRecent.entryValues.RStichwort }}
       </td>
-      <td *ngIf="showOptionsColumn" class="button-column">
+      <td *ngIf="columns.options.active" class="button-column">
         <button nz-button nzSize="small" nzType="primary" (click)="$event.stopPropagation();">Edit</button><br>
         <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data.id); $event.stopPropagation();">Delete</button>
       </td>
-      <td *ngIf="showStateColumn" class="small">
+      <td *ngIf="columns.order.active" class="button-column">
+        <button nz-button nzSize="small" nzType="primary" (click)="$event.stopPropagation();">Order A</button><br>
+        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="$event.stopPropagation();">Order B</button>
+      </td>
+      <td *ngIf="columns.state.active" class="small">
         <nz-tag [nzColor]="'red'">{{ data.mostRecent.verification }}</nz-tag><br>
         <nz-tag>{{ data.mostRecent.status }}</nz-tag>
       </td>
-      <td *ngIf="showCreatedColumn" class="small">
+      <td *ngIf="columns.created.active" class="small">
         {{ formateDate(data.mostRecent.timestamp) }}<br>
         {{ formateTime(data.mostRecent.timestamp) }}
       </td>
-      <td *ngIf="showGermanColumn">{{ data.mostRecent.entryValues.DStichwort }}</td>
-      <td *ngIf="showRomanshColumn">{{ data.mostRecent.entryValues.RStichwort }}</td>
-      <td *ngIf="showCommentColumn">{{ data.mostRecent.entryValues.maalr_comment }}</td>
+      <td *ngIf="columns.german.active">{{ data.mostRecent.entryValues.DStichwort }}</td>
+      <td *ngIf="columns.germanGrammar.active">{{ data.mostRecent.entryValues.DGrammatik }}</td>
+      <td *ngIf="columns.germanGender.active">{{ data.mostRecent.entryValues.DGenus }}</td>
+      <td *ngIf="columns.germanSemantics.active">{{ data.mostRecent.entryValues.DSubsemantik }}</td>
+      <td *ngIf="columns.germanLink.active">{{ data.mostRecent.entryValues.redirect_a }}</td>
+      <td *ngIf="columns.romansh.active">{{ data.mostRecent.entryValues.RStichwort }}</td>
+      <td *ngIf="columns.romanshGrammar.active">{{ data.mostRecent.entryValues.RGrammatik }}</td>
+      <td *ngIf="columns.romanshGender.active">{{ data.mostRecent.entryValues.RStichwort }}</td>
+      <td *ngIf="columns.romanshSemantics.active">{{ data.mostRecent.entryValues.RSubsemantik }}</td>
+      <td *ngIf="columns.romanshLink.active">{{ data.mostRecent.entryValues.redirect_b }}</td>
+      <td *ngIf="columns.romanshConjugation.active">{{ data.mostRecent.entryValues.RFlex }}</td>
+      <td *ngIf="columns.romanshAdditionalSearchTerms.active">{{ data.mostRecent.entryValues.RTags }}</td>
+      <td *ngIf="columns.category.active">{{ data.mostRecent.entryValues.Bearbeitungshinweis }}</td>
+      <td *ngIf="columns.comment.active">{{ data.mostRecent.entryValues.maalr_comment }}</td>
+      <td><!--empty columnt to take up space--></td>
     </tr>
   </tbody>
 </nz-table>
@@ -104,7 +150,7 @@
 <div class="footer-actions">
   <div class="multi">
     <nz-switch
-    [(ngModel)]="showCheckMultiple"
+    [(ngModel)]="columns.checkMultiple.active"
     [nzCheckedChildren]="checkedTemplate"
     [nzUnCheckedChildren]="unCheckedTemplate"
     ></nz-switch>
@@ -113,7 +159,7 @@
     <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
     <br>
 
-    <button nz-button nzType="primary" nzDanger *ngIf="showCheckMultiple && setOfCheckedId.size !== 0">Reject selected</button>
+    <button nz-button nzType="primary" nzDanger *ngIf="columns.checkMultiple.active && setOfCheckedId.size !== 0">Reject selected</button>
   </div>
 
   <nz-pagination

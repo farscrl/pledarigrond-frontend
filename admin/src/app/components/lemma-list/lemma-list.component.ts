@@ -7,6 +7,7 @@ import { Page } from 'src/app/models/page';
 import * as moment from 'moment';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { LemmaListColumn } from 'src/app/models/lemma-list-column';
 
 @Component({
   selector: 'app-lemma-list',
@@ -16,10 +17,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 export class LemmaListComponent implements OnInit {
 
   @Input()
-  showCreatorData = false;
-
-  @Input()
-  showDetailedColumns = false;
+  columns: LemmaListColumn = new LemmaListColumn();
 
   @Input() set lexEntries(page: Page<LexEntry> | undefined) {
     this.resultPage = page;
@@ -46,31 +44,6 @@ export class LemmaListComponent implements OnInit {
   // used to pass math functions to template
   math = Math;
 
-  // column options
-  // // creator
-  showUserColumn = true;
-  showFilterColumn = true;
-  showEntryColumn = true;
-  showOptionsColumn = true;
-  showStateColumn = true;
-  showCreatedColumn = true;
-  // // lemma
-  showGermanColumn = false;
-  showGermanGrammColumn = false;
-  showGermanGenusColumn = false;
-  showGermanSemanticsColumn = false;
-  showGermanLinkColumn = false;
-  showRomanshColumn = false;
-  showRomansGrammColumn = false;
-  showRomanshGenusColumn = false;
-  showRomanshSemanticsColumn = false;
-  showRomanshLinkColumn = false;
-  showCategoryColumn = false;
-  showConjugationColumn = false;
-  showAdditionalSearchTermsColumn = false;
-  showCommentColumn = false;
-  // // commands
-  showCheckMultiple = false;
 
   resultPage?: Page<LexEntry>;
   checked = false;
@@ -87,14 +60,6 @@ export class LemmaListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.showCreatorData) {
-      this.showUserColumn = true;
-      this.showFilterColumn = true;
-      this.showEntryColumn = true;
-      this.showOptionsColumn = true;
-      this.showStateColumn = true;
-      this.showCreatedColumn = true;
-    }
   }
 
   exportResults() {

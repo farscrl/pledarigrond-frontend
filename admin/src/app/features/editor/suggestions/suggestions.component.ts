@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorQuery } from 'src/app/models/editor-query';
+import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
 import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
 import { Page } from 'src/app/models/page';
 import { EditorService } from 'src/app/services/editor.service';
@@ -14,6 +15,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 export class SuggestionsComponent implements OnInit {
 
   results: Page<LexEntry>  = new Page<LexEntry>();
+  columns: LemmaListColumn = new LemmaListColumn();
 
   currentEditorQuery?: EditorQuery;
 
@@ -25,6 +27,7 @@ export class SuggestionsComponent implements OnInit {
   constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
+    this.columns = this.generateColumns();
   }
 
   search(editorQuery: EditorQuery) {
@@ -42,5 +45,35 @@ export class SuggestionsComponent implements OnInit {
 
   showLexEntryDetails(lexEntry: LexEntryUi) {
     this.selectedLexEntry = lexEntry;
+  }
+
+  private generateColumns(): LemmaListColumn {
+    return {
+      user: new LemmaListColumnDetail(true, true),
+      verifier: new LemmaListColumnDetail(false, false),
+      filter: new LemmaListColumnDetail(true, true),
+      entry: new LemmaListColumnDetail(true, true),
+      options: new LemmaListColumnDetail(true, true),
+      order: new LemmaListColumnDetail(false, false),
+      state: new LemmaListColumnDetail(true, true),
+      created: new LemmaListColumnDetail(true, true),
+
+      german: new LemmaListColumnDetail(true, false),
+      germanGrammar: new LemmaListColumnDetail(false, false),
+      germanGender: new LemmaListColumnDetail(false, false),
+      germanSemantics: new LemmaListColumnDetail(false, false),
+      germanLink: new LemmaListColumnDetail(false, false),
+      romansh: new LemmaListColumnDetail(true, false),
+      romanshGrammar: new LemmaListColumnDetail(false, false),
+      romanshGender: new LemmaListColumnDetail(false, false),
+      romanshSemantics: new LemmaListColumnDetail(false, false),
+      romanshLink: new LemmaListColumnDetail(false, false),
+      romanshConjugation: new LemmaListColumnDetail(false, false),
+      romanshAdditionalSearchTerms: new LemmaListColumnDetail(false, false),
+      category: new LemmaListColumnDetail(false, false),
+      comment: new LemmaListColumnDetail(true, false),
+
+      checkMultiple: new LemmaListColumnDetail(true, true),
+    }
   }
 }
