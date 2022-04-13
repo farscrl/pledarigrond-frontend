@@ -97,7 +97,7 @@
         *ngIf="columns.checkMultiple.active"
       ></td>
       <td *ngIf="columns.user.active" nzLeft class="small">
-        <nz-tag [nzColor]="'geekblue'">{{ data.mostRecent.creatorRole }}</nz-tag><br>
+        <app-user-role [role]="data.mostRecent.creatorRole"></app-user-role><br>
         <ng-container *ngIf="data.mostRecent.userId">{{ data.mostRecent.userId }}</ng-container>
         {{ data.mostRecent.ip ? data.mostRecent.ip : '-' }}
       </td>
@@ -120,8 +120,8 @@
         <button nz-button nzSize="small" nzType="primary" nzDanger (click)="$event.stopPropagation();">Order B</button>
       </td>
       <td *ngIf="columns.state.active" class="small">
-        <nz-tag [nzColor]="'red'">{{ data.mostRecent.verification }}</nz-tag><br>
-        <nz-tag>{{ data.mostRecent.status }}</nz-tag>
+        <app-verification [verification]="data.mostRecent.verification"></app-verification><br>
+        <app-status [status]="data.mostRecent.status"></app-status>
       </td>
       <td *ngIf="columns.created.active" class="small">
         {{ formateDate(data.mostRecent.timestamp) }}<br>

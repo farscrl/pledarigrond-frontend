@@ -36,6 +36,9 @@ import { LexiconFilterComponent } from './components/filters/lexicon-filter/lexi
 import { ExportComponent } from './features/editor/export/export.component';
 import { NoopAnimationPlayer } from '@angular/animations';
 import { NavigationHorizontalComponent } from './components/navigation-horizontal/navigation-horizontal.component';
+import { UserRoleComponent } from './components/data/user-role/user-role.component';
+import { StatusComponent } from './components/data/status/status.component';
+import { VerificationComponent } from './components/data/verification/verification.component';
 
 registerLocaleData(de);
 
@@ -65,7 +68,10 @@ export function tokenGetter() {
     LemmaListComponent,
     LexiconFilterComponent,
     ExportComponent,
-    NavigationHorizontalComponent
+    NavigationHorizontalComponent,
+    UserRoleComponent,
+    StatusComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

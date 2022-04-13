@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { EditorRole, User } from "./user";
 
 export class LemmaVersion {
   userInfo?: User;
@@ -10,7 +10,7 @@ export class LemmaVersion {
   status: Status = 'UNDEFINED';
   approved: boolean = false;
   verification: Verification = 'UNVERIFIED';
-  creatorRole?: string;
+  creatorRole?: EditorRole;
   internalId: number = 0;
   verifierId?: any;
   lexEntryId?: any;

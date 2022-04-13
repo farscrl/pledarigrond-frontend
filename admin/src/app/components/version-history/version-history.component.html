@@ -16,11 +16,11 @@
   <tbody>
     <tr *ngFor="let data of versionHistory">
       <td>
-        <nz-tag [nzColor]="'red'">{{ data.verification }}</nz-tag><br>
-        <nz-tag>{{ data.status }}</nz-tag>
+        <app-verification [verification]="data.verification"></app-verification><br>
+        <app-status [status]="data.status"></app-status>
       </td>
       <td>
-        <nz-tag [nzColor]="'geekblue'">{{ data.userId }}</nz-tag><br>
+        <app-user-role [role]="data.creatorRole"></app-user-role><br>
         {{ data.ip }}
       </td>
       <td>

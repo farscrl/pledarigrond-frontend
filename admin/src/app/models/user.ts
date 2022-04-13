@@ -20,4 +20,4 @@ export class Roles {
   namesRole: EditorRole = 'NONE';
 }
 
-export type EditorRole = 'EDITOR'|'NONE';
+export type EditorRole = 'ADMIN'|'EDITOR'|'GUEST'|'NONE';
