@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { LemmaVersion } from 'src/app/models/lemma-version';
+import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
+import { Page } from 'src/app/models/page';
+import { EditorSearchCriteria, SearchCriteria } from 'src/app/models/search-criteria';
+import { EditorService } from 'src/app/services/editor.service';
+import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
   selector: 'app-lexicon',
@@ -7,9 +13,60 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LexiconComponent implements OnInit {
 
-  constructor() { }
+  searchCriteria: EditorSearchCriteria = new EditorSearchCriteria();
+
+  results: Page<LemmaVersion>  = new Page<LemmaVersion>();
+
+  // we only have lemma-versions. the list component expects lex-entries. Thus, we generate fake lex-entries with only one version
+  virtualResults: Page<LexEntry> = new Page<LexEntry>();
+
+  selectedLexEntry?: LexEntryUi;
+
+  constructor(private languageSelectionService: LanguageSelectionService, private editorService: EditorService) { }
 
   ngOnInit(): void {
   }
 
+  search(searchCriteria: EditorSearchCriteria) {
+    this.searchCriteria = searchCriteria;
+    this.changePage(0);
+  }
+
+  changePage(page: number) {
+    this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, page).subscribe(page => {
+      console.log(page);
+      this.results = page;
+      this.virtualResults = this.lemmaVersionPageToLexEntryPage(page);
+    });
+  }
+
+  showLexEntryDetails(lexEntry: LexEntryUi) {
+    // as we only have fake lex-entries, we load the complete lex-entry to show the details
+    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id).subscribe((data) => {
+      this.selectedLexEntry = data as LexEntryUi;
+    });
+  }
+
+  private lemmaVersionPageToLexEntryPage(page: Page<LemmaVersion>): Page<LexEntry> {
+    const virtualPage = new Page<LexEntry>();
+    page.content.forEach(el => {
+      const lexEntry = new LexEntry();
+      lexEntry.current = el;
+      lexEntry.mostRecent = el;
+      lexEntry.id = el.lexEntryId;
+      virtualPage.content.push(lexEntry);
+    });
+    virtualPage.pageable = page.pageable;
+    virtualPage.last = page.last;
+    virtualPage.totalPages = page.totalPages;
+    virtualPage.totalElements = page.totalElements;
+    virtualPage.first = page.first;
+    virtualPage.size = page.size;
+    virtualPage.number = page.number;
+    virtualPage.sort = page.sort;
+    virtualPage.numberOfElements = page.numberOfElements;
+    virtualPage.empty = page.empty;
+
+    return virtualPage;
+  }
 }

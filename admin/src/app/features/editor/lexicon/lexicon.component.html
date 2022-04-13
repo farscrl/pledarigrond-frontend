@@ -5,7 +5,7 @@
         <nz-page-header-title>Lexikon</nz-page-header-title>
         <nz-page-header-subtitle>Find and modify all entries</nz-page-header-subtitle>
       </nz-page-header>
-      <app-lexicon-filter></app-lexicon-filter>
+      <app-lexicon-filter [searchCriteria]="searchCriteria" (searchCriteriaChange)="search($event)"></app-lexicon-filter>
     </nz-content>
 
     <nz-content>
@@ -13,13 +13,19 @@
         <nz-page-header-title>Lemma History</nz-page-header-title>
         <nz-page-header-subtitle>See all the changes to the selected lemma</nz-page-header-subtitle>
       </nz-page-header>
-      <app-version-history></app-version-history>
+      <app-version-history
+        [lexEntry]="selectedLexEntry"
+        ></app-version-history>
     </nz-content>
   </div>
 
   <div nz-col nzSpan="15" class="right-side">
     <nz-content>
-      <app-lemma-list></app-lemma-list>
+      <app-lemma-list
+        [lexEntries]="virtualResults"
+        (updatePage)="changePage($event)"
+        (showDetailsForLexEntry)="showLexEntryDetails($event)"
+        ></app-lemma-list>
     </nz-content>
   </div>
 </div>
