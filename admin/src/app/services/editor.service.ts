@@ -68,9 +68,8 @@ export class EditorService {
     return this.httpClient.get<LexEntry>(this.generateUrl(language, 'lex_entries/' + id));
   }
 
-  dropEntry(language: Language, lexEntry: LexEntry) {
-    const body: any = Object.assign({}, lexEntry);
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'drop_entry'), body);
+  dropEntry(language: Language, entryId: string) {
+    return this.httpClient.delete<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId));
   }
 
   getChoiceFieldsSuggestions(language: Language) {

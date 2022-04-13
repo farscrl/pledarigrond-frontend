@@ -5,6 +5,8 @@ import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
 import { Page } from 'src/app/models/page';
 
 import * as moment from 'moment';
+import { EditorService } from 'src/app/services/editor.service';
+import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
   selector: 'app-lemma-list',
@@ -77,7 +79,12 @@ export class LemmaListComponent implements OnInit {
   listOfLexEntries: LexEntryUi[] = [];
   setOfCheckedId = new Set<string>();
 
-  constructor(private modalService: NzModalService, private viewContainerRef: ViewContainerRef) { }
+  constructor(
+    private modalService: NzModalService,
+    private viewContainerRef: ViewContainerRef,
+    private editorService: EditorService,
+    private languageSelectionService: LanguageSelectionService
+  ) { }
 
   ngOnInit(): void {
     if (this.showCreatorData) {
@@ -159,5 +166,11 @@ export class LemmaListComponent implements OnInit {
 
   formateTime(timestamp: number): string {
     return moment(timestamp).format("HH:mm:ss")
+  }
+
+  dropEntry(entryId: string) {
+    this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe(() => {
+      this.updatePage.emit(this.resultPage!.number);
+    })
   }
 }

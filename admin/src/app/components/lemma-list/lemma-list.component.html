@@ -82,8 +82,8 @@
         {{ data.mostRecent.entryValues.DStichwort }} ⇔ {{ data.mostRecent.entryValues.RStichwort }}
       </td>
       <td *ngIf="showOptionsColumn" class="button-column">
-        <button nz-button nzSize="small" nzType="primary">Edit</button><br>
-        <button nz-button nzSize="small" nzType="primary" nzDanger>Delete</button>
+        <button nz-button nzSize="small" nzType="primary" (click)="$event.stopPropagation();">Edit</button><br>
+        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data.id); $event.stopPropagation();">Delete</button>
       </td>
       <td *ngIf="showStateColumn" class="small">
         <nz-tag [nzColor]="'red'">{{ data.mostRecent.verification }}</nz-tag><br>
