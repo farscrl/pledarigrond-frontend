@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Idiom, SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { SimpleModalService } from "ngx-simple-modal";
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { ExportComponent } from 'src/app/features/export/export.component';
 
 @Component({
   selector: 'app-footer',
@@ -37,6 +38,11 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   openSuggestionModal() {
     this.simpleModalService.addModal(SuggestionComponent, null)
+      .subscribe();
+  }
+
+  openDownloadModal() {
+    this.simpleModalService.addModal(ExportComponent, null)
       .subscribe();
   }
 }

@@ -48,6 +48,8 @@ import { InfoSurmiranDeComponent } from './features/static/info/surmiran/info-su
 import { SuggestionComponent } from './components/footer/suggestion/suggestion.component';
 import { SuggestModificationComponent } from './features/search/suggest-modification/suggest-modification.component';
 import { VerbsModalComponent } from './features/search/verbs-modal/verbs-modal.component';
+import { ExportComponent } from './features/export/export.component';
+import { TranslateCutPipe } from './pipes/translate-cut.pipe';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -97,7 +99,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     InfoSurmiranDeComponent,
     SuggestionComponent,
     SuggestModificationComponent,
-    VerbsModalComponent
+    VerbsModalComponent,
+    ExportComponent,
+    TranslateCutPipe
   ],
   imports: [
     BrowserModule,
@@ -129,7 +133,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           wrapperDefaultClasses: 'pg-modal pg-modal--fade',
           wrapperClass: 'pg-modal--fade-in',
           animationDuration: 0,
-          autoFocus: true
+          autoFocus: false
         }
       }
     ),

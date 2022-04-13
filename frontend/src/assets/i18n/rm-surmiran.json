@@ -171,5 +171,12 @@
   },
   "pg": {
     "version": "versiun"
+  },
+  "export": {
+    "title": ">>>Export<<<",
+    "login": ">>>Vus stuais As annunziar l'emprim, per pudair telechargiar las datas dal Pledari Grond.<<<",
+    "login_button": ">>>As annunziar<<<",
+    "licence": ">>>Las datas dal Pledari Grond èn licenziadas sut CC Attribution 4.0 International (|CC BY 4.0|)<<<",
+    "download": ">>>Telechargiar<<<"
   }
 }

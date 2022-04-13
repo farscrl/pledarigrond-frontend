@@ -171,5 +171,12 @@
   },
   "pg": {
     "version": "Version"
+  },
+  "export": {
+    "title": "Export",
+    "login": "Um die Daten exportieren zu können, müssen Sie sich vorher anmelden.",
+    "login_button": "Zum Login",
+    "licence": "Die Daten des Pledari Grond stehen unter der CC Attribution 4.0 International (|CC BY 4.0|) Lizenz.",
+    "download": "Jetzt herunterladen"
   }
 }

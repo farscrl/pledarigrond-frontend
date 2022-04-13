@@ -1,0 +1,15 @@
+<div class="pg-modal-wrapper">
+  <div class="modal-content" *ngIf="authService.isLoggedIn()">
+    <h3>{{ 'export.title' | translate }}</h3>
+    <p>{{ 'export.licence' | translate | translateCut:'0' }}<a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank">{{ 'export.licence' | translate | translateCut:'1' }}</a>{{ 'export.licence' | translate | translateCut:'2' }}</p>
+  </div>
+  <div class="modal-content" *ngIf="!authService.isLoggedIn()">
+    <h3>{{ 'export.title' | translate }}</h3>
+    <p>{{ 'export.login' | translate }}</p>
+  </div>
+  <div class="pg-modal-footer">
+    <a class="btn" (click)="closeOverlay()">{{ 'verbOverlayPopup.closeButton' | translate }}</a>
+    <a class="btn btn-primary" (click)="export()" *ngIf="authService.isLoggedIn()"><i></i> {{ 'export.download' | translate }} </a>
+    <a class="btn btn-primary" (click)="login()" *ngIf="!authService.isLoggedIn()"><i></i> {{ 'export.login_button' | translate }} </a>
+  </div>
+</div>
