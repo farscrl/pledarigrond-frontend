@@ -112,7 +112,6 @@ export class SearchContentComponent implements OnInit {
 
   private executeSarch(page = 0) {
     this.searchService.getResults(this.selectedLanguageService.getSelectedLanguageUrlSegment(), this.searchCriteria, page).subscribe(data => {
-      console.log(data);
       this.searchResults = data.content;
       this.pageSize = data.size;
       this.startIndex = (data.number * data.size) + 1;
