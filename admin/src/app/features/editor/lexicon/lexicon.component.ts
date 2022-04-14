@@ -101,7 +101,7 @@ export class LexiconComponent implements OnInit {
       category: new LemmaListColumnDetail(true, false),
       comment: new LemmaListColumnDetail(true, false),
 
-      checkMultiple: new LemmaListColumnDetail(true, true),
+      checkMultiple: new LemmaListColumnDetail(false, false),
     }
   }
 }

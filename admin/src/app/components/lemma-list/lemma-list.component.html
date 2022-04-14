@@ -149,17 +149,19 @@
 
 <div class="footer-actions">
   <div class="multi">
-    <nz-switch
-    [(ngModel)]="columns.checkMultiple.active"
-    [nzCheckedChildren]="checkedTemplate"
-    [nzUnCheckedChildren]="unCheckedTemplate"
-    ></nz-switch>
-    <label style="margin-left: 12px;">Enable Multi edit</label>
-    <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
-    <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
-    <br>
+    <ng-container *ngIf="columns.checkMultiple.allowed">
+      <nz-switch
+      [(ngModel)]="columns.checkMultiple.active"
+      [nzCheckedChildren]="checkedTemplate"
+      [nzUnCheckedChildren]="unCheckedTemplate"
+      ></nz-switch>
+      <label style="margin-left: 12px;">Enable Multi edit</label>
+      <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+      <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+      <br>
 
-    <button nz-button nzType="primary" nzDanger *ngIf="columns.checkMultiple.active && setOfCheckedId.size !== 0">Reject selected</button>
+      <button nz-button nzType="primary" nzDanger *ngIf="columns.checkMultiple.active && setOfCheckedId.size !== 0">Reject selected</button>
+    </ng-container>
   </div>
 
   <nz-pagination

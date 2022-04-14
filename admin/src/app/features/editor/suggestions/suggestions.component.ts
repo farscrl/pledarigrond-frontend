@@ -73,7 +73,7 @@ export class SuggestionsComponent implements OnInit {
       category: new LemmaListColumnDetail(false, false),
       comment: new LemmaListColumnDetail(true, false),
 
-      checkMultiple: new LemmaListColumnDetail(true, true),
+      checkMultiple: new LemmaListColumnDetail(true, false),
     }
   }
 }
