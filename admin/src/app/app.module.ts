@@ -40,6 +40,7 @@ import { UserRoleComponent } from './components/data/user-role/user-role.compone
 import { StatusComponent } from './components/data/status/status.component';
 import { VerificationComponent } from './components/data/verification/verification.component';
 import { MainEntryComponent } from './features/modify-entry/main-entry/main-entry.component';
+import { interceptorProviders } from './auth/interceptors';
 
 registerLocaleData(de);
 
@@ -94,6 +95,7 @@ export function tokenGetter() {
   providers: [
     UserLoggedInGuard,
     UserNotLoggedInGuard,
+    interceptorProviders,
     { provide: NZ_I18N, useValue: de_DE }
   ],
   bootstrap: [AppComponent]
