@@ -13,9 +13,9 @@
     <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users">Utilisaders</li>
   </ul>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu-right">
-    <span>de</span>
+    <a [class.lang_selected]="frontendLanguage === 'en'" (click)="changeFrontendLanguage('en')">en</a>
     <span> | </span>
-    <span>rm</span>
+    <a [class.lang_selected]="frontendLanguage === 'rm'" (click)="changeFrontendLanguage('rm')">rm</a>
     <span class="logout" (click)="logout()">
       <i nz-icon nzType="logout" nzTheme="outline"></i>
     </span>

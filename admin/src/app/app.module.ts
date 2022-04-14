@@ -8,7 +8,7 @@ import { de_DE } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -34,15 +34,20 @@ import { VersionHistoryComponent } from './components/version-history/version-hi
 import { LemmaListComponent } from './components/lemma-list/lemma-list.component';
 import { LexiconFilterComponent } from './components/filters/lexicon-filter/lexicon-filter.component';
 import { ExportComponent } from './features/editor/export/export.component';
-import { NoopAnimationPlayer } from '@angular/animations';
 import { NavigationHorizontalComponent } from './components/navigation-horizontal/navigation-horizontal.component';
 import { UserRoleComponent } from './components/data/user-role/user-role.component';
 import { StatusComponent } from './components/data/status/status.component';
 import { VerificationComponent } from './components/data/verification/verification.component';
 import { MainEntryComponent } from './features/modify-entry/main-entry/main-entry.component';
 import { interceptorProviders } from './auth/interceptors';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 registerLocaleData(de);
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -91,6 +96,14 @@ export function tokenGetter() {
       }
     }),
     ReactiveFormsModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (HttpLoaderFactory),
+          deps: [HttpClient]
+      }
+  }),
   ],
   providers: [
     UserLoggedInGuard,
