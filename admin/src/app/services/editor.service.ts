@@ -73,6 +73,11 @@ export class EditorService {
     return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/'), body);
   }
 
+  modifyAndAccepptLexEntry(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
+    const body: any = Object.assign({}, lemmaVersion);
+    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_and_accept_version'), body);
+  }
+
   dropEntry(language: Language, entryId: string) {
     return this.httpClient.delete<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId));
   }

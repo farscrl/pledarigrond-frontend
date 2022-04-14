@@ -26,20 +26,7 @@ export class MainEntryComponent implements OnInit {
   constructor(private modal: NzModalRef, private fb: FormBuilder, private editorService: EditorService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
-    if (this.lexEntryId) {
-      this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntryId).subscribe(entry => {
-        this.lexEntry = entry;
-        this.lemmaVersion = JSON.parse(JSON.stringify(entry.current));
-        this.setUpForm();
-      });
-    } else {
-      this.lemmaVersion = new LemmaVersion();
-      this.setUpForm();
-    }
-  }
-
-  submitForm(): void {
-
+    this.reset()
   }
 
   cancel() {
@@ -47,13 +34,25 @@ export class MainEntryComponent implements OnInit {
   }
 
   reset() {
-    // TODO: implement me
-    this.modal.close();
+    this.lemmaVersion = new LemmaVersion();
+    this.setUpForm();
+
+    if (this.lexEntryId) {
+      this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntryId).subscribe(entry => {
+        this.lexEntry = entry;
+        this.lemmaVersion = JSON.parse(JSON.stringify(entry.current));
+        this.setUpForm();
+      });
+    }
   }
 
   save() {
     if (this.validateForm.valid) {
-      this.saveNewEntry();
+      if (!!this.lexEntryId) {
+        this.updateEntry();
+      } else {
+        this.saveNewEntry();
+      }
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -96,7 +95,19 @@ export class MainEntryComponent implements OnInit {
     lexEntry.current = lemmaVersion;
     lexEntry.mostRecent = lemmaVersion;
     this.editorService.newLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry).subscribe(data => {
-      console.log(data);
+      this.cancel();
+      this.modal.triggerOk();
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  private updateEntry() {
+    const lemmaVersion = new LemmaVersion();
+    lemmaVersion.entryValues = JSON.parse(JSON.stringify(this.validateForm.value));
+    this.editorService.modifyAndAccepptLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
+      this.cancel();
+      this.modal.triggerOk();
     }, error => {
       console.error(error);
     });

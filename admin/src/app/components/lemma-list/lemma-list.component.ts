@@ -159,7 +159,11 @@ export class LemmaListComponent implements OnInit {
       nzComponentParams: {
         lexEntryId: entryId,
       },
-      nzOnOk: () => this.updatePage.emit(this.resultPage!.number)
+      nzOnOk: () => this.editWindowClosed()
     });
+  }
+
+  private editWindowClosed() {
+    this.updatePage.emit(this.resultPage!.number);
   }
 }

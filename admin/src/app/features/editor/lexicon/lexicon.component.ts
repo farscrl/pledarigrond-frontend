@@ -37,13 +37,15 @@ export class LexiconComponent implements OnInit {
 
   changePage(page: number) {
     this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, page).subscribe(page => {
-      console.log(page);
       this.results = page;
       this.virtualResults = this.lemmaVersionPageToLexEntryPage(page);
     });
   }
 
   showLexEntryDetails(lexEntry: LexEntryUi) {
+    if (!lexEntry || !lexEntry.id) {
+      return;
+    }
     // as we only have fake lex-entries, we load the complete lex-entry to show the details
     this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!).subscribe((data) => {
       this.selectedLexEntry = data as LexEntryUi;
