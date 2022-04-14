@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EditorQuery } from '../models/editor-query';
@@ -23,7 +23,7 @@ export class EditorService {
 
     params = this.editorQueryToHttpParam(editorQuery, params);
 
-    if (page !== 1) {
+    if (page !== 0) {
       params = params.set('page', page);
     }
 
@@ -37,21 +37,7 @@ export class EditorService {
   searchLemmaVersions(language: Language, searchCriteria: SearchCriteria, page: number): Observable<Page<LemmaVersion>> {
     let params: HttpParams = new HttpParams();
 
-    if (!!searchCriteria.searchPhrase && searchCriteria.searchPhrase !== "") {
-      params = params.set('searchPhrase', searchCriteria.searchPhrase);
-    }
-
-    if (!!searchCriteria.searchDirection && searchCriteria.searchDirection !== 'BOTH') {
-      params = params.set('searchDirection', searchCriteria.searchDirection);
-    }
-
-    if (!!searchCriteria.searchMethod && searchCriteria.searchMethod !== 'NORMAL') {
-      params = params.set('searchMethod', searchCriteria.searchMethod);
-    }
-
-    if (!!searchCriteria.suggestions && (searchCriteria.suggestions)) {
-      params = params.set('suggestions', searchCriteria.suggestions);
-    }
+    params = this.searchCriteriaToHttpParam(searchCriteria, params);
 
     if (page !== 0) {
       params = params.set('page', page);
@@ -82,8 +68,49 @@ export class EditorService {
     return this.httpClient.delete<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId));
   }
 
+  rejectEntry(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
+    const body: any = Object.assign({}, lemmaVersion);
+    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/reject_version'), body);
+  }
+
   getChoiceFieldsSuggestions(language: Language) {
     return this.httpClient.get<any>(this.generateUrl(language, 'search_suggestions_choice'));
+  }
+
+  exportFieldsByEditorQuery(language: Language, editorQuery: EditorQuery, fields: string[]): Observable<Blob> {
+    let params: HttpParams = new HttpParams();
+
+    params = this.editorQueryToHttpParam(editorQuery, params);
+    const body: any = Object.assign({}, { fields: fields });
+
+    let zipHeaders = new HttpHeaders();
+    zipHeaders = zipHeaders.set('Accept', 'application/zip');
+
+    const httpOptions = {
+      params: params,
+      headers: zipHeaders,
+      responseType: 'blob' as 'json',
+    };
+
+    return this.httpClient.post<Blob>(this.generateUrl(language, 'lex_entries_export'), body, httpOptions);
+  }
+
+  exportFieldsBySearchCriteria(language: Language, searchCriteria: SearchCriteria, fields: string[]): Observable<Blob> {
+    let params: HttpParams = new HttpParams();
+
+    params = this.searchCriteriaToHttpParam(searchCriteria, params);
+    const body: any = Object.assign({}, { fields: fields });
+
+    let zipHeaders = new HttpHeaders();
+    zipHeaders = zipHeaders.set('Accept', 'application/zip');
+
+    const httpOptions = {
+      params: params,
+      headers: zipHeaders,
+      responseType: 'blob' as 'json',
+    };
+
+    return this.httpClient.post<Blob>(this.generateUrl(language, 'search_export'), body, httpOptions);
   }
 
   private generateUrl(language: Language, segment: string) {
@@ -109,6 +136,26 @@ export class EditorService {
 
     if (!!editorQuery.verifier) {
       params = params.set('verifier', editorQuery.verifier);
+    }
+
+    return params;
+  }
+
+  private searchCriteriaToHttpParam(searchCriteria: SearchCriteria, params: HttpParams): HttpParams {
+    if (!!searchCriteria.searchPhrase && searchCriteria.searchPhrase !== "") {
+      params = params.set('searchPhrase', searchCriteria.searchPhrase);
+    }
+
+    if (!!searchCriteria.searchDirection && searchCriteria.searchDirection !== 'BOTH') {
+      params = params.set('searchDirection', searchCriteria.searchDirection);
+    }
+
+    if (!!searchCriteria.searchMethod && searchCriteria.searchMethod !== 'NORMAL') {
+      params = params.set('searchMethod', searchCriteria.searchMethod);
+    }
+
+    if (!!searchCriteria.suggestions && (searchCriteria.suggestions)) {
+      params = params.set('suggestions', searchCriteria.suggestions);
     }
 
     return params;
