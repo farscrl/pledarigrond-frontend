@@ -9,6 +9,8 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { LemmaListColumn } from 'src/app/models/lemma-list-column';
 import { MainEntryComponent } from 'src/app/features/modify-entry/main-entry/main-entry.component';
+import { SearchCriteria } from 'src/app/models/search-criteria';
+import { EditorQuery } from 'src/app/models/editor-query';
 
 @Component({
   selector: 'app-lemma-list',
@@ -19,6 +21,9 @@ export class LemmaListComponent implements OnInit {
 
   @Input()
   columns: LemmaListColumn = new LemmaListColumn();
+
+  @Input()
+  filter?: SearchCriteria | EditorQuery;
 
   @Input() set lexEntries(page: Page<LexEntry> | undefined) {
     this.resultPage = page;
@@ -70,6 +75,7 @@ export class LemmaListComponent implements OnInit {
       nzClosable: false,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
+        filter: this.filter,
       },
     });
   }
