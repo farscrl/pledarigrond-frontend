@@ -35,6 +35,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       if (this.usernameSubscription) {
         this.usernameSubscription.unsubscribe();
       }
+      if (this.frontendLanguageSubscription) {
+        this.frontendLanguageSubscription?.unsubscribe();
+      }
   }
 
   logout() {
