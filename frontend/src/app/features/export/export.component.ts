@@ -31,7 +31,7 @@ export class ExportComponent extends SimpleModalComponent<null, null>  implement
 
   export() {
     this.exportService.getJsonZip(this.selectedLanguageService.getSelectedLanguageUrlSegment()).subscribe(data => {
-      this.downloadFile(data, "pledarigrond_export_json_" + this.selectedLanguageService.getSelectedLanguageUrlSegment() + ".zip", "application/zip ");
+      this.downloadFile(data, "pledarigrond_export_json_" + this.selectedLanguageService.getSelectedLanguageUrlSegment() + ".zip", "application/zip");
     });
   }
 
