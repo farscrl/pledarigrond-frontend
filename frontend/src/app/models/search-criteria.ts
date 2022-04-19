@@ -8,3 +8,11 @@ export class SearchCriteria {
 
 export type SearchDirection = 'BOTH'|'ROMANSH'|'GERMAN';
 export type SearchMethod = 'NORMAL'|'INTERN'|'PREFIX'|'SUFFIX'|'EXACT';
+
+export class SearchCriteriaUrl {
+  searchPhrase: string | null = null;
+  searchDirection: 'romansh' | 'german' | null = null;
+  searchMethod: 'intern' | 'prefix' | 'suffix' | 'exact' | null = null;
+  highlight: boolean | null = null;
+  suggestions: boolean | null = null;
+}

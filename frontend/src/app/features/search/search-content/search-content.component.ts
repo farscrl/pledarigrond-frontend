@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LemmaVersion } from 'src/app/models/lemma-version';
-import { SearchCriteria } from 'src/app/models/search-criteria';
+import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { SimpleModalService } from "ngx-simple-modal";
 import { VerbsModalComponent } from '../verbs-modal/verbs-modal.component';
 import { SuggestModificationComponent } from '../suggest-modification/suggest-modification.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-content',
@@ -29,13 +30,60 @@ export class SearchContentComponent implements OnInit {
     private searchService: SearchService,
     private selectedLanguageService: SelectedLanguageService,
     private translateService: TranslateService,
-    private simpleModalService: SimpleModalService) { }
+    private simpleModalService: SimpleModalService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    if (this.activatedRoute.snapshot.queryParams['searchPhrase'] !== "") {
+      this.searchCriteria.searchPhrase = this.activatedRoute.snapshot.queryParams['searchPhrase'];
+    }
+    if (this.activatedRoute.snapshot.queryParams['searchDirection'] !== "") {
+      switch(this.activatedRoute.snapshot.queryParams['searchDirection']) {
+        case 'romansh':
+          this.searchCriteria.searchDirection = 'ROMANSH';
+          break;
+        case 'german':
+          this.searchCriteria.searchDirection = 'GERMAN';
+          break;
+        default:
+          this.searchCriteria.searchDirection = 'BOTH';
+      }
+    }
+    if (this.activatedRoute.snapshot.queryParams['searchMethod'] !== "") {
+      switch(this.activatedRoute.snapshot.queryParams['searchMethod']) {
+        case 'intern':
+          this.searchCriteria.searchMethod = 'INTERN';
+          break;
+        case 'prefix':
+          this.searchCriteria.searchMethod = 'PREFIX';
+          break;
+        case 'suffix':
+          this.searchCriteria.searchMethod = 'SUFFIX';
+          break;
+        case 'exact':
+          this.searchCriteria.searchMethod = 'EXACT';
+          break;
+        default:
+          this.searchCriteria.searchMethod = 'NORMAL';
+      }
+    }
+    if (this.activatedRoute.snapshot.queryParams['highlight']) {
+      this.searchCriteria.highlight = true;
+    }
+    if (this.activatedRoute.snapshot.queryParams['suggestions']) {
+      this.searchCriteria.suggestions = true;
+    }
+
+    if (this.searchCriteria.searchPhrase !== "") {
+      this.search(this.searchCriteria);
+    }
   }
 
   search(data: SearchCriteria) {
     this.searchCriteria = data;
+    this.updateUrlParams();
     this.executeSarch();
   }
 
@@ -140,6 +188,48 @@ export class SearchContentComponent implements OnInit {
     }
 
     this.pagination = pagination;
+  }
+
+  private updateUrlParams() {
+    const url = new SearchCriteriaUrl();
+    if (this.searchCriteria.searchPhrase != "") {
+      url.searchPhrase = this.searchCriteria.searchPhrase;
+    }
+
+    if (this.searchCriteria.searchDirection != 'BOTH') {
+      if (this.searchCriteria.searchDirection === 'GERMAN') {
+        url.searchDirection = 'german';
+      } else {
+        url.searchDirection = 'romansh';
+      }
+    }
+
+    if (this.searchCriteria.searchMethod != 'NORMAL') {
+      if (this.searchCriteria.searchMethod === 'INTERN') {
+        url.searchMethod = 'intern';
+      } else if (this.searchCriteria.searchMethod === 'SUFFIX') {
+        url.searchMethod = 'suffix';
+      } else if (this.searchCriteria.searchMethod === 'PREFIX') {
+        url.searchMethod = 'prefix';
+      }else if (this.searchCriteria.searchMethod === 'EXACT') {
+        url.searchMethod = 'exact';
+      }
+    }
+    if (this.searchCriteria.suggestions != false) {
+      url.suggestions = true;
+    }
+    if (this.searchCriteria.highlight != false) {
+      url.highlight = true;
+    }
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: url,
+        replaceUrl: true,
+        queryParamsHandling: 'merge',
+      });
   }
 }
 
