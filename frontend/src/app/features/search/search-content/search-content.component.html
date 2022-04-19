@@ -35,10 +35,10 @@
             </td>
             <td>
               <ng-container *ngIf="containsLink(result, true)">
-                cf. <a [innerHtml]="getLemma(result, true, containsLink(result, true))" class="lemma-link" (click)="linkToLemma(containsLink(result, true)!)"></a>
+                cf. <a [innerHtml]="getLemma(result, true, containsLink(result, true)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, true)!)"></a>
               </ng-container>
               <ng-container *ngIf="!containsLink(result, true)">
-                <div [innerHtml]="getLemma(result, true)"></div>
+                <div [innerHtml]="getLemma(result, true) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight"></div>
               </ng-container>
             </td>
             <td>
@@ -48,10 +48,10 @@
             </td>
             <td>
               <ng-container *ngIf="containsLink(result, false)">
-                cf. <a [innerHtml]="getLemma(result, false, containsLink(result, false))" class="lemma-link" (click)="linkToLemma(containsLink(result, false)!)"></a>
+                cf. <a [innerHtml]="getLemma(result, false, containsLink(result, false)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, false)!)"></a>
               </ng-container>
               <ng-container *ngIf="!containsLink(result, false)">
-                <div [innerHtml]="getLemma(result, false)"></div>
+                <div [innerHtml]="getLemma(result, false) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight"></div>
               </ng-container>
             </td>
             <td class="change-button">

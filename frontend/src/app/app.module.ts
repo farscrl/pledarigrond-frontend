@@ -50,6 +50,7 @@ import { SuggestModificationComponent } from './features/search/suggest-modifica
 import { VerbsModalComponent } from './features/search/verbs-modal/verbs-modal.component';
 import { ExportComponent } from './features/export/export.component';
 import { TranslateCutPipe } from './pipes/translate-cut.pipe';
+import { HighlighterPipe } from './pipes/highlighter.pipe';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -101,7 +102,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SuggestModificationComponent,
     VerbsModalComponent,
     ExportComponent,
-    TranslateCutPipe
+    TranslateCutPipe,
+    HighlighterPipe
   ],
   imports: [
     BrowserModule,
