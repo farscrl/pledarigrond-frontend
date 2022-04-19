@@ -30,19 +30,19 @@
 	text-align: center;
 	/* 	width: 86%; */
 	width: 50%;
-}
 
-#brand_title a {
-	color: white;
-	letter-spacing: 0.4em;
-	text-transform: uppercase;
-	font-weight: 100;
-}
+  a {
+    color: white;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 100;
+    outline: none;
 
-#brand_title a:hover {
-	text-decoration: none;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+  }
 }
-
 
 /* LANGUAGES WIDGET */
 #languages-widget {
