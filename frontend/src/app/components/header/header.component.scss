@@ -87,10 +87,11 @@ a.lang_selected:hover,a.lang_selected:active,a.lang_selected:visited,a.lang_sele
 
 /* LOGIN WIDGET */
 #login-widget {
-	width: 25%;
-	text-align: right;
-	padding-top: 18px;
-	padding-right: 18px;
+  width: 25%;
+  text-align: right;
+  padding-top: 18px;
+  padding-right: 18px;
+  text-transform: uppercase;
 }
 
 a.login-icon {

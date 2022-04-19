@@ -1,12 +1,19 @@
-/* LOGIN */
+:host {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #login_container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
+  background-color: #e3e3e3;
+  border: 0 none;
+  box-shadow: none;
+  border-radius: 12px;
+  float: none;
+  margin: 0 auto;
 	width: 568px;
-	margin-top: -178px;
-	margin-left: -284px;
-	padding: 28px 32px;
+	padding: 32px;
 }
 
 h1 {
