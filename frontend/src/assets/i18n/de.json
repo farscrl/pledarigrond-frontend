@@ -102,7 +102,7 @@
     "DGrammatik": "Grammatik",
     "DSemantik": "Semantik",
     "DSubsemantik": "Semantik",
-    "Bearbeitungshinweis": "Kategorie",
+    "categories": "Kategorie",
     "category": "Kategorie",
     "DGenus": "Genus",
     "RStichwort": "Rumantsch",
@@ -115,7 +115,7 @@
     "RTags": "zusätzliche Suchterme",
     "redirect_a": "Verweis (\"searchPhrase",
     "redirect_b": "Verweis (\"searchPhrase",
-    "maalr_comment": "Kommentar"
+    "user_comment": "Kommentar"
   },
   "suggest": {
     "title": "Fehlt etwas?",

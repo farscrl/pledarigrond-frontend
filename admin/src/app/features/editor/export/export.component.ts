@@ -22,7 +22,7 @@ export class ExportComponent implements OnInit {
     { label: 'Grammar (de)', value: 'DGrammatik', checked: false },
     { label: 'Genus (de)', value: 'DGenus', checked: false },
     { label: 'Semantic (de)', value: 'DSubsemantik', checked: false },
-    { label: 'Category', value: 'Bearbeitungshinweis', checked: false },
+    { label: 'Category', value: 'categories', checked: false },
     { label: 'Link (de)', value: 'redirect_a', checked: false },
     { label: 'Romansh', value: 'RStichwort', checked: false },
     { label: 'Grammar (rm)', value: 'RGrammatik', checked: false },
@@ -31,7 +31,7 @@ export class ExportComponent implements OnInit {
     { label: 'Link (rm)', value: 'redirect_b', checked: false },
     { label: 'Conjugation', value: 'RFlex', checked: false },
     { label: 'Additional search terms', value: 'RTags', checked: false },
-    { label: 'Comment', value: 'maalr_comment', checked: false },
+    { label: 'Comment', value: 'user_comment', checked: false },
   ];
 
   isExporting = false;

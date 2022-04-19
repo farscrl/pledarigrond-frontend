@@ -63,26 +63,28 @@ export class MainEntryComponent implements OnInit {
     }
   }
 
+
   private setUpForm() {
     this.validateForm = this.fb.group({
-      DStichwort: new FormControl(this.lemmaVersion?.entryValues.DStichwort, Validators.required),
-      DGrammatik: new FormControl(this.lemmaVersion?.entryValues.DGrammatik),
-      DSubsemantik: new FormControl(this.lemmaVersion?.entryValues.DSubsemantik),
-      DGenus: new FormControl(this.lemmaVersion?.entryValues.DGenus),
+      DStichwort: new FormControl(this.lemmaVersion?.lemmaValues.DStichwort, Validators.required),
+      DGrammatik: new FormControl(this.lemmaVersion?.lemmaValues.DGrammatik),
+      DSubsemantik: new FormControl(this.lemmaVersion?.lemmaValues.DSubsemantik),
+      DGenus: new FormControl(this.lemmaVersion?.lemmaValues.DGenus),
 
-      RStichwort: new FormControl(this.lemmaVersion?.entryValues.RStichwort, Validators.required),
-      RGrammatik: new FormControl(this.lemmaVersion?.entryValues.RGrammatik),
-      RSubsemantik: new FormControl(this.lemmaVersion?.entryValues.RSubsemantik),
-      RGenus: new FormControl(this.lemmaVersion?.entryValues.RGenus),
-      RFlex: new FormControl(this.lemmaVersion?.entryValues.RFlex),
-      RTags: new FormControl(this.lemmaVersion?.entryValues.RTags),
+      RStichwort: new FormControl(this.lemmaVersion?.lemmaValues.RStichwort, Validators.required),
+      RGrammatik: new FormControl(this.lemmaVersion?.lemmaValues.RGrammatik),
+      RSubsemantik: new FormControl(this.lemmaVersion?.lemmaValues.RSubsemantik),
+      RGenus: new FormControl(this.lemmaVersion?.lemmaValues.RGenus),
+      RFlex: new FormControl(this.lemmaVersion?.lemmaValues.RFlex),
+      RTags: new FormControl(this.lemmaVersion?.lemmaValues.RTags),
+      RInflectionType: new FormControl(this.lemmaVersion?.lemmaValues.RInflectionType),
 
-      redirect_a: new FormControl(this.lemmaVersion?.entryValues.redirect_a),
-      redirect_b: new FormControl(this.lemmaVersion?.entryValues.redirect_b),
-      Bearbeitungshinweis: new FormControl(this.lemmaVersion?.entryValues.Bearbeitungshinweis),
+      redirect_a: new FormControl(this.lemmaVersion?.lemmaValues.redirect_a),
+      redirect_b: new FormControl(this.lemmaVersion?.lemmaValues.redirect_b),
+      categories: new FormControl(this.lemmaVersion?.lemmaValues.categories),
 
-      maalr_comment: new FormControl(this.lemmaVersion?.entryValues.maalr_comment),
-      maalr_email: new FormControl(this.lemmaVersion?.entryValues.maalr_email),
+      user_comment: new FormControl(this.lemmaVersion?.lemmaValues.user_comment),
+      user_email: new FormControl(this.lemmaVersion?.lemmaValues.user_email),
     });
   }
 
@@ -90,7 +92,7 @@ export class MainEntryComponent implements OnInit {
     console.log('submit', this.validateForm.value);
     const lexEntry = new LexEntry();
     const lemmaVersion = new LemmaVersion();
-    lemmaVersion.entryValues = JSON.parse(JSON.stringify(this.validateForm.value));
+    lemmaVersion.lemmaValues = JSON.parse(JSON.stringify(this.validateForm.value));
     lexEntry.versionHistory.push(lemmaVersion);
     lexEntry.current = lemmaVersion;
     lexEntry.mostRecent = lemmaVersion;
@@ -104,7 +106,7 @@ export class MainEntryComponent implements OnInit {
 
   private updateEntry() {
     const lemmaVersion = new LemmaVersion();
-    lemmaVersion.entryValues = JSON.parse(JSON.stringify(this.validateForm.value));
+    lemmaVersion.lemmaValues = JSON.parse(JSON.stringify(this.validateForm.value));
     this.editorService.modifyAndAccepptLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
       this.cancel();
       this.modal.triggerOk();

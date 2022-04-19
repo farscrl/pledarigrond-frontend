@@ -103,7 +103,7 @@
     "DSemantik": "Semantik",
     "DSubsemantik": "semantica",
     "DGenus": "genus",
-    "Bearbeitungshinweis": "categoria",
+    "categories": "categoria",
     "category": "categoria",
     "RStichwort": "rumantsch",
     "RGrammatik": "grammatica",
@@ -115,7 +115,7 @@
     "RTags": ">>>tearms da tscheartga suplementars<<<",
     "redirect_a": "colliaziun (\"searchPhrase",
     "redirect_b": "colliaziun (\"searchPhrase",
-    "maalr_comment": "commentari"
+    "user_comment": "commentari"
   },
   "suggest": {
     "title": "Manca insatge?",

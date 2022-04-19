@@ -2,8 +2,8 @@ import { User } from "./user";
 
 export class LemmaVersion {
   userInfo?: User;
-  entryValues: EntryValues = new EntryValues();
-  maalrValues: MaalrValues = new MaalrValues();
+  lemmaValues: LemmaValues = new LemmaValues();
+  pgValues: PgValues = new PgValues();
   ip?: string;
   timestamp: number = 0;
   userId?: string;
@@ -16,17 +16,24 @@ export class LemmaVersion {
   lexEntryId?: any;
 }
 
-export class EntryValues {
+export class LemmaValues {
   DStichwort?: string;
   DSubsemantik?: string;
   DGenus?: string;
   RStichwort?: string;
   RFlex?: string;
+  RTags?: string;
+  RInflectionType?: string;
+  RInflectionSubType?: string;
   RSubsemantik?: string;
   RGenus?: string;
-  rm_flex_type?: string;
-  maalr_email?: string;
-  maalr_comment?: string;
+  user_email?: string;
+  user_comment?: string;
+  redirect_a?: string;
+  redirect_b?: string;
+  categories?: string;
+
+  infinitiv?: string;
 
   preschentsing1?: string;
   preschentsing2?: string;
@@ -74,14 +81,14 @@ export class EntryValues {
   gerundium?: string;
 }
 
-export class MaalrValues {
-  maalr_timestamp?: number;
+export class PgValues {
+  pg_timestamp?: number;
   internal_id?: number;
-  maalr_creator?: string;
-  maalr_ip?: string;
-  maalr_verification: Verification = 'UNVERIFIED';
-  maalr_status: Status = 'UNDEFINED';
-  maalr_creator_role?: String;
+  pg_creator?: string;
+  user_ip?: string;
+  pg_verification: Verification = 'UNVERIFIED';
+  pg_status: Status = 'UNDEFINED';
+  pg_creator_role?: String;
 }
 
 export type Status = 'DELETED'|'NEW_ENTRY'|'NEW_MODIFICATION'|'UNDEFINED';

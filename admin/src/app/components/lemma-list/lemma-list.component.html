@@ -109,7 +109,7 @@
         <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" *ngIf="data.mostRecent.verifierId" style="margin-top: 4px;">Filter Verifier</button>
       </td>
       <td *ngIf="columns.entry.active">
-        {{ data.mostRecent.entryValues.DStichwort }} ⇔ {{ data.mostRecent.entryValues.RStichwort }}
+        {{ data.mostRecent.lemmaValues.DStichwort }} ⇔ {{ data.mostRecent.lemmaValues.RStichwort }}
       </td>
       <td *ngIf="columns.options.active" class="button-column">
         <button nz-button nzSize="small" nzType="primary" (click)="editEntry(data.id!); $event.stopPropagation();">Edit</button><br>
@@ -127,20 +127,20 @@
         {{ formateDate(data.mostRecent.timestamp) }}<br>
         {{ formateTime(data.mostRecent.timestamp) }}
       </td>
-      <td *ngIf="columns.german.active">{{ data.mostRecent.entryValues.DStichwort }}</td>
-      <td *ngIf="columns.germanGrammar.active">{{ data.mostRecent.entryValues.DGrammatik }}</td>
-      <td *ngIf="columns.germanGender.active">{{ data.mostRecent.entryValues.DGenus }}</td>
-      <td *ngIf="columns.germanSemantics.active">{{ data.mostRecent.entryValues.DSubsemantik }}</td>
-      <td *ngIf="columns.germanLink.active">{{ data.mostRecent.entryValues.redirect_a }}</td>
-      <td *ngIf="columns.romansh.active">{{ data.mostRecent.entryValues.RStichwort }}</td>
-      <td *ngIf="columns.romanshGrammar.active">{{ data.mostRecent.entryValues.RGrammatik }}</td>
-      <td *ngIf="columns.romanshGender.active">{{ data.mostRecent.entryValues.RStichwort }}</td>
-      <td *ngIf="columns.romanshSemantics.active">{{ data.mostRecent.entryValues.RSubsemantik }}</td>
-      <td *ngIf="columns.romanshLink.active">{{ data.mostRecent.entryValues.redirect_b }}</td>
-      <td *ngIf="columns.romanshConjugation.active">{{ data.mostRecent.entryValues.RFlex }}</td>
-      <td *ngIf="columns.romanshAdditionalSearchTerms.active">{{ data.mostRecent.entryValues.RTags }}</td>
-      <td *ngIf="columns.category.active">{{ data.mostRecent.entryValues.Bearbeitungshinweis }}</td>
-      <td *ngIf="columns.comment.active">{{ data.mostRecent.entryValues.maalr_comment }}</td>
+      <td *ngIf="columns.german.active">{{ data.mostRecent.lemmaValues.DStichwort }}</td>
+      <td *ngIf="columns.germanGrammar.active">{{ data.mostRecent.lemmaValues.DGrammatik }}</td>
+      <td *ngIf="columns.germanGender.active">{{ data.mostRecent.lemmaValues.DGenus }}</td>
+      <td *ngIf="columns.germanSemantics.active">{{ data.mostRecent.lemmaValues.DSubsemantik }}</td>
+      <td *ngIf="columns.germanLink.active">{{ data.mostRecent.lemmaValues.redirect_a }}</td>
+      <td *ngIf="columns.romansh.active">{{ data.mostRecent.lemmaValues.RStichwort }}</td>
+      <td *ngIf="columns.romanshGrammar.active">{{ data.mostRecent.lemmaValues.RGrammatik }}</td>
+      <td *ngIf="columns.romanshGender.active">{{ data.mostRecent.lemmaValues.RStichwort }}</td>
+      <td *ngIf="columns.romanshSemantics.active">{{ data.mostRecent.lemmaValues.RSubsemantik }}</td>
+      <td *ngIf="columns.romanshLink.active">{{ data.mostRecent.lemmaValues.redirect_b }}</td>
+      <td *ngIf="columns.romanshConjugation.active">{{ data.mostRecent.lemmaValues.RFlex }}</td>
+      <td *ngIf="columns.romanshAdditionalSearchTerms.active">{{ data.mostRecent.lemmaValues.RTags }}</td>
+      <td *ngIf="columns.category.active">{{ data.mostRecent.lemmaValues.categories }}</td>
+      <td *ngIf="columns.comment.active">{{ data.mostRecent.lemmaValues.user_comment }}</td>
       <td><!--empty columnt to take up space--></td>
     </tr>
   </tbody>

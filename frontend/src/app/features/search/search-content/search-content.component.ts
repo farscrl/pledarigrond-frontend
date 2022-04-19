@@ -73,32 +73,32 @@ export class SearchContentComponent implements OnInit {
       || this.searchCriteria.searchDirection === 'ROMANSH' && !isFirst
     ) {
       // german
-      let value = lemma.entryValues.DStichwort;
-      if (!!lemma.entryValues.DSubsemantik) {
-        value += " (" + lemma.entryValues.DSubsemantik + ")";
+      let value = lemma.lemmaValues.DStichwort;
+      if (!!lemma.lemmaValues.DSubsemantik) {
+        value += " (" + lemma.lemmaValues.DSubsemantik + ")";
       }
-      if (!!lemma.entryValues.DGenus) {
-        value += " <i>[" + lemma.entryValues.DGenus + "]</i>";
+      if (!!lemma.lemmaValues.DGenus) {
+        value += " <i>[" + lemma.lemmaValues.DGenus + "]</i>";
       }
       return value
     } else {
       // romansh
-      let value = lemma.entryValues.RStichwort;
-      if (!!lemma.entryValues.RFlex) {
-        value += " <i>[" + lemma.entryValues.RFlex + "]</i>";
+      let value = lemma.lemmaValues.RStichwort;
+      if (!!lemma.lemmaValues.RFlex) {
+        value += " <i>[" + lemma.lemmaValues.RFlex + "]</i>";
       }
-      if (!!lemma.entryValues.RSubsemantik) {
-        value += " (" + lemma.entryValues.RSubsemantik + ")";
+      if (!!lemma.lemmaValues.RSubsemantik) {
+        value += " (" + lemma.lemmaValues.RSubsemantik + ")";
       }
-      if (!!lemma.entryValues.RGenus) {
-        value += " <i>[" + lemma.entryValues.RGenus + "]</i>";
+      if (!!lemma.lemmaValues.RGenus) {
+        value += " <i>[" + lemma.lemmaValues.RGenus + "]</i>";
       }
       return value
     }
   }
 
   hasVerbLink(lemma: LemmaVersion, isFirst: boolean): boolean {
-    if (!lemma.entryValues.rm_flex_type) {
+    if (!lemma.lemmaValues.RInflectionType || lemma.lemmaValues.RInflectionType !== 'V') {
       return false;
     }
 

@@ -103,7 +103,7 @@
     "DSemantik": "Semantik",
     "DSubsemantik": "semantica",
     "DGenus": "genus",
-    "Bearbeitungshinweis": "categoreia",
+    "categories": "categoreia",
     "category": "categoreia",
     "RStichwort": "sutsilvan",
     "RGrammatik": "gramatica",
@@ -115,7 +115,7 @@
     "RTags": "tearms da tscheartga suplementars",
     "redirect_a": "culiaziùn (\"searchPhrase",
     "redirect_b": "culiaziùn (\"searchPhrase",
-    "maalr_comment": "comentari"
+    "user_comment": "comentari"
   },
   "suggest": {
     "title": "Mànca anzatge?",

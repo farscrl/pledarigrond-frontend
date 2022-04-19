@@ -53,10 +53,10 @@ export class SuggestionComponent extends SimpleModalComponent<null, null> implem
     }
 
     const lv = new LemmaVersion();
-    lv.entryValues.RStichwort = this.RStichwort;
-    lv.entryValues.DStichwort = this.DStichwort;
-    lv.entryValues.maalr_comment = this.comment;
-    lv.entryValues.maalr_email = this.email;
+    lv.lemmaValues.RStichwort = this.RStichwort;
+    lv.lemmaValues.DStichwort = this.DStichwort;
+    lv.lemmaValues.user_comment = this.comment;
+    lv.lemmaValues.user_email = this.email;
 
     this.modificationService.create(this.selectedLanguageService.getSelectedLanguageUrlSegment(), lv).subscribe(data => {
       this.cancel();
