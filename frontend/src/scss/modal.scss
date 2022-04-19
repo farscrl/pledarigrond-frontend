@@ -8,7 +8,7 @@
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .modal-open {
@@ -25,7 +25,7 @@
   bottom: auto;
   width: auto;
   margin: 0 auto;
-  padding: 12px;
+  padding: 36px;
   border-radius: 12px;
 
   h3 {
@@ -77,16 +77,19 @@
     }
   }
 }
-::-webkit-scrollbar {
-  //background: rgba(0,0,0,0);
-}
+
 ::-webkit-scrollbar-corner {
   background: rgba(0,0,0,0);
 }
 
 @media (min-width: 768px) {
-  .pg-modal-wrapper a.btn {
-    display: inline-block;
+  .pg-modal-wrapper {
+    top: 50%;
+    transform: translateY(-50%);
+
+    a.btn {
+      display: inline-block;
+    }
   }
 
   .pg-modal-footer {
