@@ -51,6 +51,7 @@ import { VerbsModalComponent } from './features/search/verbs-modal/verbs-modal.c
 import { ExportComponent } from './features/export/export.component';
 import { TranslateCutPipe } from './pipes/translate-cut.pipe';
 import { HighlighterPipe } from './pipes/highlighter.pipe';
+import { LanguageUtils } from './utils/language-utils';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -142,7 +143,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     UserLoggedInGuard,
-    UserNotLoggedInGuard
+    UserNotLoggedInGuard,
+    LanguageUtils
   ],
   bootstrap: [AppComponent]
 })

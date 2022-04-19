@@ -1,12 +1,12 @@
 <div id="navi_bottom">
 	<ul id="navi_bottom_menu">
-		<li>
+		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
       <a (click)="openSuggestionModal()" style="cursor: pointer;">far ina nova proposta</a>
     </li>
-		<li>
+		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
       <a [routerLink]="'/' + idiomLong + '/help'">agid</a>
     </li>
-		<li>
+		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
       <a [routerLink]="'/' + idiomLong + '/info'">infos</a>
     </li>
 		<li *ngIf="idiom === 'rumgr'">
@@ -15,11 +15,8 @@
 		<li>
       <a href="http://www.liarumantscha.ch" target="_blank">© Lia Rumantscha 1980 – {{ currentYear }}</a>
     </li>
-		<li>
-      <a href="http://spinfo.phil-fak.uni-koeln.de/maalr.html" target="_blank">sustegnì da Maalr</a>
-    </li>
-		<li>
-      <a (click)="openDownloadModal()" style="cursor: pointer;"><span>export</span></a>
+		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
+      <a (click)="openDownloadModal()" style="cursor: pointer;">export</a>
     </li>
 	</ul>
 </div>
