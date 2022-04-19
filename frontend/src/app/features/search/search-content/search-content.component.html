@@ -84,7 +84,7 @@
       <div>
         {{ 'search.not_found' | translate:{ searchPhrase: searchCriteria.searchPhrase } }}
       </div>
-      <a href="#suggestionModal" data-toggle="modal" class="btn"><i class="icon-info-sign"></i>far ina proposta </a>
+      <a class="btn" (click)="openSuggestionModal()"><i class="icon-info-sign"></i>far ina proposta </a>
     </div>
   </div>
 </div>

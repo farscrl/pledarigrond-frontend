@@ -8,6 +8,7 @@ import { SimpleModalService } from "ngx-simple-modal";
 import { VerbsModalComponent } from '../verbs-modal/verbs-modal.component';
 import { SuggestModificationComponent } from '../suggest-modification/suggest-modification.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SuggestionComponent } from 'src/app/components/footer/suggestion/suggestion.component';
 
 @Component({
   selector: 'app-search-content',
@@ -183,6 +184,11 @@ export class SearchContentComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  openSuggestionModal() {
+    this.simpleModalService.addModal(SuggestionComponent, null)
+      .subscribe();
   }
 
   private executeSarch(page = 0) {
