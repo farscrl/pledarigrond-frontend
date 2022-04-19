@@ -33,7 +33,7 @@
                 <span class="verb_overlay" *ngIf="hasVerbLink(result, true)">V</span>
               </div>
             </td>
-            <td>
+            <td [class.unverified]="result.verification === 'UNVERIFIED'">
               <ng-container *ngIf="containsLink(result, true)">
                 cf. <a [innerHtml]="getLemma(result, true, containsLink(result, true)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, true)!)"></a>
               </ng-container>
@@ -46,7 +46,7 @@
                 <span class="verb_overlay" *ngIf="hasVerbLink(result, false)" (click)="showVerbsModal(result)">V</span>
               </div>
             </td>
-            <td>
+            <td [class.unverified]="result.verification === 'UNVERIFIED'">
               <ng-container *ngIf="containsLink(result, false)">
                 cf. <a [innerHtml]="getLemma(result, false, containsLink(result, false)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, false)!)"></a>
               </ng-container>
