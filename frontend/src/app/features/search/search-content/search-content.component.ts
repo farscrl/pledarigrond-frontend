@@ -76,7 +76,7 @@ export class SearchContentComponent implements OnInit {
       this.searchCriteria.suggestions = true;
     }
 
-    if (this.searchCriteria.searchPhrase !== "") {
+    if (this.searchCriteria.searchPhrase && this.searchCriteria.searchPhrase !== "") {
       this.search(this.searchCriteria);
     }
   }

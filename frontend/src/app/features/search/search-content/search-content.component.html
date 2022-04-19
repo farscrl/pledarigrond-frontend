@@ -69,7 +69,7 @@
     </div>
   </div>
 
-  <div *ngIf="searchResults.length === 0 && searchCriteria.searchPhrase !== ''">
+  <div *ngIf="searchResults.length === 0 && searchCriteria.searchPhrase && searchCriteria.searchPhrase !== ''">
     <div class="not-found">
       <div>
         {{ 'search.not_found' | translate:{ searchPhrase: searchCriteria.searchPhrase } }}
