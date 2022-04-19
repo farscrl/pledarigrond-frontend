@@ -47,7 +47,7 @@
 /* LANGUAGES WIDGET */
 #languages-widget {
 	/* 	width: 7%; */
-	width: 15%;
+	width: 25%;
 	text-align: left;
 	padding-top: 18px;
 	padding-left: 18px;
@@ -87,8 +87,7 @@ a.lang_selected:hover,a.lang_selected:active,a.lang_selected:visited,a.lang_sele
 
 /* LOGIN WIDGET */
 #login-widget {
-	/* 	margin-left:50px; */ /*  width: 7%; */ /*	opacity: 0.6; */
-	width: 15%;
+	width: 25%;
 	text-align: right;
 	padding-top: 18px;
 	padding-right: 18px;
@@ -106,12 +105,12 @@ a.login-icon:hover {
 
 @media all and (max-width: 767px) {
   #languages-widget {
-		width: 15%;
+		width: 25%;
 	}
 	#brand_title {
 		width: auto !important;
 	}
 	#login-widget {
-		width: 15%;
+		width: 25%;
 	}
 }
