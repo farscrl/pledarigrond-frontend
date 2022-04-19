@@ -173,8 +173,12 @@ th {
   }
 }
 
-.change-button {
+.lemma-link {
+  cursor: pointer;
 
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 @media (min-width: 768px) {

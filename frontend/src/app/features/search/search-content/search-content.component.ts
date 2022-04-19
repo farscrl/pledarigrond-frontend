@@ -115,13 +115,34 @@ export class SearchContentComponent implements OnInit {
     return this.translateService.instant(key);
   }
 
-  getLemma(lemma: LemmaVersion, isFirst: boolean) {
+  containsLink(lemma: LemmaVersion, isFirst: boolean): string | undefined {
     if (
       (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') && isFirst
       || this.searchCriteria.searchDirection === 'ROMANSH' && !isFirst
     ) {
       // german
-      let value = lemma.lemmaValues.DStichwort;
+      if(lemma.lemmaValues.DRedirect && lemma.lemmaValues.DRedirect != "" && lemma.lemmaValues.DStichwort?.startsWith('cf. ')) {
+        return lemma.lemmaValues.DStichwort?.slice(4);
+      } else {
+        return undefined;
+      }
+    } else {
+      // romansh
+      if (lemma.lemmaValues.RRedirect && lemma.lemmaValues.RRedirect != "" && lemma.lemmaValues.RStichwort?.startsWith('cf. ')) {
+        return lemma.lemmaValues.RStichwort?.slice(4);
+      }else {
+        return undefined;
+      }
+    }
+  }
+
+  getLemma(lemma: LemmaVersion, isFirst: boolean, overrideMainText = "") {
+    if (
+      (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') && isFirst
+      || this.searchCriteria.searchDirection === 'ROMANSH' && !isFirst
+    ) {
+      // german
+      let value = overrideMainText !== "" ? overrideMainText : lemma.lemmaValues.DStichwort;
       if (!!lemma.lemmaValues.DSubsemantik) {
         value += " (" + lemma.lemmaValues.DSubsemantik + ")";
       }
@@ -131,7 +152,7 @@ export class SearchContentComponent implements OnInit {
       return value
     } else {
       // romansh
-      let value = lemma.lemmaValues.RStichwort;
+      let value = overrideMainText !== "" ? overrideMainText : lemma.lemmaValues.RStichwort;
       if (!!lemma.lemmaValues.RFlex) {
         value += " <i>[" + lemma.lemmaValues.RFlex + "]</i>";
       }
@@ -143,6 +164,12 @@ export class SearchContentComponent implements OnInit {
       }
       return value
     }
+  }
+
+  linkToLemma(searchPhrase: string) {
+    this.searchCriteria = new SearchCriteria();
+    this.searchCriteria.searchPhrase = searchPhrase;
+    this.search(this.searchCriteria);
   }
 
   hasVerbLink(lemma: LemmaVersion, isFirst: boolean): boolean {
