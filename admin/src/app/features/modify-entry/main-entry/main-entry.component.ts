@@ -79,8 +79,8 @@ export class MainEntryComponent implements OnInit {
       RTags: new FormControl(this.lemmaVersion?.lemmaValues.RTags),
       RInflectionType: new FormControl(this.lemmaVersion?.lemmaValues.RInflectionType),
 
-      redirect_a: new FormControl(this.lemmaVersion?.lemmaValues.redirect_a),
-      redirect_b: new FormControl(this.lemmaVersion?.lemmaValues.redirect_b),
+      DRedirect: new FormControl(this.lemmaVersion?.lemmaValues.DRedirect),
+      RRedirect: new FormControl(this.lemmaVersion?.lemmaValues.RRedirect),
       categories: new FormControl(this.lemmaVersion?.lemmaValues.categories),
 
       user_comment: new FormControl(this.lemmaVersion?.lemmaValues.user_comment),

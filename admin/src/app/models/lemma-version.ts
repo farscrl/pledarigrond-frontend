@@ -32,8 +32,8 @@ export class LemmaValues {
   RGenus?: string;
   user_email?: string;
   user_comment?: string;
-  redirect_a?: string;
-  redirect_b?: string;
+  DRedirect?: string;
+  RRedirect?: string;
   categories?: string;
 
   infinitiv?: string;

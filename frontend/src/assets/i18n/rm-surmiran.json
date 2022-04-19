@@ -113,8 +113,8 @@
     "RStichwort_sort": "zavrada",
     "RFlex": "conjugaziun",
     "RTags": ">>>tearms da tscheartga suplementars<<<",
-    "redirect_a": "colliaziun (\"searchPhrase",
-    "redirect_b": "colliaziun (\"searchPhrase",
+    "DRedirect": "colliaziun",
+    "RRedirect": "colliaziun",
     "user_comment": "commentari"
   },
   "suggest": {

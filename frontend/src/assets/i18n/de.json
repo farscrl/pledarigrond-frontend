@@ -113,8 +113,8 @@
     "RStichwort_sort": "Sortierung",
     "RFlex": "Konjugation",
     "RTags": "zusätzliche Suchterme",
-    "redirect_a": "Verweis (\"searchPhrase",
-    "redirect_b": "Verweis (\"searchPhrase",
+    "DRedirect": "Verweis",
+    "RRedirect": "Verweis",
     "user_comment": "Kommentar"
   },
   "suggest": {
