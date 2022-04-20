@@ -76,7 +76,6 @@ export class MainEntryComponent implements OnInit {
     if (!this.lemmaVersion?.lemmaValues.infinitiv) {
       this.lemmaVersion!.lemmaValues.infinitiv = this.validateForm.controls['RStichwort'].value;
     }
-    console.log(this.lemmaVersion);
     const modal = this.modalService.create({
       nzTitle: 'Conjugation',
       nzContent: ConjugationComponent,
@@ -96,7 +95,6 @@ export class MainEntryComponent implements OnInit {
         ...this.lemmaVersion?.lemmaValues,
         ...value
       };
-      console.log(this.lemmaVersion);
     })
   }
 
@@ -125,7 +123,6 @@ export class MainEntryComponent implements OnInit {
   }
 
   private saveNewEntry() {
-    console.log('submit', this.validateForm.value);
     const lexEntry = new LexEntry();
     const lemmaVersion = new LemmaVersion();
     lemmaVersion.lemmaValues = {

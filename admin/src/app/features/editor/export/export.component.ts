@@ -80,7 +80,6 @@ export class ExportComponent implements OnInit {
     const items = this.checkOptions.filter(item => item.checked === true);
     const fields: string[] = [];
     items.forEach(item => fields.push(item.value));
-    console.log(fields);
 
     if (this.filter instanceof SearchCriteria) {
       this.editorService.exportFieldsBySearchCriteria(this.languageSelectionService.getCurrentLanguage(), this.filter, fields).subscribe(data => {
