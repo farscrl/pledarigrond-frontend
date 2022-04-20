@@ -9,12 +9,20 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionSubType" nzRequired>Conjugation type</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <nz-select formControlName="RInflectionSubType" id="RInflectionSubType" (ngModelChange)="subTypeFormChanged()">
-        <nz-option nzValue="" nzLabel="none"></nz-option>
-        <nz-option [nzValue]="type.id" [nzLabel]="type.name" *ngFor="let type of subTypes" nzCustomContent>
-          <b>{{type.name}}</b>: {{type.description}}
-        </nz-option>
-      </nz-select>
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="20">
+          <nz-select formControlName="RInflectionSubType" id="RInflectionSubType">
+            <nz-option nzValue="" nzLabel="none"></nz-option>
+            <nz-option [nzValue]="type.id" [nzLabel]="type.name" *ngFor="let type of subTypes" nzCustomContent>
+              <b>{{type.name}}</b>: {{type.description}}
+            </nz-option>
+          </nz-select>
+        </div>
+        <div nz-col [nzSpan]="4">
+          <button nz-button (click)="updateForms()">Generate</button>
+        </div>
+      </div>
+
     </nz-form-control>
   </nz-form-item>
 
