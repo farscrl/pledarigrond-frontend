@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { ConjugationComponent } from '../conjugation/conjugation.component';
 
 @Component({
   selector: 'app-main-entry',
@@ -23,7 +25,14 @@ export class MainEntryComponent implements OnInit {
 
   validateForm!: FormGroup;
 
-  constructor(private modal: NzModalRef, private fb: FormBuilder, private editorService: EditorService, private languageSelectionService: LanguageSelectionService) { }
+  constructor(
+    private modal: NzModalRef,
+    private fb: FormBuilder,
+    private editorService: EditorService,
+    private languageSelectionService: LanguageSelectionService,
+    private modalService: NzModalService,
+    private viewContainerRef: ViewContainerRef,
+  ) { }
 
   ngOnInit(): void {
     this.reset()
@@ -63,6 +72,33 @@ export class MainEntryComponent implements OnInit {
     }
   }
 
+  editVerb() {
+    if (!this.lemmaVersion?.lemmaValues.infinitiv) {
+      this.lemmaVersion!.lemmaValues.infinitiv = this.validateForm.controls['RStichwort'].value;
+    }
+    console.log(this.lemmaVersion);
+    const modal = this.modalService.create({
+      nzTitle: 'Conjugation',
+      nzContent: ConjugationComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lemmaVersion: this.lemmaVersion,
+      },
+    });
+    modal.afterClose.subscribe(value => {
+      if (value === undefined) {
+        return;
+      }
+      this.lemmaVersion!.lemmaValues = {
+        ...this.lemmaVersion?.lemmaValues,
+        ...value
+      };
+      console.log(this.lemmaVersion);
+    })
+  }
 
   private setUpForm() {
     this.validateForm = this.fb.group({
@@ -92,7 +128,10 @@ export class MainEntryComponent implements OnInit {
     console.log('submit', this.validateForm.value);
     const lexEntry = new LexEntry();
     const lemmaVersion = new LemmaVersion();
-    lemmaVersion.lemmaValues = JSON.parse(JSON.stringify(this.validateForm.value));
+    lemmaVersion.lemmaValues = {
+      ...this.lemmaVersion?.lemmaValues,
+      ...JSON.parse(JSON.stringify(this.validateForm.value)),
+    };
     lexEntry.versionHistory.push(lemmaVersion);
     lexEntry.current = lemmaVersion;
     lexEntry.mostRecent = lemmaVersion;
@@ -106,7 +145,10 @@ export class MainEntryComponent implements OnInit {
 
   private updateEntry() {
     const lemmaVersion = new LemmaVersion();
-    lemmaVersion.lemmaValues = JSON.parse(JSON.stringify(this.validateForm.value));
+    lemmaVersion.lemmaValues = {
+      ...this.lemmaVersion?.lemmaValues,
+      ...JSON.parse(JSON.stringify(this.validateForm.value)),
+    };
     this.editorService.modifyAndAccepptLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
       this.cancel();
       this.modal.triggerOk();

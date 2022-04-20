@@ -1,7 +1,7 @@
 
 
 <form nz-form [formGroup]="validateForm">
-  <h1>German</h1>
+  <h2>German</h2>
   <div nz-row>
     <div nz-col nzSpan="12">
 
@@ -90,7 +90,7 @@
 
   <nz-divider></nz-divider>
 
-  <h1>Romansh</h1>
+  <h2>Romansh</h2>
   <div nz-row>
     <div nz-col nzSpan="12">
 
@@ -131,6 +131,17 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RRedirect">Link</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="RRedirect" id="RRedirect" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionType" nzRequired>Inflection</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <nz-select formControlName="RInflectionType" id="RInflectionType" class="inflection-selection">
+            <nz-option nzValue="" nzLabel="none"></nz-option>
+            <nz-option nzValue="V" nzLabel="Verb"></nz-option>
+          </nz-select>
+          <i nz-icon nzType="edit" class="infleciton-edit" (click)="editVerb()" *ngIf="validateForm.controls['RInflectionType'].value === 'V'"></i>
         </nz-form-control>
       </nz-form-item>
 

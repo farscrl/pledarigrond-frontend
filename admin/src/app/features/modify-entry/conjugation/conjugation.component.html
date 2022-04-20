@@ -1,0 +1,286 @@
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="infinitiv">Infinitiv</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="infinitiv" id="infinitiv" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionSubType" nzRequired>Conjugation type</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-select formControlName="RInflectionSubType" id="RInflectionSubType" (ngModelChange)="subTypeFormChanged()">
+        <nz-option nzValue="" nzLabel="none"></nz-option>
+        <nz-option [nzValue]="type.id" [nzLabel]="type.name" *ngFor="let type of subTypes" nzCustomContent>
+          <b>{{type.name}}</b>: {{type.description}}
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <h2>Preschaint</h2>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="preschentsing1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="preschentsing1" id="preschentsing1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="preschentsing2" id="preschentsing2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="preschentsing3" id="preschentsing3" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="preschentplural1" id="preschentplural1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="preschentplural2" id="preschentplural2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="preschentplural3" id="preschentplural3" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <h2>Imperfect</h2>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="imperfectsing1" id="imperfectsing1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="imperfectsing2" id="imperfectsing2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="imperfectsing3" id="imperfectsing3" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="imperfectplural1" id="imperfectplural1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="imperfectplural2" id="imperfectplural2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="imperfectplural3" id="imperfectplural3" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <h2>Conjunctiv</h2>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctivsing1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="conjunctivsing1" id="conjunctivsing1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctivsing2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="conjunctivsing2" id="conjunctivsing2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctivsing3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="conjunctivsing3" id="conjunctivsing3" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctivplural1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="conjunctivplural1" id="conjunctivplural1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctivplural2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="conjunctivplural2" id="conjunctivplural2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctivplural3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="conjunctivplural3" id="conjunctivplural3" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <h2>Cundiziunal</h2>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="cundizionalsing1" id="cundizionalsing1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="cundizionalsing2" id="cundizionalsing2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="cundizionalsing3" id="cundizionalsing3" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="cundizionalplural1" id="cundizionalplural1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="cundizionalplural2" id="cundizionalplural2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="cundizionalplural3" id="cundizionalplural3" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <h2>Futur</h2>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="futursing1" id="futursing1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="futursing2" id="futursing2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="futursing3" id="futursing3" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="futurplural1" id="futurplural1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="futurplural2" id="futurplural2" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural3"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="futurplural3" id="futurplural3" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <h2>Particip perfect</h2>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="participperfectms"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="participperfectms" id="participperfectms" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="participperfectfs"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="participperfectfs" id="participperfectfs" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="participperfectmp"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="participperfectmp" id="participperfectmp" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="participperfectfp"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="participperfectfp" id="participperfectfp" />
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
+  </div>
+
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <h2>Imperativ</h2>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperativ1"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="imperativ1" id="imperativ1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperativ2"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="imperativ2" id="imperativ2" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <h2>Gerundi</h2>
+      <nz-form-item>
+        <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="gerundium"></nz-form-label> -->
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="gerundium" id="gerundium" />
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
+  </div>
+</form>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
+  <button nz-button nzType="default" (click)="reset()">Reset</button>
+  <button nz-button nzType="primary" (click)="ok()">OK</button>
+</div>

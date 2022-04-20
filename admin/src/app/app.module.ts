@@ -42,6 +42,7 @@ import { MainEntryComponent } from './features/modify-entry/main-entry/main-entr
 import { interceptorProviders } from './auth/interceptors';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ConjugationComponent } from './features/modify-entry/conjugation/conjugation.component';
 
 registerLocaleData(de);
 
@@ -79,7 +80,8 @@ export function tokenGetter() {
     UserRoleComponent,
     StatusComponent,
     VerificationComponent,
-    MainEntryComponent
+    MainEntryComponent,
+    ConjugationComponent,
   ],
   imports: [
     BrowserModule,
