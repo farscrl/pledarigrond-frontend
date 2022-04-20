@@ -66,7 +66,7 @@
       <div class="pagination pagination-centered" *ngIf="pagination.showPagination">
         <ul>
           <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(0)"><i></i> {{ 'search.results_first_page' | translate }} </a></li>
-          <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(pagination.currentPage - 1)"><i class="icon-chevron-left"></i>&nbsp;</a></li>
+          <li [class.disabled]="pagination.isFirst"><a (click)="!pagination.isFirst && goToPage(pagination.currentPage - 2)"><i class="icon-chevron-left"></i>&nbsp;</a></li>
 
           <li class="a_pag" [class.active]="el.isActive" width="20" *ngFor="let el of pagination.elements">
             <a (click)="goToPage(el.index - 1)">{{ el.index }}</a>
