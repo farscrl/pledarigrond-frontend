@@ -1,5 +1,5 @@
 :host {
-  height: 100vh;
+  height: calc(100vh - 32px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,8 +10,6 @@
   border: 0 none;
   box-shadow: none;
   border-radius: 12px;
-  float: none;
-  margin: 0 auto;
 	width: 568px;
 	padding: 32px;
 }
@@ -28,29 +26,22 @@ h1 {
 	float: left;
 }
 
-input[type="text"], input[type="password"]
-	{
+input[type="text"],
+input[type="password"] {
 	width: 180px;
 	background-color: rgb(245, 245, 245);
 	border: 1px solid rgb(245, 245, 245);
 }
 
-input[type="text"]:focus, input[type="password"]:focus
-	{
+input[type="text"]:focus,
+input[type="password"]:focus {
 	border: 1px solid rgb(21, 233, 177);
 }
 
 input#internal_login {
 	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
 	border: 0 none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
 	box-shadow: none;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	-ms-border-radius: 0;
 	border-radius: 0;
 	background-color: rgb(21, 233, 177);
 	color: white;
@@ -60,7 +51,7 @@ input#internal_login {
 	font-size: 13px;
 	line-height: 13px;
 	margin-top: 12px;
-	margin-left: 356px;
+	float: right;
 }
 
 #login_input .input_wrapper {
