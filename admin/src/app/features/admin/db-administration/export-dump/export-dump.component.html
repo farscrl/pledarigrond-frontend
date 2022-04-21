@@ -1,0 +1,10 @@
+<label nz-checkbox [(ngModel)]="includeVersionHistory" [nzDisabled]="isDownloadingDb">Export complete version history</label>
+<br />
+<label nz-checkbox [(ngModel)]="anonymizeData" [nzDisabled]="isDownloadingDb">Anonymize data</label>
+<br /><br />
+<p>For a full backup, export the version history and do not anonymize the entries. In any case, the downloaded file will contain a MD5-Checksum which can be used to verify the integrity of the data.</p>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
+  <button nz-button nzType="primary" (click)="export()" [nzLoading]="isDownloadingDb">{{ isDownloadingDb ? 'Exporting' : 'Start Export' }}</button>
+</div>

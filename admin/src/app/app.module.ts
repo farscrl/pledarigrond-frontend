@@ -43,6 +43,8 @@ import { interceptorProviders } from './auth/interceptors';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ConjugationComponent } from './features/modify-entry/conjugation/conjugation.component';
+import { ExportDumpComponent } from './features/admin/db-administration/export-dump/export-dump.component';
+import { FileUtils } from './utils/file.utils';
 
 registerLocaleData(de);
 
@@ -82,6 +84,7 @@ export function tokenGetter() {
     VerificationComponent,
     MainEntryComponent,
     ConjugationComponent,
+    ExportDumpComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,7 +114,8 @@ export function tokenGetter() {
     UserLoggedInGuard,
     UserNotLoggedInGuard,
     interceptorProviders,
-    { provide: NZ_I18N, useValue: de_DE }
+    { provide: NZ_I18N, useValue: de_DE },
+    FileUtils,
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ import { BackupInfos, DbInfos } from 'src/app/models/db-infos';
 import { Language } from 'src/app/models/security';
 import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { ExportDumpComponent } from './export-dump/export-dump.component';
 import { ImportDumpComponent } from './import-dump/import-dump.component';
 
 @Component({
@@ -15,7 +16,6 @@ export class DbAdministrationComponent implements OnInit {
 
   dbInfos: DbInfos = new DbInfos();
   isLoadingDbInfos = false;
-  isDownloadingDb = false;
   isReloadingDemoData = false;
   backupInfos: BackupInfos = new BackupInfos();
 
@@ -49,7 +49,6 @@ export class DbAdministrationComponent implements OnInit {
     }, error => {
       console.error(error);
     });
-    console.log("implement me");
   }
 
   importDb() {
@@ -67,20 +66,14 @@ export class DbAdministrationComponent implements OnInit {
     });
   }
 
+
   exportDb() {
-    this.isDownloadingDb = true;
-    this.dbService.exportDb(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
-      this.isDownloadingDb = false;
-      const a = document.createElement('a')
-      const objectUrl = URL.createObjectURL(data)
-      a.href = objectUrl
-      a.download = 'pledarigrond-export.zip';
-      a.click();
-      URL.revokeObjectURL(objectUrl);
-    }, error => {
-      console.error(error);
-      this.isDownloadingDb = false;
-    })
+    const modal = this.modalService.create({
+      nzTitle: 'Download data...',
+      nzContent: ExportDumpComponent,
+      nzClosable: false,
+      nzViewContainerRef: this.viewContainerRef,
+    });
   }
 
   reloadDemoData() {
