@@ -89,7 +89,7 @@
     }
   },
   "promo": {
-    "ulteriurs": "Andere Wörterbücher",
+    "other": "Andere Wörterbücher",
     "glossary": "Glossare",
     "readmore": "legia dapli"
   },
@@ -178,5 +178,11 @@
     "login_button": "Zum Login",
     "licence": "Die Daten des Pledari Grond stehen unter der CC Attribution 4.0 International (|CC BY 4.0|) Lizenz.",
     "download": "Jetzt herunterladen"
+  },
+  "other_resources": {
+    "gourmet": "Dicziunari Gourmet, Wortschatz für Küche und Gastronomie",
+    "flora": "Flora Helvetica, Blumen- und Pflanzennamen",
+    "avionary": "Vogelnamen",
+    "ballape": "Fussball-Terminologie"
   }
 }

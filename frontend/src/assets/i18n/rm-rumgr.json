@@ -89,7 +89,7 @@
     }
   },
   "promo": {
-    "ulteriurs": "ulteriurs dicziunaris",
+    "other": "ulteriurs dicziunaris",
     "glossary": "glossaris",
     "readmore": "legia dapli"
   },
@@ -178,5 +178,11 @@
     "login_button": "As annunziar",
     "licence": "Las datas dal Pledari Grond èn licenziadas sut CC Attribution 4.0 International (|CC BY 4.0|)",
     "download": "Telechargiar"
+  },
+  "other_resources": {
+    "gourmet": "Dicziunari Gourmet, terminologia da la cuschina e gastronomia",
+    "flora": "Flora Helvetica, nums da flurs e plantas",
+    "avionary": "Terminologia d'utschels",
+    "ballape": "Glossari da ballape"
   }
 }

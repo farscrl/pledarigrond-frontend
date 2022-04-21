@@ -52,6 +52,7 @@ import { ExportComponent } from './features/export/export.component';
 import { TranslateCutPipe } from './pipes/translate-cut.pipe';
 import { HighlighterPipe } from './pipes/highlighter.pipe';
 import { LanguageUtils } from './utils/language-utils';
+import { OtherResourcesComponent } from './features/other-resources/other-resources.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -104,7 +105,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     VerbsModalComponent,
     ExportComponent,
     TranslateCutPipe,
-    HighlighterPipe
+    HighlighterPipe,
+    OtherResourcesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,10 @@
 #ext_links_container {
 	margin-left: 20px;
   margin-top: 20px;
+
+  a {
+    cursor: pointer;
+  }
 }
 
 #ext_links_container>a {

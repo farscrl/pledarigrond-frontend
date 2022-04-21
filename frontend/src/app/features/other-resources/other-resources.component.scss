@@ -1,0 +1,26 @@
+.pg-modal-wrapper {
+  max-width: 664px;
+}
+
+ul {
+  margin-left: 0px;
+}
+
+.ext_links_dicts {
+	list-style: none
+}
+
+.ext_links_dicts li:before {
+	content: "→";
+	color: #848484;
+}
+
+.ext_links_dicts li>a {
+	padding: 0px 0px 0px 3px;
+	font-size: 13px;
+}
+
+.ext_links_dicts li>a:hover {
+	color: rgb(0, 200, 255);
+	text-decoration: none;
+}
