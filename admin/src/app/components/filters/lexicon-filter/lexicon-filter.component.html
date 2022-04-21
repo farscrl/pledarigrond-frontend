@@ -5,7 +5,7 @@
   <nz-form-item>
     <nz-form-label>Search Term</nz-form-label>
     <nz-form-control>
-      <input nz-input [(ngModel)]="searchCriteria.searchPhrase" name="searchPhrase" nzSize="small"/>
+      <input nz-input [(ngModel)]="searchCriteria.searchPhrase" (ngModelChange)="search()" name="searchPhrase" nzSize="small"/>
     </nz-form-control>
   </nz-form-item>
 
@@ -28,27 +28,27 @@
     <nz-form-item>
       <nz-form-label>Category</nz-form-label>
       <nz-form-control>
-        <input nz-input [(ngModel)]="searchCriteria.category" name="category" nzSize="small"/>
+        <input nz-input [(ngModel)]="searchCriteria.category" (ngModelChange)="search()" name="category" nzSize="small"/>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label>Semantic</nz-form-label>
       <nz-form-control>
-        <input nz-input [(ngModel)]="searchCriteria.semantic" name="semantic" nzSize="small" />
+        <input nz-input [(ngModel)]="searchCriteria.semantic" (ngModelChange)="search()" name="semantic" nzSize="small" />
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label>Genus</nz-form-label>
-      <nz-select ngModel="lucy" nzSize="small" name="genus">
+      <nz-select ngModel="lucy" (ngModelChange)="search()" nzSize="small" name="genus">
         <nz-option [nzValue]="value" [nzLabel]="value" *ngFor="let value of genderValues"></nz-option>
       </nz-select>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label>Grammar</nz-form-label>
-      <nz-select ngModel="lucy" nzSize="small" name="grammar">
+      <nz-select ngModel="lucy" (ngModelChange)="search()" nzSize="small" name="grammar">
         <nz-option [nzValue]="value" [nzLabel]="value" *ngFor="let value of grammarValues"></nz-option>
       </nz-select>
     </nz-form-item>
