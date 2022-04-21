@@ -30,5 +30,9 @@ export class IndexInfos {
   unverifiedEntries: number = 0;
   unknown: number = 0;
   lastUpdated: number = 0;
-  overlayCount: any;
+  inflectionCount: InflectionCount = new InflectionCount();
+}
+
+export class InflectionCount {
+  V?: number = 0;
 }

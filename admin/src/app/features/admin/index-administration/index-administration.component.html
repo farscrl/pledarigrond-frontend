@@ -22,6 +22,11 @@
     </nz-col>
   </nz-row>
   <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(indexInfos.inflectionCount.V| number)!" [nzTitle]="'Verbs'"></nz-statistic>
+    </nz-col>
+  </nz-row>
+  <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="24" style="text-align: right;">
       <button nz-button nzType="primary" (click)="loadIndexInfos()" [nzLoading]="isLoading">Refresh stats</button>
     </nz-col>
