@@ -17,11 +17,11 @@ export class AuthService {
   private authBasePath = '/user/token';
   private token = '';
 
-  private role: Role|null = null;
-  private langages: Language[] = [];
+  private roles: Role[] = [];
 
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   private usernameSubject = new BehaviorSubject<string>("");
+  private editorRightsSubject = new BehaviorSubject<boolean>(false);
 
   constructor(
       private jwtHelperService: JwtHelperService,
@@ -36,6 +36,10 @@ export class AuthService {
 
   getUsernameObservable(): Observable<string> {
     return this.usernameSubject.asObservable()
+  }
+
+  hasEditorRightsObservable(): Observable<boolean> {
+    return this.editorRightsSubject.asObservable();
   }
 
   isLoggedIn(): boolean {
@@ -117,17 +121,24 @@ export class AuthService {
 
   private reset() {
     this.token = '';
-    this.role = null;
+    this.roles = [];
   }
 
   private resolveFeatures(token: string) {
     const jwtToken = this.jwtHelperService.decodeToken(token);
     this.isLoggedInSubject.next(true);
     this.usernameSubject.next(jwtToken.sub);
+    this.roles = jwtToken.roles;
+
+    if (this.isAdmin() || this.isEditorPuter() || this.isEditorRumantschgrischun() || this.isEditorSurmiran() || this.isEditorSursilvan() || this.isEditorSutsilvan() || this.isEditorVallader() || this.isEditorNames()) {
+      this.editorRightsSubject.next(true);
+    } else {
+      this.editorRightsSubject.next(false);
+    }
   }
 
   hasSystemRole(role: Role) {
-    return this.isLoggedIn() && this.role === role;
+    return this.isLoggedIn() && this.roles.includes(role);
   }
 
   public getId() {
@@ -148,14 +159,5 @@ export class AuthService {
 
   private getAuthRestUrl(path: string): string {
     return environment.apiUrl.concat(path);
-  }
-
-  private getRoles(): string[] {
-    if (this.token) {
-      const jwtToken = this.jwtHelperService.decodeToken(this.token);
-      return jwtToken.role;
-    } else {
-      return [];
-    }
   }
 }

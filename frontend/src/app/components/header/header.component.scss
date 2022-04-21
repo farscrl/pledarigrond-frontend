@@ -20,7 +20,6 @@
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-justify-content: space-around; /* Safari 6.1+ */
 	justify-content: space-between;
 }
 
@@ -28,7 +27,6 @@
 	font-size: 14px;
 	padding-top: 18px;
 	text-align: center;
-	/* 	width: 86%; */
 	width: 50%;
 
   a {
@@ -46,7 +44,6 @@
 
 /* LANGUAGES WIDGET */
 #languages-widget {
-	/* 	width: 7%; */
 	width: 25%;
 	text-align: left;
 	padding-top: 18px;
@@ -59,14 +56,12 @@
 
 .navi_a_common {
 	opacity: 0.6;
-	/* 	color: rgb(255, 255, 255); */
 	color: #7DDCFF;
 	text-decoration: none !important;
 }
 
 a.navi_a_common:hover {
 	opacity: 1;
-	/*color: rgb(255, 255, 255);*/
 	color: #FFFFFF;
 	text-decoration: none !important;
 }
@@ -102,6 +97,10 @@ a.login-icon {
 
 a.login-icon:hover {
 	background: url(/assets/img/alm.png) right no-repeat;
+}
+
+.link-icon {
+  cursor: pointer;
 }
 
 @media all and (max-width: 767px) {

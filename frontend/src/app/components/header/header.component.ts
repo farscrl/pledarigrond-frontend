@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription, throwIfEmpty } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -14,10 +15,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   loggedInUser = "";
   loggedInUserShort = "";
+  hasEditorRights = false;
   frontendLanguage: FrontendLanguage = 'rm';
 
   private loggedInSubscription: Subscription|null = null;
   private usernameSubscription: Subscription|null = null;
+  private editorRightsSubscription: Subscription|null = null;
   private frontendLanguageSubscription: Subscription|null = null;
 
   constructor(private authService: AuthService, private router: Router, public selectedLanguageService: SelectedLanguageService) { }
@@ -25,6 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loggedInSubscription = this.authService.getLoggedInObservable().subscribe(value => this.isLoggedIn = value);
     this.usernameSubscription = this.authService.getUsernameObservable().subscribe(value => this.generateUserNames(value));
+    this.editorRightsSubscription = this.authService.hasEditorRightsObservable().subscribe(value => this.hasEditorRights = value);
     this.frontendLanguageSubscription = this.selectedLanguageService.getFrontendLanguageObservable().subscribe(value => this.frontendLanguage = value);
   }
 
@@ -34,6 +38,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
       if (this.usernameSubscription) {
         this.usernameSubscription.unsubscribe();
+      }
+      if (this.editorRightsSubscription) {
+        this.editorRightsSubscription.unsubscribe();
       }
       if (this.frontendLanguageSubscription) {
         this.frontendLanguageSubscription?.unsubscribe();
@@ -48,8 +55,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate([this.selectedLanguageService.getSelectedLanguageUrlSegment() + "/login"]);
   }
 
-  goToSearchPage() {
-    this.router.navigate([this.selectedLanguageService.getSelectedLanguageUrlSegment()])
+  goToBackend() {
+    if (this.hasEditorRights) {
+      document.location.href = environment.adminBackendUrl;
+    }
   }
 
   changeFrontendLanguage(language: FrontendLanguage) {

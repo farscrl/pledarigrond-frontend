@@ -11,18 +11,18 @@
 	</div>
 
 	<div id="login-widget" *ngIf="!isLoggedIn">
-		<a class="navi_a_common login-icon" title="s'annunziar" (click)="login()">
+		<a class="navi_a_common login-icon link-icon" [title]="'header.login' | translate" (click)="login()">
 			LOG
 		</a>
 	</div>
 
   <div id="login-widget" *ngIf="isLoggedIn">
-		<a href="#" class="navi_a_common" title="{{ loggedInUser }}">
+		<a class="navi_a_common link-icon" title="{{ loggedInUser }}" (click)="goToBackend()">
 			<span id="u_name" class="hide-mobile">{{ loggedInUser }}</span>
       <span id="u_name" class="show-mobile">{{ loggedInUserShort }}</span>
 		</a>
 		<span class="navi_a_common"> | </span>
-		<a title="Logout" class="navi_a_common login-icon" (click)="logout()"></a>
+		<a title="Logout" class="navi_a_common login-icon link-icon" (click)="logout()"></a>
 	</div>
 
 </div>
