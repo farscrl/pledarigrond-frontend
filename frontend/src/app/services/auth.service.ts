@@ -80,35 +80,35 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    return this.hasSystemRole(Role.ROLE_ADMIN);
+    return this.hasSystemRole('ROLE_ADMIN');
   }
 
   isEditorPuter() {
-    return this.hasSystemRole(Role.ROLE_EDITOR_PUTER);
+    return this.hasSystemRole('ROLE_EDITOR_PUTER');
   }
 
   isEditorRumantschgrischun() {
-    return this.hasSystemRole(Role.ROLE_EDITOR_RUMANTSCHGRISCHUN);
+    return this.hasSystemRole('ROLE_EDITOR_RUMANTSCHGRISCHUN');
   }
 
   isEditorSurmiran() {
-    return this.hasSystemRole(Role.ROLE_EDITOR_SURMIRAN);
+    return this.hasSystemRole('ROLE_EDITOR_SURMIRAN');
   }
 
   isEditorSursilvan() {
-    return this.hasSystemRole(Role.ROLE_EDITOR_SURSILVAN);
+    return this.hasSystemRole('ROLE_EDITOR_SURSILVAN');
   }
 
   isEditorSutsilvan() {
-    return this.hasSystemRole(Role.ROLE_EDITOR_SUTSILVAN);
+    return this.hasSystemRole('ROLE_EDITOR_SUTSILVAN');
   }
 
   isEditorVallader() {
-    return this.hasSystemRole(Role.ROLE_EDITOR_VALLADER);
+    return this.hasSystemRole('ROLE_EDITOR_VALLADER');
   }
 
   isEditorNames() {
-    return this.hasSystemRole(Role.ROLE_EDITOR_NAMES);
+    return this.hasSystemRole('ROLE_EDITOR_NAMES');
   }
 
   private setToken(token: string|null) {
