@@ -160,7 +160,7 @@
       <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
       <br>
 
-      <button nz-button nzType="primary" nzDanger *ngIf="columns.checkMultiple.active && setOfCheckedId.size !== 0">Reject selected</button>
+      <button nz-button nzType="primary" nzDanger *ngIf="columns.checkMultiple.active && setOfCheckedId.size !== 0" (click)="rejectSelected()">Reject selected...</button>
     </ng-container>
   </div>
 

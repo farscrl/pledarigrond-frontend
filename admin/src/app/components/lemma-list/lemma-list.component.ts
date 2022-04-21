@@ -9,6 +9,7 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { LemmaListColumn } from 'src/app/models/lemma-list-column';
 import { MainEntryComponent } from 'src/app/features/modify-entry/main-entry/main-entry.component';
+import { forkJoin, Observable } from 'rxjs';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorQuery } from 'src/app/models/editor-query';
 
@@ -154,6 +155,48 @@ export class LemmaListComponent implements OnInit {
     })
   }
 
+  rejectSelected() {
+    const count = this.setOfCheckedId.size;
+
+    const modal = this.modalService.create({
+      nzTitle: 'Reject the selected items on this page?',
+      nzContent: '<b style="color: red;">' + 'Do you want to reject ' + count + 'suggestions?' + '</b>',
+      nzClosable: false,
+      nzOkDanger: true,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+      },
+      nzOnOk: () => this.rejectSelectedItemsConfirmed(),
+      nzOnCancel: () => {}
+    });
+  }
+
+  rejectSelectedItemsConfirmed() {
+    const subscriptions: Observable<any>[] = [];
+    this.setOfCheckedId.forEach(id => {
+      const items =this.listOfLexEntries.filter(entry => entry.id === id);
+      if (items && items.length === 1) {
+        const lexEntry = items[0];
+
+        // only applicable to unverified items
+        if (lexEntry.mostRecent.verification === 'UNVERIFIED') {
+          if (lexEntry.mostRecent.status === 'NEW_ENTRY') {
+            // drop new entries
+            subscriptions.push(this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!));
+          } else {
+            // reject changed entries
+            subscriptions.push(this.editorService.rejectEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!, lexEntry.mostRecent));
+          }
+        }
+        this.onItemChecked(id, false);
+      }
+    });
+
+    forkJoin(subscriptions).subscribe(() => {
+      this.reloadCurrentPage();
+    });
+  }
+
   private openLemmaModal(entryId?: string) {
     const modal = this.modalService.create({
       nzTitle: !!entryId ? 'Edit lemma' : 'Add lemma',
@@ -165,11 +208,11 @@ export class LemmaListComponent implements OnInit {
       nzComponentParams: {
         lexEntryId: entryId,
       },
-      nzOnOk: () => this.editWindowClosed()
+      nzOnOk: () => this.reloadCurrentPage()
     });
   }
 
-  private editWindowClosed() {
+  private reloadCurrentPage() {
     this.updatePage.emit(this.resultPage!.number);
   }
 }
