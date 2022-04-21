@@ -1,4 +1,4 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BackupInfos, DbInfos, IndexInfos } from '../models/db-infos';
@@ -35,6 +35,16 @@ export class DbService {
 
   getBackupInfos(language: Language): Observable<BackupInfos> {
     return this.httpClient.get<BackupInfos>(this.generateUrl(language, 'backup_infos'));
+  }
+
+  downloadBackupFile(language: Language, fileName: string): Observable<Blob>  {
+    let zipHeaders = new HttpHeaders();
+    zipHeaders = zipHeaders.set('Accept', 'application/zip');
+    const httpOptions = {
+      headers: zipHeaders,
+      responseType: 'blob' as 'json',
+    };
+    return this.httpClient.get<Blob>(this.generateUrl(language, 'download_backup/' + fileName), httpOptions);
   }
 
   getIndexInfos(language: Language): Observable<IndexInfos> {

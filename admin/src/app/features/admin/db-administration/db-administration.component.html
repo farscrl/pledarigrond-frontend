@@ -69,7 +69,7 @@
             {{ backupInfo.creationDate }}<br>
             {{ backupInfo.name }}<br>
             Size: {{ backupInfo.size }} MB<br>
-            <a (click)="downloadBackupFile()">Download</a>
+            <a (click)="downloadBackupFile(backupInfo.name)">Download</a>
           </p>
         </nz-timeline-item>
       </nz-timeline>

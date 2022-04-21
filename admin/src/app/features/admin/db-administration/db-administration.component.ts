@@ -43,7 +43,12 @@ export class DbAdministrationComponent implements OnInit {
     });
   }
 
-  downloadBackupFile() {
+  downloadBackupFile(fileName: string) {
+    this.dbService.downloadBackupFile(this.languageSelectionService.getCurrentLanguage(), fileName).subscribe(data => {
+      this.downloadFile(data, fileName, "application/zip");
+    }, error => {
+      console.error(error);
+    });
     console.log("implement me");
   }
 
@@ -121,5 +126,19 @@ export class DbAdministrationComponent implements OnInit {
     }, error => {
       console.error(error);
     });
+  }
+
+  private downloadFile(data: any, fileName: string, type: string) {
+    const blob = new Blob([data], { type: type });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('href', url);
+    a.setAttribute('target', '_blank');
+    a.setAttribute('download', fileName);
+    a.setAttribute('style', 'display: none');
+    document.getElementsByTagName('body')[0].appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    a.remove();
   }
 }
