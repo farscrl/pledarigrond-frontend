@@ -1,6 +1,6 @@
 <form nz-form [formGroup]="validateForm">
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email" autocomplete="off">E-mail</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
       <input nz-input formControlName="email" id="email" />
     </nz-form-control>
@@ -9,9 +9,9 @@
   <nz-form-item *ngIf="!email">
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">Password</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
-      <input nz-input type="password" formControlName="password" id="password" />
+      <input nz-input type="password" formControlName="password" id="password" autocomplete="new-password" autocomplete="off"/>
       <ng-template #errorTpl let-control>
-        <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
+        <ng-container *ngIf="control.hasError('required')">Please enter a password!</ng-container>
         <ng-container *ngIf="control.hasError('minlength')">The password must contain at least 6 caracters!</ng-container>
       </ng-template>
     </nz-form-control>

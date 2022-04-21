@@ -27,7 +27,7 @@
         <tbody>
           <tr *ngFor="let data of basicTable.data">
             <td>{{ data.email }}</td>
-            <td nzAlign="center"><i nz-icon nzType="check-circle" nzTheme="outline" *ngIf="data.admin"></i><i nz-icon nzType="stop" nzTheme="outline" *ngIf="!data.admin"></i></td>
+            <td nzAlign="center" class="admin-icon" [class.is-admin]="data.admin"><i nz-icon nzType="check-circle" nzTheme="outline" *ngIf="data.admin"></i><i nz-icon nzType="stop" nzTheme="outline" *ngIf="!data.admin"></i></td>
             <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.puterRole)">{{ data.roles.puterRole }}</nz-tag></td>
             <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.rumantschgrischunRole)">{{ data.roles.rumantschgrischunRole }}</nz-tag></td>
             <td nzAlign="center"><nz-tag [nzColor]="roleToColor(data.roles.surmiranRole)">{{ data.roles.surmiranRole }}</nz-tag></td>
