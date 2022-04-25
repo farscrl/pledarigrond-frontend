@@ -1,0 +1,20 @@
+<div *nzModalTitle>
+  Change sort order for «{{ searchString }}»
+  <ng-container *ngIf="dictionaryLanguage === 'ROMANSH'">(romansh)</ng-container>
+  <ng-container *ngIf="dictionaryLanguage === 'GERMAN'">(german)</ng-container>
+</div>
+
+<p>Change the order of the entries by drag-and-drop or using the arrows on the top.</p>
+
+<ngx-sortable [items]="itemsToReorder" name="" (listSorted)="listSorted($event)" [listStyle]="listStyle">
+  <ng-template let-item>
+      <div class="sortable-list-item">
+        {{ item.lemmaValues.DStichwort }} ⇔ {{ item.lemmaValues.RStichwort }}
+      </div>
+  </ng-template>
+</ngx-sortable>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
+  <button nz-button nzType="primary" (click)="save()" [nzLoading]="isSaving">Save</button>
+</div>

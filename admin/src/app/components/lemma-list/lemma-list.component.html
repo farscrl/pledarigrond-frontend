@@ -67,7 +67,7 @@
       <th *ngIf="columns.filter.active" nzWidth="110px">Filter</th>
       <th *ngIf="columns.entry.active" nzWidth="200px">Entry</th>
       <th *ngIf="columns.options.active" nzWidth="110px">Actions</th>
-      <th *ngIf="columns.order.active" nzWidth="110px">Order</th>
+      <th *ngIf="columns.order.active" nzWidth="130px">Order</th>
       <th *ngIf="columns.state.active" nzWidth="120px">State</th>
       <th *ngIf="columns.created.active" nzWidth="120px">Created</th>
       <th *ngIf="columns.german.active">German</th>
@@ -116,8 +116,8 @@
         <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data.id!); $event.stopPropagation();">Delete</button>
       </td>
       <td *ngIf="columns.order.active" class="button-column">
-        <button nz-button nzSize="small" nzType="primary" (click)="$event.stopPropagation();">Order A</button><br>
-        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="$event.stopPropagation();">Order B</button>
+        <button nz-button nzSize="small" (click)="startReorder(data, 'ROMANSH');$event.stopPropagation();" class="wide-button">Order Romansh</button><br>
+        <button nz-button nzSize="small" (click)="startReorder(data, 'GERMAN');$event.stopPropagation();" class="wide-button">Order German</button>
       </td>
       <td *ngIf="columns.state.active" class="small">
         <app-verification [verification]="data.mostRecent.verification"></app-verification><br>

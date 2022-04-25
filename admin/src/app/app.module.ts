@@ -45,6 +45,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ConjugationComponent } from './features/modify-entry/conjugation/conjugation.component';
 import { ExportDumpComponent } from './features/admin/db-administration/export-dump/export-dump.component';
 import { FileUtils } from './utils/file.utils';
+import { ChangeSortOrderComponent } from './features/change-sort-order/change-sort-order.component';
+import { NgxSortableModule } from 'ngx-sortable'
 
 registerLocaleData(de);
 
@@ -85,6 +87,7 @@ export function tokenGetter() {
     MainEntryComponent,
     ConjugationComponent,
     ExportDumpComponent,
+    ChangeSortOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,7 +111,8 @@ export function tokenGetter() {
           useFactory: (HttpLoaderFactory),
           deps: [HttpClient]
       }
-  }),
+    }),
+    NgxSortableModule,
   ],
   providers: [
     UserLoggedInGuard,

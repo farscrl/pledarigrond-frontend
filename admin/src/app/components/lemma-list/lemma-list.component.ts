@@ -12,6 +12,8 @@ import { MainEntryComponent } from 'src/app/features/modify-entry/main-entry/mai
 import { forkJoin, Observable } from 'rxjs';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorQuery } from 'src/app/models/editor-query';
+import { DictionaryLanguage } from 'src/app/models/dictionary-language';
+import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
 
 @Component({
   selector: 'app-lemma-list',
@@ -194,6 +196,21 @@ export class LemmaListComponent implements OnInit {
 
     forkJoin(subscriptions).subscribe(() => {
       this.reloadCurrentPage();
+    });
+  }
+
+  startReorder(lexEntry: LexEntry, dictionaryLanguage: DictionaryLanguage) {
+    const modal = this.modalService.create({
+      nzContent: ChangeSortOrderComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 500,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lexEntry: lexEntry,
+        dictionaryLanguage: dictionaryLanguage,
+      },
+      nzOnOk: () => this.reloadCurrentPage()
     });
   }
 

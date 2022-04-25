@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DictionaryLanguage } from '../models/dictionary-language';
 import { EditorQuery } from '../models/editor-query';
 import { LemmaVersion } from '../models/lemma-version';
 import { LexEntry } from '../models/lex-entry';
@@ -88,6 +89,33 @@ export class EditorService {
     };
 
     return this.httpClient.get<any>(this.generateUrl(language, 'search_suggestions'), httpOptions);
+  }
+
+  getSortOrder(language: Language, lemma: string, dictionaryLanguage: DictionaryLanguage): Observable<LemmaVersion[]> {
+    let params: HttpParams = new HttpParams();
+
+    params = params.set('dictionaryLanguage', dictionaryLanguage);
+    params = params.set('lemma', lemma);
+
+    const httpOptions = {
+      params: params
+    };
+
+    return this.httpClient.get<any>(this.generateUrl(language, 'get_order'), httpOptions);
+  }
+
+  saveSortOrder(language: Language,  dictionaryLanguage: DictionaryLanguage, lemmas: LemmaVersion[]) {
+    let params: HttpParams = new HttpParams();
+
+    params = params.set('dictionaryLanguage', dictionaryLanguage);
+
+    const body: any = Object.assign({}, { lemmas: lemmas });
+
+    const httpOptions = {
+      params: params
+    };
+
+    return this.httpClient.post<any>(this.generateUrl(language, 'update_order'), body, httpOptions);
   }
 
   exportFieldsByEditorQuery(language: Language, editorQuery: EditorQuery, fields: string[]): Observable<Blob> {
