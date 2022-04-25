@@ -9,7 +9,14 @@
 <ngx-sortable [items]="itemsToReorder" name="" (listSorted)="listSorted($event)" [listStyle]="listStyle">
   <ng-template let-item>
       <div class="sortable-list-item">
-        {{ item.lemmaValues.DStichwort }} ⇔ {{ item.lemmaValues.RStichwort }}
+        {{ item.lemmaValues.DStichwort }}
+        <ng-container *ngIf="item.lemmaValues.DSubsemantik"> ({{ item.lemmaValues.DSubsemantik }})</ng-container>
+        <ng-container *ngIf="item.lemmaValues.DGenus"> [{{ item.lemmaValues.DGenus }}]</ng-container>
+         ⇔
+        {{ item.lemmaValues.RStichwort }}
+        <ng-container *ngIf="item.lemmaValues.RFlex"> [{{ item.lemmaValues.RFlex }}]</ng-container>
+        <ng-container *ngIf="item.lemmaValues.RSubsemantik"> ({{ item.lemmaValues.RSubsemantik }})</ng-container>
+        <ng-container *ngIf="item.lemmaValues.RGenus"> [{{ item.lemmaValues.RGenus }}]</ng-container>
       </div>
   </ng-template>
 </ngx-sortable>
