@@ -47,6 +47,7 @@ import { ExportDumpComponent } from './features/admin/db-administration/export-d
 import { FileUtils } from './utils/file.utils';
 import { ChangeSortOrderComponent } from './features/change-sort-order/change-sort-order.component';
 import { NgxSortableModule } from 'ngx-sortable'
+import { HighlighterPipe } from './pipes/highlighter.pipe';
 
 registerLocaleData(de);
 
@@ -88,6 +89,7 @@ export function tokenGetter() {
     ConjugationComponent,
     ExportDumpComponent,
     ChangeSortOrderComponent,
+    HighlighterPipe,
   ],
   imports: [
     BrowserModule,

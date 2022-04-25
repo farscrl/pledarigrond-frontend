@@ -108,8 +108,7 @@
         <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();">Filter User</button>
         <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" *ngIf="data.mostRecent.verifierId" style="margin-top: 4px;">Filter Verifier</button>
       </td>
-      <td *ngIf="columns.entry.active">
-        {{ data.mostRecent.lemmaValues.DStichwort }} ⇔ {{ data.mostRecent.lemmaValues.RStichwort }}
+      <td *ngIf="columns.entry.active" [innerHtml]="(data.mostRecent.lemmaValues.DStichwort | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (data.mostRecent.lemmaValues.RStichwort | highlighter:filter!.searchPhrase:filter!.highlight)">
       </td>
       <td *ngIf="columns.options.active" class="button-column">
         <button nz-button nzSize="small" nzType="primary" (click)="editEntry(data.id!); $event.stopPropagation();">Edit</button><br>

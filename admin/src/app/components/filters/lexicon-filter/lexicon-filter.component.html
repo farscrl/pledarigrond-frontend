@@ -10,7 +10,7 @@
   </nz-form-item>
 
   <nz-form-item>
-    <label nz-checkbox [(ngModel)]="searchCriteria.highlight" name="highligt" nzSize="small">Highligt search results</label>
+    <label nz-checkbox [(ngModel)]="searchCriteria.highlight" (ngModelChange)="search()" name="highligt" nzSize="small">Highlight search results</label>
   </nz-form-item>
 
   <nz-divider [nzText]="showSearchDetails ? showLess : showMore" (click)="toggleDetails()">
