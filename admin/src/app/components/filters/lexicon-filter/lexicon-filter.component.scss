@@ -1,0 +1,16 @@
+nz-divider {
+  cursor: pointer;
+}
+
+.ant-form-vertical .ant-form-item-label {
+  padding-bottom: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  .reset {
+    margin-right: 16px;
+  }
+}

@@ -26,38 +26,64 @@
 
   <ng-container *ngIf="showSearchDetails">
     <nz-form-item>
+      <nz-form-label>Language</nz-form-label>
+      <nz-form-control>
+        <nz-radio-group [(ngModel)]="searchCriteria.searchDirection" (ngModelChange)="search()" name="searchDirection" nzSize="small">
+          <label nz-radio nzValue="BOTH">both</label>
+          <label nz-radio nzValue="ROMANSH">romansh -> german</label>
+          <label nz-radio nzValue="GERMAN">german -> romansh</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Search method</nz-form-label>
+      <nz-form-control>
+        <nz-radio-group [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="search()" name="searchMethod" nzSize="small">
+          <label nz-radio nzValue="NORMAL">Normal</label>
+          <label nz-radio nzValue="INTERN">Everywhere</label>
+          <label nz-radio nzValue="PREFIX">Start</label>
+          <label nz-radio nzValue="SUFFIX">Endings</label>
+          <label nz-radio nzValue="EXACT">Match</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
       <nz-form-label>Category</nz-form-label>
       <nz-form-control>
-        <input nz-input [(ngModel)]="searchCriteria.category" (ngModelChange)="search()" name="category" nzSize="small"/>
+        <input nz-input [(ngModel)]="searchCriteria.category" (ngModelChange)="search()" name="category" nzSize="small" [nzAutocomplete]="categoryAuto" (input)="categoryChanged()"/>
+        <nz-autocomplete [nzDataSource]="categoryAutocomplete" nzBackfill #categoryAuto></nz-autocomplete>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label>Semantic</nz-form-label>
       <nz-form-control>
-        <input nz-input [(ngModel)]="searchCriteria.semantic" (ngModelChange)="search()" name="semantic" nzSize="small" />
+        <input nz-input [(ngModel)]="searchCriteria.subSemantics" (ngModelChange)="search()" name="subSemantics" nzSize="small" [nzAutocomplete]="semanticsAuto" (input)="semanticsChanged()"/>
+        <nz-autocomplete [nzDataSource]="semanticsAutocomplete" nzBackfill #semanticsAuto></nz-autocomplete>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label>Genus</nz-form-label>
-      <nz-select ngModel="lucy" (ngModelChange)="search()" nzSize="small" name="genus">
+      <nz-form-label>Gender</nz-form-label>
+      <nz-select [(ngModel)]="searchCriteria.gender" (ngModelChange)="search()" nzSize="small" name="gender">
+        <nz-option nzValue="" nzLabel=""></nz-option>
         <nz-option [nzValue]="value" [nzLabel]="value" *ngFor="let value of genderValues"></nz-option>
       </nz-select>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label>Grammar</nz-form-label>
-      <nz-select ngModel="lucy" (ngModelChange)="search()" nzSize="small" name="grammar">
+      <nz-select [(ngModel)]="searchCriteria.grammar" (ngModelChange)="search()" nzSize="small" name="grammar">
+        <nz-option nzValue="" nzLabel=""></nz-option>
         <nz-option [nzValue]="value" [nzLabel]="value" *ngFor="let value of grammarValues"></nz-option>
       </nz-select>
     </nz-form-item>
   </ng-container>
 
-  <nz-form-item>
-    <nz-form-control >
-      <button nz-button nzType="primary" (click)="search()">Submit</button>
-      <button nz-button nzType="default" (click)="reset()">Reset</button>
-    </nz-form-control>
-  </nz-form-item>
+  <div class="buttons">
+    <button nz-button nzType="default" (click)="reset()" class="reset">Reset</button>
+    <button nz-button nzType="primary" (click)="search()">Submit</button>
+  </div>
 </form>

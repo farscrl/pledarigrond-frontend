@@ -8,8 +8,8 @@ export class SearchCriteria {
 
 export class EditorSearchCriteria extends SearchCriteria {
   category: string = "";
-  semantic: string = "";
-  genus: string = "";
+  subSemantics: string = "";
+  gender: string = "";
   grammar: string = "";
 }
 

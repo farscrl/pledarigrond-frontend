@@ -5,7 +5,7 @@ import { EditorQuery } from '../models/editor-query';
 import { LemmaVersion } from '../models/lemma-version';
 import { LexEntry } from '../models/lex-entry';
 import { Page } from '../models/page';
-import { SearchCriteria } from '../models/search-criteria';
+import { EditorSearchCriteria, SearchCriteria } from '../models/search-criteria';
 import { Language } from '../models/security';
 import { environment } from './../../environments/environment';
 
@@ -77,6 +77,19 @@ export class EditorService {
     return this.httpClient.get<any>(this.generateUrl(language, 'search_suggestions_choice'));
   }
 
+  getSearchSuggestions(language: Language, field: string, searchTerm: string): Observable<any> {
+    let params: HttpParams = new HttpParams();
+
+    params = params.set('field', field);
+    params = params.set('searchTerm', searchTerm);
+
+    const httpOptions = {
+      params: params
+    };
+
+    return this.httpClient.get<any>(this.generateUrl(language, 'search_suggestions'), httpOptions);
+  }
+
   exportFieldsByEditorQuery(language: Language, editorQuery: EditorQuery, fields: string[]): Observable<Blob> {
     let params: HttpParams = new HttpParams();
 
@@ -141,7 +154,7 @@ export class EditorService {
     return params;
   }
 
-  private searchCriteriaToHttpParam(searchCriteria: SearchCriteria, params: HttpParams): HttpParams {
+  private searchCriteriaToHttpParam(searchCriteria: SearchCriteria|EditorSearchCriteria, params: HttpParams): HttpParams {
     if (!!searchCriteria.searchPhrase && searchCriteria.searchPhrase !== "") {
       params = params.set('searchPhrase', searchCriteria.searchPhrase);
     }
@@ -156,6 +169,23 @@ export class EditorService {
 
     if (!!searchCriteria.suggestions && (searchCriteria.suggestions)) {
       params = params.set('suggestions', searchCriteria.suggestions);
+    }
+
+    const editorSearchCriteria = searchCriteria as EditorSearchCriteria;
+    if (!!editorSearchCriteria.category && editorSearchCriteria.category != "") {
+      params = params.set('category', editorSearchCriteria.category);
+    }
+
+    if (!!editorSearchCriteria.subSemantics && editorSearchCriteria.subSemantics != "") {
+      params = params.set('subSemantics', editorSearchCriteria.subSemantics);
+    }
+
+    if (!!editorSearchCriteria.gender && editorSearchCriteria.gender != "") {
+      params = params.set('gender', editorSearchCriteria.gender);
+    }
+
+    if (!!editorSearchCriteria.grammar && editorSearchCriteria.grammar != "") {
+      params = params.set('grammar', editorSearchCriteria.grammar);
     }
 
     return params;
