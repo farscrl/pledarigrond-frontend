@@ -6,7 +6,7 @@
           <div class="small"></div>
           <div class="main">
             <label class="control-label">{{ 'search.searchPhrase' | translate }}</label>
-            <input type="text" name="searchPhrase" id="searchPhrase" [(ngModel)]="searchCriteria.searchPhrase" (keyup)="emitSearch()" autocomplete="off">
+            <input type="text" name="searchPhrase" id="searchPhrase" [(ngModel)]="searchCriteria.searchPhrase" (keyup)="emitSearch()" autocomplete="off" autofocus>
           </div>
           <div class="small" style="margin-left: 32px;">
             <button (click)="emitSearch()">{{ 'search.search' | translate }}</button>

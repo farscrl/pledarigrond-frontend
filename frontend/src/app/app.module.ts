@@ -53,6 +53,7 @@ import { TranslateCutPipe } from './pipes/translate-cut.pipe';
 import { HighlighterPipe } from './pipes/highlighter.pipe';
 import { LanguageUtils } from './utils/language-utils';
 import { OtherResourcesComponent } from './features/other-resources/other-resources.component';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -106,7 +107,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ExportComponent,
     TranslateCutPipe,
     HighlighterPipe,
-    OtherResourcesComponent
+    OtherResourcesComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,
