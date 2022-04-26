@@ -82,7 +82,10 @@
       "state": "Status",
       "user": "Utilisader",
       "entry": "Endataziun",
-      "changed": "Midà"
+      "changed": "Midà",
+      "no_item_selected": "Tscherner in'endataziun da vart dretga per vesair qua la cronologia da versions dal lemma.",
+      "delete_history_button": "Stizzar cronologia",
+      "delete_history_confirmation": "Vulais Vus propi stizzar la cronologia da questa endataziun?"
     },
     "lemma": {
       "results_info": "Las endataziuns {{start}} fin {{end}} da {{total}} vegnan mussadas.",

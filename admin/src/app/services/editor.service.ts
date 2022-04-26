@@ -74,6 +74,10 @@ export class EditorService {
     return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/reject_version'), body);
   }
 
+  dropOutdatedHistory(language: Language, entryId: string) {
+    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/drop_outdated_history'), null);
+  }
+
   getChoiceFieldsSuggestions(language: Language) {
     return this.httpClient.get<any>(this.generateUrl(language, 'search_suggestions_choice'));
   }

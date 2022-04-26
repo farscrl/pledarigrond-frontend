@@ -165,8 +165,6 @@ export class LemmaListComponent implements OnInit {
       nzOnOk: () => this.dropEntryConfirmed(entry.id!),
       nzOnCancel: () => {}
     });
-
-
   }
 
   rejectSelected() {

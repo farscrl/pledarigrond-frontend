@@ -4,6 +4,7 @@
   nzShowPagination="false"
   nzShowSizeChanger
   [nzData]="versionHistory"
+  [nzNoResult]="notFound"
 >
   <thead>
     <tr>
@@ -33,3 +34,14 @@
     </tr>
   </tbody>
 </nz-table>
+
+<ng-template #notFound>
+  <nz-empty nzNotFoundImage="simple" [nzNotFoundContent]="'lexicon.lemma_history.no_item_selected' | translate"></nz-empty>
+</ng-template>
+
+<div class="button-container" *ngIf="this.selectedLexEntry">
+  <button nz-button nzDanger nzType="primary" (click)="dropOutdatedHistory()" [disabled]="!this.selectedLexEntry">
+    <i nz-icon nzType="delete"></i>
+    {{ 'lexicon.lemma_history.delete_history_button' | translate}}
+  </button>
+</div>

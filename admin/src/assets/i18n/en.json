@@ -82,7 +82,10 @@
       "state": "State",
       "user": "User",
       "entry": "Entry",
-      "changed": "Changed"
+      "changed": "Changed",
+      "no_item_selected": "Select an entry on the right side, to see here the lemma version history.",
+      "delete_history_button": "Delete history",
+      "delete_history_confirmation": "Do you really want to delete the history of this entry?"
     },
     "lemma": {
       "results_info": "Displaying entries {{start}} to {{end}} of {{total}}",
