@@ -41,14 +41,14 @@ export class DbService {
     return this.httpClient.get<BackupInfos>(this.generateUrl(language, 'backup_infos'));
   }
 
-  downloadBackupFile(language: Language, fileName: string): Observable<Blob>  {
+  downloadBackupFile(language: Language, fileName: string): Observable<HttpResponse<Blob>>  {
     let zipHeaders = new HttpHeaders();
     zipHeaders = zipHeaders.set('Accept', 'application/zip');
-    const httpOptions = {
+    return this.httpClient.get(this.generateUrl(language, 'download_backup/' + fileName), {
       headers: zipHeaders,
-      responseType: 'blob' as 'json',
-    };
-    return this.httpClient.get<Blob>(this.generateUrl(language, 'download_backup/' + fileName), httpOptions);
+      responseType: 'blob',
+      observe: 'response'
+    });
   }
 
   getIndexInfos(language: Language): Observable<IndexInfos> {

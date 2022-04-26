@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { BackupInfos, DbInfos } from 'src/app/models/db-infos';
-import { Language } from 'src/app/models/security';
 import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { ExportDumpComponent } from './export-dump/export-dump.component';
 import { ImportDumpComponent } from './import-dump/import-dump.component';
+import { TranslateService } from '@ngx-translate/core';
+import { FileUtils } from 'src/app/utils/file.utils';
 
 @Component({
   selector: 'app-db-administration',
@@ -19,7 +20,14 @@ export class DbAdministrationComponent implements OnInit {
   isReloadingDemoData = false;
   backupInfos: BackupInfos = new BackupInfos();
 
-  constructor(private dbService: DbService, private languageSelectionService: LanguageSelectionService, private modalService: NzModalService, private viewContainerRef: ViewContainerRef) { }
+  constructor(
+    private dbService: DbService,
+    private languageSelectionService: LanguageSelectionService,
+    private modalService: NzModalService,
+    private viewContainerRef: ViewContainerRef,
+    private translateService: TranslateService,
+    private fileUtils: FileUtils,
+  ) { }
 
   ngOnInit(): void {
     this.loadDbStats();
@@ -45,7 +53,7 @@ export class DbAdministrationComponent implements OnInit {
 
   downloadBackupFile(fileName: string) {
     this.dbService.downloadBackupFile(this.languageSelectionService.getCurrentLanguage(), fileName).subscribe(data => {
-      this.downloadFile(data, fileName, "application/zip");
+      this.fileUtils.downloadFile(data, fileName);
     }, error => {
       console.error(error);
     });
@@ -119,19 +127,5 @@ export class DbAdministrationComponent implements OnInit {
     }, error => {
       console.error(error);
     });
-  }
-
-  private downloadFile(data: any, fileName: string, type: string) {
-    const blob = new Blob([data], { type: type });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.setAttribute('href', url);
-    a.setAttribute('target', '_blank');
-    a.setAttribute('download', fileName);
-    a.setAttribute('style', 'display: none');
-    document.getElementsByTagName('body')[0].appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    a.remove();
   }
 }
