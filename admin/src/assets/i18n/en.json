@@ -20,7 +20,7 @@
       "email_error": "The input is not valid E-mail address",
       "password": "Password",
       "password_missing": "Please enter a password",
-      "password_lenght": "The password must contain at least 6 caracters",
+      "password_lenght": "The password must contain at least 6 characters",
       "is_admin": "is Admin?",
       "role": "Role",
       "editor_role": "Editor",
@@ -33,7 +33,7 @@
   "lexicon": {
     "suggestions_menu_item": "Suggestions",
     "history_menu_item": "History",
-    "lexicon_menu_item": "Lexicion",
+    "lexicon_menu_item": "Lexicon",
     "review_menu_item": "Review automatic changes",
     "filter": {
       "date_interval": "Date interval",
@@ -78,7 +78,7 @@
     },
     "lemma_history": {
       "title": "Lemma history",
-      "subtitle": "See al the changes to the selected lemma",
+      "subtitle": "See all the changes to the selected lemma",
       "state": "State",
       "user": "User",
       "entry": "Entry",
@@ -93,7 +93,7 @@
         "filter": "Filter",
         "entry": "Entry",
         "actions": "Actions",
-        "order": "order",
+        "order": "Order",
         "state": "State",
         "created": "Creation date",
         "de": "German",
@@ -113,7 +113,7 @@
       },
       "export": {
         "button": "Export",
-        "title": "Export fields to export",
+        "title": "Select fields to export",
         "all": "Check all",
         "cancel": "Cancel",
         "export": "Export"
@@ -121,10 +121,10 @@
       "new_button": "Add new entry",
       "table_actions": {
         "filter_user": "Filter user",
-        "filter_verifier": "Filtr verifier",
+        "filter_verifier": "Filter verifier",
         "edit": "Edit",
         "delete": "Delete",
-        "order_rm": "Order Romans",
+        "order_rm": "Order Romansh",
         "order_de": "Order German"
       },
       "multiedit": {
@@ -212,16 +212,16 @@
       "undefined": "Undefined"
     },
     "role": {
-      "admin": "admin",
-      "editor": "editor",
-      "guest": "guest",
-      "none": "none"
+      "admin": "Admin",
+      "editor": "Editor",
+      "guest": "Guest",
+      "none": "None"
     },
     "verification": {
-      "rejected": "rejected",
-      "accepted": "accepted",
-      "outdated": "outdated",
-      "unverified": "unverified"
+      "rejected": "Rejected",
+      "accepted": "Accepted",
+      "outdated": "Outdated",
+      "unverified": "Unverified"
     }
   },
   "edit": {
@@ -231,14 +231,14 @@
     },
     "lemma": {
       "german": "German",
-      "de": "Lemma german",
+      "de": "Lemma German",
       "de_gender": "Gender",
       "category": "Category",
       "de_grammar": "Grammar",
       "de_semantics": "Semantics",
       "de_link": "Link",
       "romansh": "Romansh",
-      "rm": "Lemma romansh",
+      "rm": "Lemma Romansh",
       "rm_gender": "Gender",
       "rm_grammar": "Grammar",
       "rm_semantics": "Semantics",
@@ -276,8 +276,8 @@
   },
   "sort_order": {
     "title": "Change sort order for «{{name}}»",
-    "title_de": "german",
-    "title_rm": "romansh",
+    "title_de": "German",
+    "title_rm": "Romansh",
     "instructions": "Change the order of the entries by drag-and-drop or using the arrows on the top.",
     "cancel": "Cancel",
     "save": "Save"

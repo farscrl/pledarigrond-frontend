@@ -1,3 +1,291 @@
 {
-
+  "users": {
+    "menu_item": "Utilisaders",
+    "title": "Utilisaders",
+    "subtitle": "Tut ils utilisaders dal Pledari Grond",
+    "new_button": "Nov",
+    "email": "E-Mail",
+    "admin": "Admin",
+    "names": "Nums",
+    "actions": "Acziuns",
+    "edit_action": "Modifitgar",
+    "delete_action": "Stizzar",
+    "delete_question": "Propi stizzar quest utilisader?",
+    "delete_yes": "Gea, stizzar",
+    "delete_no": "Na",
+    "new_title": "Crear in nov utilisader",
+    "edit_title": "Modifitgar l'utilisader",
+    "edit": {
+      "email": "E-Mail",
+      "email_error": "Quai n'è betg ina adressa dad e-mail valida",
+      "password": "Pled-clav",
+      "password_missing": "P. pl. endatar in pled-clav",
+      "password_lenght": "Il pled-clav sto cuntegnair almain 6 caracters",
+      "is_admin": "è admin?",
+      "role": "Rolla",
+      "editor_role": "Redactur",
+      "no_role": "Nagin access",
+      "cancel": "Interrumper",
+      "save": "Memorisar",
+      "create": "Crear"
+    }
+  },
+  "lexicon": {
+    "suggestions_menu_item": "Propostas",
+    "history_menu_item": "Verificaziun",
+    "lexicon_menu_item": "Lexicon",
+    "review_menu_item": "Repassar midadas automaticas",
+    "filter": {
+      "date_interval": "Interval da data",
+      "user_ip": "IP da l'utilisader",
+      "verifier": "Revisur",
+      "search_term": "Pled u expressiun che Vus tschertgais",
+      "highlight": "Marcar il pled u l'expressiun che Vus tschertgais",
+      "show_more": "Dapli opziuns da tschertgar",
+      "show_less": "Damain opziuns da tschertgar",
+      "language": {
+        "title": "Lingua",
+        "both": "Omaduas",
+        "romansh": "Rumantsch -> tudestg",
+        "german": "Tudestg -> rumantsch"
+      },
+      "method": {
+        "title": "Pussaivladads da tschertgar",
+        "normal": "Normal",
+        "intern": "Dapertut",
+        "prefix": "Entschatta",
+        "suffix": "Finiziuns",
+        "exact": "Exact"
+      },
+      "category": "Categoria",
+      "semantics": "Semantica",
+      "gender": "Genus",
+      "grammar": "Grammatica",
+      "reset": "Reinizialisar",
+      "search": "Tschertgar"
+    },
+    "sugestions": {
+      "title": "Propostas e modificaziuns",
+      "subtitle": "Repassar propostas e modificaziuns pendentas"
+    },
+    "history": {
+      "title": "Verificaziun",
+      "subtitle": "Repassar las ultimas midadas"
+    },
+    "lexicon": {
+      "title": "Lexicon",
+      "subtitle": "Tschertgar e modifitgar tut las endataziuns"
+    },
+    "lemma_history": {
+      "title": "Cronologia dal lemma",
+      "subtitle": "Vesair tut las midadas dal lemma tschernì",
+      "state": "Status",
+      "user": "Utilisader",
+      "entry": "Endataziun",
+      "changed": "Midà"
+    },
+    "lemma": {
+      "results_info": "Las endataziuns {{start}} fin {{end}} da {{total}} vegnan mussadas.",
+      "columns": {
+        "title": "Colonnas",
+        "user": "Utilisader",
+        "verifier": "Revisur",
+        "filter": "Filter",
+        "entry": "Endataziun",
+        "actions": "Acziuns",
+        "order": "Successiun",
+        "state": "Status",
+        "created": "Creà",
+        "de": "Tudestg",
+        "de_grammar": "Grammatica (de)",
+        "de_gender": "Genus (de)",
+        "de_semantics": "Semantica (de)",
+        "de_link": "Colliaziun (de)",
+        "rm": "Rumantsch",
+        "rm_grammar": "Grammatica (rm)",
+        "rm_gender": "Genus (rm)",
+        "rm_semantics": "Semantica (rm)",
+        "rm_link": "Colliaziun (rm)",
+        "rm_conjugation": "Conjugaziun (rm)",
+        "rm_additional_search": "Terms da tschertga supplementars (rm)",
+        "category": "Categoria",
+        "comment": "Commentari"
+      },
+      "export": {
+        "button": "Exportar",
+        "title": "Selecziunar ils champs per l'export ",
+        "all": "Selecziunar tuts",
+        "cancel": "Serrar",
+        "export": "Exportar"
+      },
+      "new_button": "Nova endataziun",
+      "table_actions": {
+        "filter_user": "Filtrar utilisader",
+        "filter_verifier": "Filtrar revisur",
+        "edit": "Modifitgar",
+        "delete": "Stizzar",
+        "order_rm": "Successiun rumantsch",
+        "order_de": "Successiun tudestg"
+      },
+      "multiedit": {
+        "activate": "Activar la modificaziun da pliras endataziuns",
+        "reject_button": "Refusar las endataziuns tschernidas...",
+        "title": "Refusar las endataziuns tschernidas sin questa pagina?",
+        "content": "Vulais Vus refusar las {{count}} endataziuns tschernidas?"
+      },
+      "delete": {
+        "title": "Vulais Vus stizzar l'endataziun?"
+      }
+    }
+  },
+  "database": {
+    "menu_item": "Banca da datas",
+    "title": "Banca da datas",
+    "subtitle": "Administraziun da la banca da datas",
+    "dump": {
+      "button": "Backup",
+      "title": "Crear in backup da la banca da datas",
+      "instructions": "Per far in backup cumplet sto la cronologia cumpletta da las midadas esser tschernidas ed las datas na duain betg esser anonimisadas. La datoteca generada cuntegna ina summa da controlla MD5 che po vegnir utilisada per controllar l'integritad da las datas.",
+      "include_history": "Exportar la cronologia cumpletta da las midadas",
+      "anonymize_data": "Anonimisar las datas",
+      "cancel": "Interrumper",
+      "exporting": "Exportar",
+      "start": "Cumenzar l'export"
+    },
+    "import": {
+      "button": "Importar",
+      "title": "Importar ina copia da la banca da datas",
+      "instructions": "Tscherna ina copia da la banca da datas che duai remplazzar las endataziuns memorisadas actualmain. Attenziun: Questa acziun na po betg vegnir revocada.",
+      "select_file": "Tscherner datoteca",
+      "cancel": "Interrumper",
+      "uploading": "Transferir",
+      "start": "Cumenzar il transfer"
+    },
+    "drop": {
+      "button": "Stizzar",
+      "title": "Vulais Vus propi stizzar la banca da datas?",
+      "yes": "Gea",
+      "no": "Na"
+    },
+    "stats": {
+      "entries": "Endataziuns",
+      "versions": "Versiuns",
+      "approved": "Approvà",
+      "suggested": "Propostas",
+      "deleted": "Stizzà",
+      "outdated": "Antiquà",
+      "other": "Auter",
+      "refresh_button": "Actualisar"
+    },
+    "backup": {
+      "title": "Backup",
+      "subtitle": "Infurmaziuns davart ils backups da la banca da datas",
+      "frequency": "Frequenza",
+      "max_backups": "Dumber maximal da backups",
+      "location": "Lieu",
+      "size": "Grondezza",
+      "download_link": "Telechargiar"
+    }
+  },
+  "index": {
+    "menu_item": "Index",
+    "title": "Index",
+    "subtitle": "Administraziun da l'index da Lucene",
+    "rebuild_button": "Re-crear",
+    "stats": {
+      "indexed": "Indexà",
+      "approved": "Approvà",
+      "unverified": "Betg verifitgà",
+      "other": "Auter",
+      "Verbs": "Verbs",
+      "refresh_button": "Actualisar statistica"
+    }
+  },
+  "frontend": {
+    "menu_item": "Pagina d'internet"
+  },
+  "data": {
+    "status": {
+      "deleted": "Stizzà",
+      "new_entry": "Nova endataziun",
+      "new_modification": "Nova modificaziun",
+      "undefined": "Betg definì"
+    },
+    "role": {
+      "admin": "Admin",
+      "editor": "Redactur",
+      "guest": "Giast",
+      "none": "Nagina"
+    },
+    "verification": {
+      "rejected": "Refusà",
+      "accepted": "Acceptà",
+      "outdated": "Antiquà",
+      "unverified": "Betg verifitgà"
+    }
+  },
+  "edit": {
+    "titles": {
+      "add": "Agiuntar lemma",
+      "edit": "Modifitgar lemma"
+    },
+    "lemma": {
+      "german": "Tudestg",
+      "de": "Lemma tudestg",
+      "de_gender": "Genus",
+      "category": "Categoria",
+      "de_grammar": "Grammatica",
+      "de_semantics": "Semantica",
+      "de_link": "Colliaziun",
+      "romansh": "Rumantsch",
+      "rm": "Lemma Rumantsch",
+      "rm_gender": "Genus",
+      "rm_grammar": "Grammatica",
+      "rm_semantics": "Semantica",
+      "rm_link": "Colliaziun",
+      "rm_conjugation": "Conjugaziun",
+      "inflection": {
+        "title": "Flexiun",
+        "none": "Nagina",
+        "verb": "Verb"
+      },
+      "comment": "Commentari",
+      "email": "E-Mail"
+    },
+    "conjugation": {
+      "title": "Conjugaziun",
+      "type": "Tip da conjugaziun",
+      "generate_button": "Generar",
+      "forms": {
+        "infinitive": "Infinitiv",
+        "preschent": "Preschent",
+        "imperfect": "Imperfect",
+        "conjunctiv": "Conjunctiv",
+        "cundiziunal": "Cundiziunal",
+        "futur": "Futur",
+        "particip_perfect": "Particip perfect",
+        "imperativ": "Imperativ",
+        "gerundi": "Gerundi"
+      }
+    },
+    "cancel": "Interrumper",
+    "reset": "Reinizialisar",
+    "save": "Memorisar",
+    "create": "Crear",
+    "ok": "OK"
+  },
+  "sort_order": {
+    "title": "Zavrar translaziuns da «{{name}}»",
+    "title_de": "tudestg",
+    "title_rm": "rumantsch",
+    "instructions": "Midar la successiun da las endataziuns entras trair u cun las frizzas survart.",
+    "cancel": "Interrumper",
+    "save": "Memorisar"
+  },
+  "login": {
+    "email": "E-Mail",
+    "password": "Pled-clav",
+    "error": "Errur d'annunzia.",
+    "login_button": "S'annunziar"
+  }
 }

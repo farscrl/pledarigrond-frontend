@@ -107,7 +107,7 @@ export function tokenGetter() {
     }),
     ReactiveFormsModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: 'rm-rumgr',
       loader: {
           provide: TranslateLoader,
           useFactory: (HttpLoaderFactory),
