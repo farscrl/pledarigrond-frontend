@@ -15,25 +15,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGenus" nzRequired>Gender</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="DGenus" id="DGenus">
-            <nz-option nzValue="f" nzLabel="f"></nz-option>
-            <nz-option nzValue="f(m)" nzLabel="f(m)"></nz-option>
-            <nz-option nzValue="f(n)" nzLabel="f(n)"></nz-option>
-            <nz-option nzValue="f(pl)" nzLabel="f(pl)"></nz-option>
-            <nz-option nzValue="f,m" nzLabel="f,m"></nz-option>
-            <nz-option nzValue="f,m,n" nzLabel="f,m,n"></nz-option>
-            <nz-option nzValue="f,n" nzLabel="f,n"></nz-option>
-            <nz-option nzValue="m" nzLabel="m"></nz-option>
-            <nz-option nzValue="m(f)" nzLabel="m(f)"></nz-option>
-            <nz-option nzValue="m(pl)" nzLabel="m(pl)"></nz-option>
-            <nz-option nzValue="m,f" nzLabel="m,f"></nz-option>
-            <nz-option nzValue="m,n" nzLabel="m,n"></nz-option>
-            <nz-option nzValue="m/n" nzLabel="m/n"></nz-option>
-            <nz-option nzValue="n" nzLabel="n"></nz-option>
-            <nz-option nzValue="n(f)" nzLabel="n(f)"></nz-option>
-            <nz-option nzValue="n(pl)" nzLabel="n(pl)"></nz-option>
-            <nz-option nzValue="n,f" nzLabel="n,f"></nz-option>
-            <nz-option nzValue="n,m" nzLabel="n,m"></nz-option>
-            <nz-option nzValue="pl" nzLabel="pl"></nz-option>
+            <nz-option *ngFor="let item of dGenusValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
@@ -51,23 +33,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik" nzRequired>Grammar</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="DGrammatik" id="DGrammatik">
-            <nz-option nzValue="adj" nzLabel="adj"></nz-option>
-            <nz-option nzValue="adv" nzLabel="adv"></nz-option>
-            <nz-option nzValue="art" nzLabel="art"></nz-option>
-            <nz-option nzValue="cj" nzLabel="cj"></nz-option>
-            <nz-option nzValue="cumpos" nzLabel="cumpos"></nz-option>
-            <nz-option nzValue="int" nzLabel="int"></nz-option>
-            <nz-option nzValue="interj" nzLabel="interj"></nz-option>
-            <nz-option nzValue="inv" nzLabel="inv"></nz-option>
-            <nz-option nzValue="n.l" nzLabel="n.l"></nz-option>
-            <nz-option nzValue="n.p" nzLabel="n.p"></nz-option>
-            <nz-option nzValue="num" nzLabel="num"></nz-option>
-            <nz-option nzValue="prep" nzLabel="prep"></nz-option>
-            <nz-option nzValue="pron" nzLabel="pron"></nz-option>
-            <nz-option nzValue="refl" nzLabel="refl"></nz-option>
-            <nz-option nzValue="subst" nzLabel="subst"></nz-option>
-            <nz-option nzValue="tr" nzLabel="tr"></nz-option>
-            <nz-option nzValue="tr/int" nzLabel="tr/int"></nz-option>
+            <nz-option *ngFor="let item of dGrammatikValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
@@ -104,26 +70,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGenus" nzRequired>Gender</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RGenus" id="RGenus">
-            <nz-option nzValue="(coll)m" nzLabel="(coll)m"></nz-option>
-            <nz-option nzValue="(f)m" nzLabel="(f)m"></nz-option>
-            <nz-option nzValue="(m)f" nzLabel="(m)f"></nz-option>
-            <nz-option nzValue="(pl)f" nzLabel="(pl)f"></nz-option>
-            <nz-option nzValue="coll" nzLabel="coll"></nz-option>
-            <nz-option nzValue="f" nzLabel="f"></nz-option>
-            <nz-option nzValue="f(pl)" nzLabel="f(pl)"></nz-option>
-            <nz-option nzValue="f.pl" nzLabel="f.pl"></nz-option>
-            <nz-option nzValue="f/m" nzLabel="f/m"></nz-option>
-            <nz-option nzValue="f/m.pl" nzLabel="f/m.pl"></nz-option>
-            <nz-option nzValue="m" nzLabel="m"></nz-option>
-            <nz-option nzValue="m(f)" nzLabel="m(f)"></nz-option>
-            <nz-option nzValue="m(f)pl" nzLabel="m(f)pl"></nz-option>
-            <nz-option nzValue="m(pl)" nzLabel="m(pl)"></nz-option>
-            <nz-option nzValue="m,f" nzLabel="m,f"></nz-option>
-            <nz-option nzValue="m.(pl)" nzLabel="m.(pl)"></nz-option>
-            <nz-option nzValue="m.pl" nzLabel="m.pl"></nz-option>
-            <nz-option nzValue="m/f" nzLabel="m/f"></nz-option>
-            <nz-option nzValue="m/f.pl" nzLabel="m/f.pl"></nz-option>
-            <nz-option nzValue="pl" nzLabel="pl"></nz-option>
+            <nz-option *ngFor="let item of rGenusValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
@@ -152,24 +99,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGrammatik" nzRequired>Grammar</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RGrammatik" id="RGrammatik">
-            <nz-option nzValue="(refl) tr" nzLabel="(refl) tr"></nz-option>
-            <nz-option nzValue="abs/tr" nzLabel="abs/tr"></nz-option>
-            <nz-option nzValue="adj" nzLabel="adj"></nz-option>
-            <nz-option nzValue="adv" nzLabel="adv"></nz-option>
-            <nz-option nzValue="art" nzLabel="art"></nz-option>
-            <nz-option nzValue="cj" nzLabel="cj"></nz-option>
-            <nz-option nzValue="int" nzLabel="int"></nz-option>
-            <nz-option nzValue="interj" nzLabel="interj"></nz-option>
-            <nz-option nzValue="inv" nzLabel="inv"></nz-option>
-            <nz-option nzValue="n.l" nzLabel="n.l"></nz-option>
-            <nz-option nzValue="n.p" nzLabel="n.p"></nz-option>
-            <nz-option nzValue="num" nzLabel="num"></nz-option>
-            <nz-option nzValue="prep" nzLabel="prep"></nz-option>
-            <nz-option nzValue="pron" nzLabel="pron"></nz-option>
-            <nz-option nzValue="refl" nzLabel="refl"></nz-option>
-            <nz-option nzValue="subst" nzLabel="subst"></nz-option>
-            <nz-option nzValue="tr" nzLabel="tr"></nz-option>
-            <nz-option nzValue="tr/int" nzLabel="tr/int"></nz-option>
+            <nz-option *ngFor="let item of rGrammatikValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
