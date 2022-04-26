@@ -4,6 +4,8 @@ import { EditorQuery } from 'src/app/models/editor-query';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { TranslateService } from '@ngx-translate/core';
+import { FileUtils } from 'src/app/utils/file.utils';
 
 @Component({
   selector: 'app-export',
@@ -36,7 +38,13 @@ export class ExportComponent implements OnInit {
 
   isExporting = false;
 
-  constructor(private modal: NzModalRef, private editorService: EditorService, private languageSelectionService: LanguageSelectionService) {
+  constructor(
+    private modal: NzModalRef,
+    private editorService: EditorService,
+    private languageSelectionService: LanguageSelectionService,
+    private translateService: TranslateService,
+    private fileUtils: FileUtils,
+  ) {
 
   }
 
@@ -83,7 +91,8 @@ export class ExportComponent implements OnInit {
 
     if (this.filter instanceof SearchCriteria) {
       this.editorService.exportFieldsBySearchCriteria(this.languageSelectionService.getCurrentLanguage(), this.filter, fields).subscribe(data => {
-        this.downloadFile(data, "pledarigrond_field_export_tsv.zip", "application/zip");
+        const fileName = this.fileUtils.getFileNameFromContentDispositionHeader(data.headers, "pledarigrond_field_export_tsv.zip");
+        this.fileUtils.downloadFile(data, fileName);
         this.isExporting = false;
         this.modal.triggerOk();
       }, error => {
@@ -93,26 +102,13 @@ export class ExportComponent implements OnInit {
 
     if (this.filter instanceof EditorQuery) {
       this.editorService.exportFieldsByEditorQuery(this.languageSelectionService.getCurrentLanguage(), this.filter, fields).subscribe(data => {
-        this.downloadFile(data, "pledarigrond_field_export_tsv.zip", "application/zip");
+        const fileName = this.fileUtils.getFileNameFromContentDispositionHeader(data.headers, "pledarigrond_field_export_tsv.zip");
+        this.fileUtils.downloadFile(data, fileName);
         this.isExporting = false;
         this.modal.triggerOk();
       }, error => {
         console.error(error);
       });
     }
-  }
-
-  private downloadFile(data: any, fileName: string, type: string) {
-    const blob = new Blob([data], { type: type });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.setAttribute('href', url);
-    a.setAttribute('target', '_blank');
-    a.setAttribute('download', fileName);
-    a.setAttribute('style', 'display: none');
-    document.getElementsByTagName('body')[0].appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    a.remove();
   }
 }

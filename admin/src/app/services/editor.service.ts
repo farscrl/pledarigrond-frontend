@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DictionaryLanguage } from '../models/dictionary-language';
@@ -118,7 +118,7 @@ export class EditorService {
     return this.httpClient.post<any>(this.generateUrl(language, 'update_order'), body, httpOptions);
   }
 
-  exportFieldsByEditorQuery(language: Language, editorQuery: EditorQuery, fields: string[]): Observable<Blob> {
+  exportFieldsByEditorQuery(language: Language, editorQuery: EditorQuery, fields: string[]): Observable<HttpResponse<Blob>> {
     let params: HttpParams = new HttpParams();
 
     params = this.editorQueryToHttpParam(editorQuery, params);
@@ -127,16 +127,15 @@ export class EditorService {
     let zipHeaders = new HttpHeaders();
     zipHeaders = zipHeaders.set('Accept', 'application/zip');
 
-    const httpOptions = {
+    return this.httpClient.post(this.generateUrl(language, 'lex_entries_export'), body, {
       params: params,
       headers: zipHeaders,
-      responseType: 'blob' as 'json',
-    };
-
-    return this.httpClient.post<Blob>(this.generateUrl(language, 'lex_entries_export'), body, httpOptions);
+      responseType: 'blob',
+      observe: 'response'
+    });
   }
 
-  exportFieldsBySearchCriteria(language: Language, searchCriteria: SearchCriteria, fields: string[]): Observable<Blob> {
+  exportFieldsBySearchCriteria(language: Language, searchCriteria: SearchCriteria, fields: string[]): Observable<HttpResponse<Blob>> {
     let params: HttpParams = new HttpParams();
 
     params = this.searchCriteriaToHttpParam(searchCriteria, params);
@@ -145,13 +144,12 @@ export class EditorService {
     let zipHeaders = new HttpHeaders();
     zipHeaders = zipHeaders.set('Accept', 'application/zip');
 
-    const httpOptions = {
+    return this.httpClient.post(this.generateUrl(language, 'search_export'), body, {
       params: params,
       headers: zipHeaders,
-      responseType: 'blob' as 'json',
-    };
-
-    return this.httpClient.post<Blob>(this.generateUrl(language, 'search_export'), body, httpOptions);
+      responseType: 'blob',
+      observe: 'response'
+    });
   }
 
   private generateUrl(language: Language, segment: string) {
