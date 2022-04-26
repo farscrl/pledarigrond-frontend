@@ -48,6 +48,9 @@ import { FileUtils } from './utils/file.utils';
 import { ChangeSortOrderComponent } from './features/change-sort-order/change-sort-order.component';
 import { NgxSortableModule } from 'ngx-sortable'
 import { HighlighterPipe } from './pipes/highlighter.pipe';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { IdiomCardComponent } from './features/dashboard/idiom-card/idiom-card.component';
+import { NoPermissionsComponent } from './features/no-permissions/no-permissions.component';
 
 registerLocaleData(de);
 
@@ -90,6 +93,9 @@ export function tokenGetter() {
     ExportDumpComponent,
     ChangeSortOrderComponent,
     HighlighterPipe,
+    DashboardComponent,
+    IdiomCardComponent,
+    NoPermissionsComponent,
   ],
   imports: [
     BrowserModule,

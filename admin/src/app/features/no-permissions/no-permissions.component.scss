@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    background-color: rgb(228, 228, 228);
+    padding: 32px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+}

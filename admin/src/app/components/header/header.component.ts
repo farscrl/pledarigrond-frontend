@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   private frontendLanguageSubscription: Subscription|null = null;
 
-  constructor(private authService: AuthService, private router: Router, public languageSelectionService: LanguageSelectionService) { }
+  constructor(public authService: AuthService, private router: Router, public languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
     this.frontendLanguageSubscription = this.languageSelectionService.getFrontendLanguageObservable().subscribe(value => this.frontendLanguage = value);

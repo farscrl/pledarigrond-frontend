@@ -287,5 +287,22 @@
     "password": "Password",
     "error": "Login error.",
     "login_button": "Log in"
+  },
+  "dashboard": {
+    "editor": {
+      "title": "Editor",
+      "suggestions": "Review suggestions",
+      "history": "Last changes",
+      "lexicon": "Search lexicon"
+    },
+    "admin": {
+      "title": "Admin",
+      "database": "DB admin",
+      "index": "Index admin"
+    }
+  },
+  "no_permissions": {
+    "title": "You're not allowed to access the admin section.",
+    "logout": "Logout"
   }
 }

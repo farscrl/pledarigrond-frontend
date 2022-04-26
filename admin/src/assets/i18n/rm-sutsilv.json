@@ -287,5 +287,22 @@
     "password": "Pled-clav",
     "error": "Errur d'annunzia.",
     "login_button": "S'annunziar"
+  },
+  "dashboard": {
+    "editor": {
+      "title": "Redacziun",
+      "suggestions": "Repassar propostas",
+      "history": "Ultimas modificaziuns",
+      "lexicon": "Tschertga lexicala"
+    },
+    "admin": {
+      "title": "Administraziun",
+      "database": "Administrar banca da datas",
+      "index": "Administrar index"
+    }
+  },
+  "no_permissions": {
+    "title": "Vus n'avais betg ils dretgs necessaris per acceder la surfatscha d'administraziun.",
+    "logout": "Logout"
   }
 }

@@ -1,0 +1,15 @@
+<nz-card [nzTitle]="name">
+  <h4>{{ 'dashboard.editor.title' | translate }}</h4>
+  <ul>
+    <li><a [routerLink]="'/admin/' + url + '/editor/suggestions'">{{ 'dashboard.editor.suggestions' | translate }}</a></li>
+    <li><a [routerLink]="'/admin/' + url + '/editor/history'">{{ 'dashboard.editor.history' | translate }}</a></li>
+    <li><a [routerLink]="'/admin/' + url + '/editor/lexicon'">{{ 'dashboard.editor.lexicon' | translate }}</a></li>
+  </ul>
+  <div *ngIf="authService.isAdmin()">
+    <h4>{{ 'dashboard.admin.title' | translate }}</h4>
+    <ul>
+      <li><a [routerLink]="'/admin/' + url + '/admin/database'">{{ 'dashboard.admin.database' | translate }}</a></li>
+      <li><a [routerLink]="'/admin/' + url + '/admin/index'">{{ 'dashboard.admin.index' | translate }}</a></li>
+    </ul>
+  </div>
+</nz-card>

@@ -13,12 +13,12 @@
     {{ 'lexicon.review_menu_item' | translate }}
   </li>-->
 
-  <nz-divider nzType="vertical"></nz-divider>
-  <i nz-icon nzType="laptop" nzTheme="outline"></i>
-  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/database'">
+  <nz-divider nzType="vertical" *ngIf="authService.isAdmin()"></nz-divider>
+  <i nz-icon nzType="laptop" nzTheme="outline" *ngIf="authService.isAdmin()"></i>
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/database'" *ngIf="authService.isAdmin()">
     {{ 'database.menu_item' | translate }}
   </li>
-  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/index'">
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/index'" *ngIf="authService.isAdmin()">
     {{ 'index.menu_item' | translate }}
   </li>
   <nz-divider nzType="vertical"></nz-divider>

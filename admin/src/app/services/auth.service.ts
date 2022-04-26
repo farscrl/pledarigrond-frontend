@@ -78,31 +78,31 @@ export class AuthService {
   }
 
   isEditorPuter() {
-    return this.hasSystemRole('ROLE_EDITOR_PUTER');
+    return this.hasSystemRole('ROLE_EDITOR_PUTER') || this.isAdmin();
   }
 
   isEditorRumantschgrischun() {
-    return this.hasSystemRole('ROLE_EDITOR_RUMANTSCHGRISCHUN');
+    return this.hasSystemRole('ROLE_EDITOR_RUMANTSCHGRISCHUN') || this.isAdmin();
   }
 
   isEditorSurmiran() {
-    return this.hasSystemRole('ROLE_EDITOR_SURMIRAN');
+    return this.hasSystemRole('ROLE_EDITOR_SURMIRAN') || this.isAdmin();
   }
 
   isEditorSursilvan() {
-    return this.hasSystemRole('ROLE_EDITOR_SURSILVAN');
+    return this.hasSystemRole('ROLE_EDITOR_SURSILVAN') || this.isAdmin();
   }
 
   isEditorSutsilvan() {
-    return this.hasSystemRole('ROLE_EDITOR_SUTSILVAN');
+    return this.hasSystemRole('ROLE_EDITOR_SUTSILVAN') || this.isAdmin();
   }
 
   isEditorVallader() {
-    return this.hasSystemRole('ROLE_EDITOR_VALLADER');
+    return this.hasSystemRole('ROLE_EDITOR_VALLADER') || this.isAdmin();
   }
 
   isEditorNames() {
-    return this.hasSystemRole('ROLE_EDITOR_NAMES');
+    return this.hasSystemRole('ROLE_EDITOR_NAMES') || this.isAdmin();
   }
 
   private setToken(token: string|null) {

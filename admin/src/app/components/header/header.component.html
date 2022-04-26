@@ -1,16 +1,16 @@
 <nz-header>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu" [nzSelectable]="false">
-    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/puter" nzDisabled="true" >Puter</li>-->
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/rumantschgrischun">Rumantsch Grischun</li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/surmiran">Surmiran</li>
-    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sursilvan" nzDisabled="true" >Sursilvan</li>-->
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sutsilvan">Sutsilvan</li>
-    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/vallader" nzDisabled="true" >Vallader</li>-->
+    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/puter" nzDisabled="true" *ngIf="authService.isEditorPuter()">Puter</li>-->
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/rumantschgrischun" *ngIf="authService.isEditorRumantschgrischun()">Rumantsch Grischun</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/surmiran" *ngIf="authService.isEditorSurmiran()">Surmiran</li>
+    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sursilvan" nzDisabled="true" *ngIf="authService.isEditorSursilvan()">Sursilvan</li>-->
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sutsilvan" *ngIf="authService.isEditorSutsilvan()">Sutsilvan</li>
+    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/vallader" nzDisabled="true" *ngIf="authService.isEditorVallader()">Vallader</li>-->
 
-    <nz-divider nzType="vertical"></nz-divider>
+    <nz-divider nzType="vertical" *ngIf="authService.isEditorNames()"></nz-divider>
 
-    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/names">Nums</li>-->
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users">{{ 'users.menu_item' | translate}}</li>
+    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/names" *ngIf="authService.isEditorNames()">Nums</li>-->
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users" *ngIf="authService.isAdmin()">{{ 'users.menu_item' | translate}}</li>
   </ul>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu-right">
     <a [class.lang_selected]="frontendLanguage === 'en'" (click)="changeFrontendLanguage('en')">en</a>
