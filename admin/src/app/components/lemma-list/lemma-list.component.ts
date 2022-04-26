@@ -14,6 +14,7 @@ import { SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorQuery } from 'src/app/models/editor-query';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
+import { LemmaVersion } from 'src/app/models/lemma-version';
 
 @Component({
   selector: 'app-lemma-list',
@@ -151,10 +152,20 @@ export class LemmaListComponent implements OnInit {
     this.openLemmaModal(entryId);
   }
 
-  dropEntry(entryId: string) {
-    this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe(() => {
-      this.updatePage.emit(this.resultPage!.number);
-    })
+  dropEntry(entry: LexEntry) {
+    const modal = this.modalService.create({
+      nzTitle: 'Do you want to delete the entry?',
+      nzContent: '<b style="color: red;">' +  entry.current.lemmaValues.DStichwort + ' / ' + entry.current.lemmaValues.RStichwort + '</b>',
+      nzClosable: false,
+      nzOkDanger: true,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+      },
+      nzOnOk: () => this.dropEntryConfirmed(entry.id!),
+      nzOnCancel: () => {}
+    });
+
+
   }
 
   rejectSelected() {
@@ -231,5 +242,11 @@ export class LemmaListComponent implements OnInit {
 
   private reloadCurrentPage() {
     this.updatePage.emit(this.resultPage!.number);
+  }
+
+  private dropEntryConfirmed(entryId: string) {
+    this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe(() => {
+      this.updatePage.emit(this.resultPage!.number);
+    });
   }
 }

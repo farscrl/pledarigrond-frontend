@@ -112,7 +112,7 @@
       </td>
       <td *ngIf="columns.options.active" class="button-column">
         <button nz-button nzSize="small" nzType="primary" (click)="editEntry(data.id!); $event.stopPropagation();">Edit</button><br>
-        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data.id!); $event.stopPropagation();">Delete</button>
+        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data); $event.stopPropagation();">Delete</button>
       </td>
       <td *ngIf="columns.order.active" class="button-column">
         <button nz-button nzSize="small" (click)="startReorder(data, 'ROMANSH');$event.stopPropagation();" class="wide-button">Order Romansh</button><br>
