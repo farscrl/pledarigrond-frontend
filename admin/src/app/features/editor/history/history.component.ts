@@ -52,7 +52,7 @@ export class HistoryComponent implements OnInit {
       verifier: new LemmaListColumnDetail(true, true),
       filter: new LemmaListColumnDetail(true, true),
       entry: new LemmaListColumnDetail(true, true),
-      options: new LemmaListColumnDetail(true, true),
+      actions: new LemmaListColumnDetail(true, true),
       order: new LemmaListColumnDetail(false, false),
       state: new LemmaListColumnDetail(true, true),
       created: new LemmaListColumnDetail(true, true),

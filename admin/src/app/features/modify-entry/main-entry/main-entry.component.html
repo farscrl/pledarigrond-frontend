@@ -1,18 +1,18 @@
 
 
 <form nz-form [formGroup]="validateForm">
-  <h2>German</h2>
+  <h2>{{ 'edit.lemma.german' | translate }}</h2>
   <div nz-row>
     <div nz-col nzSpan="12">
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DStichwort">German</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DStichwort">{{ 'edit.lemma.de' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="DStichwort" id="DStichwort" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGenus" nzRequired>Gender</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGenus" nzRequired>{{ 'edit.lemma.de_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="DGenus" id="DGenus">
             <nz-option *ngFor="let item of dGenusValues" [nzValue]="item" [nzLabel]="item"></nz-option>
@@ -20,7 +20,7 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="categories">Category</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="categories">{{ 'edit.lemma.category' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="categories" id="categories" />
         </nz-form-control>
@@ -30,7 +30,7 @@
     <div nz-col nzSpan="12">
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik" nzRequired>Grammar</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik" nzRequired>{{ 'edit.lemma.de_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="DGrammatik" id="DGrammatik">
             <nz-option *ngFor="let item of dGrammatikValues" [nzValue]="item" [nzLabel]="item"></nz-option>
@@ -39,14 +39,14 @@
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DSubsemantik">Semantics</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DSubsemantik">{{ 'edit.lemma.de_semantics' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="DSubsemantik" id="DSubsemantik" />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DRedirect">Link</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DRedirect">{{ 'edit.lemma.de_link' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="DRedirect" id="DRedirect" />
         </nz-form-control>
@@ -56,18 +56,18 @@
 
   <nz-divider></nz-divider>
 
-  <h2>Romansh</h2>
+  <h2>{{ 'edit.lemma.romansh' | translate }}</h2>
   <div nz-row>
     <div nz-col nzSpan="12">
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RStichwort">Romansh</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RStichwort">{{ 'edit.lemma.rm' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="RStichwort" id="RStichwort" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGenus" nzRequired>Gender</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGenus" nzRequired>{{ 'edit.lemma.rm_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RGenus" id="RGenus">
             <nz-option *ngFor="let item of rGenusValues" [nzValue]="item" [nzLabel]="item"></nz-option>
@@ -75,18 +75,18 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RRedirect">Link</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RRedirect">{{ 'edit.lemma.rm_link' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="RRedirect" id="RRedirect" />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionType" nzRequired>Inflection</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionType" nzRequired>{{ 'edit.lemma.inflection.title' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RInflectionType" id="RInflectionType" class="inflection-selection">
-            <nz-option nzValue="" nzLabel="none"></nz-option>
-            <nz-option nzValue="V" nzLabel="Verb"></nz-option>
+            <nz-option nzValue="" [nzLabel]="'edit.lemma.inflection.none' | translate"></nz-option>
+            <nz-option nzValue="V" [nzLabel]="'edit.lemma.inflection.verb' | translate"></nz-option>
           </nz-select>
           <i nz-icon nzType="edit" class="infleciton-edit" (click)="editVerb()" *ngIf="validateForm.controls['RInflectionType'].value === 'V'"></i>
         </nz-form-control>
@@ -96,7 +96,7 @@
     <div nz-col nzSpan="12">
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGrammatik" nzRequired>Grammar</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGrammatik" nzRequired>{{ 'edit.lemma.rm_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RGrammatik" id="RGrammatik">
             <nz-option *ngFor="let item of rGrammatikValues" [nzValue]="item" [nzLabel]="item"></nz-option>
@@ -105,14 +105,14 @@
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RSubsemantik">Semantics</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RSubsemantik">{{ 'edit.lemma.rm_semantics' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="RSubsemantik" id="RSubsemantik" />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RFlex">Conjugation</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RFlex">{{ 'edit.lemma.rm_conjugation' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="RFlex" id="RFlex" />
         </nz-form-control>
@@ -123,14 +123,14 @@
   <nz-divider></nz-divider>
 
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="user_comment">Comment</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="user_comment">{{ 'edit.lemma.comment' | translate }}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <textarea nz-input formControlName="user_comment" id="user_comment" ></textarea>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="user_email">E-Mail</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="user_email">{{ 'edit.lemma.email' | translate }}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input formControlName="user_email" id="user_email" />
     </nz-form-control>
@@ -138,8 +138,8 @@
 </form>
 
 <div *nzModalFooter>
-  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
-  <button nz-button nzType="default" (click)="reset()">Reset</button>
-  <button nz-button nzType="primary" (click)="save()" [nzLoading]="isLoading">{{ !!lexEntryId ? 'Save' : 'Create' }}</button>
+  <button nz-button nzType="default" (click)="cancel()">{{ 'edit.cancel' | translate }}</button>
+  <button nz-button nzType="default" (click)="reset()">{{ 'edit.reset' | translate }}</button>
+  <button nz-button nzType="primary" (click)="save()" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save' : 'edit.create') | translate }}</button>
 </div>
 

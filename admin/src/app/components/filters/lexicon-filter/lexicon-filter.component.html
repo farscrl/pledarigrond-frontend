@@ -3,54 +3,54 @@
   nzLayout="vertical"
   >
   <nz-form-item>
-    <nz-form-label>Search Term</nz-form-label>
+    <nz-form-label>{{ 'lexicon.filter.search_term' | translate}}</nz-form-label>
     <nz-form-control>
       <input nz-input [(ngModel)]="searchCriteria.searchPhrase" (ngModelChange)="search()" name="searchPhrase" nzSize="small"/>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <label nz-checkbox [(ngModel)]="searchCriteria.highlight" (ngModelChange)="search()" name="highligt" nzSize="small">Highlight search results</label>
+    <label nz-checkbox [(ngModel)]="searchCriteria.highlight" (ngModelChange)="search()" name="highligt" nzSize="small">{{ 'lexicon.filter.highlight' | translate}}</label>
   </nz-form-item>
 
   <nz-divider [nzText]="showSearchDetails ? showLess : showMore" (click)="toggleDetails()">
     <ng-template #showMore>
       <i nz-icon nzType="plus"></i>
-      More search options
+      {{ 'lexicon.filter.show_more' | translate}}
     </ng-template>
     <ng-template #showLess>
       <i nz-icon nzType="minus"></i>
-      Less search options
+      {{ 'lexicon.filter.show_less' | translate}}
     </ng-template>
   </nz-divider>
 
   <ng-container *ngIf="showSearchDetails">
     <nz-form-item>
-      <nz-form-label>Language</nz-form-label>
+      <nz-form-label>{{ 'lexicon.filter.language.title' | translate}}</nz-form-label>
       <nz-form-control>
         <nz-radio-group [(ngModel)]="searchCriteria.searchDirection" (ngModelChange)="search()" name="searchDirection" nzSize="small">
-          <label nz-radio nzValue="BOTH">both</label>
-          <label nz-radio nzValue="ROMANSH">romansh -> german</label>
-          <label nz-radio nzValue="GERMAN">german -> romansh</label>
+          <label nz-radio nzValue="BOTH">{{ 'lexicon.filter.language.both' | translate}}</label>
+          <label nz-radio nzValue="ROMANSH">{{ 'lexicon.filter.language.romansh' | translate}}</label>
+          <label nz-radio nzValue="GERMAN">{{ 'lexicon.filter.language.german' | translate}}</label>
         </nz-radio-group>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label>Search method</nz-form-label>
+      <nz-form-label>{{ 'lexicon.filter.method.title' | translate}}</nz-form-label>
       <nz-form-control>
         <nz-radio-group [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="search()" name="searchMethod" nzSize="small">
-          <label nz-radio nzValue="NORMAL">Normal</label>
-          <label nz-radio nzValue="INTERN">Everywhere</label>
-          <label nz-radio nzValue="PREFIX">Start</label>
-          <label nz-radio nzValue="SUFFIX">Endings</label>
-          <label nz-radio nzValue="EXACT">Match</label>
+          <label nz-radio nzValue="NORMAL">{{ 'lexicon.filter.method.normal' | translate}}</label>
+          <label nz-radio nzValue="INTERN">{{ 'lexicon.filter.method.intern' | translate}}</label>
+          <label nz-radio nzValue="PREFIX">{{ 'lexicon.filter.method.prefix' | translate}}</label>
+          <label nz-radio nzValue="SUFFIX">{{ 'lexicon.filter.method.suffix' | translate}}</label>
+          <label nz-radio nzValue="EXACT">{{ 'lexicon.filter.method.exact' | translate}}</label>
         </nz-radio-group>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label>Category</nz-form-label>
+      <nz-form-label>{{ 'lexicon.filter.category' | translate}}</nz-form-label>
       <nz-form-control>
         <input nz-input [(ngModel)]="searchCriteria.category" (ngModelChange)="search()" name="category" nzSize="small" [nzAutocomplete]="categoryAuto" (input)="categoryChanged()"/>
         <nz-autocomplete [nzDataSource]="categoryAutocomplete" nzBackfill #categoryAuto></nz-autocomplete>
@@ -58,7 +58,7 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label>Semantic</nz-form-label>
+      <nz-form-label>{{ 'lexicon.filter.semantics' | translate}}</nz-form-label>
       <nz-form-control>
         <input nz-input [(ngModel)]="searchCriteria.subSemantics" (ngModelChange)="search()" name="subSemantics" nzSize="small" [nzAutocomplete]="semanticsAuto" (input)="semanticsChanged()"/>
         <nz-autocomplete [nzDataSource]="semanticsAutocomplete" nzBackfill #semanticsAuto></nz-autocomplete>
@@ -66,7 +66,7 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label>Gender</nz-form-label>
+      <nz-form-label>{{ 'lexicon.filter.gender' | translate}}</nz-form-label>
       <nz-select [(ngModel)]="searchCriteria.gender" (ngModelChange)="search()" nzSize="small" name="gender">
         <nz-option nzValue="" nzLabel=""></nz-option>
         <nz-option [nzValue]="value" [nzLabel]="value" *ngFor="let value of genderValues"></nz-option>
@@ -74,7 +74,7 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label>Grammar</nz-form-label>
+      <nz-form-label>{{ 'lexicon.filter.grammar' | translate}}</nz-form-label>
       <nz-select [(ngModel)]="searchCriteria.grammar" (ngModelChange)="search()" nzSize="small" name="grammar">
         <nz-option nzValue="" nzLabel=""></nz-option>
         <nz-option [nzValue]="value" [nzLabel]="value" *ngFor="let value of grammarValues"></nz-option>
@@ -83,7 +83,7 @@
   </ng-container>
 
   <div class="buttons">
-    <button nz-button nzType="default" (click)="reset()" class="reset">Reset</button>
-    <button nz-button nzType="primary" (click)="search()">Submit</button>
+    <button nz-button nzType="default" (click)="reset()" class="reset">{{ 'lexicon.filter.reset' | translate}}</button>
+    <button nz-button nzType="primary" (click)="search()">{{ 'lexicon.filter.search' | translate}}</button>
   </div>
 </form>

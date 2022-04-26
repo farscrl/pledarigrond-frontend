@@ -61,7 +61,7 @@ export class DbAdministrationComponent implements OnInit {
 
   importDb() {
     const modal = this.modalService.create({
-      nzTitle: 'Import DB dump',
+      nzTitle: this.translateService.instant('database.dump.title'),
       nzContent: ImportDumpComponent,
       nzClosable: false,
       nzMaskClosable: false,
@@ -77,7 +77,7 @@ export class DbAdministrationComponent implements OnInit {
 
   exportDb() {
     const modal = this.modalService.create({
-      nzTitle: 'Download data...',
+      nzTitle: this.translateService.instant('database.dump.title'),
       nzContent: ExportDumpComponent,
       nzClosable: false,
       nzViewContainerRef: this.viewContainerRef,
@@ -110,13 +110,13 @@ export class DbAdministrationComponent implements OnInit {
 
   dropDb() {
     this.modalService.confirm({
-      nzTitle: 'Do you really want to drop the database?',
+      nzTitle: this.translateService.instant('database.drop.title'),
       nzContent: '<b style="color: red;">' + this.languageSelectionService.getCurrentLanguage() + '</b>',
-      nzOkText: 'Yes',
+      nzOkText: this.translateService.instant('database.drop.yes'),
       nzOkType: 'primary',
       nzOkDanger: true,
       nzOnOk: () => this.dropDbConfirmed(),
-      nzCancelText: 'No',
+      nzCancelText: this.translateService.instant('database.drop.no'),
       nzOnCancel: () => {}
     });
   }

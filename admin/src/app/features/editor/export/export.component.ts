@@ -7,6 +7,12 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { TranslateService } from '@ngx-translate/core';
 import { FileUtils } from 'src/app/utils/file.utils';
 
+export class ExportOption {
+  label: string = "";
+  value: string = "";
+  checked: boolean = false;
+}
+
 @Component({
   selector: 'app-export',
   templateUrl: './export.component.html',
@@ -19,22 +25,7 @@ export class ExportComponent implements OnInit {
 
   allChecked = false;
   indeterminate = false;
-  checkOptions = [
-    { label: 'German', value: 'DStichwort', checked: false },
-    { label: 'Grammar (de)', value: 'DGrammatik', checked: false },
-    { label: 'Genus (de)', value: 'DGenus', checked: false },
-    { label: 'Semantic (de)', value: 'DSubsemantik', checked: false },
-    { label: 'Category', value: 'categories', checked: false },
-    { label: 'Link (de)', value: 'DRedirect', checked: false },
-    { label: 'Romansh', value: 'RStichwort', checked: false },
-    { label: 'Grammar (rm)', value: 'RGrammatik', checked: false },
-    { label: 'Genus (rm)', value: 'RGenus', checked: false },
-    { label: 'Semantic (rm)', value: 'RSubsemantik', checked: false },
-    { label: 'Link (rm)', value: 'RRedirect', checked: false },
-    { label: 'Conjugation', value: 'RFlex', checked: false },
-    { label: 'Additional search terms', value: 'RTags', checked: false },
-    { label: 'Comment', value: 'user_comment', checked: false },
-  ];
+  checkOptions: ExportOption[] = [];
 
   isExporting = false;
 
@@ -49,7 +40,22 @@ export class ExportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.checkOptions = [
+      { label: this.translateService.instant('lexicon.lemma.columns.de'), value: 'DStichwort', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_grammar'), value: 'DGrammatik', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_gender'), value: 'DGenus', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_semantics'), value: 'DSubsemantik', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_link'), value: 'DRedirect', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm'), value: 'RStichwort', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_grammar'), value: 'RGrammatik', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_gender'), value: 'RGenus', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_semantics'), value: 'RSubsemantik', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_link'), value: 'RRedirect', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_conjugation'), value: 'RFlex', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_additional_search'), value: 'RTags', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.category'), value: 'categories', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.comment'), value: 'user_comment', checked: false },
+    ];
   }
 
   updateAllChecked(): void {

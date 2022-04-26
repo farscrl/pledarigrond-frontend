@@ -5,13 +5,13 @@
     (ngModelChange)="updateAllChecked()"
     [nzIndeterminate]="indeterminate"
   >
-    Check all
+    {{ 'lexicon.lemma.export.all' | translate}}
   </label>
 </div>
 <br />
 <nz-checkbox-group [(ngModel)]="checkOptions" (ngModelChange)="updateSingleChecked()"></nz-checkbox-group>
 
 <div *nzModalFooter>
-  <button nz-button nzType="default" (click)="cancel()">Cancel</button>
-  <button nz-button nzType="primary" (click)="export()" [nzLoading]="isExporting">Export</button>
+  <button nz-button nzType="default" (click)="cancel()">{{ 'lexicon.lemma.export.cancel' | translate}}</button>
+  <button nz-button nzType="primary" (click)="export()" [nzLoading]="isExporting">{{ 'lexicon.lemma.export.export' | translate}}</button>
 </div>

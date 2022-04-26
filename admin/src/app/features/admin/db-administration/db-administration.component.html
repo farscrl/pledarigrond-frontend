@@ -1,16 +1,16 @@
 <nz-page-header [nzGhost]="false">
-  <nz-page-header-title>Database</nz-page-header-title>
-  <nz-page-header-subtitle>Database administration</nz-page-header-subtitle>
+  <nz-page-header-title>{{ 'database.title' | translate}}</nz-page-header-title>
+  <nz-page-header-subtitle>{{ 'database.subtitle' | translate}}</nz-page-header-subtitle>
   <nz-page-header-extra>
-    <button nz-button nzType="primary" (click)="exportDb()">Backup</button>
+    <button nz-button nzType="primary" (click)="exportDb()">{{ 'database.dump.button' | translate}}</button>
     <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0" nzPlacement="bottomRight">
       <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
     </button>
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu>
-        <li nz-menu-item nzDanger (click)="importDb()">Import</li>
-        <li nz-menu-item nzDanger (click)="reloadDemoData()" [nzDisabled]="isReloadingDemoData">Reload Demo-Data</li>
-        <li nz-menu-item nzDanger (click)="dropDb()">Drop</li>
+        <li nz-menu-item nzDanger (click)="importDb()">{{ 'database.import.button' | translate}}</li>
+        <!--<li nz-menu-item nzDanger (click)="reloadDemoData()" [nzDisabled]="isReloadingDemoData">Reload Demo-Data</li>-->
+        <li nz-menu-item nzDanger (click)="dropDb()">{{ 'database.drop.button' | translate}}</li>
       </ul>
     </nz-dropdown-menu>
   </nz-page-header-extra>
@@ -19,48 +19,48 @@
 <nz-card class="stats-card">
   <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfEntries| number)!" [nzTitle]="'Entries'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfEntries| number)!" [nzTitle]="'database.stats.entries' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfLemmata| number)!" [nzTitle]="'Versions'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfLemmata| number)!" [nzTitle]="'database.stats.versions' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfApproved| number)!" [nzTitle]="'Approved'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfApproved| number)!" [nzTitle]="'database.stats.approved' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfSuggestions| number)!" [nzTitle]="'Suggested'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfSuggestions| number)!" [nzTitle]="'database.stats.suggested' | translate"></nz-statistic>
     </nz-col>
   </nz-row>
   <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfDeleted| number)!" [nzTitle]="'Deleted'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfDeleted| number)!" [nzTitle]="'database.stats.deleted' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfOutdated| number)!" [nzTitle]="'Outdated'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfOutdated| number)!" [nzTitle]="'database.stats.outdated' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfUndefined| number)!" [nzTitle]="'Other'"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfUndefined| number)!" [nzTitle]="'database.stats.other' | translate"></nz-statistic>
     </nz-col>
   </nz-row>
   <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="24" style="text-align: right;">
-      <button nz-button nzType="primary" (click)="loadDbStats()" [nzLoading]="isLoadingDbInfos">Refresh</button>
+      <button nz-button nzType="primary" (click)="loadDbStats()" [nzLoading]="isLoadingDbInfos">{{ 'database.stats.refresh_button' | translate }}</button>
     </nz-col>
   </nz-row>
 </nz-card>
 
 
 <nz-page-header [nzGhost]="false">
-  <nz-page-header-title>Backup</nz-page-header-title>
-  <nz-page-header-subtitle>Information about DB backups</nz-page-header-subtitle>
+  <nz-page-header-title>{{ 'database.backup.title' | translate }}</nz-page-header-title>
+  <nz-page-header-subtitle>{{ 'database.backup.subtitle' | translate }}</nz-page-header-subtitle>
 </nz-page-header>
 
 <nz-card class="stats-card">
   <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="12">
-      <nz-statistic [nzValue]="backupInfos.triggerTime" [nzTitle]="'Frequency'"></nz-statistic>
-      <nz-statistic [nzValue]="(backupInfos.backupNums| number)!" [nzTitle]="'Max backups'"></nz-statistic>
-      <nz-statistic [nzValue]="backupInfos.backupLocation ? backupInfos.backupLocation : '-'" [nzTitle]="'Location'"></nz-statistic>
+      <nz-statistic [nzValue]="backupInfos.triggerTime" [nzTitle]="'database.backup.frequency' | translate"></nz-statistic>
+      <nz-statistic [nzValue]="(backupInfos.backupNums| number)!" [nzTitle]="'database.backup.max_backups' | translate"></nz-statistic>
+      <nz-statistic [nzValue]="backupInfos.backupLocation ? backupInfos.backupLocation : '-'" [nzTitle]="'database.backup.location' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="12">
       <nz-timeline>
@@ -68,8 +68,8 @@
           <p>
             {{ backupInfo.creationDate }}<br>
             {{ backupInfo.name }}<br>
-            Size: {{ backupInfo.size }} MB<br>
-            <a (click)="downloadBackupFile(backupInfo.name)">Download</a>
+            {{ 'database.backup.size' | translate }}: {{ backupInfo.size }} MB<br>
+            <a (click)="downloadBackupFile(backupInfo.name)">{{ 'database.backup.download_link' | translate }}</a>
           </p>
         </nz-timeline-item>
       </nz-timeline>

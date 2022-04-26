@@ -3,6 +3,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { EditorRole, User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 import { EditComponent } from './edit/edit.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-administration',
@@ -13,7 +14,12 @@ export class UserAdministrationComponent implements OnInit {
 
   listOfUsers: User[] = [];
 
-  constructor(private usersService: UsersService, private modalService: NzModalService, private viewContainerRef: ViewContainerRef) { }
+  constructor(
+    private usersService: UsersService,
+    private modalService: NzModalService,
+    private viewContainerRef: ViewContainerRef,
+    private translateService: TranslateService,
+  ) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -32,10 +38,10 @@ export class UserAdministrationComponent implements OnInit {
 
   newOrEdit(email?: string): void {
     const modal = this.modalService.create({
-      nzTitle: 'Modal Title',
+      nzTitle: email ? this.translateService.instant('users.edit_title') : this.translateService.instant('users.new_title'),
       nzContent: EditComponent,
       nzClosable: false,
-      nzMaskClosable: false,  
+      nzMaskClosable: false,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
         email: email,
@@ -46,11 +52,11 @@ export class UserAdministrationComponent implements OnInit {
 
   delete(email: string) {
     this.modalService.confirm({
-      nzTitle: 'Do you want to delete this user?',
+      nzTitle: this.translateService.instant('users.delete_question'),
       nzContent: email,
       nzOnOk: () => this.deleteConfirmed(email),
-      nzOkText: 'Yes, delete',
-      nzCancelText: 'No'
+      nzOkText: this.translateService.instant('users.delete_yes'),
+      nzCancelText: this.translateService.instant('users.delete_no')
     });
   }
 

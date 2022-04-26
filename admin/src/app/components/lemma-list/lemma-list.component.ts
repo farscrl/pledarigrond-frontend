@@ -14,7 +14,7 @@ import { SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorQuery } from 'src/app/models/editor-query';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
-import { LemmaVersion } from 'src/app/models/lemma-version';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lemma-list',
@@ -66,7 +66,8 @@ export class LemmaListComponent implements OnInit {
     private modalService: NzModalService,
     private viewContainerRef: ViewContainerRef,
     private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService
+    private languageSelectionService: LanguageSelectionService,
+    private translateService: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -74,7 +75,7 @@ export class LemmaListComponent implements OnInit {
 
   exportResults() {
     const modal = this.modalService.create({
-      nzTitle: 'Select fields to export',
+      nzTitle: this.translateService.instant('lexicon.lemma.export.button'),
       nzContent: ExportComponent,
       nzClosable: false,
       nzViewContainerRef: this.viewContainerRef,
@@ -154,7 +155,7 @@ export class LemmaListComponent implements OnInit {
 
   dropEntry(entry: LexEntry) {
     const modal = this.modalService.create({
-      nzTitle: 'Do you want to delete the entry?',
+      nzTitle: this.translateService.instant('lexicon.lemma.delete.title'),
       nzContent: '<b style="color: red;">' +  entry.current.lemmaValues.DStichwort + ' / ' + entry.current.lemmaValues.RStichwort + '</b>',
       nzClosable: false,
       nzOkDanger: true,
@@ -172,8 +173,8 @@ export class LemmaListComponent implements OnInit {
     const count = this.setOfCheckedId.size;
 
     const modal = this.modalService.create({
-      nzTitle: 'Reject the selected items on this page?',
-      nzContent: '<b style="color: red;">' + 'Do you want to reject ' + count + 'suggestions?' + '</b>',
+      nzTitle: this.translateService.instant('lexicon.lemma.multiedit.title'),
+      nzContent: '<b style="color: red;">' + this.translateService.instant('lexicon.lemma.multiedit.content', {count}) + '</b>',
       nzClosable: false,
       nzOkDanger: true,
       nzViewContainerRef: this.viewContainerRef,
@@ -227,7 +228,7 @@ export class LemmaListComponent implements OnInit {
 
   private openLemmaModal(entryId?: string) {
     const modal = this.modalService.create({
-      nzTitle: !!entryId ? 'Edit lemma' : 'Add lemma',
+      nzTitle: !!entryId ? this.translateService.instant('edit.titles.edit') : this.translateService.instant('edit.titles.add'),
       nzContent: MainEntryComponent,
       nzClosable: false,
       nzMaskClosable: false,

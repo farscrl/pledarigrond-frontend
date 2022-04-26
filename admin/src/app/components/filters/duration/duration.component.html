@@ -1,7 +1,7 @@
 
 
 <nz-form-item>
-  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Date interval</nz-form-label>
+  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">{{ 'lexicon.filter.date_interval' | translate}}</nz-form-label>
   <nz-form-control [nzSm]="14" [nzXs]="24">
     <nz-range-picker
       [nzShowTime]="{ nzFormat: 'HH:mm' }"
@@ -16,7 +16,7 @@
 </nz-form-item>
 
 <nz-form-item *ngIf="selectedUserFilter">
-  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">User IP</nz-form-label>
+  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">{{ 'lexicon.filter.user_ip' | translate}}</nz-form-label>
   <nz-form-control [nzSm]="14" [nzXs]="24">
     <nz-input-group [nzSuffix]="userFilterSuffixTemplate">
       <input nz-input id="user" [value]="selectedUserFilter" [disabled]="true"/>
@@ -28,7 +28,7 @@
 </nz-form-item>
 
 <nz-form-item *ngIf="selectedVerifierFilter">
-  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Verifier</nz-form-label>
+  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">{{ 'lexicon.filter.verifier' | translate}}</nz-form-label>
   <nz-form-control [nzSm]="14" [nzXs]="24">
     <nz-input-group [nzSuffix]="verifierFilterSuffixTemplate">
       <input nz-input id="verifier" [value]="selectedVerifierFilter" [disabled]="true"/>
@@ -42,10 +42,10 @@
 <div class="search-area">
   <button nz-button nzType="default" (click)="resetDate()">
     <i nz-icon [nzRotate]="230" nzType="redo"></i>
-    Reset
+    {{ 'lexicon.filter.reset' | translate}}
   </button>
   <button nz-button nzType="primary" (click)="filter()" [disabled]="selectedDuration.length !== 2">
     <i nz-icon nzType="search"></i>
-    Search
+    {{ 'lexicon.filter.search' | translate}}
   </button>
 </div>

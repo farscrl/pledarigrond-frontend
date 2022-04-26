@@ -81,7 +81,7 @@ export class LexiconComponent implements OnInit {
       verifier: new LemmaListColumnDetail(false, false),
       filter: new LemmaListColumnDetail(false, false),
       entry: new LemmaListColumnDetail(true, true),
-      options: new LemmaListColumnDetail(true, true),
+      actions: new LemmaListColumnDetail(true, true),
       order: new LemmaListColumnDetail(true, true),
       state: new LemmaListColumnDetail(false, false),
       created: new LemmaListColumnDetail(false, false),

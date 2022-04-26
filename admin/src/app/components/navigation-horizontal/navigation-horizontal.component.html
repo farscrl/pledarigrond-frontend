@@ -1,29 +1,29 @@
 <ul nz-menu nzMode="horizontal" [nzSelectable]="false">
   <i nz-icon nzType="user" nzTheme="outline"></i>
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/suggestions'">
-    Suggestions
+    {{ 'lexicon.suggestions_menu_item' | translate }}
   </li>
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/history'">
-    History
+    {{ 'lexicon.history_menu_item' | translate }}
   </li>
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/lexicon'">
-    Lexicon
+    {{ 'lexicon.lexicon_menu_item' | translate }}
   </li>
-  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/automatic'">
-    Review
-  </li>
+  <!--<li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/automatic'">
+    {{ 'lexicon.review_menu_item' | translate }}
+  </li>-->
 
   <nz-divider nzType="vertical"></nz-divider>
   <i nz-icon nzType="laptop" nzTheme="outline"></i>
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/database'">
-    Database
+    {{ 'database.menu_item' | translate }}
   </li>
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/index'">
-    Index
+    {{ 'index.menu_item' | translate }}
   </li>
   <nz-divider nzType="vertical"></nz-divider>
   <i nz-icon nzType="expand-alt" nzTheme="outline"></i>
   <li nz-menu-item [nzMatchRouterExact]="true" [nzSelected]="false" (click)="openFe()">
-    Frontend
+    {{ 'frontend.menu_item' | translate }}
   </li>
 </ul>

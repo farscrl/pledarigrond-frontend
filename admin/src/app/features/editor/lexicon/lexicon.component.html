@@ -2,16 +2,16 @@
   <div nz-col nzSpan="9" class="left-side">
     <nz-content class="duration-filter">
       <nz-page-header [nzGhost]="false">
-        <nz-page-header-title>Lexikon</nz-page-header-title>
-        <nz-page-header-subtitle>Find and modify all entries</nz-page-header-subtitle>
+        <nz-page-header-title>{{ 'lexicon.lexicon.title' | translate }}</nz-page-header-title>
+        <nz-page-header-subtitle>{{ 'lexicon.lexicon.subtitle' | translate }}</nz-page-header-subtitle>
       </nz-page-header>
       <app-lexicon-filter [searchCriteria]="searchCriteria" (searchCriteriaChange)="search($event)"></app-lexicon-filter>
     </nz-content>
 
     <nz-content>
       <nz-page-header [nzGhost]="false">
-        <nz-page-header-title>Lemma History</nz-page-header-title>
-        <nz-page-header-subtitle>See all the changes to the selected lemma</nz-page-header-subtitle>
+        <nz-page-header-title>{{ 'lexicon.lemma_history.title' | translate }}</nz-page-header-title>
+        <nz-page-header-subtitle>{{ 'lexicon.lemma_history.subtitle' | translate }}</nz-page-header-subtitle>
       </nz-page-header>
       <app-version-history
         [lexEntry]="selectedLexEntry"

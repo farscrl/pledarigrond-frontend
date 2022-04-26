@@ -4,7 +4,7 @@ export class LemmaListColumn {
   verifier: LemmaListColumnDetail = new LemmaListColumnDetail();
   filter: LemmaListColumnDetail = new LemmaListColumnDetail();
   entry: LemmaListColumnDetail = new LemmaListColumnDetail();
-  options: LemmaListColumnDetail = new LemmaListColumnDetail();
+  actions: LemmaListColumnDetail = new LemmaListColumnDetail();
   order: LemmaListColumnDetail = new LemmaListColumnDetail();
   state: LemmaListColumnDetail = new LemmaListColumnDetail();
   created: LemmaListColumnDetail = new LemmaListColumnDetail();

@@ -10,7 +10,7 @@
     <nz-divider nzType="vertical"></nz-divider>
 
     <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/names">Nums</li>-->
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users">Utilisaders</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users">{{ 'users.menu_item' | translate}}</li>
   </ul>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu-right">
     <a [class.lang_selected]="frontendLanguage === 'en'" (click)="changeFrontendLanguage('en')">en</a>

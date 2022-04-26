@@ -4,19 +4,19 @@
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
           <nz-input-group nzPrefixIcon="user">
-            <input type="text" nz-input formControlName="userName" placeholder="Username" />
+            <input type="text" nz-input formControlName="userName" [placeholder]="'login.email' | translate" />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your Password!">
           <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="password" placeholder="Password" />
+            <input type="password" nz-input formControlName="password" [placeholder]="'login.password' | translate" />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-      <div class="error" *ngIf="showError">Login-Error.</div>
-      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+      <div class="error" *ngIf="showError">{{ 'login.error' | translate}}</div>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">{{ 'login.login_button' | translate}}</button>
     </form>
   </div>
 </div>

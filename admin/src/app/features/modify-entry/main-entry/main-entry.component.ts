@@ -7,6 +7,7 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ConjugationComponent } from '../conjugation/conjugation.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-entry',
@@ -37,6 +38,7 @@ export class MainEntryComponent implements OnInit {
     private languageSelectionService: LanguageSelectionService,
     private modalService: NzModalService,
     private viewContainerRef: ViewContainerRef,
+    private translateService: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -82,7 +84,7 @@ export class MainEntryComponent implements OnInit {
       this.lemmaVersion!.lemmaValues.infinitiv = this.validateForm.controls['RStichwort'].value;
     }
     const modal = this.modalService.create({
-      nzTitle: 'Conjugation',
+      nzTitle: this.translateService.instant('edit.conjugation.title'),
       nzContent: ConjugationComponent,
       nzClosable: false,
       nzMaskClosable: false,

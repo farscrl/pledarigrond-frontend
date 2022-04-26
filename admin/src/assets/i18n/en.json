@@ -1,3 +1,291 @@
 {
-
+  "users": {
+    "menu_item": "Users",
+    "title": "Users",
+    "subtitle": "This are all the users of Pledari Grond",
+    "new_button": "New",
+    "email": "E-Mail",
+    "admin": "Admin",
+    "names": "Names",
+    "actions": "Actions",
+    "edit_action": "Edit",
+    "delete_action": "Delete",
+    "delete_question": "Do you want to delete this user?",
+    "delete_yes": "Yes, delete",
+    "delete_no": "No",
+    "new_title": "Create new user",
+    "edit_title": "Edit user",
+    "edit": {
+      "email": "E-Mail",
+      "email_error": "The input is not valid E-mail address",
+      "password": "Password",
+      "password_missing": "Please enter a password",
+      "password_lenght": "The password must contain at least 6 caracters",
+      "is_admin": "is Admin?",
+      "role": "Role",
+      "editor_role": "Editor",
+      "no_role": "No access",
+      "cancel": "Cancel",
+      "save": "Save",
+      "create": "Create"
+    }
+  },
+  "lexicon": {
+    "suggestions_menu_item": "Suggestions",
+    "history_menu_item": "History",
+    "lexicon_menu_item": "Lexicion",
+    "review_menu_item": "Review automatic changes",
+    "filter": {
+      "date_interval": "Date interval",
+      "user_ip": "User IP",
+      "verifier": "Verifier",
+      "search_term": "Search Term",
+      "highlight": "Highlight search results",
+      "show_more": "More search options",
+      "show_less": "Less search options",
+      "language": {
+        "title": "Language",
+        "both": "Both",
+        "romansh": "Romansh -> German",
+        "german": "German -> Romansh"
+      },
+      "method": {
+        "title": "Search method",
+        "normal": "Normal",
+        "intern": "Everywhere",
+        "prefix": "Start",
+        "suffix": "Endings",
+        "exact": "Match"
+      },
+      "category": "Category",
+      "semantics": "Semantic",
+      "gender": "Gender",
+      "grammar": "Grammar",
+      "reset": "Reset",
+      "search": "Search"
+    },
+    "sugestions": {
+      "title": "Suggestions",
+      "subtitle": "Review pending suggestions"
+    },
+    "history": {
+      "title": "Verification",
+      "subtitle": "Review the last changes"
+    },
+    "lexicon": {
+      "title": "Lexicon",
+      "subtitle": "Find and modify all entries"
+    },
+    "lemma_history": {
+      "title": "Lemma history",
+      "subtitle": "See al the changes to the selected lemma",
+      "state": "State",
+      "user": "User",
+      "entry": "Entry",
+      "changed": "Changed"
+    },
+    "lemma": {
+      "results_info": "Displaying entries {{start}} to {{end}} of {{total}}",
+      "columns": {
+        "title": "Columns",
+        "user": "User",
+        "verifier": "Verifier",
+        "filter": "Filter",
+        "entry": "Entry",
+        "actions": "Actions",
+        "order": "order",
+        "state": "State",
+        "created": "Creation date",
+        "de": "German",
+        "de_grammar": "Grammar (de)",
+        "de_gender": "Gender (de)",
+        "de_semantics": "Semantics (de)",
+        "de_link": "Link (de)",
+        "rm": "Romansh",
+        "rm_grammar": "Grammar (rm)",
+        "rm_gender": "Gender (rm)",
+        "rm_semantics": "Semantics (rm)",
+        "rm_link": "Link (rm)",
+        "rm_conjugation": "Conjugation (rm)",
+        "rm_additional_search": "Additional search terms (rm)",
+        "category": "Category",
+        "comment": "Comment"
+      },
+      "export": {
+        "button": "Export",
+        "title": "Export fields to export",
+        "all": "Check all",
+        "cancel": "Cancel",
+        "export": "Export"
+      },
+      "new_button": "Add new entry",
+      "table_actions": {
+        "filter_user": "Filter user",
+        "filter_verifier": "Filtr verifier",
+        "edit": "Edit",
+        "delete": "Delete",
+        "order_rm": "Order Romans",
+        "order_de": "Order German"
+      },
+      "multiedit": {
+        "activate": "Enable multi edit",
+        "reject_button": "Reject selected...",
+        "title": "Reject the selected items on this page?",
+        "content": "Do you want to reject {{count}} suggestions?"
+      },
+      "delete": {
+        "title": "Do you want to delete the entry?"
+      }
+    }
+  },
+  "database": {
+    "menu_item": "Database",
+    "title": "Database",
+    "subtitle": "Database administration",
+    "dump": {
+      "button": "Backup",
+      "title": "Create DB backup",
+      "instructions": "For a full backup, export the version history and do not anonymize the entries. In any case, the downloaded file will contain a MD5-Checksum which can be used to verify the integrity of the data.",
+      "include_history": "Export complete version history",
+      "anonymize_data": "Anonymize data",
+      "cancel": "Cancel",
+      "exporting": "Exporting",
+      "start": "Start export"
+    },
+    "import": {
+      "button": "Import",
+      "title": "Import DB dump",
+      "instructions": "Select a database dump which will replace all currently stored entries. Note that this operation cannot be undone.",
+      "select_file": "Select file",
+      "cancel": "Cancel",
+      "uploading": "Uploading",
+      "start": "Start upload"
+    },
+    "drop": {
+      "button": "Drop",
+      "title": "Do you really want to drop the database?",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "stats": {
+      "entries": "Entries",
+      "versions": "Versions",
+      "approved": "Approved",
+      "suggested": "Suggested",
+      "deleted": "Deleted",
+      "outdated": "Outdated",
+      "other": "Other",
+      "refresh_button": "Refresh"
+    },
+    "backup": {
+      "title": "Backup",
+      "subtitle": "Information about DB backups",
+      "frequency": "Frequency",
+      "max_backups": "Max backups",
+      "location": "Location",
+      "size": "Size",
+      "download_link": "Download"
+    }
+  },
+  "index": {
+    "menu_item": "Index",
+    "title": "Index",
+    "subtitle": "Lucene index administration",
+    "rebuild_button": "Rebuild",
+    "stats": {
+      "indexed": "Indexed",
+      "approved": "Approved",
+      "unverified": "Unverified",
+      "other": "Other",
+      "Verbs": "Verbs",
+      "refresh_button": "Refresh stats"
+    }
+  },
+  "frontend": {
+    "menu_item": "Frontend"
+  },
+  "data": {
+    "status": {
+      "deleted": "Deleted",
+      "new_entry": "New entry",
+      "new_modification": "New modification",
+      "undefined": "Undefined"
+    },
+    "role": {
+      "admin": "admin",
+      "editor": "editor",
+      "guest": "guest",
+      "none": "none"
+    },
+    "verification": {
+      "rejected": "rejected",
+      "accepted": "accepted",
+      "outdated": "outdated",
+      "unverified": "unverified"
+    }
+  },
+  "edit": {
+    "titles": {
+      "add": "Add lemma",
+      "edit": "Edit lemma"
+    },
+    "lemma": {
+      "german": "German",
+      "de": "Lemma german",
+      "de_gender": "Gender",
+      "category": "Category",
+      "de_grammar": "Grammar",
+      "de_semantics": "Semantics",
+      "de_link": "Link",
+      "romansh": "Romansh",
+      "rm": "Lemma romansh",
+      "rm_gender": "Gender",
+      "rm_grammar": "Grammar",
+      "rm_semantics": "Semantics",
+      "rm_link": "Link",
+      "rm_conjugation": "Conjugation",
+      "inflection": {
+        "title": "Inflection",
+        "none": "None",
+        "verb": "Verb"
+      },
+      "comment": "Comment",
+      "email": "E-Mail"
+    },
+    "conjugation": {
+      "title": "Conjugation",
+      "type": "Conjugation type",
+      "generate_button": "Generate",
+      "forms": {
+        "infinitive": "Infinitive",
+        "preschent": "Preschent",
+        "imperfect": "Imperfect",
+        "conjunctiv": "Conjunctiv",
+        "cundiziunal": "Cundiziunal",
+        "futur": "Futur",
+        "particip_perfect": "Particip perfect",
+        "imperativ": "Imperativ",
+        "gerundi": "Gerundi"
+      }
+    },
+    "cancel": "Cancel",
+    "reset": "Reset",
+    "save": "Save",
+    "create": "Create",
+    "ok": "OK"
+  },
+  "sort_order": {
+    "title": "Change sort order for «{{name}}»",
+    "title_de": "german",
+    "title_rm": "romansh",
+    "instructions": "Change the order of the entries by drag-and-drop or using the arrows on the top.",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "login": {
+    "email": "E-Mail",
+    "password": "Password",
+    "error": "Login error.",
+    "login_button": "Log in"
+  }
 }

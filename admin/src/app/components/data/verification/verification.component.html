@@ -1,4 +1,4 @@
-<nz-tag [nzColor]="'purple'" *ngIf="verification === 'REJECTED'">Rejected</nz-tag>
-<nz-tag [nzColor]="'green'" *ngIf="verification === 'ACCEPTED'">Accepted</nz-tag>
-<nz-tag *ngIf="verification === 'OUTDATED'">Outdated</nz-tag>
-<nz-tag [nzColor]="'red'" *ngIf="verification === 'UNVERIFIED'">Unverified</nz-tag>
+<nz-tag [nzColor]="'purple'" *ngIf="verification === 'REJECTED'">{{ 'data.verification.rejected' | translate}}</nz-tag>
+<nz-tag [nzColor]="'green'" *ngIf="verification === 'ACCEPTED'">{{ 'data.verification.accepted' | translate}}</nz-tag>
+<nz-tag *ngIf="verification === 'OUTDATED'">{{ 'data.verification.outdated' | translate}}</nz-tag>
+<nz-tag [nzColor]="'red'" *ngIf="verification === 'UNVERIFIED'">{{ 'data.verification.unverified' | translate}}</nz-tag>
