@@ -21,6 +21,7 @@ export class LemmaValues {
   DGrammatik?: string;
   DSubsemantik?: string;
   DGenus?: string;
+  DTags?: string;
 
   RStichwort?: string;
   RGrammatik?: string;

@@ -113,6 +113,7 @@ export class MainEntryComponent implements OnInit {
       DGrammatik: new FormControl(this.lemmaVersion?.lemmaValues.DGrammatik),
       DSubsemantik: new FormControl(this.lemmaVersion?.lemmaValues.DSubsemantik),
       DGenus: new FormControl(this.lemmaVersion?.lemmaValues.DGenus),
+      DTags: new FormControl(this.lemmaVersion?.lemmaValues.DTags),
 
       RStichwort: new FormControl(this.lemmaVersion?.lemmaValues.RStichwort, Validators.required),
       RGrammatik: new FormControl(this.lemmaVersion?.lemmaValues.RGrammatik),

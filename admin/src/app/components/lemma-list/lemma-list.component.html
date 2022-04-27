@@ -29,6 +29,7 @@
         <li nz-menu-item *ngIf="columns.germanGender.allowed"><label nz-checkbox [(ngModel)]="columns.germanGender.active">{{ 'lexicon.lemma.columns.de_gender' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.germanSemantics.allowed"><label nz-checkbox [(ngModel)]="columns.germanSemantics.active">{{ 'lexicon.lemma.columns.de_semantics' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.germanLink.allowed"><label nz-checkbox [(ngModel)]="columns.germanLink.active">{{ 'lexicon.lemma.columns.de_link' | translate }}</label></li>
+        <li nz-menu-item *ngIf="columns.germanAdditionalSearchTerms.allowed"><label nz-checkbox [(ngModel)]="columns.germanAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.de_additional_search' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.romansh.allowed"><label nz-checkbox [(ngModel)]="columns.romansh.active">{{ 'lexicon.lemma.columns.rm' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.romanshGrammar.allowed"><label nz-checkbox [(ngModel)]="columns.romanshGrammar.active">{{ 'lexicon.lemma.columns.rm_grammar' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.romanshGender.allowed"><label nz-checkbox [(ngModel)]="columns.romanshGender.active">{{ 'lexicon.lemma.columns.rm_gender' | translate }}</label></li>
@@ -76,6 +77,7 @@
       <th *ngIf="columns.germanGrammar.active">{{ 'lexicon.lemma.columns.de_grammar' | translate }}</th>
       <th *ngIf="columns.germanGender.active">{{ 'lexicon.lemma.columns.de_gender' | translate }}</th>
       <th *ngIf="columns.germanSemantics.active">{{ 'lexicon.lemma.columns.de_semantics' | translate }}</th>
+      <th *ngIf="columns.germanAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.de_additional_search' | translate }}</th>
       <th *ngIf="columns.germanLink.active">{{ 'lexicon.lemma.columns.de_link' | translate }}</th>
       <th *ngIf="columns.romansh.active">{{ 'lexicon.lemma.columns.rm' | translate }}</th>
       <th *ngIf="columns.romanshGrammar.active">{{ 'lexicon.lemma.columns.rm_grammar' | translate }}</th>
@@ -133,6 +135,7 @@
       <td *ngIf="columns.germanGender.active">{{ data.mostRecent.lemmaValues.DGenus }}</td>
       <td *ngIf="columns.germanSemantics.active">{{ data.mostRecent.lemmaValues.DSubsemantik }}</td>
       <td *ngIf="columns.germanLink.active">{{ data.mostRecent.lemmaValues.DRedirect }}</td>
+      <td *ngIf="columns.germanAdditionalSearchTerms.active">{{ data.mostRecent.lemmaValues.DTags }}</td>
       <td *ngIf="columns.romansh.active">{{ data.mostRecent.lemmaValues.RStichwort }}</td>
       <td *ngIf="columns.romanshGrammar.active">{{ data.mostRecent.lemmaValues.RGrammatik }}</td>
       <td *ngIf="columns.romanshGender.active">{{ data.mostRecent.lemmaValues.RStichwort }}</td>

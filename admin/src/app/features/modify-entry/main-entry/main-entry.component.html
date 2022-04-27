@@ -1,6 +1,18 @@
 
 
 <form nz-form [formGroup]="validateForm">
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="categories">{{ 'edit.lemma.category' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="categories" id="categories" class="info-input" />
+          <i nz-icon nzType="info-circle" class="info-button" nz-popover [nzPopoverContent]="'edit.lemma.category_info' | translate" nzPopoverPlacement="right"></i>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
   <h2>{{ 'edit.lemma.german' | translate }}</h2>
   <div nz-row>
     <div nz-col nzSpan="12">
@@ -20,16 +32,14 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="categories">{{ 'edit.lemma.category' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DTags">{{ 'edit.lemma.de_tags' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="categories" id="categories" class="info-input" />
-          <i nz-icon nzType="info-circle" class="info-button" nz-popover [nzPopoverContent]="'edit.lemma.category_info' | translate" nzPopoverPlacement="right"></i>
+          <input nz-input formControlName="DTags" id="DTags" />
         </nz-form-control>
       </nz-form-item>
 
     </div>
     <div nz-col nzSpan="12">
-
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik" nzRequired>{{ 'edit.lemma.de_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
@@ -76,9 +86,9 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RRedirect">{{ 'edit.lemma.rm_link' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RTags">{{ 'edit.lemma.rm_tags' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RRedirect" id="RRedirect" />
+          <input nz-input formControlName="RTags" id="RTags" />
         </nz-form-control>
       </nz-form-item>
 
@@ -113,11 +123,20 @@
       </nz-form-item>
 
       <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RRedirect">{{ 'edit.lemma.rm_link' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="RRedirect" id="RRedirect" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RFlex">{{ 'edit.lemma.rm_conjugation' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="RFlex" id="RFlex" />
         </nz-form-control>
       </nz-form-item>
+
+
     </div>
   </div>
 

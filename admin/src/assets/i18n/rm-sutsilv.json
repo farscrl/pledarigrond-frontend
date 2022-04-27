@@ -104,6 +104,7 @@
         "de_gender": "Genus (de)",
         "de_semantics": "Semantica (de)",
         "de_link": "Colliaziun (de)",
+        "de_additional_search": "Terms da tschertga supplementars (de)",
         "rm": "Rumantsch",
         "rm_grammar": "Grammatica (rm)",
         "rm_gender": "Genus (rm)",
@@ -241,6 +242,7 @@
       "de_grammar": "Grammatica",
       "de_semantics": "Semantica",
       "de_link": "Colliaziun",
+      "de_tags": "Terms da tschertga supplementars",
       "romansh": "Rumantsch",
       "rm": "Lemma rumantsch",
       "rm_gender": "Genus",
@@ -248,6 +250,7 @@
       "rm_semantics": "Semantica",
       "rm_link": "Colliaziun",
       "rm_conjugation": "Conjugaziun",
+      "rm_tags": "Terms da tschertga supplementars",
       "inflection": {
         "title": "Flexiun",
         "none": "Nagina",

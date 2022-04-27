@@ -104,6 +104,7 @@
         "de_gender": "Gender (de)",
         "de_semantics": "Semantics (de)",
         "de_link": "Link (de)",
+        "de_additional_search": "Additional search terms (de)",
         "rm": "Romansh",
         "rm_grammar": "Grammar (rm)",
         "rm_gender": "Gender (rm)",
@@ -241,6 +242,7 @@
       "de_grammar": "Grammar",
       "de_semantics": "Semantics",
       "de_link": "Link",
+      "de_tags": "Additional search terms",
       "romansh": "Romansh",
       "rm": "Lemma Romansh",
       "rm_gender": "Gender",
@@ -248,6 +250,7 @@
       "rm_semantics": "Semantics",
       "rm_link": "Link",
       "rm_conjugation": "Conjugation",
+      "rm_tags": "Additional search terms",
       "inflection": {
         "title": "Inflection",
         "none": "None",

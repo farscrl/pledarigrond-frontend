@@ -20,6 +20,7 @@ export class LemmaValues {
   DStichwort?: string;
   DSubsemantik?: string;
   DGenus?: string;
+  DTags?: string;
   RStichwort?: string;
   RFlex?: string;
   RTags?: string;

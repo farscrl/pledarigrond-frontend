@@ -63,6 +63,7 @@ export class SuggestionsComponent implements OnInit {
       germanGender: new LemmaListColumnDetail(false, false),
       germanSemantics: new LemmaListColumnDetail(false, false),
       germanLink: new LemmaListColumnDetail(false, false),
+      germanAdditionalSearchTerms: new LemmaListColumnDetail(false, false),
       romansh: new LemmaListColumnDetail(true, false),
       romanshGrammar: new LemmaListColumnDetail(false, false),
       romanshGender: new LemmaListColumnDetail(false, false),

@@ -46,6 +46,7 @@ export class ExportComponent implements OnInit {
       { label: this.translateService.instant('lexicon.lemma.columns.de_gender'), value: 'DGenus', checked: false },
       { label: this.translateService.instant('lexicon.lemma.columns.de_semantics'), value: 'DSubsemantik', checked: false },
       { label: this.translateService.instant('lexicon.lemma.columns.de_link'), value: 'DRedirect', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_additional_search'), value: 'DTags', checked: false },
       { label: this.translateService.instant('lexicon.lemma.columns.rm'), value: 'RStichwort', checked: false },
       { label: this.translateService.instant('lexicon.lemma.columns.rm_grammar'), value: 'RGrammatik', checked: false },
       { label: this.translateService.instant('lexicon.lemma.columns.rm_gender'), value: 'RGenus', checked: false },

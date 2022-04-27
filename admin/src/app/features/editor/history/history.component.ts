@@ -62,6 +62,7 @@ export class HistoryComponent implements OnInit {
       germanGender: new LemmaListColumnDetail(true, false),
       germanSemantics: new LemmaListColumnDetail(true, false),
       germanLink: new LemmaListColumnDetail(true, false),
+      germanAdditionalSearchTerms: new LemmaListColumnDetail(true, false),
       romansh: new LemmaListColumnDetail(true, false),
       romanshGrammar: new LemmaListColumnDetail(true, false),
       romanshGender: new LemmaListColumnDetail(true, false),

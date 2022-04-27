@@ -15,6 +15,7 @@ export class LemmaListColumn {
   germanGender: LemmaListColumnDetail = new LemmaListColumnDetail();
   germanSemantics: LemmaListColumnDetail = new LemmaListColumnDetail();
   germanLink: LemmaListColumnDetail = new LemmaListColumnDetail();
+  germanAdditionalSearchTerms: LemmaListColumnDetail = new LemmaListColumnDetail();
   romansh: LemmaListColumnDetail = new LemmaListColumnDetail();
   romanshGrammar: LemmaListColumnDetail = new LemmaListColumnDetail();
   romanshGender: LemmaListColumnDetail = new LemmaListColumnDetail();
