@@ -22,7 +22,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="categories">{{ 'edit.lemma.category' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="categories" id="categories" />
+          <input nz-input formControlName="categories" id="categories" class="info-input" />
+          <i nz-icon nzType="info-circle" class="info-button" nz-popover [nzPopoverContent]="'edit.lemma.category_info' | translate" nzPopoverPlacement="right"></i>
         </nz-form-control>
       </nz-form-item>
 

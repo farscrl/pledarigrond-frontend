@@ -237,6 +237,7 @@
       "de": "Lemma German",
       "de_gender": "Gender",
       "category": "Category",
+      "category_info": "Seperate multiple categories with a comma.",
       "de_grammar": "Grammar",
       "de_semantics": "Semantics",
       "de_link": "Link",
