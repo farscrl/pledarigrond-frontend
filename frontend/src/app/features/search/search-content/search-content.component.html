@@ -35,7 +35,7 @@
             </td>
             <td [class.unverified]="result.verification === 'UNVERIFIED'">
               <ng-container *ngIf="containsLink(result, true)">
-                cf. <a [innerHtml]="getLemma(result, true, containsLink(result, true)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, true)!)"></a>
+                → <a [innerHtml]="getLemma(result, true, containsLink(result, true)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, true)!)"></a>
               </ng-container>
               <ng-container *ngIf="!containsLink(result, true)">
                 <div [innerHtml]="getLemma(result, true) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight"></div>
@@ -48,7 +48,7 @@
             </td>
             <td [class.unverified]="result.verification === 'UNVERIFIED'">
               <ng-container *ngIf="containsLink(result, false)">
-                cf. <a [innerHtml]="getLemma(result, false, containsLink(result, false)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, false)!)"></a>
+                → <a [innerHtml]="getLemma(result, false, containsLink(result, false)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, false)!)"></a>
               </ng-container>
               <ng-container *ngIf="!containsLink(result, false)">
                 <div [innerHtml]="getLemma(result, false) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight"></div>
