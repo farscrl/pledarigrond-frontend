@@ -1,8 +1,8 @@
 {
   "users": {
-    "menu_item": "Utilisaders",
-    "title": "Utilisaders",
-    "subtitle": "Tut ils utilisaders dal Pledari Grond",
+    "menu_item": "Utilisad*ras",
+    "title": "Utilisad*ras",
+    "subtitle": "Tut las utilisad*ras dal Pledari Grond",
     "new_button": "Nov",
     "email": "E-Mail",
     "admin": "Admin",
@@ -10,20 +10,20 @@
     "actions": "Acziuns",
     "edit_action": "Modifitgar",
     "delete_action": "Stizzar",
-    "delete_question": "Propi stizzar quest utilisader?",
+    "delete_question": "Propi stizzar quest*a utilisad*ra?",
     "delete_yes": "Gea, stizzar",
     "delete_no": "Na",
-    "new_title": "Crear in nov utilisader",
-    "edit_title": "Modifitgar l'utilisader",
+    "new_title": "Crear ina nova utilisad*ra",
+    "edit_title": "Modifitgar l'utilisad*ra",
     "edit": {
       "email": "E-Mail",
       "email_error": "Quai n'è betg ina adressa dad e-mail valida",
       "password": "Pled-clav",
-      "password_missing": "P. pl. endatar in pled-clav",
+      "password_missing": "P.pl. endatar in pled-clav",
       "password_lenght": "Il pled-clav sto cuntegnair almain 6 caracters",
       "is_admin": "è admin?",
       "role": "Rolla",
-      "editor_role": "Redactur",
+      "editor_role": "Redactur*a",
       "no_role": "Nagin access",
       "cancel": "Interrumper",
       "save": "Memorisar",
@@ -37,8 +37,8 @@
     "review_menu_item": "Repassar midadas automaticas",
     "filter": {
       "date_interval": "Interval da data",
-      "user_ip": "IP da l'utilisader",
-      "verifier": "Revisur",
+      "user_ip": "IP da l'utilisad*ra",
+      "verifier": "Revisur*a",
       "search_term": "Pled u expressiun che Vus tschertgais",
       "highlight": "Marcar il pled u l'expressiun che Vus tschertgais",
       "show_more": "Dapli opziuns da tschertgar",
@@ -80,10 +80,10 @@
       "title": "Cronologia dal lemma",
       "subtitle": "Vesair tut las midadas dal lemma tschernì",
       "state": "Status",
-      "user": "Utilisader",
+      "user": "Utilisad*ra",
       "entry": "Endataziun",
       "changed": "Midà",
-      "no_item_selected": "Tscherner in'endataziun da vart dretga per vesair qua la cronologia da versions dal lemma.",
+      "no_item_selected": "Tscherner in'endataziun da vart dretga per vesair qua la cronologia cun las versiuns dal lemma.",
       "delete_history_button": "Stizzar cronologia",
       "delete_history_confirmation": "Vulais Vus propi stizzar la cronologia da questa endataziun?"
     },
@@ -91,8 +91,8 @@
       "results_info": "Las endataziuns {{start}} fin {{end}} da {{total}} vegnan mussadas.",
       "columns": {
         "title": "Colonnas",
-        "user": "Utilisader",
-        "verifier": "Revisur",
+        "user": "Utilisad*ra",
+        "verifier": "Revisur*a",
         "filter": "Filter",
         "entry": "Endataziun",
         "actions": "Acziuns",
@@ -117,15 +117,15 @@
       },
       "export": {
         "button": "Exportar",
-        "title": "Selecziunar ils champs per l'export ",
-        "all": "Selecziunar tuts",
+        "title": "Tscherner ils champs per l'export ",
+        "all": "Tscherner tuts",
         "cancel": "Serrar",
         "export": "Exportar"
       },
       "new_button": "Nova endataziun",
       "table_actions": {
-        "filter_user": "Filtrar utilisader",
-        "filter_verifier": "Filtrar revisur",
+        "filter_user": "Filtrar utilisad*ra",
+        "filter_verifier": "Filtrar revisur*a",
         "edit": "Modifitgar",
         "delete": "Stizzar",
         "order_rm": "Successiun rumantsch",
@@ -149,21 +149,21 @@
     "dump": {
       "button": "Backup",
       "title": "Crear in backup da la banca da datas",
-      "instructions": "Per far in backup cumplet sto la cronologia cumpletta da las midadas esser tschernidas ed las datas na duain betg esser anonimisadas. La datoteca generada cuntegna ina summa da controlla MD5 che po vegnir utilisada per controllar l'integritad da las datas.",
+      "instructions": "Per far ina copia da segirezza cumpletta, tscherner l'entira cronologia da las midadas e betg anonimisar las datas. La datoteca generada cuntegna ina summa da controlla MD5 che po servir per controllar l'integritad da las datas.",
       "include_history": "Exportar la cronologia cumpletta da las midadas",
       "anonymize_data": "Anonimisar las datas",
       "cancel": "Interrumper",
       "exporting": "Exportar",
-      "start": "Cumenzar l'export"
+      "start": "Lantschar l'export"
     },
     "import": {
       "button": "Importar",
       "title": "Importar ina copia da la banca da datas",
-      "instructions": "Tscherna ina copia da la banca da datas che duai remplazzar las endataziuns memorisadas actualmain. Attenziun: Questa acziun na po betg vegnir revocada.",
-      "select_file": "Tscherner datoteca",
+      "instructions": "Tscherner ina copia da la banca da datas che duai remplazzar l'actuala. Attenziun: Questa acziun na po betg vegnir revocada.",
+      "select_file": "Tscherner la datoteca",
       "cancel": "Interrumper",
       "uploading": "Transferir",
-      "start": "Cumenzar il transfer"
+      "start": "Lantschar il transferiment"
     },
     "drop": {
       "button": "Stizzar",
@@ -195,14 +195,14 @@
     "menu_item": "Index",
     "title": "Index",
     "subtitle": "Administraziun da l'index da Lucene",
-    "rebuild_button": "Re-crear",
+    "rebuild_button": "Crear da nov",
     "stats": {
       "indexed": "Indexà",
       "approved": "Approvà",
       "unverified": "Betg verifitgà",
       "other": "Auter",
       "Verbs": "Verbs",
-      "refresh_button": "Actualisar statistica"
+      "refresh_button": "Actualisar la statistica"
     }
   },
   "frontend": {
@@ -217,7 +217,7 @@
     },
     "role": {
       "admin": "Admin",
-      "editor": "Redactur",
+      "editor": "Redactur*a",
       "guest": "Giast",
       "none": "Nagina"
     },
@@ -230,7 +230,7 @@
   },
   "edit": {
     "titles": {
-      "add": "Agiuntar lemma",
+      "add": "Agiuntar in lemma",
       "edit": "Modifitgar lemma"
     },
     "lemma": {
@@ -238,7 +238,7 @@
       "de": "Lemma tudestg",
       "de_gender": "Genus",
       "category": "Categoria",
-      "category_info": "Separar pliras categorias cun ina comma.",
+      "category_info": "Separar pliras categorias cun commas.",
       "de_grammar": "Grammatica",
       "de_semantics": "Semantica",
       "de_link": "Colliaziun",
@@ -285,7 +285,7 @@
     "title": "Zavrar translaziuns da «{{name}}»",
     "title_de": "tudestg",
     "title_rm": "rumantsch",
-    "instructions": "Midar la successiun da las endataziuns entras trair u cun las frizzas survart.",
+    "instructions": "Midar la successiun da las endataziuns cun trair e deponer u cun agid da las frizzas survart.",
     "cancel": "Interrumper",
     "save": "Memorisar"
   },
@@ -304,12 +304,12 @@
     },
     "admin": {
       "title": "Administraziun",
-      "database": "Administrar banca da datas",
-      "index": "Administrar index"
+      "database": "Administrar la banca da datas",
+      "index": "Administrar l'index"
     }
   },
   "no_permissions": {
-    "title": "Vus n'avais betg ils dretgs necessaris per acceder la surfatscha d'administraziun.",
-    "logout": "Logout"
+    "title": "Vus n'avais betg ils dretgs necessaris per acceder a la surfatscha d'administraziun.",
+    "logout": "Sortir"
   }
 }
