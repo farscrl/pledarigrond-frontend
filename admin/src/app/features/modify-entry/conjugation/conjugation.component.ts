@@ -128,7 +128,6 @@ export class ConjugationComponent implements OnInit {
 
   private generateForms(subTypeId: string, baseForm: string) {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'VERB', subTypeId, baseForm).subscribe(values => {
-      console.log(values);
       this.workingLemmaVersion.lemmaValues.RInflectionSubType = subTypeId;
       this.workingLemmaVersion.lemmaValues = {
         ...this.workingLemmaVersion.lemmaValues,
