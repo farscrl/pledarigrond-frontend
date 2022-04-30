@@ -29,6 +29,10 @@
     visibility: hidden;
   }
 
+  td {
+    vertical-align: top;
+  }
+
   td:nth-of-type(1) {
     width: 20px;
   }
