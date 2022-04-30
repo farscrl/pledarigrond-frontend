@@ -288,7 +288,13 @@
 </form>
 
 <div *nzModalFooter>
-  <button nz-button nzType="default" (click)="cancel()">{{ 'edit.cancel' | translate }}</button>
-  <button nz-button nzType="default" (click)="reset()">{{ 'edit.reset' | translate }}</button>
-  <button nz-button nzType="primary" (click)="ok()">{{ 'edit.ok' | translate }}</button>
+  <div class="footer-buttons">
+    <div>
+      <button nz-button nzType="default" (click)="cancel()">{{ 'edit.cancel' | translate }}</button>
+      <button nz-button nzType="default" (click)="reset()">{{ 'edit.reset' | translate }}</button>
+    </div>
+    <div>
+      <button nz-button nzType="primary" (click)="ok()">{{ 'edit.ok' | translate }}</button>
+    </div>
+  </div>
 </div>
