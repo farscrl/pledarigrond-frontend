@@ -56,18 +56,18 @@ export class MainEntryComponent implements OnInit {
     if (this.lexEntryId) {
       this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntryId).subscribe(entry => {
         this.lexEntry = entry;
-        this.lemmaVersion = JSON.parse(JSON.stringify(entry.current));
+        this.lemmaVersion = JSON.parse(JSON.stringify(entry.mostRecent));
         this.setUpForm();
       });
     }
   }
 
-  save() {
+  save(asSuggestion: boolean) {
     if (this.validateForm.valid) {
       if (!!this.lexEntryId) {
-        this.updateEntry();
+        this.updateEntry(asSuggestion);
       } else {
-        this.saveNewEntry();
+        this.saveNewEntry(asSuggestion);
       }
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
@@ -154,7 +154,7 @@ export class MainEntryComponent implements OnInit {
     }
   }
 
-  private saveNewEntry() {
+  private saveNewEntry(asSuggestion: boolean) {
     const lexEntry = new LexEntry();
     const lemmaVersion = new LemmaVersion();
     lemmaVersion.lemmaValues = {
@@ -164,7 +164,8 @@ export class MainEntryComponent implements OnInit {
     lexEntry.versionHistory.push(lemmaVersion);
     lexEntry.current = lemmaVersion;
     lexEntry.mostRecent = lemmaVersion;
-    this.editorService.newLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry).subscribe(data => {
+
+    this.editorService.newLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry, asSuggestion).subscribe(data => {
       this.cancel();
       this.modal.triggerOk();
     }, error => {
@@ -172,18 +173,27 @@ export class MainEntryComponent implements OnInit {
     });
   }
 
-  private updateEntry() {
+  private updateEntry(asSuggestion: boolean) {
     const lemmaVersion = new LemmaVersion();
     lemmaVersion.lemmaValues = {
       ...this.lemmaVersion?.lemmaValues,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
-    this.editorService.modifyAndAccepptLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
-      this.cancel();
-      this.modal.triggerOk();
-    }, error => {
-      console.error(error);
-    });
+    if (asSuggestion) {
+      this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
+        this.cancel();
+        this.modal.triggerOk();
+      }, error => {
+        console.error(error);
+      });
+    } else {
+      this.editorService.modifyAndAccepptLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
+        this.cancel();
+        this.modal.triggerOk();
+      }, error => {
+        console.error(error);
+      });
+    }
   }
 
   private getDGenusValues(): string[] {

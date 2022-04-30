@@ -55,14 +55,29 @@ export class EditorService {
     return this.httpClient.get<LexEntry>(this.generateUrl(language, 'lex_entries/' + id));
   }
 
-  newLexEntry(language: Language, lexEntry: LexEntry) {
+  newLexEntry(language: Language, lexEntry: LexEntry, asSuggestion: boolean) {
+    let params: HttpParams = new HttpParams();
+
+    if (asSuggestion) {
+      params = params.set('asSuggestion', true);
+    }
+
+    const httpOptions = {
+      params: params
+    };
+
     const body: any = Object.assign({}, lexEntry);
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/'), body);
+    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/'), body, httpOptions);
   }
 
   modifyAndAccepptLexEntry(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
     const body: any = Object.assign({}, lemmaVersion);
     return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_and_accept_version'), body);
+  }
+
+  modifyLexEntry(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
+    const body: any = Object.assign({}, lemmaVersion);
+    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_version'), body);
   }
 
   dropEntry(language: Language, entryId: string) {
