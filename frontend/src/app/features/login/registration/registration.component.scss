@@ -1,6 +1,5 @@
 .pg-modal-wrapper {
   max-width: 600px;
-  height: 360px;
 
   .modal-content {
     overflow-y: initial;
@@ -42,6 +41,7 @@
     background: rgb(0, 200, 255);
     color: white;
     margin-left: 0;
+    margin-top: 16px;
   }
 
   #cancelButton {
