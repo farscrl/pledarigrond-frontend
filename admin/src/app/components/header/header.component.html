@@ -16,6 +16,8 @@
     <a [class.lang_selected]="frontendLanguage === 'en'" (click)="changeFrontendLanguage('en')">en</a>
     <span> | </span>
     <a [class.lang_selected]="frontendLanguage === 'rm'" (click)="changeFrontendLanguage('rm')">rm</a>
+
+    <span class="username">{{ authService.getUsername() }}</span>
     <span class="logout" (click)="logout()">
       <i nz-icon nzType="logout" nzTheme="outline"></i>
     </span>
