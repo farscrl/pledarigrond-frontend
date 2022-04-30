@@ -3,26 +3,19 @@
   <p id="error_font" *ngIf="hasLoginError">
     {{ 'login.error' | translate }}
   </p>
-  <form name="f" action="j_spring_security_check" method="POST">
-    <div id="login_input">
-      <div class="input_wrapper">
-        <label for="uname">{{ 'login.email' | translate }}</label>
-        <input id="uname" type="text" name="username" value="" [(ngModel)]="username">
-      </div>
-      <div class="input_wrapper">
-        <label for="upwd">{{ 'login.pwd' | translate }}</label>
-        <input id="upwd" type="password" name="password" [(ngModel)]="password">
-      </div>
-      <div class="button_wrapper">
-        <input name="submit" type="submit" value="{{ 'login.sendButton' | translate }}" id="internal_login" (click)="login()">
-      </div>
-    </div>
-  </form>
-
-  <div id="openid_login">
+  <div id="login_input">
     <div class="input_wrapper">
-      <a id="signUp" (click)="openRegistrationModal()">{{ 'registration.signup' | translate }}</a>
+      <label for="uname">{{ 'login.email' | translate }}</label>
+      <input id="uname" type="text" name="username" value="" [(ngModel)]="username">
     </div>
+    <div class="input_wrapper">
+      <label for="upwd">{{ 'login.pwd' | translate }}</label>
+      <input id="upwd" type="password" name="password" [(ngModel)]="password">
+    </div>
+  </div>
+  <div class="login-buttons">
+    <a id="signUp" (click)="openRegistrationModal()">{{ 'registration.signup' | translate }}</a>
+    <input name="submit" type="submit" value="{{ 'login.sendButton' | translate }}" id="internal_login" (click)="login()">
   </div>
 
   <div id="login_info">

@@ -39,7 +39,6 @@ input[type="password"]:focus {
 }
 
 input#internal_login {
-	appearance: none;
 	border: 0 none;
 	box-shadow: none;
 	border-radius: 0;
@@ -50,51 +49,44 @@ input#internal_login {
 	font-family: "europa", Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	line-height: 13px;
-	margin-top: 12px;
-	float: right;
 }
 
-#login_input .input_wrapper {
-	width: 50%;
+#login_input {
+  display: flex;
+  flex-direction: row;
+
+  .input_wrapper {
+    width: 50%;
+  }
+
+  label {
+    float: left;
+    margin: 0 8px 0 0;
+    padding-top: 4px;
+  }
 }
 
-#login_input label {
-	float: left;
-	margin: 0 8px 0 0;
-	padding-top: 4px;
+.login-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-bottom: 32px;
 }
 
-.button_wrapper {
-	clear: both;
-}
-
-form {
-	display: block;
-	margin: 0;
-}
-
-#openid_login {
-	position: relative;
-	top: -20px;
-	clear: both;
-	width: 50%;
-}
-
-#openid_login .input_wrapper {
-	float: none;
-	margin-bottom: 4px;
-}
-
-a#signUp::before {
+#signUp {
+  &::before {
     content: "→";
     left: 0px;
     top: 0px;
     padding-right: 2px;
-}
+  }
 
-a#signUp:hover{
-	color: rgb(0, 200, 255);
-	text-decoration: none;
+  &:hover{
+    color: rgb(0, 200, 255);
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 p#error_font {
@@ -103,15 +95,14 @@ p#error_font {
 }
 
 #login_info {
-	position: relative;
-	top: 0px;
-}
+  display: flex;
+  flex-direction: row;
 
-#login_info p {
-	margin-top: 4px;
-	margin-bottom: 0;
-	width: 90%;
-	line-height: 18px;
+  p {
+    margin-left: 8px;
+    margin-top: -3px;
+    line-height: 18px;
+  }
 }
 
 
@@ -120,7 +111,7 @@ p#error_font {
 @media all and (max-width: 767px) {
   #login_container {
     position: relative;
-    width: 68%;
+    width: 90%;
     top: auto;
     left: auto;
     right: auto;
@@ -134,30 +125,29 @@ p#error_font {
     float: none;
   }
 
-  #login_input .input_wrapper {
-    width: 100%;
+  #login_input {
+    flex-direction: column;
+
+    .input_wrapper {
+      width: 100%;
+    }
+
+    label {
+      float: none;
+    }
   }
 
-  #login_input label {
-    float: none;
+  .login-buttons {
+    flex-direction: column-reverse;
   }
 
-  #openid_login {
-		position: static;
-		top: auto;
-		width: auto;
-		margin-top: 12px;
-	}
+  #signUp {
+    margin-top: 16px;
+  }
 
   input#internal_login {
     width: 100%;
     margin: 8px 0 0 0;
-  }
-
-  #login_info {
-    position: static;
-    top: auto;
-    margin-top: 12px;
   }
 
   input[type="text"], input[type="password"]
