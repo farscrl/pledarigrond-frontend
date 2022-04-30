@@ -43,7 +43,7 @@ export class SuggestModificationComponent extends SimpleModalComponent<{lemmaVer
   reset() {
     this.copy(this.originalLemmaVersion);
     if (this.changedLemmaVersion) {
-      this.changedLemmaVersion!.lemmaValues.user_email = this.authService.getUsername();
+      this.changedLemmaVersion!.lemmaValues.contact_email = this.authService.getUsername();
     }
   }
 
@@ -51,7 +51,7 @@ export class SuggestModificationComponent extends SimpleModalComponent<{lemmaVer
     this.showFormError = false;
     if (this.changedLemmaVersion!.lemmaValues.DStichwort === ''
     && this.changedLemmaVersion!.lemmaValues.RStichwort === ''
-    && this.changedLemmaVersion!.lemmaValues.user_comment === '') {
+    && this.changedLemmaVersion!.lemmaValues.contact_comment === '') {
       this.showFormError = true;
       return;
     }
@@ -69,6 +69,6 @@ export class SuggestModificationComponent extends SimpleModalComponent<{lemmaVer
       return;
     }
     this.changedLemmaVersion = JSON.parse(JSON.stringify(lemmaVersion));
-    this.changedLemmaVersion!.lemmaValues.user_email = this.authService.getUsername();
+    this.changedLemmaVersion!.lemmaValues.contact_email = this.authService.getUsername();
   }
 }

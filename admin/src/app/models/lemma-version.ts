@@ -31,8 +31,8 @@ export class LemmaValues {
   RInflectionSubType?: string;
   RSubsemantik?: string;
   RGenus?: string;
-  user_email?: string;
-  user_comment?: string;
+  contact_email?: string;
+  contact_comment?: string;
   DRedirect?: string;
   RRedirect?: string;
   categories?: string;
@@ -86,13 +86,13 @@ export class LemmaValues {
 }
 
 export class PgValues {
-  pg_timestamp?: number;
+  timestamp?: number;
   internal_id?: number;
-  pg_creator?: string;
+  creator?: string;
   user_ip?: string;
-  pg_verification: Verification = 'UNVERIFIED';
-  pg_status: Status = 'UNDEFINED';
-  pg_creator_role?: String;
+  verification: Verification = 'UNVERIFIED';
+  status: Status = 'UNDEFINED';
+  creator_role?: String;
 }
 
 export type Status = 'DELETED'|'NEW_ENTRY'|'NEW_MODIFICATION'|'UNDEFINED';

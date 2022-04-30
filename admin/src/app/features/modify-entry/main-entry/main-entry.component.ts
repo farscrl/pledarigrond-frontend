@@ -127,8 +127,8 @@ export class MainEntryComponent implements OnInit {
       RRedirect: new FormControl(this.lemmaVersion?.lemmaValues.RRedirect),
       categories: new FormControl(this.lemmaVersion?.lemmaValues.categories),
 
-      user_comment: new FormControl(this.lemmaVersion?.lemmaValues.user_comment),
-      user_email: new FormControl(this.lemmaVersion?.lemmaValues.user_email),
+      contact_comment: new FormControl(this.lemmaVersion?.lemmaValues.contact_comment),
+      contact_email: new FormControl(this.lemmaVersion?.lemmaValues.contact_email),
     });
   }
 

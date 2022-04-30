@@ -55,7 +55,7 @@ export class ExportComponent implements OnInit {
       { label: this.translateService.instant('lexicon.lemma.columns.rm_conjugation'), value: 'RFlex', checked: false },
       { label: this.translateService.instant('lexicon.lemma.columns.rm_additional_search'), value: 'RTags', checked: false },
       { label: this.translateService.instant('lexicon.lemma.columns.category'), value: 'categories', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.comment'), value: 'user_comment', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.comment'), value: 'contact_comment', checked: false },
     ];
   }
 
