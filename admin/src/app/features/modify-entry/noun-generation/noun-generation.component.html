@@ -1,0 +1,80 @@
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="baseForm">{{ 'edit.noun.forms.baseForm' | translate }}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="baseForm" id="baseForm" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionSubType" nzRequired>{{ 'edit.conjugation.type' | translate }}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="20">
+          <nz-select formControlName="RInflectionSubType" id="RInflectionSubType">
+            <nz-option nzValue="" nzLabel="none"></nz-option>
+            <nz-option [nzValue]="type.id" [nzLabel]="type.name" *ngFor="let type of subTypes" nzCustomContent>
+              <b>{{type.name}}</b>: {{type.description}}
+            </nz-option>
+          </nz-select>
+        </div>
+        <div nz-col [nzSpan]="4">
+          <button nz-button (click)="updateForms()">{{ 'edit.conjugation.generate_button' | translate }}</button>
+        </div>
+      </div>
+
+    </nz-form-control>
+  </nz-form-item>
+
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="mSingular">{{ 'edit.noun.forms.mSingular' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="mSingular" id="mSingular" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="mPlural">{{ 'edit.noun.forms.mPlural' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="mPlural" id="mPlural" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pluralCollectiv">{{ 'edit.noun.forms.pluralCollectiv' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="pluralCollectiv" id="pluralCollectiv" />
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fSingular">{{ 'edit.noun.forms.fSingular' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="fSingular" id="fSingular" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fPlural">{{ 'edit.noun.forms.fPlural' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="fPlural" id="fPlural" />
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
+  </div>
+
+</form>
+
+<div *nzModalFooter>
+  <div class="footer-buttons">
+    <div>
+      <button nz-button nzType="default" (click)="cancel()">{{ 'edit.cancel' | translate }}</button>
+      <button nz-button nzType="default" (click)="reset()">{{ 'edit.reset' | translate }}</button>
+    </div>
+    <div>
+      <button nz-button nzType="primary" (click)="ok()">{{ 'edit.ok' | translate }}</button>
+    </div>
+  </div>
+</div>

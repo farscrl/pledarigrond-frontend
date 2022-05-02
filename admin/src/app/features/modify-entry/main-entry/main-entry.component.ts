@@ -8,6 +8,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ConjugationComponent } from '../conjugation/conjugation.component';
 import { TranslateService } from '@ngx-translate/core';
+import { NounGenerationComponent } from '../noun-generation/noun-generation.component';
 
 @Component({
   selector: 'app-main-entry',
@@ -86,6 +87,32 @@ export class MainEntryComponent implements OnInit {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.conjugation.title'),
       nzContent: ConjugationComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lemmaVersion: this.lemmaVersion,
+      },
+    });
+    modal.afterClose.subscribe(value => {
+      if (value === undefined) {
+        return;
+      }
+      this.lemmaVersion!.lemmaValues = {
+        ...this.lemmaVersion?.lemmaValues,
+        ...value
+      };
+    })
+  }
+
+  editNoun() {
+    if (!this.lemmaVersion?.lemmaValues.infinitiv) {
+      this.lemmaVersion!.lemmaValues.infinitiv = this.validateForm.controls['RStichwort'].value;
+    }
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('edit.noun.title'),
+      nzContent: NounGenerationComponent,
       nzClosable: false,
       nzMaskClosable: false,
       nzWidth: 1100,

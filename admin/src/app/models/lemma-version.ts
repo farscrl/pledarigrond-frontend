@@ -83,6 +83,13 @@ export class LemmaValues {
   imperativ2?: string;
 
   gerundium?: string;
+
+  // noun
+  mSingular?: string;
+  fSingular?: string;
+  mPlural?: string;
+  fPlural?: string;
+  pluralCollectiv?: string;
 }
 
 export class PgValues {

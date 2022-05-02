@@ -254,7 +254,8 @@
       "inflection": {
         "title": "Flexiun",
         "none": "Nagina",
-        "verb": "Verb"
+        "verb": "Verb",
+        "noun": "Substantiv"
       },
       "comment": "Commentari",
       "email": "E-Mail"
@@ -273,6 +274,17 @@
         "particip_perfect": "Particip perfect",
         "imperativ": "Imperativ",
         "gerundi": "Gerundi"
+      }
+    },
+    "noun": {
+      "title": "Generar furmas da substantivs",
+      "forms": {
+        "baseForm": "Furma da basa",
+        "mSingular": "masculin singular",
+        "fSingular": "feminin singular",
+        "mPlural": "masculin plural",
+        "fPlural": "feminin plural",
+        "pluralCollectiv": "plural collectiv"
       }
     },
     "cancel": "Interrumper",
