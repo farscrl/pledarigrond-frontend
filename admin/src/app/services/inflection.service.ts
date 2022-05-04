@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { InflectionType } from '../models/inflection';
+import { Observable } from 'rxjs';
+import { InflectionResponse, InflectionType } from '../models/inflection';
 import { Language } from '../models/security';
 import { environment } from './../../environments/environment';
 
@@ -16,7 +17,24 @@ export class InflectionService {
     return this.httpClient.get<any>(this.generateUrl(language, type, 'subtypes'));
   }
 
-  getInflectionForms(language: Language, type: InflectionType, subType: string, baseForm: string) {
+  guessInflectionForms(language: Language, type: InflectionType, baseForm: string, genus?: string, flex?: string): Observable<InflectionResponse> {
+    let params: HttpParams = new HttpParams();
+
+    if (genus) {
+      params = params.set('genus', genus);
+    }
+
+    if (flex) {
+      params = params.set('flex', flex);
+    }
+
+    const httpOptions = {
+      params: params
+    };
+    return this.httpClient.get<any>(this.generateUrl(language, type, "subtypes" + '/' + baseForm), httpOptions);
+  }
+
+  getInflectionForms(language: Language, type: InflectionType, subType: string, baseForm: string): Observable<InflectionResponse> {
     return this.httpClient.get<any>(this.generateUrl(language, type, subType + '/' + baseForm));
   }
 

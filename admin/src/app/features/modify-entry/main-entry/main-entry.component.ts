@@ -107,9 +107,10 @@ export class MainEntryComponent implements OnInit {
   }
 
   editNoun() {
-    if (!this.lemmaVersion?.lemmaValues.infinitiv) {
-      this.lemmaVersion!.lemmaValues.infinitiv = this.validateForm.controls['RStichwort'].value;
-    }
+    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
+    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
+    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.noun.title'),
       nzContent: NounGenerationComponent,

@@ -39,6 +39,10 @@ export class NounGenerationComponent implements OnInit {
     this.inflectionService.getInflectionSubtypes(this.languageSelectionService.getCurrentLanguage(), 'NOUN').subscribe(value => {
       this.subTypes = value;
     });
+
+    if (this.shouldGuessInflectionSubtype()) {
+      this.guessInflectionSubtype();
+    }
   }
 
   updateForms() {
@@ -87,6 +91,37 @@ export class NounGenerationComponent implements OnInit {
   private generateForms(subTypeId: string, baseForm: string) {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', subTypeId, baseForm).subscribe(values => {
       this.workingLemmaVersion.lemmaValues.RInflectionSubType = subTypeId;
+      this.workingLemmaVersion.lemmaValues = {
+        ...this.workingLemmaVersion.lemmaValues,
+        ...values.inflectionValues
+      };
+      this.setUpForm();
+    });
+  }
+
+  private shouldGuessInflectionSubtype(): boolean {
+    if (
+      this.workingLemmaVersion.lemmaValues.mSingular ||
+      this.workingLemmaVersion.lemmaValues.fSingular ||
+      this.workingLemmaVersion.lemmaValues.mPlural ||
+      this.workingLemmaVersion.lemmaValues.fPlural ||
+      this.workingLemmaVersion.lemmaValues.pluralCollectiv
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  private guessInflectionSubtype() {
+    const baseForm = this.workingLemmaVersion.lemmaValues.RStichwort ? this.workingLemmaVersion.lemmaValues.RStichwort : "";
+    const genus = this.workingLemmaVersion.lemmaValues.RGenus;
+    const flex = this.workingLemmaVersion.lemmaValues.RFlex;
+    this.inflectionService.guessInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', baseForm, genus, flex).subscribe(values => {
+      // for short words the guessing can be empty -> just ignore empty response
+      if (!values) {
+        return;
+      }
+      this.workingLemmaVersion.lemmaValues.RInflectionSubType = values.inflectionSubType.id;
       this.workingLemmaVersion.lemmaValues = {
         ...this.workingLemmaVersion.lemmaValues,
         ...values.inflectionValues

@@ -5,3 +5,8 @@ export class InflectionSubType {
   name: string = "";
   description: string = "";
 }
+
+export class InflectionResponse {
+  inflectionSubType: InflectionSubType = new InflectionSubType();
+  inflectionValues: any;
+}
