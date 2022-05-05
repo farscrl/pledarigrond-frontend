@@ -1,1 +1,88 @@
-<p>review-auto-changes works!</p>
+<div nz-row [nzGutter]="16">
+  <div nz-col nzSpan="9" class="left-side">
+    <nz-content class="duration-filter">
+      <nz-page-header [nzGhost]="false">
+        <nz-page-header-title>{{ 'lexicon.lexicon.title' | translate }}</nz-page-header-title>
+        <nz-page-header-subtitle>{{ 'lexicon.lexicon.subtitle' | translate }}</nz-page-header-subtitle>
+      </nz-page-header>
+    </nz-content>
+
+    <nz-content>
+      <nz-page-header [nzGhost]="false">
+        <nz-page-header-title>{{ 'lexicon.lemma_history.title' | translate }}</nz-page-header-title>
+        <nz-page-header-subtitle>{{ 'lexicon.lemma_history.subtitle' | translate }}</nz-page-header-subtitle>
+      </nz-page-header>
+
+      <div class="lemma-list">
+        <nz-list [nzLoading]="isLoadingData">
+          <nz-list-item *ngFor="let item of lemmas" (click)="selectLemma(item)" [class.selected]="item.selected">
+            <ng-container >
+              <i nz-icon
+              [nzType]="item.local_review_status === 'ACCEPTED' ? 'check-circle' : item.local_review_status === 'REJECTED' ? 'close-circle' : item.local_review_status === 'EDITED' ? 'info-circle' : 'question-circle'"
+              class="state-icon"
+              [class.accepted]="item.local_review_status === 'ACCEPTED'"
+              [class.rejected]="item.local_review_status === 'REJECTED'"
+              [class.edited]="item.local_review_status === 'EDITED'"
+              ></i>
+              <nz-list-item-meta nzDescription="{{ item.lemmaValues.RGrammatik }}">
+                <nz-list-item-meta-title>
+                  <a>{{ item.lemmaValues.RStichwort }} ⇔ {{ item.lemmaValues.DStichwort }}</a>
+                </nz-list-item-meta-title>
+              </nz-list-item-meta>
+            </ng-container>
+          </nz-list-item>
+
+          <div class="load next" nz-list-load-more>
+            <button nz-button *ngIf="!isLoadingData">load next</button>
+          </div>
+        </nz-list>
+      </div>
+    </nz-content>
+  </div>
+
+  <div nz-col nzSpan="15" class="right-side">
+    <nz-content>
+      <div class="content" *ngIf="selectedLexEntry">
+        <nz-page-header [nzGhost]="false">
+          <nz-page-header-title>{{ selectedLexEntry.mostRecent.lemmaValues.RStichwort }} ⇔ {{ selectedLexEntry.mostRecent.lemmaValues.DStichwort }}</nz-page-header-title>
+          <nz-page-header-extra>
+            <button nz-button nzType="primary"  class="button-accept">Acceptar</button>
+            <button nz-button nzType="primary" nzDanger>Refusar</button>
+            <button nz-button>Modifitgar</button>
+          </nz-page-header-extra>
+        </nz-page-header>
+
+        <nz-descriptions nzTitle="">
+          <nz-descriptions-item nzTitle="category">{{ selectedLexEntry.mostRecent.lemmaValues.categories }} </nz-descriptions-item>
+        </nz-descriptions>
+
+        <nz-descriptions nzTitle="Deutsch">
+          <nz-descriptions-item nzTitle="tudestg"><app-diff [old]="selectedLexEntry.current.lemmaValues.DStichwort" [new]="selectedLexEntry.mostRecent.lemmaValues.DStichwort"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="genus"><app-diff [old]="selectedLexEntry.current.lemmaValues.DGenus" [new]="selectedLexEntry.mostRecent.lemmaValues.DGenus"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Search term"><app-diff [old]="selectedLexEntry.current.lemmaValues.DTags" [new]="selectedLexEntry.mostRecent.lemmaValues.DTags"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Grammatik"><app-diff [old]="selectedLexEntry.current.lemmaValues.DGrammatik" [new]="selectedLexEntry.mostRecent.lemmaValues.DGrammatik"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Semantica"><app-diff [old]="selectedLexEntry.current.lemmaValues.DSubsemantik" [new]="selectedLexEntry.mostRecent.lemmaValues.DSubsemantik"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Link"><app-diff [old]="selectedLexEntry.current.lemmaValues.DRedirect" [new]="selectedLexEntry.mostRecent.lemmaValues.DRedirect"></app-diff></nz-descriptions-item>
+        </nz-descriptions>
+
+        <nz-descriptions nzTitle="Rumantsch">
+          <nz-descriptions-item nzTitle="rumantsch"><app-diff [old]="selectedLexEntry.current.lemmaValues.RStichwort" [new]="selectedLexEntry.mostRecent.lemmaValues.RStichwort"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="genus"><app-diff [old]="selectedLexEntry.current.lemmaValues.RGenus" [new]="selectedLexEntry.mostRecent.lemmaValues.RGenus"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Search term"><app-diff [old]="selectedLexEntry.current.lemmaValues.RTags" [new]="selectedLexEntry.mostRecent.lemmaValues.RTags"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Grammatik"><app-diff [old]="selectedLexEntry.current.lemmaValues.RGrammatik" [new]="selectedLexEntry.mostRecent.lemmaValues.RGrammatik"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Semantica"><app-diff [old]="selectedLexEntry.current.lemmaValues.RSubsemantik" [new]="selectedLexEntry.mostRecent.lemmaValues.RSubsemantik"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Link"><app-diff [old]="selectedLexEntry.current.lemmaValues.RRedirect" [new]="selectedLexEntry.mostRecent.lemmaValues.RRedirect"></app-diff></nz-descriptions-item>
+        </nz-descriptions>
+
+        <nz-descriptions nzTitle="Plurals">
+          <nz-descriptions-item nzTitle="m sing"><app-diff [old]="selectedLexEntry.current.lemmaValues.mSingular" [new]="selectedLexEntry.mostRecent.lemmaValues.mSingular"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="f sing"><app-diff [old]="selectedLexEntry.current.lemmaValues.fSingular" [new]="selectedLexEntry.mostRecent.lemmaValues.fSingular"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle=""></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="m plural"><app-diff [old]="selectedLexEntry.current.lemmaValues.mPlural" [new]="selectedLexEntry.mostRecent.lemmaValues.mPlural"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="f plural"><app-diff [old]="selectedLexEntry.current.lemmaValues.fPlural" [new]="selectedLexEntry.mostRecent.lemmaValues.fPlural"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="coll"><app-diff [old]="selectedLexEntry.current.lemmaValues.pluralCollectiv" [new]="selectedLexEntry.mostRecent.lemmaValues.pluralCollectiv"></app-diff></nz-descriptions-item>
+        </nz-descriptions>
+      </div>
+    </nz-content>
+  </div>
+</div>

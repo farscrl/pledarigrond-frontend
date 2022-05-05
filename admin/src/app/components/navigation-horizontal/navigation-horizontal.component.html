@@ -9,9 +9,9 @@
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/lexicon'">
     {{ 'lexicon.lexicon_menu_item' | translate }}
   </li>
-  <!--<li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/automatic'">
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/automatic'">
     {{ 'lexicon.review_menu_item' | translate }}
-  </li>-->
+  </li>
 
   <nz-divider nzType="vertical" *ngIf="authService.isAdmin()"></nz-divider>
   <i nz-icon nzType="laptop" nzTheme="outline" *ngIf="authService.isAdmin()"></i>

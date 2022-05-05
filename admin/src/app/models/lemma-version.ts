@@ -16,6 +16,11 @@ export class LemmaVersion {
   lexEntryId?: any;
 }
 
+export class LemmaVersionUi extends LemmaVersion {
+  selected: boolean = false;
+  local_review_status: 'ACCEPTED'|'REJECTED'|'EDITED'|'UNDEFINED' = 'UNDEFINED';
+}
+
 export class LemmaValues {
   DStichwort?: string;
   DGrammatik?: string;

@@ -11,6 +11,8 @@ export class EditorSearchCriteria extends SearchCriteria {
   subSemantics: string = "";
   gender: string = "";
   grammar: string = "";
+  onlyAutomaticChanged: boolean = false;
+  excludeAutomaticChanged: boolean = false;
 }
 
 export type SearchDirection = 'BOTH'|'ROMANSH'|'GERMAN';

@@ -52,6 +52,7 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { IdiomCardComponent } from './features/dashboard/idiom-card/idiom-card.component';
 import { NoPermissionsComponent } from './features/no-permissions/no-permissions.component';
 import { NounGenerationComponent } from './features/modify-entry/noun-generation/noun-generation.component';
+import { DiffComponent } from './components/diff/diff.component';
 
 registerLocaleData(de);
 
@@ -98,6 +99,7 @@ export function tokenGetter() {
     IdiomCardComponent,
     NoPermissionsComponent,
     NounGenerationComponent,
+    DiffComponent,
   ],
   imports: [
     BrowserModule,

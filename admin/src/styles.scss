@@ -4,3 +4,27 @@
 .highlighted-text {
   font-weight: bold;
 }
+
+
+// used in diff component
+.diff {
+  span {
+    border-radius: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .green {
+    background-color: #9bf098;
+  }
+  .red {
+    background-color: #ffb3ba;
+    text-decoration: line-through;
+  }
+
+  .none {
+    color: gray;
+    background: #f1f1f1;
+    padding-right: 3px;
+    padding-left: 3px;
+  }
+}

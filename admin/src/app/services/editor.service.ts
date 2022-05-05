@@ -233,6 +233,14 @@ export class EditorService {
       params = params.set('grammar', editorSearchCriteria.grammar);
     }
 
+    if (!!editorSearchCriteria.onlyAutomaticChanged && (editorSearchCriteria.onlyAutomaticChanged)) {
+      params = params.set('onlyAutomaticChanged', editorSearchCriteria.onlyAutomaticChanged);
+    }
+
+    if (!!editorSearchCriteria.excludeAutomaticChanged && (editorSearchCriteria.excludeAutomaticChanged)) {
+      params = params.set('excludeAutomaticChanged', editorSearchCriteria.excludeAutomaticChanged);
+    }
+
     return params;
   }
 }
