@@ -159,6 +159,7 @@ export class LemmaListComponent implements OnInit {
       nzContent: '<b style="color: red;">' +  entry.current.lemmaValues.DStichwort + ' / ' + entry.current.lemmaValues.RStichwort + '</b>',
       nzClosable: false,
       nzOkDanger: true,
+      nzCancelText: this.translateService.instant('lexicon.lemma.delete.cancel'),
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
       },

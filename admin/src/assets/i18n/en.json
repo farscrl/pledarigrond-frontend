@@ -138,7 +138,8 @@
         "content": "Do you want to reject {{count}} suggestions?"
       },
       "delete": {
-        "title": "Do you want to delete the entry?"
+        "title": "Do you want to delete the entry?",
+        "cancel": "Cancel"
       }
     }
   },

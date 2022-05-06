@@ -138,7 +138,8 @@
         "content": "Vulais Vus refusar las {{count}} endataziuns tschernidas?"
       },
       "delete": {
-        "title": "Vulais Vus stizzar l'endataziun?"
+        "title": "Vulais Vus stizzar l'endataziun?",
+        "cancel": "Interrumper"
       }
     }
   },
