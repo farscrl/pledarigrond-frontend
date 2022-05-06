@@ -1,5 +1,3 @@
-
-
 <form nz-form [formGroup]="validateForm">
   <div nz-row>
     <div nz-col nzSpan="12">
@@ -135,8 +133,6 @@
           <input nz-input formControlName="RFlex" id="RFlex" />
         </nz-form-control>
       </nz-form-item>
-
-
     </div>
   </div>
 
@@ -153,6 +149,7 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="contact_email">{{ 'edit.lemma.email' | translate }}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input formControlName="contact_email" id="contact_email" />
+      <button nz-button nzType="default" class="reply-comment" (click)="replyComment()">Respunder</button>
     </nz-form-control>
   </nz-form-item>
 </form>

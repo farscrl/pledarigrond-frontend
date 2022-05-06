@@ -105,6 +105,20 @@ export class MainEntryComponent implements OnInit {
     })
   }
 
+  replyComment() {
+    const r = this.translateService.instant('reply.romansh') + " = " + (this.lemmaVersion?.lemmaValues.RStichwort || "");
+    const d = this.translateService.instant('reply.german') + " = " + (this.lemmaVersion?.lemmaValues.DStichwort || "");
+    const remartga = this.translateService.instant('reply.comment') + "\n" + (this.lemmaVersion?.lemmaValues.contact_comment || "");
+
+    window.location.assign(
+      "mailto:" +
+      (this.lemmaVersion?.lemmaValues.contact_email || "") +
+      "?subject=" +
+      this.translateService.instant('reply.subject') +
+      "&cc=pg@rumantsch.ch&body=" +
+      encodeURIComponent(r + '\n' + d + "\n\n" + remartga));
+  }
+
   private setUpForm() {
     this.setupDropdownValues();
 

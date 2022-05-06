@@ -313,5 +313,12 @@
   "no_permissions": {
     "title": "Vus n'avais betg ils dretgs necessaris per acceder a la surfatscha d'administraziun.",
     "logout": "Sortir"
+  },
+  "reply": {
+    "button": "Respunder",
+    "comment": "Remartgas",
+    "romansh": "rumantsch",
+    "german": "tudestg",
+    "subject": "Vossa dumonda al Pledari Grond"
   }
 }

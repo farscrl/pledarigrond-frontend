@@ -21,8 +21,13 @@
   margin-right: 8px;
 }
 
-.info-button {
+#contact_email {
+  width: calc(100% - 105px - 8px);
+  margin-right: 8px;
+}
 
+.reply-comment {
+  width: 105px;
 }
 
 .footer-buttons {
