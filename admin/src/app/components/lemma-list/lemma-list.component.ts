@@ -197,7 +197,7 @@ export class LemmaListComponent implements OnInit {
             subscriptions.push(this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!));
           } else {
             // reject changed entries
-            subscriptions.push(this.editorService.rejectEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!, lexEntry.mostRecent));
+            subscriptions.push(this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!, lexEntry.mostRecent));
           }
         }
         this.onItemChecked(id, false);

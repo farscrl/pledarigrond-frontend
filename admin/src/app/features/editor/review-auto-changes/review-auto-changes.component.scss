@@ -14,7 +14,7 @@ nz-content {
 }
 
 .right-side {
-  min-height: calc(100vh - 64px - 48px);
+  min-height: calc(100vh - 64px - 48px - 47px);
 
   nz-content {
     height: 100%;
@@ -35,7 +35,7 @@ nz-list-item.selected {
 
 .lemma-list {
   overflow-y: scroll;
-  max-height: calc(100vh - 400px);
+  max-height: calc(100vh - 450px);
 }
 
 .button-accept {

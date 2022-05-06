@@ -1,17 +1,24 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewContainerRef } from '@angular/core';
 import { LemmaVersionUi } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
 import { EditorSearchCriteria, SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { TranslateService } from '@ngx-translate/core';
+import { MainEntryComponent } from '../../modify-entry/main-entry/main-entry.component';
+
 
 export enum KEY_CODE {
   ENTER = 13,
   ESCAPE = 27,
   SPACE = 32,
+  UP_ARROW = 38,
+  DOWN_ARROW = 40,
+  RIGHT_ARROW = 39,
+  LEFT_ARROW = 37
 }
-
 
 @Component({
   selector: 'app-review-auto-changes',
@@ -21,6 +28,7 @@ export enum KEY_CODE {
 export class ReviewAutoChangesComponent implements OnInit {
 
   isLoadingData = true;
+  isWindowOpen = false;
 
   lemmas: LemmaVersionUi[] = [];
   selectedLemma?: LemmaVersionUi;
@@ -30,12 +38,19 @@ export class ReviewAutoChangesComponent implements OnInit {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
+    if (this.isWindowOpen || !this.selectedLemma) {
+      return;
+    }
     if(event.keyCode == KEY_CODE.ENTER){
       this.acceptSelectedLemma();
     } else if (event.keyCode === KEY_CODE.ESCAPE) {
       this.rejectSelectedLemma();
     } else if (event.keyCode === KEY_CODE.SPACE) {
       this.editSelectedLemma();
+    } else if (event.keyCode === KEY_CODE.DOWN_ARROW) {
+      this.downOne();
+    } else if (event.keyCode === KEY_CODE.UP_ARROW) {
+      this.upOne();
     }
   }
 
@@ -43,6 +58,9 @@ export class ReviewAutoChangesComponent implements OnInit {
     private editorService: EditorService,
     private languageSelectionService: LanguageSelectionService,
     private notification: NzNotificationService,
+    private modalService: NzModalService,
+    private translateService: TranslateService,
+    private viewContainerRef: ViewContainerRef,
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +72,20 @@ export class ReviewAutoChangesComponent implements OnInit {
       this.lemmas = page.content as LemmaVersionUi[];
       this.jumpToNext();
     });
+  }
+
+  ngAfterViewChecked() {
+    if (!this.selectedLemma) {
+      return;
+    }
+    const el =  document.querySelector('#list-id-' + this.selectedLemma.lexEntryId);
+    if (el) {
+      el.scrollIntoView({
+        behavior: 'auto',
+        block: 'center',
+        inline: 'center'
+    });
+    }
   }
 
   selectLemma(lemma: LemmaVersionUi) {
@@ -76,27 +108,56 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (!this.selectedLexEntry || !this.selectedLemma) {
       return;
     }
-    this.selectedLemma.local_review_status = 'ACCEPTED';
-    this.createNotification('success', this.selectedLexEntry.mostRecent.lemmaValues.RStichwort + " ⇔ " + this.selectedLexEntry.mostRecent.lemmaValues.DStichwort, "This change was accepted");
-    this.jumpToNext();
+    const lemma = this.selectedLemma;
+    this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
+      lemma.local_review_status = 'ACCEPTED';
+      this.createNotification('success', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was accepted");
+      this.jumpToNext();
+    }, (error) => {
+      console.error(error);
+    });
   }
 
   rejectSelectedLemma() {
     if (!this.selectedLexEntry || !this.selectedLemma) {
       return;
     }
-    this.selectedLemma.local_review_status = 'REJECTED';
-    this.createNotification('error', this.selectedLexEntry.mostRecent.lemmaValues.RStichwort + " ⇔ " + this.selectedLexEntry.mostRecent.lemmaValues.DStichwort, "This change was rejected");
+    const lemma = this.selectedLemma;
+    this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
+      lemma.local_review_status = 'REJECTED';
+    this.createNotification('error', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was rejected");
     this.jumpToNext();
+    }, (error) => {
+      console.error(error);
+    });
   }
 
   editSelectedLemma() {
     if (!this.selectedLexEntry || !this.selectedLemma) {
       return;
     }
-    this.selectedLemma.local_review_status = 'EDITED';
-    this.createNotification('error', this.selectedLexEntry.mostRecent.lemmaValues.RStichwort + " ⇔ " + this.selectedLexEntry.mostRecent.lemmaValues.DStichwort, "This change was edited");
-    this.jumpToNext();
+    const lemma = this.selectedLemma;
+
+    this.isWindowOpen = true;
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('edit.titles.edit'),
+      nzContent: MainEntryComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lexEntryId: lemma.lexEntryId,
+      },
+      nzOnOk: () => {
+        lemma.local_review_status = 'EDITED';
+        this.createNotification('error', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was edited");
+        this.jumpToNext();
+      },
+    });
+    modal.afterClose.subscribe(() => {
+      this.isWindowOpen = false;
+    });
   }
 
   createNotification(type: string, title: string, notification: string): void {
@@ -120,6 +181,30 @@ export class ReviewAutoChangesComponent implements OnInit {
         this.selectLemma(lemma);
         return;
       }
+    }
+  }
+
+  private upOne() {
+    if (!this.selectedLemma) {
+      return;
+    }
+
+    const idx = this.lemmas.indexOf(this.selectedLemma);
+
+    if (idx - 1 > -1) {
+      this.selectLemma(this.lemmas[idx-1]);
+    }
+  }
+
+  private downOne() {
+    if (!this.selectedLemma) {
+      return;
+    }
+
+    const idx = this.lemmas.indexOf(this.selectedLemma);
+
+    if (idx + 1 < this.lemmas.length) {
+      this.selectLemma(this.lemmas[idx+1]);
     }
   }
 }

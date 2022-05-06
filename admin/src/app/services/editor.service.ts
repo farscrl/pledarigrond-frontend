@@ -84,7 +84,12 @@ export class EditorService {
     return this.httpClient.delete<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId));
   }
 
-  rejectEntry(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
+  acceptVersion(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
+    const body: any = Object.assign({}, lemmaVersion);
+    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/accept_version'), body);
+  }
+
+  rejectVersion(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
     const body: any = Object.assign({}, lemmaVersion);
     return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/reject_version'), body);
   }
