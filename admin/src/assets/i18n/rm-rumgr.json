@@ -4,7 +4,7 @@
     "title": "Utilisad*ras",
     "subtitle": "Tut las utilisad*ras dal Pledari Grond",
     "new_button": "Nov",
-    "email": "E-Mail",
+    "email": "E-mail",
     "admin": "Admin",
     "names": "Nums",
     "actions": "Acziuns",
@@ -16,12 +16,12 @@
     "new_title": "Crear ina nova utilisad*ra",
     "edit_title": "Modifitgar l'utilisad*ra",
     "edit": {
-      "email": "E-Mail",
+      "email": "E-mail",
       "email_error": "Quai n'è betg ina adressa dad e-mail valida",
       "password": "Pled-clav",
       "password_missing": "P.pl. endatar in pled-clav",
       "password_lenght": "Il pled-clav sto cuntegnair almain 6 caracters",
-      "is_admin": "è admin?",
+      "is_admin": "Admin?",
       "role": "Rolla",
       "editor_role": "Redactur*a",
       "no_role": "Nagin access",
@@ -110,7 +110,7 @@
         "rm_gender": "Genus (rm)",
         "rm_semantics": "Semantica (rm)",
         "rm_link": "Colliaziun (rm)",
-        "rm_conjugation": "Conjugaziun (rm)",
+        "rm_conjugation": "Furmas spezialas (rm)",
         "rm_additional_search": "Terms da tschertga supplementars (rm)",
         "category": "Categoria",
         "comment": "Commentari"
@@ -206,7 +206,7 @@
     }
   },
   "frontend": {
-    "menu_item": "Pagina d'internet"
+    "menu_item": "Pledari Grond"
   },
   "data": {
     "status": {
@@ -249,7 +249,7 @@
       "rm_grammar": "Grammatica",
       "rm_semantics": "Semantica",
       "rm_link": "Colliaziun",
-      "rm_conjugation": "Conjugaziun",
+      "rm_conjugation": "Furmas spezialas",
       "rm_tags": "Terms da tschertga supplementars",
       "inflection": {
         "title": "Flexiun",
@@ -257,7 +257,7 @@
         "verb": "Verb"
       },
       "comment": "Commentari",
-      "email": "E-Mail"
+      "email": "E-mail"
     },
     "conjugation": {
       "title": "Conjugaziun",
@@ -292,7 +292,7 @@
     "save": "Memorisar"
   },
   "login": {
-    "email": "E-Mail",
+    "email": "E-mail",
     "password": "Pled-clav",
     "error": "Errur d'annunzia.",
     "login_button": "S'annunziar"

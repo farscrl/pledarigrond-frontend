@@ -21,7 +21,7 @@
       "password": "Password",
       "password_missing": "Please enter a password",
       "password_lenght": "The password must contain at least 6 characters",
-      "is_admin": "is Admin?",
+      "is_admin": "Admin?",
       "role": "Role",
       "editor_role": "Editor",
       "no_role": "No access",
@@ -110,7 +110,7 @@
         "rm_gender": "Gender (rm)",
         "rm_semantics": "Semantics (rm)",
         "rm_link": "Link (rm)",
-        "rm_conjugation": "Conjugation (rm)",
+        "rm_conjugation": "Special forms (rm)",
         "rm_additional_search": "Additional search terms (rm)",
         "category": "Category",
         "comment": "Comment"
@@ -249,7 +249,7 @@
       "rm_grammar": "Grammar",
       "rm_semantics": "Semantics",
       "rm_link": "Link",
-      "rm_conjugation": "Conjugation",
+      "rm_conjugation": "Special forms",
       "rm_tags": "Additional search terms",
       "inflection": {
         "title": "Inflection",
