@@ -255,7 +255,8 @@
         "title": "Flexiun",
         "none": "Nagina",
         "verb": "Verb",
-        "noun": "Substantiv"
+        "noun": "Substantiv",
+        "adjective": "Adjectiv"
       },
       "comment": "Commentari",
       "email": "E-Mail"
@@ -285,6 +286,16 @@
         "mPlural": "masculin plural",
         "fPlural": "feminin plural",
         "pluralCollectiv": "plural collectiv"
+      }
+    },
+    "adjective": {
+      "title": "Generar furmas dad adjectivs",
+      "forms": {
+        "baseForm": "Furma da basa",
+        "mSingular": "masculin singular",
+        "fSingular": "feminin singular",
+        "mPlural": "masculin plural",
+        "fPlural": "feminin plural"
       }
     },
     "cancel": "Interrumper",

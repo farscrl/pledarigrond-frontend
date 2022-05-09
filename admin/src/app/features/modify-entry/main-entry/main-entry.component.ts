@@ -9,6 +9,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { ConjugationComponent } from '../conjugation/conjugation.component';
 import { TranslateService } from '@ngx-translate/core';
 import { NounGenerationComponent } from '../noun-generation/noun-generation.component';
+import { AdjectiveGenerationComponent } from '../adjective-generation/adjective-generation.component';
 
 @Component({
   selector: 'app-main-entry',
@@ -130,7 +131,34 @@ export class MainEntryComponent implements OnInit {
         ...this.lemmaVersion?.lemmaValues,
         ...value
       };
-    })
+    });
+  }
+
+  editAdjective() {
+    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
+    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
+    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('edit.adjective.title'),
+      nzContent: AdjectiveGenerationComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lemmaVersion: this.lemmaVersion,
+      },
+    });
+    modal.afterClose.subscribe(value => {
+      if (value === undefined) {
+        return;
+      }
+      this.lemmaVersion!.lemmaValues = {
+        ...this.lemmaVersion?.lemmaValues,
+        ...value
+      };
+    });
   }
 
   private setUpForm() {

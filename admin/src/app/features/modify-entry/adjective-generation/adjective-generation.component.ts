@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { InflectionSubType } from 'src/app/models/inflection';
 import { LemmaVersion } from 'src/app/models/lemma-version';
@@ -7,11 +7,11 @@ import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
-  selector: 'app-noun-generation',
-  templateUrl: './noun-generation.component.html',
-  styleUrls: ['./noun-generation.component.scss']
+  selector: 'app-adjective-generation',
+  templateUrl: './adjective-generation.component.html',
+  styleUrls: ['./adjective-generation.component.scss']
 })
-export class NounGenerationComponent implements OnInit {
+export class AdjectiveGenerationComponent implements OnInit {
 
   @Input()
   set lemmaVersion(lemmaVersion: LemmaVersion | undefined) {
@@ -36,7 +36,7 @@ export class NounGenerationComponent implements OnInit {
   ngOnInit(): void {
     this.setUpForm();
 
-    this.inflectionService.getInflectionSubtypes(this.languageSelectionService.getCurrentLanguage(), 'NOUN').subscribe(value => {
+    this.inflectionService.getInflectionSubtypes(this.languageSelectionService.getCurrentLanguage(), 'ADJECTIVE').subscribe(value => {
       this.subTypes = value;
     });
 
@@ -84,12 +84,11 @@ export class NounGenerationComponent implements OnInit {
       fSingular: new FormControl(this.workingLemmaVersion.lemmaValues.fSingular),
       mPlural: new FormControl(this.workingLemmaVersion.lemmaValues.mPlural),
       fPlural: new FormControl(this.workingLemmaVersion.lemmaValues.fPlural),
-      pluralCollectiv: new FormControl(this.workingLemmaVersion.lemmaValues.pluralCollectiv),
     });
   }
 
   private generateForms(subTypeId: string, baseForm: string) {
-    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', subTypeId, baseForm).subscribe(values => {
+    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'ADJECTIVE', subTypeId, baseForm).subscribe(values => {
       this.workingLemmaVersion.lemmaValues.RInflectionSubType = subTypeId;
       this.workingLemmaVersion.lemmaValues = {
         ...this.workingLemmaVersion.lemmaValues,
@@ -104,8 +103,7 @@ export class NounGenerationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.mSingular ||
       this.workingLemmaVersion.lemmaValues.fSingular ||
       this.workingLemmaVersion.lemmaValues.mPlural ||
-      this.workingLemmaVersion.lemmaValues.fPlural ||
-      this.workingLemmaVersion.lemmaValues.pluralCollectiv
+      this.workingLemmaVersion.lemmaValues.fPlural
     ) {
       return false;
     }
@@ -118,10 +116,10 @@ export class NounGenerationComponent implements OnInit {
       console.log("No base form defined, guessing impossible");
       return;
     }
-
+    
     const genus = this.workingLemmaVersion.lemmaValues.RGenus;
     const flex = this.workingLemmaVersion.lemmaValues.RFlex;
-    this.inflectionService.guessInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', baseForm, genus, flex).subscribe(values => {
+    this.inflectionService.guessInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'ADJECTIVE', baseForm, genus, flex).subscribe(values => {
       // for short words the guessing can be empty -> just ignore empty response
       if (!values) {
         return;

@@ -1,4 +1,4 @@
-export type InflectionType = 'VERB'|'NOUN'|undefined;
+export type InflectionType = 'VERB'|'NOUN'|'ADJECTIVE'|undefined;
 
 export class InflectionSubType {
   id: string = "";
