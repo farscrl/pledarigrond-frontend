@@ -1,17 +1,28 @@
 <div nz-row [nzGutter]="16">
-  <div nz-col nzSpan="9" class="left-side">
-    <nz-content class="duration-filter">
-      <nz-page-header [nzGhost]="false">
-        <nz-page-header-title>{{ 'lexicon.lexicon.title' | translate }}</nz-page-header-title>
-        <nz-page-header-subtitle>{{ 'lexicon.lexicon.subtitle' | translate }}</nz-page-header-subtitle>
-      </nz-page-header>
+  <div nz-col nzSpan="24">
+    <nz-content class="type-filter">
+      <nz-page-header-title>Filter</nz-page-header-title>
+      <nz-radio-group [(ngModel)]="searchCriteria.automaticChangesType" (ngModelChange)="changePage(0)">
+        <label nz-radio nzValue="ALL">Mussar tut</label>
+        <label nz-radio nzValue="NOUNS">Substantivs</label>
+      </nz-radio-group>
     </nz-content>
+  </div>
+</div>
 
+<div nz-row [nzGutter]="16">
+  <div nz-col nzSpan="9" class="left-side">
     <nz-content>
       <nz-page-header [nzGhost]="false">
         <nz-page-header-title>{{ 'lexicon.lemma_history.title' | translate }}</nz-page-header-title>
         <nz-page-header-subtitle>{{ 'lexicon.lemma_history.subtitle' | translate }}</nz-page-header-subtitle>
       </nz-page-header>
+
+      {{ 'lexicon.lemma.results_info' | translate:{
+        start: (currentPage.number*currentPage.size) + 1,
+        end: math.min((currentPage.number + 1) * currentPage.size, currentPage.totalElements),
+        total: currentPage.totalElements
+      } }}
 
       <div class="lemma-list">
         <nz-list [nzLoading]="isLoadingData">
@@ -31,11 +42,17 @@
               </nz-list-item-meta>
             </ng-container>
           </nz-list-item>
-
-          <div class="load next" nz-list-load-more>
-            <button nz-button *ngIf="!isLoadingData">load next</button>
-          </div>
         </nz-list>
+      </div>
+
+      <div class="pg-pagination">
+        <nz-pagination
+          [nzPageIndex]="(currentPage!.number) + 1"
+          [nzPageSize]="currentPage.size"
+          [nzTotal]="currentPage.totalElements"
+          [nzSize]="'small'"
+          *ngIf="currentPage && currentPage.totalElements > 0"
+          (nzPageIndexChange)="changePage($event)"></nz-pagination>
       </div>
     </nz-content>
   </div>
@@ -51,6 +68,11 @@
             <button nz-button (click)="editSelectedLemma()">Modifitgar (space)</button>
           </nz-page-header-extra>
         </nz-page-header>
+
+        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RGrammatik === 'subst'">
+          <span style="margin-right: 16px;">Correcturas automaticas:</span>
+          <button nz-button (click)="nounChangeOnlyMale()">Mo masculin (1)</button>
+        </div>
 
         <nz-descriptions nzTitle="">
           <nz-descriptions-item nzTitle="category">{{ selectedLexEntry.mostRecent.lemmaValues.categories }} </nz-descriptions-item>

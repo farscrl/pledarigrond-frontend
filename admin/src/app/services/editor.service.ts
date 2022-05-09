@@ -35,13 +35,17 @@ export class EditorService {
     return this.httpClient.get<Page<LexEntry>>(this.generateUrl(language, 'lex_entries'), httpOptions);
   }
 
-  searchLemmaVersions(language: Language, searchCriteria: SearchCriteria, page: number): Observable<Page<LemmaVersion>> {
+  searchLemmaVersions(language: Language, searchCriteria: SearchCriteria, page: number, pageSize = 15): Observable<Page<LemmaVersion>> {
     let params: HttpParams = new HttpParams();
 
     params = this.searchCriteriaToHttpParam(searchCriteria, params);
 
     if (page !== 0) {
       params = params.set('page', page);
+    }
+
+    if (pageSize !== 15) {
+      params = params.set('pageSize', pageSize);
     }
 
     const httpOptions = {
@@ -244,6 +248,14 @@ export class EditorService {
 
     if (!!editorSearchCriteria.excludeAutomaticChanged && (editorSearchCriteria.excludeAutomaticChanged)) {
       params = params.set('excludeAutomaticChanged', editorSearchCriteria.excludeAutomaticChanged);
+    }
+
+    if (!!editorSearchCriteria.automaticChangesType && editorSearchCriteria.automaticChangesType != 'ALL') {
+      params = params.set('automaticChangesType', editorSearchCriteria.automaticChangesType);
+    }
+
+    if (!!editorSearchCriteria.verification && (editorSearchCriteria.verification)) {
+      params = params.set('verification', editorSearchCriteria.verification);
     }
 
     return params;

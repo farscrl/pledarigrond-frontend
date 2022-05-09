@@ -8,9 +8,14 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { MainEntryComponent } from '../../modify-entry/main-entry/main-entry.component';
-
+import { Page } from 'src/app/models/page';
+import { InflectionType } from 'src/app/models/inflection';
+import { InflectionService } from 'src/app/services/inflection.service';
 
 export enum KEY_CODE {
+  KEY1 = 49,
+  KEY2 = 50,
+  KEY3 = 51,
   ENTER = 13,
   ESCAPE = 27,
   SPACE = 32,
@@ -30,6 +35,7 @@ export class ReviewAutoChangesComponent implements OnInit {
   isLoadingData = true;
   isWindowOpen = false;
 
+  currentPage: Page<LemmaVersionUi> = new Page();
   lemmas: LemmaVersionUi[] = [];
   selectedLemma?: LemmaVersionUi;
   selectedLexEntry?: LexEntry;
@@ -52,7 +58,15 @@ export class ReviewAutoChangesComponent implements OnInit {
     } else if (event.keyCode === KEY_CODE.UP_ARROW) {
       this.upOne();
     }
+    if (this.selectedLexEntry && this.selectedLexEntry.mostRecent.lemmaValues.RGrammatik === 'subst') {
+      if(event.keyCode == KEY_CODE.KEY1){
+        this.nounChangeOnlyMale();
+      }
+    }
   }
+
+    // used to pass math functions to template
+    math = Math;
 
   constructor(
     private editorService: EditorService,
@@ -61,17 +75,16 @@ export class ReviewAutoChangesComponent implements OnInit {
     private modalService: NzModalService,
     private translateService: TranslateService,
     private viewContainerRef: ViewContainerRef,
+    private inflectionService: InflectionService,
   ) { }
 
   ngOnInit(): void {
     this.searchCriteria.onlyAutomaticChanged = true;
     this.searchCriteria.suggestions = true;
+    this.searchCriteria.searchDirection = 'ROMANSH';
+    this.searchCriteria.verification = 'UNVERIFIED';
 
-    this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, 0).subscribe(page => {
-      this.isLoadingData = false;
-      this.lemmas = page.content as LemmaVersionUi[];
-      this.jumpToNext();
-    });
+    this.changePage(0);
   }
 
   ngAfterViewChecked() {
@@ -112,7 +125,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
       lemma.local_review_status = 'ACCEPTED';
       this.createNotification('success', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was accepted");
-      this.jumpToNext();
+      this.downOne();
     }, (error) => {
       console.error(error);
     });
@@ -125,8 +138,8 @@ export class ReviewAutoChangesComponent implements OnInit {
     const lemma = this.selectedLemma;
     this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
       lemma.local_review_status = 'REJECTED';
-    this.createNotification('error', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was rejected");
-    this.jumpToNext();
+      this.createNotification('error', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was rejected");
+      this.downOne();
     }, (error) => {
       console.error(error);
     });
@@ -152,12 +165,16 @@ export class ReviewAutoChangesComponent implements OnInit {
       nzOnOk: () => {
         lemma.local_review_status = 'EDITED';
         this.createNotification('error', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was edited");
-        this.jumpToNext();
+        this.downOne();
       },
     });
     modal.afterClose.subscribe(() => {
       this.isWindowOpen = false;
     });
+  }
+
+  nounChangeOnlyMale() {
+    this.generateNewInflection('NOUN', "1", this.selectedLemma!.lemmaValues.RStichwort!);
   }
 
   createNotification(type: string, title: string, notification: string): void {
@@ -166,6 +183,18 @@ export class ReviewAutoChangesComponent implements OnInit {
       title,
       notification
     );
+  }
+
+  changePage(pageNumber: number)  {
+    if (pageNumber > 0) {
+      pageNumber--;
+    }
+    this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, pageNumber, 50).subscribe(page => {
+      this.isLoadingData = false;
+      this.currentPage = page as Page<LemmaVersionUi>;
+      this.lemmas = page.content as LemmaVersionUi[];
+      this.jumpToNext();
+    });
   }
 
   private deselectAll() {
@@ -206,5 +235,26 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (idx + 1 < this.lemmas.length) {
       this.selectLemma(this.lemmas[idx+1]);
     }
+  }
+
+  private generateNewInflection(type: InflectionType, subTypeId: string, baseForm: string) {
+    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), type, subTypeId, baseForm).subscribe(values => {
+      const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedLexEntry?.mostRecent));
+      workingLemmaVersion.lemmaValues.RInflectionSubType = subTypeId;
+
+      // reset automaticly created values
+      delete workingLemmaVersion.pgValues.timestamp;
+      delete workingLemmaVersion.timestamp;
+      delete workingLemmaVersion.userId;
+      delete workingLemmaVersion.pgValues.creator;
+
+      workingLemmaVersion.lemmaValues = {
+        ...workingLemmaVersion.lemmaValues,
+        ...values.inflectionValues
+      };
+      this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLexEntry!.id!, workingLemmaVersion).subscribe((entry) => {
+        this.selectedLexEntry = entry;
+      })
+    });
   }
 }

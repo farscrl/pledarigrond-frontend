@@ -3,14 +3,13 @@ nz-content {
   padding: 24px;
 }
 
+.type-filter {
+  margin-bottom: 24px;
+}
+
 .left-side {
   display: flex;
   flex-direction: column;
-
-  .duration-filter {
-    margin-bottom: 24px;
-    flex-grow: 0;
-  }
 }
 
 .right-side {
@@ -57,4 +56,17 @@ nz-list-item.selected {
   &.edited {
     color: blue;
   }
+}
+
+.pg-pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.manual-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 24px;
+  align-items: center;
 }
