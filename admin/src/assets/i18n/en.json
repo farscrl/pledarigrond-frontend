@@ -201,7 +201,9 @@
       "approved": "Approved",
       "unverified": "Unverified",
       "other": "Other",
-      "Verbs": "Verbs",
+      "verbs": "Verbs",
+      "nouns": "Nouns",
+      "adjectives": "Adjectives",
       "refresh_button": "Refresh stats"
     }
   },

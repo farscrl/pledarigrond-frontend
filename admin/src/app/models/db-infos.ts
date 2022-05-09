@@ -35,4 +35,6 @@ export class IndexInfos {
 
 export class InflectionCount {
   V?: number = 0;
+  ADJECTIVE?: number = 0;
+  NOUN?: number = 0;
 }

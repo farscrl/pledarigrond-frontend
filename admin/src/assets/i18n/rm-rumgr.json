@@ -201,7 +201,9 @@
       "approved": "Approvà",
       "unverified": "Betg verifitgà",
       "other": "Auter",
-      "Verbs": "Verbs",
+      "verbs": "Verbs",
+      "nouns": "Substantivs",
+      "adjectives": "Adjectivs",
       "refresh_button": "Actualisar la statistica"
     }
   },
