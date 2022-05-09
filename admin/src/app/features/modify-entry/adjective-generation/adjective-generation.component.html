@@ -59,6 +59,19 @@
     </div>
   </div>
 
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="adverbialForm">{{ 'edit.adjective.forms.adverbialForm' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="adverbialForm" id="adverbialForm" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+    </div>
+  </div>
+
 </form>
 
 <div *nzModalFooter>

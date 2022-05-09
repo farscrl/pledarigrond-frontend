@@ -84,6 +84,7 @@ export class AdjectiveGenerationComponent implements OnInit {
       fSingular: new FormControl(this.workingLemmaVersion.lemmaValues.fSingular),
       mPlural: new FormControl(this.workingLemmaVersion.lemmaValues.mPlural),
       fPlural: new FormControl(this.workingLemmaVersion.lemmaValues.fPlural),
+      adverbialForm: new FormControl(this.workingLemmaVersion.lemmaValues.adverbialForm),
     });
   }
 
@@ -103,7 +104,8 @@ export class AdjectiveGenerationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.mSingular ||
       this.workingLemmaVersion.lemmaValues.fSingular ||
       this.workingLemmaVersion.lemmaValues.mPlural ||
-      this.workingLemmaVersion.lemmaValues.fPlural
+      this.workingLemmaVersion.lemmaValues.fPlural ||
+      this.workingLemmaVersion.lemmaValues.adverbialForm
     ) {
       return false;
     }

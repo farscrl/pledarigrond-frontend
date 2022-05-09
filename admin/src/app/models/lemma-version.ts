@@ -95,6 +95,9 @@ export class LemmaValues {
   mPlural?: string;
   fPlural?: string;
   pluralCollectiv?: string;
+
+  // adjective
+  adverbialForm?: string;
 }
 
 export class PgValues {

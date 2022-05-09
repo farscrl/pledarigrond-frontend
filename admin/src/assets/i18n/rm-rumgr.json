@@ -297,7 +297,8 @@
         "mSingular": "masculin singular",
         "fSingular": "feminin singular",
         "mPlural": "masculin plural",
-        "fPlural": "feminin plural"
+        "fPlural": "feminin plural",
+        "adverbialForm": "Furma averbiala"
       }
     },
     "cancel": "Interrumper",
