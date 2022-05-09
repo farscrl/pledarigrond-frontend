@@ -58,9 +58,15 @@ export class ReviewAutoChangesComponent implements OnInit {
     } else if (event.keyCode === KEY_CODE.UP_ARROW) {
       this.upOne();
     }
-    if (this.selectedLexEntry && this.selectedLexEntry.mostRecent.lemmaValues.RGrammatik === 'subst') {
+    if (this.selectedLexEntry && this.selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'NOUN') {
       if(event.keyCode == KEY_CODE.KEY1){
         this.nounChangeOnlyMale();
+      }
+    }
+
+    if (this.selectedLexEntry && this.selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'ADJECTIVE') {
+      if(event.keyCode == KEY_CODE.KEY1){
+        this.adjectiveNoAdverbialForm();
       }
     }
   }
@@ -175,6 +181,23 @@ export class ReviewAutoChangesComponent implements OnInit {
 
   nounChangeOnlyMale() {
     this.generateNewInflection('NOUN', "1", this.selectedLemma!.lemmaValues.RStichwort!);
+  }
+
+  adjectiveNoAdverbialForm() {
+    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedLexEntry?.mostRecent));
+
+    // delete adverbial form
+    delete workingLemmaVersion.lemmaValues.adverbialForm;
+
+    // reset automaticly created values
+    delete workingLemmaVersion.pgValues.timestamp;
+    delete workingLemmaVersion.timestamp;
+    delete workingLemmaVersion.userId;
+    delete workingLemmaVersion.pgValues.creator;
+
+    this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLexEntry!.id!, workingLemmaVersion).subscribe((entry) => {
+      this.selectedLexEntry = entry;
+    });
   }
 
   createNotification(type: string, title: string, notification: string): void {

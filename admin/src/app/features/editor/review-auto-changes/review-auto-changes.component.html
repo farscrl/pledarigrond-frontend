@@ -5,6 +5,7 @@
       <nz-radio-group [(ngModel)]="searchCriteria.automaticChangesType" (ngModelChange)="changePage(0)">
         <label nz-radio nzValue="ALL">Mussar tut</label>
         <label nz-radio nzValue="NOUNS">Substantivs</label>
+        <label nz-radio nzValue="ADJECTIVES">Adjectivs</label>
       </nz-radio-group>
     </nz-content>
   </div>
@@ -69,9 +70,16 @@
           </nz-page-header-extra>
         </nz-page-header>
 
-        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RGrammatik === 'subst'">
+        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'NOUN'">
           <span style="margin-right: 16px;">Correcturas automaticas:</span>
           <button nz-button (click)="nounChangeOnlyMale()">Mo masculin (1)</button>
+        </div>
+        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V'">
+          <span style="margin-right: 16px;">Correcturas automaticas:</span>
+        </div>
+        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'ADJECTIVE'">
+          <span style="margin-right: 16px;">Correcturas automaticas:</span>
+          <button nz-button (click)="adjectiveNoAdverbialForm()">Nagina furma adverbiala (1)</button>
         </div>
 
         <nz-descriptions nzTitle="">
@@ -94,15 +102,25 @@
           <nz-descriptions-item nzTitle="Grammatik"><app-diff [old]="selectedLexEntry.current.lemmaValues.RGrammatik" [new]="selectedLexEntry.mostRecent.lemmaValues.RGrammatik"></app-diff></nz-descriptions-item>
           <nz-descriptions-item nzTitle="Semantica"><app-diff [old]="selectedLexEntry.current.lemmaValues.RSubsemantik" [new]="selectedLexEntry.mostRecent.lemmaValues.RSubsemantik"></app-diff></nz-descriptions-item>
           <nz-descriptions-item nzTitle="Link"><app-diff [old]="selectedLexEntry.current.lemmaValues.RRedirect" [new]="selectedLexEntry.mostRecent.lemmaValues.RRedirect"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionType" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionType"></app-diff></nz-descriptions-item>
         </nz-descriptions>
 
-        <nz-descriptions nzTitle="Plurals">
+        <nz-descriptions nzTitle="Flexiuns da substantivs" *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'NOUN' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'NOUN'">
           <nz-descriptions-item nzTitle="m sing"><app-diff [old]="selectedLexEntry.current.lemmaValues.mSingular" [new]="selectedLexEntry.mostRecent.lemmaValues.mSingular"></app-diff></nz-descriptions-item>
           <nz-descriptions-item nzTitle="f sing"><app-diff [old]="selectedLexEntry.current.lemmaValues.fSingular" [new]="selectedLexEntry.mostRecent.lemmaValues.fSingular"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle=""></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionSubtype" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionSubtype"></app-diff></nz-descriptions-item>
           <nz-descriptions-item nzTitle="m plural"><app-diff [old]="selectedLexEntry.current.lemmaValues.mPlural" [new]="selectedLexEntry.mostRecent.lemmaValues.mPlural"></app-diff></nz-descriptions-item>
           <nz-descriptions-item nzTitle="f plural"><app-diff [old]="selectedLexEntry.current.lemmaValues.fPlural" [new]="selectedLexEntry.mostRecent.lemmaValues.fPlural"></app-diff></nz-descriptions-item>
           <nz-descriptions-item nzTitle="coll"><app-diff [old]="selectedLexEntry.current.lemmaValues.pluralCollectiv" [new]="selectedLexEntry.mostRecent.lemmaValues.pluralCollectiv"></app-diff></nz-descriptions-item>
+        </nz-descriptions>
+
+        <nz-descriptions nzTitle="Flexiuns dad adjectivs" *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'ADJECTIVE' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'ADJECTIVE'">
+          <nz-descriptions-item nzTitle="m sing"><app-diff [old]="selectedLexEntry.current.lemmaValues.mSingular" [new]="selectedLexEntry.mostRecent.lemmaValues.mSingular"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="f sing"><app-diff [old]="selectedLexEntry.current.lemmaValues.fSingular" [new]="selectedLexEntry.mostRecent.lemmaValues.fSingular"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionSubtype" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionSubtype"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="m plural"><app-diff [old]="selectedLexEntry.current.lemmaValues.mPlural" [new]="selectedLexEntry.mostRecent.lemmaValues.mPlural"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="f plural"><app-diff [old]="selectedLexEntry.current.lemmaValues.fPlural" [new]="selectedLexEntry.mostRecent.lemmaValues.fPlural"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="selectedLexEntry.current.lemmaValues.adverbialForm" [new]="selectedLexEntry.mostRecent.lemmaValues.adverbialForm"></app-diff></nz-descriptions-item>
         </nz-descriptions>
       </div>
     </nz-content>
