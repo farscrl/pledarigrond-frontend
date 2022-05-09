@@ -7,11 +7,11 @@
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionSubType" nzRequired>{{ 'edit.conjugation.type' | translate }}</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionSubtype" nzRequired>{{ 'edit.conjugation.type' | translate }}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <div nz-row [nzGutter]="8">
         <div nz-col [nzSpan]="20">
-          <nz-select formControlName="RInflectionSubType" id="RInflectionSubType">
+          <nz-select formControlName="RInflectionSubtype" id="RInflectionSubtype">
             <nz-option nzValue="" nzLabel="none"></nz-option>
             <nz-option [nzValue]="type.id" [nzLabel]="type.name" *ngFor="let type of subTypes" nzCustomContent>
               <b>{{type.name}}</b>: {{type.description}}

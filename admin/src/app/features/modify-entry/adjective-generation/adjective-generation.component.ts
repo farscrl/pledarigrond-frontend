@@ -46,7 +46,7 @@ export class AdjectiveGenerationComponent implements OnInit {
   }
 
   updateForms() {
-    this.generateForms(this.validateForm.controls['RInflectionSubType'].value, this.validateForm.controls['baseForm'].value);
+    this.generateForms(this.validateForm.controls['RInflectionSubtype'].value, this.validateForm.controls['baseForm'].value);
   }
 
   cancel() {
@@ -78,7 +78,7 @@ export class AdjectiveGenerationComponent implements OnInit {
   private setUpForm() {
     this.validateForm = this.fb.group({
       baseForm: new FormControl(this.workingLemmaVersion.lemmaValues.RStichwort),
-      RInflectionSubType: new FormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubType ? this.workingLemmaVersion.lemmaValues.RInflectionSubType : ""),
+      RInflectionSubtype: new FormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubtype ? this.workingLemmaVersion.lemmaValues.RInflectionSubtype : ""),
 
       mSingular: new FormControl(this.workingLemmaVersion.lemmaValues.mSingular),
       fSingular: new FormControl(this.workingLemmaVersion.lemmaValues.fSingular),
@@ -89,7 +89,7 @@ export class AdjectiveGenerationComponent implements OnInit {
 
   private generateForms(subTypeId: string, baseForm: string) {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'ADJECTIVE', subTypeId, baseForm).subscribe(values => {
-      this.workingLemmaVersion.lemmaValues.RInflectionSubType = subTypeId;
+      this.workingLemmaVersion.lemmaValues.RInflectionSubtype = subTypeId;
       this.workingLemmaVersion.lemmaValues = {
         ...this.workingLemmaVersion.lemmaValues,
         ...values.inflectionValues
@@ -116,7 +116,7 @@ export class AdjectiveGenerationComponent implements OnInit {
       console.log("No base form defined, guessing impossible");
       return;
     }
-    
+
     const genus = this.workingLemmaVersion.lemmaValues.RGenus;
     const flex = this.workingLemmaVersion.lemmaValues.RFlex;
     this.inflectionService.guessInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'ADJECTIVE', baseForm, genus, flex).subscribe(values => {
@@ -124,7 +124,7 @@ export class AdjectiveGenerationComponent implements OnInit {
       if (!values) {
         return;
       }
-      this.workingLemmaVersion.lemmaValues.RInflectionSubType = values.inflectionSubType.id;
+      this.workingLemmaVersion.lemmaValues.RInflectionSubtype = values.inflectionSubType.id;
       this.workingLemmaVersion.lemmaValues = {
         ...this.workingLemmaVersion.lemmaValues,
         ...values.inflectionValues

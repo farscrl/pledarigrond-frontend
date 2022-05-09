@@ -240,7 +240,7 @@ export class ReviewAutoChangesComponent implements OnInit {
   private generateNewInflection(type: InflectionType, subTypeId: string, baseForm: string) {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), type, subTypeId, baseForm).subscribe(values => {
       const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedLexEntry?.mostRecent));
-      workingLemmaVersion.lemmaValues.RInflectionSubType = subTypeId;
+      workingLemmaVersion.lemmaValues.RInflectionSubtype = subTypeId;
 
       // reset automaticly created values
       delete workingLemmaVersion.pgValues.timestamp;

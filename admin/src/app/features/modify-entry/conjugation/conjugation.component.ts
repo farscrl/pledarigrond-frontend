@@ -45,7 +45,7 @@ export class ConjugationComponent implements OnInit {
   }
 
   updateForms() {
-    this.generateForms(this.validateForm.controls['RInflectionSubType'].value, this.validateForm.controls['infinitiv'].value);
+    this.generateForms(this.validateForm.controls['RInflectionSubtype'].value, this.validateForm.controls['infinitiv'].value);
   }
 
   cancel() {
@@ -77,7 +77,7 @@ export class ConjugationComponent implements OnInit {
   private setUpForm() {
     this.validateForm = this.fb.group({
       infinitiv: new FormControl(this.workingLemmaVersion.lemmaValues.infinitiv, Validators.required),
-      RInflectionSubType: new FormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubType ? this.workingLemmaVersion.lemmaValues.RInflectionSubType : ""),
+      RInflectionSubtype: new FormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubtype ? this.workingLemmaVersion.lemmaValues.RInflectionSubtype : ""),
 
       preschentsing1: new FormControl(this.workingLemmaVersion.lemmaValues.preschentsing1),
       preschentsing2: new FormControl(this.workingLemmaVersion.lemmaValues.preschentsing2),
@@ -128,7 +128,7 @@ export class ConjugationComponent implements OnInit {
 
   private generateForms(subTypeId: string, baseForm: string) {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'VERB', subTypeId, baseForm).subscribe(values => {
-      this.workingLemmaVersion.lemmaValues.RInflectionSubType = subTypeId;
+      this.workingLemmaVersion.lemmaValues.RInflectionSubtype = subTypeId;
       this.workingLemmaVersion.lemmaValues = {
         ...this.workingLemmaVersion.lemmaValues,
         ...values.inflectionValues

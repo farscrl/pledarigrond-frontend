@@ -33,7 +33,7 @@ export class LemmaValues {
   RFlex?: string;
   RTags?: string;
   RInflectionType?: string;
-  RInflectionSubType?: string;
+  RInflectionSubtype?: string;
   RSubsemantik?: string;
   RGenus?: string;
   contact_email?: string;
