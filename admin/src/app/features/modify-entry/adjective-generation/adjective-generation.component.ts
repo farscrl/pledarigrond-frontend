@@ -82,7 +82,7 @@ export class AdjectiveGenerationComponent implements OnInit {
 
   private setUpForm() {
     this.validateForm = this.fb.group({
-      baseForm: new FormControl(this.workingLemmaVersion.lemmaValues.RStichwort),
+      baseForm: new FormControl(this.workingLemmaVersion.lemmaValues.baseForm),
       RInflectionSubtype: new FormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubtype ? this.workingLemmaVersion.lemmaValues.RInflectionSubtype : ""),
       RRegularInflection: new FormControl(this.workingLemmaVersion.lemmaValues.RRegularInflection ? this.workingLemmaVersion.lemmaValues.RRegularInflection : true),
 
@@ -124,7 +124,7 @@ export class AdjectiveGenerationComponent implements OnInit {
   }
 
   private guessInflectionSubtype() {
-    const baseForm = this.workingLemmaVersion.lemmaValues.RStichwort ? this.workingLemmaVersion.lemmaValues.RStichwort : "";
+    const baseForm = this.workingLemmaVersion.lemmaValues.baseForm ? this.workingLemmaVersion.lemmaValues.baseForm : this.workingLemmaVersion.lemmaValues.RStichwort ? this.workingLemmaVersion.lemmaValues.RStichwort : "";
     if (baseForm === "") {
       console.log("No base form defined, guessing impossible");
       return;

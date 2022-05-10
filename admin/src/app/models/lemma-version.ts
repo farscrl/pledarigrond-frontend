@@ -91,6 +91,7 @@ export class LemmaValues {
   gerundium?: string;
 
   // noun
+  baseForm?: string;
   mSingular?: string;
   fSingular?: string;
   mPlural?: string;

@@ -47,7 +47,7 @@ export class MainEntryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.reset()
+    this.reset();
   }
 
   cancel() {
@@ -85,9 +85,13 @@ export class MainEntryComponent implements OnInit {
   }
 
   editVerb() {
-    if (!this.lemmaVersion?.lemmaValues.infinitiv) {
-      this.lemmaVersion!.lemmaValues.infinitiv = this.validateForm.controls['RStichwort'].value;
+    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
+    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
+    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+    if (!this.lemmaVersion?.lemmaValues.infinitiv || this.lemmaVersion?.lemmaValues.infinitiv === "") {
+      this.lemmaVersion!.lemmaValues.infinitiv = this.lemmaVersion?.lemmaValues.RStichwort;
     }
+
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.conjugation.title'),
       nzContent: ConjugationComponent,
@@ -115,6 +119,10 @@ export class MainEntryComponent implements OnInit {
     this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
     this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
 
+    if (!this.lemmaVersion?.lemmaValues.baseForm || this.lemmaVersion?.lemmaValues.baseForm === "") {
+      this.lemmaVersion!.lemmaValues.baseForm = this.lemmaVersion?.lemmaValues.RStichwort;
+    }
+
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.noun.title'),
       nzContent: NounGenerationComponent,
@@ -141,6 +149,10 @@ export class MainEntryComponent implements OnInit {
     this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
     this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
     this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+
+    if (!this.lemmaVersion?.lemmaValues.baseForm || this.lemmaVersion?.lemmaValues.baseForm === "") {
+      this.lemmaVersion!.lemmaValues.baseForm = this.lemmaVersion?.lemmaValues.RStichwort;
+    }
 
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.adjective.title'),
