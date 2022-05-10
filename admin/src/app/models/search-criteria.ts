@@ -21,4 +21,4 @@ export class EditorSearchCriteria extends SearchCriteria {
 
 export type SearchDirection = 'BOTH'|'ROMANSH'|'GERMAN';
 export type SearchMethod = 'NORMAL'|'INTERN'|'PREFIX'|'SUFFIX'|'EXACT';
-export type AutomaticChangesType = 'ALL'|'NOUNS';
+export type AutomaticChangesType = 'ALL'|'VERBA'|'NOUNS'|'ADJECTIVES';
