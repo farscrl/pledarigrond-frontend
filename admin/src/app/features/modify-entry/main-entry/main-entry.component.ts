@@ -37,7 +37,7 @@ export class MainEntryComponent implements OnInit {
     private modal: NzModalRef,
     private fb: FormBuilder,
     private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService,
+    public languageSelectionService: LanguageSelectionService,
     private modalService: NzModalService,
     private viewContainerRef: ViewContainerRef,
     private translateService: TranslateService,
