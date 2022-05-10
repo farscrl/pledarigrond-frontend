@@ -25,6 +25,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGenus" nzRequired>{{ 'edit.lemma.de_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="DGenus" id="DGenus">
+            <nz-option nzValue="" nzLabel=""></nz-option>
             <nz-option *ngFor="let item of dGenusValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
@@ -42,6 +43,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik" nzRequired>{{ 'edit.lemma.de_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="DGrammatik" id="DGrammatik">
+            <nz-option nzValue="" nzLabel=""></nz-option>
             <nz-option *ngFor="let item of dGrammatikValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
@@ -79,6 +81,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGenus" nzRequired>{{ 'edit.lemma.rm_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RGenus" id="RGenus">
+            <nz-option nzValue="" nzLabel=""></nz-option>
             <nz-option *ngFor="let item of rGenusValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
@@ -108,6 +111,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGrammatik" nzRequired>{{ 'edit.lemma.rm_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RGrammatik" id="RGrammatik">
+            <nz-option nzValue="" nzLabel=""></nz-option>
             <nz-option *ngFor="let item of rGrammatikValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
