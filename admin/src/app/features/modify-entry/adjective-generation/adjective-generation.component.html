@@ -22,7 +22,14 @@
           <button nz-button (click)="updateForms()">{{ 'edit.conjugation.generate_button' | translate }}</button>
         </div>
       </div>
+    </nz-form-control>
+  </nz-form-item>
 
+  <nz-form-item nz-row class="irregular-checkbox">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <label nz-checkbox formControlName="RRegularInflection">
+        <span>Regular generation</span>
+      </label>
     </nz-form-control>
   </nz-form-item>
 
@@ -31,28 +38,27 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="mSingular">{{ 'edit.adjective.forms.mSingular' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="mSingular" id="mSingular" />
+          <input nz-input formControlName="mSingular" id="mSingular" [readonly]="isRegular" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="mPlural">{{ 'edit.adjective.forms.mPlural' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="mPlural" id="mPlural" />
+          <input nz-input formControlName="mPlural" id="mPlural" [readonly]="isRegular" />
         </nz-form-control>
       </nz-form-item>
-
     </div>
     <div nz-col nzSpan="12">
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fSingular">{{ 'edit.adjective.forms.fSingular' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="fSingular" id="fSingular" />
+          <input nz-input formControlName="fSingular" id="fSingular" [readonly]="isRegular" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fPlural">{{ 'edit.adjective.forms.fPlural' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="fPlural" id="fPlural" />
+          <input nz-input formControlName="fPlural" id="fPlural" [readonly]="isRegular" />
         </nz-form-control>
       </nz-form-item>
 

@@ -34,6 +34,7 @@ export class LemmaValues {
   RTags?: string;
   RInflectionType?: string;
   RInflectionSubtype?: string;
+  RRegularInflection?: string;
   RSubsemantik?: string;
   RGenus?: string;
   contact_email?: string;

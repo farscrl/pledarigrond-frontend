@@ -26,6 +26,8 @@ export class AdjectiveGenerationComponent implements OnInit {
   workingLemmaVersion: LemmaVersion = new LemmaVersion();
   originalLemmaVersion?: LemmaVersion;
 
+  isRegular = true;
+
   constructor(
     private fb: FormBuilder,
     private inflectionService: InflectionService,
@@ -39,6 +41,9 @@ export class AdjectiveGenerationComponent implements OnInit {
     this.inflectionService.getInflectionSubtypes(this.languageSelectionService.getCurrentLanguage(), 'ADJECTIVE').subscribe(value => {
       this.subTypes = value;
     });
+    if (this.workingLemmaVersion.lemmaValues.RRegularInflection === "false") {
+      this.isRegular = false;
+    }
 
     if (this.shouldGuessInflectionSubtype()) {
       this.guessInflectionSubtype();
@@ -72,13 +77,14 @@ export class AdjectiveGenerationComponent implements OnInit {
   }
 
   private returnValues() {
-    this.modal.close(this.validateForm.value);
+    this.modal.close(this.validateForm.getRawValue());
   }
 
   private setUpForm() {
     this.validateForm = this.fb.group({
       baseForm: new FormControl(this.workingLemmaVersion.lemmaValues.RStichwort),
       RInflectionSubtype: new FormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubtype ? this.workingLemmaVersion.lemmaValues.RInflectionSubtype : ""),
+      RRegularInflection: new FormControl(this.workingLemmaVersion.lemmaValues.RRegularInflection ? this.workingLemmaVersion.lemmaValues.RRegularInflection : true),
 
       mSingular: new FormControl(this.workingLemmaVersion.lemmaValues.mSingular),
       fSingular: new FormControl(this.workingLemmaVersion.lemmaValues.fSingular),
@@ -86,6 +92,10 @@ export class AdjectiveGenerationComponent implements OnInit {
       fPlural: new FormControl(this.workingLemmaVersion.lemmaValues.fPlural),
       adverbialForm: new FormControl(this.workingLemmaVersion.lemmaValues.adverbialForm),
     });
+
+    this.validateForm.get("RRegularInflection")!.valueChanges.subscribe(value => {
+      this.isRegular = value;
+   });
   }
 
   private generateForms(subTypeId: string, baseForm: string) {
@@ -95,6 +105,7 @@ export class AdjectiveGenerationComponent implements OnInit {
         ...this.workingLemmaVersion.lemmaValues,
         ...values.inflectionValues
       };
+      this.isRegular = true;
       this.setUpForm();
     });
   }
@@ -126,6 +137,7 @@ export class AdjectiveGenerationComponent implements OnInit {
       if (!values) {
         return;
       }
+      this.isRegular = true;
       this.workingLemmaVersion.lemmaValues.RInflectionSubtype = values.inflectionSubType.id;
       this.workingLemmaVersion.lemmaValues = {
         ...this.workingLemmaVersion.lemmaValues,

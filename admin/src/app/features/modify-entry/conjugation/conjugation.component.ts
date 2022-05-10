@@ -29,6 +29,8 @@ export class ConjugationComponent implements OnInit {
   workingLemmaVersion: LemmaVersion = new LemmaVersion();
   originalLemmaVersion?: LemmaVersion;
 
+  isRegular = true;
+
   constructor(
     private fb: FormBuilder,
     private inflectionService: InflectionService,
@@ -42,6 +44,9 @@ export class ConjugationComponent implements OnInit {
     this.inflectionService.getInflectionSubtypes(this.languageSelectionService.getCurrentLanguage(), 'VERB').subscribe(value => {
       this.subTypes = value;
     });
+    if (this.workingLemmaVersion.lemmaValues.RRegularInflection === "false") {
+      this.isRegular = false;
+    }
   }
 
   updateForms() {
@@ -71,13 +76,14 @@ export class ConjugationComponent implements OnInit {
   }
 
   private returnValues() {
-    this.modal.close(this.validateForm.value);
+    this.modal.close(this.validateForm.getRawValue());
   }
 
   private setUpForm() {
     this.validateForm = this.fb.group({
       infinitiv: new FormControl(this.workingLemmaVersion.lemmaValues.infinitiv, Validators.required),
       RInflectionSubtype: new FormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubtype ? this.workingLemmaVersion.lemmaValues.RInflectionSubtype : ""),
+      RRegularInflection: new FormControl(this.workingLemmaVersion.lemmaValues.RRegularInflection ? this.workingLemmaVersion.lemmaValues.RRegularInflection : true),
 
       preschentsing1: new FormControl(this.workingLemmaVersion.lemmaValues.preschentsing1),
       preschentsing2: new FormControl(this.workingLemmaVersion.lemmaValues.preschentsing2),
@@ -124,6 +130,10 @@ export class ConjugationComponent implements OnInit {
 
       gerundium: new FormControl(this.workingLemmaVersion.lemmaValues.gerundium),
     });
+
+    this.validateForm.get("RRegularInflection")!.valueChanges.subscribe(value => {
+      this.isRegular = value;
+   });
   }
 
   private generateForms(subTypeId: string, baseForm: string) {
@@ -133,6 +143,7 @@ export class ConjugationComponent implements OnInit {
         ...this.workingLemmaVersion.lemmaValues,
         ...values.inflectionValues
       };
+      this.isRegular = true;
       this.setUpForm();
     });
   }
