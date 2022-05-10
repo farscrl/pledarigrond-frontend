@@ -167,6 +167,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
         lexEntryId: lemma.lexEntryId,
+        directlyLoadDetailView: true,
       },
       nzOnOk: () => {
         lemma.local_review_status = 'EDITED';

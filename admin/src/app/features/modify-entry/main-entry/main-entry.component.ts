@@ -21,6 +21,9 @@ export class MainEntryComponent implements OnInit {
   @Input()
   lexEntryId?: string;
 
+  @Input()
+  directlyLoadDetailView = false;
+
   isLoading = false;
 
   dGrammatikValues: string[] = [];
@@ -186,6 +189,19 @@ export class MainEntryComponent implements OnInit {
       contact_comment: new FormControl(this.lemmaVersion?.lemmaValues.contact_comment),
       contact_email: new FormControl(this.lemmaVersion?.lemmaValues.contact_email),
     });
+
+    if (this.directlyLoadDetailView) {
+      if (this.validateForm.controls['RInflectionType'].value === 'V') {
+        this.editVerb();
+        this.directlyLoadDetailView = false;
+      } else if (this.validateForm.controls['RInflectionType'].value === 'NOUN') {
+        this.editNoun();
+        this.directlyLoadDetailView = false;
+      } else if (this.validateForm.controls['RInflectionType'].value === 'ADJECTIVE') {
+        this.editAdjective();
+        this.directlyLoadDetailView = false;
+      }
+    }
   }
 
   private setupDropdownValues() {
