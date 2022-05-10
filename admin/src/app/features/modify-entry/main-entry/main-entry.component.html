@@ -4,7 +4,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="categories">{{ 'edit.lemma.category' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="categories" id="categories" class="info-input" />
+          <input nz-input formControlName="categories" id="categories" class="info-input" [nzAutocomplete]="categoryAuto" (input)="categoryChanged()"/>
+          <nz-autocomplete [nzDataSource]="categoryAutocomplete" nzBackfill #categoryAuto></nz-autocomplete>
           <i nz-icon nzType="info-circle" class="info-button" nz-popover [nzPopoverContent]="'edit.lemma.category_info' | translate" nzPopoverPlacement="right"></i>
         </nz-form-control>
       </nz-form-item>
@@ -52,7 +53,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DSubsemantik">{{ 'edit.lemma.de_semantics' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DSubsemantik" id="DSubsemantik" />
+          <input nz-input formControlName="DSubsemantik" id="DSubsemantik" [nzAutocomplete]="dSemanticsAuto" (input)="dSemanticsChanged()"/>
+          <nz-autocomplete [nzDataSource]="dSemanticsAutocomplete" nzBackfill #dSemanticsAuto></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 
@@ -120,7 +122,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RSubsemantik">{{ 'edit.lemma.rm_semantics' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RSubsemantik" id="RSubsemantik" />
+          <input nz-input formControlName="RSubsemantik" id="RSubsemantik" [nzAutocomplete]="rSemanticsAuto" (input)="rSemanticsChanged()"/>
+          <nz-autocomplete [nzDataSource]="rSemanticsAutocomplete" nzBackfill #rSemanticsAuto></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 

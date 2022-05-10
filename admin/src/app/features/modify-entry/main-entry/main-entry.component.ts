@@ -26,6 +26,10 @@ export class MainEntryComponent implements OnInit {
   rGrammatikValues: string[] = [];
   rGenusValues: string[] = [];
 
+  categoryAutocomplete: string[] = [];
+  rSemanticsAutocomplete: string[] = [];
+  dSemanticsAutocomplete: string[] = [];
+
   private lexEntry?: LexEntry;
   private lemmaVersion?: LemmaVersion;
 
@@ -117,6 +121,42 @@ export class MainEntryComponent implements OnInit {
       this.translateService.instant('reply.subject') +
       "&cc=pg@rumantsch.ch&body=" +
       encodeURIComponent(r + '\n' + d + "\n\n" + remartga));
+  }
+
+  categoryChanged() {
+    const value = this.validateForm.controls['categories'].value;
+    if (value === "") {
+      this.categoryAutocomplete = [];
+      return;
+    }
+
+    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'categories', value).subscribe(data => {
+      this.categoryAutocomplete = data;
+    });
+  }
+
+  rSemanticsChanged() {
+    const value = this.validateForm.controls['RSubsemantik'].value;
+    if (value === "") {
+      this.rSemanticsAutocomplete = [];
+      return;
+    }
+
+    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'RSubsemantik', value).subscribe(data => {
+      this.rSemanticsAutocomplete = data;
+    });
+  }
+
+  dSemanticsChanged() {
+    const value = this.validateForm.controls['DSubsemantik'].value;
+    if (value === "") {
+      this.dSemanticsAutocomplete = [];
+      return;
+    }
+
+    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'DSubsemantik', value).subscribe(data => {
+      this.dSemanticsAutocomplete = data;
+    });
   }
 
   private setUpForm() {
