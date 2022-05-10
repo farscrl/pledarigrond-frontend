@@ -8,6 +8,14 @@
         <label nz-radio nzValue="NOUNS">Substantivs</label>
         <label nz-radio nzValue="ADJECTIVES">Adjectivs</label>
       </nz-radio-group>
+      <input nz-input [(ngModel)]="searchCriteria.searchPhrase" style="width: 200px; margin-left: 36px;" [placeholder]="'Tschertgar rumantsch'" (ngModelChange)="changePage(0)">
+      <nz-select [(ngModel)]="searchCriteria.searchMethod" style="width: 150px; margin-left: 36px;" (ngModelChange)="changePage(0)">
+        <nz-option [nzLabel]="'lexicon.filter.method.normal' | translate" nzValue="NORMAL"></nz-option>
+        <nz-option [nzLabel]="'lexicon.filter.method.intern' | translate" nzValue="INTERN"></nz-option>
+        <nz-option [nzLabel]="'lexicon.filter.method.prefix' | translate" nzValue="PREFIX"></nz-option>
+        <nz-option [nzLabel]="'lexicon.filter.method.suffix' | translate" nzValue="SUFFIX"></nz-option>
+        <nz-option [nzLabel]="'lexicon.filter.method.exact' | translate" nzValue="EXACT"></nz-option>
+      </nz-select>
     </nz-content>
   </div>
 </div>
