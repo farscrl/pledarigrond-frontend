@@ -168,7 +168,7 @@
       <button nz-button nzType="default" (click)="reset()">{{ 'edit.reset' | translate }}</button>
     </div>
     <div>
-      <button nz-button nzType="default" (click)="save(true)" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save_suggestion' : 'edit.create_proposta') | translate }}</button>
+      <button nz-button nzType="default" (click)="save(true)" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save_suggestion' : 'edit.create_suggestion') | translate }}</button>
       <button nz-button nzType="primary" (click)="save(false)" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save' : 'edit.create') | translate }}</button>
     </div>
   </div>

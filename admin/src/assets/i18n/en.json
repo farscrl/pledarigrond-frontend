@@ -279,7 +279,9 @@
     "cancel": "Cancel",
     "reset": "Reset",
     "save": "Save",
+    "save_suggestion": "Save suggestion",
     "create": "Create",
+    "create_suggestion": "Create suggestion",
     "ok": "OK"
   },
   "sort_order": {
