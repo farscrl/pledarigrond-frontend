@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://pledarigrond-api.hidora.com',
-  apiHost: 'pledarigrond-api.hidora.com',
+  apiUrl: 'https://api.pledarigrond.ch',
+  apiHost: 'api.pledarigrond.ch',
   frontendUrl: 'https://pledarigrond.hidora.com',
 };
