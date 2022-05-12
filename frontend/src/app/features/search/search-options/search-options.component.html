@@ -1,12 +1,12 @@
 <div [class.open]="showDetails" id="search-options">
   <div id="search_panel">
-    <form>
+    <form (ngSubmit)="searchPhrase.select()">
       <div class="search_options">
         <div class="search-phrase-container">
           <div class="small"></div>
           <div class="main">
             <label class="control-label">{{ 'search.searchPhrase' | translate }}</label>
-            <input type="text" name="searchPhrase" id="searchPhrase" [(ngModel)]="searchCriteria.searchPhrase" (keyup)="emitSearch()" autocomplete="off" autofocus>
+            <input type="text" name="searchPhrase" id="searchPhrase" [(ngModel)]="searchCriteria.searchPhrase" (keyup)="emitSearch()" autocomplete="off" autofocus #searchPhrase>
           </div>
           <div class="small" style="margin-left: 32px;">
             <button (click)="emitSearch()">{{ 'search.search' | translate }}</button>
