@@ -1,4 +1,4 @@
-name: Docker Build
+name: Docker Build main
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build_test:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +25,28 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: docker build
         run: |
-          docker build -t pledarigrond/pledari-grond-frontend:latest -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}} .
+          docker build --build-arg angular_env=test -t pledarigrond/pledari-grond-frontend:latest-test -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}-test .
+      - name: docker push
+        run: |
+          docker push pledarigrond/pledari-grond-frontend --all-tags
+
+  build_prod:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: docker build
+        run: |
+          docker build --build-arg angular_env=prod -t pledarigrond/pledari-grond-frontend:latest-prod -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}-prod .
       - name: docker push
         run: |
           docker push pledarigrond/pledari-grond-frontend --all-tags

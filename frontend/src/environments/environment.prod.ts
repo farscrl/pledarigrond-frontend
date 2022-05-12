@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080',
-  apiHost: 'localhost:8080',
-  adminBackendUrl: 'http://localhost:4222',
+  apiUrl: 'https://pledarigrond-api.hidora.com',
+  apiHost: 'pledarigrond-api.hidora.com',
+  adminBackendUrl: 'https://pledarigrond.hidora.com/admin',
 };
