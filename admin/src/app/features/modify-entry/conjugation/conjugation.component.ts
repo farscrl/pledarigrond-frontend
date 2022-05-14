@@ -41,7 +41,7 @@ export class ConjugationComponent implements OnInit {
   ngOnInit(): void {
     this.setUpForm();
 
-    this.inflectionService.getInflectionSubtypes(this.languageSelectionService.getCurrentLanguage(), 'VERB').subscribe(value => {
+    this.inflectionService.getInflectionSubtypes(this.languageSelectionService.getCurrentLanguage(), 'V').subscribe(value => {
       this.subTypes = value;
     });
     if (this.workingLemmaVersion.lemmaValues.RRegularInflection === "false") {
@@ -137,7 +137,7 @@ export class ConjugationComponent implements OnInit {
   }
 
   private generateForms(subTypeId: string, baseForm: string) {
-    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'VERB', subTypeId, baseForm).subscribe(values => {
+    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'V', subTypeId, baseForm).subscribe(values => {
       this.workingLemmaVersion.lemmaValues.RInflectionSubtype = subTypeId;
       this.workingLemmaVersion.lemmaValues = {
         ...this.workingLemmaVersion.lemmaValues,

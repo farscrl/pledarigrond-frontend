@@ -132,7 +132,7 @@
           <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="selectedLexEntry.current.lemmaValues.adverbialForm" [new]="selectedLexEntry.mostRecent.lemmaValues.adverbialForm"></app-diff></nz-descriptions-item>
         </nz-descriptions>
 
-        <table *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'VERB' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'VERB'" class="verbs-table">
+        <table *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'V' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V'" class="verbs-table">
           <tr>
             <td>
               <b>Infinitiv: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.infinitiv" [new]="selectedLexEntry.mostRecent.lemmaValues.infinitiv"></app-diff>
