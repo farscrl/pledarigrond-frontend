@@ -131,6 +131,96 @@
           <nz-descriptions-item nzTitle="f plural"><app-diff [old]="selectedLexEntry.current.lemmaValues.fPlural" [new]="selectedLexEntry.mostRecent.lemmaValues.fPlural"></app-diff></nz-descriptions-item>
           <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="selectedLexEntry.current.lemmaValues.adverbialForm" [new]="selectedLexEntry.mostRecent.lemmaValues.adverbialForm"></app-diff></nz-descriptions-item>
         </nz-descriptions>
+
+        <table *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'VERB' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'VERB'" class="verbs-table">
+          <tr>
+            <td>
+              <b>Infinitiv: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.infinitiv" [new]="selectedLexEntry.mostRecent.lemmaValues.infinitiv"></app-diff>
+            </td>
+            <td>
+              <b>Tip da flexiun: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionSubtype" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionSubtype"></app-diff>
+            </td>
+          </tr>
+
+          <tr style="margin-top: 16px;">
+            <td><b>Preschent</b></td>
+            <td><b>Imperfect</b></td>
+          </tr>
+          <tr>
+            <td>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing3"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural3"></app-diff><br>
+            </td>
+            <td>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing3"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural3"></app-diff><br>
+            </td>
+          </tr>
+          <tr style="margin-top: 16px;">
+            <td><b>Conjunctiv</b></td>
+            <td><b>Cundiziunal</b></td>
+          </tr>
+          <tr>
+            <td>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing3"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural3"></app-diff><br>
+            </td>
+            <td>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing3"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural3"></app-diff><br>
+            </td>
+          </tr>
+
+          <tr style="margin-top: 16px;">
+            <td><b>Futur</b></td>
+            <td><b>Particip Perfect</b></td>
+          </tr>
+          <tr>
+            <td>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing1" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing2" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing3" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing3"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural2"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural3"></app-diff><br>
+            </td>
+            <td>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectms" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectms"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectfs" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectfs"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectmp" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectmp"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectfp" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectfp"></app-diff><br>
+            </td>
+          </tr>
+          <tr style="margin-top: 16px;">
+            <td><b>Imperativ</b></td>
+            <td><b>Gerundi</b></td>
+          </tr>
+          <tr>
+            <td>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperativ1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperativ1"></app-diff><br>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperativ2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperativ2"></app-diff><br>
+            </td>
+            <td>
+              <app-diff [old]="selectedLexEntry.current.lemmaValues.gerundium" [new]="selectedLexEntry.mostRecent.lemmaValues.gerundium"></app-diff><br>
+            </td>
+          </tr>
+        </table>
       </div>
     </nz-content>
   </div>
