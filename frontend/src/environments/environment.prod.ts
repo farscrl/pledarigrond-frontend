@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080',
-  apiHost: 'localhost:8080',
-  adminBackendUrl: 'http://localhost:4222',
+  apiUrl: 'https://api.pledarigrond.ch',
+  apiHost: 'api.pledarigrond.ch',
+  adminBackendUrl: 'https://www.pledarigrond.ch/admin',
 };

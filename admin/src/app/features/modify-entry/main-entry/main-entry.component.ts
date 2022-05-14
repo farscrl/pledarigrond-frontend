@@ -31,6 +31,10 @@ export class MainEntryComponent implements OnInit {
   rGrammatikValues: string[] = [];
   rGenusValues: string[] = [];
 
+  categoryAutocomplete: string[] = [];
+  rSemanticsAutocomplete: string[] = [];
+  dSemanticsAutocomplete: string[] = [];
+
   private lexEntry?: LexEntry;
   private lemmaVersion?: LemmaVersion;
 
@@ -173,6 +177,56 @@ export class MainEntryComponent implements OnInit {
         ...this.lemmaVersion?.lemmaValues,
         ...value
       };
+    });
+  }
+
+  replyComment() {
+    const r = this.translateService.instant('reply.romansh') + " = " + (this.lemmaVersion?.lemmaValues.RStichwort || "");
+    const d = this.translateService.instant('reply.german') + " = " + (this.lemmaVersion?.lemmaValues.DStichwort || "");
+    const remartga = this.translateService.instant('reply.comment') + "\n" + (this.lemmaVersion?.lemmaValues.contact_comment || "");
+
+    window.location.assign(
+      "mailto:" +
+      (this.lemmaVersion?.lemmaValues.contact_email || "") +
+      "?subject=" +
+      this.translateService.instant('reply.subject') +
+      "&cc=pg@rumantsch.ch&body=" +
+      encodeURIComponent(r + '\n' + d + "\n\n" + remartga));
+  }
+
+  categoryChanged() {
+    const value = this.validateForm.controls['categories'].value;
+    if (value === "") {
+      this.categoryAutocomplete = [];
+      return;
+    }
+
+    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'categories', value).subscribe(data => {
+      this.categoryAutocomplete = data;
+    });
+  }
+
+  rSemanticsChanged() {
+    const value = this.validateForm.controls['RSubsemantik'].value;
+    if (value === "") {
+      this.rSemanticsAutocomplete = [];
+      return;
+    }
+
+    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'RSubsemantik', value).subscribe(data => {
+      this.rSemanticsAutocomplete = data;
+    });
+  }
+
+  dSemanticsChanged() {
+    const value = this.validateForm.controls['DSubsemantik'].value;
+    if (value === "") {
+      this.dSemanticsAutocomplete = [];
+      return;
+    }
+
+    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'DSubsemantik', value).subscribe(data => {
+      this.dSemanticsAutocomplete = data;
     });
   }
 

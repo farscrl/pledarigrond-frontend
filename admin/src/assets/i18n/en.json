@@ -2,7 +2,6 @@
   "users": {
     "menu_item": "Users",
     "title": "Users",
-    "subtitle": "This are all the users of Pledari Grond",
     "new_button": "New",
     "email": "E-Mail",
     "admin": "Admin",
@@ -21,7 +20,7 @@
       "password": "Password",
       "password_missing": "Please enter a password",
       "password_lenght": "The password must contain at least 6 characters",
-      "is_admin": "is Admin?",
+      "is_admin": "Admin?",
       "role": "Role",
       "editor_role": "Editor",
       "no_role": "No access",
@@ -110,7 +109,7 @@
         "rm_gender": "Gender (rm)",
         "rm_semantics": "Semantics (rm)",
         "rm_link": "Link (rm)",
-        "rm_conjugation": "Conjugation (rm)",
+        "rm_conjugation": "Special forms (rm)",
         "rm_additional_search": "Additional search terms (rm)",
         "category": "Category",
         "comment": "Comment"
@@ -138,7 +137,8 @@
         "content": "Do you want to reject {{count}} suggestions?"
       },
       "delete": {
-        "title": "Do you want to delete the entry?"
+        "title": "Do you want to delete the entry?",
+        "cancel": "Cancel"
       }
     }
   },
@@ -251,7 +251,7 @@
       "rm_grammar": "Grammar",
       "rm_semantics": "Semantics",
       "rm_link": "Link",
-      "rm_conjugation": "Conjugation",
+      "rm_conjugation": "Special forms",
       "rm_tags": "Additional search terms",
       "inflection": {
         "title": "Inflection",
@@ -280,7 +280,9 @@
     "cancel": "Cancel",
     "reset": "Reset",
     "save": "Save",
+    "save_suggestion": "Save suggestion",
     "create": "Create",
+    "create_suggestion": "Create suggestion",
     "ok": "OK"
   },
   "sort_order": {
@@ -313,5 +315,12 @@
   "no_permissions": {
     "title": "You're not allowed to access the admin section.",
     "logout": "Logout"
+  },
+  "reply": {
+    "button": "Reply",
+    "comment": "Comments",
+    "romansh": "romansh",
+    "german": "german",
+    "subject": "Your request to Pledari Grond"
   }
 }

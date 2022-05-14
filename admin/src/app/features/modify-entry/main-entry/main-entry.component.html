@@ -1,12 +1,11 @@
-
-
 <form nz-form [formGroup]="validateForm">
   <div nz-row>
     <div nz-col nzSpan="12">
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="categories">{{ 'edit.lemma.category' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="categories" id="categories" class="info-input" />
+          <input nz-input formControlName="categories" id="categories" class="info-input" [nzAutocomplete]="categoryAuto" (input)="categoryChanged()"/>
+          <nz-autocomplete [nzDataSource]="categoryAutocomplete" nzBackfill #categoryAuto></nz-autocomplete>
           <i nz-icon nzType="info-circle" class="info-button" nz-popover [nzPopoverContent]="'edit.lemma.category_info' | translate" nzPopoverPlacement="right"></i>
         </nz-form-control>
       </nz-form-item>
@@ -27,6 +26,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGenus" nzRequired>{{ 'edit.lemma.de_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="DGenus" id="DGenus">
+            <nz-option nzValue="" nzLabel=""></nz-option>
             <nz-option *ngFor="let item of dGenusValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
@@ -44,6 +44,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik" nzRequired>{{ 'edit.lemma.de_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="DGrammatik" id="DGrammatik">
+            <nz-option nzValue="" nzLabel=""></nz-option>
             <nz-option *ngFor="let item of dGrammatikValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
@@ -52,7 +53,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DSubsemantik">{{ 'edit.lemma.de_semantics' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DSubsemantik" id="DSubsemantik" />
+          <input nz-input formControlName="DSubsemantik" id="DSubsemantik" [nzAutocomplete]="dSemanticsAuto" (input)="dSemanticsChanged()"/>
+          <nz-autocomplete [nzDataSource]="dSemanticsAutocomplete" nzBackfill #dSemanticsAuto></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 
@@ -81,6 +83,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGenus" nzRequired>{{ 'edit.lemma.rm_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RGenus" id="RGenus">
+            <nz-option nzValue="" nzLabel=""></nz-option>
             <nz-option *ngFor="let item of rGenusValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
@@ -114,6 +117,7 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGrammatik" nzRequired>{{ 'edit.lemma.rm_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="RGrammatik" id="RGrammatik">
+            <nz-option nzValue="" nzLabel=""></nz-option>
             <nz-option *ngFor="let item of rGrammatikValues" [nzValue]="item" [nzLabel]="item"></nz-option>
           </nz-select>
         </nz-form-control>
@@ -122,7 +126,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RSubsemantik">{{ 'edit.lemma.rm_semantics' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RSubsemantik" id="RSubsemantik" />
+          <input nz-input formControlName="RSubsemantik" id="RSubsemantik" [nzAutocomplete]="rSemanticsAuto" (input)="rSemanticsChanged()"/>
+          <nz-autocomplete [nzDataSource]="rSemanticsAutocomplete" nzBackfill #rSemanticsAuto></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 
@@ -139,8 +144,6 @@
           <input nz-input formControlName="RFlex" id="RFlex" />
         </nz-form-control>
       </nz-form-item>
-
-
     </div>
   </div>
 
@@ -157,6 +160,7 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="contact_email">{{ 'edit.lemma.email' | translate }}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input formControlName="contact_email" id="contact_email" />
+      <button nz-button nzType="default" class="reply-comment" (click)="replyComment()">{{ 'reply.button' | translate }}</button>
     </nz-form-control>
   </nz-form-item>
 </form>
@@ -168,7 +172,7 @@
       <button nz-button nzType="default" (click)="reset()">{{ 'edit.reset' | translate }}</button>
     </div>
     <div>
-      <button nz-button nzType="default" (click)="save(true)" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save_suggestion' : 'edit.create_proposta') | translate }}</button>
+      <button nz-button nzType="default" (click)="save(true)" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save_suggestion' : 'edit.create_suggestion') | translate }}</button>
       <button nz-button nzType="primary" (click)="save(false)" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save' : 'edit.create') | translate }}</button>
     </div>
   </div>

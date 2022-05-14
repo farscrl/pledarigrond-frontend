@@ -21,6 +21,15 @@
   margin-right: 8px;
 }
 
+#contact_email {
+  width: calc(100% - 105px - 8px);
+  margin-right: 8px;
+}
+
+.reply-comment {
+  width: 105px;
+}
+
 .footer-buttons {
   display: flex;
   flex-direction: row;

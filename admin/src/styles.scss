@@ -28,3 +28,11 @@
     padding-left: 3px;
   }
 }
+
+// make form labels wider in 12-column div
+@media (min-width: 576px) {
+  .ant-col-12 .ant-col-sm-6 {
+      flex: 0 0 40%;
+      max-width: 40%;
+  }
+}

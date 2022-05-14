@@ -3,7 +3,6 @@
     <nz-content>
       <nz-page-header [nzGhost]="false">
         <nz-page-header-title>{{ 'users.title' | translate}}</nz-page-header-title>
-        <nz-page-header-subtitle>{{ 'users.subtitle' | translate}}</nz-page-header-subtitle>
         <nz-page-header-extra>
           <button nz-button nzType="primary" (click)="newOrEdit()">{{ 'users.new_button' | translate}}</button>
         </nz-page-header-extra>
@@ -35,7 +34,7 @@
             <td nzAlign="center"><app-user-role [role]="data.roles.sutsilvanRole"></app-user-role></td>
             <!--<td nzAlign="center"><app-user-role [role]="data.roles.valladerRole"></app-user-role></td>-->
             <!--<td nzAlign="center"><app-user-role [role]="data.roles.namesRole"></app-user-role></td>-->
-            <td>
+            <td nzAlign="center">
               <a (click)="newOrEdit(data.email)">{{ 'users.edit_action' | translate}}</a>
               <nz-divider nzType="vertical"></nz-divider>
               <a (click)="delete(data.email)">{{ 'users.delete_action' | translate}}</a>

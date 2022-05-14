@@ -2,9 +2,8 @@
   "users": {
     "menu_item": "Utilisad*ras",
     "title": "Utilisad*ras",
-    "subtitle": "Tut las utilisad*ras dal Pledari Grond",
     "new_button": "Nov",
-    "email": "E-Mail",
+    "email": "E-mail",
     "admin": "Admin",
     "names": "Nums",
     "actions": "Acziuns",
@@ -13,15 +12,15 @@
     "delete_question": "Propi stizzar quest*a utilisad*ra?",
     "delete_yes": "Gea, stizzar",
     "delete_no": "Na",
-    "new_title": "Crear ina nova utilisad*ra",
-    "edit_title": "Modifitgar l'utilisad*ra",
+    "new_title": "Crear in*a nov*a utilisad*ra",
+    "edit_title": "Modifitgar utilisad*ra",
     "edit": {
-      "email": "E-Mail",
-      "email_error": "Quai n'è betg ina adressa dad e-mail valida",
+      "email": "E-mail",
+      "email_error": "Quai n'è betg in'adressa dad e-mail valida.",
       "password": "Pled-clav",
       "password_missing": "P.pl. endatar in pled-clav",
-      "password_lenght": "Il pled-clav sto cuntegnair almain 6 caracters",
-      "is_admin": "è admin?",
+      "password_lenght": "Il pled-clav sto cuntegnair almain 6 caracters.",
+      "is_admin": "Admin?",
       "role": "Rolla",
       "editor_role": "Redactur*a",
       "no_role": "Nagin access",
@@ -41,21 +40,21 @@
       "verifier": "Revisur*a",
       "search_term": "Pled u expressiun che Vus tschertgais",
       "highlight": "Marcar il pled u l'expressiun che Vus tschertgais",
-      "show_more": "Dapli opziuns da tschertgar",
-      "show_less": "Damain opziuns da tschertgar",
+      "show_more": "dapli opziuns da tschertgar",
+      "show_less": "damain opziuns da tschertgar",
       "language": {
         "title": "Lingua",
-        "both": "Omaduas",
-        "romansh": "Rumantsch -> tudestg",
-        "german": "Tudestg -> rumantsch"
+        "both": "omaduas",
+        "romansh": "rumantsch -> tudestg",
+        "german": "tudestg -> rumantsch"
       },
       "method": {
         "title": "Pussaivladads da tschertgar",
-        "normal": "Normal",
-        "intern": "Dapertut",
-        "prefix": "Entschatta",
-        "suffix": "Finiziuns",
-        "exact": "Exact"
+        "normal": "normal",
+        "intern": "dapertut",
+        "prefix": "entschatta",
+        "suffix": "finiziun",
+        "exact": "exact"
       },
       "category": "Categoria",
       "semantics": "Semantica",
@@ -100,17 +99,17 @@
         "state": "Status",
         "created": "Creà",
         "de": "Tudestg",
-        "de_grammar": "Grammatica (de)",
-        "de_gender": "Genus (de)",
-        "de_semantics": "Semantica (de)",
-        "de_link": "Colliaziun (de)",
-        "de_additional_search": "Terms da tschertga supplementars (de)",
+        "de_grammar": "Grammatica (tud)",
+        "de_gender": "Genus (tud)",
+        "de_semantics": "Semantica (tud)",
+        "de_link": "Colliaziun (tud)",
+        "de_additional_search": "Terms da tschertga supplementars (tud)",
         "rm": "Rumantsch",
         "rm_grammar": "Grammatica (rm)",
         "rm_gender": "Genus (rm)",
         "rm_semantics": "Semantica (rm)",
         "rm_link": "Colliaziun (rm)",
-        "rm_conjugation": "Conjugaziun (rm)",
+        "rm_conjugation": "Furmas spezialas (rm)",
         "rm_additional_search": "Terms da tschertga supplementars (rm)",
         "category": "Categoria",
         "comment": "Commentari"
@@ -138,7 +137,8 @@
         "content": "Vulais Vus refusar las {{count}} endataziuns tschernidas?"
       },
       "delete": {
-        "title": "Vulais Vus stizzar l'endataziun?"
+        "title": "Vulais Vus stizzar l'endataziun?",
+        "cancel": "Interrumper"
       }
     }
   },
@@ -149,7 +149,7 @@
     "dump": {
       "button": "Backup",
       "title": "Crear in backup da la banca da datas",
-      "instructions": "Per far ina copia da segirezza cumpletta, tscherner l'entira cronologia da las midadas e betg anonimisar las datas. La datoteca generada cuntegna ina summa da controlla MD5 che po servir per controllar l'integritad da las datas.",
+      "instructions": "Per far ina copia da segirezza cumpletta tscherner l'entira cronologia da las midadas e betg anonimisar las datas. La datoteca generada cuntegna ina summa da controlla MD5 che po servir per controllar l'integritad da las datas.",
       "include_history": "Exportar la cronologia cumpletta da las midadas",
       "anonymize_data": "Anonimisar las datas",
       "cancel": "Interrumper",
@@ -185,7 +185,7 @@
       "title": "Backup",
       "subtitle": "Infurmaziuns davart ils backups da la banca da datas",
       "frequency": "Frequenza",
-      "max_backups": "Dumber maximal da backups",
+      "max_backups": "Dumber da backups maximal",
       "location": "Lieu",
       "size": "Grondezza",
       "download_link": "Telechargiar"
@@ -208,12 +208,12 @@
     }
   },
   "frontend": {
-    "menu_item": "Pagina d'internet"
+    "menu_item": "Pledari Grond"
   },
   "data": {
     "status": {
       "deleted": "Stizzà",
-      "new_entry": "Nova endataziun",
+      "new_entry": "Nova andataziùn",
       "new_modification": "Nova modificaziun",
       "undefined": "Betg definì"
     },
@@ -225,9 +225,9 @@
     },
     "verification": {
       "rejected": "Refusà",
-      "accepted": "Acceptà",
+      "accepted": "Aczepto",
       "outdated": "Antiquà",
-      "unverified": "Betg verifitgà"
+      "unverified": "Betga verifitgieu"
     }
   },
   "edit": {
@@ -240,26 +240,26 @@
       "de": "Lemma tudestg",
       "de_gender": "Genus",
       "category": "Categoria",
-      "category_info": "Separar pliras categorias cun commas.",
+      "category_info": "Separar pliras categorias cun ina comma.",
       "de_grammar": "Grammatica",
       "de_semantics": "Semantica",
       "de_link": "Colliaziun",
-      "de_tags": "Terms da tschertga supplementars",
+      "de_tags": "Terms da tschertga suppl.",
       "romansh": "Rumantsch",
       "rm": "Lemma rumantsch",
       "rm_gender": "Genus",
       "rm_grammar": "Grammatica",
       "rm_semantics": "Semantica",
       "rm_link": "Colliaziun",
-      "rm_conjugation": "Conjugaziun",
-      "rm_tags": "Terms da tschertga supplementars",
+      "rm_conjugation": "Furmas spezialas",
+      "rm_tags": "Terms da tschertga suppl.",
       "inflection": {
         "title": "Flexiun",
         "none": "Nagina",
         "verb": "Verb"
       },
       "comment": "Commentari",
-      "email": "E-Mail"
+      "email": "E-mail"
     },
     "conjugation": {
       "title": "Conjugaziun",
@@ -282,7 +282,7 @@
     "save": "Memorisar",
     "save_suggestion": "Memorisar proposta",
     "create": "Crear",
-    "create_proposta": "Crear proposta",
+    "create_suggestion": "Crear proposta",
     "ok": "OK"
   },
   "sort_order": {
@@ -294,7 +294,7 @@
     "save": "Memorisar"
   },
   "login": {
-    "email": "E-Mail",
+    "email": "E-mail",
     "password": "Pled-clav",
     "error": "Errur d'annunzia.",
     "login_button": "S'annunziar"
@@ -315,5 +315,12 @@
   "no_permissions": {
     "title": "Vus n'avais betg ils dretgs necessaris per acceder a la surfatscha d'administraziun.",
     "logout": "Sortir"
+  },
+  "reply": {
+    "button": "Respunder",
+    "comment": "Remartgas",
+    "romansh": "rumantsch",
+    "german": "tudestg",
+    "subject": "Vossa dumonda al Pledari Grond"
   }
 }
