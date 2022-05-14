@@ -67,11 +67,11 @@
       <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="columns.checkMultiple.active" nzLeft nzWidth="70px"></th>
       <th *ngIf="columns.user.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.user' | translate }}</th>
       <th *ngIf="columns.verifier.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.verifier' | translate }}</th>
-      <th *ngIf="columns.filter.active" nzWidth="110px">{{ 'lexicon.lemma.columns.filter' | translate }}</th>
+      <th *ngIf="columns.filter.active" nzWidth="120px">{{ 'lexicon.lemma.columns.filter' | translate }}</th>
       <th *ngIf="columns.entry.active" nzWidth="200px">{{ 'lexicon.lemma.columns.entry' | translate }}</th>
       <th *ngIf="columns.actions.active" nzWidth="110px">{{ 'lexicon.lemma.columns.actions' | translate }}</th>
-      <th *ngIf="columns.order.active" nzWidth="130px">{{ 'lexicon.lemma.columns.order' | translate }}</th>
-      <th *ngIf="columns.state.active" nzWidth="120px">{{ 'lexicon.lemma.columns.state' | translate }}</th>
+      <th *ngIf="columns.order.active" nzWidth="155px">{{ 'lexicon.lemma.columns.order' | translate }}</th>
+      <th *ngIf="columns.state.active" nzWidth="130px">{{ 'lexicon.lemma.columns.state' | translate }}</th>
       <th *ngIf="columns.created.active" nzWidth="120px">{{ 'lexicon.lemma.columns.created' | translate }}</th>
       <th *ngIf="columns.german.active">{{ 'lexicon.lemma.columns.de' | translate }}</th>
       <th *ngIf="columns.germanGrammar.active">{{ 'lexicon.lemma.columns.de_grammar' | translate }}</th>
@@ -87,7 +87,7 @@
       <th *ngIf="columns.romanshConjugation.active">{{ 'lexicon.lemma.columns.rm_conjugation' | translate }}</th>
       <th *ngIf="columns.romanshAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.rm_additional_search' | translate }}</th>
       <th *ngIf="columns.category.active">{{ 'lexicon.lemma.columns.category' | translate }}</th>
-      <th *ngIf="columns.comment.active">{{ 'lexicon.lemma.columns.comment' | translate }}</th>
+      <th *ngIf="columns.comment.active" nzWidth="300px">{{ 'lexicon.lemma.columns.comment' | translate }}</th>
       <th><!--empty columnt to take up space--></th>
     </tr>
   </thead>
@@ -102,15 +102,15 @@
       ></td>
       <td *ngIf="columns.user.active" nzLeft class="small">
         <app-user-role [role]="data.mostRecent.creatorRole"></app-user-role><br>
-        <ng-container *ngIf="data.mostRecent.userId">{{ data.mostRecent.userId }}</ng-container>
+        <span *ngIf="data.mostRecent.userId" style="font-size: 90%;">{{ data.mostRecent.userId === 'guest@pledarigrond.ch' ? ('data.role.guest' | translate | uppercase ) : data.mostRecent.userId }}</span>
         {{ data.mostRecent.ip ? data.mostRecent.ip : '-' }}
       </td>
       <td *ngIf="columns.verifier.active" nzLeft class="small">
         {{ data.mostRecent.verifierId }}
       </td>
       <td *ngIf="columns.filter.active" class="button-column">
-        <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.filter_user' | translate }}</button>
-        <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" *ngIf="data.mostRecent.verifierId" style="margin-top: 4px;">{{ 'lexicon.lemma.table_actions.filter_verifier' | translate }}</button>
+        <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.filter_user' | translate }}</button>
+        <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" class="wide-button" *ngIf="data.mostRecent.verifierId" style="margin-top: 4px;">{{ 'lexicon.lemma.table_actions.filter_verifier' | translate }}</button>
       </td>
       <td *ngIf="columns.entry.active" [innerHtml]="(data.mostRecent.lemmaValues.DStichwort | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (data.mostRecent.lemmaValues.RStichwort | highlighter:filter!.searchPhrase:filter!.highlight)">
       </td>
@@ -119,8 +119,8 @@
         <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.delete' | translate }}</button>
       </td>
       <td *ngIf="columns.order.active" class="button-column">
-        <button nz-button nzSize="small" (click)="startReorder(data, 'ROMANSH');$event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.order_rm' | translate }}</button><br>
-        <button nz-button nzSize="small" (click)="startReorder(data, 'GERMAN');$event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.order_de' | translate }}</button>
+        <button nz-button nzSize="small" (click)="startReorder(data, 'ROMANSH');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_rm' | translate }}</button><br>
+        <button nz-button nzSize="small" (click)="startReorder(data, 'GERMAN');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_de' | translate }}</button>
       </td>
       <td *ngIf="columns.state.active" class="small">
         <app-verification [verification]="data.mostRecent.verification"></app-verification><br>
