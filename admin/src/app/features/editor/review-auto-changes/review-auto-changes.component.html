@@ -3,12 +3,12 @@
     <nz-content class="type-filter">
       <nz-page-header-title>Filter</nz-page-header-title>
       <nz-radio-group [(ngModel)]="searchCriteria.automaticChangesType" (ngModelChange)="changePage(0)">
-        <label nz-radio nzValue="ALL">Mussar tut</label>
-        <label nz-radio nzValue="VERBS">Verbs</label>
-        <label nz-radio nzValue="NOUNS">Substantivs</label>
-        <label nz-radio nzValue="ADJECTIVES">Adjectivs</label>
+        <label nz-radio nzValue="ALL">{{ 'review.filter.all' | translate }}</label>
+        <label nz-radio nzValue="VERBS">{{ 'review.filter.verbs' | translate }}</label>
+        <label nz-radio nzValue="NOUNS">{{ 'review.filter.nouns' | translate }}</label>
+        <label nz-radio nzValue="ADJECTIVES">{{ 'review.filter.adjectives' | translate }}</label>
       </nz-radio-group>
-      <input nz-input [(ngModel)]="searchCriteria.searchPhrase" style="width: 200px; margin-left: 36px;" [placeholder]="'Tschertgar rumantsch'" (ngModelChange)="changePage(0)">
+      <input nz-input [(ngModel)]="searchCriteria.searchPhrase" style="width: 200px; margin-left: 36px;" [placeholder]="'review.filter.search_rm' | translate" (ngModelChange)="changePage(0)">
       <nz-select [(ngModel)]="searchCriteria.searchMethod" style="width: 150px; margin-left: 36px;" (ngModelChange)="changePage(0)">
         <nz-option [nzLabel]="'lexicon.filter.method.normal' | translate" nzValue="NORMAL"></nz-option>
         <nz-option [nzLabel]="'lexicon.filter.method.intern' | translate" nzValue="INTERN"></nz-option>
@@ -24,8 +24,7 @@
   <div nz-col nzSpan="9" class="left-side">
     <nz-content>
       <nz-page-header [nzGhost]="false">
-        <nz-page-header-title>{{ 'lexicon.lemma_history.title' | translate }}</nz-page-header-title>
-        <nz-page-header-subtitle>{{ 'lexicon.lemma_history.subtitle' | translate }}</nz-page-header-subtitle>
+        <nz-page-header-title>{{ 'review.list.title' | translate }}</nz-page-header-title>
       </nz-page-header>
 
       {{ 'lexicon.lemma.results_info' | translate:{
@@ -73,45 +72,45 @@
         <nz-page-header [nzGhost]="false">
           <nz-page-header-title>{{ selectedLexEntry.mostRecent.lemmaValues.RStichwort }} ⇔ {{ selectedLexEntry.mostRecent.lemmaValues.DStichwort }}</nz-page-header-title>
           <nz-page-header-extra>
-            <button nz-button nzType="primary"  class="button-accept" (click)="acceptSelectedLemma()">Acceptar (enter)</button>
-            <button nz-button nzType="primary" nzDanger (click)="rejectSelectedLemma()">Refusar (esc)</button>
-            <button nz-button (click)="editSelectedLemma()">Modifitgar (space)</button>
+            <button nz-button nzType="primary"  class="button-accept" (click)="acceptSelectedLemma()">{{ 'review.actions.accept' | translate }}</button>
+            <button nz-button nzType="primary" nzDanger (click)="rejectSelectedLemma()">{{ 'review.actions.reject' | translate }}</button>
+            <button nz-button (click)="editSelectedLemma()">{{ 'review.actions.modify' | translate }}</button>
           </nz-page-header-extra>
         </nz-page-header>
 
         <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'NOUN'">
-          <span style="margin-right: 16px;">Correcturas automaticas:</span>
-          <button nz-button (click)="nounChangeOnlyMale()">Mo masculin (1)</button>
+          <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
+          <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} (1)</button>
         </div>
         <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V-'">
-          <span style="margin-right: 16px;">Correcturas automaticas:</span>
+          <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
         </div>
         <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'ADJECTIVE'">
-          <span style="margin-right: 16px;">Correcturas automaticas:</span>
-          <button nz-button (click)="adjectiveNoAdverbialForm()">Nagina furma adverbiala (1)</button>
+          <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
+          <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} (1)</button>
         </div>
 
         <nz-descriptions nzTitle="">
-          <nz-descriptions-item nzTitle="category"><app-diff [old]="selectedLexEntry.current.lemmaValues.categories" [new]="selectedLexEntry.mostRecent.lemmaValues.categories"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.category' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.categories" [new]="selectedLexEntry.mostRecent.lemmaValues.categories"></app-diff></nz-descriptions-item>
         </nz-descriptions>
 
-        <nz-descriptions nzTitle="Deutsch">
-          <nz-descriptions-item nzTitle="tudestg"><app-diff [old]="selectedLexEntry.current.lemmaValues.DStichwort" [new]="selectedLexEntry.mostRecent.lemmaValues.DStichwort"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="genus"><app-diff [old]="selectedLexEntry.current.lemmaValues.DGenus" [new]="selectedLexEntry.mostRecent.lemmaValues.DGenus"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Search term"><app-diff [old]="selectedLexEntry.current.lemmaValues.DTags" [new]="selectedLexEntry.mostRecent.lemmaValues.DTags"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Grammatik"><app-diff [old]="selectedLexEntry.current.lemmaValues.DGrammatik" [new]="selectedLexEntry.mostRecent.lemmaValues.DGrammatik"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Semantica"><app-diff [old]="selectedLexEntry.current.lemmaValues.DSubsemantik" [new]="selectedLexEntry.mostRecent.lemmaValues.DSubsemantik"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Link"><app-diff [old]="selectedLexEntry.current.lemmaValues.DRedirect" [new]="selectedLexEntry.mostRecent.lemmaValues.DRedirect"></app-diff></nz-descriptions-item>
+        <nz-descriptions [nzTitle]="'edit.lemma.german' | translate">
+          <nz-descriptions-item [nzTitle]="'edit.lemma.de' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.DStichwort" [new]="selectedLexEntry.mostRecent.lemmaValues.DStichwort"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.de_gender' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.DGenus" [new]="selectedLexEntry.mostRecent.lemmaValues.DGenus"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.de_tags' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.DTags" [new]="selectedLexEntry.mostRecent.lemmaValues.DTags"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.de_grammar' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.DGrammatik" [new]="selectedLexEntry.mostRecent.lemmaValues.DGrammatik"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.de_semantics' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.DSubsemantik" [new]="selectedLexEntry.mostRecent.lemmaValues.DSubsemantik"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.de_link' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.DRedirect" [new]="selectedLexEntry.mostRecent.lemmaValues.DRedirect"></app-diff></nz-descriptions-item>
         </nz-descriptions>
 
-        <nz-descriptions nzTitle="Rumantsch">
-          <nz-descriptions-item nzTitle="rumantsch"><app-diff [old]="selectedLexEntry.current.lemmaValues.RStichwort" [new]="selectedLexEntry.mostRecent.lemmaValues.RStichwort"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="genus"><app-diff [old]="selectedLexEntry.current.lemmaValues.RGenus" [new]="selectedLexEntry.mostRecent.lemmaValues.RGenus"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Search term"><app-diff [old]="selectedLexEntry.current.lemmaValues.RTags" [new]="selectedLexEntry.mostRecent.lemmaValues.RTags"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Grammatik"><app-diff [old]="selectedLexEntry.current.lemmaValues.RGrammatik" [new]="selectedLexEntry.mostRecent.lemmaValues.RGrammatik"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Semantica"><app-diff [old]="selectedLexEntry.current.lemmaValues.RSubsemantik" [new]="selectedLexEntry.mostRecent.lemmaValues.RSubsemantik"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Link"><app-diff [old]="selectedLexEntry.current.lemmaValues.RRedirect" [new]="selectedLexEntry.mostRecent.lemmaValues.RRedirect"></app-diff></nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionType" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionType"></app-diff></nz-descriptions-item>
+        <nz-descriptions [nzTitle]="'edit.lemma.romansh' | translate">
+          <nz-descriptions-item [nzTitle]="'edit.lemma.rm' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.RStichwort" [new]="selectedLexEntry.mostRecent.lemmaValues.RStichwort"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.rm_gender' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.RGenus" [new]="selectedLexEntry.mostRecent.lemmaValues.RGenus"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.rm_tags' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.RTags" [new]="selectedLexEntry.mostRecent.lemmaValues.RTags"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.rm_grammar' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.RGrammatik" [new]="selectedLexEntry.mostRecent.lemmaValues.RGrammatik"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.RSubsemantik" [new]="selectedLexEntry.mostRecent.lemmaValues.RSubsemantik"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.rm_link' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.RRedirect" [new]="selectedLexEntry.mostRecent.lemmaValues.RRedirect"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'edit.lemma.inflection.title' | translate"><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionType" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionType"></app-diff></nz-descriptions-item>
         </nz-descriptions>
 
         <nz-descriptions nzTitle="Flexiuns da substantivs" *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'NOUN' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'NOUN'">
@@ -136,16 +135,16 @@
         <table *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'V' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V'" class="verbs-table">
           <tr>
             <td>
-              <b>Infinitiv: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.infinitiv" [new]="selectedLexEntry.mostRecent.lemmaValues.infinitiv"></app-diff>
+              Infinitiv: <app-diff [old]="selectedLexEntry.current.lemmaValues.infinitiv" [new]="selectedLexEntry.mostRecent.lemmaValues.infinitiv"></app-diff>
             </td>
             <td></td>
           </tr>
           <tr>
             <td>
-              <b>Tip da flexiun: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionSubtype" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionSubtype"></app-diff>
+              Tip da flexiun: <app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionSubtype" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionSubtype"></app-diff>
             </td>
             <td>
-              <b>Conjugaziun regulara: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.RRegularInflection" [new]="selectedLexEntry.mostRecent.lemmaValues.RRegularInflection"></app-diff>
+              Conjugaziun regulara: <app-diff [old]="selectedLexEntry.current.lemmaValues.RRegularInflection" [new]="selectedLexEntry.mostRecent.lemmaValues.RRegularInflection"></app-diff>
             </td>
           </tr>
           <tr style="height: 16px;"></tr>

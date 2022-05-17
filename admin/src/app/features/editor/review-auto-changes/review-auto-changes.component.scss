@@ -33,6 +33,7 @@ nz-list-item.selected {
 }
 
 .lemma-list {
+  margin-top: 16px;
   overflow-y: scroll;
   max-height: calc(100vh - 450px);
 }

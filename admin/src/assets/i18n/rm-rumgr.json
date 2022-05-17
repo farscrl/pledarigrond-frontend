@@ -346,5 +346,27 @@
     "romansh": "rumantsch",
     "german": "tudestg",
     "subject": "Vossa dumonda al Pledari Grond"
+  },
+  "review": {
+    "filter": {
+      "all": "Mussar tut",
+      "verbs": "Verbs",
+      "nouns": "Substantivs",
+      "adjectives": "Adjectivs",
+      "search_rm": "Tschertgar rumantsch"
+    },
+    "list": {
+      "title": "Pleds adattads automaticamain"
+    },
+    "actions": {
+      "accept": "Acceptar (enter)",
+      "reject": "Refusar (esc)",
+      "modify": "Modifitgar (space)",
+      "automatic": {
+        "title": "Correcturas automaticas",
+        "only_m": "Mo masculin",
+        "no_adverbial": "Nagina furma adverbiala"
+      }
+    }
   }
 }
