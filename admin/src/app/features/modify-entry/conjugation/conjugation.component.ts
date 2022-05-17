@@ -47,6 +47,10 @@ export class ConjugationComponent implements OnInit {
     if (this.workingLemmaVersion.lemmaValues.RRegularInflection === "false") {
       this.isRegular = false;
     }
+
+    if (this.shouldGuessInflectionSubtype()) {
+      this.guessInflectionSubtype();
+    }
   }
 
   updateForms() {
@@ -144,6 +148,82 @@ export class ConjugationComponent implements OnInit {
         ...values.inflectionValues
       };
       this.isRegular = true;
+      this.setUpForm();
+    });
+  }
+
+  private shouldGuessInflectionSubtype(): boolean {
+    if (
+      this.workingLemmaVersion.lemmaValues.preschentsing1 ||
+      this.workingLemmaVersion.lemmaValues.preschentsing2 ||
+      this.workingLemmaVersion.lemmaValues.preschentsing3 ||
+      this.workingLemmaVersion.lemmaValues.preschentplural1 ||
+      this.workingLemmaVersion.lemmaValues.preschentplural2 ||
+      this.workingLemmaVersion.lemmaValues.preschentplural3 ||
+
+      this.workingLemmaVersion.lemmaValues.imperfectsing1 ||
+      this.workingLemmaVersion.lemmaValues.imperfectsing2 ||
+      this.workingLemmaVersion.lemmaValues.imperfectsing3 ||
+      this.workingLemmaVersion.lemmaValues.imperfectplural1 ||
+      this.workingLemmaVersion.lemmaValues.imperfectplural2 ||
+      this.workingLemmaVersion.lemmaValues.imperfectplural3 ||
+
+      this.workingLemmaVersion.lemmaValues.conjunctivsing1 ||
+      this.workingLemmaVersion.lemmaValues.conjunctivsing2 ||
+      this.workingLemmaVersion.lemmaValues.conjunctivsing3 ||
+      this.workingLemmaVersion.lemmaValues.conjunctivplural1 ||
+      this.workingLemmaVersion.lemmaValues.conjunctivplural2 ||
+      this.workingLemmaVersion.lemmaValues.conjunctivplural3 ||
+
+      this.workingLemmaVersion.lemmaValues.cundizionalsing1 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalsing2 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalsing3 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalplural1 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalplural2 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalplural3 ||
+
+      this.workingLemmaVersion.lemmaValues.futursing1 ||
+      this.workingLemmaVersion.lemmaValues.futursing2 ||
+      this.workingLemmaVersion.lemmaValues.futursing3 ||
+      this.workingLemmaVersion.lemmaValues.futurplural1 ||
+      this.workingLemmaVersion.lemmaValues.futurplural2 ||
+      this.workingLemmaVersion.lemmaValues.futurplural3 ||
+
+      this.workingLemmaVersion.lemmaValues.participperfectms ||
+      this.workingLemmaVersion.lemmaValues.participperfectfs ||
+      this.workingLemmaVersion.lemmaValues.participperfectmp ||
+      this.workingLemmaVersion.lemmaValues.participperfectfp ||
+
+      this.workingLemmaVersion.lemmaValues.imperativ1 ||
+      this.workingLemmaVersion.lemmaValues.imperativ2 ||
+
+      this.workingLemmaVersion.lemmaValues.gerundium
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  private guessInflectionSubtype() {
+    const baseForm = this.workingLemmaVersion.lemmaValues.infinitiv ? this.workingLemmaVersion.lemmaValues.infinitiv : this.workingLemmaVersion.lemmaValues.RStichwort ? this.workingLemmaVersion.lemmaValues.RStichwort : "";
+    if (baseForm === "") {
+      console.log("No base form defined, guessing impossible");
+      return;
+    }
+
+    const genus = this.workingLemmaVersion.lemmaValues.RGenus;
+    const flex = this.workingLemmaVersion.lemmaValues.RFlex;
+    this.inflectionService.guessInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'V', baseForm, genus, flex).subscribe(values => {
+      // for short words the guessing can be empty -> just ignore empty response
+      if (!values) {
+        return;
+      }
+      this.isRegular = true;
+      this.workingLemmaVersion.lemmaValues.RInflectionSubtype = values.inflectionSubType.id;
+      this.workingLemmaVersion.lemmaValues = {
+        ...this.workingLemmaVersion.lemmaValues,
+        ...values.inflectionValues
+      };
       this.setUpForm();
     });
   }
