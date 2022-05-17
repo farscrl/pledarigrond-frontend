@@ -83,7 +83,7 @@
           <span style="margin-right: 16px;">Correcturas automaticas:</span>
           <button nz-button (click)="nounChangeOnlyMale()">Mo masculin (1)</button>
         </div>
-        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V'">
+        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V-'">
           <span style="margin-right: 16px;">Correcturas automaticas:</span>
         </div>
         <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'ADJECTIVE'">
@@ -92,7 +92,7 @@
         </div>
 
         <nz-descriptions nzTitle="">
-          <nz-descriptions-item nzTitle="category">{{ selectedLexEntry.mostRecent.lemmaValues.categories }} </nz-descriptions-item>
+          <nz-descriptions-item nzTitle="category"><app-diff [old]="selectedLexEntry.current.lemmaValues.categories" [new]="selectedLexEntry.mostRecent.lemmaValues.categories"></app-diff></nz-descriptions-item>
         </nz-descriptions>
 
         <nz-descriptions nzTitle="Deutsch">
@@ -132,17 +132,24 @@
           <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="selectedLexEntry.current.lemmaValues.adverbialForm" [new]="selectedLexEntry.mostRecent.lemmaValues.adverbialForm"></app-diff></nz-descriptions-item>
         </nz-descriptions>
 
+        <div class="verb-title">Conjugaziun da verbs</div>
         <table *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'V' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V'" class="verbs-table">
           <tr>
             <td>
               <b>Infinitiv: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.infinitiv" [new]="selectedLexEntry.mostRecent.lemmaValues.infinitiv"></app-diff>
             </td>
+            <td></td>
+          </tr>
+          <tr>
             <td>
               <b>Tip da flexiun: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionSubtype" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionSubtype"></app-diff>
             </td>
+            <td>
+              <b>Conjugaziun regulara: </b><app-diff [old]="selectedLexEntry.current.lemmaValues.RRegularInflection" [new]="selectedLexEntry.mostRecent.lemmaValues.RRegularInflection"></app-diff>
+            </td>
           </tr>
-
-          <tr style="margin-top: 16px;">
+          <tr style="height: 16px;"></tr>
+          <tr>
             <td><b>Preschent</b></td>
             <td><b>Imperfect</b></td>
           </tr>
