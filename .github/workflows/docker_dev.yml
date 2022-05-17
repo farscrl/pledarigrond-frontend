@@ -25,7 +25,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: docker build
         run: |
-          docker build --build-arg angular_env=test -t pledarigrond/pledari-grond-frontend:latest-dev-test .
+          docker build --build-arg ANGULAR_ENV=test -t pledarigrond/pledari-grond-frontend:latest-dev-test .
       - name: docker push
         run: |
           docker push pledarigrond/pledari-grond-frontend --all-tags

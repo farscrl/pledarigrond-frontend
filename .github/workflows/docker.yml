@@ -25,7 +25,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: docker build
         run: |
-          docker build --build-arg angular_env=test -t pledarigrond/pledari-grond-frontend:latest-test -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}-test .
+          docker build --build-arg ANGULAR_ENV=test -t pledarigrond/pledari-grond-frontend:latest-test -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}-test .
       - name: docker push
         run: |
           docker push pledarigrond/pledari-grond-frontend --all-tags
@@ -46,7 +46,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: docker build
         run: |
-          docker build --build-arg angular_env=prod -t pledarigrond/pledari-grond-frontend:latest-prod -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}-prod .
+          docker build --build-arg ANGULAR_ENV=prod -t pledarigrond/pledari-grond-frontend:latest-prod -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}-prod .
       - name: docker push
         run: |
           docker push pledarigrond/pledari-grond-frontend --all-tags
