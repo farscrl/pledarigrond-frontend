@@ -1,0 +1,31 @@
+name: Docker Build dev
+
+on:
+  push:
+    branches: [ surmiran-inflection ]
+  pull_request:
+    branches: [ surmiran-inflection ]
+
+  workflow_dispatch:
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: docker build
+        run: |
+          docker build --build-arg angular_env=test -t pledarigrond/pledari-grond-frontend:latest-dev-test .
+      - name: docker push
+        run: |
+          docker push pledarigrond/pledari-grond-frontend --all-tags
