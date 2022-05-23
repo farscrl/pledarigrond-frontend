@@ -112,7 +112,9 @@
         <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.filter_user' | translate }}</button>
         <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" class="wide-button" *ngIf="data.mostRecent.verifierId" style="margin-top: 4px;">{{ 'lexicon.lemma.table_actions.filter_verifier' | translate }}</button>
       </td>
-      <td *ngIf="columns.entry.active" [innerHtml]="(data.mostRecent.lemmaValues.DStichwort | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (data.mostRecent.lemmaValues.RStichwort | highlighter:filter!.searchPhrase:filter!.highlight)">
+      <td *ngIf="columns.entry.active">
+        <div [innerHtml]="(getLemma(data, false) | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (getLemma(data, true) | highlighter:filter!.searchPhrase:filter!.highlight)"></div>
+        <div style="font-size: 85%; font-style: italic;">{{ (data.mostRecent.lemmaValues.contact_comment && data.mostRecent.lemmaValues.contact_comment.length > 35) ? ((data.mostRecent.lemmaValues.contact_comment | slice:0:35)+'...') : (data.mostRecent.lemmaValues.contact_comment) }}</div>
       </td>
       <td *ngIf="columns.actions.active" class="button-column">
         <button nz-button nzSize="small" nzType="primary" (click)="editEntry(data.id!); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.edit' | translate }}</button><br>

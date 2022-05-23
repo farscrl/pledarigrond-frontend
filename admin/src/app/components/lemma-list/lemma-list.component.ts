@@ -243,6 +243,33 @@ export class LemmaListComponent implements OnInit {
     });
   }
 
+  getLemma(entry: LexEntry, isRomansh: boolean) {
+    if (!isRomansh) {
+      // german
+      let value = entry.mostRecent.lemmaValues.DStichwort;
+      if (!!entry.mostRecent.lemmaValues.DSubsemantik) {
+        value += " (" + entry.mostRecent.lemmaValues.DSubsemantik + ")";
+      }
+      if (!!entry.mostRecent.lemmaValues.DGenus) {
+        value += " <i>[" + entry.mostRecent.lemmaValues.DGenus + "]</i>";
+      }
+      return value
+    } else {
+      // romansh
+      let value = entry.mostRecent.lemmaValues.RStichwort;
+      if (!!entry.mostRecent.lemmaValues.RFlex) {
+        value += " <i>[" + entry.mostRecent.lemmaValues.RFlex + "]</i>";
+      }
+      if (!!entry.mostRecent.lemmaValues.RSubsemantik) {
+        value += " (" + entry.mostRecent.lemmaValues.RSubsemantik + ")";
+      }
+      if (!!entry.mostRecent.lemmaValues.RGenus) {
+        value += " <i>[" + entry.mostRecent.lemmaValues.RGenus + "]</i>";
+      }
+      return value
+    }
+  }
+
   private openLemmaModal(entryId?: string) {
     const modal = this.modalService.create({
       nzTitle: !!entryId ? this.translateService.instant('edit.titles.edit') : this.translateService.instant('edit.titles.add'),
