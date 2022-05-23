@@ -57,6 +57,9 @@ nz-list-item.selected {
   &.edited {
     color: blue;
   }
+  &.later {
+    color: rgb(120, 66, 0);
+  }
 }
 
 .pg-pagination {

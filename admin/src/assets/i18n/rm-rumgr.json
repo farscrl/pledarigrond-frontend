@@ -353,6 +353,7 @@
       "verbs": "Verbs",
       "nouns": "Substantivs",
       "adjectives": "Adjectivs",
+      "later": "Pli tard",
       "search_rm": "Tschertgar rumantsch"
     },
     "list": {
@@ -362,6 +363,7 @@
       "accept": "Acceptar (enter)",
       "reject": "Refusar (esc)",
       "modify": "Modifitgar (space)",
+      "later": "Repassar pli tard",
       "automatic": {
         "title": "Correcturas automaticas",
         "only_m": "Mo masculin",

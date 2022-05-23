@@ -84,6 +84,10 @@ export class EditorService {
     return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_version'), body);
   }
 
+  reviewLaterLexEntry(language: Language, entryId: string) {
+    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/review_later_version'), null);
+  }
+
   dropEntry(language: Language, entryId: string) {
     return this.httpClient.delete<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId));
   }
@@ -252,6 +256,10 @@ export class EditorService {
 
     if (!!editorSearchCriteria.automaticChangesType && editorSearchCriteria.automaticChangesType != 'ALL') {
       params = params.set('automaticChangesType', editorSearchCriteria.automaticChangesType);
+    }
+
+    if (editorSearchCriteria.showReviewLater !== undefined) {
+      params = params.set('showReviewLater', editorSearchCriteria.showReviewLater);
     }
 
     if (!!editorSearchCriteria.verification && (editorSearchCriteria.verification)) {

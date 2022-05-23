@@ -89,6 +89,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.searchCriteria.suggestions = true;
     this.searchCriteria.searchDirection = 'ROMANSH';
     this.searchCriteria.verification = 'UNVERIFIED';
+    this.searchCriteria.showReviewLater = false;
 
     this.changePage(0);
   }
@@ -130,7 +131,6 @@ export class ReviewAutoChangesComponent implements OnInit {
     const lemma = this.selectedLemma;
     this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
       lemma.local_review_status = 'ACCEPTED';
-      this.createNotification('success', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was accepted");
       this.downOne();
     }, (error) => {
       console.error(error);
@@ -144,7 +144,19 @@ export class ReviewAutoChangesComponent implements OnInit {
     const lemma = this.selectedLemma;
     this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
       lemma.local_review_status = 'REJECTED';
-      this.createNotification('error', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was rejected");
+      this.downOne();
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
+  reviewLater() {
+    if (!this.selectedLexEntry || !this.selectedLemma) {
+      return;
+    }
+    const lemma = this.selectedLemma;
+    this.editorService.reviewLaterLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId).subscribe((entry) => {
+      lemma.local_review_status = 'LATER';
       this.downOne();
     }, (error) => {
       console.error(error);

@@ -18,7 +18,7 @@ export class LemmaVersion {
 
 export class LemmaVersionUi extends LemmaVersion {
   selected: boolean = false;
-  local_review_status: 'ACCEPTED'|'REJECTED'|'EDITED'|'UNDEFINED' = 'UNDEFINED';
+  local_review_status: 'ACCEPTED'|'REJECTED'|'EDITED'|'LATER'|'UNDEFINED' = 'UNDEFINED';
 }
 
 export class LemmaValues {

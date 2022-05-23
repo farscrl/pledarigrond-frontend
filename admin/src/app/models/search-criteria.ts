@@ -17,6 +17,7 @@ export class EditorSearchCriteria extends SearchCriteria {
   excludeAutomaticChanged: boolean = false;
   automaticChangesType: AutomaticChangesType = 'ALL';
   verification?: Verification;
+  showReviewLater?: boolean;
 }
 
 export type SearchDirection = 'BOTH'|'ROMANSH'|'GERMAN';
