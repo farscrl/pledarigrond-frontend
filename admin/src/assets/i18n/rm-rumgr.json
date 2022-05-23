@@ -281,6 +281,7 @@
     },
     "noun": {
       "title": "Generar furmas da substantivs",
+      "type": "Tip da flexiun",
       "forms": {
         "baseForm": "Furma da basa",
         "mSingular": "masculin singular",
@@ -292,6 +293,7 @@
     },
     "adjective": {
       "title": "Generar furmas dad adjectivs",
+      "type": "Tip da flexiun",
       "forms": {
         "baseForm": "Furma da basa",
         "mSingular": "masculin singular",
