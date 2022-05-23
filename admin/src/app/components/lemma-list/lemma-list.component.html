@@ -116,7 +116,8 @@
       </td>
       <td *ngIf="columns.actions.active" class="button-column">
         <button nz-button nzSize="small" nzType="primary" (click)="editEntry(data.id!); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.edit' | translate }}</button><br>
-        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.delete' | translate }}</button>
+        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data); $event.stopPropagation();" *ngIf="(showRejectButton && data.mostRecent.status !== 'NEW_MODIFICATION') || (showRejectButton && data.mostRecent.status === 'NEW_MODIFICATION' && data.mostRecent.verification === 'ACCEPTED') || !showRejectButton">{{ 'lexicon.lemma.table_actions.delete' | translate }}</button>
+        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="rejectEntry(data); $event.stopPropagation();" *ngIf="showRejectButton && data.mostRecent.status === 'NEW_MODIFICATION' && data.mostRecent.verification !== 'ACCEPTED'">{{ 'lexicon.lemma.table_actions.reject' | translate }}</button>
       </td>
       <td *ngIf="columns.order.active" class="button-column">
         <button nz-button nzSize="small" (click)="startReorder(data, 'ROMANSH');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_rm' | translate }}</button><br>

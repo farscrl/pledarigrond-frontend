@@ -40,6 +40,9 @@ export class LemmaListComponent implements OnInit {
       return this.resultPage;
   }
 
+  @Input()
+  showRejectButton = false;
+
   @Output()
   updatePage = new EventEmitter<number>();
 
@@ -168,6 +171,21 @@ export class LemmaListComponent implements OnInit {
     });
   }
 
+  rejectEntry(entry: LexEntry) {
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('lexicon.lemma.reject.title'),
+      nzContent: '<b style="color: red;">' +  entry.current.lemmaValues.DStichwort + ' / ' + entry.current.lemmaValues.RStichwort + '</b>',
+      nzClosable: false,
+      nzOkDanger: true,
+      nzCancelText: this.translateService.instant('lexicon.lemma.reject.cancel'),
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+      },
+      nzOnOk: () => this.dropRejectConfirmed(entry!),
+      nzOnCancel: () => {}
+    });
+  }
+
   rejectSelected() {
     const count = this.setOfCheckedId.size;
 
@@ -246,6 +264,12 @@ export class LemmaListComponent implements OnInit {
 
   private dropEntryConfirmed(entryId: string) {
     this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe(() => {
+      this.updatePage.emit(this.resultPage!.number);
+    });
+  }
+
+  private dropRejectConfirmed(lexEntry: LexEntry) {
+    this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!, lexEntry.mostRecent).subscribe(() => {
       this.updatePage.emit(this.resultPage!.number);
     });
   }

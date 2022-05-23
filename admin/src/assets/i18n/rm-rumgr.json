@@ -127,6 +127,7 @@
         "filter_verifier": "Filtrar revisur*a",
         "edit": "Modifitgar",
         "delete": "Stizzar",
+        "reject": "Refusar",
         "order_rm": "Successiun rumantsch",
         "order_de": "Successiun tudestg"
       },
@@ -138,6 +139,10 @@
       },
       "delete": {
         "title": "Vulais Vus stizzar l'endataziun?",
+        "cancel": "Interrumper"
+      },
+      "reject": {
+        "title": "Vulais Vus refusar questa midada?",
         "cancel": "Interrumper"
       }
     }
