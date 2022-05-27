@@ -367,9 +367,9 @@
       "title": "Pleds adattads automaticamain"
     },
     "actions": {
-      "accept": "Acceptar (enter)",
-      "reject": "Refusar (esc)",
-      "modify": "Modifitgar (space)",
+      "accept": "Acceptar",
+      "reject": "Refusar",
+      "modify": "Modifitgar",
       "later": "Repassar pli tard",
       "automatic": {
         "title": "Correcturas automaticas",

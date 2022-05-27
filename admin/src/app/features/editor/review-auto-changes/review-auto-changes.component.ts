@@ -17,6 +17,7 @@ export enum KEY_CODE {
   KEY2 = 50,
   KEY3 = 51,
   ENTER = 13,
+  DELETE = 46,
   ESCAPE = 27,
   SPACE = 32,
   UP_ARROW = 38,
@@ -49,7 +50,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }
     if(event.keyCode == KEY_CODE.ENTER){
       this.acceptSelectedLemma();
-    } else if (event.keyCode === KEY_CODE.ESCAPE) {
+    } else if (event.keyCode === KEY_CODE.DELETE) {
       this.rejectSelectedLemma();
     } else if (event.keyCode === KEY_CODE.SPACE) {
       this.editSelectedLemma();
