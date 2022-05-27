@@ -13,10 +13,11 @@ nz-content {
 }
 
 .right-side {
-  min-height: calc(100vh - 64px - 48px - 47px);
+  height: calc(100vh - 64px - 48px - 47px - 82px - 24px - 24px);
 
   nz-content {
-    height: 100%;
+    overflow-y: scroll;
+    max-height: calc(100vh - 64px - 48px - 47px - 82px);
   }
 }
 
