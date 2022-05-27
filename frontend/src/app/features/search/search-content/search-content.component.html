@@ -30,7 +30,7 @@
           <tr *ngFor="let result of searchResults">
             <td>
               <div>
-                <span class="verb_overlay" *ngIf="hasVerbLink(result, true)">V</span>
+                <span class="verb_overlay" *ngIf="hasVerbLink(result, true)" (click)="showVerbsModal(result)">V</span>
               </div>
             </td>
             <td [class.unverified]="result.verification === 'UNVERIFIED'">
