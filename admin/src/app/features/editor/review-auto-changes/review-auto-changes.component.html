@@ -83,14 +83,14 @@
 
         <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'NOUN'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
-          <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} (1)</button>
+          <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} <span class="keyboard">1</span></button>
         </div>
         <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V-'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
         </div>
         <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'ADJECTIVE'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
-          <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} (1)</button>
+          <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} <span class="keyboard">1</span></button>
         </div>
 
         <nz-descriptions nzTitle="">
