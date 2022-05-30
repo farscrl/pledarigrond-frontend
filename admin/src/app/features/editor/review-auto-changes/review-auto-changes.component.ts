@@ -210,7 +210,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     delete workingLemmaVersion.pgValues.creator;
 
     this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLexEntry!.id!, workingLemmaVersion).subscribe((entry) => {
-      this.selectedLexEntry = entry;
+      this.replaceLemma(entry);
     });
   }
 
@@ -290,8 +290,20 @@ export class ReviewAutoChangesComponent implements OnInit {
         ...values.inflectionValues
       };
       this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLexEntry!.id!, workingLemmaVersion).subscribe((entry) => {
-        this.selectedLexEntry = entry;
+        this.replaceLemma(entry);
       })
     });
+  }
+
+  private replaceLemma(entry: LexEntry) {
+    this.selectedLexEntry = entry;
+    this.selectedLemma = entry.mostRecent as LemmaVersionUi;
+    this.selectedLemma.selected = true;
+
+    for (let i = 0; i < this.lemmas.length; i++) {
+      if (this.lemmas[i].lexEntryId === entry.mostRecent.lexEntryId) {
+        this.lemmas[i] = entry.mostRecent as LemmaVersionUi;
+      }
+    }
   }
 }
