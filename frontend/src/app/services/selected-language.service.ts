@@ -96,6 +96,7 @@ export class SelectedLanguageService {
     if (segments.length < 2) {
       return null;
     }
-    return segments[1];
+    const subsegments = segments[1].split('?');
+    return subsegments[0];
   }
 }
