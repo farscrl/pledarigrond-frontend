@@ -183,12 +183,15 @@ export class ReviewAutoChangesComponent implements OnInit {
         directlyLoadDetailView: true,
       },
       nzOnOk: () => {
-        lemma.local_review_status = 'EDITED';
-        this.createNotification('error', lemma.lemmaValues.RStichwort + " ⇔ " + lemma.lemmaValues.DStichwort, "This change was edited");
-        this.downOne();
+        this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lemma.lexEntryId).subscribe(entry => {
+          this.replaceLemma(entry);
+          this.selectedLemma!.local_review_status = 'ACCEPTED';
+          this.downOne();
+        });
       },
     });
-    modal.afterClose.subscribe(() => {
+
+    modal.afterClose.subscribe((evt) => {
       this.isWindowOpen = false;
     });
   }
@@ -255,7 +258,8 @@ export class ReviewAutoChangesComponent implements OnInit {
       return;
     }
 
-    const idx = this.lemmas.indexOf(this.selectedLemma);
+    const sl = this.selectedLemma;
+    const idx = this.lemmas.findIndex(el => el.lexEntryId === sl.lexEntryId);
 
     if (idx - 1 > -1) {
       this.selectLemma(this.lemmas[idx-1]);
@@ -267,7 +271,8 @@ export class ReviewAutoChangesComponent implements OnInit {
       return;
     }
 
-    const idx = this.lemmas.indexOf(this.selectedLemma);
+    const sl = this.selectedLemma;
+    const idx = this.lemmas.findIndex(el => el.lexEntryId === sl.lexEntryId);
 
     if (idx + 1 < this.lemmas.length) {
       this.selectLemma(this.lemmas[idx+1]);

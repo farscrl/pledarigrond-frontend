@@ -295,6 +295,7 @@ export class MainEntryComponent implements OnInit {
   private saveNewEntry(asSuggestion: boolean) {
     const lexEntry = new LexEntry();
     const lemmaVersion = new LemmaVersion();
+    lemmaVersion.lexEntryId = this.lemmaVersion?.lexEntryId;
     lemmaVersion.lemmaValues = {
       ...this.lemmaVersion?.lemmaValues,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
@@ -304,8 +305,8 @@ export class MainEntryComponent implements OnInit {
     lexEntry.mostRecent = lemmaVersion;
 
     this.editorService.newLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry, asSuggestion).subscribe(data => {
-      this.cancel();
       this.modal.triggerOk();
+      this.cancel();
     }, error => {
       console.error(error);
     });
@@ -313,21 +314,22 @@ export class MainEntryComponent implements OnInit {
 
   private updateEntry(asSuggestion: boolean) {
     const lemmaVersion = new LemmaVersion();
+    lemmaVersion.lexEntryId = this.lemmaVersion?.lexEntryId;
     lemmaVersion.lemmaValues = {
       ...this.lemmaVersion?.lemmaValues,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
     if (asSuggestion) {
       this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
-        this.cancel();
         this.modal.triggerOk();
+        this.cancel();
       }, error => {
         console.error(error);
       });
     } else {
       this.editorService.modifyAndAccepptLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
-        this.cancel();
         this.modal.triggerOk();
+        this.cancel();
       }, error => {
         console.error(error);
       });
