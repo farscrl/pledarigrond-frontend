@@ -5,7 +5,7 @@
     <div class="search-results">
       <span id="searchphrase"> {{ searchCriteria.searchPhrase }}</span>
       <span id="searchStats">
-        {{ 'search.results' | translate:{ start: startIndex, end: stopIndex, total: totalEntries } }}
+        {{ 'search.results' | translate:{ start : startIndex, end : stopIndex, total : totalEntries } }}
       </span>
 
       <table class="resultlist">
@@ -82,7 +82,7 @@
   <div *ngIf="searchResults.length === 0 && searchCriteria.searchPhrase && searchCriteria.searchPhrase !== ''">
     <div class="not-found">
       <div>
-        {{ 'search.not_found' | translate:{ searchPhrase: searchCriteria.searchPhrase } }}
+        {{ 'search.not_found' | translate:{ searchPhrase : searchCriteria.searchPhrase } }}
       </div>
       <a class="btn" (click)="openSuggestionModal()"><i class="icon-info-sign"></i>far ina proposta </a>
     </div>
