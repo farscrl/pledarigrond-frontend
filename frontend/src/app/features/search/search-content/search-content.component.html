@@ -1,5 +1,5 @@
 <div class="search-main" [class.center-search]="searchResults.length === 0 && searchCriteria.searchPhrase === ''">
-  <app-search-options [searchCriteria]="searchCriteria" (searchCriteriaChange)="search($event)"></app-search-options>
+  <app-search-options [searchCriteria]="searchCriteria" (searchCriteriaChange)="search($event)" (forceSearchCriteriaChange)="searchImmediate($event)"></app-search-options>
 
   <div class="result-container" *ngIf="searchResults.length > 0">
     <div class="search-results">

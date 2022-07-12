@@ -14,6 +14,9 @@ export class SearchOptionsComponent implements OnInit {
   @Output()
   searchCriteriaChange = new EventEmitter<SearchCriteria>();
 
+  @Output()
+  forceSearchCriteriaChange = new EventEmitter<SearchCriteria>();
+
   showDetails = false;
 
   constructor() { }
@@ -30,5 +33,9 @@ export class SearchOptionsComponent implements OnInit {
 
   emitSearch() {
     this.searchCriteriaChange.emit(this.searchCriteria);
+  }
+
+  forceSarch() {
+    this.forceSearchCriteriaChange.emit(this.searchCriteria);
   }
 }

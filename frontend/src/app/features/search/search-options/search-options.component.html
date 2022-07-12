@@ -9,7 +9,7 @@
             <input type="text" name="searchPhrase" id="searchPhrase" [(ngModel)]="searchCriteria.searchPhrase" (keyup)="emitSearch()" autocomplete="off" autofocus #searchPhrase>
           </div>
           <div class="small" style="margin-left: 32px;">
-            <button (click)="emitSearch()">{{ 'search.search' | translate }}</button>
+            <button (click)="forceSarch()">{{ 'search.search' | translate }}</button>
           </div>
         </div>
 
