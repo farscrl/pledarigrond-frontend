@@ -3,7 +3,12 @@
     <div *ngIf="isLoadingData">
       Datas vegnan chargiadas
     </div>
-    <textarea id="speller" spellcheck="false" [disabled]="isLoadingData" [(ngModel)]="textToSpell" (keyup)="onKeyUp($event)" (paste)="onPaste($event)"></textarea>
+    <textarea id="speller" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" [disabled]="isLoadingData" [(ngModel)]="textToSpell" (keyup)="onKeyUp($event)" (paste)="onPaste($event)" (contextmenu)="onRightClick($event)"></textarea>
+    <app-spellchecker-context-menu
+      *ngIf="searchSuggestions.length > 0 && contextMenuVisible"
+      [ngStyle]="getRightClickMenuStyle()"
+      [contextMenuItems]="searchSuggestions"
+      (onContextMenuItemClick)="handleMenuItemClick($event)"></app-spellchecker-context-menu>
   </div>
   <div class="infos">
     <p>

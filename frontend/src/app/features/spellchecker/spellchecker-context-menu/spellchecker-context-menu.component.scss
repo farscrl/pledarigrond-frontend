@@ -1,0 +1,17 @@
+.context-menu {
+  background-color: #cecece;
+  border-radius: 5px;
+  min-width: 150px;
+
+  .menu-link {
+    padding: 6px;
+  }
+
+  hr {
+    margin: 0;
+    /* color: gray; */
+    /* background-color: gray; */
+    border-top: 1px solid gray;
+    border-bottom: 0;
+  }
+}

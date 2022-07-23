@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 // @ts-ignore
 import Typo from 'typo-js';
 
@@ -19,6 +19,12 @@ export class SpellcheckerComponent implements OnInit {
   wordList: string[] = [];
 
   textareaHighlighter: any;
+
+  selectedText = "";
+  searchSuggestions: string[] = [];
+  contextMenuVisible = false;
+  rightClickMenuPositionX: number = 100;
+  rightClickMenuPositionY: number = 100;
 
   constructor() { }
 
@@ -59,7 +65,6 @@ export class SpellcheckerComponent implements OnInit {
     }
 
     this.textareaHighlighter.handleInput();
-    //$(mt_check).highlightWithinTextarea('update');
   }
 
   tokenizeText(text: string): string[] {
@@ -83,9 +88,14 @@ export class SpellcheckerComponent implements OnInit {
 
     // Clean the words
     wordList.forEach((o, i, a) => a[i] =
-      a[i].trim().replace(/[.,?!\s]/g, '').replace(/’/g, "'"));
+      a[i] = this.cleanString(a[i])
+    );
 
     return wordList;
+  }
+
+  private cleanString(string: string): string {
+    return string.trim().replace(/[.,?!\s]/g, '').replace(/’/g, "'");
   }
 
   escapeRegExp(string: string) {
@@ -122,16 +132,80 @@ export class SpellcheckerComponent implements OnInit {
   onPaste(event: ClipboardEvent) {
     setTimeout(this.checkSpelling.bind(this), 300);
   }
+
+  onRightClick(event: MouseEvent) {
+    event.preventDefault();
+    this.rightClickMenuPositionX = event.clientX;
+    this.rightClickMenuPositionY = event.clientY;
+
+    this.selectedText = this.getSelectionText();
+    if (this.selectedText == "") {
+      return;
+    }
+    const suggestions = this.getSuggestions(this.selectedText);
+    this.showContextMenu(suggestions);
+  }
+
+  getRightClickMenuStyle() {
+    return {
+      position: 'fixed',
+      left: `${this.rightClickMenuPositionX}px`,
+      top: `${this.rightClickMenuPositionY}px`
+    }
+  }
+
+  private getSelectionText() {
+    var text = "";
+    var activeEl = document.activeElement as any;
+    var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
+    if (activeElTagName == "textarea" && (typeof activeEl.selectionStart == "number")) {
+      text = this.getWordAt(activeEl.value, activeEl.selectionStart);
+    }
+    return this.cleanString(text);
+  }
+
+  private getWordAt (str: string, pos: number) {
+
+    // Perform type conversions.
+    str = String(str);
+    pos = Number(pos) >>> 0;
+
+    // Search for the word's beginning and end.
+    var left = str.slice(0, pos + 1).search(/\S+$/),
+        right = str.slice(pos).search(/\s/);
+
+    // The last word in the string is a special case.
+    if (right < 0) {
+        return str.slice(left);
+    }
+
+    // Return the word, using the located bounds to extract it from the string.
+    return str.slice(left, right + pos);
+
+}
+
+  showContextMenu(suggestions: string[]) {
+    this.searchSuggestions = suggestions;
+    this.contextMenuVisible = true;
+  }
+
+  handleMenuItemClick(suggestion: string) {
+    console.log("suggestion selected: " + suggestion);
+
+    let re = new RegExp("\\b" + this.selectedText + "\\b", "g");
+    this.textToSpell = this.textToSpell.replace(re, suggestion);
+    this.checkSpelling();
+  }
+
+  @HostListener('document:click')
+  documentClick(): void {
+    this.contextMenuVisible = false;
+  }
 }
 
 /*
-var selectedText;
-
-
 
 function bindListeners() {
-
-
 
   $('.mt_check').on('long-press', function(e){
     e.preventDefault();
@@ -139,81 +213,6 @@ function bindListeners() {
     suggestions = getSuggestions(selectedText);
     showContextMenu(suggestions);
   });
-
-  // All of the below is for the context menu
-  // Show the menu when a word in the textarea is right-clicked
-  $(".mt_check").bind("contextmenu", function(event) {
-    event.preventDefault();
-    selectedText = getSelectionText();
-    suggestions = getSuggestions(selectedText);
-    showContextMenu(suggestions);
-  });
-
-  // Hide the menu if anywhere else is clicked
-  $(document).bind("mousedown", function(e) {
-    if (!$(e.target).parents(".custom-menu").length > 0) {
-      $(".custom-menu").hide(100);
-    }
-  });
-
-  // If the menu element is clicked
-  $(document).on('click', 'ul.custom-menu li', function(){
-    switch ($(this).attr("data-action")) {
-      case "no":
-        break;
-      case "search":
-        window.open('https://www.google.com/search?q='+selectedText, '_blank');
-        break;
-      default:
-        let userText = $('.mt_check').val();
-        let replacementWord = $(this).attr("data-action");
-        let re = new RegExp("\\b" + selectedText + "\\b", "g");
-        userText = userText.replace(re, replacementWord);
-        $('.mt_check').val(userText);
-        $('.mt_check').highlightWithinTextarea('update');
-        break;
-    }
-    $(".custom-menu").hide(100);
-  });
-}
-
-function showContextMenu(suggestions) {
-  let menuEntries = "";
-  $.each(suggestions, function(i, suggested){
-    menuEntries += "<li data-action='" + suggested + "'>" + suggested + "</li>";
-  });
-  if (menuEntries == "") {
-    menuEntries = "<li data-action='no'>No suggestions</li>";
-  }
-  menuEntries += "<li data-action='search'>Search Google for ''" + selectedText + "''</li>";
-  $('.custom-menu').html(menuEntries);
-
-  // Show contextmenu
-  $(".custom-menu").finish().toggle(100).css({
-    top: (event.pageY - $('#mt_spell_cont').position().top) + "px",
-    left: (event.pageX - parseInt($('#mt_spell_cont').css('marginLeft'))) + "px"
-  });
-}
-
-
-function
-
-function
-
-function getSelectionText() {
-  var text = "";
-  var activeEl = document.activeElement;
-  var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
-  if (
-    (activeElTagName == "textarea" || activeElTagName == "input") &&
-    /^(?:text|search|password|tel|url)$/i.test(activeEl.type) &&
-    (typeof activeEl.selectionStart == "number")
-  ) {
-    text = activeEl.value.slice(activeEl.selectionStart, activeEl.selectionEnd);
-  } else if (window.getSelection) {
-    text = window.getSelection().toString();
-  }
-  return text;
 }
 
 function getTouchSelectionText() {
@@ -228,6 +227,4 @@ function getTouchSelectionText() {
   text = text.replace(/(^,)|(,$)|(^\.)|(\.$)/g, ""); // remove commas and fullstops
   return text;
 }
-
-
 */
