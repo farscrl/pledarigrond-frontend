@@ -4,6 +4,7 @@ import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import { LoginComponent } from './features/login/login.component';
 import { PuterPlaceholderComponent } from './features/puter-placeholder/puter-placeholder.component';
 import { SearchComponent } from './features/search/search.component';
+import { SpellcheckerComponent } from './features/spellchecker/spellchecker.component';
 import { HelpRumgrComponent } from './features/static/help/rumgr/help-rumgr/help-rumgr.component';
 import { HelpSurmiranComponent } from './features/static/help/surmiran/help-surmiran/help-surmiran.component';
 import { HelpSutsilvComponent } from './features/static/help/sutsilv/help-sutsilv/help-sutsilv.component';
@@ -64,6 +65,10 @@ const routes: Routes = [
       {
         path: '',
         component: SearchComponent
+      },
+      {
+        path: 'spellchecker',
+        component: SpellcheckerComponent,
       },
       {
         path: 'login',

@@ -1,0 +1,126 @@
+SET UTF-8
+TRY aioertnsclmdpgubzfvhàq'ACMSkBGPLxEyRTVòIODNwFéùèìjUZKHWJYQXÙÀÒÈÌÉ
+
+MAP 5
+MAP aàAÀ
+MAP eéèEÉÈ
+MAP iìIÌ
+MAP oòOÒ
+MAP uùUÙ
+
+REP 4
+REP ó ò
+REP á à
+REP ú ù
+REP í ì
+
+ICONV 1
+ICONV ’ '
+
+OCONV 1
+OCONV ' ’
+
+PFX T Y 103
+PFX T 0 l' [aeiouhAEIOUH]
+PFX T a l'A a
+PFX T e l'E e
+PFX T i l'I i
+PFX T o l'O o
+PFX T u l'U u
+PFX T h l'H h
+PFX T 0 L' [AEIOUH]
+PFX T a L'A a
+PFX T e L'E e
+PFX T i L'I i
+PFX T o L'O o
+PFX T u L'U u
+PFX T h L'H h
+PFX T 0 all' [aeiouhAEIOUH]
+PFX T a all'A a
+PFX T e all'E e
+PFX T i all'I i
+PFX T o all'O o
+PFX T u all'U u
+PFX T h all'H h
+PFX T 0 All' [AEIOUH]
+PFX T a All'A a
+PFX T e All'E e
+PFX T i All'I i
+PFX T o All'O o
+PFX T u All'U u
+PFX T h All'H h
+PFX T 0 ALL' [AEIOUH][QWERTYUIOPLKJHGFDSAZXCVBNM]
+PFX T 0 dall' [aeiouhAEIOUH]
+PFX T a dall'A a
+PFX T e dall'E e
+PFX T i dall'I i
+PFX T o dall'O o
+PFX T u dall'U u
+PFX T h dall'H h
+PFX T 0 Dall' [AEIOUH]
+PFX T a Dall'A a
+PFX T e Dall'E e
+PFX T i Dall'I i
+PFX T o Dall'O o
+PFX T u Dall'U u
+PFX T h Dall'H h
+PFX T 0 DALL' [AEIOUH][QWERTYUIOPLKJHGFDSAZXCVBNM]
+PFX T 0 d' [aeiouhAEIOUH]
+PFX T a d'A a
+PFX T e d'E e
+PFX T i d'I i
+PFX T o d'O o
+PFX T u d'U u
+PFX T h d'H h
+PFX T 0 D' [AEIOUH]
+PFX T a D'A a
+PFX T e D'E e
+PFX T i D'I i
+PFX T o D'O o
+PFX T u D'U u
+PFX T h D'H h
+PFX T 0 chest' [aeiouhAEIOUH]
+PFX T a chest'A a
+PFX T e chest'E e
+PFX T i chest'I i
+PFX T o chest'O o
+PFX T u chest'U u
+PFX T h chest'H h
+PFX T 0 Chest' [AEIOUH]
+PFX T a Chest'A a
+PFX T e Chest'E e
+PFX T i Chest'I i
+PFX T o Chest'O o
+PFX T u Chest'U u
+PFX T h Chest'H h
+PFX T 0 CHEST' [AEIOUH][QWERTYUIOPLKJHGFDSAZXCVBNM]
+PFX T 0 chell' [aeiouhAEIOUH]
+PFX T a chell'A a
+PFX T e chell'E e
+PFX T i chell'I i
+PFX T o chell'O o
+PFX T u chell'U u
+PFX T h chell'H h
+PFX T 0 Chell' [AEIOUH]
+PFX T a Chell'A a
+PFX T e Chell'E e
+PFX T i Chell'I i
+PFX T o Chell'O o
+PFX T u Chell'U u
+PFX T h Chell'H h
+PFX T 0 CHELL' [AEIOUH][QWERTYUIOPLKJHGFDSAZXCVBNM]
+PFX T 0 mintg' [aeiouhAEIOUH]
+PFX T a mintg'A a
+PFX T e mintg'E e
+PFX T i mintg'I i
+PFX T o mintg'O o
+PFX T u mintg'U u
+PFX T h mintg'H h
+PFX T 0 Mintg' [AEIOUH]
+PFX T a Mintg'A a
+PFX T e Mintg'E e
+PFX T i Mintg'I i
+PFX T o Mintg'O o
+PFX T u Mintg'U u
+PFX T h Mintg'H h
+PFX T 0 MINTG' [AEIOUH][QWERTYUIOPLKJHGFDSAZXCVBNM]

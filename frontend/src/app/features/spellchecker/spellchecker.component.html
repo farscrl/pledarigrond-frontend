@@ -1,0 +1,16 @@
+<div class="content">
+  <div class="spellchecker">
+    <div *ngIf="isLoadingData">
+      Datas vegnan chargiadas
+    </div>
+    <textarea id="speller" spellcheck="false" [disabled]="isLoadingData" [(ngModel)]="textToSpell" (keyup)="onKeyUp($event)" (paste)="onPaste($event)"></textarea>
+  </div>
+  <div class="infos">
+    <p>
+      <b>Installar sin igl computer</b><br>
+      MacOS<br>
+      LibreOffice<br>
+      Mozilla Firefox<br>
+    </p>
+  </div>
+</div>

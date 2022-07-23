@@ -1,0 +1,16 @@
+.hit-container {
+  margin-right: 50px;
+  background-color: white;
+
+  mark.red {
+    background-color: transparent;
+    text-decoration: underline;
+    text-decoration-style: double;
+    text-decoration-color: red;
+  }
+}
+
+.hit-content {
+  // all the styles here have also to be applied to the textarea itself (#speller in spellchecker.component.scss)
+  padding: 12px;
+}

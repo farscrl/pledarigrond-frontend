@@ -54,6 +54,7 @@ import { HighlighterPipe } from './pipes/highlighter.pipe';
 import { LanguageUtils } from './utils/language-utils';
 import { OtherResourcesComponent } from './features/other-resources/other-resources.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
+import { SpellcheckerComponent } from './features/spellchecker/spellchecker.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -108,7 +109,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateCutPipe,
     HighlighterPipe,
     OtherResourcesComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    SpellcheckerComponent
   ],
   imports: [
     BrowserModule,

@@ -21,10 +21,12 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "highlight-in-textarea": "^1.1.0",
     "modern-css-reset": "^1.4.0",
     "ngx-simple-modal": "^1.4.17",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
+    "typo-js": "^1.2.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
