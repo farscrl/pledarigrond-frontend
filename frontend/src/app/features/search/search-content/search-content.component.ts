@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
@@ -7,7 +7,7 @@ import { SelectedLanguageService } from 'src/app/services/selected-language.serv
 import { SimpleModalService } from "ngx-simple-modal";
 import { VerbsModalComponent } from '../verbs-modal/verbs-modal.component';
 import { SuggestModificationComponent } from '../suggest-modification/suggest-modification.component';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SuggestionComponent } from 'src/app/components/footer/suggestion/suggestion.component';
 
 @Component({
@@ -15,7 +15,7 @@ import { SuggestionComponent } from 'src/app/components/footer/suggestion/sugges
   templateUrl: './search-content.component.html',
   styleUrls: ['./search-content.component.scss']
 })
-export class SearchContentComponent implements OnInit {
+export class SearchContentComponent implements OnInit, OnDestroy {
 
   searchCriteria: SearchCriteria = new SearchCriteria();
   searchResults: LemmaVersion[] = [];
@@ -37,15 +37,68 @@ export class SearchContentComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.loadSearchCriteriaFromUrl();
+
+  }
+
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      const urlSerarchCriteria = new SearchCriteria();
+      if (params['searchPhrase'] !== "") {
+        urlSerarchCriteria.searchPhrase = params['searchPhrase'];
+      }
+      if (params['searchDirection'] !== "") {
+        switch(params['searchDirection']) {
+          case 'romansh':
+            urlSerarchCriteria.searchDirection = 'ROMANSH';
+            break;
+          case 'german':
+            urlSerarchCriteria.searchDirection = 'GERMAN';
+            break;
+          default:
+            urlSerarchCriteria.searchDirection = 'BOTH';
+        }
+      }
+      if (params['searchMethod'] !== "") {
+        switch(params['searchMethod']) {
+          case 'intern':
+            urlSerarchCriteria.searchMethod = 'INTERN';
+            break;
+          case 'prefix':
+            urlSerarchCriteria.searchMethod = 'PREFIX';
+            break;
+          case 'suffix':
+            urlSerarchCriteria.searchMethod = 'SUFFIX';
+            break;
+          case 'exact':
+            urlSerarchCriteria.searchMethod = 'EXACT';
+            break;
+          default:
+            urlSerarchCriteria.searchMethod = 'NORMAL';
+        }
+      }
+      if (params['highlight']) {
+        urlSerarchCriteria.highlight = true;
+      }
+      if (params['suggestions']) {
+        urlSerarchCriteria.suggestions = true;
+      }
+
+      if (urlSerarchCriteria.searchPhrase === this.searchCriteria.searchPhrase &&
+        urlSerarchCriteria.searchDirection === this.searchCriteria.searchDirection &&
+        urlSerarchCriteria.searchMethod === this.searchCriteria.searchMethod &&
+        urlSerarchCriteria.highlight === this.searchCriteria.highlight &&
+        urlSerarchCriteria.suggestions === this.searchCriteria.suggestions) {
+          console.log('search criteria identic -> do not search again');
+          return;
+        }
+      if (urlSerarchCriteria.searchPhrase && urlSerarchCriteria.searchPhrase !== "") {
+        this.search(urlSerarchCriteria);
       }
     });
   }
 
-  ngOnInit(): void {
-    this.loadSearchCriteriaFromUrl();
+  ngOnDestroy(): void {
+    clearTimeout(this.updateUrlParamsTimer);
   }
 
   search(data: SearchCriteria) {
@@ -238,52 +291,6 @@ export class SearchContentComponent implements OnInit {
         queryParams: url,
         queryParamsHandling: 'merge',
       });
-  }
-
-  private loadSearchCriteriaFromUrl() {
-    if (this.activatedRoute.snapshot.queryParams['searchPhrase'] !== "") {
-      this.searchCriteria.searchPhrase = this.activatedRoute.snapshot.queryParams['searchPhrase'];
-    }
-    if (this.activatedRoute.snapshot.queryParams['searchDirection'] !== "") {
-      switch(this.activatedRoute.snapshot.queryParams['searchDirection']) {
-        case 'romansh':
-          this.searchCriteria.searchDirection = 'ROMANSH';
-          break;
-        case 'german':
-          this.searchCriteria.searchDirection = 'GERMAN';
-          break;
-        default:
-          this.searchCriteria.searchDirection = 'BOTH';
-      }
-    }
-    if (this.activatedRoute.snapshot.queryParams['searchMethod'] !== "") {
-      switch(this.activatedRoute.snapshot.queryParams['searchMethod']) {
-        case 'intern':
-          this.searchCriteria.searchMethod = 'INTERN';
-          break;
-        case 'prefix':
-          this.searchCriteria.searchMethod = 'PREFIX';
-          break;
-        case 'suffix':
-          this.searchCriteria.searchMethod = 'SUFFIX';
-          break;
-        case 'exact':
-          this.searchCriteria.searchMethod = 'EXACT';
-          break;
-        default:
-          this.searchCriteria.searchMethod = 'NORMAL';
-      }
-    }
-    if (this.activatedRoute.snapshot.queryParams['highlight']) {
-      this.searchCriteria.highlight = true;
-    }
-    if (this.activatedRoute.snapshot.queryParams['suggestions']) {
-      this.searchCriteria.suggestions = true;
-    }
-
-    if (this.searchCriteria.searchPhrase && this.searchCriteria.searchPhrase !== "") {
-      this.search(this.searchCriteria);
-    }
   }
 }
 
