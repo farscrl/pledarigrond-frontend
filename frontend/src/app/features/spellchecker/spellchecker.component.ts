@@ -127,7 +127,7 @@ export class SpellcheckerComponent implements OnInit {
   }
 
   onKeyUp(key: KeyboardEvent) {
-    if (key.keyCode == 32 || key.keyCode == 8 || key.keyCode == 46) { // space/backspace/delete
+    if (key.keyCode == 32 || key.keyCode == 8 || key.keyCode == 46 || key.keyCode == 13) { // space/backspace/delete/enter
       this.checkSpelling();
     }
   }
@@ -136,18 +136,38 @@ export class SpellcheckerComponent implements OnInit {
     setTimeout(this.checkSpelling.bind(this), 300);
   }
 
-  onRightClick(event: MouseEvent) {
-    event.preventDefault();
+  onClick(event: MouseEvent) {
     this.rightClickMenuPositionX = event.clientX;
     this.rightClickMenuPositionY = event.clientY;
 
-    this.selectedText = this.getSelectionText(event.currentTarget);
+
+    this.selectedText = this.getSelectionText(event.target);
     if (this.selectedText == "") {
       return;
     }
     const suggestions = this.getSuggestions(this.selectedText);
     this.showContextMenu(suggestions);
   }
+
+  onRightClick(event: MouseEvent) {
+    this.contextMenuVisible = false;
+  }
+
+  click(x: number, y: number) {
+    let ev = new MouseEvent('click', {
+      'view': window,
+      'bubbles': true,
+      'cancelable': true,
+      'screenX': x,
+      'screenY': y
+    });
+
+    let el = document.elementFromPoint(x, y);
+
+    if (el) {
+      el.dispatchEvent(ev);
+    }
+}
 
   getRightClickMenuStyle() {
     return {
@@ -200,8 +220,11 @@ export class SpellcheckerComponent implements OnInit {
     this.checkSpelling();
   }
 
-  @HostListener('document:click')
-  documentClick(): void {
+  @HostListener('document:click', ['$event'])
+  documentClick(event: any): void {
+    if (event && event.target && event.target.tagName && event.target.tagName.toUpperCase() === 'TEXTAREA') {
+      return;
+    }
     this.contextMenuVisible = false;
   }
 

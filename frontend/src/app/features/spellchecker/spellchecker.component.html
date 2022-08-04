@@ -3,7 +3,7 @@
     <div *ngIf="isLoadingData" class="loading-notification">
       Las datas vignan cargedas - spitgier per plascheir en mument
     </div>
-    <textarea id="speller" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" [disabled]="isLoadingData" [(ngModel)]="textToSpell" (keyup)="onKeyUp($event)" (paste)="onPaste($event)" (contextmenu)="onRightClick($event)"></textarea>
+    <textarea id="speller" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" [disabled]="isLoadingData" [(ngModel)]="textToSpell" (keyup)="onKeyUp($event)" (paste)="onPaste($event)" (click)="onClick($event)" (contextmenu)="onRightClick($event)"></textarea>
     <div class="version">
       versiun: {{ version }}
     </div>
