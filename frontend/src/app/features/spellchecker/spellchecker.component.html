@@ -1,9 +1,12 @@
 <div class="content">
   <div class="spellchecker">
-    <div *ngIf="isLoadingData">
-      Datas vegnan chargiadas
+    <div *ngIf="isLoadingData" class="loading-notification">
+      Las datas vignan cargedas - spitgier per plascheir en mument
     </div>
     <textarea id="speller" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" [disabled]="isLoadingData" [(ngModel)]="textToSpell" (keyup)="onKeyUp($event)" (paste)="onPaste($event)" (contextmenu)="onRightClick($event)"></textarea>
+    <div class="version">
+      versiun: {{ version }}
+    </div>
     <app-spellchecker-context-menu
       *ngIf="searchSuggestions.length > 0 && contextMenuVisible"
       [ngStyle]="getRightClickMenuStyle()"
@@ -12,10 +15,14 @@
   </div>
   <div class="infos">
     <p>
-      <b>Installar sin igl computer</b><br>
-      MacOS<br>
-      LibreOffice<br>
-      Mozilla Firefox<br>
+      <b>Installar sen igl computer</b><br>
     </p>
+      <ul>
+        <li>Microsoft Office Windows</li>
+        <li>Microsoft Office macOS</li>
+        <li>macOS</li>
+        <li>LibreOffice</li>
+        <li>Mozilla Firefox</li>
+      </ul>
   </div>
 </div>

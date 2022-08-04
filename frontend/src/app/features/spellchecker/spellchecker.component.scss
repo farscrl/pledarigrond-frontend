@@ -20,3 +20,39 @@
   height: 300px;
   padding: 12px;
 }
+
+.loading-notification {
+  border: 1px solid orange;
+  background-color: rgb(255, 226, 173);
+  margin-right: 50px;
+  padding: 5px;
+  margin-bottom: 16px;
+}
+
+.version {
+  font-size: 80%;
+  margin-right: 50px;
+  text-align: right;
+  position: relative;
+  top: -8px;
+  color: #8b8b8b;
+}
+
+.infos {
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+
+  li:before {
+    content: "→";
+    color: #848484;
+    padding-right: 5px;
+  }
+}

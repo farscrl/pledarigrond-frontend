@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 // @ts-ignore
 import Typo from 'typo-js';
@@ -11,12 +12,13 @@ declare var HighlightInTextarea: any;
 })
 export class SpellcheckerComponent implements OnInit {
 
-  textToSpell = "Chegl è en test da funcziung.";
+  textToSpell = "";
 
   isLoadingData = true;
   dictionary: any;
   spellingErrors: string[] = [];
   wordList: string[] = [];
+  version = "";
 
   textareaHighlighter: any;
 
@@ -26,7 +28,7 @@ export class SpellcheckerComponent implements OnInit {
   rightClickMenuPositionX: number = 100;
   rightClickMenuPositionY: number = 100;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.dictionary = new Typo("rm-surmiran", false, false, {
@@ -38,6 +40,7 @@ export class SpellcheckerComponent implements OnInit {
     this.textareaHighlighter = new HighlightInTextarea('#speller', {
       highlight: this.highlightWords.bind(this)
     });
+    this.loadVersion();
   }
 
   onDictLoaded() {
@@ -182,7 +185,7 @@ export class SpellcheckerComponent implements OnInit {
     // Return the word, using the located bounds to extract it from the string.
     return str.slice(left, right + pos);
 
-}
+  }
 
   showContextMenu(suggestions: string[]) {
     this.searchSuggestions = suggestions;
@@ -200,6 +203,12 @@ export class SpellcheckerComponent implements OnInit {
   @HostListener('document:click')
   documentClick(): void {
     this.contextMenuVisible = false;
+  }
+
+  private loadVersion() {
+    this.http.get('assets/hunspell/rm-surmiran/version.txt', {responseType: 'text'}).subscribe(version => {
+      this.version = version;
+  });
   }
 }
 
