@@ -2,9 +2,9 @@ name: Docker Build dev
 
 on:
   push:
-    branches: [ surmiran-inflection ]
+    branches: [ surmiran-inflection, spellchecking-online ]
   pull_request:
-    branches: [ surmiran-inflection ]
+    branches: [ surmiran-inflection, spellchecking-online ]
 
   workflow_dispatch:
 
