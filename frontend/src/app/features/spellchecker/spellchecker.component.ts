@@ -141,7 +141,7 @@ export class SpellcheckerComponent implements OnInit {
     this.rightClickMenuPositionX = event.clientX;
     this.rightClickMenuPositionY = event.clientY;
 
-    this.selectedText = this.getSelectionText();
+    this.selectedText = this.getSelectionText(event.currentTarget);
     if (this.selectedText == "") {
       return;
     }
@@ -157,12 +157,12 @@ export class SpellcheckerComponent implements OnInit {
     }
   }
 
-  private getSelectionText() {
+  private getSelectionText(target: any) {
     var text = "";
-    var activeEl = document.activeElement as any;
-    var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
-    if (activeElTagName == "textarea" && (typeof activeEl.selectionStart == "number")) {
-      text = this.getWordAt(activeEl.value, activeEl.selectionStart);
+    if (target) {
+      if (target.tagName && target.tagName.toUpperCase() === "TEXTAREA" && target.selectionStart && typeof target.selectionStart === "number") {
+        text = this.getWordAt(target.value, target.selectionStart);
+      }
     }
     return this.cleanString(text);
   }
