@@ -8,7 +8,7 @@
       versiun: {{ version }}
     </div>
     <app-spellchecker-context-menu
-      *ngIf="contextMenuVisible"
+      *ngIf="searchSuggestions.length > 0 && contextMenuVisible"
       [ngStyle]="getRightClickMenuStyle()"
       [contextMenuItems]="searchSuggestions"
       (onContextMenuItemClick)="handleMenuItemClick($event)"></app-spellchecker-context-menu>
