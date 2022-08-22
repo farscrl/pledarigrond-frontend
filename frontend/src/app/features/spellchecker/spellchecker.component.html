@@ -1,17 +1,14 @@
 <div class="content">
-  <div class="spellchecker">
+  <div class="spellchecker" spellcheck="false">
     <div *ngIf="isLoadingData" class="loading-notification">
       Las datas vignan cargedas - spitgier per plascheir en mument
     </div>
-    <textarea id="speller" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" [disabled]="isLoadingData" [(ngModel)]="textToSpell" (keyup)="onKeyUp($event)" (paste)="onPaste($event)" (click)="onClick($event)" (contextmenu)="onRightClick($event)"></textarea>
+    <ng-container *ngIf="editor">
+      <tiptap-editor [editor]="editor" [(ngModel)]="value"></tiptap-editor>
+    </ng-container>
     <div class="version">
       versiun: {{ version }}
     </div>
-    <app-spellchecker-context-menu
-      *ngIf="searchSuggestions.length > 0 && contextMenuVisible"
-      [ngStyle]="getRightClickMenuStyle()"
-      [contextMenuItems]="searchSuggestions"
-      (onContextMenuItemClick)="handleMenuItemClick($event)"></app-spellchecker-context-menu>
   </div>
   <div class="infos">
     <p>

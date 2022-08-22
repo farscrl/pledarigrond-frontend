@@ -1,44 +1,39 @@
-.hit-container {
-  margin-right: 50px;
-  background-color: white;
+.spell-error {
+  border-bottom: 2px solid #e86a69;
+  transition: background .25s ease-in-out;
 
-  mark.red {
-    background-color: transparent;
-    text-decoration: underline;
-    text-decoration-style: double;
-    text-decoration-color: red;
+  &:hover {
+    background: rgba(232,106,105,.2);
   }
 }
 
-.hit-content {
-  // all the styles here have also to be applied to the textarea itself (#speller in spellchecker.component.scss)
-  padding: 12px;
+.ProseMirror {
+  width: 660px;
+  background-color: white;
+  min-height: 300px;
+  margin-right: 50px;
+  padding: 6px;
 }
 
-// contextmenu with suggestions
-.custom-menu {
-  display: none;
-  z-index: 1000;
+.suggestions-box {
   position: absolute;
-  overflow: hidden;
-  border: 1px solid #CCC;
-  white-space: nowrap;
-  font-family: sans-serif;
-  background: #FFF;
-  color: #333;
-  border-radius: 5px;
-  padding: 0;
-}
+  border: 1px solid black;
+  background-color: #f7f7f7;
+  padding: 2px 4px;
+  border-radius: 4px;
 
-/* Each of the items in the list */
-.custom-menu li {
-  padding: 8px 12px;
-  cursor: pointer;
-  list-style-type: none;
-  transition: all .3s ease;
-}
+  ul {
+    padding: 0;
+    margin: 0;
+  }
 
-.custom-menu li:hover {
-  background-color: #DEF;
+  li {
+    cursor: pointer;
+    list-style: none;
+  }
+  li:before {
+    content: "→";
+    color: #848484;
+    padding-right: 5px;
+  }
 }
-

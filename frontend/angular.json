@@ -31,12 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/highlight-in-textarea/src/highlight-in-textarea.css"
+              "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/highlight-in-textarea/src/highlight-in-textarea.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SimpleModalModule, defaultSimpleModalOptions } from 'ngx-simple-modal';
+import { NgxTiptapModule } from 'ngx-tiptap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,7 +56,6 @@ import { LanguageUtils } from './utils/language-utils';
 import { OtherResourcesComponent } from './features/other-resources/other-resources.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { SpellcheckerComponent } from './features/spellchecker/spellchecker.component';
-import { SpellcheckerContextMenuComponent } from './features/spellchecker/spellchecker-context-menu/spellchecker-context-menu.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -112,7 +112,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     OtherResourcesComponent,
     AutofocusDirective,
     SpellcheckerComponent,
-    SpellcheckerContextMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -148,6 +147,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         }
       }
     ),
+    NgxTiptapModule,
   ],
   providers: [
     UserLoggedInGuard,

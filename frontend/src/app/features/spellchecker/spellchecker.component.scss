@@ -6,19 +6,43 @@
 }
 
 .content {
-  max-width: 900px;
+  width: 920px;
   background-color: rgb(227, 227, 227);
   border-radius: 16px;
   padding: 25px;
   line-height: 20px;
   margin: 16px;
   display: flex;
+
+  .spellchecker {
+    flex-grow: 1;
+  }
+
+  .infos {
+    flex-grow: 0;
+
+    ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    li {
+      padding-left: 1em;
+      text-indent: -1em;
+    }
+
+    li:before {
+      content: "→";
+      color: #848484;
+      padding-right: 5px;
+    }
+  }
 }
 
-#speller {
-  width: 500px;
-  height: 300px;
-  padding: 12px;
+tiptap-editor {
+  width: 680px;
+  min-height: 300px;
 }
 
 .loading-notification {
@@ -34,25 +58,6 @@
   margin-right: 50px;
   text-align: right;
   position: relative;
-  top: -8px;
+  top: -2px;
   color: #8b8b8b;
-}
-
-.infos {
-  ul {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 0;
-  }
-
-  li {
-    padding-left: 1em;
-    text-indent: -1em;
-  }
-
-  li:before {
-    content: "→";
-    color: #848484;
-    padding-right: 5px;
-  }
 }
