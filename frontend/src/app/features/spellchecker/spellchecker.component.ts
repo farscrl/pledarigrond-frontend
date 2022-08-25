@@ -4,7 +4,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import Typo from 'typo-js';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
-import SpellcheckerExtension from 'tiptap-extension-spellchecker';
+import SpellcheckerExtension from '@farscrl/tiptap-extension-spellchecker';
 import { Proofreader } from 'src/app/utils/proofreader';
 
 declare var HighlightInTextarea: any;

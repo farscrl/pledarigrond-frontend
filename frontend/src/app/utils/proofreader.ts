@@ -1,5 +1,5 @@
 import tokenize from '@stdlib/nlp-tokenize';
-import { IProofreaderInterface, ITextWithPosition } from "tiptap-extension-spellchecker/lib/i-proofreader-interface";
+import { IProofreaderInterface, ITextWithPosition } from '@farscrl/tiptap-extension-spellchecker/lib/i-proofreader-interface';
 
 export class Proofreader implements IProofreaderInterface {
   hunspell: any;

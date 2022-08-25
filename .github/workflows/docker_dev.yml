@@ -26,6 +26,8 @@ jobs:
       - name: docker build
         run: |
           docker build --build-arg ANGULAR_ENV=test -t pledarigrond/pledari-grond-frontend:latest-dev-test .
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: docker push
         run: |
           docker push pledarigrond/pledari-grond-frontend --all-tags

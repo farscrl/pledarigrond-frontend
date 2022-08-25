@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@auth0/angular-jwt": "^5.0.2",
+    "@farscrl/tiptap-extension-spellchecker": "^1.0.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@stdlib/nlp-tokenize": "^0.0.8",
@@ -28,7 +29,6 @@
     "ngx-simple-modal": "^1.4.17",
     "ngx-tiptap": "^5.0.0",
     "rxjs": "~7.4.0",
-    "tiptap-extension-spellchecker": "file:../../tiptap-extension-spellchecker",
     "tslib": "^2.3.0",
     "typo-js": "^1.2.1",
     "zone.js": "~0.11.4"
