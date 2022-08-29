@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // @ts-ignore
 import Typo from 'typo-js';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import SpellcheckerExtension from '@farscrl/tiptap-extension-spellchecker';
 import { Proofreader } from 'src/app/utils/proofreader';
-
-declare var HighlightInTextarea: any;
+import {Underline} from "@tiptap/extension-underline";
+import {TaskList} from "@tiptap/extension-task-list";
+import {Highlight} from "@tiptap/extension-highlight";
 
 @Component({
   selector: 'app-spellchecker',
@@ -17,26 +18,15 @@ declare var HighlightInTextarea: any;
 export class SpellcheckerComponent implements OnInit {
 
   editor?: Editor;
-
   value = '<p></p>';
 
   ngOnDestroy(): void {
     this.editor?.destroy();
   }
 
-  textToSpell = "";
-
   isLoadingData = true;
   dictionary: any;
-  spellingErrors: string[] = [];
-  wordList: string[] = [];
   version = "";
-
-  selectedText = "";
-  searchSuggestions: string[] = [];
-  contextMenuVisible = false;
-  rightClickMenuPositionX: number = 100;
-  rightClickMenuPositionY: number = 100;
 
   constructor(private http: HttpClient) { }
 
@@ -56,7 +46,17 @@ export class SpellcheckerComponent implements OnInit {
     const proofreader = new Proofreader(this.dictionary);
 
     this.editor = new Editor({
-      extensions: [StarterKit, SpellcheckerExtension.configure({ proofreader: proofreader })],
+      extensions: [
+        StarterKit,
+        Underline,
+        Highlight,
+         SpellcheckerExtension.configure({
+          proofreader: proofreader,
+          uiStrings: {
+            noSuggestions: 'Catto nignas propostas'
+          }
+        })
+      ],
     });
   }
 

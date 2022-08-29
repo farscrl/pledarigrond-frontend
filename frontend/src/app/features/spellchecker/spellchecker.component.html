@@ -4,10 +4,24 @@
       Las datas vignan cargedas - spitgier per plascheir en mument
     </div>
     <ng-container *ngIf="editor">
-      <tiptap-editor [editor]="editor" [(ngModel)]="value"></tiptap-editor>
+      <div class="editor">
+        <div class="editor__header">
+          <app-spellchecker-menubar [editor]="editor"></app-spellchecker-menubar>
+        </div>
+        <div class="editor__content">
+          <tiptap-editor [editor]="editor" [(ngModel)]="value"></tiptap-editor>
+        </div>
+        <div class="editor__footer">
+          <div></div>
+          <div class="editor__name">
+            versiun: {{ version }}
+          </div>
+        </div>
+      </div>
+
     </ng-container>
     <div class="version">
-      versiun: {{ version }}
+
     </div>
   </div>
   <div class="infos">

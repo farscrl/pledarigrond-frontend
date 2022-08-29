@@ -56,6 +56,7 @@ import { LanguageUtils } from './utils/language-utils';
 import { OtherResourcesComponent } from './features/other-resources/other-resources.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { SpellcheckerComponent } from './features/spellchecker/spellchecker.component';
+import { SpellcheckerMenubarComponent } from './features/spellchecker/spellchecker-menubar/spellchecker-menubar.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -112,6 +113,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     OtherResourcesComponent,
     AutofocusDirective,
     SpellcheckerComponent,
+    SpellcheckerMenubarComponent,
   ],
   imports: [
     BrowserModule,

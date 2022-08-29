@@ -1,0 +1,48 @@
+<ng-container *ngIf="editor">
+  <button class="menu-item" title="Bold"
+          [class.is-active]="editor.isActive('bold')" (click)="editor.chain().focus().toggleBold().run()"> <i class="ri-bold"></i> </button>
+  <button class="menu-item" title="Italic"
+          [class.is-active]="editor.isActive('italic')" (click)="editor.chain().focus().toggleItalic().run()"> <i class="ri-italic"></i> </button>
+  <button class="menu-item" title="Underline"
+          [class.is-active]="editor.isActive('underline')" (click)="editor.chain().focus().toggleUnderline().run()"> <i class="ri-underline"></i> </button>
+  <button class="menu-item" title="Strike"
+          [class.is-active]="editor.isActive('strike')" (click)="editor.chain().focus().toggleStrike().run()"> <i class="ri-strikethrough"></i> </button>
+  <button class="menu-item" title="Code"
+          [class.is-active]="editor.isActive('code')" (click)="editor.chain().focus().toggleCode().run()"> <i class="ri-code-line"></i> </button>
+  <button class="menu-item" title="Highlight"
+          [class.is-active]="editor.isActive('highlight')" (click)="editor.chain().focus().toggleHighlight().run()"> <i class="ri-mark-pen-line"></i> </button>
+
+  <div class="divider"></div>
+
+  <button class="menu-item" title="Heading 1"
+          [class.is-active]="editor.isActive('heading', { level: 1 })" (click)="editor.chain().focus().toggleHeading({ level: 1 }).run()"> <i class="ri-h-1"></i> </button>
+  <button class="menu-item" title="Heading 2"
+          [class.is-active]="editor.isActive('heading', { level: 2 })" (click)="editor.chain().focus().toggleHeading({ level: 2 }).run()"> <i class="ri-h-2"></i> </button>
+  <button class="menu-item" title="Paragraph"
+          [class.is-active]="editor.isActive('paragraph')" (click)="editor.chain().focus().setParagraph().run()"> <i class="ri-paragraph"></i> </button>
+  <button class="menu-item" title="Bullet List"
+          [class.is-active]="editor.isActive('bulletList')" (click)="editor.chain().focus().toggleBulletList().run()"> <i class="ri-list-unordered"></i> </button>
+  <button class="menu-item" title="Ordered List"
+          [class.is-active]="editor.isActive('orderedList')" (click)="editor.chain().focus().toggleOrderedList().run()"> <i class="ri-list-ordered"></i> </button>
+  <button class="menu-item" title="Code Block"
+          [class.is-active]="editor.isActive('codeBlock')" (click)="editor.chain().focus().toggleCodeBlock().run()"> <i class="ri-code-box-line"></i> </button>
+
+  <div class="divider"></div>
+
+  <button class="menu-item" title="Blockquote"
+          [class.is-active]="editor.isActive('blockquote')" (click)="editor.chain().focus().toggleBlockquote().run()"> <i class="ri-double-quotes-l"></i> </button>
+  <button class="menu-item" title="Horizontal Rule"
+          (click)="editor.chain().focus().setHorizontalRule().run()"> <i class="ri-separator"></i> </button>
+  <div class="divider"></div>
+  <button class="menu-item" title="Hard Break"
+          (click)="editor.chain().focus().setHardBreak().run()"> <i class="ri-text-wrap"></i> </button>
+  <button class="menu-item" title="Clear Format"
+          (click)="editor.chain().focus().clearNodes().run()"> <i class="ri-format-clear"></i> </button>
+
+  <div class="divider"></div>
+
+  <button class="menu-item" title="Undo"
+          (click)="editor.chain().focus().undo().run()"> <i class="ri-arrow-go-back-line"></i> </button>
+  <button class="menu-item" title="Redo"
+          (click)="editor.chain().focus().redo().run()"> <i class="ri-arrow-go-forward-line"></i> </button>
+</ng-container>
