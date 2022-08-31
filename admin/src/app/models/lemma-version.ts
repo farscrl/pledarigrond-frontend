@@ -90,6 +90,38 @@ export class LemmaValues {
 
   gerundium?: string;
 
+  preschentsing1enclitic?: string;
+  preschentsing2enclitic?: string;
+  preschentsing3encliticm?: string;
+  preschentsing3encliticf?: string;
+  preschentplural1enclitic?: string;
+  preschentplural2enclitic?: string;
+  preschentplural3enclitic?: string;
+
+  imperfectsing1enclitic?: string;
+  imperfectsing2enclitic?: string;
+  imperfectsing3encliticm?: string;
+  imperfectsing3encliticf?: string;
+  imperfectplural1enclitic?: string;
+  imperfectplural2enclitic?: string;
+  imperfectplural3enclitic?: string;
+
+  cundizionalsing1enclitic?: string;
+  cundizionalsing2enclitic?: string;
+  cundizionalsing3encliticm?: string;
+  cundizionalsing3encliticf?: string;
+  cundizionalplural1enclitic?: string;
+  cundizionalplural2enclitic?: string;
+  cundizionalplural3enclitic?: string;
+
+  futursing1enclitic?: string;
+  futursing2enclitic?: string;
+  futursing3encliticm?: string;
+  futursing3encliticf?: string;
+  futurplural1enclitic?: string;
+  futurplural2enclitic?: string;
+  futurplural3enclitic?: string;
+
   // noun
   baseForm?: string;
   mSingular?: string;

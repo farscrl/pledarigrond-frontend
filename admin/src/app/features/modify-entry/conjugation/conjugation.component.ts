@@ -5,6 +5,7 @@ import { InflectionSubType } from 'src/app/models/inflection';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { Language } from "../../../models/security";
 
 @Component({
   selector: 'app-conjugation',
@@ -79,6 +80,11 @@ export class ConjugationComponent implements OnInit {
     }
   }
 
+  hasEncliticForms(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
+    return language === Language.SURMIRAN;
+  }
+
   private returnValues() {
     this.modal.close(this.validateForm.getRawValue());
   }
@@ -133,6 +139,38 @@ export class ConjugationComponent implements OnInit {
       imperativ2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ2),
 
       gerundium: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.gerundium),
+
+      preschentsing1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentsing1enclitic),
+      preschentsing2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentsing2enclitic),
+      preschentsing3encliticm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentsing3encliticm),
+      preschentsing3encliticf: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentsing3encliticf),
+      preschentplural1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentplural1enclitic),
+      preschentplural2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentplural2enclitic),
+      preschentplural3enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentplural3enclitic),
+
+      imperfectsing1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperfectsing1enclitic),
+      imperfectsing2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperfectsing2enclitic),
+      imperfectsing3encliticm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperfectsing3encliticm),
+      imperfectsing3encliticf: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperfectsing3encliticf),
+      imperfectplural1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperfectplural1enclitic),
+      imperfectplural2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperfectplural2enclitic),
+      imperfectplural3enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperfectplural3enclitic),
+
+      cundizionalsing1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalsing1enclitic),
+      cundizionalsing2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalsing2enclitic),
+      cundizionalsing3encliticm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalsing3encliticm),
+      cundizionalsing3encliticf: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalsing3encliticf),
+      cundizionalplural1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalplural1enclitic),
+      cundizionalplural2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalplural2enclitic),
+      cundizionalplural3enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalplural3enclitic),
+
+      futursing1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futursing1enclitic),
+      futursing2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futursing2enclitic),
+      futursing3encliticm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futursing3encliticm),
+      futursing3encliticf: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futursing3encliticf),
+      futurplural1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurplural1enclitic),
+      futurplural2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurplural2enclitic),
+      futurplural3enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurplural3enclitic),
     });
 
     this.validateForm.get("RRegularInflection")!.valueChanges.subscribe(value => {
@@ -197,7 +235,39 @@ export class ConjugationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.imperativ1 ||
       this.workingLemmaVersion.lemmaValues.imperativ2 ||
 
-      this.workingLemmaVersion.lemmaValues.gerundium
+      this.workingLemmaVersion.lemmaValues.gerundium ||
+
+      this.workingLemmaVersion.lemmaValues.preschentsing1enclitic ||
+      this.workingLemmaVersion.lemmaValues.preschentsing2enclitic ||
+      this.workingLemmaVersion.lemmaValues.preschentsing3encliticm ||
+      this.workingLemmaVersion.lemmaValues.preschentsing3encliticf ||
+      this.workingLemmaVersion.lemmaValues.preschentplural1enclitic ||
+      this.workingLemmaVersion.lemmaValues.preschentplural2enclitic ||
+      this.workingLemmaVersion.lemmaValues.preschentplural3enclitic ||
+
+      this.workingLemmaVersion.lemmaValues.imperfectsing1enclitic ||
+      this.workingLemmaVersion.lemmaValues.imperfectsing2enclitic ||
+      this.workingLemmaVersion.lemmaValues.imperfectsing3encliticm ||
+      this.workingLemmaVersion.lemmaValues.imperfectsing3encliticf ||
+      this.workingLemmaVersion.lemmaValues.imperfectplural1enclitic ||
+      this.workingLemmaVersion.lemmaValues.imperfectplural2enclitic ||
+      this.workingLemmaVersion.lemmaValues.imperfectplural3enclitic ||
+
+      this.workingLemmaVersion.lemmaValues.cundizionalsing1enclitic ||
+      this.workingLemmaVersion.lemmaValues.cundizionalsing2enclitic ||
+      this.workingLemmaVersion.lemmaValues.cundizionalsing3encliticm ||
+      this.workingLemmaVersion.lemmaValues.cundizionalsing3encliticf ||
+      this.workingLemmaVersion.lemmaValues.cundizionalplural1enclitic ||
+      this.workingLemmaVersion.lemmaValues.cundizionalplural2enclitic ||
+      this.workingLemmaVersion.lemmaValues.cundizionalplural3enclitic ||
+
+      this.workingLemmaVersion.lemmaValues.futursing1enclitic ||
+      this.workingLemmaVersion.lemmaValues.futursing2enclitic ||
+      this.workingLemmaVersion.lemmaValues.futursing3encliticm ||
+      this.workingLemmaVersion.lemmaValues.futursing3encliticf ||
+      this.workingLemmaVersion.lemmaValues.futurplural1enclitic ||
+      this.workingLemmaVersion.lemmaValues.futurplural2enclitic ||
+      this.workingLemmaVersion.lemmaValues.futurplural3enclitic
     ) {
       return false;
     }
