@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,10 +11,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  validateForm!: FormGroup;
+  validateForm!: UntypedFormGroup;
   showError = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private fb: UntypedFormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Roles, User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
@@ -16,11 +16,11 @@ export class EditComponent implements OnInit {
 
   isLoading = false;
 
-  validateForm!: FormGroup;
+  validateForm!: UntypedFormGroup;
 
   user: User = new User();
 
-  constructor(private modal: NzModalRef, private fb: FormBuilder, private userService: UsersService) { }
+  constructor(private modal: NzModalRef, private fb: UntypedFormBuilder, private userService: UsersService) { }
 
   ngOnInit(): void {
     if (!!this.email) {

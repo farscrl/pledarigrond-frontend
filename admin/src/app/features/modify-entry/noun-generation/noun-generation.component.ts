@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { InflectionSubType } from 'src/app/models/inflection';
 import { LemmaVersion } from 'src/app/models/lemma-version';
@@ -19,7 +19,7 @@ export class NounGenerationComponent implements OnInit {
     this.originalLemmaVersion = JSON.parse(JSON.stringify(lemmaVersion));
   }
 
-  validateForm!: FormGroup;
+  validateForm!: UntypedFormGroup;
 
   subTypes: InflectionSubType[] = [];
 
@@ -29,7 +29,7 @@ export class NounGenerationComponent implements OnInit {
   isRegular = true;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private inflectionService: InflectionService,
     private languageSelectionService: LanguageSelectionService,
     private modal: NzModalRef,
@@ -82,15 +82,15 @@ export class NounGenerationComponent implements OnInit {
 
   private setUpForm() {
     this.validateForm = this.fb.group({
-      baseForm: new FormControl(this.workingLemmaVersion.lemmaValues.baseForm),
-      RInflectionSubtype: new FormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubtype ? this.workingLemmaVersion.lemmaValues.RInflectionSubtype : ""),
-      RRegularInflection: new FormControl(this.workingLemmaVersion.lemmaValues.RRegularInflection ? this.workingLemmaVersion.lemmaValues.RRegularInflection : true),
+      baseForm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.baseForm),
+      RInflectionSubtype: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubtype ? this.workingLemmaVersion.lemmaValues.RInflectionSubtype : ""),
+      RRegularInflection: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.RRegularInflection ? this.workingLemmaVersion.lemmaValues.RRegularInflection : true),
 
-      mSingular: new FormControl(this.workingLemmaVersion.lemmaValues.mSingular),
-      fSingular: new FormControl(this.workingLemmaVersion.lemmaValues.fSingular),
-      mPlural: new FormControl(this.workingLemmaVersion.lemmaValues.mPlural),
-      fPlural: new FormControl(this.workingLemmaVersion.lemmaValues.fPlural),
-      pluralCollectiv: new FormControl(this.workingLemmaVersion.lemmaValues.pluralCollectiv),
+      mSingular: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.mSingular),
+      fSingular: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.fSingular),
+      mPlural: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.mPlural),
+      fPlural: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.fPlural),
+      pluralCollectiv: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.pluralCollectiv),
     });
     this.validateForm.get("RRegularInflection")!.valueChanges.subscribe(value => {
       this.isRegular = value;

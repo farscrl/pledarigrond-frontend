@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
@@ -38,11 +38,11 @@ export class MainEntryComponent implements OnInit {
   private lexEntry?: LexEntry;
   private lemmaVersion?: LemmaVersion;
 
-  validateForm!: FormGroup;
+  validateForm!: UntypedFormGroup;
 
   constructor(
     private modal: NzModalRef,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private editorService: EditorService,
     public languageSelectionService: LanguageSelectionService,
     private modalService: NzModalService,
@@ -234,26 +234,26 @@ export class MainEntryComponent implements OnInit {
     this.setupDropdownValues();
 
     this.validateForm = this.fb.group({
-      DStichwort: new FormControl(this.lemmaVersion?.lemmaValues.DStichwort, Validators.required),
-      DGrammatik: new FormControl(this.lemmaVersion?.lemmaValues.DGrammatik),
-      DSubsemantik: new FormControl(this.lemmaVersion?.lemmaValues.DSubsemantik),
-      DGenus: new FormControl(this.lemmaVersion?.lemmaValues.DGenus),
-      DTags: new FormControl(this.lemmaVersion?.lemmaValues.DTags),
+      DStichwort: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DStichwort, Validators.required),
+      DGrammatik: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DGrammatik),
+      DSubsemantik: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DSubsemantik),
+      DGenus: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DGenus),
+      DTags: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DTags),
 
-      RStichwort: new FormControl(this.lemmaVersion?.lemmaValues.RStichwort, Validators.required),
-      RGrammatik: new FormControl(this.lemmaVersion?.lemmaValues.RGrammatik),
-      RSubsemantik: new FormControl(this.lemmaVersion?.lemmaValues.RSubsemantik),
-      RGenus: new FormControl(this.lemmaVersion?.lemmaValues.RGenus),
-      RFlex: new FormControl(this.lemmaVersion?.lemmaValues.RFlex),
-      RTags: new FormControl(this.lemmaVersion?.lemmaValues.RTags),
-      RInflectionType: new FormControl(this.lemmaVersion?.lemmaValues.RInflectionType),
+      RStichwort: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RStichwort, Validators.required),
+      RGrammatik: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RGrammatik),
+      RSubsemantik: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RSubsemantik),
+      RGenus: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RGenus),
+      RFlex: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RFlex),
+      RTags: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RTags),
+      RInflectionType: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RInflectionType),
 
-      DRedirect: new FormControl(this.lemmaVersion?.lemmaValues.DRedirect),
-      RRedirect: new FormControl(this.lemmaVersion?.lemmaValues.RRedirect),
-      categories: new FormControl(this.lemmaVersion?.lemmaValues.categories),
+      DRedirect: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DRedirect),
+      RRedirect: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RRedirect),
+      categories: new UntypedFormControl(this.lemmaVersion?.lemmaValues.categories),
 
-      contact_comment: new FormControl(this.lemmaVersion?.lemmaValues.contact_comment),
-      contact_email: new FormControl(this.lemmaVersion?.lemmaValues.contact_email),
+      contact_comment: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_comment),
+      contact_email: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_email),
     });
 
     if (this.directlyLoadDetailView) {
