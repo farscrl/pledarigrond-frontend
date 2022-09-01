@@ -9,7 +9,7 @@ import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './features/login/login.component';
@@ -54,6 +54,10 @@ import { NoPermissionsComponent } from './features/no-permissions/no-permissions
 import { NounGenerationComponent } from './features/modify-entry/noun-generation/noun-generation.component';
 import { DiffComponent } from './components/diff/diff.component';
 import { AdjectiveGenerationComponent } from './features/modify-entry/adjective-generation/adjective-generation.component';
+import { NameAdministrationComponent } from "./features/name-administration/name-administration.component";
+import { EditNameComponent } from "./features/name-administration/edit-name/edit-name.component";
+import { NameCategoryComponent } from "./components/data/name-category/name-category.component";
+import { NameDisplayComponent } from "./components/data/name-display/name-display.component";
 
 registerLocaleData(de);
 
@@ -102,6 +106,10 @@ export function tokenGetter() {
     NounGenerationComponent,
     DiffComponent,
     AdjectiveGenerationComponent,
+    NameAdministrationComponent,
+    EditNameComponent,
+    NameCategoryComponent,
+    NameDisplayComponent,
   ],
   imports: [
     BrowserModule,

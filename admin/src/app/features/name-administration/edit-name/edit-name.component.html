@@ -1,0 +1,69 @@
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nameRumantschGrischun" autocomplete="off">Rumantsch Grischun</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="nameRumantschGrischun" id="nameRumantschGrischun" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nameGerman" autocomplete="off">Tudestg</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="nameGerman" id="nameGerman" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="category" nzRequired>Categoria</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-select id="category" formControlName="category">
+        <nz-option nzValue="GEOGRAPHY" [nzLabel]="'data.name_category.geography' | translate"></nz-option>
+        <nz-option nzValue="FIRSTNAME" [nzLabel]="'data.name_category.firstname' | translate"></nz-option>
+        <nz-option nzValue="SURNAME" [nzLabel]="'data.name_category.surname' | translate"></nz-option>
+        <nz-option nzValue="COMPANY" [nzLabel]="'data.name_category.company' | translate"></nz-option>
+        <nz-option nzValue="ABBREVIATION" [nzLabel]="'data.name_category.abbreviation' | translate"></nz-option>
+        <nz-option nzValue="OTHER" [nzLabel]="'data.name_category.other' | translate"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nameSursilvan" autocomplete="off">Sursilvan</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="nameSursilvan" id="nameSursilvan" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nameSutsilvan" autocomplete="off">Sutsilvan</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="nameSutsilvan" id="nameSutsilvan" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nameSurmiran" autocomplete="off">Surmiran</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="nameSurmiran" id="nameSurmiran" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="namePuter" autocomplete="off">Puter</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="namePuter" id="namePuter" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nameVallader" autocomplete="off">Vallader</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="nameVallader" id="nameVallader" />
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">{{ 'names.edit.cancel' | translate }}</button>
+  <button nz-button nzType="primary" (click)="save()" [nzLoading]="isLoading">{{ (!!id ? 'names.edit.save' : 'names.edit.create') | translate }}</button>
+</div>

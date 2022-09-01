@@ -29,6 +29,25 @@
       "create": "Crear"
     }
   },
+  "names": {
+    "menu_item": "Nums",
+    "title": "Nums",
+    "subtitle": "Definir nums per exportar en il spellchecker",
+    "new_button": "Nov",
+    "edit_title": "Modifitgar num",
+    "new_title": "Crear nov num",
+    "actions": "Acziuns",
+    "edit_action": "Modifitgar",
+    "delete_action": "Stizzar",
+    "delete_question": "Propi stizzar quest num?",
+    "delete_yes": "Gea, stizzar",
+    "delete_no": "Na",
+    "edit": {
+      "cancel": "Interrumper",
+      "save": "Memorisar midadas",
+      "create": "Crear num"
+    }
+  },
   "lexicon": {
     "suggestions_menu_item": "Propostas",
     "history_menu_item": "Verificaziun",
@@ -233,6 +252,14 @@
       "accepted": "Acceptà",
       "outdated": "Antiquà",
       "unverified": "Betg verifitgà"
+    },
+    "name_category": {
+      "geography": "Geografia",
+      "firstname": "Prenum",
+      "surname": "Schlattaina",
+      "company": "Interpresa",
+      "abbreviation": "Scursanida",
+      "other": "Auter"
     }
   },
   "edit": {

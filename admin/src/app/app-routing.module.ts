@@ -15,6 +15,7 @@ import { SuggestionsComponent } from './features/editor/suggestions/suggestions.
 import { LoginComponent } from './features/login/login.component';
 import { NoPermissionsComponent } from './features/no-permissions/no-permissions.component';
 import { UserAdministrationComponent } from './features/user-administration/user-administration.component';
+import {NameAdministrationComponent} from "./features/name-administration/name-administration.component";
 
 const routes: Routes = [
   {
@@ -224,7 +225,12 @@ const routes: Routes = [
         data: {
           expected_role: 'ROLE_EDITOR_NAMES'
         },
-        children: []
+        children: [
+          {
+            path: "",
+            component: NameAdministrationComponent
+          }
+        ]
       },
       {
         path: 'users',canActivate: [UserLoggedInGuard],

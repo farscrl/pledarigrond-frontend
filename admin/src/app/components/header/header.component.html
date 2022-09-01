@@ -9,7 +9,7 @@
 
     <nz-divider nzType="vertical" *ngIf="authService.isEditorNames()"></nz-divider>
 
-    <!--<li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/names" *ngIf="authService.isEditorNames()">Nums</li>-->
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/names" *ngIf="authService.isEditorNames()">{{ 'names.menu_item' | translate}}</li>
     <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users" *ngIf="authService.isAdmin()">{{ 'users.menu_item' | translate}}</li>
   </ul>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu-right">
