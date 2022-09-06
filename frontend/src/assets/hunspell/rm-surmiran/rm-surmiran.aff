@@ -20,7 +20,7 @@ ICONV ’ '
 OCONV 1
 OCONV ' ’
 
-PFX T Y 153
+PFX T Y 165
 PFX T 0 l' [aeiouAEIOU]
 PFX T a l'a a
 PFX T e l'e e
@@ -83,6 +83,18 @@ PFX T e D'E e
 PFX T i D'I i
 PFX T o D'O o
 PFX T u D'U u
+PFX T 0 n' [aeiouAEIOU]
+PFX T a n'a a
+PFX T e n'e e
+PFX T i n'i i
+PFX T o n'o o
+PFX T u n'u u
+PFX T 0 N' [AEIOUH]
+PFX T a N'A a
+PFX T e N'E e
+PFX T i N'I i
+PFX T o N'O o
+PFX T u N'U u
 PFX T 0 chest' [aeiouAEIOU]
 PFX T a chest'a a
 PFX T e chest'e e
