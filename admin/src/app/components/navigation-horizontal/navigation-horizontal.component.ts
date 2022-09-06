@@ -21,4 +21,9 @@ export class NavigationHorizontalComponent implements OnInit {
   openFe() {
     window.open(environment.frontendUrl + "/" + this.languageSelectionService.getCurrentLanguage(), '_blank');
   }
+
+  showAutomaticReview(): boolean {
+    return false;
+    // return this.languageSelectionService.getCurrentLanguage() === 'surmiran';
+  }
 }

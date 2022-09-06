@@ -9,7 +9,7 @@
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/lexicon'">
     {{ 'lexicon.lexicon_menu_item' | translate }}
   </li>
-  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/automatic'"  *ngIf="languageSelectionService.getCurrentLanguage() === 'surmiran'">
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/editor/automatic'"  *ngIf="showAutomaticReview()">
     {{ 'lexicon.review_menu_item' | translate }}
   </li>
 
