@@ -40,7 +40,7 @@ export class Proofreader implements IProofreaderInterface {
     let trimmedOffset = 0;
     tkns.forEach(tkn => {
       // remove interpunctuation tokens
-      if (tkn === '©' || tkn === '' || tkn === ':' || tkn === ';' || tkn === '!' || tkn === '+' || tkn == ',' || tkn === '.' || tkn === '(' || tkn === ')' || tkn === '{' || tkn === '}' ||tkn === '[' || tkn === ']' || this.isNumeric(tkn)) {
+      if (tkn === '©' || tkn === '' || tkn === ':' || tkn === ';' || tkn === '!' || tkn === '+' || tkn == ',' || tkn === '.' || tkn === '(' || tkn === ')' || tkn === '{' || tkn === '}' ||tkn === '[' || tkn === ']' || tkn === '?' || this.isNumeric(tkn)) {
         return;
       }
 
