@@ -23,7 +23,6 @@ export class NavigationHorizontalComponent implements OnInit {
   }
 
   showAutomaticReview(): boolean {
-    return false;
-    // return this.languageSelectionService.getCurrentLanguage() === 'surmiran';
+    return this.languageSelectionService.getCurrentLanguage() === 'rumantschgrischun';
   }
 }
