@@ -10,6 +10,7 @@ import { ConjugationComponent } from '../conjugation/conjugation.component';
 import { TranslateService } from '@ngx-translate/core';
 import { NounGenerationComponent } from '../noun-generation/noun-generation.component';
 import { AdjectiveGenerationComponent } from '../adjective-generation/adjective-generation.component';
+import { Language } from "../../../models/security";
 
 @Component({
   selector: 'app-main-entry',
@@ -86,6 +87,18 @@ export class MainEntryComponent implements OnInit {
         }
       });
     }
+  }
+
+  doesSupportVerb(language: Language): boolean {
+    return true;
+  }
+
+  doesSupportNoun(language: Language): boolean {
+    return language === 'surmiran' || language === 'rumantschgrischun';
+  }
+
+  doesSupportAdjective(language: Language): boolean {
+    return language === 'surmiran' || language === 'rumantschgrischun';
   }
 
   editVerb() {
