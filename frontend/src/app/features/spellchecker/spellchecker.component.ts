@@ -48,7 +48,7 @@ export class SpellcheckerComponent implements OnInit {
         StarterKit,
         Underline,
         Highlight,
-         SpellcheckerExtension.configure({
+        SpellcheckerExtension.configure({
           proofreader: proofreader,
           uiStrings: {
             noSuggestions: 'Catto nignas propostas'
