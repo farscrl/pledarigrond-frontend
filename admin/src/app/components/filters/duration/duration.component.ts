@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
 import { EditorQuery } from 'src/app/models/editor-query';
+import { ngDebounce } from "../../../decorators/debounce.decorator";
 
 @Component({
   selector: 'app-duration',
@@ -30,6 +31,7 @@ export class DurationComponent implements OnInit {
     this.resetDate();
   }
 
+  @ngDebounce(10)
   filter() {
     this.editorQuery.startTime = !!this.selectedDuration[0] ? this.selectedDuration[0].getTime() : undefined;
     this.editorQuery.endTime = !!this.selectedDuration[1] ? this.selectedDuration[1].getTime() : undefined;
