@@ -4,6 +4,7 @@ import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
+import { MatomoTracker } from "@ngx-matomo/tracker";
 
 @Component({
   selector: 'app-suggest-modification',
@@ -28,6 +29,7 @@ export class SuggestModificationComponent extends SimpleModalComponent<{lemmaVer
     private selectedLanguageService: SelectedLanguageService,
     private authService: AuthService,
     private simpleModalService: SimpleModalService,
+    private tracker: MatomoTracker,
   ) {
     super();
   }
@@ -56,6 +58,7 @@ export class SuggestModificationComponent extends SimpleModalComponent<{lemmaVer
       return;
     }
 
+    this.tracker.trackEvent('PROPOSTA', 'proposta ' + this.selectedLanguageService.getSelectedLanguageUrlSegment());
     this.modificationService.suggestChange(this.selectedLanguageService.getSelectedLanguageUrlSegment(), this.changedLemmaVersion?.lexEntryId, this.changedLemmaVersion!).subscribe(data => {
       this.cancel();
     }, error => {

@@ -9,6 +9,7 @@ import { VerbsModalComponent } from '../verbs-modal/verbs-modal.component';
 import { SuggestModificationComponent } from '../suggest-modification/suggest-modification.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SuggestionComponent } from 'src/app/components/footer/suggestion/suggestion.component';
+import { MatomoTracker } from "@ngx-matomo/tracker";
 
 @Component({
   selector: 'app-search-content',
@@ -35,7 +36,8 @@ export class SearchContentComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private simpleModalService: SimpleModalService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private tracker: MatomoTracker,
   ) {
 
   }
@@ -290,7 +292,11 @@ export class SearchContentComponent implements OnInit, OnDestroy {
         relativeTo: this.activatedRoute,
         queryParams: url,
         queryParamsHandling: 'merge',
-      });
+    });
+
+    if (this.searchCriteria.searchPhrase != '') {
+      this.tracker.trackEvent('TSCHERTGA', 'tschertga ' + this.selectedLanguageService.getSelectedLanguageUrlSegment());
+    }
   }
 }
 

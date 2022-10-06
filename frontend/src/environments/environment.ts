@@ -7,6 +7,8 @@ export const environment = {
   apiUrl: 'http://localhost:8080',
   apiHost: 'localhost:8080',
   adminBackendUrl: 'http://localhost:4222/',
+  matomoTrackingUrl:  'https://www.statistica.pledarigrond.ch',
+  matomoTrackingId: '9',
 };
 
 /*

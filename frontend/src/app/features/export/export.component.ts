@@ -4,6 +4,7 @@ import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
 import { AuthService } from 'src/app/services/auth.service';
 import { ExportService } from 'src/app/services/export.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
+import { MatomoTracker } from "@ngx-matomo/tracker";
 
 @Component({
   selector: 'app-export',
@@ -18,6 +19,7 @@ export class ExportComponent extends SimpleModalComponent<null, null>  implement
     private simpleModalService: SimpleModalService,
     private selectedLanguageService: SelectedLanguageService,
     private router: Router,
+    private tracker: MatomoTracker,
   ) {
     super();
   }
@@ -30,6 +32,7 @@ export class ExportComponent extends SimpleModalComponent<null, null>  implement
   }
 
   export() {
+    this.tracker.trackEvent("EXPORT", 'export ' + this.selectedLanguageService.getSelectedLanguageUrlSegment(), this.authService.getUsername());
     this.exportService.getJsonZip(this.selectedLanguageService.getSelectedLanguageUrlSegment()).subscribe(data => {
       this.downloadFile(data, "pledarigrond_export_json_" + this.selectedLanguageService.getSelectedLanguageUrlSegment() + ".zip", "application/zip");
     });

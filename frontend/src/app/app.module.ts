@@ -57,6 +57,8 @@ import { OtherResourcesComponent } from './features/other-resources/other-resour
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { SpellcheckerComponent } from './features/spellchecker/spellchecker.component';
 import { SpellcheckerMenubarComponent } from './features/spellchecker/spellchecker-menubar/spellchecker-menubar.component';
+import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
+import { NgxMatomoRouterModule } from '@ngx-matomo/router';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -150,6 +152,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     ),
     NgxTiptapModule,
+    NgxMatomoTrackerModule.forRoot({
+      siteId: environment.matomoTrackingId,
+      trackerUrl: environment.matomoTrackingUrl,
+    }),
+    NgxMatomoRouterModule,
   ],
   providers: [
     UserLoggedInGuard,

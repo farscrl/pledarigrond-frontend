@@ -3,4 +3,6 @@ export const environment = {
   apiUrl: 'https://api.pledarigrond.ch',
   apiHost: 'api.pledarigrond.ch',
   adminBackendUrl: 'https://www.pledarigrond.ch/admin/',
+  matomoTrackingUrl:  'https://www.statistica.pledarigrond.ch',
+  matomoTrackingId: '4',
 };
