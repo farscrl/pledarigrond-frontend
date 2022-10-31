@@ -1,50 +1,62 @@
 <div class="content">
-  <div class="spellchecker" spellcheck="false">
-    <div *ngIf="isLoadingData" class="loading-notification">
-      Las datas vignan cargedas - spitgier per plascheir en mument
-    </div>
-    <ng-container *ngIf="editor">
-      <div class="editor">
-        <div class="editor__header">
-          <app-spellchecker-menubar [editor]="editor"></app-spellchecker-menubar>
-        </div>
+  <div class="backlink">
+    <a [routerLink]="'/' + idiom">← turnar al Pledari Grond</a>
+  </div>
+  <div class="main">
+    <div class="spellchecker" spellcheck="false">
+      <div *ngIf="isLoadingData" class="loading-notification">
+        {{ 'spellchecker.loading' | translate }}
+      </div>
+      <ng-container *ngIf="editor">
+        <div class="editor">
+          <div class="editor__header">
+            <app-spellchecker-menubar [editor]="editor"></app-spellchecker-menubar>
+          </div>
           <ng-container *ngIf="sentSuggestion">
             <div class="editor__notification">
               <div class="text">{{ 'spellchecker.sent_suggestion' | translate:{'word': sentSuggestionWord } }}</div>
               <div class="icon"><i class="ri-close-fill" (click)="closeSuggestionNotification()"></i></div>
             </div>
           </ng-container>
-        <div class="editor__content">
-          <tiptap-editor [editor]="editor" [(ngModel)]="value"></tiptap-editor>
-        </div>
-        <div class="editor__footer">
-          <div></div>
-          <div class="editor__name">
-            versiun: {{ version }}
+          <div class="editor__content">
+            <tiptap-editor [editor]="editor" [(ngModel)]="value"></tiptap-editor>
+          </div>
+          <div class="editor__footer">
+            <div></div>
+            <div class="editor__name">
+              {{ 'spellchecker.editor.version' | translate }}: {{ version }}
+            </div>
           </div>
         </div>
-      </div>
 
-    </ng-container>
-  </div>
-  <div class="infos">
-    <div>
-      <p>
-        <b>Installar sen igl computer</b><br>
-      </p>
-      <ul>
-        <li><a href="#">Microsoft Office Windows</a></li>
-        <li><a href="#">Microsoft Office macOS</a></li>
-        <li><a href="#">macOS</a></li>
-        <li><a href="#">LibreOffice</a></li>
-        <li><a href="#">Mozilla Firefox</a></li>
-      </ul>
+      </ng-container>
     </div>
-    <div class="credits">
-      La controlla ortografica rumantscha è in project da la <a href="https://www.rumantsch.ch/" target="_blank">Pro Svizra Rumantscha</a> realisà en collavuraziun cun la Lia Rumantscha.
-      <a href="https://www.rumantsch.ch/" target="_blank">
-        <img src="assets/img/logo_psr.png" alt="Logo Pro Svizra Rumantscha">
-      </a>
+    <div class="infos">
+      <div class="instructions">
+        <p>
+          {{ 'spellchecker.instructions' | translate }}
+          <br><br>
+          {{ 'spellchecker.privacy' | translate }}
+        </p>
+        <br>
+        <p>
+          <b>{{ 'spellchecker.install.title' | translate }}</b><br>
+        </p>
+        <ul>
+          <li><a href="#">macOS</a></li>
+          <li><a href="#">LibreOffice</a></li>
+          <li><a href="https://addons.mozilla.org/en-US/firefox/addon/spellchecker-surmiran" target="_blank">Mozilla Firefox</a></li>
+          <li><a href="https://addons.thunderbird.net/de/thunderbird/addon/spellchecker-surmiran/" target="_blank">Mozilla Thunderbird</a></li>
+          <li><a href="#">auter (Hunspell)</a></li>
+        </ul>
+      </div>
+      <div class="credits">
+        {{ 'spellchecker.credits' | translate | translateCut:'0' }}
+        <a href="https://www.rumantsch.ch/" target="_blank">{{ 'spellchecker.credits' | translate | translateCut:'1' }}</a>
+        {{ 'spellchecker.credits' | translate | translateCut:'2' }}
+        <a href="http://www.liarumantscha.ch" target="_blank">{{ 'spellchecker.credits' | translate | translateCut:'3' }}</a>
+        {{ 'spellchecker.credits' | translate | translateCut:'4' }}
+      </div>
     </div>
   </div>
 </div>
