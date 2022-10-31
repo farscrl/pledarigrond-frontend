@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OtherResourcesComponent, OtherResourcesType } from '../../other-resources/other-resources.component';
 import { SimpleModalService } from "ngx-simple-modal";
+import { SelectedLanguageService } from "../../../services/selected-language.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-glossary-links',
@@ -9,11 +11,25 @@ import { SimpleModalService } from "ngx-simple-modal";
 })
 export class GlossaryLinksComponent implements OnInit {
 
-  constructor(
+  idiom = '';
+
+  private idiomSubscription?: Subscription;
+
+    constructor(
     private simpleModalService: SimpleModalService,
+    private selectedLanguageService: SelectedLanguageService,
   ) { }
 
   ngOnInit(): void {
+    this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(lng => {
+      this.idiom = this.selectedLanguageService.getSelectedLanguageUrlSegment();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.idiomSubscription) {
+      this.idiomSubscription.unsubscribe();
+    }
   }
 
   openLinksModal(type: OtherResourcesType) {
