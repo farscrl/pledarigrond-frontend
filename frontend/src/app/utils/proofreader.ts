@@ -4,6 +4,7 @@ import { Hunspell } from "hunspell-asm";
 
 export class Proofreader implements IProofreaderInterface {
   hunspell: Hunspell;
+  punctuation = ['.', '©', '', ':', ';', '!', '+', ',', '(', ')', '{', '}', '[', ']', '?', '|', "«", "»"];
 
   constructor(hunspell: Hunspell) {
     this.hunspell = hunspell;
@@ -39,19 +40,17 @@ export class Proofreader implements IProofreaderInterface {
     const tokens: ITextWithPosition[] = [];
 
     let trimmedOffset = 0;
+
     tkns.forEach(tkn => {
-      // remove interpunctuation tokens
-      if (tkn === '©' || tkn === '' || tkn === ':' || tkn === ';' || tkn === '!' || tkn === '+' || tkn == ',' || tkn === '.' || tkn === '(' || tkn === ')' || tkn === '{' || tkn === '}' ||tkn === '[' || tkn === ']' || tkn === '?' || tkn === '|' || this.isNumeric(tkn)) {
+      if (this.punctuation.includes(tkn)) {
         return;
       }
 
-      if(tkn.startsWith("«") || tkn.startsWith('"')) {
-        tkn = tkn.slice(1, tkn.length);
+      if (this.isNumeric(tkn)) {
+        return;
       }
 
-      if (tkn.endsWith("»") || tkn.endsWith('"')) {
-        tkn = tkn.slice(0, tkn.length - 1);
-      }
+      tkn = this.normalizeString(tkn);
 
       const index = text.indexOf(tkn);
       tokens.push({
@@ -74,5 +73,29 @@ export class Proofreader implements IProofreaderInterface {
     // @ts-ignore
     return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
            !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+  }
+
+  private normalizeString(tkn: string) {
+    let didChange = false;
+
+    do {
+      didChange = false;
+      const first = tkn.charAt(0);
+      if (this.punctuation.includes(first)) {
+        tkn = tkn.slice(1, tkn.length);
+        didChange = true;
+      }
+    } while (didChange);
+
+    do {
+      didChange = false;
+      const last = tkn.slice(-1);
+      if (this.punctuation.includes(last)) {
+        tkn = tkn.slice(0, tkn.length - 1);
+        didChange = true;
+      }
+    } while (didChange);
+
+    return tkn;
   }
 }
