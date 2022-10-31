@@ -115,6 +115,24 @@
     padding: 0.25rem;
   }
 
+  &__notification {
+    background-color: #15e9b1;
+    padding: 6px 12px;
+    display: flex;
+
+    .text {
+      flex-grow: 1;
+    }
+
+    .icon {
+      font-size: 20px;
+
+      i {
+        cursor: pointer;
+      }
+    }
+  }
+
   &__content {
     background-color: #fff;
     flex: 1 1 auto;
@@ -155,25 +173,51 @@
 
 
 
-.suggestions-box {
+#suggestions-box {
   position: absolute;
   border: 1px solid black;
   background-color: #f7f7f7;
-  padding: 2px 4px;
   border-radius: 4px;
 
   ul {
-    padding: 0;
+    padding: 2px 4px;
     margin: 0;
+    display: inline-block;
   }
 
   li {
     cursor: pointer;
     list-style: none;
+
+    &:hover {
+      color: #15e9b1;;
+    }
   }
   li:before {
     content: "→";
     color: #848484;
     padding-right: 5px;
+  }
+
+  .suggestion-link {
+    margin-top: 12px;
+    background-color: #15e9b1;
+    color: white;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+
+    .suggestion-text {
+      display: inline-block;
+      margin-left: 6px;
+      max-width: 220px;
+
+      &:hover {
+        color: black;
+        cursor: pointer;
+      }
+    }
   }
 }

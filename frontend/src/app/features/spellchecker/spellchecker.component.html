@@ -8,6 +8,12 @@
         <div class="editor__header">
           <app-spellchecker-menubar [editor]="editor"></app-spellchecker-menubar>
         </div>
+          <ng-container *ngIf="sentSuggestion">
+            <div class="editor__notification">
+              <div class="text">{{ 'spellchecker.sent_suggestion' | translate:{'word': sentSuggestionWord } }}</div>
+              <div class="icon"><i class="ri-close-fill" (click)="closeSuggestionNotification()"></i></div>
+            </div>
+          </ng-container>
         <div class="editor__content">
           <tiptap-editor [editor]="editor" [(ngModel)]="value"></tiptap-editor>
         </div>

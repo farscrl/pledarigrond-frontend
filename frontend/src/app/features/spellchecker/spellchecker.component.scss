@@ -14,44 +14,59 @@
   display: flex;
   flex-direction: column;
 
-  .spellchecker {
-    flex-grow: 1;
-  }
+  .backlink {
+    margin-bottom: 12px;
 
-  .infos {
-    flex-grow: 0;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    ul {
-      list-style: none;
-      margin-left: 0;
-      padding-left: 0;
-    }
-
-    li {
-      padding-left: 1em;
-      text-indent: -1em;
-    }
-
-    li:before {
-      content: "→";
-      color: #848484;
-      padding-right: 5px;
-    }
-
-    a:hover, a:active, a:focus {
+    a:hover {
       color: #15e9b1;
       text-decoration: none;
     }
+  }
 
-    .credits {
-      img {
-        width: 120px;
-        margin-right: 0;
-        margin-left: auto;
+  .main {
+    display: flex;
+    flex-direction: column;
+
+    .spellchecker {
+      flex-grow: 1;
+    }
+
+    .infos {
+      flex-grow: 0;
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      ul {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      li {
+        padding-left: 1em;
+        text-indent: -1em;
+      }
+
+      li:before {
+        content: "→";
+        color: #848484;
+        padding-right: 5px;
+      }
+
+      a:hover, a:active, a:focus {
+        color: #15e9b1;
+        text-decoration: none;
+      }
+
+      .credits {
+        margin-top: 24px;
+        img {
+          width: 120px;
+          margin-right: 0;
+          margin-left: auto;
+        }
       }
     }
   }
@@ -68,12 +83,18 @@
     margin: 16px;
     border-radius: 16px;
 
-    .infos {
-      margin-top: 16px;
-      flex-direction: row;
+    .main {
+      .infos {
+        margin-top: 16px;
+        flex-direction: row;
 
-      .credits {
-        max-width: 200px;
+        .instructions {
+          max-width: 70%;
+        }
+
+        .credits {
+          max-width: 200px;
+        }
       }
     }
   }
@@ -82,20 +103,27 @@
 @media (min-width: 1180px) {
   .content {
     width: 1400px;
-    flex-direction: row;
 
-    .spellchecker {
-      margin-right: 24px;
-      max-width: 1130px;
-    }
+    .main {
+      flex-direction: row;
 
-    .infos {
-      flex-direction: column;
-      max-width: 196px;
-      margin-top: 0;
+      .spellchecker {
+        margin-right: 24px;
+        max-width: 1130px;
+      }
 
-      .credits {
-        max-width: unset;
+      .infos {
+        flex-direction: column;
+        max-width: 196px;
+        margin-top: 0;
+
+        .instructions {
+          max-width: 100%;
+        }
+
+        .credits {
+          max-width: unset;
+        }
       }
     }
   }

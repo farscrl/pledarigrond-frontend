@@ -7,6 +7,13 @@ import { Proofreader } from 'src/app/utils/proofreader';
 import { Underline } from "@tiptap/extension-underline";
 import { Highlight } from "@tiptap/extension-highlight";
 import { Hunspell, HunspellFactory, loadModule } from 'hunspell-asm';
+import { Subscription } from "rxjs";
+import { SelectedLanguageService } from "../../services/selected-language.service";
+import { TranslateService } from "@ngx-translate/core";
+import { MatomoTracker } from "@ngx-matomo/tracker";
+import { ModificationService } from "../../services/modification.service";
+import { LemmaVersion } from "../../models/lemma-version";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-spellchecker',
@@ -23,19 +30,40 @@ export class SpellcheckerComponent implements OnInit {
   dictFile?: string;
   hunspell?: Hunspell;
 
-  ngOnDestroy(): void {
-    this.editor?.destroy();
-    this.unloadDictionary();
-  }
-
   isLoadingData = true;
   version = "";
 
-  constructor(private http: HttpClient) { }
+  idiom = '';
+  private idiomSubscription?: Subscription;
+
+  sentSuggestion = false;
+  sentSuggestionWord = '';
+
+  constructor(
+    private http: HttpClient,
+    private selectedLanguageService: SelectedLanguageService,
+    private translateService: TranslateService,
+    private tracker: MatomoTracker,
+    private modificationService: ModificationService,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
     this.loadVersion();
     this.loadDictionary();
+
+    this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(lng => {
+      this.idiom = this.selectedLanguageService.getSelectedLanguageUrlSegment();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.editor?.destroy();
+    this.unloadDictionary();
+
+    if (this.idiomSubscription) {
+      this.idiomSubscription.unsubscribe();
+    }
   }
 
   onDictLoaded() {
@@ -52,9 +80,61 @@ export class SpellcheckerComponent implements OnInit {
           proofreader: proofreader,
           uiStrings: {
             noSuggestions: 'Catto nignas propostas'
-          }
+          },
+          onShowSuggestionsEvent: this.updateSuggestionBox.bind(this)
         })
       ],
+    });
+  }
+
+  closeSuggestionNotification() {
+    this.sentSuggestion = false;
+  }
+
+  private updateSuggestionBox(word: string) {
+    const suggestionText = document.createElement('span');
+    suggestionText.className = 'suggestion-text';
+    suggestionText.innerText = 'Trametter quest pled a la Lia Rumantscha sco proposta';
+
+    const suggestionLink = document.createElement("div");
+    suggestionLink.className = 'suggestion-link';
+    suggestionLink.addEventListener('click', (evt) => {
+      this.suggestWord(word);
+      evt.preventDefault();
+    }, false);
+    suggestionLink.appendChild(document.createTextNode('→ '));
+    suggestionLink.appendChild(suggestionText);
+
+    const suggestionsBox = document.getElementById('suggestions-box');
+    if (suggestionsBox) {
+      suggestionsBox.append(suggestionLink);
+
+      // adding focus to suggestions-box, to allow clicking in the box
+      suggestionsBox.addEventListener('mouseover', () => {
+        suggestionsBox.focus();
+      });
+    }
+  }
+
+  private suggestWord(word: string) {
+    const lemmaVersion = new LemmaVersion();
+    lemmaVersion.lemmaValues.RStichwort = word;
+    lemmaVersion.lemmaValues.DStichwort = '';
+    lemmaVersion.lemmaValues.contact_comment = 'Proposta via spellchecker online';
+    lemmaVersion.lemmaValues.contact_email = this.authService.getUsername();
+
+    this.tracker.trackEvent('PROPOSTA-SPELLCHECKER', 'proposta spellcheker ' + this.selectedLanguageService.getSelectedLanguageUrlSegment());
+    this.modificationService.create(this.selectedLanguageService.getSelectedLanguageUrlSegment(), lemmaVersion).subscribe(data => {
+      this.sentSuggestion = true;
+      this.sentSuggestionWord = word;
+
+      const suggestionsBox = document.getElementById('suggestions-box');
+      if (suggestionsBox) {
+        suggestionsBox.textContent = '';
+        suggestionsBox.style.display = 'none'
+      }
+    }, error => {
+      console.error(error);
     });
   }
 

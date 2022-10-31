@@ -89,6 +89,7 @@
     }
   },
   "promo": {
+    "spellchecker": "spellchecker",
     "other": "ulteriours dicziunaris",
     "glossary": "glossaris",
     "readmore": "legia dapli"
@@ -184,5 +185,33 @@
     "flora": "Flora Helvetica, nums da flurs e plantas",
     "avionary": "Terminologia d'utschels",
     "ballape": "Glossari da ballape"
+  },
+  "spellchecker": {
+    "loading": "Las datas vignan cargedas - spitgier per plascheir en mument",
+    "sent_suggestion": "Proponì a la Lia Rumantscha dad agiuntar «{{ word }}» sco pled valaivel al dicziunari da la controlla ortografica.",
+    "instructions": "Per laschar curreger in text al pudais vus simplamain copiar en il formular qua dasperas e cliccar sin ils pleds sutlingiads per vesair las propostas da correctura.",
+    "privacy": "La protecziun da Vossas datas è garantida: Il text encollà na banduna betg Voss computer.",
+    "install": {
+      "title": "Installar sen igl computer",
+      "other": "auter (Hunspell)"
+    },
+    "credits": "La controlla ortografica rumantscha è in project da la |Pro Svizra Rumantscha| realisà en collavuraziun cun la |Lia Rumantscha| e sustegnì da l'Uffizi federal da cultura.",
+    "editor": {
+      "version": "version",
+      "bold": "grass",
+      "italic": "cursiv",
+      "underline": "sottastritgia",
+      "strike": "stritgia",
+      "highlight": "marcar",
+      "heading1": "titel 1",
+      "heading2": "titel 2",
+      "paragraph": "paragraf",
+      "bulletList": "glista betg ordinada",
+      "orderedList": "glista ordinada",
+      "hard_break": "Nova lingia",
+      "clear_format": "Allontanar formattaziuns",
+      "undo": "Revocar",
+      "redo": "Repeter"
+    }
   }
 }

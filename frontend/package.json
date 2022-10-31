@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@auth0/angular-jwt": "^5.0.2",
-    "@farscrl/tiptap-extension-spellchecker": "^1.0.1",
+    "@farscrl/tiptap-extension-spellchecker": "^1.0.2",
     "@ngx-matomo/router": "^3.2.0",
     "@ngx-matomo/tracker": "^3.2.0",
     "@ngx-translate/core": "^14.0.0",
