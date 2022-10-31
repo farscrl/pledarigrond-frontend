@@ -4,6 +4,7 @@ import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
+import { MatomoTracker } from "@ngx-matomo/tracker";
 
 @Component({
   selector: 'app-suggestion',
@@ -26,6 +27,7 @@ export class SuggestionComponent extends SimpleModalComponent<null, null> implem
     private selectedLanguageService: SelectedLanguageService,
     private authService: AuthService,
     private simpleModalService: SimpleModalService,
+    private tracker: MatomoTracker,
   ) {
     super();
   }
@@ -58,6 +60,7 @@ export class SuggestionComponent extends SimpleModalComponent<null, null> implem
     lv.lemmaValues.contact_comment = this.comment;
     lv.lemmaValues.contact_email = this.email;
 
+    this.tracker.trackEvent('PROPOSTA', 'proposta ' + this.selectedLanguageService.getSelectedLanguageUrlSegment());
     this.modificationService.create(this.selectedLanguageService.getSelectedLanguageUrlSegment(), lv).subscribe(data => {
       this.cancel();
     }, error => {
