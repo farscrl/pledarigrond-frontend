@@ -4,7 +4,7 @@ import { Hunspell } from "hunspell-asm";
 
 export class Proofreader implements IProofreaderInterface {
   hunspell: Hunspell;
-  punctuation = ['.', '©', '', ':', ';', '!', '+', ',', '(', ')', '{', '}', '[', ']', '?', '|', "«", "»"];
+  punctuation = ['.', '©', '', ':', ';', '!', '+', ',', '(', ')', '{', '}', '[', ']', '?', '|', "«", "»", "/", "%", "–"];
 
   constructor(hunspell: Hunspell) {
     this.hunspell = hunspell;
