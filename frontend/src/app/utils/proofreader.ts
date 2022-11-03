@@ -19,7 +19,7 @@ export class Proofreader implements IProofreaderInterface {
     const errors: ITextWithPosition[] = [];
 
     tokens.forEach(tkn => {
-      if (!this.hunspell.spell(tkn.word)) {
+      if (!this.hunspell.spell(this.removeSpecialChars(tkn.word))) {
         errors.push(tkn);
       }
     });
@@ -28,7 +28,7 @@ export class Proofreader implements IProofreaderInterface {
   }
 
   getSuggestions(word: string): Promise<string[]> {
-    return Promise.resolve(this.hunspell.suggest(word));
+    return Promise.resolve(this.hunspell.suggest(this.removeSpecialChars(word)));
   }
 
   normalizeTextForLanguage(text: string): string {
@@ -96,5 +96,9 @@ export class Proofreader implements IProofreaderInterface {
     } while (didChange);
 
     return tkn;
+  }
+
+  private removeSpecialChars(text: string): string {
+    return text.replace(/\u00AD/g,'');
   }
 }
