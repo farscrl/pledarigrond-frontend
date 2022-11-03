@@ -52,14 +52,13 @@ export class Proofreader implements IProofreaderInterface {
 
       tkn = this.normalizeString(tkn);
 
-      const index = text.indexOf(tkn);
+      const index = text.indexOf(tkn, trimmedOffset);
       tokens.push({
-        offset: trimmedOffset + index,
+        offset: index,
         length: tkn.length,
         word: tkn
       });
-      text = text.substring(index);
-      trimmedOffset += index;
+      trimmedOffset = (index + tkn.length);
     });
 
     return tokens;
