@@ -18,6 +18,9 @@ export class NameAdministrationComponent implements OnInit {
   pageSize = 10;
   isLoading = true;
 
+  nameFilter = "";
+  categoryFilter = "";
+
   constructor(
     private modalService: NzModalService,
     private viewContainerRef: ViewContainerRef,
@@ -26,6 +29,10 @@ export class NameAdministrationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.applyFilter();
+  }
+
+  applyFilter() {
     this.loadPage(1, this.pageSize);
   }
 
@@ -75,7 +82,7 @@ export class NameAdministrationComponent implements OnInit {
 
   private loadPage(pageNumber: number, pageSize: number) {
     this.isLoading = true;
-    this.nameService.getAll(pageNumber - 1, pageSize).subscribe(data => {
+    this.nameService.getAll(pageNumber - 1, pageSize, this.nameFilter, this.categoryFilter).subscribe(data => {
       this.currentPage = data.content;
       this.totalElements = data.totalElements;
       this.pageNumber = data.number + 1;

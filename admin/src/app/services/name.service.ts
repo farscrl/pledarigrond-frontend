@@ -14,13 +14,19 @@ export class NameService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(pageNumber: number, pageSize: number): Observable<Page<Name>> {
+  getAll(pageNumber: number, pageSize: number, name?: string, category?: string): Observable<Page<Name>> {
     let params: HttpParams = new HttpParams();
     if (pageNumber !== 0) {
       params = params.set('page', pageNumber);
     }
     if (pageSize !== 15) {
       params = params.set('pageSize', pageSize);
+    }
+    if (!!name) {
+      params = params.set('name', name);
+    }
+    if (!!category) {
+      params = params.set('category', category);
     }
 
     const httpOptions = {

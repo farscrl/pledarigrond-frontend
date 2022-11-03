@@ -9,6 +9,34 @@
         </nz-page-header-extra>
       </nz-page-header>
 
+      <nz-collapse>
+        <nz-collapse-panel
+          nzHeader="Filter"
+        >
+          <form nz-form [nzLayout]="'inline'" (ngSubmit)="applyFilter()">
+            <nz-form-item>
+              <nz-form-control [nzSpan]="8" [nzFlex]="1"style="min-width: 400px">
+                <input  nz-input placeholder="Num" [(ngModel)]="nameFilter" name="name" (ngModelChange)="applyFilter()" />
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control style="min-width: 400px">
+                <nz-select id="category" [(ngModel)]="categoryFilter" name="category" (ngModelChange)="applyFilter()">
+                  <nz-option nzValue="" [nzLabel]="'-'"></nz-option>
+                  <nz-option nzValue="GEOGRAPHY" [nzLabel]="'data.name_category.geography' | translate"></nz-option>
+                  <nz-option nzValue="FIRSTNAME" [nzLabel]="'data.name_category.firstname' | translate"></nz-option>
+                  <nz-option nzValue="SURNAME" [nzLabel]="'data.name_category.surname' | translate"></nz-option>
+                  <nz-option nzValue="COMPANY" [nzLabel]="'data.name_category.company' | translate"></nz-option>
+                  <nz-option nzValue="ABBREVIATION" [nzLabel]="'data.name_category.abbreviation' | translate"></nz-option>
+                  <nz-option nzValue="OTHER" [nzLabel]="'data.name_category.other' | translate"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+        </nz-collapse-panel>
+      </nz-collapse>
+
       <nz-table #basicTable [nzData]="currentPage" nzFrontPagination="false"
                 [nzTotal]="totalElements" [nzPageIndex]="pageNumber" [nzPageSize]="pageSize" nzBordered="true" nzOuterBordered="true"
                 [nzLoading]="isLoading" [nzPageSizeOptions]="[10,20,50,100]" [nzShowSizeChanger]="true" (nzPageIndexChange)="changePage($event)"
