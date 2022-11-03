@@ -99,6 +99,7 @@ export class Proofreader implements IProofreaderInterface {
   }
 
   private removeSpecialChars(text: string): string {
-    return text.replace(/\u00AD/g,'');
+    // remove soft hyphen, zero-width space, thin space
+    return text.replace(/[\u00AD\u200B\u2009]+/g,'');
   }
 }
