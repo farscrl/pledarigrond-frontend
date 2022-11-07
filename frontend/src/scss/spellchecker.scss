@@ -98,6 +98,12 @@
   }
 }
 
+@media (min-width: 1180px) {
+  .ProseMirror {
+    min-height: 450px;
+  }
+}
+
 .editor {
   background-color: #bcbcbc;
   border: 0px solid #0d0d0d;
