@@ -211,7 +211,9 @@
       "hard_break": "Zeilenumbruch",
       "clear_format": "Formatierungen entfernen",
       "undo": "widerrufen",
-      "redo": "wiederholen"
+      "redo": "wiederholen",
+      "selectAll": "alles markieren",
+      "copy": "kopieren"
     }
   }
 }

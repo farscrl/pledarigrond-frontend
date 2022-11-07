@@ -36,4 +36,13 @@
           (click)="editor.chain().focus().undo().run()"> <i class="ri-arrow-go-back-line"></i> </button>
   <button class="menu-item" title="{{ 'spellchecker.editor.redo' | translate }}"
           (click)="editor.chain().focus().redo().run()"> <i class="ri-arrow-go-forward-line"></i> </button>
+
+  <div class="divider"></div>
+  <div class="grow"></div>
+
+  <button class="menu-item" title="{{ 'spellchecker.editor.selectAll' | translate }}"
+          (click)="editor.chain().focus().selectAll().run()"> <i class="ri-input-cursor-move"></i> </button>
+  <button class="menu-item" title="{{ 'spellchecker.editor.copy' | translate }}"
+          (click)="copy()"> <i class="ri-file-copy-2-line"></i> </button>
+
 </ng-container>

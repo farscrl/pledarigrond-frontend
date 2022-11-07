@@ -208,10 +208,12 @@
       "paragraph": "paragraf",
       "bulletList": "glista betg ordinada",
       "orderedList": "glista ordinada",
-      "hard_break": "Nova lingia",
-      "clear_format": "Allontanar formattaziuns",
-      "undo": "Revocar",
-      "redo": "Repeter"
+      "hard_break": "nova lingia",
+      "clear_format": "allontanar formattaziuns",
+      "undo": "revocar",
+      "redo": "repeter",
+      "selectAll": "tscherner tut",
+      "copy": "cuptgier"
     }
   }
 }

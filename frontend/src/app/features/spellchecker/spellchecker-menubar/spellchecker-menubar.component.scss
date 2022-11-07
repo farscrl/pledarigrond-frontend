@@ -29,8 +29,11 @@
 
 .divider {
   background-color: #0000001a;
-  height: 1.25rem;
   margin-left: .5rem;
   margin-right: .75rem;
   width: 2px;
+}
+
+.grow {
+  flex-grow: 1;
 }

@@ -16,4 +16,11 @@ export class SpellcheckerMenubarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  copy() {
+    if (this.editor) {
+      const blobInput = new Blob([this.editor.getHTML()], {type: 'text/html'});
+      const clipboardItemInput = new ClipboardItem({'text/html' : blobInput});
+      navigator.clipboard.write([clipboardItemInput]);
+    }
+  }
 }
