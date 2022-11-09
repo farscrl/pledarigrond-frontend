@@ -146,7 +146,7 @@ export class SpellcheckerComponent implements OnInit {
   }
 
   private loadVersion() {
-    this.http.get('assets/hunspell/rm-surmiran/version.txt', {responseType: 'text'}).subscribe(version => {
+    this.http.get('assets/hunspell/rm-surmiran/rm-surmiran_version.txt', {responseType: 'text'}).subscribe(version => {
       this.version = version;
     });
   }
