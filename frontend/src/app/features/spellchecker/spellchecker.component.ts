@@ -14,6 +14,8 @@ import { MatomoTracker } from "@ngx-matomo/tracker";
 import { ModificationService } from "../../services/modification.service";
 import { LemmaVersion } from "../../models/lemma-version";
 import { AuthService } from "../../services/auth.service";
+import { SimpleModalService } from "ngx-simple-modal";
+import { ManualsSpellcheckerComponent, ManualType } from "./manuals-spellchecker/manuals-spellchecker.component";
 
 @Component({
   selector: 'app-spellchecker',
@@ -46,6 +48,7 @@ export class SpellcheckerComponent implements OnInit {
     private tracker: MatomoTracker,
     private modificationService: ModificationService,
     private authService: AuthService,
+    private simpleModalService: SimpleModalService,
   ) { }
 
   ngOnInit(): void {
@@ -89,6 +92,10 @@ export class SpellcheckerComponent implements OnInit {
 
   closeSuggestionNotification() {
     this.sentSuggestion = false;
+  }
+
+  openManual(manualType: ManualType) {
+    this.simpleModalService.addModal(ManualsSpellcheckerComponent, { manualType: manualType}).subscribe();
   }
 
   private updateSuggestionBox(word: string) {

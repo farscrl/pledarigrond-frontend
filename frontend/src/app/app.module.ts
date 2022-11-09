@@ -59,6 +59,7 @@ import { SpellcheckerComponent } from './features/spellchecker/spellchecker.comp
 import { SpellcheckerMenubarComponent } from './features/spellchecker/spellchecker-menubar/spellchecker-menubar.component';
 import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
 import { NgxMatomoRouterModule } from '@ngx-matomo/router';
+import { ManualsSpellcheckerComponent } from './features/spellchecker/manuals-spellchecker/manuals-spellchecker.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -116,6 +117,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AutofocusDirective,
     SpellcheckerComponent,
     SpellcheckerMenubarComponent,
+    ManualsSpellcheckerComponent,
   ],
   imports: [
     BrowserModule,

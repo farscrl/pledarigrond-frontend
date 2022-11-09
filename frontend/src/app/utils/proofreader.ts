@@ -32,7 +32,7 @@ export class Proofreader implements IProofreaderInterface {
   }
 
   normalizeTextForLanguage(text: string): string {
-    return text.split('’').join("'");;
+    return text.split('’').join("'");
   }
 
   private tokenizeString(text: string): ITextWithPosition[] {

@@ -1,0 +1,43 @@
+.pg-modal-wrapper {
+  max-width: 860px;
+  line-height: 20px;
+
+  li {
+    margin-bottom: 20px;
+  }
+
+  .list {
+    li {
+      margin-bottom: 0;
+    }
+  }
+
+  button {
+    background-color: #15e9b1;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    color: white;
+    border: 0;
+    padding: 12px;
+    border-radius: 7px;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  em {
+    font-weight: bold;
+    font-style: unset;
+  }
+
+  img {
+    margin: 0 0 10px;
+    max-width: 500px;
+  }
+
+  a:hover {
+    color: #15e9b1;
+    text-decoration: none;
+  }
+}
