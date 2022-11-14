@@ -1,4 +1,4 @@
-182664
+182691
  biagivan/PT
  liegia/PT
 10 anfignen 15 francs/T
@@ -541,7 +541,6 @@ Emmenegger
 Ems
 En/T
 Engaltera/RT
-Engalteras/RT
 Engel
 Engiadines/RT
 Engiadinesa/RT
@@ -2021,8 +2020,6 @@ Werner
 WhatsApp
 Wicki
 Widmer
-Wiederbelebung/RT
-Wiederbelebungs/RT
 Wiederkehr
 Wieland
 Wild
@@ -15534,7 +15531,6 @@ ascrezza/RT
 ascrezzas/RT
 ascrign/RT
 ascrigns/RT
-asdf/T
 asella/RT
 asellas/RT
 asen/RT
@@ -23769,7 +23765,6 @@ butteglia/RT
 butteglias/RT
 bôt/RT
 bôts/RT
-büschmaint/T
 c-dur/T
 c-mol/T
 ca./T
@@ -33520,8 +33515,12 @@ constants/T
 constanza/RT
 constanzas/RT
 constar/T
+constaro'l/PT
+constaro'la/PT
 constaro/PT
 constaron/PT
+constaronigl/PT
+constat'la/PT
 constat/PT
 constatabel/T
 constatabels/T
@@ -33573,9 +33572,14 @@ constatez/PT
 constato/PT
 constatond/PT
 constatos/PT
+constatta'l/PT
 constattan/PT
+constattigl/PT
+constav'la/PT
+constava'l/PT
 constava/PT
 constavan/PT
+constavigl/PT
 constellaziun/RT
 constellaziuns/RT
 consternada/PT
@@ -33633,8 +33637,11 @@ consternonta/T
 consternontas/T
 consternonts/T
 consternos/PT
+constess'la/PT
 constess/PT
+constessa'l/PT
 constessan/PT
+constessigl/PT
 constetta/PT
 constettan/PT
 constipada/PT
@@ -35629,11 +35636,14 @@ cost'la/PT
 cost/PRT
 costa digl cuntel/T
 costa'l/PT
+costa-portg/RT
 costa/PQRT
 costagea/T
+costageas/T
+costageda/T
+costagedas/T
 costan/PT
 costas-portg/RT
-costas-portga/RT
 costas/PRT
 costast/PT
 costera/RT
@@ -47658,7 +47668,13 @@ descendigl/PT
 descendond/PT
 descensiun/RT
 descensiuns/RT
+descharogl/PT
 descher/T
+deschessigl/PT
+deschevigl/PT
+deschia/PT
+deschigl/PT
+deschond/PT
 descla/T
 desclamaintg/T
 desclas/T
@@ -72133,7 +72149,9 @@ i dat navot ordlonder/T
 i dat suglegl/T
 i dat/T
 i dependa dad el/T
-i descha/T
+i descha/PT
+i deschess/PT
+i descheva/PT
 i fiss preferibel/T
 i funcziunescha/T
 i fò basigns/T
@@ -92308,11 +92326,14 @@ navantez/PT
 navanto/PT
 navantond/PT
 navantos/PT
+navarogl/PT
 naveida/PT
 naveidas/PT
+navessigl/PT
 navetta spaziala/T
 navetta/RT
 navettas/RT
+navevigl/PT
 navia/PT
 navias/PT
 navigabel/T
@@ -92886,6 +92907,7 @@ neivel/RT
 neivels/RT
 neiver aint/T
 neiver/T
+neivigl/PT
 neivla da fem/T
 neivla greischa/T
 neivla neira/T
@@ -105714,6 +105736,7 @@ ploms/RT
 plotra/RT
 plotras/RT
 plover/T
+plovigl/PT
 plugl alv/T
 plugl da figlia/T
 plugl da vistgadeira/T
@@ -105924,7 +105947,10 @@ pluschinond/PT
 pluschinos/PT
 plusquamperfect/RT
 plusquamperfects/RT
+pluvarogl/PT
 pluvess/PT
+pluvessigl/PT
+pluvevigl/PT
 pluvia/PT
 pluvial/RT
 pluvials/RT
@@ -123818,6 +123844,7 @@ revistgamaint davant/T
 revistgamaint/RT
 revistgamaints/RT
 revitalisaziun/RT
+revitalisaziuns/RT
 revivagn/PT
 revivainsa/PT
 revivaro'l/PT
