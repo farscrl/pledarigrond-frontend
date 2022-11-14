@@ -11,6 +11,11 @@
 	text-decoration: none;
 	line-height: 25px;
 	display: block;
+
+  &.spellchecker {
+    color: rgb(0, 200, 255);
+    font-weight: bold;
+  }
 }
 
 #ext_links_container>a:hover {
