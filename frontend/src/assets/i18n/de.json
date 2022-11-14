@@ -187,13 +187,15 @@
     "ballape": "Fussball-Terminologie"
   },
   "spellchecker": {
+    "back": "zurück zum Pledari Grond",
     "loading": "Die Daten werden geladen – es dauert nur einen Augenblick",
     "sent_suggestion": "Der Lia Rumantscha vorgeschlagen «{{ word }}» als gültiges Wort in die Rechtschreibprüfung aufzunehmen.",
     "instructions": "Um einen Text prüfen zu lassen, können Sie ihn einfach in das nebenstehende Formular einfügen. Wenn Sie auf ein unterstrichenes Wort klicken, werden Ihnen Verbesserungsvorschläge angezeigt.",
     "privacy": "Der Schutz Ihrer Daten ist gewährleistet: Der eingefügte Text verlässt ihren Computer nicht.",
     "install": {
       "title": "Auf dem Computer installieren",
-      "other": "anderes (Hunspell)"
+      "other": "anderes (Hunspell)",
+      "office": "Microsoft Office (später)"
     },
     "credits": "Die rätoromanische Rechtschreibprüfung ist ein Projekt der |Pro Svizra Rumantscha|, das in Zusammenarbeit mit der |Lia Rumantscha| realisiert und vom Bundesamt für Kultur unterstützt wurde.",
     "editor": {

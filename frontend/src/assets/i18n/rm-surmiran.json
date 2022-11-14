@@ -187,33 +187,34 @@
     "ballape": "Glossari da ballape"
   },
   "spellchecker": {
+    "back": "turnar agl Pledari Grond",
     "loading": "Las datas vignan cargedas - spitgier per plascheir en mument",
-    "sent_suggestion": "Proponì a la Lia Rumantscha dad agiuntar «{{ word }}» sco pled valaivel al dicziunari da la controlla ortografica.",
-    "instructions": "Per laschar curreger in text al pudais vus simplamain copiar en il formular qua dasperas e cliccar sin ils pleds sutlingiads per vesair las propostas da correctura.",
-    "privacy": "La protecziun da Vossas datas è garantida: Il text encollà na banduna betg Voss computer.",
+    "sent_suggestion": "Proponia alla Lia Rumantscha dad agiuntar «{{ word }}» scu pled valevel aint igl dicziunari dalla controlla ortografica.",
+    "instructions": "Per lascher curriger en text igl pudez simplamaintg cuptgier aint igl formular cò dasperas e cliccar sen igls pleds sottastritgias per veir las propostas da correctura.",
+    "privacy": "La protecziun dallas Vossas datas è garanteida: igl text ancastro na bandunga betg igl Voss computer.",
     "install": {
       "title": "Installar sen igl computer",
-      "other": "oter",
+      "other": "oter (Hunspell)",
       "office": "Microsoft Office (pi tard)"
     },
-    "credits": "La controlla ortografica rumantscha è in project da la |Pro Svizra Rumantscha| realisà en collavuraziun cun la |Lia Rumantscha| e sustegnì da l'Uffizi federal da cultura.",
+    "credits": "La controlla ortografica rumantscha è en project dalla |Pro Svizra Rumantscha| realiso an collaboraziun cun la |Lia Rumantscha| e sustignia digl Uffezi federal da cultura.",
     "editor": {
-      "version": "version",
+      "version": "versiun",
       "bold": "grass",
       "italic": "cursiv",
-      "underline": "sottastritgia",
-      "strike": "stritgia",
+      "underline": "sottastritgier",
+      "strike": "stritgier",
       "highlight": "marcar",
-      "heading1": "titel 1",
-      "heading2": "titel 2",
+      "heading1": "tetel 1",
+      "heading2": "tetel 2",
       "paragraph": "paragraf",
-      "bulletList": "glista betg ordinada",
+      "bulletList": "enumeraziun",
       "orderedList": "glista ordinada",
-      "hard_break": "nova lingia",
+      "hard_break": "nova lengia",
       "clear_format": "allontanar formattaziuns",
       "undo": "revocar",
       "redo": "repeter",
-      "selectAll": "tscherner tut",
+      "selectAll": "tscherner tot",
       "copy": "cuptgier"
     }
   }
