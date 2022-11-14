@@ -16,6 +16,7 @@ import { LemmaVersion } from "../../models/lemma-version";
 import { AuthService } from "../../services/auth.service";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ManualsSpellcheckerComponent, ManualType } from "./manuals-spellchecker/manuals-spellchecker.component";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-spellchecker',
@@ -49,6 +50,7 @@ export class SpellcheckerComponent implements OnInit {
     private modificationService: ModificationService,
     private authService: AuthService,
     private simpleModalService: SimpleModalService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +60,13 @@ export class SpellcheckerComponent implements OnInit {
     this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(lng => {
       this.idiom = this.selectedLanguageService.getSelectedLanguageUrlSegment();
     });
+
+    this.route.queryParams
+      .subscribe(params => {
+        if (params['testar']) {
+          this.loadTestingFile();
+        }
+      });
   }
 
   ngOnDestroy(): void {
@@ -96,6 +105,11 @@ export class SpellcheckerComponent implements OnInit {
 
   openManual(manualType: ManualType) {
     this.simpleModalService.addModal(ManualsSpellcheckerComponent, { manualType: manualType}).subscribe();
+  }
+
+  private async loadTestingFile() {
+    const test = await fetch('assets/hunspell/tests/rm-surmiran-test.html');
+    this.value = await test.text();
   }
 
   private updateSuggestionBox(word: string) {
