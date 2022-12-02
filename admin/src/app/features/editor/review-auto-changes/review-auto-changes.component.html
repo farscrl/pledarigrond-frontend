@@ -134,102 +134,147 @@
           <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="selectedLexEntry.current.lemmaValues.adverbialForm" [new]="selectedLexEntry.mostRecent.lemmaValues.adverbialForm"></app-diff></nz-descriptions-item>
         </nz-descriptions>
 
-        <div class="verb-title">Conjugaziun da verbs</div>
-        <table *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'V' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V'" class="verbs-table">
-          <tr>
-            <td>
-              Infinitiv: <app-diff [old]="selectedLexEntry.current.lemmaValues.infinitiv" [new]="selectedLexEntry.mostRecent.lemmaValues.infinitiv"></app-diff>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              Tip da flexiun: <app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionSubtype" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionSubtype"></app-diff>
-            </td>
-            <td>
-              Conjugaziun regulara: <app-diff [old]="selectedLexEntry.current.lemmaValues.RRegularInflection" [new]="selectedLexEntry.mostRecent.lemmaValues.RRegularInflection"></app-diff>
-            </td>
-          </tr>
-          <tr style="height: 16px;"></tr>
-          <tr>
-            <td><b>Preschent</b></td>
-            <td><b>Imperfect</b></td>
-          </tr>
-          <tr>
-            <td>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing3"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural3"></app-diff><br>
-            </td>
-            <td>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing3"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural3"></app-diff><br>
-            </td>
-          </tr>
-          <tr style="margin-top: 16px;">
-            <td><b>Conjunctiv</b></td>
-            <td><b>Cundiziunal</b></td>
-          </tr>
-          <tr>
-            <td>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing3"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural3"></app-diff><br>
-            </td>
-            <td>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing3"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural3"></app-diff><br>
-            </td>
-          </tr>
 
-          <tr style="margin-top: 16px;">
-            <td><b>Futur</b></td>
-            <td><b>Particip Perfect</b></td>
-          </tr>
-          <tr>
-            <td>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing1" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing2" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing3" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing3"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural2"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural3"></app-diff><br>
-            </td>
-            <td>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectms" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectms"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectfs" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectfs"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectmp" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectmp"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectfp" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectfp"></app-diff><br>
-            </td>
-          </tr>
-          <tr style="margin-top: 16px;">
-            <td><b>Imperativ</b></td>
-            <td><b>Gerundi</b></td>
-          </tr>
-          <tr>
-            <td>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperativ1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperativ1"></app-diff><br>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.imperativ2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperativ2"></app-diff><br>
-            </td>
-            <td>
-              <app-diff [old]="selectedLexEntry.current.lemmaValues.gerundium" [new]="selectedLexEntry.mostRecent.lemmaValues.gerundium"></app-diff><br>
-            </td>
-          </tr>
-        </table>
+        <nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'V' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V'">
+          <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="selectedLexEntry.current.lemmaValues.infinitiv" [new]="selectedLexEntry.mostRecent.lemmaValues.infinitiv"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="selectedLexEntry.current.lemmaValues.RInflectionSubtype" [new]="selectedLexEntry.mostRecent.lemmaValues.RInflectionSubtype"></app-diff></nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Conjugaziun regulara"><app-diff [old]="selectedLexEntry.current.lemmaValues.RRegularInflection" [new]="selectedLexEntry.mostRecent.lemmaValues.RRegularInflection"></app-diff></nz-descriptions-item>
+        </nz-descriptions>
+
+        <div class="conjugaziuns" *ngIf="selectedLexEntry.current.lemmaValues.RInflectionType === 'V' || selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V'">
+          <div class="conjugaziun">
+            <div><b>Preschent</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing3"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural3"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun">
+            <div><b>Imperfect</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing3"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural3"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun">
+            <div><b>Conjunctiv</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivsing3"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivplural3"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun" *ngIf="language === 'sutsilvan'">
+            <div><b>Conjunctiv imperfect</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivimperfectsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivimperfectsing1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivimperfectsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivimperfectsing2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivimperfectsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivimperfectsing3"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivimperfectplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivimperfectplural1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivimperfectplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivimperfectplural2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.conjunctivimperfectplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.conjunctivimperfectplural3"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun">
+            <div><b>Cundiziunal</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing3"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural3"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun" *ngIf="language === 'sutsilvan'">
+            <div><b>Cundiziunal indirect</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalindirectsing1" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalindirectsing1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalindirectsing2" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalindirectsing2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalindirectsing3" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalindirectsing3"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalindirectplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalindirectplural1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalindirectplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalindirectplural2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalindirectplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalindirectplural3"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun">
+            <div><b>Futur</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing1" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing2" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing3" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing3"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural1" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural2" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural2"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural3" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural3"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+            <div><b>Preschent enclitic</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing1enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing1enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing2enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing2enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing3encliticm" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing3encliticm"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentsing3encliticf" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentsing3encliticf"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural1enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural1enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural2enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural2enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.preschentplural3enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.preschentplural3enclitic"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+            <div><b>Imperfect enclitic</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing1enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing1enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing2enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing2enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing3encliticm" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing3encliticm"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectsing3encliticf" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectsing3encliticf"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural1enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural1enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural2enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural2enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperfectplural3enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.imperfectplural3enclitic"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+            <div><b>Cundiziunal enclitic</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing1enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing1enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing2enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing2enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing3encliticm" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing3encliticm"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalsing3encliticf" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalsing3encliticf"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural1enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural1enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural2enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural2enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.cundizionalplural3enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.cundizionalplural3enclitic"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun" *ngIf="language === 'surmiran'">
+            <div><b>Futur enclitic</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing1enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing1enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing2enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing2enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing3encliticm" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing3encliticm"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futursing3encliticf" [new]="selectedLexEntry.mostRecent.lemmaValues.futursing3encliticf"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural1enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural1enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural2enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural2enclitic"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.futurplural3enclitic" [new]="selectedLexEntry.mostRecent.lemmaValues.futurplural3enclitic"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun">
+            <div><b>Particip Perfect</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectms" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectms"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectfs" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectfs"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectmp" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectmp"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.participperfectfp" [new]="selectedLexEntry.mostRecent.lemmaValues.participperfectfp"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun">
+            <div><b>Imperativ</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperativ1" [new]="selectedLexEntry.mostRecent.lemmaValues.imperativ1"></app-diff><br>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.imperativ2" [new]="selectedLexEntry.mostRecent.lemmaValues.imperativ2"></app-diff><br>
+          </div>
+
+          <div class="conjugaziun">
+            <div><b>Gerundi</b></div>
+            <app-diff [old]="selectedLexEntry.current.lemmaValues.gerundium" [new]="selectedLexEntry.mostRecent.lemmaValues.gerundium"></app-diff><br>
+          </div>
+        </div>
       </div>
     </nz-content>
   </div>

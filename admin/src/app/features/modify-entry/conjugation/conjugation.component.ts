@@ -82,6 +82,11 @@ export class ConjugationComponent implements OnInit {
 
   hasEncliticForms(): boolean {
     const language = this.languageSelectionService.getCurrentLanguage();
+    return language === Language.SURMIRAN || language === Language.SUTSILVAN;
+  }
+
+  hasEncliticFutur(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
     return language === Language.SURMIRAN;
   }
 

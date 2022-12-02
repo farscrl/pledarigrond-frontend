@@ -11,6 +11,7 @@ import { MainEntryComponent } from '../../modify-entry/main-entry/main-entry.com
 import { Page } from 'src/app/models/page';
 import { InflectionType } from 'src/app/models/inflection';
 import { InflectionService } from 'src/app/services/inflection.service';
+import { Language } from "../../../models/security";
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -42,6 +43,8 @@ export class ReviewAutoChangesComponent implements OnInit {
   selectedLexEntry?: LexEntry;
 
   searchCriteria: EditorSearchCriteria = new EditorSearchCriteria();
+
+  language: Language | undefined;
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -93,6 +96,8 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.searchCriteria.showReviewLater = false;
 
     this.changePage(0);
+
+    this.language = this.languageSelectionService.getCurrentLanguage();
   }
 
   ngAfterViewChecked() {
@@ -122,6 +127,11 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.selectedLemma = lemma;
     this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lemma.lexEntryId).subscribe(entry => {
       this.selectedLexEntry = entry;
+
+      // newly created entries have current == most recent and current != approved -> to have a correct diff, we set current to an empty lemmaValue
+      if (this.selectedLexEntry.current.internalId === this.selectedLexEntry.mostRecent.internalId && !this.selectedLexEntry.current.approved) {
+        this.selectedLexEntry.current = new LemmaVersionUi();
+      }
     });
   }
 

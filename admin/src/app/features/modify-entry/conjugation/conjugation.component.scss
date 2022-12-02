@@ -20,3 +20,9 @@ input:read-only {
 b.subtype {
   margin-left: 32px;
 }
+
+textarea {
+  &[readonly] {
+    background-color: #e2e2e2;
+  }
+}

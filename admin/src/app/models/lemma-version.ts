@@ -71,12 +71,26 @@ export class LemmaValues {
   conjunctivplural2?: string;
   conjunctivplural3?: string;
 
+  conjunctivimperfectsing1?: string;
+  conjunctivimperfectsing2?: string;
+  conjunctivimperfectsing3?: string;
+  conjunctivimperfectplural1?: string;
+  conjunctivimperfectplural2?: string;
+  conjunctivimperfectplural3?: string;
+
   cundizionalsing1?: string;
   cundizionalsing2?: string;
   cundizionalsing3?: string;
   cundizionalplural1?: string;
   cundizionalplural2?: string;
   cundizionalplural3?: string;
+
+  cundizionalindirectsing1?: string;
+  cundizionalindirectsing2?: string;
+  cundizionalindirectsing3?: string;
+  cundizionalindirectplural1?: string;
+  cundizionalindirectplural2?: string;
+  cundizionalindirectplural3?: string;
 
   futursing1?: string;
   futursing2?: string;

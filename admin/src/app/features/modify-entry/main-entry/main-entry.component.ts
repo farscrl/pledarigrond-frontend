@@ -94,11 +94,11 @@ export class MainEntryComponent implements OnInit {
   }
 
   doesSupportNoun(language: Language): boolean {
-    return language === 'surmiran' || language === 'rumantschgrischun';
+    return language === 'surmiran' || language === 'rumantschgrischun' || language === 'sutsilvan';
   }
 
   doesSupportAdjective(language: Language): boolean {
-    return language === 'surmiran' || language === 'rumantschgrischun';
+    return language === 'surmiran' || language === 'rumantschgrischun' || language === 'sutsilvan';
   }
 
   editVerb() {
