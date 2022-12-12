@@ -1,5 +1,17 @@
 <form nz-form [formGroup]="validateForm">
   <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">surpigliar furma existenta</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <button nz-button (click)="copyConjugation()" style="margin-right: 12px;">
+        Copiar conjugaziun
+      </button>
+      <button nz-button *ngIf="copyService.canPasteConjugation()" (click)="pasteConjugation()">
+        Encollar conjugaziun ({{copyService.conjugationInfinitive}})
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="infinitiv">{{ 'edit.conjugation.forms.infinitive' | translate }}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input formControlName="infinitiv" id="infinitiv" />

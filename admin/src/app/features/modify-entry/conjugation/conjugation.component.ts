@@ -6,6 +6,8 @@ import { LemmaVersion } from 'src/app/models/lemma-version';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { Language } from "../../../models/security";
+import { CopyService } from "../../../services/copy.service";
+import { EditorService } from "../../../services/editor.service";
 
 @Component({
   selector: 'app-conjugation',
@@ -37,6 +39,8 @@ export class ConjugationComponent implements OnInit {
     private inflectionService: InflectionService,
     private languageSelectionService: LanguageSelectionService,
     private modal: NzModalRef,
+    public copyService: CopyService,
+    public editorService: EditorService,
   ) { }
 
   ngOnInit(): void {
@@ -88,6 +92,19 @@ export class ConjugationComponent implements OnInit {
   hasEncliticFutur(): boolean {
     const language = this.languageSelectionService.getCurrentLanguage();
     return language === Language.SURMIRAN;
+  }
+
+  copyConjugation() {
+    this.copyService.copyConjugation(this.workingLemmaVersion?.lexEntryId!, this.workingLemmaVersion.lemmaValues.infinitiv!);
+  }
+
+  pasteConjugation() {
+    if (!this.copyService.canPasteConjugation()) {
+      return;
+    }
+    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.copyService.lexEntryId!).subscribe(lexEntry => {
+      this.copyVerbForms(lexEntry.current);
+    });
   }
 
   private returnValues() {
@@ -301,5 +318,106 @@ export class ConjugationComponent implements OnInit {
       };
       this.setUpForm();
     });
+  }
+
+  private copyVerbForms(toCopy: LemmaVersion) {
+    this.workingLemmaVersion.lemmaValues.RInflectionType = toCopy.lemmaValues.RInflectionType;
+    this.workingLemmaVersion.lemmaValues.RInflectionSubtype = toCopy.lemmaValues.RInflectionSubtype;
+    this.workingLemmaVersion.lemmaValues.RRegularInflection = toCopy.lemmaValues.RRegularInflection;
+
+    this.workingLemmaVersion.lemmaValues.infinitiv = toCopy.lemmaValues.infinitiv;
+
+    this.workingLemmaVersion.lemmaValues.preschentsing1 = toCopy.lemmaValues.preschentsing1;
+    this.workingLemmaVersion.lemmaValues.preschentsing2 = toCopy.lemmaValues.preschentsing2;
+    this.workingLemmaVersion.lemmaValues.preschentsing3 = toCopy.lemmaValues.preschentsing3;
+    this.workingLemmaVersion.lemmaValues.preschentplural1 = toCopy.lemmaValues.preschentplural1;
+    this.workingLemmaVersion.lemmaValues.preschentplural2 = toCopy.lemmaValues.preschentplural2;
+    this.workingLemmaVersion.lemmaValues.preschentplural3 = toCopy.lemmaValues.preschentplural3;
+
+    this.workingLemmaVersion.lemmaValues.imperfectsing1 = toCopy.lemmaValues.imperfectsing1;
+    this.workingLemmaVersion.lemmaValues.imperfectsing2 = toCopy.lemmaValues.imperfectsing2;
+    this.workingLemmaVersion.lemmaValues.imperfectsing3 = toCopy.lemmaValues.imperfectsing3;
+    this.workingLemmaVersion.lemmaValues.imperfectplural1 = toCopy.lemmaValues.imperfectplural1;
+    this.workingLemmaVersion.lemmaValues.imperfectplural2 = toCopy.lemmaValues.imperfectplural2;
+    this.workingLemmaVersion.lemmaValues.imperfectplural3 = toCopy.lemmaValues.imperfectplural3;
+
+    this.workingLemmaVersion.lemmaValues.participperfectms = toCopy.lemmaValues.participperfectms;
+    this.workingLemmaVersion.lemmaValues.participperfectfs = toCopy.lemmaValues.participperfectfs;
+    this.workingLemmaVersion.lemmaValues.participperfectmp = toCopy.lemmaValues.participperfectmp;
+    this.workingLemmaVersion.lemmaValues.participperfectfp = toCopy.lemmaValues.participperfectfp;
+
+    this.workingLemmaVersion.lemmaValues.conjunctivsing1 = toCopy.lemmaValues.conjunctivsing1;
+    this.workingLemmaVersion.lemmaValues.conjunctivsing2 = toCopy.lemmaValues.conjunctivsing2;
+    this.workingLemmaVersion.lemmaValues.conjunctivsing3 = toCopy.lemmaValues.conjunctivsing3;
+    this.workingLemmaVersion.lemmaValues.conjunctivplural1 = toCopy.lemmaValues.conjunctivplural1;
+    this.workingLemmaVersion.lemmaValues.conjunctivplural2 = toCopy.lemmaValues.conjunctivplural2;
+    this.workingLemmaVersion.lemmaValues.conjunctivplural3 = toCopy.lemmaValues.conjunctivplural3;
+
+    this.workingLemmaVersion.lemmaValues.conjunctivimperfectsing1 = toCopy.lemmaValues.conjunctivimperfectsing1;
+    this.workingLemmaVersion.lemmaValues.conjunctivimperfectsing2 = toCopy.lemmaValues.conjunctivimperfectsing2;
+    this.workingLemmaVersion.lemmaValues.conjunctivimperfectsing3 = toCopy.lemmaValues.conjunctivimperfectsing3;
+    this.workingLemmaVersion.lemmaValues.conjunctivimperfectplural1 = toCopy.lemmaValues.conjunctivimperfectplural1;
+    this.workingLemmaVersion.lemmaValues.conjunctivimperfectplural2 = toCopy.lemmaValues.conjunctivimperfectplural2;
+    this.workingLemmaVersion.lemmaValues.conjunctivimperfectplural3 = toCopy.lemmaValues.conjunctivimperfectplural3;
+
+    this.workingLemmaVersion.lemmaValues.cundizionalsing1 = toCopy.lemmaValues.cundizionalsing1;
+    this.workingLemmaVersion.lemmaValues.cundizionalsing2 = toCopy.lemmaValues.cundizionalsing2;
+    this.workingLemmaVersion.lemmaValues.cundizionalsing3 = toCopy.lemmaValues.cundizionalsing3;
+    this.workingLemmaVersion.lemmaValues.cundizionalplural1 = toCopy.lemmaValues.cundizionalplural1;
+    this.workingLemmaVersion.lemmaValues.cundizionalplural2 = toCopy.lemmaValues.cundizionalplural2;
+    this.workingLemmaVersion.lemmaValues.cundizionalplural3 = toCopy.lemmaValues.cundizionalplural3;
+
+    this.workingLemmaVersion.lemmaValues.cundizionalindirectsing1 = toCopy.lemmaValues.cundizionalindirectsing1;
+    this.workingLemmaVersion.lemmaValues.cundizionalindirectsing2 = toCopy.lemmaValues.cundizionalindirectsing2;
+    this.workingLemmaVersion.lemmaValues.cundizionalindirectsing3 = toCopy.lemmaValues.cundizionalindirectsing3;
+    this.workingLemmaVersion.lemmaValues.cundizionalindirectplural1 = toCopy.lemmaValues.cundizionalindirectplural1;
+    this.workingLemmaVersion.lemmaValues.cundizionalindirectplural2 = toCopy.lemmaValues.cundizionalindirectplural2;
+    this.workingLemmaVersion.lemmaValues.cundizionalindirectplural3 = toCopy.lemmaValues.cundizionalindirectplural3;
+
+    this.workingLemmaVersion.lemmaValues.futursing1 = toCopy.lemmaValues.futursing1;
+    this.workingLemmaVersion.lemmaValues.futursing2 = toCopy.lemmaValues.futursing2;
+    this.workingLemmaVersion.lemmaValues.futursing3 = toCopy.lemmaValues.futursing3;
+    this.workingLemmaVersion.lemmaValues.futurplural1 = toCopy.lemmaValues.futurplural1;
+    this.workingLemmaVersion.lemmaValues.futurplural2 = toCopy.lemmaValues.futurplural2;
+    this.workingLemmaVersion.lemmaValues.futurplural3 = toCopy.lemmaValues.futurplural3;
+
+    this.workingLemmaVersion.lemmaValues.imperativ1 = toCopy.lemmaValues.imperativ1;
+    this.workingLemmaVersion.lemmaValues.imperativ2 = toCopy.lemmaValues.imperativ2;
+
+    this.workingLemmaVersion.lemmaValues.gerundium = toCopy.lemmaValues.gerundium;
+
+    this.workingLemmaVersion.lemmaValues.preschentsing1enclitic = toCopy.lemmaValues.preschentsing1enclitic;
+    this.workingLemmaVersion.lemmaValues.preschentsing2enclitic = toCopy.lemmaValues.preschentsing2enclitic;
+    this.workingLemmaVersion.lemmaValues.preschentsing3encliticm = toCopy.lemmaValues.preschentsing3encliticm;
+    this.workingLemmaVersion.lemmaValues.preschentsing3encliticf = toCopy.lemmaValues.preschentsing3encliticf;
+    this.workingLemmaVersion.lemmaValues.preschentplural1enclitic = toCopy.lemmaValues.preschentplural1enclitic;
+    this.workingLemmaVersion.lemmaValues.preschentplural2enclitic = toCopy.lemmaValues.preschentplural2enclitic;
+    this.workingLemmaVersion.lemmaValues.preschentplural3enclitic = toCopy.lemmaValues.preschentplural3enclitic;
+
+    this.workingLemmaVersion.lemmaValues.imperfectsing1enclitic = toCopy.lemmaValues.imperfectsing1enclitic;
+    this.workingLemmaVersion.lemmaValues.imperfectsing2enclitic = toCopy.lemmaValues.imperfectsing2enclitic;
+    this.workingLemmaVersion.lemmaValues.imperfectsing3encliticm = toCopy.lemmaValues.imperfectsing3encliticm;
+    this.workingLemmaVersion.lemmaValues.imperfectsing3encliticf = toCopy.lemmaValues.imperfectsing3encliticf;
+    this.workingLemmaVersion.lemmaValues.imperfectplural1enclitic = toCopy.lemmaValues.imperfectplural1enclitic;
+    this.workingLemmaVersion.lemmaValues.imperfectplural2enclitic = toCopy.lemmaValues.imperfectplural2enclitic;
+    this.workingLemmaVersion.lemmaValues.imperfectplural3enclitic = toCopy.lemmaValues.imperfectplural3enclitic;
+
+    this.workingLemmaVersion.lemmaValues.cundizionalsing1enclitic = toCopy.lemmaValues.cundizionalsing1enclitic;
+    this.workingLemmaVersion.lemmaValues.cundizionalsing2enclitic = toCopy.lemmaValues.cundizionalsing2enclitic;
+    this.workingLemmaVersion.lemmaValues.cundizionalsing3encliticm = toCopy.lemmaValues.cundizionalsing3encliticm;
+    this.workingLemmaVersion.lemmaValues.cundizionalsing3encliticf = toCopy.lemmaValues.cundizionalsing3encliticf;
+    this.workingLemmaVersion.lemmaValues.cundizionalplural1enclitic = toCopy.lemmaValues.cundizionalplural1enclitic;
+    this.workingLemmaVersion.lemmaValues.cundizionalplural2enclitic = toCopy.lemmaValues.cundizionalplural2enclitic;
+    this.workingLemmaVersion.lemmaValues.cundizionalplural3enclitic = toCopy.lemmaValues.cundizionalplural3enclitic;
+
+    this.workingLemmaVersion.lemmaValues.futursing1enclitic = toCopy.lemmaValues.futursing1enclitic;
+    this.workingLemmaVersion.lemmaValues.futursing2enclitic = toCopy.lemmaValues.futursing2enclitic;
+    this.workingLemmaVersion.lemmaValues.futursing3encliticm = toCopy.lemmaValues.futursing3encliticm;
+    this.workingLemmaVersion.lemmaValues.futursing3encliticf = toCopy.lemmaValues.futursing3encliticf;
+    this.workingLemmaVersion.lemmaValues.futurplural1enclitic = toCopy.lemmaValues.futurplural1enclitic;
+    this.workingLemmaVersion.lemmaValues.futurplural2enclitic = toCopy.lemmaValues.futurplural2enclitic;
+    this.workingLemmaVersion.lemmaValues.futurplural3enclitic = toCopy.lemmaValues.futurplural3enclitic;
+
+    this.setUpForm();
   }
 }
