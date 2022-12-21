@@ -198,6 +198,10 @@ export class ConjugationComponent implements OnInit {
     this.validateForm.get("RRegularInflection")!.valueChanges.subscribe(value => {
       this.isRegular = value;
    });
+
+    setTimeout(() => {
+      this.triggerChangeDetectionForAutoSize();
+    }, 150);
   }
 
   private generateForms(subTypeId: string, baseForm: string) {
@@ -419,5 +423,11 @@ export class ConjugationComponent implements OnInit {
     this.workingLemmaVersion.lemmaValues.futurplural3enclitic = toCopy.lemmaValues.futurplural3enclitic;
 
     this.setUpForm();
+  }
+
+  private triggerChangeDetectionForAutoSize() {
+    // the autoresize check can't be triggered manually. But it reacts to resize events of the window.
+    // thus, we dispatch that event to force autoresize to be triggered.
+    window.dispatchEvent(new Event('resize'));
   }
 }
