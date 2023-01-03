@@ -7,7 +7,7 @@
 <p>{{ 'sort_order.instructions' |translate }}</p>
 
 <ngx-sortable [items]="itemsToReorder" name="" (listSorted)="listSorted($event)" [listStyle]="listStyle">
-  <ng-template let-item>
+  <ng-template let-item="item">
       <div class="sortable-list-item">
         {{ item.lemmaValues.DStichwort }}
         <ng-container *ngIf="item.lemmaValues.DSubsemantik"> ({{ item.lemmaValues.DSubsemantik }})</ng-container>
