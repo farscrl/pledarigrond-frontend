@@ -48,6 +48,7 @@ export class HistoryComponent implements OnInit {
 
   private generateColumns(): LemmaListColumn {
     return {
+      diff: new LemmaListColumnDetail(false, false),
       user: new LemmaListColumnDetail(true, true),
       verifier: new LemmaListColumnDetail(true, true),
       filter: new LemmaListColumnDetail(true, true),

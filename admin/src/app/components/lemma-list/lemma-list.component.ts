@@ -15,6 +15,8 @@ import { EditorQuery } from 'src/app/models/editor-query';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
 import { TranslateService } from '@ngx-translate/core';
+import {LemmaVersion} from "../../models/lemma-version";
+import {DiffModalComponent} from "../../features/diff-modal/diff-modal.component";
 
 @Component({
   selector: 'app-lemma-list',
@@ -268,6 +270,21 @@ export class LemmaListComponent implements OnInit {
       }
       return value
     }
+  }
+
+  showDiff(lexEntry: LexEntry) {
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('edit.titles.edit'),
+      nzContent: DiffModalComponent,
+      nzClosable: true,
+      nzMaskClosable: true,
+      nzWidth: 1100,
+      nzFooter: null,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lexEntry: lexEntry,
+      },
+    });
   }
 
   private openLemmaModal(entryId?: string) {

@@ -58,6 +58,8 @@ import { NameAdministrationComponent } from "./features/name-administration/name
 import { EditNameComponent } from "./features/name-administration/edit-name/edit-name.component";
 import { NameCategoryComponent } from "./components/data/name-category/name-category.component";
 import { NameDisplayComponent } from "./components/data/name-display/name-display.component";
+import { LemmaDiffComponent } from "./components/lemma-diff/lemma-diff.component";
+import { DiffModalComponent } from "./features/diff-modal/diff-modal.component";
 
 registerLocaleData(de);
 
@@ -110,6 +112,8 @@ export function tokenGetter() {
     EditNameComponent,
     NameCategoryComponent,
     NameDisplayComponent,
+    LemmaDiffComponent,
+    DiffModalComponent,
   ],
   imports: [
     BrowserModule,

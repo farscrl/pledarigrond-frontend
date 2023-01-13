@@ -65,6 +65,7 @@
   <thead>
     <tr>
       <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="columns.checkMultiple.active" nzLeft nzWidth="70px"></th>
+      <th *ngIf="columns.diff.active" nzLeft nzWidth="40px">{{ 'lexicon.lemma.columns.diff' | translate }}</th>
       <th *ngIf="columns.user.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.user' | translate }}</th>
       <th *ngIf="columns.verifier.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.verifier' | translate }}</th>
       <th *ngIf="columns.filter.active" nzWidth="120px">{{ 'lexicon.lemma.columns.filter' | translate }}</th>
@@ -100,6 +101,9 @@
         (nzCheckedChange)="onItemChecked(data.id!, $event)"
         *ngIf="columns.checkMultiple.active"
       ></td>
+      <td *ngIf="columns.diff.active" nzLeft class="small">
+        <span nz-icon nzType="diff" nzTheme="outline" (click)="showDiff(data)"></span>
+      </td>
       <td *ngIf="columns.user.active" nzLeft class="small">
         <app-user-role [role]="data.mostRecent.creatorRole"></app-user-role><br>
         <span *ngIf="data.mostRecent.userId" style="font-size: 90%;">{{ data.mostRecent.userId === 'guest@pledarigrond.ch' ? ('data.role.guest' | translate | uppercase ) : data.mostRecent.userId }}</span>

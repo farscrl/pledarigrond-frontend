@@ -1,0 +1,184 @@
+<nz-descriptions nzTitle="">
+  <nz-descriptions-item [nzTitle]="'edit.lemma.category' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.categories" [new]="newLemmaVersion.lemmaValues.categories"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item *ngIf="showComments" [nzTitle]="'edit.lemma.comment' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.contact_comment" [new]="newLemmaVersion.lemmaValues.contact_comment"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item *ngIf="showComments" [nzTitle]="'edit.lemma.email' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.contact_email" [new]="newLemmaVersion.lemmaValues.contact_email"></app-diff></nz-descriptions-item>
+</nz-descriptions>
+
+<nz-descriptions [nzTitle]="'edit.lemma.german' | translate">
+  <nz-descriptions-item [nzTitle]="'edit.lemma.de' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.DStichwort" [new]="newLemmaVersion.lemmaValues.DStichwort"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.de_gender' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.DGenus" [new]="newLemmaVersion.lemmaValues.DGenus"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.de_tags' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.DTags" [new]="newLemmaVersion.lemmaValues.DTags"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.de_grammar' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.DGrammatik" [new]="newLemmaVersion.lemmaValues.DGrammatik"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.de_semantics' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.DSubsemantik" [new]="newLemmaVersion.lemmaValues.DSubsemantik"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.de_link' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.DRedirect" [new]="newLemmaVersion.lemmaValues.DRedirect"></app-diff></nz-descriptions-item>
+</nz-descriptions>
+
+<nz-descriptions [nzTitle]="'edit.lemma.romansh' | translate">
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.RStichwort" [new]="newLemmaVersion.lemmaValues.RStichwort"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_gender' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.RGenus" [new]="newLemmaVersion.lemmaValues.RGenus"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_tags' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.RTags" [new]="newLemmaVersion.lemmaValues.RTags"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_grammar' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.RGrammatik" [new]="newLemmaVersion.lemmaValues.RGrammatik"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.RSubsemantik" [new]="newLemmaVersion.lemmaValues.RSubsemantik"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_link' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.RRedirect" [new]="newLemmaVersion.lemmaValues.RRedirect"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.inflection.title' | translate"><app-diff [old]="oldLemmaVersion.lemmaValues.RInflectionType" [new]="newLemmaVersion.lemmaValues.RInflectionType"></app-diff></nz-descriptions-item>
+</nz-descriptions>
+
+<nz-descriptions nzTitle="Flexiuns da substantivs" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'NOUN' || newLemmaVersion.lemmaValues.RInflectionType === 'NOUN'">
+  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.lemmaValues.mSingular" [new]="newLemmaVersion.lemmaValues.mSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.lemmaValues.fSingular" [new]="newLemmaVersion.lemmaValues.fSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.lemmaValues.RInflectionSubtype" [new]="newLemmaVersion.lemmaValues.RInflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.lemmaValues.mPlural" [new]="newLemmaVersion.lemmaValues.mPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.lemmaValues.fPlural" [new]="newLemmaVersion.lemmaValues.fPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="coll"><app-diff [old]="oldLemmaVersion.lemmaValues.pluralCollectiv" [new]="newLemmaVersion.lemmaValues.pluralCollectiv"></app-diff></nz-descriptions-item>
+</nz-descriptions>
+
+<nz-descriptions nzTitle="Flexiuns dad adjectivs" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'ADJECTIVE' || newLemmaVersion.lemmaValues.RInflectionType === 'ADJECTIVE'">
+  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.lemmaValues.mSingular" [new]="newLemmaVersion.lemmaValues.mSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.lemmaValues.fSingular" [new]="newLemmaVersion.lemmaValues.fSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.lemmaValues.RInflectionSubtype" [new]="newLemmaVersion.lemmaValues.RInflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.lemmaValues.mPlural" [new]="newLemmaVersion.lemmaValues.mPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.lemmaValues.fPlural" [new]="newLemmaVersion.lemmaValues.fPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="oldLemmaVersion.lemmaValues.adverbialForm" [new]="newLemmaVersion.lemmaValues.adverbialForm"></app-diff></nz-descriptions-item>
+</nz-descriptions>
+
+
+<nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'V' || newLemmaVersion.lemmaValues.RInflectionType === 'V'">
+  <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="oldLemmaVersion.lemmaValues.infinitiv" [new]="newLemmaVersion.lemmaValues.infinitiv"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.lemmaValues.RInflectionSubtype" [new]="newLemmaVersion.lemmaValues.RInflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Conjugaziun regulara"><app-diff [old]="oldLemmaVersion.lemmaValues.RRegularInflection" [new]="newLemmaVersion.lemmaValues.RRegularInflection"></app-diff></nz-descriptions-item>
+</nz-descriptions>
+
+<div class="conjugaziuns" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'V' || newLemmaVersion.lemmaValues.RInflectionType === 'V'">
+  <div class="conjugaziun">
+    <div><b>Preschent</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing1" [new]="newLemmaVersion.lemmaValues.preschentsing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing2" [new]="newLemmaVersion.lemmaValues.preschentsing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing3" [new]="newLemmaVersion.lemmaValues.preschentsing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentplural1" [new]="newLemmaVersion.lemmaValues.preschentplural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentplural2" [new]="newLemmaVersion.lemmaValues.preschentplural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentplural3" [new]="newLemmaVersion.lemmaValues.preschentplural3"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Imperfect</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing1" [new]="newLemmaVersion.lemmaValues.imperfectsing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing2" [new]="newLemmaVersion.lemmaValues.imperfectsing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing3" [new]="newLemmaVersion.lemmaValues.imperfectsing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectplural1" [new]="newLemmaVersion.lemmaValues.imperfectplural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectplural2" [new]="newLemmaVersion.lemmaValues.imperfectplural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectplural3" [new]="newLemmaVersion.lemmaValues.imperfectplural3"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Conjunctiv</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivsing1" [new]="newLemmaVersion.lemmaValues.conjunctivsing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivsing2" [new]="newLemmaVersion.lemmaValues.conjunctivsing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivsing3" [new]="newLemmaVersion.lemmaValues.conjunctivsing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivplural1" [new]="newLemmaVersion.lemmaValues.conjunctivplural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivplural2" [new]="newLemmaVersion.lemmaValues.conjunctivplural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivplural3" [new]="newLemmaVersion.lemmaValues.conjunctivplural3"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan'">
+    <div><b>Conjunctiv imperfect</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivimperfectsing1" [new]="newLemmaVersion.lemmaValues.conjunctivimperfectsing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivimperfectsing2" [new]="newLemmaVersion.lemmaValues.conjunctivimperfectsing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivimperfectsing3" [new]="newLemmaVersion.lemmaValues.conjunctivimperfectsing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivimperfectplural1" [new]="newLemmaVersion.lemmaValues.conjunctivimperfectplural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivimperfectplural2" [new]="newLemmaVersion.lemmaValues.conjunctivimperfectplural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.conjunctivimperfectplural3" [new]="newLemmaVersion.lemmaValues.conjunctivimperfectplural3"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Cundiziunal</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing1" [new]="newLemmaVersion.lemmaValues.cundizionalsing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing2" [new]="newLemmaVersion.lemmaValues.cundizionalsing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing3" [new]="newLemmaVersion.lemmaValues.cundizionalsing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalplural1" [new]="newLemmaVersion.lemmaValues.cundizionalplural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalplural2" [new]="newLemmaVersion.lemmaValues.cundizionalplural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalplural3" [new]="newLemmaVersion.lemmaValues.cundizionalplural3"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan'">
+    <div><b>Cundiziunal indirect</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalindirectsing1" [new]="newLemmaVersion.lemmaValues.cundizionalindirectsing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalindirectsing2" [new]="newLemmaVersion.lemmaValues.cundizionalindirectsing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalindirectsing3" [new]="newLemmaVersion.lemmaValues.cundizionalindirectsing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalindirectplural1" [new]="newLemmaVersion.lemmaValues.cundizionalindirectplural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalindirectplural2" [new]="newLemmaVersion.lemmaValues.cundizionalindirectplural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalindirectplural3" [new]="newLemmaVersion.lemmaValues.cundizionalindirectplural3"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Futur</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futursing1" [new]="newLemmaVersion.lemmaValues.futursing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futursing2" [new]="newLemmaVersion.lemmaValues.futursing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futursing3" [new]="newLemmaVersion.lemmaValues.futursing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural1" [new]="newLemmaVersion.lemmaValues.futurplural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural2" [new]="newLemmaVersion.lemmaValues.futurplural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural3" [new]="newLemmaVersion.lemmaValues.futurplural3"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+    <div><b>Preschent enclitic</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing1enclitic" [new]="newLemmaVersion.lemmaValues.preschentsing1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing2enclitic" [new]="newLemmaVersion.lemmaValues.preschentsing2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing3encliticm" [new]="newLemmaVersion.lemmaValues.preschentsing3encliticm"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing3encliticf" [new]="newLemmaVersion.lemmaValues.preschentsing3encliticf"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentplural1enclitic" [new]="newLemmaVersion.lemmaValues.preschentplural1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentplural2enclitic" [new]="newLemmaVersion.lemmaValues.preschentplural2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.preschentplural3enclitic" [new]="newLemmaVersion.lemmaValues.preschentplural3enclitic"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+    <div><b>Imperfect enclitic</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing1enclitic" [new]="newLemmaVersion.lemmaValues.imperfectsing1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing2enclitic" [new]="newLemmaVersion.lemmaValues.imperfectsing2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing3encliticm" [new]="newLemmaVersion.lemmaValues.imperfectsing3encliticm"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing3encliticf" [new]="newLemmaVersion.lemmaValues.imperfectsing3encliticf"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectplural1enclitic" [new]="newLemmaVersion.lemmaValues.imperfectplural1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectplural2enclitic" [new]="newLemmaVersion.lemmaValues.imperfectplural2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectplural3enclitic" [new]="newLemmaVersion.lemmaValues.imperfectplural3enclitic"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+    <div><b>Cundiziunal enclitic</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing1enclitic" [new]="newLemmaVersion.lemmaValues.cundizionalsing1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing2enclitic" [new]="newLemmaVersion.lemmaValues.cundizionalsing2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing3encliticm" [new]="newLemmaVersion.lemmaValues.cundizionalsing3encliticm"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing3encliticf" [new]="newLemmaVersion.lemmaValues.cundizionalsing3encliticf"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalplural1enclitic" [new]="newLemmaVersion.lemmaValues.cundizionalplural1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalplural2enclitic" [new]="newLemmaVersion.lemmaValues.cundizionalplural2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalplural3enclitic" [new]="newLemmaVersion.lemmaValues.cundizionalplural3enclitic"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'surmiran'">
+    <div><b>Futur enclitic</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futursing1enclitic" [new]="newLemmaVersion.lemmaValues.futursing1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futursing2enclitic" [new]="newLemmaVersion.lemmaValues.futursing2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futursing3encliticm" [new]="newLemmaVersion.lemmaValues.futursing3encliticm"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futursing3encliticf" [new]="newLemmaVersion.lemmaValues.futursing3encliticf"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural1enclitic" [new]="newLemmaVersion.lemmaValues.futurplural1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural2enclitic" [new]="newLemmaVersion.lemmaValues.futurplural2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural3enclitic" [new]="newLemmaVersion.lemmaValues.futurplural3enclitic"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Particip Perfect</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.participperfectms" [new]="newLemmaVersion.lemmaValues.participperfectms"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.participperfectfs" [new]="newLemmaVersion.lemmaValues.participperfectfs"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.participperfectmp" [new]="newLemmaVersion.lemmaValues.participperfectmp"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.participperfectfp" [new]="newLemmaVersion.lemmaValues.participperfectfp"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Imperativ</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperativ1" [new]="newLemmaVersion.lemmaValues.imperativ1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperativ2" [new]="newLemmaVersion.lemmaValues.imperativ2"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Gerundi</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.gerundium" [new]="newLemmaVersion.lemmaValues.gerundium"></app-diff><br>
+  </div>
+</div>

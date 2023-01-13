@@ -1,0 +1,12 @@
+.conjugaziuns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .conjugaziun {
+    margin-top: 16px;
+    flex-basis: 50%;
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+}

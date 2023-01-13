@@ -49,6 +49,7 @@ export class SuggestionsComponent implements OnInit {
 
   private generateColumns(): LemmaListColumn {
     return {
+      diff: new LemmaListColumnDetail(true, true),
       user: new LemmaListColumnDetail(true, true),
       verifier: new LemmaListColumnDetail(false, false),
       filter: new LemmaListColumnDetail(true, true),

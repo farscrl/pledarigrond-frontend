@@ -1,4 +1,6 @@
 export class LemmaListColumn {
+  diff: LemmaListColumnDetail = new LemmaListColumnDetail();
+
   // Infos about the creation of the lex entry
   user: LemmaListColumnDetail = new LemmaListColumnDetail();
   verifier: LemmaListColumnDetail = new LemmaListColumnDetail();

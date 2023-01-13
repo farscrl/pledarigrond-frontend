@@ -21,10 +21,6 @@ nz-content {
   }
 }
 
-app-version-history {
-  flex-grow: 1;
-}
-
 nz-page-header {
   padding-left: 0;
 }
@@ -76,21 +72,6 @@ nz-list-item.selected {
   align-items: center;
 }
 
-.verb-title {
-  font-weight: 700;
-  font-size: 16px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-.verbs-table {
-  width: 100%;
-
-  td {
-    width: 50%;
-  }
-}
-
 .keyboard {
   margin-left: 4px;
   font-size: 85%;
@@ -108,15 +89,4 @@ nz-page-header-extra {
   }
 }
 
-.conjugaziuns {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 
-  .conjugaziun {
-    margin-top: 16px;
-    flex-basis: 50%;
-    flex-shrink: 1;
-    flex-grow: 1;
-  }
-}

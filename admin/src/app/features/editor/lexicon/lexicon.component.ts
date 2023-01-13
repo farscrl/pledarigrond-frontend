@@ -77,6 +77,7 @@ export class LexiconComponent implements OnInit {
 
   private generateColumns(): LemmaListColumn {
     return {
+      diff: new LemmaListColumnDetail(false, false),
       user: new LemmaListColumnDetail(false, false),
       verifier: new LemmaListColumnDetail(false, false),
       filter: new LemmaListColumnDetail(false, false),

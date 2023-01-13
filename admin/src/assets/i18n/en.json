@@ -109,6 +109,7 @@
       "results_info": "Displaying entries {{start}} to {{end}} of {{total}}",
       "columns": {
         "title": "Columns",
+        "diff": "Diff",
         "user": "User",
         "verifier": "Verifier",
         "filter": "Filter",
@@ -349,5 +350,8 @@
     "romansh": "romansh",
     "german": "german",
     "subject": "Your request to Pledari Grond"
+  },
+  "diff": {
+    "title": "Compare changes"
   }
 }
