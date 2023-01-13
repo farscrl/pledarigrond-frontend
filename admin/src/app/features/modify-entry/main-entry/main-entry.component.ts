@@ -27,10 +27,10 @@ export class MainEntryComponent implements OnInit {
 
   isLoading = false;
 
-  dGrammatikValues: string[] = [];
-  dGenusValues: string[] = [];
-  rGrammatikValues: string[] = [];
-  rGenusValues: string[] = [];
+  private grammarValues: string[] = [];
+  private genderValues: string[] = [];
+  grammarValuesAutocomplete: string[] = [];
+  genderValuesAutocomplete: string[] = [];
 
   categoryAutocomplete: string[] = [];
   rSemanticsAutocomplete: string[] = [];
@@ -53,6 +53,11 @@ export class MainEntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.reset();
+    this.editorService.getChoiceFieldsSuggestions(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
+      this.genderValues = data.gender;
+      this.grammarValues = data.grammar;
+      this.setupDropdownValues();
+    });
   }
 
   cancel() {
@@ -284,24 +289,20 @@ export class MainEntryComponent implements OnInit {
   }
 
   private setupDropdownValues() {
-    this.dGenusValues = this.getDGenusValues();
-    if (this.lemmaVersion?.lemmaValues.DGenus && !this.dGenusValues.includes(this.lemmaVersion?.lemmaValues.DGenus)) {
-      this.dGenusValues.push(this.lemmaVersion?.lemmaValues.DGenus);
+    this.grammarValuesAutocomplete = this.grammarValues;
+    if (this.lemmaVersion?.lemmaValues.DGrammatik && !this.grammarValuesAutocomplete.includes(this.lemmaVersion?.lemmaValues.DGrammatik)) {
+      this.grammarValuesAutocomplete.push(this.lemmaVersion?.lemmaValues.DGrammatik);
+    }
+    if (this.lemmaVersion?.lemmaValues.RGrammatik && !this.grammarValuesAutocomplete.includes(this.lemmaVersion?.lemmaValues.RGrammatik)) {
+      this.grammarValuesAutocomplete.push(this.lemmaVersion?.lemmaValues.RGrammatik);
     }
 
-    this.dGrammatikValues = this.getDGrammatikValues();
-    if (this.lemmaVersion?.lemmaValues.DGrammatik && !this.dGenusValues.includes(this.lemmaVersion?.lemmaValues.DGrammatik)) {
-      this.dGrammatikValues.push(this.lemmaVersion?.lemmaValues.DGrammatik);
+    this.genderValuesAutocomplete = this.genderValues;
+    if (this.lemmaVersion?.lemmaValues.DGenus && !this.genderValuesAutocomplete.includes(this.lemmaVersion?.lemmaValues.DGenus)) {
+      this.genderValuesAutocomplete.push(this.lemmaVersion?.lemmaValues.DGenus);
     }
-
-    this.rGenusValues = this.getRGenusValues();
-    if (this.lemmaVersion?.lemmaValues.RGenus && !this.dGenusValues.includes(this.lemmaVersion?.lemmaValues.RGenus)) {
-      this.rGenusValues.push(this.lemmaVersion?.lemmaValues.RGenus);
-    }
-
-    this.rGrammatikValues = this.getRGrammatikValues();
-    if (this.lemmaVersion?.lemmaValues.RGrammatik && !this.dGenusValues.includes(this.lemmaVersion?.lemmaValues.RGrammatik)) {
-      this.rGrammatikValues.push(this.lemmaVersion?.lemmaValues.RGrammatik);
+    if (this.lemmaVersion?.lemmaValues.RGenus && !this.genderValuesAutocomplete.includes(this.lemmaVersion?.lemmaValues.RGenus)) {
+      this.genderValuesAutocomplete.push(this.lemmaVersion?.lemmaValues.RGenus);
     }
   }
 
@@ -347,21 +348,5 @@ export class MainEntryComponent implements OnInit {
         console.error(error);
       });
     }
-  }
-
-  private getDGenusValues(): string[] {
-    return ["f", "f(n)", "f(pl)", "f,m", "f,m,n", "f,n", "m", "m(f)", "m(pl)", "m,f", "m,n", "m/n", "n", "n(f)", "n(pl)", "n,f", "n,m", "pl"];
-  }
-
-  private getDGrammatikValues(): string[] {
-    return ["adj", "adv", "art", "cj", "cumpos", "int", "interj", "inv", "n.l", "n.p", "num", "prep", "pron", "refl", "subst", "tr", "tr/int"];
-  }
-
-  private getRGenusValues(): string[] {
-    return ["(coll)m", "(f)m", "(m)f", "(pl)f", "coll", "f", "f(pl)", "f.pl", "f/m", "f/m.pl", "m", "m(f)", "m(f)pl", "m(pl)", "m,f", "m.(pl)", "m.pl", "m/f", "m/f.pl", "pl"];
-  }
-
-  private getRGrammatikValues(): string[] {
-    return ["(refl) tr", "abs/tr", "adj", "adv", "art", "cj", "int", "interj", "inv", "n.l", "n.p", "num", "prep", "pron", "refl", "subst", "tr", "tr/int"];
   }
 }
