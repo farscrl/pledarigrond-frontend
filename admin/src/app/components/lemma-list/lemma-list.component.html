@@ -65,7 +65,7 @@
   <thead>
     <tr>
       <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="columns.checkMultiple.active" nzLeft nzWidth="70px"></th>
-      <th *ngIf="columns.diff.active" nzLeft nzWidth="40px">{{ 'lexicon.lemma.columns.diff' | translate }}</th>
+      <th *ngIf="columns.diff.active" nzLeft nzWidth="44px">{{ 'lexicon.lemma.columns.diff' | translate }}</th>
       <th *ngIf="columns.user.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.user' | translate }}</th>
       <th *ngIf="columns.verifier.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.verifier' | translate }}</th>
       <th *ngIf="columns.filter.active" nzWidth="120px">{{ 'lexicon.lemma.columns.filter' | translate }}</th>
