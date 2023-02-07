@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NounGenerationComponent } from '../noun-generation/noun-generation.component';
 import { AdjectiveGenerationComponent } from '../adjective-generation/adjective-generation.component';
 import { Language } from "../../../models/security";
+import { PronounGenerationComponent } from "../pronoun-generation/pronoun-generation.component";
 
 @Component({
   selector: 'app-main-entry',
@@ -106,6 +107,10 @@ export class MainEntryComponent implements OnInit {
     return language === 'surmiran' || language === 'rumantschgrischun' || language === 'sutsilvan';
   }
 
+  doesSupportPronoun(language: Language): boolean {
+    return language === 'surmiran' || language === 'rumantschgrischun' || language === 'sutsilvan';
+  }
+
   editVerb() {
     this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
     this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
@@ -179,6 +184,37 @@ export class MainEntryComponent implements OnInit {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.adjective.title'),
       nzContent: AdjectiveGenerationComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lemmaVersion: this.lemmaVersion,
+      },
+    });
+    modal.afterClose.subscribe(value => {
+      if (value === undefined) {
+        return;
+      }
+      this.lemmaVersion!.lemmaValues = {
+        ...this.lemmaVersion?.lemmaValues,
+        ...value
+      };
+    });
+  }
+
+  editPronoun() {
+    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
+    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
+    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+
+    if (!this.lemmaVersion?.lemmaValues.baseForm || this.lemmaVersion?.lemmaValues.baseForm === "") {
+      this.lemmaVersion!.lemmaValues.baseForm = this.lemmaVersion?.lemmaValues.RStichwort;
+    }
+
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('edit.pronoun.title'),
+      nzContent: PronounGenerationComponent,
       nzClosable: false,
       nzMaskClosable: false,
       nzWidth: 1100,

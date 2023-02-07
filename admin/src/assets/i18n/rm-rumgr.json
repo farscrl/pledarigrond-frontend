@@ -291,7 +291,8 @@
         "none": "Nagina",
         "verb": "Verb",
         "noun": "Substantiv",
-        "adjective": "Adjectiv"
+        "adjective": "Adjectiv",
+        "pronoun": "Pronom"
       },
       "comment": "Commentari",
       "email": "E-mail"
@@ -333,7 +334,17 @@
         "fSingular": "feminin singular",
         "mPlural": "masculin plural",
         "fPlural": "feminin plural",
-        "adverbialForm": "Furma averbiala"
+        "adverbialForm": "Furma adverbiala"
+      }
+    },
+    "pronoun": {
+      "title": "Generar furmas da pronoms",
+      "forms": {
+        "baseForm": "Furma da basa",
+        "mSingular": "masculin singular",
+        "fSingular": "feminin singular",
+        "mPlural": "masculin plural",
+        "fPlural": "feminin plural"
       }
     },
     "cancel": "Interrumper",

@@ -60,6 +60,7 @@ import { NameCategoryComponent } from "./components/data/name-category/name-cate
 import { NameDisplayComponent } from "./components/data/name-display/name-display.component";
 import { LemmaDiffComponent } from "./components/lemma-diff/lemma-diff.component";
 import { DiffModalComponent } from "./features/diff-modal/diff-modal.component";
+import { PronounGenerationComponent } from "./features/modify-entry/pronoun-generation/pronoun-generation.component";
 
 registerLocaleData(de);
 
@@ -114,6 +115,7 @@ export function tokenGetter() {
     NameDisplayComponent,
     LemmaDiffComponent,
     DiffModalComponent,
+    PronounGenerationComponent,
   ],
   imports: [
     BrowserModule,

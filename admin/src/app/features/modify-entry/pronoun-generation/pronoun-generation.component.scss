@@ -1,0 +1,18 @@
+.ant-form-item {
+  margin-bottom: 6px;
+}
+
+.footer-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.irregular-checkbox {
+  margin-bottom: 36px;
+}
+
+input:read-only {
+  background-color: rgb(226, 226, 226);
+  color: gray;
+}

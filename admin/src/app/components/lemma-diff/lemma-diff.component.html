@@ -41,6 +41,12 @@
   <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="oldLemmaVersion.lemmaValues.adverbialForm" [new]="newLemmaVersion.lemmaValues.adverbialForm"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
+<nz-descriptions nzTitle="Flexiuns da pronoms" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'PRONOUN' || newLemmaVersion.lemmaValues.RInflectionType === 'PRONOUN'">
+  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.lemmaValues.mSingular" [new]="newLemmaVersion.lemmaValues.mSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.lemmaValues.fSingular" [new]="newLemmaVersion.lemmaValues.fSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.lemmaValues.mPlural" [new]="newLemmaVersion.lemmaValues.mPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.lemmaValues.fPlural" [new]="newLemmaVersion.lemmaValues.fPlural"></app-diff></nz-descriptions-item>
+</nz-descriptions>
 
 <nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'V' || newLemmaVersion.lemmaValues.RInflectionType === 'V'">
   <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="oldLemmaVersion.lemmaValues.infinitiv" [new]="newLemmaVersion.lemmaValues.infinitiv"></app-diff></nz-descriptions-item>
