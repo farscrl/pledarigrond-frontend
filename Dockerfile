@@ -15,8 +15,9 @@ RUN cd admin && (node_modules/.bin/ng build -c $ANGULAR_ENV)
 
 #stage 2
 FROM nginx:alpine
-EXPOSE 8080
 COPY --from=node /app/dist /usr/share/nginx/html
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
-# Fix for a Jelastic issue (see: https://guillermo.at/jelastic-docker-cmd)
-CMD nginx -g "daemon off;"
+
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+EXPOSE 8080
+CMD ["/usr/sbin/nginx"]
