@@ -43,7 +43,7 @@ export class DurationComponent implements OnInit {
 
   resetDate() {
     this.selectedDuration = [
-      moment().endOf('day').subtract(6, 'months').toDate(),
+      moment().endOf('day').subtract(10, 'years').toDate(),
       moment().endOf('day').toDate()
     ]
     this.removeUserFilter()
