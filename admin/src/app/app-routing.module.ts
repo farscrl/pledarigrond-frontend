@@ -105,6 +105,66 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'sursilvan',
+        canActivate: [UserLoggedInGuard],
+        data: {
+          expected_role: 'ROLE_EDITOR_SURSILVAN'
+        },
+        children: [
+          {
+            path: "",
+            redirectTo: "editor",
+            pathMatch: 'full',
+          },
+          {
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "suggestions",
+                pathMatch: 'full',
+              },
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "database",
+                pathMatch: 'full',
+              },
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
+          }
+        ]
+      },
+      {
         path: 'surmiran',
         canActivate: [UserLoggedInGuard],
         data: {
