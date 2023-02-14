@@ -102,7 +102,7 @@
         *ngIf="columns.checkMultiple.active"
       ></td>
       <td *ngIf="columns.diff.active" nzLeft class="small">
-        <span nz-icon nzType="diff" nzTheme="outline" (click)="showDiff(data)"></span>
+        <span nz-icon nzType="diff" nzTheme="outline" (click)="showDiff(data)" class="button-icon"></span>
       </td>
       <td *ngIf="columns.user.active" nzLeft class="small">
         <app-user-role [role]="data.mostRecent.creatorRole"></app-user-role><br>

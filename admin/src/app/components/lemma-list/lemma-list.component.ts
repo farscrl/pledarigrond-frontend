@@ -15,8 +15,7 @@ import { EditorQuery } from 'src/app/models/editor-query';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
 import { TranslateService } from '@ngx-translate/core';
-import {LemmaVersion} from "../../models/lemma-version";
-import {DiffModalComponent} from "../../features/diff-modal/diff-modal.component";
+import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 
 @Component({
   selector: 'app-lemma-list',
