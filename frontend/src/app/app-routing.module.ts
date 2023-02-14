@@ -110,7 +110,26 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: SursilvanPlaceholderComponent
+        component: SearchComponent
+      },
+      {
+        path: 'spellchecker',
+        component: SpellcheckerComponent,
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [UserNotLoggedInGuard]
+      },
+      {
+        path: 'info',
+        component: StaticComponent,
+        children: [
+          {
+            path: "",
+            component: InfoSurmiranComponent
+          }
+        ]
       }
     ]
   },
