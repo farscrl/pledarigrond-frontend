@@ -25,8 +25,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGenus" nzRequired>{{ 'edit.lemma.de_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DGenus" id="DGenus" class="info-input" [nzAutocomplete]="dGenderAutocomplete" (input)="categoryChanged()"/>
-          <nz-autocomplete [nzDataSource]="genderValuesAutocomplete" nzBackfill #dGenderAutocomplete></nz-autocomplete>
+          <input nz-input formControlName="DGenus" id="DGenus" class="info-input" [nzAutocomplete]="dGenderAutocomplete" (ngModelChange)="dGenderAutocompleteChanged($event)"/>
+          <nz-autocomplete [nzDataSource]="dGenderAutocompleteValues" nzBackfill #dGenderAutocomplete></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
@@ -41,8 +41,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik" nzRequired>{{ 'edit.lemma.de_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DGrammatik" id="DGrammatik" class="info-input" [nzAutocomplete]="dGrammarAutocomplete" (input)="categoryChanged()"/>
-          <nz-autocomplete [nzDataSource]="grammarValuesAutocomplete" nzBackfill #dGrammarAutocomplete></nz-autocomplete>
+          <input nz-input formControlName="DGrammatik" id="DGrammatik" class="info-input" [nzAutocomplete]="dGrammarAutocomplete" (ngModelChange)="dGrammarAutocompleteChanged($event)"/>
+          <nz-autocomplete [nzDataSource]="dGrammarAutocompleteValues" nzBackfill #dGrammarAutocomplete></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 
@@ -78,8 +78,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGenus" nzRequired>{{ 'edit.lemma.rm_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RGenus" id="RGenus" class="info-input" [nzAutocomplete]="rGenderAutocomplete" (input)="categoryChanged()"/>
-          <nz-autocomplete [nzDataSource]="genderValuesAutocomplete" nzBackfill #rGenderAutocomplete></nz-autocomplete>
+          <input nz-input formControlName="RGenus" id="RGenus" class="info-input" [nzAutocomplete]="rGenderAutocomplete" (ngModelChange)="rGenderAutocompleteChanged($event)"/>
+          <nz-autocomplete [nzDataSource]="rGenderAutocompleteValues" nzBackfill #rGenderAutocomplete></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
@@ -112,8 +112,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGrammatik" nzRequired>{{ 'edit.lemma.rm_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RGrammatik" id="RGrammatik" class="info-input" [nzAutocomplete]="rGrammarAutocomplete" (input)="categoryChanged()"/>
-          <nz-autocomplete [nzDataSource]="grammarValuesAutocomplete" nzBackfill #rGrammarAutocomplete></nz-autocomplete>
+          <input nz-input formControlName="RGrammatik" id="RGrammatik" class="info-input" [nzAutocomplete]="rGrammarAutocomplete" (ngModelChange)="rGrammarAutocompleteChanged($event)"/>
+          <nz-autocomplete [nzDataSource]="rGrammarAutocompleteValues" nzBackfill #rGrammarAutocomplete></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 

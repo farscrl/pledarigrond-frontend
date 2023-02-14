@@ -30,12 +30,14 @@ export class MainEntryComponent implements OnInit {
 
   private grammarValues: string[] = [];
   private genderValues: string[] = [];
-  grammarValuesAutocomplete: string[] = [];
-  genderValuesAutocomplete: string[] = [];
 
   categoryAutocomplete: string[] = [];
   rSemanticsAutocomplete: string[] = [];
   dSemanticsAutocomplete: string[] = [];
+  rGrammarAutocompleteValues: string[] = [];
+  dGrammarAutocompleteValues: string[] = [];
+  rGenderAutocompleteValues: string[] = [];
+  dGenderAutocompleteValues: string[] = [];
 
   private lexEntry?: LexEntry;
   private lemmaVersion?: LemmaVersion;
@@ -284,6 +286,38 @@ export class MainEntryComponent implements OnInit {
     });
   }
 
+  rGrammarAutocompleteChanged(searchValue?: string) {
+    if (!searchValue) {
+      this.rGrammarAutocompleteValues = [...this.grammarValues];
+      return;
+    }
+    this.rGrammarAutocompleteValues = this.grammarValues.filter(option => option.indexOf(searchValue) !== -1);
+  }
+
+  dGrammarAutocompleteChanged(searchValue?: string) {
+    if (!searchValue) {
+      this.dGrammarAutocompleteValues = [...this.grammarValues];
+      return;
+    }
+    this.dGrammarAutocompleteValues = this.grammarValues.filter(option => option.indexOf(searchValue) !== -1);
+  }
+
+  rGenderAutocompleteChanged(searchValue?: string) {
+    if (!searchValue) {
+      this.rGenderAutocompleteValues = [...this.genderValues];
+      return;
+    }
+    this.rGenderAutocompleteValues = this.genderValues.filter(option => option.indexOf(searchValue) !== -1);
+  }
+
+  dGenderAutocompleteChanged(searchValue?: string) {
+    if (!searchValue) {
+      this.dGenderAutocompleteValues = [...this.genderValues];
+      return;
+    }
+    this.dGenderAutocompleteValues = this.genderValues.filter(option => option.indexOf(searchValue) !== -1);
+  }
+
   private setUpForm() {
     this.setupDropdownValues();
 
@@ -325,21 +359,24 @@ export class MainEntryComponent implements OnInit {
   }
 
   private setupDropdownValues() {
-    this.grammarValuesAutocomplete = this.grammarValues;
-    if (this.lemmaVersion?.lemmaValues.DGrammatik && !this.grammarValuesAutocomplete.includes(this.lemmaVersion?.lemmaValues.DGrammatik)) {
-      this.grammarValuesAutocomplete.push(this.lemmaVersion?.lemmaValues.DGrammatik);
+    if (this.lemmaVersion?.lemmaValues.DGrammatik && !this.grammarValues.includes(this.lemmaVersion?.lemmaValues.DGrammatik)) {
+      this.grammarValues.push(this.lemmaVersion?.lemmaValues.DGrammatik);
     }
-    if (this.lemmaVersion?.lemmaValues.RGrammatik && !this.grammarValuesAutocomplete.includes(this.lemmaVersion?.lemmaValues.RGrammatik)) {
-      this.grammarValuesAutocomplete.push(this.lemmaVersion?.lemmaValues.RGrammatik);
+    if (this.lemmaVersion?.lemmaValues.RGrammatik && !this.grammarValues.includes(this.lemmaVersion?.lemmaValues.RGrammatik)) {
+      this.grammarValues.push(this.lemmaVersion?.lemmaValues.RGrammatik);
     }
 
-    this.genderValuesAutocomplete = this.genderValues;
-    if (this.lemmaVersion?.lemmaValues.DGenus && !this.genderValuesAutocomplete.includes(this.lemmaVersion?.lemmaValues.DGenus)) {
-      this.genderValuesAutocomplete.push(this.lemmaVersion?.lemmaValues.DGenus);
+    if (this.lemmaVersion?.lemmaValues.DGenus && !this.genderValues.includes(this.lemmaVersion?.lemmaValues.DGenus)) {
+      this.genderValues.push(this.lemmaVersion?.lemmaValues.DGenus);
     }
-    if (this.lemmaVersion?.lemmaValues.RGenus && !this.genderValuesAutocomplete.includes(this.lemmaVersion?.lemmaValues.RGenus)) {
-      this.genderValuesAutocomplete.push(this.lemmaVersion?.lemmaValues.RGenus);
+    if (this.lemmaVersion?.lemmaValues.RGenus && !this.genderValues.includes(this.lemmaVersion?.lemmaValues.RGenus)) {
+      this.genderValues.push(this.lemmaVersion?.lemmaValues.RGenus);
     }
+
+    this.rGrammarAutocompleteChanged(this.lemmaVersion?.lemmaValues.RGrammatik);
+    this.dGrammarAutocompleteChanged(this.lemmaVersion?.lemmaValues.DGrammatik);
+    this.rGenderAutocompleteChanged(this.lemmaVersion?.lemmaValues.RGenus);
+    this.dGenderAutocompleteChanged(this.lemmaVersion?.lemmaValues.DGenus);
   }
 
   private saveNewEntry(asSuggestion: boolean) {
