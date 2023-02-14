@@ -7,5 +7,6 @@ nz-content {
 
 .button-container {
   margin-top: 16px;
-  float: right;
+  display: flex;
+  justify-content: space-between;
 }

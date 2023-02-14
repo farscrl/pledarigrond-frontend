@@ -8,6 +8,8 @@
 >
   <thead>
     <tr>
+      <th>-</th>
+      <th>+</th>
       <th>{{ 'lexicon.lemma_history.state' | translate }}</th>
       <th>{{ 'lexicon.lemma_history.user' | translate }}</th>
       <th>{{ 'lexicon.lemma_history.entry' | translate }}</th>
@@ -15,7 +17,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of versionHistory">
+    <tr *ngFor="let data of versionHistory; let i = index">
+      <td>
+        <input type="radio" value="data" name="diffBefore" (change)="beforeChanged(data)" *ngIf="i !== 0">
+      </td>
+      <td>
+        <input type="radio" value="data" name="diffAfter" (change)="afterChanged(data)">
+      </td>
       <td>
         <app-verification [verification]="data.verification"></app-verification><br>
         <app-status [status]="data.status"></app-status>
@@ -32,6 +40,16 @@
         {{ formateTime(data.timestamp) }}
       </td>
     </tr>
+  <tr *ngIf="versionHistory.length > 0">
+    <td>
+      <input type="radio" value="data" name="diffBefore" (change)="beforeChanged()">
+    </td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
   </tbody>
 </nz-table>
 
@@ -40,6 +58,11 @@
 </ng-template>
 
 <div class="button-container" *ngIf="this.selectedLexEntry">
+  <button nz-button nzType="primary" (click)="showDiff()" [disabled]="!diffOldLemmaVersion || !diffNewLemmaVersion">
+    <span nz-icon nzType="diff" nzTheme="outline"></span>
+    {{ 'lexicon.lemma_history.show_diff_button' | translate}}
+  </button>
+
   <button nz-button nzDanger nzType="primary" (click)="dropOutdatedHistory()" [disabled]="!this.selectedLexEntry">
     <i nz-icon nzType="delete"></i>
     {{ 'lexicon.lemma_history.delete_history_button' | translate}}

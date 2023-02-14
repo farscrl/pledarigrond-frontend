@@ -103,6 +103,7 @@
       "changed": "Changed",
       "no_item_selected": "Select an entry on the right side, to see here the lemma version history.",
       "delete_history_button": "Delete history",
+      "show_diff_button": "Show diff",
       "delete_history_confirmation": "Do you really want to delete the history of this entry?"
     },
     "lemma": {
