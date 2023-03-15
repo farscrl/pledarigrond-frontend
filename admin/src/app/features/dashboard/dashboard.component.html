@@ -1,5 +1,5 @@
 <nz-layout>
-  <div nz-row [nzGutter]="16">
+  <div nz-row [nzGutter]="16" *ngIf="!environmentService.isLadin()">
     <div nz-col [nzSpan]="8" *ngIf="authService.isEditorRumantschgrischun()">
       <app-idiom-card name="Rumantsch Grischun" url="rumantschgrischun"></app-idiom-card>
     </div>
@@ -8,6 +8,15 @@
     </div>
     <div nz-col [nzSpan]="8" *ngIf="authService.isEditorSutsilvan()">
       <app-idiom-card name="Sutsilvan" url="sutsilvan"></app-idiom-card>
+    </div>
+  </div>
+
+  <div nz-row [nzGutter]="16" *ngIf="environmentService.isLadin()">
+    <div nz-col [nzSpan]="12" *ngIf="authService.isEditorPuter()">
+      <app-idiom-card name="Puter" url="puter"></app-idiom-card>
+    </div>
+    <div nz-col [nzSpan]="12" *ngIf="authService.isEditorVallader()">
+      <app-idiom-card name="Vallader" url="vallader"></app-idiom-card>
     </div>
   </div>
 </nz-layout>

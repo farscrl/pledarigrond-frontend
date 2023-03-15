@@ -61,6 +61,7 @@ import { NameDisplayComponent } from "./components/data/name-display/name-displa
 import { LemmaDiffComponent } from "./components/lemma-diff/lemma-diff.component";
 import { DiffModalComponent } from "./features/diff-modal/diff-modal.component";
 import { PronounGenerationComponent } from "./features/modify-entry/pronoun-generation/pronoun-generation.component";
+import { HeaderLadinComponent } from "./components/header-ladin/header-ladin.component";
 
 registerLocaleData(de);
 
@@ -76,6 +77,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     HeaderComponent,
+    HeaderLadinComponent,
     LoginComponent,
     MainLayoutComponent,
     UserAdministrationComponent,

@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4222",
+    "start-ladin": "ng serve --port=4222 -c=development-ladin",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

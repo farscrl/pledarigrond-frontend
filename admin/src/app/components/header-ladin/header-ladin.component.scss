@@ -1,0 +1,35 @@
+.header-menu, .header-menu-right {
+  line-height: 64px;
+  display: inline-block;
+  user-select: none;
+}
+
+.header-menu-right {
+  float: right;
+}
+
+nz-divider {
+  border-left-color: rgb(179, 179, 179);
+  display: inline-block;
+  height: 40px;
+}
+
+.username {
+  margin-left: 24px;
+}
+
+.logout {
+  margin-left: 12px;
+
+  i {
+    font-size: 16px;
+  }
+  i:hover {
+    color: #1890ff;
+  }
+}
+
+a.lang_selected {
+  color: white;
+  cursor: default;
+}

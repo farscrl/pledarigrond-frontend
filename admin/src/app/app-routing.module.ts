@@ -160,6 +160,126 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'puter',
+        canActivate: [UserLoggedInGuard],
+        data: {
+          expected_role: 'ROLE_EDITOR_PUTER'
+        },
+        children: [
+          {
+            path: "",
+            redirectTo: "editor",
+            pathMatch: 'full',
+          },
+          {
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "suggestions",
+                pathMatch: 'full',
+              },
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "database",
+                pathMatch: 'full',
+              },
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
+          }
+        ]
+      },
+      {
+        path: 'vallader',
+        canActivate: [UserLoggedInGuard],
+        data: {
+          expected_role: 'ROLE_EDITOR_VALLADER'
+        },
+        children: [
+          {
+            path: "",
+            redirectTo: "editor",
+            pathMatch: 'full',
+          },
+          {
+            path: "editor",
+            component: EditorComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "suggestions",
+                pathMatch: 'full',
+              },
+              {
+                path: "suggestions",
+                component: SuggestionsComponent,
+              },
+              {
+                path: "history",
+                component: HistoryComponent,
+              },
+              {
+                path: "lexicon",
+                component: LexiconComponent,
+              },
+              {
+                path: "automatic",
+                component: ReviewAutoChangesComponent,
+              },
+            ]
+          },
+          {
+            path: "admin",
+            component: AdminComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "database",
+                pathMatch: 'full',
+              },
+              {
+                path: "database",
+                component: DbAdministrationComponent
+              },
+              {
+                path: "index",
+                component: IndexAdministrationComponent
+              }
+            ]
+          }
+        ]
+      },
+      {
         path: 'sutsilvan',
         canActivate: [UserLoggedInGuard],
         data: {

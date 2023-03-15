@@ -25,4 +25,8 @@ export class NavigationHorizontalComponent implements OnInit {
   showAutomaticReview(): boolean {
     return this.languageSelectionService.getCurrentLanguage() === 'rumantschgrischun' || this.languageSelectionService.getCurrentLanguage() === 'sutsilvan';
   }
+
+  showFrontendLink(): boolean {
+    return this.languageSelectionService.getCurrentLanguage() !== 'puter' && this.languageSelectionService.getCurrentLanguage() !== 'vallader';
+  }
 }

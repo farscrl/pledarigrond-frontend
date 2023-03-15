@@ -9,7 +9,7 @@ export const environment: IEnvironment = {
   apiUrl: 'http://localhost:8080',
   apiHost: 'localhost:8080',
   frontendUrl: 'http://localhost:4221',
-  isLadin: false,
+  isLadin: true,
 };
 
 /*

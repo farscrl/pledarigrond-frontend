@@ -1,0 +1,46 @@
+name: Docker Build Ladin main
+
+on: [workflow_dispatch]
+
+jobs:
+  build_test_ladin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: docker build
+        run: |
+          docker build -f Dockerfile-ladin --build-arg ANGULAR_ENV=test-ladin -t pledarigrond/pledari-grond-frontend:latest-test-ladin -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}-test-ladin .
+      - name: docker push
+        run: |
+          docker push pledarigrond/pledari-grond-frontend --all-tags
+
+  build_prod_ladin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: docker build
+        run: |
+          docker build -f Dockerfile-ladin --build-arg ANGULAR_ENV=prod-ladin -t pledarigrond/pledari-grond-frontend:latest-prod-ladin -t pledarigrond/pledari-grond-frontend:${{ steps.package-version.outputs.current-version}}-prod-ladin .
+      - name: docker push
+        run: |
+          docker push pledarigrond/pledari-grond-frontend --all-tags

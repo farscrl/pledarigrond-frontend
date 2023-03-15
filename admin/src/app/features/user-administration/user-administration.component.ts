@@ -4,6 +4,7 @@ import { EditorRole, User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 import { EditComponent } from './edit/edit.component';
 import { TranslateService } from '@ngx-translate/core';
+import { EnvironmentService } from "../../services/environment.service";
 
 @Component({
   selector: 'app-user-administration',
@@ -19,6 +20,7 @@ export class UserAdministrationComponent implements OnInit {
     private modalService: NzModalService,
     private viewContainerRef: ViewContainerRef,
     private translateService: TranslateService,
+    public environmentService: EnvironmentService,
   ) { }
 
   ngOnInit(): void {

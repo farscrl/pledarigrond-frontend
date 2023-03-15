@@ -3,6 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Roles, User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
+import { EnvironmentService } from "../../../services/environment.service";
 
 @Component({
   selector: 'app-edit',
@@ -20,7 +21,12 @@ export class EditComponent implements OnInit {
 
   user: User = new User();
 
-  constructor(private modal: NzModalRef, private fb: UntypedFormBuilder, private userService: UsersService) { }
+  constructor(
+    private modal: NzModalRef,
+    private fb: UntypedFormBuilder,
+    private userService: UsersService,
+    public environmentService: EnvironmentService,
+  ) { }
 
   ngOnInit(): void {
     if (!!this.email) {

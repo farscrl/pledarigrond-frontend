@@ -21,9 +21,9 @@
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + languageSelectionService.getCurrentLanguage() + '/admin/index'" *ngIf="authService.isAdmin()">
     {{ 'index.menu_item' | translate }}
   </li>
-  <nz-divider nzType="vertical"></nz-divider>
-  <i nz-icon nzType="expand-alt" nzTheme="outline"></i>
-  <li nz-menu-item [nzMatchRouterExact]="true" [nzSelected]="false" (click)="openFe()">
+  <nz-divider nzType="vertical" *ngIf="showFrontendLink()"></nz-divider>
+  <i nz-icon nzType="expand-alt" nzTheme="outline" *ngIf="showFrontendLink()"></i>
+  <li nz-menu-item [nzMatchRouterExact]="true" [nzSelected]="false" (click)="openFe()" *ngIf="showFrontendLink()">
     {{ 'frontend.menu_item' | translate }}
   </li>
 </ul>

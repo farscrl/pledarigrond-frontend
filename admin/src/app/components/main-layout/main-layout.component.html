@@ -1,4 +1,5 @@
 <nz-layout>
-  <app-header></app-header>
+  <app-header *ngIf="!environmentService.isLadin()"></app-header>
+  <app-ladin-header *ngIf="environmentService.isLadin()"></app-ladin-header>
   <router-outlet></router-outlet>
 </nz-layout>
