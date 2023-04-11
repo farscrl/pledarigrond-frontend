@@ -35,6 +35,9 @@ export class InflectionService {
   }
 
   getInflectionForms(language: Language, type: InflectionType, subType: string, baseForm: string): Observable<InflectionResponse> {
+    if (baseForm) {
+      baseForm = encodeURIComponent(baseForm);
+    }
     return this.httpClient.get<any>(this.generateUrl(language, type, subType + '/' + baseForm));
   }
 
