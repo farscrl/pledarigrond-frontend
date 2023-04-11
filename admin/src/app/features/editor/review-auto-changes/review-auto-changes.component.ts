@@ -242,7 +242,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, pageNumber, 50).subscribe(page => {
       this.isLoadingData = false;
       this.currentPage = page as Page<LemmaVersionUi>;
-      this.lemmas = page.content as LemmaVersionUi[];
+      this.lemmas = this.filterLexEntryIds(page.content as LemmaVersionUi[]);
       this.jumpToNext();
     });
   }
@@ -320,5 +320,17 @@ export class ReviewAutoChangesComponent implements OnInit {
         this.lemmas[i] = entry.mostRecent as LemmaVersionUi;
       }
     }
+  }
+
+  private filterLexEntryIds(entries: LemmaVersionUi[]): LemmaVersionUi[] {
+    const returnValue: LemmaVersionUi[] = [];
+
+    entries.forEach(e => {
+      if (!returnValue.some(lv => lv.lexEntryId === e.lexEntryId)) {
+        returnValue.push(e);
+      }
+    });
+
+    return returnValue;
   }
 }
