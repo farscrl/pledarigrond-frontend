@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { environment } from './../../../environments/environment';
+import { Language } from "../../models/security";
 
 @Component({
   selector: 'app-navigation-horizontal',
@@ -10,23 +11,29 @@ import { environment } from './../../../environments/environment';
 })
 export class NavigationHorizontalComponent implements OnInit {
 
+  currentLanguage: Language = Language.UNDEFINED;
+
   constructor(
     public languageSelectionService: LanguageSelectionService,
     public authService: AuthService,
     ) { }
 
   ngOnInit(): void {
+    this.languageSelectionService.getCurrentLanguageObservable().subscribe(l => {
+      this.currentLanguage = l;
+      console.error(l)
+    });
   }
 
   openFe() {
-    window.open(environment.frontendUrl + "/" + this.languageSelectionService.getCurrentLanguage(), '_blank');
+    window.open(environment.frontendUrl + "/" + this.currentLanguage, '_blank');
   }
 
   showAutomaticReview(): boolean {
-    return this.languageSelectionService.getCurrentLanguage() === 'rumantschgrischun' || this.languageSelectionService.getCurrentLanguage() === 'sutsilvan';
+    return this.currentLanguage === 'rumantschgrischun' || this.currentLanguage === 'sutsilvan';
   }
 
   showFrontendLink(): boolean {
-    return this.languageSelectionService.getCurrentLanguage() !== 'puter' && this.languageSelectionService.getCurrentLanguage() !== 'vallader';
+    return this.currentLanguage !== 'puter' && this.currentLanguage !== 'vallader';
   }
 }

@@ -15,6 +15,9 @@ export enum Language {
   SURSILVAN = "sursilvan",
   SUTSILVAN = "sutsilvan",
   VALLADER = "vallader",
+
+  // used when not initialized yet
+  UNDEFINED = "undefined"
 }
 
 export class Credentials {
