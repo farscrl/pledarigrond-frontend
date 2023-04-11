@@ -101,6 +101,7 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
+    /*
     if (!this.selectedLemma) {
       return;
     }
@@ -112,6 +113,7 @@ export class ReviewAutoChangesComponent implements OnInit {
         inline: 'center'
     });
     }
+    */
   }
 
   selectLemma(lemma: LemmaVersionUi) {
@@ -294,7 +296,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedLexEntry?.mostRecent));
       workingLemmaVersion.lemmaValues.RInflectionSubtype = subTypeId;
 
-      // reset automaticly created values
+      // reset automatically created values
       delete workingLemmaVersion.pgValues.timestamp;
       delete workingLemmaVersion.timestamp;
       delete workingLemmaVersion.userId;
