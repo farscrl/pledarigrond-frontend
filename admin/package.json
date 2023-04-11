@@ -1,6 +1,6 @@
 {
   "name": "admin",
-  "version": "1.2.6",
+  "version": "1.2.8",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4222",
