@@ -143,7 +143,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }
     const lemma = this.selectedLemma;
     this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
-      lemma.local_review_status = 'ACCEPTED';
+      this.selectedLemma!.local_review_status = 'ACCEPTED';
       this.downOne();
     }, (error) => {
       console.error(error);
@@ -156,7 +156,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }
     const lemma = this.selectedLemma;
     this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
-      lemma.local_review_status = 'REJECTED';
+      this.selectedLemma!.local_review_status = 'REJECTED';
       this.downOne();
     }, (error) => {
       console.error(error);
@@ -169,7 +169,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }
     const lemma = this.selectedLemma;
     this.editorService.reviewLaterLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId).subscribe((entry) => {
-      lemma.local_review_status = 'LATER';
+      this.selectedLemma!.local_review_status = 'LATER';
       this.downOne();
     }, (error) => {
       console.error(error);
