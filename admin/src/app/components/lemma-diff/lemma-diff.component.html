@@ -125,7 +125,17 @@
     <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural3" [new]="newLemmaVersion.lemmaValues.futurplural3"></app-diff><br>
   </div>
 
-  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+  <div class="conjugaziun" *ngIf="language === 'puter'">
+    <div><b>Futur dubitativ</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativsing1" [new]="newLemmaVersion.lemmaValues.futurdubitativsing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativsing2" [new]="newLemmaVersion.lemmaValues.futurdubitativsing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativsing3" [new]="newLemmaVersion.lemmaValues.futurdubitativsing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativplural1" [new]="newLemmaVersion.lemmaValues.futurdubitativplural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativplural2" [new]="newLemmaVersion.lemmaValues.futurdubitativplural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativplural3" [new]="newLemmaVersion.lemmaValues.futurdubitativplural3"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran' || language === 'puter' || language === 'vallader'">
     <div><b>Preschent enclitic</b></div>
     <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing1enclitic" [new]="newLemmaVersion.lemmaValues.preschentsing1enclitic"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing2enclitic" [new]="newLemmaVersion.lemmaValues.preschentsing2enclitic"></app-diff><br>
@@ -136,7 +146,7 @@
     <app-diff [old]="oldLemmaVersion.lemmaValues.preschentplural3enclitic" [new]="newLemmaVersion.lemmaValues.preschentplural3enclitic"></app-diff><br>
   </div>
 
-  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran' || language === 'puter' || language === 'vallader'">
     <div><b>Imperfect enclitic</b></div>
     <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing1enclitic" [new]="newLemmaVersion.lemmaValues.imperfectsing1enclitic"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectsing2enclitic" [new]="newLemmaVersion.lemmaValues.imperfectsing2enclitic"></app-diff><br>
@@ -147,7 +157,7 @@
     <app-diff [old]="oldLemmaVersion.lemmaValues.imperfectplural3enclitic" [new]="newLemmaVersion.lemmaValues.imperfectplural3enclitic"></app-diff><br>
   </div>
 
-  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran'">
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran' || language === 'puter' || language === 'vallader'">
     <div><b>Cundiziunal enclitic</b></div>
     <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing1enclitic" [new]="newLemmaVersion.lemmaValues.cundizionalsing1enclitic"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalsing2enclitic" [new]="newLemmaVersion.lemmaValues.cundizionalsing2enclitic"></app-diff><br>
@@ -158,7 +168,7 @@
     <app-diff [old]="oldLemmaVersion.lemmaValues.cundizionalplural3enclitic" [new]="newLemmaVersion.lemmaValues.cundizionalplural3enclitic"></app-diff><br>
   </div>
 
-  <div class="conjugaziun" *ngIf="language === 'surmiran'">
+  <div class="conjugaziun" *ngIf="language === 'surmiran' || language === 'puter' || language === 'vallader'">
     <div><b>Futur enclitic</b></div>
     <app-diff [old]="oldLemmaVersion.lemmaValues.futursing1enclitic" [new]="newLemmaVersion.lemmaValues.futursing1enclitic"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.futursing2enclitic" [new]="newLemmaVersion.lemmaValues.futursing2enclitic"></app-diff><br>
@@ -167,6 +177,17 @@
     <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural1enclitic" [new]="newLemmaVersion.lemmaValues.futurplural1enclitic"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural2enclitic" [new]="newLemmaVersion.lemmaValues.futurplural2enclitic"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.futurplural3enclitic" [new]="newLemmaVersion.lemmaValues.futurplural3enclitic"></app-diff><br>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'puter'">
+    <div><b>Futur dubitativ enclitic</b></div>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativsing1enclitic" [new]="newLemmaVersion.lemmaValues.futurdubitativsing1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativsing2enclitic" [new]="newLemmaVersion.lemmaValues.futurdubitativsing2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativsing3encliticm" [new]="newLemmaVersion.lemmaValues.futurdubitativsing3encliticm"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativsing3encliticf" [new]="newLemmaVersion.lemmaValues.futurdubitativsing3encliticf"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativplural1enclitic" [new]="newLemmaVersion.lemmaValues.futurdubitativplural1enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativplural2enclitic" [new]="newLemmaVersion.lemmaValues.futurdubitativplural2enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.futurdubitativplural3enclitic" [new]="newLemmaVersion.lemmaValues.futurdubitativplural3enclitic"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
@@ -181,6 +202,10 @@
     <div><b>Imperativ</b></div>
     <app-diff [old]="oldLemmaVersion.lemmaValues.imperativ1" [new]="newLemmaVersion.lemmaValues.imperativ1"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.imperativ2" [new]="newLemmaVersion.lemmaValues.imperativ2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperativ3" [new]="newLemmaVersion.lemmaValues.imperativ3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperativ4" [new]="newLemmaVersion.lemmaValues.imperativ4"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperativ5" [new]="newLemmaVersion.lemmaValues.imperativ5"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.imperativ6" [new]="newLemmaVersion.lemmaValues.imperativ6"></app-diff><br>
   </div>
 
   <div class="conjugaziun">

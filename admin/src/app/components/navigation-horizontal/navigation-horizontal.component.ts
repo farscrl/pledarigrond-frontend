@@ -21,7 +21,6 @@ export class NavigationHorizontalComponent implements OnInit {
   ngOnInit(): void {
     this.languageSelectionService.getCurrentLanguageObservable().subscribe(l => {
       this.currentLanguage = l;
-      console.error(l)
     });
   }
 

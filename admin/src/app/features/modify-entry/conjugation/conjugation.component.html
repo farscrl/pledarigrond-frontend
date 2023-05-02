@@ -250,6 +250,45 @@
             </nz-form-control>
           </nz-form-item>
         </div>
+        <div nz-col nzSpan="12" *ngIf="hasFuturDubitativ()">
+          <h2>{{ 'edit.conjugation.forms.futurdubitativ' | translate }}</h2>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing1"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativsing1" id="futurdubitativsing1" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing2"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativsing2" id="futurdubitativsing2" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativsing3" id="futurdubitativsing3" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural1"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativplural1" id="futurdubitativplural1" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural2"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativplural2" id="futurdubitativplural2" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativplural3" id="futurdubitativplural3" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.particip_perfect' | translate }}</h2>
           <nz-form-item>
@@ -295,6 +334,32 @@
               <textarea nzAutosize nz-input formControlName="imperativ2" id="imperativ2" [readonly]="isRegular"></textarea>
             </nz-form-control>
           </nz-form-item>
+          <ng-container *ngIf="hasExtendedImperativ()">
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperativ3"></nz-form-label> -->
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperativ3" id="imperativ3" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperativ4"></nz-form-label> -->
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperativ4" id="imperativ4" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperativ5"></nz-form-label> -->
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperativ5" id="imperativ5" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperativ6"></nz-form-label> -->
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperativ6" id="imperativ6" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </ng-container>
         </div>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.gerundi' | translate }}</h2>
@@ -490,6 +555,51 @@
             <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural3"></nz-form-label> -->
             <nz-form-control [nzSm]="14" [nzXs]="24">
               <textarea nzAutosize nz-input formControlName="futurplural3enclitic" id="futurplural3enclitic" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12" *ngIf="hasEncliticFutur() && hasFuturDubitativ()">
+          <h2>{{ 'edit.conjugation.forms.futurdubitativ' | translate }}</h2>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing1"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativsing1enclitic" id="futurdubitativsing1enclitic" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing2"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativsing2enclitic" id="futurdubitativsing2enclitic" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativsing3encliticm" id="futurdubitativsing3encliticm" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativsing3encliticf" id="futurdubitativsing3encliticf" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural1"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativplural1enclitic" id="futurdubitativplural1enclitic" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural2"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativplural2enclitic" id="futurdubitativplural2enclitic" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="futurdubitativplural3enclitic" id="futurdubitativplural3enclitic" [readonly]="isRegular"></textarea>
             </nz-form-control>
           </nz-form-item>
         </div>

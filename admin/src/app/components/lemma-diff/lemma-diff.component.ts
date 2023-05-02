@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LexEntry, LexEntryUi} from "../../models/lex-entry";
 import {Language} from "../../models/security";
 import {LemmaVersion} from "../../models/lemma-version";
-import de from "@angular/common/locales/de";
 
 @Component({
   selector: 'app-lemma-diff',

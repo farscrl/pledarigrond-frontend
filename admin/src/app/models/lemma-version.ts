@@ -99,8 +99,19 @@ export class LemmaValues {
   futurplural2?: string;
   futurplural3?: string;
 
+  futurdubitativsing1?: string;
+  futurdubitativsing2?: string;
+  futurdubitativsing3?: string;
+  futurdubitativplural1?: string;
+  futurdubitativplural2?: string;
+  futurdubitativplural3?: string;
+
   imperativ1?: string;
   imperativ2?: string;
+  imperativ3?: string;
+  imperativ4?: string;
+  imperativ5?: string;
+  imperativ6?: string;
 
   gerundium?: string;
 
@@ -135,6 +146,14 @@ export class LemmaValues {
   futurplural1enclitic?: string;
   futurplural2enclitic?: string;
   futurplural3enclitic?: string;
+
+  futurdubitativsing1enclitic?: string;
+  futurdubitativsing2enclitic?: string;
+  futurdubitativsing3encliticm?: string;
+  futurdubitativsing3encliticf?: string;
+  futurdubitativplural1enclitic?: string;
+  futurdubitativplural2enclitic?: string;
+  futurdubitativplural3enclitic?: string;
 
   // noun
   baseForm?: string;

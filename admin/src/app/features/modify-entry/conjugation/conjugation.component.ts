@@ -86,12 +86,22 @@ export class ConjugationComponent implements OnInit {
 
   hasEncliticForms(): boolean {
     const language = this.languageSelectionService.getCurrentLanguage();
-    return language === Language.SURMIRAN || language === Language.SUTSILVAN;
+    return language === Language.SURMIRAN || language === Language.SUTSILVAN || language === Language.PUTER || language === Language.VALLADER;
   }
 
   hasEncliticFutur(): boolean {
     const language = this.languageSelectionService.getCurrentLanguage();
-    return language === Language.SURMIRAN;
+    return (language === Language.SURMIRAN || language === Language.PUTER || language === Language.VALLADER);
+  }
+
+  hasFuturDubitativ(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
+    return (language === Language.PUTER);
+  }
+
+  hasExtendedImperativ(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
+    return (language === Language.PUTER || language === Language.VALLADER);
   }
 
   copyConjugation() {
@@ -152,6 +162,13 @@ export class ConjugationComponent implements OnInit {
       futurplural2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurplural2),
       futurplural3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurplural3),
 
+      futurdubitativsing1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativsing1),
+      futurdubitativsing2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativsing2),
+      futurdubitativsing3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativsing3),
+      futurdubitativplural1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativplural1),
+      futurdubitativplural2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativplural2),
+      futurdubitativplural3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativplural3),
+
       participperfectms: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.participperfectms),
       participperfectfs: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.participperfectfs),
       participperfectmp: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.participperfectmp),
@@ -159,6 +176,10 @@ export class ConjugationComponent implements OnInit {
 
       imperativ1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ1),
       imperativ2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ2),
+      imperativ3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ3),
+      imperativ4: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ4),
+      imperativ5: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ5),
+      imperativ6: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ6),
 
       gerundium: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.gerundium),
 
@@ -193,6 +214,14 @@ export class ConjugationComponent implements OnInit {
       futurplural1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurplural1enclitic),
       futurplural2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurplural2enclitic),
       futurplural3enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurplural3enclitic),
+
+      futurdubitativsing1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativsing1enclitic),
+      futurdubitativsing2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativsing2enclitic),
+      futurdubitativsing3encliticm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativsing3encliticm),
+      futurdubitativsing3encliticf: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativsing3encliticf),
+      futurdubitativplural1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativplural1enclitic),
+      futurdubitativplural2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativplural2enclitic),
+      futurdubitativplural3enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futurdubitativplural3enclitic),
     });
 
     this.validateForm.get("RRegularInflection")!.valueChanges.subscribe(value => {
@@ -253,6 +282,13 @@ export class ConjugationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.futurplural2 ||
       this.workingLemmaVersion.lemmaValues.futurplural3 ||
 
+      this.workingLemmaVersion.lemmaValues.futurdubitativsing1 ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativsing2 ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativsing3 ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativplural1 ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativplural2 ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativplural3 ||
+
       this.workingLemmaVersion.lemmaValues.participperfectms ||
       this.workingLemmaVersion.lemmaValues.participperfectfs ||
       this.workingLemmaVersion.lemmaValues.participperfectmp ||
@@ -260,6 +296,10 @@ export class ConjugationComponent implements OnInit {
 
       this.workingLemmaVersion.lemmaValues.imperativ1 ||
       this.workingLemmaVersion.lemmaValues.imperativ2 ||
+      this.workingLemmaVersion.lemmaValues.imperativ3 ||
+      this.workingLemmaVersion.lemmaValues.imperativ4 ||
+      this.workingLemmaVersion.lemmaValues.imperativ5 ||
+      this.workingLemmaVersion.lemmaValues.imperativ6 ||
 
       this.workingLemmaVersion.lemmaValues.gerundium ||
 
@@ -293,7 +333,15 @@ export class ConjugationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.futursing3encliticf ||
       this.workingLemmaVersion.lemmaValues.futurplural1enclitic ||
       this.workingLemmaVersion.lemmaValues.futurplural2enclitic ||
-      this.workingLemmaVersion.lemmaValues.futurplural3enclitic
+      this.workingLemmaVersion.lemmaValues.futurplural3enclitic ||
+
+      this.workingLemmaVersion.lemmaValues.futurdubitativsing1enclitic ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativsing2enclitic ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativsing3encliticm ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativsing3encliticf ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativplural1enclitic ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativplural2enclitic ||
+      this.workingLemmaVersion.lemmaValues.futurdubitativplural3enclitic
     ) {
       return false;
     }
@@ -385,8 +433,19 @@ export class ConjugationComponent implements OnInit {
     this.workingLemmaVersion.lemmaValues.futurplural2 = toCopy.lemmaValues.futurplural2;
     this.workingLemmaVersion.lemmaValues.futurplural3 = toCopy.lemmaValues.futurplural3;
 
+    this.workingLemmaVersion.lemmaValues.futurdubitativsing1 = toCopy.lemmaValues.futurdubitativsing1;
+    this.workingLemmaVersion.lemmaValues.futurdubitativsing2 = toCopy.lemmaValues.futurdubitativsing2;
+    this.workingLemmaVersion.lemmaValues.futurdubitativsing3 = toCopy.lemmaValues.futurdubitativsing3;
+    this.workingLemmaVersion.lemmaValues.futurdubitativplural1 = toCopy.lemmaValues.futurdubitativplural1;
+    this.workingLemmaVersion.lemmaValues.futurdubitativplural2 = toCopy.lemmaValues.futurdubitativplural2;
+    this.workingLemmaVersion.lemmaValues.futurdubitativplural3 = toCopy.lemmaValues.futurdubitativplural3;
+
     this.workingLemmaVersion.lemmaValues.imperativ1 = toCopy.lemmaValues.imperativ1;
     this.workingLemmaVersion.lemmaValues.imperativ2 = toCopy.lemmaValues.imperativ2;
+    this.workingLemmaVersion.lemmaValues.imperativ3 = toCopy.lemmaValues.imperativ3;
+    this.workingLemmaVersion.lemmaValues.imperativ4 = toCopy.lemmaValues.imperativ4;
+    this.workingLemmaVersion.lemmaValues.imperativ5 = toCopy.lemmaValues.imperativ5;
+    this.workingLemmaVersion.lemmaValues.imperativ6 = toCopy.lemmaValues.imperativ6;
 
     this.workingLemmaVersion.lemmaValues.gerundium = toCopy.lemmaValues.gerundium;
 
@@ -421,6 +480,14 @@ export class ConjugationComponent implements OnInit {
     this.workingLemmaVersion.lemmaValues.futurplural1enclitic = toCopy.lemmaValues.futurplural1enclitic;
     this.workingLemmaVersion.lemmaValues.futurplural2enclitic = toCopy.lemmaValues.futurplural2enclitic;
     this.workingLemmaVersion.lemmaValues.futurplural3enclitic = toCopy.lemmaValues.futurplural3enclitic;
+
+    this.workingLemmaVersion.lemmaValues.futurdubitativsing1enclitic = toCopy.lemmaValues.futurdubitativsing1enclitic;
+    this.workingLemmaVersion.lemmaValues.futurdubitativsing2enclitic = toCopy.lemmaValues.futurdubitativsing2enclitic;
+    this.workingLemmaVersion.lemmaValues.futurdubitativsing3encliticm = toCopy.lemmaValues.futurdubitativsing3encliticm;
+    this.workingLemmaVersion.lemmaValues.futurdubitativsing3encliticf = toCopy.lemmaValues.futurdubitativsing3encliticf;
+    this.workingLemmaVersion.lemmaValues.futurdubitativplural1enclitic = toCopy.lemmaValues.futurdubitativplural1enclitic;
+    this.workingLemmaVersion.lemmaValues.futurdubitativplural2enclitic = toCopy.lemmaValues.futurdubitativplural2enclitic;
+    this.workingLemmaVersion.lemmaValues.futurdubitativplural3enclitic = toCopy.lemmaValues.futurdubitativplural3enclitic;
 
     this.setUpForm();
   }

@@ -101,18 +101,6 @@ export class MainEntryComponent implements OnInit {
     return true;
   }
 
-  doesSupportNoun(language: Language): boolean {
-    return language === 'surmiran' || language === 'rumantschgrischun' || language === 'sutsilvan';
-  }
-
-  doesSupportAdjective(language: Language): boolean {
-    return language === 'surmiran' || language === 'rumantschgrischun' || language === 'sutsilvan';
-  }
-
-  doesSupportPronoun(language: Language): boolean {
-    return language === 'surmiran' || language === 'rumantschgrischun' || language === 'sutsilvan';
-  }
-
   editVerb() {
     this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
     this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
