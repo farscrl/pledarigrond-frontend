@@ -51,7 +51,15 @@ export class UserLoggedInGuard implements CanActivate {
   }
 
   private hasAnyPermissions():boolean {
-    if (!this.authService.isEditorRumantschgrischun() && !this.authService.isEditorSurmiran() && !this.authService.isEditorSutsilvan() && !this.authService.isEditorNames()) {
+    if (
+      !this.authService.isEditorPuter() &&
+      !this.authService.isEditorRumantschgrischun() &&
+      !this.authService.isEditorSursilvan() &&
+      !this.authService.isEditorSurmiran() &&
+      !this.authService.isEditorSutsilvan() &&
+      !this.authService.isEditorVallader() &&
+      !this.authService.isEditorNames()
+    ) {
       this.router.navigate(['/no-permissions']);
       return false;
     }
