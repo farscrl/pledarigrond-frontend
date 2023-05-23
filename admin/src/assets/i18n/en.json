@@ -148,6 +148,7 @@
         "filter_verifier": "Filter verifier",
         "edit": "Edit",
         "delete": "Delete",
+        "reject": "Reject",
         "order_rm": "Order Romansh",
         "order_de": "Order German"
       },
@@ -159,6 +160,10 @@
       },
       "delete": {
         "title": "Do you want to delete the entry?",
+        "cancel": "Cancel"
+      },
+      "reject": {
+        "title": "Do you want to reject that change?",
         "cancel": "Cancel"
       }
     }
@@ -285,7 +290,10 @@
       "inflection": {
         "title": "Inflection",
         "none": "None",
-        "verb": "Verb"
+        "verb": "Verb",
+        "noun": "Noun",
+        "adjective": "Adjective",
+        "pronoun": "Pronoun"
       },
       "comment": "Comment",
       "email": "E-Mail"
@@ -301,9 +309,44 @@
         "conjunctiv": "Conjunctiv",
         "cundiziunal": "Cundiziunal",
         "futur": "Futur",
-        "particip_perfect": "Particip perfect",
+        "futurdubitativ": "Futur Dubitativ",
+        "particip_perfect": "Particip Perfect",
         "imperativ": "Imperativ",
         "gerundi": "Gerundi"
+      }
+    },
+    "noun": {
+      "title": "Generate noun forms",
+      "type": "Flexion type",
+      "forms": {
+        "baseForm": "Base form",
+        "mSingular": "male singular",
+        "fSingular": "female singular",
+        "mPlural": "male plural",
+        "fPlural": "female plural",
+        "pluralCollectiv": "plural collectiv"
+      }
+    },
+    "adjective": {
+      "title": "Generate adjective forms",
+      "type": "Flexion type",
+      "forms": {
+        "baseForm": "Base form",
+        "mSingular": "male singular",
+        "fSingular": "female singular",
+        "mPlural": "male plural",
+        "fPlural": "female plural",
+        "adverbialForm": "adverbial form"
+      }
+    },
+    "pronoun": {
+      "title": "Generate pronoun forms",
+      "forms": {
+        "baseForm": "Base form",
+        "mSingular": "male singular",
+        "fSingular": "female singular",
+        "mPlural": "male plural",
+        "fPlural": "female plural"
       }
     },
     "cancel": "Cancel",
@@ -351,6 +394,30 @@
     "romansh": "romansh",
     "german": "german",
     "subject": "Your request to Pledari Grond"
+  },
+  "review": {
+    "filter": {
+      "all": "Show all",
+      "verbs": "Verbs",
+      "nouns": "Nouns",
+      "adjectives": "Adjectives",
+      "later": "Handle later",
+      "search_rm": "Search rumantsch"
+    },
+    "list": {
+      "title": "Automatically changed words"
+    },
+    "actions": {
+      "accept": "Accept",
+      "reject": "Reject",
+      "modify": "Modify",
+      "later": "Later",
+      "automatic": {
+        "title": "Automatic changes",
+        "only_m": "Only male",
+        "no_adverbial": "No adverbial form"
+      }
+    }
   },
   "diff": {
     "title": "Compare changes"

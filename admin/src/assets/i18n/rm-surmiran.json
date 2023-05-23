@@ -54,13 +54,13 @@
     "lexicon_menu_item": "Lexicon",
     "review_menu_item": "Repassar midadas automaticas",
     "filter": {
-      "date_interval": "Interval da data",
+      "date_interval": "Interval da datas",
       "user_ip": "IP da l'utilisad*ra",
       "verifier": "Revisur*a",
       "search_term": "Pled u expressiun che Vus tschertgais",
       "highlight": "Marcar il pled u l'expressiun che Vus tschertgais",
-      "show_more": "dapli opziuns da tschertgar",
-      "show_less": "damain opziuns da tschertgar",
+      "show_more": "Dapli opziuns da tschertgar",
+      "show_less": "Damain opziuns da tschertgar",
       "language": {
         "title": "Lingua",
         "both": "omaduas",
@@ -103,12 +103,14 @@
       "changed": "Midà",
       "no_item_selected": "Tscherner in'endataziun da vart dretga per vesair qua la cronologia cun las versiuns dal lemma.",
       "delete_history_button": "Stizzar cronologia",
+      "show_diff_button": "",
       "delete_history_confirmation": "Vulais Vus propi stizzar la cronologia da questa endataziun?"
     },
     "lemma": {
       "results_info": "Las endataziuns {{start}} fin {{end}} da {{total}} vegnan mussadas.",
       "columns": {
         "title": "Colonnas",
+        "diff": "",
         "user": "Utilisad*ra",
         "verifier": "Revisur*a",
         "filter": "Filter",
@@ -146,6 +148,7 @@
         "filter_verifier": "Filtrar revisur*a",
         "edit": "Modifitgar",
         "delete": "Stizzar",
+        "reject": "",
         "order_rm": "Successiun rumantsch",
         "order_de": "Successiun tudestg"
       },
@@ -158,6 +161,10 @@
       "delete": {
         "title": "Vulais Vus stizzar l'endataziun?",
         "cancel": "Interrumper"
+      },
+      "reject": {
+        "title": "",
+        "cancel": ""
       }
     }
   },
@@ -283,7 +290,10 @@
       "inflection": {
         "title": "Flexiun",
         "none": "Nagina",
-        "verb": "Verb"
+        "verb": "Verb",
+        "noun": "",
+        "adjective": "",
+        "pronoun": ""
       },
       "comment": "Commentari",
       "email": "E-mail"
@@ -299,9 +309,44 @@
         "conjunctiv": "Conjunctiv",
         "cundiziunal": "Cundiziunal",
         "futur": "Futur",
-        "particip_perfect": "Particip perfect",
+        "futurdubitativ": "Futur Dubitativ",
+        "particip_perfect": "Particip Perfect",
         "imperativ": "Imperativ",
         "gerundi": "Gerundi"
+      }
+    },
+    "noun": {
+      "title": "",
+      "type": "",
+      "forms": {
+        "baseForm": "",
+        "mSingular": "",
+        "fSingular": "",
+        "mPlural": "",
+        "fPlural": "",
+        "pluralCollectiv": ""
+      }
+    },
+    "adjective": {
+      "title": "",
+      "type": "",
+      "forms": {
+        "baseForm": "",
+        "mSingular": "",
+        "fSingular": "",
+        "mPlural": "",
+        "fPlural": "",
+        "adverbialForm": ""
+      }
+    },
+    "pronoun": {
+      "title": "",
+      "forms": {
+        "baseForm": "",
+        "mSingular": "",
+        "fSingular": "",
+        "mPlural": "",
+        "fPlural": ""
       }
     },
     "cancel": "Interrumper",
@@ -349,5 +394,32 @@
     "romansh": "rumantsch",
     "german": "tudestg",
     "subject": "Vossa dumonda al Pledari Grond"
+  },
+  "review": {
+    "filter": {
+      "all": "Mussar tut",
+      "verbs": "Verbs",
+      "nouns": "Substantivs",
+      "adjectives": "Adjectivs",
+      "later": "Pli tard",
+      "search_rm": "Tschertgar rumantsch"
+    },
+    "list": {
+      "title": "Pleds adattads automaticamain"
+    },
+    "actions": {
+      "accept": "Acceptar",
+      "reject": "Refusar",
+      "modify": "Modifitgar",
+      "later": "Repassar pli tard",
+      "automatic": {
+        "title": "Correcturas automaticas",
+        "only_m": "Mo masculin",
+        "no_adverbial": "Nagina furma adverbiala"
+      }
+    }
+  },
+  "diff": {
+    "title": "Cumparegliar midadas"
   }
 }

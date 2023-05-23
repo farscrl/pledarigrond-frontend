@@ -60,6 +60,8 @@ export class LanguageSelectionService {
           break;
       }
     }
+
+    this.changeUiLanguage();
   }
 
   public getCurrentLanguage(): Language {

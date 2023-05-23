@@ -54,13 +54,13 @@
     "lexicon_menu_item": "Lexicon",
     "review_menu_item": "Repassar midadas automaticas",
     "filter": {
-      "date_interval": "Interval da data",
+      "date_interval": "Interval da datas",
       "user_ip": "IP da l'utilisad*ra",
       "verifier": "Revisur*a",
       "search_term": "Pled u expressiun che Vus tschertgais",
       "highlight": "Marcar il pled u l'expressiun che Vus tschertgais",
-      "show_more": "dapli opziuns da tschertgar",
-      "show_less": "damain opziuns da tschertgar",
+      "show_more": "Dapli opziuns da tschertgar",
+      "show_less": "Damain opziuns da tschertgar",
       "language": {
         "title": "Lingua",
         "both": "omaduas",
@@ -309,8 +309,8 @@
         "conjunctiv": "Conjunctiv",
         "cundiziunal": "Cundiziunal",
         "futur": "Futur",
-        "futurdubitativ": "Futur dubitativ",
-        "particip_perfect": "Particip perfect",
+        "futurdubitativ": "Futur Dubitativ",
+        "particip_perfect": "Particip Perfect",
         "imperativ": "Imperativ",
         "gerundi": "Gerundi"
       }
