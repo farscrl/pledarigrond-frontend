@@ -47,7 +47,7 @@
   </nz-form-item>
 
   <nz-tabset>
-    <nz-tab [nzTitle]="'edit.conjugation.forms.regular' | translate">
+    <nz-tab [nzTitle]="'edit.conjugation.forms.regular' | translate" (nzClick)="triggerChangeDetectionForAutoSizeLater()">
       <div nz-row>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.preschent' | translate }}</h2>
@@ -373,7 +373,7 @@
         </div>
       </div>
     </nz-tab>
-    <nz-tab [nzTitle]="'edit.conjugation.forms.enclitic' | translate" *ngIf="hasEncliticForms()">
+    <nz-tab [nzTitle]="'edit.conjugation.forms.enclitic' | translate" *ngIf="hasEncliticForms()" (nzClick)="triggerChangeDetectionForAutoSizeLater()">
       <div nz-row>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.preschent' | translate }}</h2>

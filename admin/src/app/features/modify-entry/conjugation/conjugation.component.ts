@@ -117,6 +117,12 @@ export class ConjugationComponent implements OnInit {
     });
   }
 
+  triggerChangeDetectionForAutoSizeLater() {
+    setTimeout(() => {
+      this.triggerChangeDetectionForAutoSize();
+    }, 150);
+  }
+
   private returnValues() {
     this.modal.close(this.validateForm.getRawValue());
   }
@@ -226,11 +232,9 @@ export class ConjugationComponent implements OnInit {
 
     this.validateForm.get("RRegularInflection")!.valueChanges.subscribe(value => {
       this.isRegular = value;
-   });
+    });
 
-    setTimeout(() => {
-      this.triggerChangeDetectionForAutoSize();
-    }, 150);
+    this.triggerChangeDetectionForAutoSizeLater();
   }
 
   private generateForms(subTypeId: string, baseForm: string) {
