@@ -10,6 +10,15 @@
         </nz-form-control>
       </nz-form-item>
     </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="REtymologie" nzRequired>{{ 'edit.lemma.etymology' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="REtymologie" id="REtymologie"/>
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
   </div>
 
   <h2>{{ 'edit.lemma.german' | translate }}</h2>

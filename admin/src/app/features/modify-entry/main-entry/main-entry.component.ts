@@ -327,6 +327,7 @@ export class MainEntryComponent implements OnInit {
       DRedirect: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DRedirect),
       RRedirect: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RRedirect),
       categories: new UntypedFormControl(this.lemmaVersion?.lemmaValues.categories),
+      REtymologie: new UntypedFormControl(this.lemmaVersion?.lemmaValues.REtymologie),
 
       contact_comment: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_comment),
       contact_email: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_email),

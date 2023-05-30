@@ -42,6 +42,7 @@ export class LemmaValues {
   DRedirect?: string;
   RRedirect?: string;
   categories?: string;
+  REtymologie?: string;
 
   infinitiv?: string;
 

@@ -273,6 +273,7 @@
       "german": "German",
       "de": "Lemma German",
       "de_gender": "Gender",
+      "etymology": "Etymology (rm)",
       "category": "Category",
       "category_info": "Seperate multiple categories with a comma.",
       "de_grammar": "Grammar",
