@@ -127,9 +127,7 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-      </div>
 
-      <div nz-row>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.conjunctiv' | translate }}</h2>
           <nz-form-item>
@@ -166,6 +164,45 @@
             <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctivplural3"></nz-form-label> -->
             <nz-form-control [nzSm]="14" [nzXs]="24">
               <textarea nzAutosize nz-input formControlName="conjunctivplural3" id="conjunctivplural3" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12" *ngIf="hasConjunctiv2()">
+          <h2>{{ 'edit.conjugation.forms.conjunctiv2' | translate }}</h2>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing1"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="conjunctiv2sing1" id="conjunctiv2sing1" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing2"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="conjunctiv2sing2" id="conjunctiv2sing2" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="conjunctiv2sing3" id="conjunctiv2sing3" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural1"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="conjunctiv2plural1" id="conjunctiv2plural1" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural2"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="conjunctiv2plural2" id="conjunctiv2plural2" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="conjunctiv2plural3" id="conjunctiv2plural3" [readonly]="isRegular"></textarea>
             </nz-form-control>
           </nz-form-item>
         </div>
@@ -208,9 +245,7 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-      </div>
 
-      <div nz-row>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.futur' | translate }}</h2>
           <nz-form-item>
@@ -317,9 +352,7 @@
           </nz-form-item>
 
         </div>
-      </div>
 
-      <div nz-row>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.imperativ' | translate }}</h2>
           <nz-form-item>

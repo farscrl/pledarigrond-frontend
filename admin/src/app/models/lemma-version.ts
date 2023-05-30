@@ -72,6 +72,13 @@ export class LemmaValues {
   conjunctivplural2?: string;
   conjunctivplural3?: string;
 
+  conjunctiv2sing1?: string;
+  conjunctiv2sing2?: string;
+  conjunctiv2sing3?: string;
+  conjunctiv2plural1?: string;
+  conjunctiv2plural2?: string;
+  conjunctiv2plural3?: string;
+
   conjunctivimperfectsing1?: string;
   conjunctivimperfectsing2?: string;
   conjunctivimperfectsing3?: string;

@@ -99,6 +99,11 @@ export class ConjugationComponent implements OnInit {
     return (language === Language.PUTER);
   }
 
+  hasConjunctiv2(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
+    return (language === Language.PUTER || language === Language.VALLADER || language === Language.SURSILVAN);
+  }
+
   hasExtendedImperativ(): boolean {
     const language = this.languageSelectionService.getCurrentLanguage();
     return (language === Language.PUTER || language === Language.VALLADER);
@@ -153,6 +158,13 @@ export class ConjugationComponent implements OnInit {
       conjunctivplural1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctivplural1),
       conjunctivplural2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctivplural2),
       conjunctivplural3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctivplural3),
+
+      conjunctiv2sing1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctiv2sing1),
+      conjunctiv2sing2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctiv2sing2),
+      conjunctiv2sing3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctiv2sing3),
+      conjunctiv2plural1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctiv2plural1),
+      conjunctiv2plural2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctiv2plural2),
+      conjunctiv2plural3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.conjunctiv2plural3),
 
       cundizionalsing1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalsing1),
       cundizionalsing2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalsing2),
@@ -271,6 +283,13 @@ export class ConjugationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.conjunctivplural1 ||
       this.workingLemmaVersion.lemmaValues.conjunctivplural2 ||
       this.workingLemmaVersion.lemmaValues.conjunctivplural3 ||
+
+      this.workingLemmaVersion.lemmaValues.conjunctiv2sing1 ||
+      this.workingLemmaVersion.lemmaValues.conjunctiv2sing2 ||
+      this.workingLemmaVersion.lemmaValues.conjunctiv2sing3 ||
+      this.workingLemmaVersion.lemmaValues.conjunctiv2plural1 ||
+      this.workingLemmaVersion.lemmaValues.conjunctiv2plural2 ||
+      this.workingLemmaVersion.lemmaValues.conjunctiv2plural3 ||
 
       this.workingLemmaVersion.lemmaValues.cundizionalsing1 ||
       this.workingLemmaVersion.lemmaValues.cundizionalsing2 ||
@@ -408,6 +427,13 @@ export class ConjugationComponent implements OnInit {
     this.workingLemmaVersion.lemmaValues.conjunctivplural1 = toCopy.lemmaValues.conjunctivplural1;
     this.workingLemmaVersion.lemmaValues.conjunctivplural2 = toCopy.lemmaValues.conjunctivplural2;
     this.workingLemmaVersion.lemmaValues.conjunctivplural3 = toCopy.lemmaValues.conjunctivplural3;
+
+    this.workingLemmaVersion.lemmaValues.conjunctiv2sing1 = toCopy.lemmaValues.conjunctiv2sing1;
+    this.workingLemmaVersion.lemmaValues.conjunctiv2sing2 = toCopy.lemmaValues.conjunctiv2sing2;
+    this.workingLemmaVersion.lemmaValues.conjunctiv2sing3 = toCopy.lemmaValues.conjunctiv2sing3;
+    this.workingLemmaVersion.lemmaValues.conjunctiv2plural1 = toCopy.lemmaValues.conjunctiv2plural1;
+    this.workingLemmaVersion.lemmaValues.conjunctiv2plural2 = toCopy.lemmaValues.conjunctiv2plural2;
+    this.workingLemmaVersion.lemmaValues.conjunctiv2plural3 = toCopy.lemmaValues.conjunctiv2plural3;
 
     this.workingLemmaVersion.lemmaValues.conjunctivimperfectsing1 = toCopy.lemmaValues.conjunctivimperfectsing1;
     this.workingLemmaVersion.lemmaValues.conjunctivimperfectsing2 = toCopy.lemmaValues.conjunctivimperfectsing2;
