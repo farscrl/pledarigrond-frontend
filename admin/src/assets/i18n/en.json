@@ -303,6 +303,8 @@
       "type": "Conjugation type",
       "generate_button": "Generate",
       "forms": {
+        "regular": "Furmas regularas",
+        "enclitic": "Furmas encliticas",
         "infinitive": "Infinitive",
         "preschent": "Preschent",
         "imperfect": "Imperfect",

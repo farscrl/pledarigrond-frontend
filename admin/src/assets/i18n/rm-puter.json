@@ -303,6 +303,8 @@
       "type": "Tip da conjugaziun",
       "generate_button": "Generar",
       "forms": {
+        "regular": "Fuormas reguleras",
+        "enclitic": "Fuormas encliticas",
         "infinitive": "Infinitiv",
         "preschent": "Preschaint",
         "imperfect": "Imperfet",

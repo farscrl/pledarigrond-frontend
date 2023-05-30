@@ -47,7 +47,7 @@
   </nz-form-item>
 
   <nz-tabset>
-    <nz-tab nzTitle="Furmas regularas">
+    <nz-tab [nzTitle]="'edit.conjugation.forms.regular' | translate">
       <div nz-row>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.preschent' | translate }}</h2>
@@ -373,7 +373,7 @@
         </div>
       </div>
     </nz-tab>
-    <nz-tab nzTitle="Furmas encliticas" *ngIf="hasEncliticForms()">
+    <nz-tab [nzTitle]="'edit.conjugation.forms.enclitic' | translate" *ngIf="hasEncliticForms()">
       <div nz-row>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.preschent' | translate }}</h2>
