@@ -103,14 +103,14 @@
       "changed": "Midà",
       "no_item_selected": "Tscherner in'endataziun da vart dretga per vesair qua la cronologia cun las versiuns dal lemma.",
       "delete_history_button": "Stizzar cronologia",
-      "show_diff_button": "",
+      "show_diff_button": "Mussar diff",
       "delete_history_confirmation": "Vulais Vus propi stizzar la cronologia da questa endataziun?"
     },
     "lemma": {
       "results_info": "Las endataziuns {{start}} fin {{end}} da {{total}} vegnan mussadas.",
       "columns": {
         "title": "Colonnas",
-        "diff": "",
+        "diff": "Diff",
         "user": "Utilisad*ra",
         "verifier": "Revisur*a",
         "filter": "Filter",
@@ -148,7 +148,7 @@
         "filter_verifier": "Filtrar revisur*a",
         "edit": "Modifitgar",
         "delete": "Stizzar",
-        "reject": "",
+        "reject": "Refusar",
         "order_rm": "Successiun rumantsch",
         "order_de": "Successiun tudestg"
       },
@@ -163,8 +163,8 @@
         "cancel": "Interrumper"
       },
       "reject": {
-        "title": "",
-        "cancel": ""
+        "title": "Vulais Vus refusar questa midada?",
+        "cancel": "Interrumper"
       }
     }
   },
@@ -292,9 +292,9 @@
         "title": "Flexiun",
         "none": "Nagina",
         "verb": "Verb",
-        "noun": "",
-        "adjective": "",
-        "pronoun": ""
+        "noun": "Substantiv",
+        "adjective": "Adjectiv",
+        "pronoun": "Pronom"
       },
       "comment": "Commentari",
       "email": "E-mail"
@@ -320,37 +320,37 @@
       }
     },
     "noun": {
-      "title": "",
-      "type": "",
+      "title": "Generar furmas da substantivs",
+      "type": "Tip da flexiun",
       "forms": {
-        "baseForm": "",
-        "mSingular": "",
-        "fSingular": "",
-        "mPlural": "",
-        "fPlural": "",
-        "pluralCollectiv": ""
+        "baseForm": "Furma da basa",
+        "mSingular": "masculin singular",
+        "fSingular": "feminin singular",
+        "mPlural": "masculin plural",
+        "fPlural": "feminin plural",
+        "pluralCollectiv": "plural collectiv"
       }
     },
     "adjective": {
-      "title": "",
-      "type": "",
+      "title": "Generar furmas dad adjectivs",
+      "type": "Tip da flexiun",
       "forms": {
-        "baseForm": "",
-        "mSingular": "",
-        "fSingular": "",
-        "mPlural": "",
-        "fPlural": "",
-        "adverbialForm": ""
+        "baseForm": "Furma da basa",
+        "mSingular": "masculin singular",
+        "fSingular": "feminin singular",
+        "mPlural": "masculin plural",
+        "fPlural": "feminin plural",
+        "adverbialForm": "Furma adverbiala"
       }
     },
     "pronoun": {
-      "title": "",
+      "title": "Generar furmas da pronoms",
       "forms": {
-        "baseForm": "",
-        "mSingular": "",
-        "fSingular": "",
-        "mPlural": "",
-        "fPlural": ""
+        "baseForm": "Furma da basa",
+        "mSingular": "masculin singular",
+        "fSingular": "feminin singular",
+        "mPlural": "masculin plural",
+        "fPlural": "feminin plural"
       }
     },
     "cancel": "Interrumper",
