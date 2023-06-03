@@ -114,6 +114,10 @@ const routes: Routes = [
         component: SearchComponent
       },
       {
+        path: 'spellchecker',
+        component: SpellcheckerComponent,
+      },
+      {
         path: 'login',
         component: LoginComponent,
         canActivate: [UserNotLoggedInGuard]

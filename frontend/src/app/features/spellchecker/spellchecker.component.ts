@@ -37,6 +37,7 @@ export class SpellcheckerComponent implements OnInit {
   version = "";
 
   idiom = '';
+  idiomUrl = '';
   private idiomSubscription?: Subscription;
 
   sentSuggestion = false;
@@ -54,11 +55,13 @@ export class SpellcheckerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadVersion();
-    this.loadDictionary();
 
     this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(lng => {
-      this.idiom = this.selectedLanguageService.getSelectedLanguageUrlSegment();
+      this.idiomUrl = this.selectedLanguageService.getSelectedLanguageUrlSegment();
+      this.idiom = lng;
+
+      this.loadVersion();
+      this.loadDictionary();
     });
 
     this.route.queryParams
@@ -108,7 +111,7 @@ export class SpellcheckerComponent implements OnInit {
   }
 
   private async loadTestingFile() {
-    const test = await fetch('assets/hunspell/tests/rm-surmiran-test.html');
+    const test = await fetch(`assets/hunspell/tests/rm-${this.idiom}-test.html`);
     this.value = await test.text();
   }
 
@@ -160,7 +163,7 @@ export class SpellcheckerComponent implements OnInit {
   }
 
   private loadVersion() {
-    this.http.get('assets/hunspell/rm-surmiran/rm-surmiran_version.txt', {responseType: 'text'}).subscribe(version => {
+    this.http.get(`assets/hunspell/rm-${this.idiom}/rm-${this.idiom}_version.txt`, {responseType: 'text'}).subscribe(version => {
       this.version = version;
     });
   }
@@ -168,13 +171,13 @@ export class SpellcheckerComponent implements OnInit {
   private async loadDictionary() {
     this.hunspellFactory = await loadModule();
 
-    const aff = await fetch('assets/hunspell/rm-surmiran/rm-surmiran.aff');
+    const aff = await fetch(`assets/hunspell/rm-${this.idiom}/rm-${this.idiom}.aff`);
     const affBuffer = new Uint8Array(await aff.arrayBuffer());
-    this.affFile = this.hunspellFactory.mountBuffer(affBuffer, 'rm-surmiran.aff');
+    this.affFile = this.hunspellFactory.mountBuffer(affBuffer, 'rm-${this.idiom}.aff');
 
-    const dic = await fetch('assets/hunspell/rm-surmiran/rm-surmiran.dic');
+    const dic = await fetch(`assets/hunspell/rm-${this.idiom}/rm-${this.idiom}.dic`);
     const dicBuffer = new Uint8Array(await dic.arrayBuffer());
-    this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, 'rm-surmiran.dic');
+    this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, `rm-${this.idiom}.dic`);
 
     this.hunspell = this.hunspellFactory.create(this.affFile, this.dictFile);
     this.onDictLoaded();
