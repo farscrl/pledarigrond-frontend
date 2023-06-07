@@ -403,6 +403,15 @@
             </nz-form-control>
           </nz-form-item>
 
+          <ng-container *ngIf="hasComposedWithFields()">
+            <h2>{{ 'edit.conjugation.forms.composedWith' | translate }}</h2>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="composedWith"></nz-form-label> -->
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="composedWith" id="composedWith"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </ng-container>
         </div>
       </div>
     </nz-tab>

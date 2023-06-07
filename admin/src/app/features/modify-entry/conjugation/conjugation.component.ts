@@ -109,6 +109,11 @@ export class ConjugationComponent implements OnInit {
     return (language === Language.PUTER || language === Language.VALLADER);
   }
 
+  hasComposedWithFields(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
+    return (language === Language.PUTER || language === Language.VALLADER);
+  }
+
   copyConjugation() {
     this.copyService.copyConjugation(this.workingLemmaVersion?.lexEntryId!, this.workingLemmaVersion.lemmaValues.infinitiv!);
   }
@@ -200,6 +205,7 @@ export class ConjugationComponent implements OnInit {
       imperativ6: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ6),
 
       gerundium: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.gerundium),
+      composedWith: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.composedWith),
 
       preschentsing1enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentsing1enclitic),
       preschentsing2enclitic: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.preschentsing2enclitic),
@@ -325,6 +331,7 @@ export class ConjugationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.imperativ6 ||
 
       this.workingLemmaVersion.lemmaValues.gerundium ||
+      this.workingLemmaVersion.lemmaValues.composedWith ||
 
       this.workingLemmaVersion.lemmaValues.preschentsing1enclitic ||
       this.workingLemmaVersion.lemmaValues.preschentsing2enclitic ||
@@ -478,6 +485,7 @@ export class ConjugationComponent implements OnInit {
     this.workingLemmaVersion.lemmaValues.imperativ6 = toCopy.lemmaValues.imperativ6;
 
     this.workingLemmaVersion.lemmaValues.gerundium = toCopy.lemmaValues.gerundium;
+    this.workingLemmaVersion.lemmaValues.composedWith = toCopy.lemmaValues.composedWith;
 
     this.workingLemmaVersion.lemmaValues.preschentsing1enclitic = toCopy.lemmaValues.preschentsing1enclitic;
     this.workingLemmaVersion.lemmaValues.preschentsing2enclitic = toCopy.lemmaValues.preschentsing2enclitic;

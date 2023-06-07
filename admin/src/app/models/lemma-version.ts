@@ -122,6 +122,7 @@ export class LemmaValues {
   imperativ6?: string;
 
   gerundium?: string;
+  composedWith?: string;
 
   preschentsing1enclitic?: string;
   preschentsing2enclitic?: string;
