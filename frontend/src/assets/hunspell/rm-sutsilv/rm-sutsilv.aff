@@ -20,7 +20,7 @@ ICONV ’ '
 OCONV 1
 OCONV ' ’
 
-PFX T Y 195
+PFX T Y 214
 PFX T 0 l' [aeiouèòêôîAEIOU]
 PFX T a l'a a
 PFX T e l'e e
@@ -38,6 +38,23 @@ PFX T e L'E e
 PFX T i L'I i
 PFX T o L'O o
 PFX T u L'U u
+PFX T 0 gl' [aeiouèòêôîAEIOU]
+PFX T a gl'a a
+PFX T e gl'e e
+PFX T i gl'i i
+PFX T o gl'o o
+PFX T u gl'u u
+PFX T è gl'è è
+PFX T ò gl'ò ò
+PFX T ê gl'ê ê
+PFX T ô gl'ô ô
+PFX T î gl'î î
+PFX T 0 GL' [AEIOUH]
+PFX T a GL'A a
+PFX T e GL'E e
+PFX T i GL'I i
+PFX T o GL'O o
+PFX T u GL'U u
 PFX T 0 egn' [aeiouèòêôîAEIOU]
 PFX T a egn'a a
 PFX T e egn'e e
@@ -173,6 +190,7 @@ PFX T ò c'ò ò
 PFX T ê c'ê ê
 PFX T ô c'ô ô
 PFX T î c'î î
+PFX T j c'j jou
 PFX T 0 C' [AEIOUH]
 PFX T a C'A a
 PFX T e C'E e
@@ -191,6 +209,7 @@ PFX T ò sch'ò ò
 PFX T ê sch'ê ê
 PFX T ô sch'ô ô
 PFX T î sch'î î
+PFX T j sch'j jou
 PFX T 0 Sch' [AEIOUH]
 PFX T a Sch'A a
 PFX T e Sch'E e
@@ -289,6 +308,8 @@ PFX P o L'O o
 PFX P u L'U u
 
 # pronom cun furma inversiva dal pronom impersunal
-SFX Q Y 2
+SFX Q Y 4
 SFX Q 0 'ign .
 SFX Q 0 'gl .
+SFX Q 0 'igl .
+SFX Q 0 'igls .

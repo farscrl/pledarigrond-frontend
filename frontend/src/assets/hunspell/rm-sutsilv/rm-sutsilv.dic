@@ -1,4 +1,4 @@
-140920
+141375
 -/PQT
 A/T
 Aaron
@@ -1624,12 +1624,10 @@ Zuber
 Zuoz
 Zwahlen
 Zürcher
-[curtér]/T
 [cuschegna tgampestra]/T
 [dafatg] nut/T
 [dafatg]/T
 [duvierer]/PQT
-[futger]/T
 [gir aviras]/T
 [loba pegn]/T
 [loba schember]/T
@@ -1667,7 +1665,7 @@ a las dudesch a measa/T
 a las tres a measa/T
 a las tres/T
 a las/T
-a madem tains [taimp]/T
+a madem tains [a madem taimp]/T
 a mantgir/T
 a me [mei]/T
 a meas'asta/T
@@ -1690,6 +1688,7 @@ a saver anzatge ad anzatgi/T
 a saver/T
 a scret/T
 a sparùns/T
+a tains [a taimp]/T
 a tains [taimp]/T
 a tains/T
 a te [tei]/T
@@ -4565,8 +4564,8 @@ amprasteias/PQT
 amprasto/PQT
 amprastos/PQT
 amprastànd/PQT
-amprem gioi [giac]/T
-amprem unfànt [ufànt]/T
+amprem gioi [amprem giac]/T
+amprem unfànt [amprem ufànt]/T
 amprem, amprema/T
 amprem/T
 amprema/T
@@ -6303,6 +6302,8 @@ angiavinaviou/PQT
 angiavinaz/PQT
 angiavineian/PQT
 angiavineias/PQT
+angiavinera/T
+angiavineras/T
 angiavino/PQT
 angiavinos/PQT
 angiavinànd/PQT
@@ -6573,6 +6574,7 @@ angraztgieu/PQT
 angraztgieus/PQT
 angraztgiou/PQT
 angraztgànd/PQT
+angrànda/T
 angual/T
 anguearz/T
 anguearzs ad anzatgi/T
@@ -7097,6 +7099,8 @@ anschegnian/PQT
 anschegnias/PQT
 anschegniou/PQT
 anschegns/T
+anschetta/T
+anschettas/T
 anschignagn/PQT
 anschignainsa/PQT
 anschignead/PQT
@@ -8223,6 +8227,7 @@ anzatge da gries/T
 anzatge oter/T
 anzatge sur tgieu a tgavel/T
 anzatge tanor giavisch/T
+anzatge/T
 anzatgi crer anzatge/T
 anzatgi ir da la sglatscha giou/T
 anzatgi midar ideia/T
@@ -10407,6 +10412,8 @@ auguri/T
 auguris/T
 aula/T
 aulas/T
+aura/T
+auras/T
 aureola/T
 aureolas/T
 aurora/T
@@ -10818,6 +10825,7 @@ avdàntas/T
 avdànts/T
 avdànza/T
 avdànzas/T
+aver avur [agur]/T
 aver bugent/T
 aver par stéla anzatgi/T
 aver/PQT
@@ -12558,12 +12566,18 @@ baselgia parociala/T
 baselgia prinzipala/T
 baselgia/T
 baselgias/T
+basginusadad/T
+basginusadads/T
 basgnus/T
 basgnusa/T
 basgnusas/T
 basi/PQT
 basian/PQT
 basias/PQT
+basignevel/T
+basignevels/T
+basignevla/T
+basignevlas/T
 basignus/T
 basignusa/T
 basignusas/T
@@ -13324,6 +13338,7 @@ betga valer egna pip'arsa, betga valer egna pipa tubac/T
 betga valer egna pip'arsa/T
 betga volver egn strom/T
 betga zapar sen igl tschespet par favur/T
+betga/T
 beti/PQT
 betian/PQT
 betias/PQT
@@ -13520,6 +13535,9 @@ biela/T
 bielas/T
 bielma/T
 bielmas/T
+bielmus/T
+bielmusa/T
+bielmusas/T
 biemal/T
 biemals/T
 biemàn/T
@@ -13560,7 +13578,7 @@ bieta/T
 bietas/T
 bietg anex [bighetg, baghetg]/T
 bietg d'economeia [bighetg, baghetg]/T
-bietg funcziunal [bighetg, baghetg]/T
+bietg funcziunal [bighetg, baghetg funcziunal]/T
 bietg nov [bighetg, baghetg]/T
 bietg prefabritgieu [bighetg, baghetg]/T
 bietg/T
@@ -13608,6 +13626,11 @@ bighigiou/PQT
 bighigiànd/PQT
 bigiàna, bagiàna/T
 bigl curt [begl]/T
+bigl gross [begl]/T
+bigl nar [begl]/T
+bigl orv [begl]/T
+bigl stretg [begl]/T
+bigl tgilar [begl]/T
 bigl/T
 biglia/T
 bigliac/T
@@ -14348,11 +14371,12 @@ bluztgers/T
 bo San Gion [bau, baubau]/T
 bo [bau, baubau]/T
 bo buc alpin/T
-bo cazola [bau, baubau]/T
+bo cazola/T
 bo da Colorado [bau, baubau]/T
-bo da Nossegner [bau, baubau]/T
-bo da scorza [bau, baubau]/T
+bo da Nossegner [bau, baubau da Nossegner]/T
+bo da scorza [bau da scorza, baubau da scorza]/T
 bo digl giavel [bau, baubau]/T
+bo/T
 bob/T
 bobera/T
 boberas/T
@@ -14467,6 +14491,8 @@ bornadadad/T
 bornadadads/T
 borno, bornada/T
 bors/T
+bos cazola/T
+bos/T
 boscop/T
 boscops/T
 bostga/T
@@ -15185,6 +15211,8 @@ bugadànd/PQT
 bugent/T
 bugher/T
 bughers/T
+bughetg/T
+bughetgs/T
 bugl jou/PQT
 bugl/PQT
 bugla/PQT
@@ -17341,10 +17369,6 @@ caravana/T
 caravanas/T
 carbid/T
 carbids/T
-carbonic/T
-carbonica/T
-carbonicas/T
-carbonics/T
 carbonisad/PQT
 carbonisada/PQT
 carbonisadas/PQT
@@ -18053,8 +18077,10 @@ casan/T
 casana/T
 casanas/T
 casans/T
+casaregn/T
 casaregna/T
 casaregnas/T
+casaregns/T
 casavaica/T
 casavaicas/T
 cascada/T
@@ -18101,7 +18127,9 @@ caschiel sgarto/T
 caschiel strischevel/T
 caschiel tgora/T
 caschiel veader/T
+caschiel-tgora/T
 caschiel/T
+caschiels-tgora/T
 caschiels/T
 caschlet/T
 caschlets/T
@@ -18698,10 +18726,10 @@ cavogna/T
 cavognas/T
 cavorgia da la buca, tgavorgia da la buca/T
 cavorgia, tgavorgia/T
+cavorgia/T
+cavorgias/T
 cavos/PQT
 cavriel/T
-cavriela/T
-cavrielas/T
 cavriels/T
 cavànd/PQT
 caz/T
@@ -20029,6 +20057,8 @@ comando suprem/T
 comando/T
 comandos/T
 comas/T
+comba/T
+combas/T
 combi/T
 combis/T
 combra/T
@@ -23241,6 +23271,8 @@ culel/PQT
 culem/T
 culems/T
 culeschen, culeschem/T
+culeschen/T
+culeschens/T
 culess jou/PQT
 culess/PQT
 culessan/PQT
@@ -23675,6 +23707,7 @@ cumods/T
 cumond d'arest [camund]/T
 cumond d'arestaziùn [camund]/T
 cumond da marschar [camund]/T
+cumond da pajear [camund]/T
 cumond jou/PQT
 cumond par egn gi [camund]/T
 cumond suprem [camund]/T
@@ -25079,6 +25112,10 @@ cungimaint/T
 cungimaints/T
 cungir/PQT
 cungànd/PQT
+cunhabitànt/T
+cunhabitànta/T
+cunhabitàntas/T
+cunhabitànts/T
 cunirtavel [-artavel]/T
 cunlavur jou/PQT
 cunlavur/PQT
@@ -26859,6 +26896,8 @@ curtàn/T
 curtàna/T
 curtànas/T
 curtàns/T
+curtér/T
+curtérs/T
 curva a dretg/T
 curva a saniester/T
 curva da la feavra/T
@@ -27185,8 +27224,30 @@ cutschegiou/PQT
 cutschi/T
 cutschis/T
 cutschs/T
+cuv jou/PQT
+cuv/PQT
+cuva/PQT
+cuvad/PQT
+cuvada/PQT
+cuvadas/PQT
 cuvagn/PQT
 cuvainsa/PQT
+cuvan/PQT
+cuvani/PQT
+cuvar/PQT
+cuvas/PQT
+cuvass jou/PQT
+cuvass/PQT
+cuvassan/PQT
+cuvassani/PQT
+cuvassas/PQT
+cuvassiou/PQT
+cuvava/PQT
+cuvavan/PQT
+cuvavani/PQT
+cuvavas/PQT
+cuvaviou/PQT
+cuvaz/PQT
 cuvearta da tgirom/T
 cuvearta/T
 cuveartas/T
@@ -27199,6 +27260,7 @@ cuvei/T
 cuveian/PQT
 cuveias/PQT
 cuveis/T
+cuvel/PQT
 cuvera/T
 cuveras/T
 cuvesch jou/PQT
@@ -27224,7 +27286,9 @@ cuvevani/PQT
 cuvevas/PQT
 cuveviou/PQT
 cuvez/PQT
-cuvi/T
+cuvi/PQT
+cuvian/PQT
+cuvias/PQT
 cuvida/PQT
 cuvidas/PQT
 cuvidus da rubar [quidus]/T
@@ -27235,10 +27299,13 @@ cuvidusameing/T
 cuvidusas/T
 cuvieu/PQT
 cuvieus/PQT
+cuviou/PQT
 cuvir/PQT
 cuvis/T
 cuvitg/T
 cuvitgs/T
+cuvo/PQT
+cuvos/PQT
 cuvr jou/PQT
 cuvr/PQT
 cuvra/PQT
@@ -27676,7 +27743,7 @@ da surmar/T
 da surmester/T
 da sutansei/T
 da sàng/T
-da tains an tains [taimp]/T
+da tains an tains [da taimp an taimp]/T
 da tains an tains/T
 da tala maniera/T
 da te [tei]/T
@@ -27701,6 +27768,7 @@ da tschera/T
 da tschient ons/T
 da tup/T
 da tut las sorts/T
+da tut tains [da tut taimp]/T
 da tut tains [taimp]/T
 da tut tains/T
 da tutas duas sorts/T
@@ -30459,6 +30527,40 @@ demoraliseschiou/PQT
 demoraliso/PQT
 demoralisos/PQT
 demoralisànd/PQT
+demuss jou/PQT
+demuss/PQT
+demussa/PQT
+demussad/PQT
+demussada/PQT
+demussadas/PQT
+demussagn/PQT
+demussainsa/PQT
+demussan/PQT
+demussani/PQT
+demussar/PQT
+demussas/PQT
+demussass jou/PQT
+demussass/PQT
+demussassan/PQT
+demussassani/PQT
+demussassas/PQT
+demussassiou/PQT
+demussava/PQT
+demussavan/PQT
+demussavani/PQT
+demussavas/PQT
+demussaviou/PQT
+demussaz/PQT
+demusseian/PQT
+demusseias/PQT
+demussel/PQT
+demussi/PQT
+demussian/PQT
+demussias/PQT
+demussiou/PQT
+demusso/PQT
+demussos/PQT
+demussànd/PQT
 den/PQT
 denaturad/PQT
 denaturada/PQT
@@ -33189,6 +33291,7 @@ dispenseschiou/PQT
 dispenso/PQT
 dispensos/PQT
 dispensànd/PQT
+dispes/T
 displasch jou/PQT
 displascha/PQT
 displaschainsa/PQT
@@ -34668,6 +34771,7 @@ duagn/PQT
 duainsa/PQT
 duana/T
 duanas/T
+duas/T
 duba/T
 dubas/T
 dubel a tredubel/T
@@ -35455,6 +35559,7 @@ earva quagl/T
 earva tschura/T
 earva/PQT
 earvabesclas/T
+earvabreavs/T
 earvabuteglias/T
 earvaduiras/T
 earvan/PQT
@@ -35486,6 +35591,7 @@ easser a tgea [tgeasa]/T
 easser absaint/T
 easser adato par anzatge/T
 easser adato par anzatgi/T
+easser adato, adatada/T
 easser agl cass da far anzatge/T
 easser agls dabets [devets]/T
 easser agls pes/T
@@ -35548,7 +35654,6 @@ easser bancrut/T
 easser bataveia da la si'epoca/T
 easser bloco/T
 easser bùn da far anzatge/T
-easser bùn/T
 easser calirada/T
 easser capavel da far anzatge/T
 easser capevel/T
@@ -36337,6 +36442,7 @@ eloquenza/T
 eloquenzas/T
 els en stos qua/T
 els sezs/T
+els/T
 emagl digls daints/T
 emagl/T
 emagliagn/PQT
@@ -39469,8 +39575,6 @@ fefas/T
 fegher/T
 feghers/T
 fegl/T
-fegla/T
-feglas/T
 feglia/T
 feglialànza/T
 feglialànzas/T
@@ -39728,6 +39832,7 @@ fetas/PQT
 fetel/PQT
 fetg bagn/T
 fetg bi/T
+fetg blear [bear]/T
 fetg blear/T
 fetg daraso, fetg darasada/T
 fetg daratschiert/T
@@ -40108,7 +40213,11 @@ figl d'anunzias [fegl]/T
 figl d'infurmaziùn [fegl]/T
 figl d'instrucziùn [fegl]/T
 figl d'isibet [fegl]/T
+figl da la flur/T
 figl liber/T
+figl mainsil [fegl]/T
+figl sgulànt [fegl]/T
+figl ufizial [fegl]/T
 figl/T
 figlia buc [feglia]/T
 figlia d'arbaja [feglia]/T
@@ -40234,7 +40343,10 @@ filiala/T
 filialas/T
 filian/PQT
 filias/PQT
+filient da Nossegner [falient da Nossegner]/T
+filient luf/T
 filient/T
+filients lufs/T
 filients/T
 filiera/T
 filieras/T
@@ -44304,6 +44416,7 @@ gi da Sontgaclo/T
 gi da disfurtuna, gi da disgrazia/T
 gi da feasta/T
 gi da gigegna/T
+gi da la mama [gi da la moma]/T
 gi da las olmas/T
 gi da lavur/T
 gi da naschientscha/T
@@ -44441,8 +44554,10 @@ giasmin/T
 giasmins/T
 giast fix/T
 giast regular/T
+giast/T
 giastareia/T
 giastareias/T
+giasts/T
 giat salvadi [gat]/T
 giat/T
 giata fòlza [gata]/T
@@ -44762,17 +44877,18 @@ giogian/PQT
 giogias/PQT
 giogiou/PQT
 gioi da burape [giac]/T
-gioi da furtuna [giac]/T
+gioi da furtuna [giac da furtuna]/T
 gioi da marionetas [giac]/T
 gioi da schah /T
-gioi da tavla [giac]/T
+gioi da tavla [giac da tavla]/T
 gioi da tgartas [giac]/T
 gioi da tgeghels [giac]/T
 gioi da zavrada [giac]/T
-gioi internaziunal [giac]/T
+gioi internaziunal [giac internaziunal]/T
 gioi sco giast [giac]/T
 gioi televisiv [giac]/T
 gioi/T
+giois/T
 gioj jou/PQT
 gioj/PQT
 gioja/PQT
@@ -44858,6 +44974,8 @@ girafa/T
 girafas/T
 giragn/PQT
 girainsa/PQT
+giramund/T
+giramunds/T
 giran/PQT
 girani/PQT
 girar igl earvel/T
@@ -45099,6 +45217,7 @@ giujead/PQT
 giujeada/PQT
 giujeadas/PQT
 giujeader da burape [giugader]/T
+giujeader da burape/T
 giujeader da marionetas [giugader]/T
 giujeader da tenis [giugader]/T
 giujeader da tgeghels [giugader]/T
@@ -47040,10 +47159,14 @@ guànts/T
 gî [gitg]/T
 gî a lieng [gitg]/T
 gî sco igl on da la fom [gitg]/T
-gòld da lareschs [vòld]/T
-gòld da pegns [vòld]/T
-gòld da plàntas da figlia [vòld]/T
-gòld da tieus [vòld]/T
+gòld alpin [vòld]/T
+gòld da badugna [vòld da badugna]/T
+gòld da daschegna [vòld da daschegna]/T
+gòld da lareschs [vòld da lareschs]/T
+gòld da pegns [vòld da pegns]/T
+gòld da plàntas da figlia [vòld da plàntas da figlia]/T
+gòld da tgaglias [vòld da tgaglias]/T
+gòld da tieus [vòld da tieus]/T
 gòld rar/T
 gòld/T
 gòlds/T
@@ -47372,6 +47495,8 @@ hi-hi/T
 hi-his/T
 hiazinta/T
 hiazintas/T
+hidrat carbonic/T
+hidrats carbonics/T
 hidraulic/T
 hidraulica/T
 hidraulicas/T
@@ -47395,6 +47520,11 @@ hiena/T
 hienas/T
 hierarceia/T
 hierarceias/T
+hierarcic/T
+hierarcica/T
+hierarcicameing/T
+hierarcicas/T
+hierarcics/T
 higenic/T
 higenica/T
 higenicas/T
@@ -47647,7 +47777,6 @@ hromers/T
 hroms/T
 hruac/T
 hruacs/T
-hrui da latg [hruac, cruac]/T
 hrui/T
 hruis/T
 hudra/T
@@ -47954,6 +48083,7 @@ igl igl dat sulegl/T
 igl imperi roman/T
 igl lur/T
 igl madem mumaint/T
+igl madem tains [igl madem taimp]/T
 igl madem tains [taimp]/T
 igl madem/T
 igl magliear da las nov/T
@@ -50688,6 +50818,8 @@ interneschi/PQT
 interneschian/PQT
 interneschias/PQT
 interneschiou/PQT
+internet/T
+internets/T
 internist/T
 internista/T
 internistas/T
@@ -52157,6 +52289,8 @@ lagutiou/PQT
 lagutànd/PQT
 lahargnem/T
 lahargnems/T
+lai da farmada [laitg]/T
+lai da seara [laitg]/T
 lai/T
 laic/T
 laica/T
@@ -52165,8 +52299,6 @@ laics/T
 lainsa/PQT
 lais/T
 laitg/T
-laitga/T
-laitgas/T
 laitgs/T
 lajaint jou/PQT
 lajaint/PQT
@@ -52897,6 +53029,8 @@ leavz/T
 leavza sura/T
 leavza sut/T
 leavza/T
+leavzagl/T
+leavzagls/T
 leavzas da la turp/T
 leavzas grossas/T
 leavzas/T
@@ -53345,8 +53479,10 @@ lexicalas/T
 lexicals/T
 lexicon/T
 lexicons/T
-lez, leza/T
 lez/PQT
+leza/T
+lezas/T
+lezs/T
 leztga/T
 leztgas/T
 liac d'aczidaint/T
@@ -53927,6 +54063,11 @@ litaneias/T
 litearna/T
 litearnas/T
 liter/T
+literal/T
+literala/T
+literalas/T
+literalmeing/T
+literals/T
 literar/T
 literara/T
 literaras/T
@@ -54396,6 +54537,7 @@ luantera/T
 luanteras/T
 luanto/PQT
 luantos/PQT
+luantschas/T
 luantànd/PQT
 luar/PQT
 luass jou/PQT
@@ -55157,6 +55299,7 @@ magliac/T
 magliaca/T
 magliacas/T
 magliacs/T
+magliacudeschs/T
 magliadira/T
 magliadiras/T
 magliadrùn/T
@@ -55235,6 +55378,8 @@ magnani natier/PQT
 magnani/PQT
 magnas natier/PQT
 magnas/PQT
+magnascola/T
+magnascolas/T
 magnaspusa/T
 magnaspusas/T
 magnat/T
@@ -55482,10 +55627,15 @@ malagieus/PQT
 malagiànd/PQT
 malameing/T
 malamparnevel, malamparnevla/T
+malamparnevel/T
+malamparnevels/T
+malamparnevla/T
 malamparnevladad/T
 malamparnevladads da l'ora/T
 malamparnevladads digl unviern/T
 malamparnevladads/T
+malamparnevlameing/T
+malamparnevlas/T
 malancurada naziunala/T
 malancurada/T
 malancuradas/T
@@ -55864,8 +56014,13 @@ malneza/T
 malnezas/T
 malnezs/T
 malnizevel, malnizevla/T
+malnizevel/T
+malnizevels/T
+malnizevla/T
 malnizevladad/T
 malnizevladads/T
+malnizevlameing/T
+malnizevlas/T
 malnum/T
 malnums/T
 malom salvadi/T
@@ -59034,6 +59189,7 @@ miezgliegn/T
 miezgliegns/T
 miezliter/T
 miezliters/T
+miezmir-a-miezutscheals/T
 miezmir-a-miezutschi/T
 miezrudeals/T
 miezrudi/T
@@ -59223,6 +59379,8 @@ minera/T
 mineral da fier/T
 mineral da plùn/T
 mineral/T
+minerala/T
+mineralas/T
 mineralog/T
 mineraloga/T
 mineralogas/T
@@ -59905,8 +60063,6 @@ mols/T
 molusc/T
 moluscs/T
 moma/T
-momaa/T
-momaas/T
 momas/T
 momentan/T
 momentana/T
@@ -59969,7 +60125,6 @@ monsters/T
 montad/PQT
 montada/PQT
 montadas/PQT
-montader da stgoldamaints [scaldamaints]/T
 montader/T
 montaders/T
 montadra/T
@@ -62104,6 +62259,8 @@ neon/T
 neons/T
 nepotissem/T
 nepotissems/T
+neptga/T
+neptgas/T
 ner sco egn corv/T
 ner sco egn cotgel/T
 ner sco fulegn, ner sco scarvùn/T
@@ -62199,21 +62356,49 @@ neutrum/T
 neutrums/T
 nev bletscha/T
 nev ca tatga/T
+nev jou/PQT
 nev martscha/T
 nev nova/T
 nev pulvrusa/T
 nev tean samada/T
 nev òlta/T
-nev/T
+nev/PQT
+neva/PQT
 nevada/T
 nevadas/T
 nevaglia/T
 nevaglias/T
+nevagn/PQT
+nevainsa/PQT
+nevan/PQT
+nevani/PQT
 nevanto, nevantada/T
+nevas/PQT
+neved/PQT
+neveian/PQT
+neveias/PQT
+nevel/PQT
 never aint/T
 never naadaint/T
-never/T
+never/PQT
+nevess jou/PQT
+nevess/PQT
+nevessan/PQT
+nevessani/PQT
+nevessas/PQT
+nevessiou/PQT
+neveva/PQT
+nevevan/PQT
+nevevani/PQT
+nevevas/PQT
+neveviou/PQT
+nevez/PQT
+nevi/PQT
+nevian/PQT
+nevias/PQT
+neviou/PQT
 nevs/T
+nevànd/PQT
 nevér/T
 nez/T
 neza da rasuir/T
@@ -62442,6 +62627,7 @@ nivel/T
 nivels tschigrùn/T
 nivels/T
 nivieu aint/T
+nivieu/PQT
 nivlieu, nivlida/T
 nixa/T
 nixas/T
@@ -62519,6 +62705,7 @@ nizevlanteias/PQT
 nizevlanto/PQT
 nizevlantos/PQT
 nizevlantànd/PQT
+nizùn fòlz [izùn fòlz]/T
 nizùn/T
 nizùns/T
 niànd / najànd/PQT
@@ -62526,6 +62713,8 @@ niànd/PQT
 niànza/T
 niànzas/T
 nobel, nobla/T
+nobel/T
+nobels/T
 nobilisad/PQT
 nobilisada/PQT
 nobilisadas/PQT
@@ -62562,8 +62751,11 @@ nobiliseschiou/PQT
 nobiliso/PQT
 nobilisos/PQT
 nobilisànd/PQT
+nobla/T
 noblagn/PQT
 noblainsa/PQT
+noblameing/T
+noblas/T
 nobled/PQT
 nobleian/PQT
 nobleias/PQT
@@ -62764,7 +62956,7 @@ noschameing/T
 noschas/T
 noschezia/T
 noschezias/T
-noschs tains [taimps]/T
+noschs tains [noschs taimps]/T
 noschs/T
 nosset ampo/T
 nostalgeia/T
@@ -62882,6 +63074,8 @@ nudàna federala/T
 nudàna/T
 nudànas/T
 nudànd/PQT
+nuegl/T
+nuegls/T
 nuer/T
 nuers/T
 nujer/T
@@ -63005,9 +63199,18 @@ nunactual/T
 nunactuala/T
 nunactualas/T
 nunactuals/T
-nunaczentuo, nunaczentuada/T
-nunaczeptabel, nunaczeptabla/T
-nunaczessibel, nunaczessibla/T
+nunaczentuada/T
+nunaczentuadas/T
+nunaczentuo/T
+nunaczentuos/T
+nunaczeptabel/T
+nunaczeptabels/T
+nunaczeptabla/T
+nunaczeptablas/T
+nunaczessibel/T
+nunaczessibels/T
+nunaczessibla/T
+nunaczessiblas/T
 nunadatadadad/T
 nunadatadadads/T
 nunadato, nunadatada/T
@@ -63023,6 +63226,16 @@ nunancunaschainta/T
 nunancunaschaintameing/T
 nunancunaschaintas/T
 nunancunaschaints/T
+nunancunaschevel/T
+nunancunaschevels/T
+nunancunaschevla/T
+nunancunaschevlas/T
+nunancunaschida/T
+nunancunaschidas/T
+nunancunaschientscha/T
+nunancunaschientschas/T
+nunancunaschieu/T
+nunancunaschieus/T
 nunancurschevel, nunancurschevla/T
 nunanfaro, nunanfarada/T
 nunangulivo, nunangulivada/T
@@ -63216,6 +63429,10 @@ nungrazias/T
 nunguntgevel, nunguntgevla/T
 nunhabel da sadefender/T
 nunhabel, nunhabla/T
+nunhabitada/T
+nunhabitadas/T
+nunhabito/T
+nunhabitos/T
 nunhabladad/T
 nunhabladads/T
 nunhonest/T
@@ -63393,6 +63610,9 @@ nunpreparadameing/T
 nunpreparo, nunpreparada/T
 nunprevieu, -vazida/T
 nunprevisibel, nunprevisibla/T
+nunprigulus/T
+nunprigulusa/T
+nunprigulusas/T
 nunprobabel, nunprobabla/T
 nunproductiv/T
 nunproductiva/T
@@ -63441,6 +63661,10 @@ nunsanadevel, nunsanadevla/T
 nunsanguinus/T
 nunsanguinusa/T
 nunsanguinusas/T
+nunsanudader/T
+nunsanudaders/T
+nunsanudadra/T
+nunsanudadras/T
 nunsaptgaint/T
 nunsaptgainta/T
 nunsaptgaintas/T
@@ -63507,6 +63731,10 @@ nunsozial/T
 nunsoziala/T
 nunsozialas/T
 nunsozials/T
+nunspartgevel/T
+nunspartgevels/T
+nunspartgevla/T
+nunspartgevlas/T
 nunspitgeadameing/T
 nunspitgieu, nunspitgeada/T
 nunsportiv/T
@@ -64587,6 +64815,11 @@ organisassan/PQT
 organisassani/PQT
 organisassas/PQT
 organisassiou/PQT
+organisatoric/T
+organisatorica/T
+organisatoricameing/T
+organisatoricas/T
+organisatorics/T
 organisatur/T
 organisatura/T
 organisaturas/T
@@ -64779,7 +65012,6 @@ ortulan/T
 ortulans/T
 orur/T
 orurs/T
-orv par calurs/T
 orv/T
 orva da sagitar [tschoca]/T
 orva da sagitar/T
@@ -64894,6 +65126,8 @@ oter mund/T
 oter on/T
 oter, egn'otra/T
 oter, otra/T
+oter/T
+oters/T
 otg/T
 otgavel, otgavla/T
 otgavel/T
@@ -64904,7 +65138,9 @@ otgànta near vargia/T
 otgànta/T
 otr'eanda/T
 otra vart/T
+otra/T
 otrameing/T
+otras/T
 outsider/T
 outsiders/T
 ov an paintg/T
@@ -65011,7 +65247,7 @@ ozeanica/T
 ozeanicas/T
 ozeanics/T
 ozeans/T
-oziglgi, ozseglgi/T
+oziglgi/T
 ozon/T
 ozonic/T
 ozonica/T
@@ -66544,6 +66780,8 @@ pardùnias/PQT
 pardùniou/PQT
 pardùns/T
 pare/T
+pareamiez/T
+pareamiezs/T
 pared/PQT
 pareg jou/PQT
 pareg/PQT
@@ -67202,6 +67440,10 @@ partartgainsa/PQT
 partartgead/PQT
 partartgeada/PQT
 partartgeadas/PQT
+partartgeader/T
+partartgeaders/T
+partartgeadra/T
+partartgeadras/T
 partartgear davart anzatge/T
 partartgear davart blearas tgossas/T
 partartgear/PQT
@@ -67219,6 +67461,10 @@ partartgessan/PQT
 partartgessani/PQT
 partartgessas/PQT
 partartgessiou/PQT
+partartgevel/T
+partartgevels/T
+partartgevla/T
+partartgevlas/T
 partartgieu/PQT
 partartgieus/PQT
 partartgànd/PQT
@@ -67812,7 +68058,7 @@ passassan/PQT
 passassani/PQT
 passassas/PQT
 passassiou/PQT
-passatains [-taimp]/T
+passatains/T
 passatgierp/T
 passatgierps/T
 passava/PQT
@@ -68224,6 +68470,8 @@ patinaviou/PQT
 patinaz/PQT
 patineian/PQT
 patineias/PQT
+patinera/T
+patineras/T
 patinesch jou/PQT
 patinesch/PQT
 patinescha/PQT
@@ -68573,6 +68821,7 @@ pecis/T
 pecl jou/PQT
 pecl/PQT
 pecla/PQT
+peclaivettas/T
 peclan/PQT
 peclani/PQT
 peclas/PQT
@@ -69485,6 +69734,8 @@ piers/T
 pierta/T
 piertas/T
 pierten, pierti/T
+pierten/T
+piertens/T
 piertg salvadi/T
 piertg spinus/T
 piertg tor salvadi/T
@@ -70736,7 +70987,6 @@ ple c'avunda [pli, pi]/T
 ple c'ign geza, ple c'igl taglia/T
 ple ca mai/T
 ple ca meli [pli, pi]/T
-ple da las vuschs [pli, pi]/T
 ple dabot/T
 ple damanevel, damanevla/T
 ple datier/T
@@ -70786,6 +71036,7 @@ pled sen fossa/T
 pled sen veia/T
 pled sur fossa/T
 pled vulgar/T
+pled-clav/T
 pled/T
 pledafatg/T
 pledafatgs/T
@@ -70793,6 +71044,7 @@ pledari par la scola/T
 pledari/T
 pledaris/T
 pleds vids [vits]/T
+pleds-clav/T
 pleds/T
 plei jou/PQT
 plei/PQT
@@ -71644,6 +71896,10 @@ pomadas/T
 pomidor/T
 pomidors/T
 pommes frites/T
+pompus/T
+pompusa/T
+pompusameing/T
+pompusas/T
 pon da bara/T
 pon da salvamaint/T
 pon distatgear/PQT
@@ -71872,6 +72128,7 @@ portantinas/T
 portapacets/T
 portaplema/T
 portaplemas/T
+portaprisols/T
 portaraglia/T
 portaraglias/T
 portarumient/T
@@ -71970,6 +72227,8 @@ posamàns/T
 posan/PQT
 posani/PQT
 posas/PQT
+posatgieu/T
+posatgieus/T
 posauna/T
 posaunas/T
 posel distatgear/PQT
@@ -72891,6 +73150,10 @@ premeti/PQT
 premetian/PQT
 premetias/PQT
 premetiou/PQT
+premhabitànt/T
+premhabitànta/T
+premhabitàntas/T
+premhabitànts/T
 premi da tgatscha/T
 premi da tratga/T
 premi/T
@@ -73541,6 +73804,10 @@ prievel mortal/T
 prievel schmanatschànt/T
 prievel/T
 prievels/T
+prigulus/T
+prigulusa/T
+prigulusameing/T
+prigulusas/T
 prima/T
 primar/T
 primara/T
@@ -73670,6 +73937,10 @@ privilegieu/PQT
 privilegieus/PQT
 privilegis/T
 privilegànd/PQT
+privlus/T
+privlusa/T
+privlusameing/T
+privlusas/T
 privo, privada, pirvo, pirvada/T
 privo, privada; pirvo, pirvada/T
 pro a contra/T
@@ -75440,6 +75711,7 @@ puma dad or/T
 puma spinatsch/T
 puma tosta/T
 puma tumpriva/T
+puma-tgora/T
 puma/T
 pumarànza/T
 pumarànzas/T
@@ -76743,7 +77015,6 @@ quiteschias/PQT
 quiteschiou/PQT
 quito/PQT
 quitordesch/T
-quitos ad anzatgi/T
 quitos d'amur/T
 quitos/PQT
 quits/T
@@ -78181,6 +78452,7 @@ ramurias/PQT
 ramuriou/PQT
 ramuro/PQT
 ramuros/PQT
+ramurs a sfaranturs/T
 ramurs/T
 ramurus/T
 ramurusa/T
@@ -83335,6 +83607,10 @@ rezessivs/T
 rezessiùn conjuncturala/T
 rezessiùn/T
 rezessiùns/T
+reziclabel/T
+reziclabels/T
+reziclabla/T
+reziclablas/T
 reziclad/PQT
 reziclada/PQT
 rezicladas/PQT
@@ -84434,9 +84710,13 @@ ruasseian/PQT
 ruasseias/PQT
 ruassevel sco la mort/T
 ruassevel, ruassevla/T
+ruassevel/T
+ruassevels/T
+ruassevla/T
 ruassevladad/T
 ruassevladads/T
 ruassevlameing/T
+ruassevlas/T
 ruasso/PQT
 ruassos/PQT
 ruassànd/PQT
@@ -89350,7 +89630,6 @@ sagitar egna lieur [siatar, sitar]/T
 sagitar giou [siatar, sitar]/T
 sagitar la bura [siatar, sitar]/T
 sagitar or [siatar, sitar]/T
-sagitar par premis [siatar, sitar]/T
 sagitar sen anzatge [siatar, sitar]/T
 sagitar sen nodas/T
 sagitar sen nodas/schibas [siatar, sitar]/T
@@ -89420,6 +89699,8 @@ sagl d'egna vart/T
 sagl da la tur/T
 sagl trepel/T
 sagl/PQT
+saglera/T
+sagleras/T
 sagli jou/PQT
 sagli/PQT
 saglia/PQT
@@ -95487,6 +95768,42 @@ sasbaglieu/PQT
 sasbaglieus/PQT
 sasbagliou/PQT
 sasbagliànd/PQT
+sasbaref/PQT
+sasbarefa/PQT
+sasbarefan/PQT
+sasbarefas/PQT
+sasbarefel/PQT
+sasbarefi/PQT
+sasbarefian/PQT
+sasbarefias/PQT
+sasbarif jou/PQT
+sasbarifa/PQT
+sasbarifad/PQT
+sasbarifada/PQT
+sasbarifadas/PQT
+sasbarifagn/PQT
+sasbarifainsa/PQT
+sasbarifani/PQT
+sasbarifar/PQT
+sasbarifas/PQT
+sasbarifass jou/PQT
+sasbarifass/PQT
+sasbarifassan/PQT
+sasbarifassani/PQT
+sasbarifassas/PQT
+sasbarifassiou/PQT
+sasbarifava/PQT
+sasbarifavan/PQT
+sasbarifavani/PQT
+sasbarifavas/PQT
+sasbarifaviou/PQT
+sasbarifaz/PQT
+sasbarifeian/PQT
+sasbarifeias/PQT
+sasbarifiou/PQT
+sasbarifo/PQT
+sasbarifos/PQT
+sasbarifànd/PQT
 sasbass jou/PQT
 sasbass/PQT
 sasbassa/PQT
@@ -98694,11 +99011,10 @@ satelit/T
 satelits/T
 satember/T
 satembers/T
-satg da durmir [sac]/T
-satg da pulvra [sac]/T
-satg digl bastuir [sac]/T
-satg digl tschop [sac]/T
-satg par pàn [sac]/T
+satg da durmir [sac da durmir]/T
+satg da pulvra [sac da pulvra]/T
+satg digl bastuir [sac digl bastuir]/T
+satg digl tschop [sac digl tschop]/T
 satg/T
 satgadies/T
 satgagn/PQT
@@ -99014,7 +99330,41 @@ satiztganteias/PQT
 satiztganto/PQT
 satiztgantos/PQT
 satiztgantànd/PQT
+satract jou/PQT
+satract/PQT
+satracta/PQT
+satractad/PQT
+satractada/PQT
+satractadas/PQT
+satractagn/PQT
+satractainsa/PQT
+satractan/PQT
+satractani/PQT
 satractar dad anzatge/T
+satractar/PQT
+satractas/PQT
+satractass jou/PQT
+satractass/PQT
+satractassan/PQT
+satractassani/PQT
+satractassas/PQT
+satractassiou/PQT
+satractava/PQT
+satractavan/PQT
+satractavani/PQT
+satractavas/PQT
+satractaviou/PQT
+satractaz/PQT
+satracteian/PQT
+satracteias/PQT
+satractel/PQT
+satracti/PQT
+satractian/PQT
+satractias/PQT
+satractiou/PQT
+satracto/PQT
+satractos/PQT
+satractànd/PQT
 satradagn/PQT
 satradainsa/PQT
 satraded/PQT
@@ -99626,6 +99976,9 @@ savunar aint/T
 savund [sagund] experienztga [experienza]/T
 savund [sagund]/T
 savund cuntract, savund cunvegna [sagund]/T
+savund davos/T
+savund davosa/T
+savund davosas/T
 savund duer, savund obligaziùn [sagund]/T
 savund igl mieus meni/pareri [sagund]/T
 savund jou/PQT
@@ -103060,6 +103413,7 @@ schivlagn/PQT
 schivlainsa/PQT
 schivlan/PQT
 schivlani/PQT
+schivlar las ureglias [schiblar las ureglias]/T
 schivlar or [schiblar]/T
 schivlar par antschever [schiblar]/T
 schivlar par fitar, schivlar par schinar [schiblar]/T
@@ -103699,6 +104053,7 @@ schlei/PQT
 schleia/PQT
 schleian/PQT
 schleiani/PQT
+schleiaproblems/T
 schleias/PQT
 schleiaziùn/T
 schleiaziùns/T
@@ -107334,6 +107689,7 @@ scumond da cursar [scamund]/T
 scumond da fimar [scamund]/T
 scumond da parcar [scamund]/T
 scumond da safarmar [scamund]/T
+scumond da saplatgear [scamund da saplatgear]/T
 scumond da surpassar [scamund]/T
 scumond dad ir a riva, scumond da vagnir a riva [scamund]/T
 scumond jou/PQT
@@ -109598,6 +109954,8 @@ sfaraneschiou/PQT
 sfarano, sfaranada/T
 sfarano/PQT
 sfaranos/PQT
+sfarantur/T
+sfaranturs/T
 sfaranànd/PQT
 sfarcagliagn/PQT
 sfarcagliainsa/PQT
@@ -112224,6 +112582,10 @@ sianto/PQT
 siantos/PQT
 siantànd/PQT
 sias/PQT
+siatader/T
+siataders/T
+siatadra/T
+siatadras/T
 siatar/T
 siatars/T
 sibilànt/T
@@ -112601,6 +112963,8 @@ signùn/T
 signùna/T
 signùnas/T
 signùns/T
+sigreta/T
+sigretas/T
 siguregn/T
 siguregns/T
 sii/PQT
@@ -113051,6 +113415,8 @@ sistematicas/T
 sistematics/T
 sistems/T
 sistschient/T
+sitar/T
+sitars/T
 sitg jou/PQT
 sitg/PQT
 sitga/PQT
@@ -114358,6 +114724,8 @@ spelan/PQT
 spelani/PQT
 spelas/PQT
 spelel/PQT
+speleologia/T
+speleologias/T
 speli/PQT
 spelian/PQT
 spelias/PQT
@@ -115554,6 +115922,7 @@ spraztgieu/PQT
 spraztgieus/PQT
 spraztgànd/PQT
 sprear da gagliegnas [sparer]/T
+sprear da mirs [sparer da mirs]/T
 sprear pintg [sparer]/T
 sprear/T
 sprears/T
@@ -117465,7 +117834,7 @@ stgavo/PQT
 stgavos/PQT
 stgavànd/PQT
 stgazi/T
-stgazis suterans [scazi]/T
+stgazis suterans [scazis suterans]/T
 stgazis/T
 stgeala da salvamaint [scala]/T
 stgeala da sujas [scala]/T
@@ -120541,6 +120910,7 @@ sulazànd/PQT
 suldada/T
 suldanela/T
 suldanelas/T
+suldo da la sanitad [schuldo]/T
 suldo/T
 suldos/T
 sulegl/T
@@ -121920,7 +122290,6 @@ surpiessiou/PQT
 surpiieu/PQT
 surpiieus/PQT
 surpiànd/PQT
-surple da las vuschs [surpli]/T
 surple/T
 surpleals/T
 surples/T
@@ -124482,7 +124851,6 @@ tac/PQT
 taca/PQT
 tacad/PQT
 tacada/PQT
-tacadameing/T
 tacadas/PQT
 tacagead/PQT
 tacageada/PQT
@@ -124707,35 +125075,36 @@ taimpriou/PQT
 taimps/T
 taingla/T
 tainglas/T
-tains antic [taimp]/T
-tains d'ufezi [taimp]/T
-tains da bagordas [taimp]/T
-tains da cursa [taimp]/T
-tains da la catschada [taimp]/T
-tains da la flur [taimp]/T
+tains antic [taimp antic]/T
+tains d'ufezi [taimp d'ufezi]/T
+tains da bagordas [taimp da bagordas]/T
+tains da cursa [taimp da cursa]/T
+tains da la catschada [taimp da la catschada]/T
+tains da la flur [taimp da la flur]/T
+tains da lavur [taimp da lavur]/T
 tains da lavur flexibel/T
-tains da magliear [taimp]/T
-tains da preparaziùn [taimp]/T
-tains da prosperitad [taimp]/T
-tains da racolta [taimp]/T
-tains da reacziùn [taimp]/T
-tains da schinetg [taimp]/T
-tains da tgatscha [taimp]/T
-tains da trafi grànd [taimp]/T
-tains da vieadi [taimp]/T
-tains da visada [taimp]/T
-tains glazial [taimp]/T
-tains intermediar [taimp]/T
-tains liber [taimp]/T
-tains maladato [taimp]/T
-tains medieval [taimp]/T
-tains minimal [taimp]/T
-tains modern [taimp]/T
-tains mort [taimp]/T
-tains orainfer [taimp]/T
-tains paleolitic [taimp]/T
-tains par partartgear [taimp]/T
-tains preschaint [taimp]/T
+tains da magliear [taimp da magliear]/T
+tains da preparaziùn [taimp da preparaziùn]/T
+tains da prosperitad [taimp da prosperitad]/T
+tains da racolta [taimp da racolta]/T
+tains da reacziùn [taimp da reacziùn]/T
+tains da schinetg [taimp da schinetg]/T
+tains da tgatscha [taimp da tgatscha]/T
+tains da trafi grànd [taimp da trafi grànd]/T
+tains da vieadi [taimp da vieadi]/T
+tains da visada [taimp da visada]/T
+tains glazial [taimp glazial]/T
+tains intermediar [taimp intermediar]/T
+tains liber [taimp liber]/T
+tains maladato [taimp maladato]/T
+tains medieval [taimp medieval]/T
+tains minimal [taimp minimal]/T
+tains modern [taimp modern]/T
+tains mort [taimp mort]/T
+tains orainfer [taimp orainfer]/T
+tains paleolitic [taimp paleolitic]/T
+tains par partartgear [taimp par partartgear]/T
+tains preschaint [taimp preschaint]/T
 tains/T
 tainsch jou/PQT
 tainsch/PQT
@@ -126385,6 +126754,8 @@ tatgessiou/PQT
 tatgi/PQT
 tatgian/PQT
 tatgias/PQT
+tatgida/T
+tatgidas/T
 tatgieu/PQT
 tatgieus/PQT
 tatgiou/PQT
@@ -126603,6 +126974,8 @@ tearm fundamantal/T
 tearm tecnic/T
 tearm/T
 tearms/T
+tearneta/T
+tearnetas/T
 tearz-/T
 tearz/T
 tearza part/T
@@ -127492,7 +127865,7 @@ tgamegiani/PQT
 tgamegias/PQT
 tgamegiou/PQT
 tgamegn da glisch [tgimegn]/T
-tgamegn da ventilaziùn [tgimegn]/T
+tgamegn da ventilaziùn [tgimegn da ventilaziùn]/T
 tgamegn/T
 tgamegns/T
 tgameian/PQT
@@ -127746,6 +128119,8 @@ tgargia/PQT
 tgargian/PQT
 tgargiani/PQT
 tgargias/PQT
+tgargiatelefonet/T
+tgargiatelefonets/T
 tgargiou/PQT
 tgarn bov/T
 tgarn cun grass/T
@@ -127873,6 +128248,7 @@ tgavada/PQT
 tgavadas/PQT
 tgavadeals/T
 tgavadi/T
+tgavagl antier da raza [cavagl antier da raza]/T
 tgavagl da balabagn [cavagl]/T
 tgavagl da cursa [cavagl]/T
 tgavagl da lena [cavagl]/T
@@ -127884,7 +128260,6 @@ tgavagl tor [cavagl]/T
 tgavagl/T
 tgavagliegna/T
 tgavagliegnas/T
-tgavagls/T
 tgavagn/PQT
 tgavainsa/PQT
 tgavala/T
@@ -127897,10 +128272,13 @@ tgavalarescs/T
 tgavalas/T
 tgavalera/T
 tgavaleras/T
+tgavalier rubadur/T
 tgavalier/T
+tgavaliers rubadurs/T
 tgavaliers/T
 tgavalot/T
 tgavalots/T
+tgavals/T
 tgavaltgagn/PQT
 tgavaltgainsa/PQT
 tgavaltgead/PQT
@@ -128010,12 +128388,15 @@ tgavels/T
 tgavester/T
 tgavesters/T
 tgavo/PQT
+tgavorgia/T
+tgavorgias/T
 tgavos/PQT
 tgavrer òlt/T
 tgavrer/T
 tgavrers/T
 tgavrida/T
 tgavridas/T
+tgavriel giuven [cavriel]/T
 tgavriel/T
 tgavriels/T
 tgavrieu/T
@@ -128377,6 +128758,7 @@ tgira digls daints/T
 tgira/PQT
 tgirad/PQT
 tgirada/PQT
+tgiradaints/T
 tgiradas/PQT
 tgirader/T
 tgiraders/T
@@ -128554,11 +128936,12 @@ tgoma/PQT
 tgoman/PQT
 tgomani/PQT
 tgomas/PQT
+tgomba/T
 tgombra d'aua [combra]/T
 tgombra da combustiùn/T
 tgombra da comerzi [combra]/T
 tgombra da hardumbel [combra]/T
-tgombra da lavur [combra]/T
+tgombra da lavur [combra da lavur]/T
 tgombra dasperas [combra]/T
 tgombra digl cor [combra]/T
 tgombra digls deputos [combra]/T
@@ -129011,6 +129394,7 @@ tiradur/T
 tiradura/T
 tiraduras/T
 tiradurs/T
+tirafils/T
 tiran natier/PQT
 tiran tier/PQT
 tiran vetier/PQT
@@ -132179,10 +132563,15 @@ tschartgessiou/PQT
 tschartgieu/PQT
 tschartgieus/PQT
 tschartgànd/PQT
+tscharvalada/T
+tscharvaladameing/T
+tscharvaladas/T
 tscharvalegn/T
 tscharvalegna/T
 tscharvalegnas/T
 tscharvalegns/T
+tscharvalo/T
+tscharvalos/T
 tscharveals/T
 tscharvegna/T
 tscharvegnas/T
@@ -132749,6 +133138,40 @@ tschincegian/PQT
 tschincegiani/PQT
 tschincegias/PQT
 tschincegiou/PQT
+tschincl jou/PQT
+tschincl/PQT
+tschincla/PQT
+tschinclad/PQT
+tschinclada/PQT
+tschincladas/PQT
+tschinclagn/PQT
+tschinclainsa/PQT
+tschinclan/PQT
+tschinclani/PQT
+tschinclar/PQT
+tschinclas/PQT
+tschinclass jou/PQT
+tschinclass/PQT
+tschinclassan/PQT
+tschinclassani/PQT
+tschinclassas/PQT
+tschinclassiou/PQT
+tschinclava/PQT
+tschinclavan/PQT
+tschinclavani/PQT
+tschinclavas/PQT
+tschinclaviou/PQT
+tschinclaz/PQT
+tschincleian/PQT
+tschincleias/PQT
+tschinclel/PQT
+tschincli/PQT
+tschinclian/PQT
+tschinclias/PQT
+tschincliou/PQT
+tschinclo/PQT
+tschinclos/PQT
+tschinclànd/PQT
 tschincùn/T
 tschincùns/T
 tschinela/T
@@ -134527,6 +134950,8 @@ umbriveschi/PQT
 umbriveschian/PQT
 umbriveschias/PQT
 umbriveschiou/PQT
+umbrivgia/T
+umbrivgias/T
 umbrivo/PQT
 umbrivos/PQT
 umbrivànd/PQT
@@ -134536,6 +134961,7 @@ umbrivàntas/T
 umbrivànts/T
 umcir/T
 umcirs/T
+umens/T
 umet/T
 umets/T
 umid/T
@@ -134841,17 +135267,18 @@ unfrieu/PQT
 unfrieus/PQT
 unfrir/PQT
 unfrànd/PQT
+unfànt adopto [ufànt adopto]/T
 unfànt an fascha [ufànt]/T
-unfànt ca fa quitos [ufànt]/T
-unfànt cato [ufànt]/T
+unfànt ca fa quitos [ufànt ca fa quitos]/T
+unfànt cato [ufànt cato]/T
 unfànt da batem, batesem [ufànt]/T
-unfànt da retorta [ufànt]/T
-unfànt ilegitim [ufànt]/T
-unfànt legitim [ufànt]/T
-unfànt nutrieu [ufànt]/T
-unfànt sontg [ufànt]/T
-unfànt sperasor [ufànt]/T
-unfànt sulet [ufànt]/T
+unfànt da retorta [ufànt da retorta]/T
+unfànt ilegitim [ufànt ilegitim]/T
+unfànt legitim [ufànt legitim]/T
+unfànt nutrieu [ufànt nutrieu]/T
+unfànt sontg [ufànt sontg]/T
+unfànt sperasor [ufànt sperasor]/T
+unfànt sulet [ufànt sulet]/T
 unfànt/T
 unfànts c'ân damains ca sis ons/T
 unfànts/T
@@ -135234,6 +135661,17 @@ urblàna/T
 urblànas/T
 urdadira/T
 urdadiras/T
+urdagn jou/PQT
+urdagn/PQT
+urdagna/PQT
+urdagnan/PQT
+urdagnani/PQT
+urdagnas/PQT
+urdagnel/PQT
+urdagni/PQT
+urdagnian/PQT
+urdagnias/PQT
+urdagniou/PQT
 urdanad/PQT
 urdanada/PQT
 urdanadas/PQT
@@ -135633,6 +136071,8 @@ uvada/PQT
 uvadas/PQT
 uvagn/PQT
 uvainsa/PQT
+uval/T
+uvals/T
 uvar/PQT
 uvass jou/PQT
 uvass/PQT
@@ -135650,6 +136090,8 @@ uveian/PQT
 uveias/PQT
 uvertura/T
 uverturas/T
+uveta/T
+uvetas/T
 uvieada/T
 uvieadas/T
 uviercel [urviercel]/T
@@ -136739,10 +137181,15 @@ vasevan/PQT
 vasevani/PQT
 vasevas/PQT
 vasevel [-zevel]/T
+vasevel/T
+vasevels/T
 vaseviou/PQT
+vasevla/T
 vasevladad/T
 vasevladads/T
 vasevlameing [vazevlameing]/T
+vasevlameing/T
+vasevlas/T
 vasez/PQT
 vasida/T
 vasidas/T
@@ -138045,7 +138492,6 @@ violinist/T
 violinista/T
 violinistas/T
 violinists/T
-violo, violada/T
 violo/PQT
 violos/PQT
 violànd/PQT
@@ -138368,9 +138814,13 @@ vivànda/T
 vivàndas schalantadas/T
 vivàndas/T
 vizandevel, vizandevla/T
+vizandevel/T
+vizandevels/T
+vizandevla/T
 vizandevladad/T
 vizandevladads/T
 vizandevlameing/T
+vizandevlas/T
 vizeparsura/T
 vizeparsuras/T
 vizepresident/T
@@ -139376,6 +139826,10 @@ zeluloids/T
 zelulosa/T
 zelulosas/T
 zemfer, zemfra/T
+zemfer/T
+zemfers/T
+zemfra/T
+zemfras/T
 zengher/T
 zenghers/T
 zengra/T
@@ -140137,6 +140591,7 @@ zivila/T
 zivilas/T
 zivilisad/PQT
 zivilisada/PQT
+zivilisadameing/T
 zivilisadas/PQT
 zivilisagn/PQT
 zivilisainsa/PQT
@@ -140644,7 +141099,6 @@ zumgnieu/PQT
 zumgnieus/PQT
 zumgnànd/PQT
 zund blear [bear]/T
-zund blear/T
 zund fegn/T
 zund fetg/T
 zund nut/T
@@ -140918,3 +141372,4 @@ zétga, sétga/T
 ô, oc/T
 ùngla/T
 ùnglas/T
+﻿easser bletsch sco egn giut/T
