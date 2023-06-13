@@ -62,6 +62,9 @@ import { LemmaDiffComponent } from "./components/lemma-diff/lemma-diff.component
 import { DiffModalComponent } from "./features/diff-modal/diff-modal.component";
 import { PronounGenerationComponent } from "./features/modify-entry/pronoun-generation/pronoun-generation.component";
 import { HeaderLadinComponent } from "./components/header-ladin/header-ladin.component";
+import {
+  PronunciationCharactersComponent
+} from "./components/pronunciation-characters/pronunciation-characters.component";
 
 registerLocaleData(de);
 
@@ -118,6 +121,7 @@ export function tokenGetter() {
     LemmaDiffComponent,
     DiffModalComponent,
     PronounGenerationComponent,
+    PronunciationCharactersComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ import { NounGenerationComponent } from '../noun-generation/noun-generation.comp
 import { AdjectiveGenerationComponent } from '../adjective-generation/adjective-generation.component';
 import { Language } from "../../../models/security";
 import { PronounGenerationComponent } from "../pronoun-generation/pronoun-generation.component";
+import { EnvironmentService } from "../../../services/environment.service";
 
 @Component({
   selector: 'app-main-entry',
@@ -52,6 +53,7 @@ export class MainEntryComponent implements OnInit {
     private modalService: NzModalService,
     private viewContainerRef: ViewContainerRef,
     private translateService: TranslateService,
+    public environmentService: EnvironmentService,
   ) { }
 
   ngOnInit(): void {

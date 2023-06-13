@@ -4,6 +4,7 @@ import { NzModalRef } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { EnvironmentService } from "../../../services/environment.service";
 
 @Component({
   selector: 'app-pronoun-generation',
@@ -28,6 +29,7 @@ export class PronounGenerationComponent implements OnInit {
     private inflectionService: InflectionService,
     private languageSelectionService: LanguageSelectionService,
     private modal: NzModalRef,
+    public environmentService: EnvironmentService,
   ) { }
 
   ngOnInit(): void {

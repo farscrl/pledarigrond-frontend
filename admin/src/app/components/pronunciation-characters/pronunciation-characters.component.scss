@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  height: 45px;
+}
+
+.characters {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.character {
+  flex-direction: row;
+  margin-right: 12px;
+}

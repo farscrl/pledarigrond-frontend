@@ -8,6 +8,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { Language } from "../../../models/security";
 import { CopyService } from "../../../services/copy.service";
 import { EditorService } from "../../../services/editor.service";
+import { EnvironmentService } from "../../../services/environment.service";
 
 @Component({
   selector: 'app-conjugation',
@@ -41,6 +42,7 @@ export class ConjugationComponent implements OnInit {
     private modal: NzModalRef,
     public copyService: CopyService,
     public editorService: EditorService,
+    public environmentService: EnvironmentService,
   ) { }
 
   ngOnInit(): void {
