@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Credentials, Language, Role } from '../models/security';
+import { Credentials, Role } from '../models/security';
+import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'jwt';
 
@@ -23,7 +24,8 @@ export class AuthService {
 
   constructor(
       private jwtHelperService: JwtHelperService,
-      private httpClient: HttpClient
+      private httpClient: HttpClient,
+      private router: Router,
   ) {
     this.setToken(localStorage.getItem(TOKEN_KEY));
   }
@@ -62,6 +64,7 @@ export class AuthService {
 
     this.token = '';
     localStorage.removeItem(TOKEN_KEY);
+    this.router.navigate(['/login']);
   }
 
   authSuccess(token: string): void {
