@@ -29,7 +29,7 @@ export class NavigationHorizontalComponent implements OnInit {
   }
 
   showAutomaticReview(): boolean {
-    return this.currentLanguage === 'rumantschgrischun' || this.currentLanguage === 'puter' || this.currentLanguage === 'vallader';
+    return this.currentLanguage === 'sutsilvan' || this.currentLanguage === 'rumantschgrischun' || this.currentLanguage === 'puter' || this.currentLanguage === 'vallader';
   }
 
   showFrontendLink(): boolean {
