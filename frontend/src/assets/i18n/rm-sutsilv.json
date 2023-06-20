@@ -42,8 +42,8 @@
     "results_last_page": "davosa"
   },
   "index": {
-    "letter_link": "pleds ca antschevan cun {0}",
-    "letter_page": "pleds ca antschevan cun {0}, pagina {1}",
+    "letter_link": "pleds c'antschevan cun {0}",
+    "letter_page": "pleds c'antschevan cun {0}, pagina {1}",
     "translations_of": "translaziùns da",
     "language": "index par ",
     "entry_header": "translaziùns da",
@@ -63,13 +63,13 @@
     "info": "infos",
     "grammatica": "gramatica",
     "suggest": "far egna nova proposta",
-    "maalr": "sustagnieu da Maalr"
+    "maalr": "sustanieu da Maalr"
   },
   "login": {
     "header": "anunztga",
-    "welcome": "Igl e pussevel da duvrar igl Pledari Grond ear sainza s'anunztgear. L'anunztga e voluntaria a leavgescha suletameing igl contact via e-mail, scha Vus fagez propostas near remartgas. Datas sensiblas (an spezial pleds-clav) vegnan betga memorisadas.",
-    "error": "La conexiun e betga gartageada. Ampruvad p.pl. danovameing.",
-    "email": "email",
+    "welcome": "Igl e pussevel da duvrar igl Pledari Grond ear sainza s'anunztgear. L'anunztga e voluntaria a leavgescha suletameing igl contact via e-mail, scha Vus fagez propostas near remartgas. Datas sensiblas (an spezial pleds-clav) vignan betga memorisadas.",
+    "error": "La culiaziùn e betga gartageada. Ampruvad p.pl. danovameing.",
+    "email": "e-mail",
     "pwd": "pled-clav",
     "sendButton": "tarmeter l'anunztga"
   },
@@ -91,7 +91,8 @@
   "promo": {
     "other": "ulteriurs dicziunaris",
     "glossary": "glossaris",
-    "readmore": "legia dapli"
+    "readmore": "ligia daple",
+    "spellchecker": "program da corectura"
   },
   "update": {
     "last_update": "Davosa actualisaziùn: {0}",
@@ -100,7 +101,7 @@
   "lemma": {
     "DStichwort": "tudestg",
     "DGrammatik": "gramatica",
-    "DSemantik": "Semantik",
+    "DSemantik": "semantica",
     "DSubsemantik": "semantica",
     "DGenus": "genus",
     "categories": "categoreia",
@@ -128,7 +129,7 @@
   },
   "button": {
     "clear": "reinizialisar",
-    "cancel": "interumper",
+    "cancel": "interrumper",
     "ok": "tarmeter "
   },
   "dialog": {
@@ -139,8 +140,8 @@
     "email": "adressa dad e-mail",
     "error": {
       "field": "Seglmains egn digls tgomps sto easser amplanieu!",
-      "comment": "Deplorablameing e'gl betga pussevel da transmeter la modificaziùn. Igl voss comentari e megna lùng, el astga betga surpassar 500 anzenas.",
-      "lemma": "Deplorablameing e'gl betga pussevel da transmeter la modificaziùn. La vossa proposta e megna lùnga, ella astga betga surpassar 200 anzenas."
+      "comment": "Deplorablameing e'gl betga pussevel da transmeter la modificaziùn. Igl voss comentari e megna lùng, el dastga betga surpassar 500 anzenas.",
+      "lemma": "Deplorablameing e'gl betga pussevel da transmeter la modificaziùn. La Vossa proposta e megna lùnga, ella dastga betga surpassar 200 anzenas."
     }
   },
   "verbOverlayPopup": {
@@ -150,7 +151,7 @@
     "present": "Preschaint",
     "imperfect": "Imperfect",
     "conjunctive": "Conjunctiv",
-    "particip": "Particip Perfect",
+    "particip": "Partizip Perfect",
     "conditional": "Cundiziunal",
     "future": "Futur",
     "gerund": "Gerundi",
@@ -174,15 +175,48 @@
   },
   "export": {
     "title": "Export",
-    "login": "Vus stuais As annunziar l'emprim, per pudair telechargiar las datas dal Pledari Grond.",
-    "login_button": "As annunziar",
-    "licence": "Las datas dal Pledari Grond èn licenziadas sut CC Attribution 4.0 International (|CC BY 4.0|)",
-    "download": "Telechargiar"
+    "login": "Vus stuez s'anunztgear gl'amprem, per puder telecargear las datas digl Pledari Grond.",
+    "login_button": "S'anunztgear",
+    "licence": "Las datas dal Pledari Grond en lizenztgeadas sut CC Attribution 4.0 International (|CC BY 4.0|)",
+    "download": "telecargear"
   },
   "other_resources": {
-    "gourmet": "Dicziunari Gourmet, terminologia da la cuschina e gastronomia",
-    "flora": "Flora Helvetica, nums da flurs e plantas",
-    "avionary": "Terminologia d'utschels",
-    "ballape": "Glossari da ballape"
+    "gourmet": "Dicziunari Gourmet, terminologeia da la tgadafiac e gastronomeia",
+    "flora": "Flora Helvetica, nums da flurs a plàntas",
+    "avionary": "Terminologeia d'utscheals",
+    "ballape": "Glossari da burape"
+  },
+  "spellchecker": {
+    "back": "turnar agl Pledari Grond",
+    "credits": "La controla ortografica rumàntscha e egn project da la | Pro Svizra Rumantscha | realisada an colavuraziùn cun la | Lia Rumantscha | a sustanieu digl Ufezi federal da cultura.",
+    "editor": {
+      "bold": "grass",
+      "bulletList": "glista betg ordinada",
+      "clear_format": "alontanar formataziùns",
+      "copy": "cuptgear",
+      "hard_break": "nova lingia",
+      "heading1": "tetel1",
+      "heading2": "tetel 2",
+      "highlight": "marcar",
+      "italic": "cursiv",
+      "orderedList": "glista ordinada",
+      "paragraph": "paragraf",
+      "redo": "repeter ",
+      "selectAll": "tschearner tut",
+      "strike": "streha",
+      "underline": "sutastrescha",
+      "undo": "revotgear",
+      "version": "versiùn"
+    },
+    "install": {
+      "office": "Microsoft Office (ple tard)",
+      "word": "Microsoft Word",
+      "other": "oter",
+      "title": "Instalar sen igl computer"
+    },
+    "instructions": "Par schar cureger egn text pudez Vus semplameing cuptgear aint el agl formular qua dasperas a clicar sen igls pleds sutlingieus par vaser las propostas da corectura.",
+    "loading": "Las datas vignan cargeadas - spitgear par plascher egn mumaint",
+    "privacy": "La protecziùn da las Vossas datas e garantida: Igl text ancastro bandùna betg Voss computer.",
+    "sent_suggestion": "Proponieu da la Lia Rumantscha dad aschuntar «{{ word }}» sco pled valevel agl dicziunari da la controla ortografica."
   }
 }
