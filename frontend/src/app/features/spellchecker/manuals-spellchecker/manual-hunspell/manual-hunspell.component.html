@@ -1,0 +1,59 @@
+<div class="modal-content" *ngIf="language === 'surmiran'">
+  <h1>Installaziun dalla controlla ortografica ainten oters sistems</h1>
+
+  <p>Igls programs da correctura ortografica rumantscha sa basan sen «Hunspell» e funcziuneschan ainten numerous programs, tranter oter ainten Adobe InDesign ed SDL Trados.</p>
+
+  <p>Per l'installaziun ainten chels programs servan las suandontas datotecas. Egna cuntigna igl dicziunari, l'otra reglas per generar ulteriours pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
+
+  <p>
+    rm-surmiran.dic<br>
+    rm-surmiran.aff<br>
+    version.txt<br>
+    license.txt<br>
+  </p>
+
+  <p>Igl zip cuntigna tottas quatter datotecas:</p>
+
+  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">rm-surmiran.zip</button>
+
+  <p>Consulte per plascheir las paginas d'ageid digls programs correspondents per neir a saveir scu installar las datotecas.</p>
+
+  <p>Cò sotvart las colliaziuns a manuals per:</p>
+
+  <ul class="list">
+    <li><a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html" target="_blank">Adobe InDesign</a></li>
+    <li><a href="https://gateway.sdl.com/apex/communityknowledge?articleName=000001362" target="_blank">SDL Trados Studio</a></li>
+  </ul>
+</div>
+
+<div class="modal-content" *ngIf="language === 'sutsilvan'">
+  hunspell sutsilvan
+</div>
+
+<div class="modal-content" *ngIf="language === 'de'">
+  <h1>Installation der Rechtschreibprüfung auf anderen Systemen</h1>
+
+  <p>Die romanische Rechtschreibprüfung basiert auf der Software «Hunspell». Diese funktioniert mit einer Vielzahl an Programmen, unter anderem mit Adobe InDesign und SDL Trados.</p>
+
+  <p>Die folgenden Dateien werden für die Installation in diesen Programmen benötigt. Die erste Datei enthält das Wörterbuch, die Zweite die Regeln um weitere Wörter zu generieren, die Dritte enthält Angaben zur Version und die Vierte die Lizenz. </p>
+
+  <p>
+    rm-xxx.dic<br>
+    rm-xxx.aff<br>
+    version.txt<br>
+    license.txt<br>
+  </p>
+
+  <p>Die Zip-Datei beinhaltet alle vier Dateien:</p>
+
+  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">rm-xxx.zip</button>
+
+  <p>Besuchen Sie die Hilfe-Seiten der entsprechenden Software um zu erfahren wie die Dateien installiert werden müssen. </p>
+
+  <p>Hier die Links zu Anleitungen für:</p>
+
+  <ul class="list">
+    <li><a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html" target="_blank">Adobe InDesign</a></li>
+    <li><a href="https://gateway.sdl.com/apex/communityknowledge?articleName=000001362" target="_blank">SDL Trados Studio</a></li>
+  </ul>
+</div>

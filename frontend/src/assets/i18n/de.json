@@ -195,6 +195,7 @@
     "install": {
       "title": "Auf dem Computer installieren",
       "other": "anderes (Hunspell)",
+      "word": "Microsoft Word",
       "office": "Microsoft Office (später)"
     },
     "credits": "Die rätoromanische Rechtschreibprüfung ist ein Projekt der |Pro Svizra Rumantscha|, das in Zusammenarbeit mit der |Lia Rumantscha| realisiert und vom Bundesamt für Kultur unterstützt wurde.",

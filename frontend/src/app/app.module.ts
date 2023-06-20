@@ -60,6 +60,9 @@ import { SpellcheckerMenubarComponent } from './features/spellchecker/spellcheck
 import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
 import { NgxMatomoRouterModule } from '@ngx-matomo/router';
 import { ManualsSpellcheckerComponent } from './features/spellchecker/manuals-spellchecker/manuals-spellchecker.component';
+import { ManualMacosComponent } from './features/spellchecker/manuals-spellchecker/manual-macos/manual-macos.component';
+import { ManualHunspellComponent } from './features/spellchecker/manuals-spellchecker/manual-hunspell/manual-hunspell.component';
+import { ManualWordComponent } from './features/spellchecker/manuals-spellchecker/manual-word/manual-word.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -118,6 +121,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SpellcheckerComponent,
     SpellcheckerMenubarComponent,
     ManualsSpellcheckerComponent,
+    ManualMacosComponent,
+    ManualHunspellComponent,
+    ManualWordComponent,
   ],
   imports: [
     BrowserModule,

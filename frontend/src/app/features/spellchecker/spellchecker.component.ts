@@ -8,14 +8,18 @@ import { Underline } from "@tiptap/extension-underline";
 import { Highlight } from "@tiptap/extension-highlight";
 import { Hunspell, HunspellFactory, loadModule } from 'hunspell-asm';
 import { Subscription } from "rxjs";
-import { SelectedLanguageService } from "../../services/selected-language.service";
+import { FrontendLanguage, Idiom, SelectedLanguageService } from "../../services/selected-language.service";
 import { TranslateService } from "@ngx-translate/core";
 import { MatomoTracker } from "@ngx-matomo/tracker";
 import { ModificationService } from "../../services/modification.service";
 import { LemmaVersion } from "../../models/lemma-version";
 import { AuthService } from "../../services/auth.service";
 import { SimpleModalService } from "ngx-simple-modal";
-import { ManualsSpellcheckerComponent, ManualType } from "./manuals-spellchecker/manuals-spellchecker.component";
+import {
+  HunspellLanguage,
+  ManualsSpellcheckerComponent,
+  ManualType
+} from "./manuals-spellchecker/manuals-spellchecker.component";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -39,6 +43,8 @@ export class SpellcheckerComponent implements OnInit {
   idiom = '';
   idiomUrl = '';
   private idiomSubscription?: Subscription;
+  private languageSubscription?: Subscription;
+  frontEndLanguage: FrontendLanguage = 'rm';
 
   sentSuggestion = false;
   sentSuggestionWord = '';
@@ -70,6 +76,10 @@ export class SpellcheckerComponent implements OnInit {
           this.loadTestingFile();
         }
       });
+
+    this.languageSubscription = this.selectedLanguageService.getFrontendLanguageObservable().subscribe(value => {
+      this.frontEndLanguage = value;
+    });
   }
 
   ngOnDestroy(): void {
@@ -78,6 +88,10 @@ export class SpellcheckerComponent implements OnInit {
 
     if (this.idiomSubscription) {
       this.idiomSubscription.unsubscribe();
+    }
+
+    if (this.languageSubscription) {
+      this.languageSubscription.unsubscribe();
     }
   }
 
