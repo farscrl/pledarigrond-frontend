@@ -2,11 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
-import SpellcheckerExtension from '@farscrl/tiptap-extension-spellchecker';
-import { Proofreader } from 'src/app/utils/proofreader';
+import SpellcheckerExtension, { IProofreaderInterface, ITextWithPosition } from '@farscrl/tiptap-extension-spellchecker';
 import { Underline } from "@tiptap/extension-underline";
 import { Highlight } from "@tiptap/extension-highlight";
-import { Hunspell, HunspellFactory, loadModule } from 'hunspell-asm';
 import { Subscription } from "rxjs";
 import { FrontendLanguage, Idiom, SelectedLanguageService } from "../../services/selected-language.service";
 import { TranslateService } from "@ngx-translate/core";
@@ -21,26 +19,21 @@ import {
   ManualType
 } from "./manuals-spellchecker/manuals-spellchecker.component";
 import { ActivatedRoute } from "@angular/router";
+import { Proofreader } from '@farscrl/rumantsch-language-tools';
 
 @Component({
   selector: 'app-spellchecker',
   templateUrl: './spellchecker.component.html',
   styleUrls: ['./spellchecker.component.scss']
 })
-export class SpellcheckerComponent implements OnInit {
+export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
 
   editor?: Editor;
   value = '<p></p>';
 
-  hunspellFactory?: HunspellFactory;
-  affFile?: string;
-  dictFile?: string;
-  hunspell?: Hunspell;
-
   isLoadingData = true;
-  version = "";
 
-  idiom = '';
+  idiom?: Idiom;
   idiomUrl = '';
   private idiomSubscription?: Subscription;
   private languageSubscription?: Subscription;
@@ -48,6 +41,8 @@ export class SpellcheckerComponent implements OnInit {
 
   sentSuggestion = false;
   sentSuggestionWord = '';
+
+  proofreader?: Proofreader.Proofreader;
 
   constructor(
     private http: HttpClient,
@@ -61,19 +56,16 @@ export class SpellcheckerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(lng => {
+    this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(async (lng) => {
       this.idiomUrl = this.selectedLanguageService.getSelectedLanguageUrlSegment();
       this.idiom = lng;
-
-      this.loadVersion();
-      this.loadDictionary();
+      await this.loadProofreader();
     });
 
     this.route.queryParams
-      .subscribe(params => {
+      .subscribe(async (params) => {
         if (params['testar']) {
-          this.loadTestingFile();
+          await this.loadTestingFile();
         }
       });
 
@@ -84,7 +76,7 @@ export class SpellcheckerComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.editor?.destroy();
-    this.unloadDictionary();
+    this.proofreader?.unload();
 
     if (this.idiomSubscription) {
       this.idiomSubscription.unsubscribe();
@@ -98,7 +90,6 @@ export class SpellcheckerComponent implements OnInit {
   onDictLoaded() {
     this.isLoadingData = false;
     console.log("loading spellchecker finished");
-    const proofreader = new Proofreader(this.hunspell!);
 
     this.editor = new Editor({
       extensions: [
@@ -106,7 +97,7 @@ export class SpellcheckerComponent implements OnInit {
         Underline,
         Highlight,
         SpellcheckerExtension.configure({
-          proofreader: proofreader,
+          proofreader: this,
           uiStrings: {
             noSuggestions: 'Catto nignas propostas'
           },
@@ -120,8 +111,47 @@ export class SpellcheckerComponent implements OnInit {
     this.sentSuggestion = false;
   }
 
-  openManual(manualType: ManualType) {
-    this.simpleModalService.addModal(ManualsSpellcheckerComponent, { manualType: manualType}).subscribe();
+  openManual(manualType: ManualType, language: string, hunspellLanguage: HunspellLanguage) {
+    this.simpleModalService.addModal(ManualsSpellcheckerComponent, { manualType: manualType, language: language, hunspellLanguage: hunspellLanguage}).subscribe();
+  }
+
+  // from IProofreaderInterface
+  proofreadText(sentence: string): Promise<ITextWithPosition[]> {
+    console.log(sentence);
+    if (!this.proofreader) {
+      return Promise.resolve([]);
+    }
+    const a = this.proofreader.proofreadText(sentence);
+    console.log(a);
+    return a;
+  }
+
+  // IProofreaderInterface
+  getSuggestions(word: string): Promise<string[]> {
+    if (!this.proofreader) {
+      return Promise.resolve([]);
+    }
+    return this.proofreader.getSuggestions(word);
+  }
+
+  // IProofreaderInterface
+  normalizeTextForLanguage(text: string): string {
+    return text.split('’').join("'");
+  }
+
+  private async loadProofreader() {
+    switch (this.idiom) {
+      case 'surmiran':
+        this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-surmiran');
+        break;
+      case 'sutsilv':
+        this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-sutsilv');
+        break;
+      default:
+        return;
+    }
+
+    this.onDictLoaded();
   }
 
   private async loadTestingFile() {
@@ -174,31 +204,5 @@ export class SpellcheckerComponent implements OnInit {
     }, error => {
       console.error(error);
     });
-  }
-
-  private loadVersion() {
-    this.http.get(`assets/hunspell/rm-${this.idiom}/rm-${this.idiom}_version.txt`, {responseType: 'text'}).subscribe(version => {
-      this.version = version;
-    });
-  }
-
-  private async loadDictionary() {
-    this.hunspellFactory = await loadModule();
-
-    const aff = await fetch(`assets/hunspell/rm-${this.idiom}/rm-${this.idiom}.aff`);
-    const affBuffer = new Uint8Array(await aff.arrayBuffer());
-    this.affFile = this.hunspellFactory.mountBuffer(affBuffer, 'rm-${this.idiom}.aff');
-
-    const dic = await fetch(`assets/hunspell/rm-${this.idiom}/rm-${this.idiom}.dic`);
-    const dicBuffer = new Uint8Array(await dic.arrayBuffer());
-    this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, `rm-${this.idiom}.dic`);
-
-    this.hunspell = this.hunspellFactory.create(this.affFile, this.dictFile);
-    this.onDictLoaded();
-  }
-
-  private async unloadDictionary() {
-    this.hunspellFactory?.unmount(this.affFile!);
-    this.hunspellFactory?.unmount(this.dictFile!);
   }
 }
