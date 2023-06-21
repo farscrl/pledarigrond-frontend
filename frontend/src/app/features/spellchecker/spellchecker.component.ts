@@ -117,13 +117,10 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
 
   // from IProofreaderInterface
   proofreadText(sentence: string): Promise<ITextWithPosition[]> {
-    console.log(sentence);
     if (!this.proofreader) {
       return Promise.resolve([]);
     }
-    const a = this.proofreader.proofreadText(sentence);
-    console.log(a);
-    return a;
+    return this.proofreader.proofreadText(sentence);
   }
 
   // IProofreaderInterface

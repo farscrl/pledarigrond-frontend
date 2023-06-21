@@ -90,7 +90,7 @@ export class SearchContentComponent implements OnInit, OnDestroy {
         urlSerarchCriteria.searchMethod === this.searchCriteria.searchMethod &&
         urlSerarchCriteria.highlight === this.searchCriteria.highlight &&
         urlSerarchCriteria.suggestions === this.searchCriteria.suggestions) {
-          console.log('search criteria identic -> do not search again');
+          // search criteria identic -> do not search again
           return;
         }
       if (urlSerarchCriteria.searchPhrase && urlSerarchCriteria.searchPhrase !== "") {
