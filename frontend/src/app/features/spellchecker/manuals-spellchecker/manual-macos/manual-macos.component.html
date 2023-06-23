@@ -59,7 +59,66 @@
 </div>
 
 <div class="modal-content" *ngIf="language === 'sutsilvan'">
-  macos sutsilvan
+  <h1>Instalaziùn da la controla ortografica an macOS</h1>
+
+  <p>Igls programs da corectura ortografica rumàntscha sabasan sen «Hunspell» a funcziuneschan ear sen igl sistem
+    operativ macOS. Sch'igl pledari rumàntsch vean instalo directameing an macOS, stat la funcziùn da corectura a
+    disposiziùn an numerus programs dad Apple, trànter oter an Mail a TextEdit. L'instalaziùn sto dantànt suczeder
+    an moda manuala.</p>
+
+  <p>Cugls suandànts pass san ign instalar la corectura ortografica sutsilvana segl sistem macOS:</p>
+
+  <ol>
+    <li>
+      <em>Telecargear la suandànta datoteca segl computer:</em><br>
+
+      <button (click)="downloadHunspell.emit()">rm-sutsilv.zip</button><br>
+    </li>
+
+    <li>
+      <em>Decumprimer igl ZIP</em><br>
+      <p>
+        Cun clicar duas geadas sen la datoteca vean extratg egn urdanader ca cuntegna quater datotecas.<br>
+      </p>
+
+      <img src="assets/img/manuals/manual_macos_2.png">
+
+      <p>
+        - egna datoteca cugl pledari<br>
+        - egna datoteca cun reglas (gramaticalas)<br>
+        - egna datoteca cun la lizenza<br>
+        - egna datoteca ca inditgescha la versiùn
+      </p>
+    </li>
+
+    <li>
+      <em>Earver igl urdanader ~/Library/Spelling agl Finder</em>
+
+      <p>Arved par que intent igl Finder near x egn urdanader ad aczeded a «Gehe zu» a «Gehe zum Ordner».</p>
+
+      <img src="assets/img/manuals/manual_macos_3a.png">
+
+      <p>Nad alura a «~/Library/Spelling» (sainza virguletas!) a struclad sen «Öffnen».</p>
+
+      <img src="assets/img/manuals/manual_macos_3b.png">
+    </li>
+
+    <li>
+      <em>Cuptgear las quater datotecas agl urdanader c‘â saviert.</em>
+
+      <p></p>
+
+      <img src="assets/img/manuals/manual_macos_4.png">
+    </li>
+
+    <li>
+      <em>Sarar tut las faneastras a meter ad ir igl sistem.</em>
+
+      <p>Ussa stat la corectura da l'ortografeia a disposiziùn sch'ign tschearna «Rumantsch (Library)».</p>
+
+      <img src="assets/img/manuals/manual_macos_5.png">
+    </li>
+  </ol>
 </div>
 
 <div class="modal-content" *ngIf="language === 'de'">

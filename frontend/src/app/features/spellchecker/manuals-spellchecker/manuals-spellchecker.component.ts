@@ -33,5 +33,5 @@ export class ManualsSpellcheckerComponent extends SimpleModalComponent<{manualTy
 }
 
 export type ManualType = 'macos' | 'hunspell' | 'word';
-export type ManualLanguage = 'de' | 'surmiran' | 'sutsilvan';
+export type ManualLanguage = 'de' | 'surmiran' | 'sutsilvan' | 'rumantschgrischun';
 export type HunspellLanguage = 'rm-surmiran' | 'rm-sutsilv';

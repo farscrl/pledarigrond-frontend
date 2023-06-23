@@ -188,7 +188,7 @@
   },
   "spellchecker": {
     "back": "turnar agl Pledari Grond",
-    "credits": "La controla ortografica rumàntscha e egn project da la | Pro Svizra Rumantscha | realisada an colavuraziùn cun la | Lia Rumantscha | a sustanieu digl Ufezi federal da cultura.",
+    "credits": "La controla ortografica rumàntscha e egn project da la | Pro Svizra Rumantscha | realisada an colavuraziùn cun la | Lia Rumantscha |. Igl Ufezi federal da cultura ed igl cantùn Grischùn sustegnan finanzialmeing igl project.",
     "editor": {
       "bold": "grass",
       "bulletList": "glista betg ordinada",
@@ -214,9 +214,9 @@
       "other": "oter",
       "title": "Instalar sen igl computer"
     },
-    "instructions": "Par schar cureger egn text pudez Vus semplameing cuptgear aint el agl formular qua dasperas a clicar sen igls pleds sutlingieus par vaser las propostas da corectura.",
+    "instructions": "Par schar cureger egn text savez semplameing cuptgear el agl formular qua dasperas a clicar sen igls pleds sutastrischieus par ver las propostas da corectura.",
     "loading": "Las datas vignan cargeadas - spitgear par plascher egn mumaint",
-    "privacy": "La protecziùn da las Vossas datas e garantida: Igl text ancastro bandùna betg Voss computer.",
+    "privacy": "La protecziùn da las Vossas datas e garantida: igl text ancastro bandùna betg igl Voss computer.",
     "sent_suggestion": "Proponieu da la Lia Rumantscha dad aschuntar «{{ word }}» sco pled valevel agl dicziunari da la controla ortografica."
   }
 }
