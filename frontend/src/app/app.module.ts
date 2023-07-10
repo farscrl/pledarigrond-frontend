@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -63,6 +63,7 @@ import { ManualsSpellcheckerComponent } from './features/spellchecker/manuals-sp
 import { ManualMacosComponent } from './features/spellchecker/manuals-spellchecker/manual-macos/manual-macos.component';
 import { ManualHunspellComponent } from './features/spellchecker/manuals-spellchecker/manual-hunspell/manual-hunspell.component';
 import { ManualWordComponent } from './features/spellchecker/manuals-spellchecker/manual-word/manual-word.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -165,6 +166,12 @@ export function HttpLoaderFactory(http: HttpClient) {
       trackerUrl: environment.matomoTrackingUrl,
     }),
     NgxMatomoRouterModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     UserLoggedInGuard,
