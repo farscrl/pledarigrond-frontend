@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ManualLanguage } from "../manuals-spellchecker.component";
+import { HunspellLanguage, ManualLanguage } from "../manuals-spellchecker.component";
 
 @Component({
   selector: 'app-manual-hunspell',
@@ -9,6 +9,9 @@ import { ManualLanguage } from "../manuals-spellchecker.component";
 export class ManualHunspellComponent {
   @Input()
   language?: ManualLanguage;
+
+  @Input()
+  hunspellLanguage?: HunspellLanguage;
 
   @Output()
   downloadHunspell = new EventEmitter<void>();
