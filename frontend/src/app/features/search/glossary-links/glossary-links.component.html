@@ -1,5 +1,5 @@
 <div id="ext_links_container">
-  <a [routerLink]="'/' + idiom + '/spellchecker'" *ngIf="idiom === 'surmiran'" class="spellchecker">{{ 'promo.spellchecker' | translate }}</a>
+  <a [routerLink]="'/' + idiom + '/spellchecker'" *ngIf="showSpellchecker()" class="spellchecker">{{ 'promo.spellchecker' | translate }}</a>
   <a (click)="openLinksModal('dictionaries')">{{ 'promo.other' | translate }}</a>
   <a (click)="openLinksModal('glossaries')">{{ 'promo.glossary' | translate }}</a>
 </div>
