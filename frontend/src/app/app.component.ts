@@ -27,11 +27,9 @@ export class AppComponent {
       }))).subscribe((event) => {
       console.log('current version: ', event.current);
       console.log('available version: ', event.available);
-      if (confirm('Software update avaialble.')) {
-        this.swUpdate.activateUpdate().then(() => {
-          window.location.reload()
-        });
-      }
+      this.swUpdate.activateUpdate().then(() => {
+        window.location.reload()
+      });
     });
   }
 }
