@@ -61,9 +61,10 @@
   "footer": {
     "help": "ageid",
     "info": "infos",
-    "grammatica": "grammatica",
+    "grammar": "grammatica",
     "suggest": "far ena nova proposta",
-    "maalr": "sustignia da Maalr"
+    "export": "export",
+    "privacy": "protecziun da datas"
   },
   "login": {
     "header": "annunztga",

@@ -61,9 +61,10 @@
   "footer": {
     "help": "agid",
     "info": "infos",
-    "grammatica": "grammatica",
+    "grammar": "grammatica",
     "suggest": "far ina nova proposta",
-    "maalr": "sustegnì da Maalr"
+    "privacy": "protecziun da datas",
+    "export": "export"
   },
   "login": {
     "header": "annunzia",

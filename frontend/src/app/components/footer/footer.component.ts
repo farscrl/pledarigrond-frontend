@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Idiom, SelectedLanguageService } from 'src/app/services/selected-language.service';
+import {FrontendLanguage, Idiom, SelectedLanguageService} from 'src/app/services/selected-language.service';
 import { SimpleModalService } from "ngx-simple-modal";
 import { SuggestionComponent } from './suggestion/suggestion.component';
 import { ExportComponent } from 'src/app/features/export/export.component';
@@ -15,8 +15,10 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   idiom: Idiom = 'rumgr';
   idiomLong: string = 'rumantschgrischun';
+  frontEndLanguage: FrontendLanguage = 'rm';
 
   private languageSubscription?: Subscription;
+  private frontendLanguageSubscription?: Subscription;
 
   constructor(private selectedLanguageService: SelectedLanguageService, private simpleModalService: SimpleModalService, public languageUtils: LanguageUtils) { }
 
@@ -25,11 +27,17 @@ export class FooterComponent implements OnInit, OnDestroy {
       this.idiom = value;
       this.idiomLong = this.selectedLanguageService.getSelectedLanguageUrlSegment();
     });
+    this.frontendLanguageSubscription = this.selectedLanguageService.getFrontendLanguageObservable().subscribe(value => {
+      this.frontEndLanguage = value;
+    });
   }
 
   ngOnDestroy(): void {
       if (this.languageSubscription) {
         this.languageSubscription.unsubscribe();
+      }
+      if (this.frontendLanguageSubscription) {
+        this.frontendLanguageSubscription.unsubscribe();
       }
   }
 

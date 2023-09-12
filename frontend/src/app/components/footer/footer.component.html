@@ -1,22 +1,28 @@
 <div id="navi_bottom">
 	<ul id="navi_bottom_menu">
 		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
-      <a (click)="openSuggestionModal()" style="cursor: pointer;">far ina nova proposta</a>
+      <a (click)="openSuggestionModal()" style="cursor: pointer;">{{ 'footer.suggest' | translate }}</a>
     </li>
 		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
-      <a [routerLink]="'/' + idiomLong + '/help'">agid</a>
+      <a [routerLink]="'/' + idiomLong + '/help'">{{ 'footer.help' | translate }}</a>
     </li>
 		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
-      <a [routerLink]="'/' + idiomLong + '/info'">infos</a>
+      <a [routerLink]="'/' + idiomLong + '/info'">{{ 'footer.info' | translate }}</a>
     </li>
 		<li *ngIf="idiom === 'rumgr'">
-      <a href="/assets/pdf/grammatica_RG.pdf" id="grammatica" target="_blank" class="hide-mobile">grammatica</a>
+      <a href="/assets/pdf/grammatica_RG.pdf" id="grammatica" target="_blank" class="hide-mobile">{{ 'footer.grammar' | translate }}</a>
+    </li>
+    <li *ngIf="frontEndLanguage === 'de'">
+      <a href="https://www.liarumantscha.ch/de/datenschutzerklaerung" target="_blank">{{ 'footer.privacy' | translate }}</a>
+    </li>
+    <li *ngIf="frontEndLanguage !== 'de'">
+      <a href="https://www.liarumantscha.ch/rm/decleraziun-davart-la-protecziun-da-datas" target="_blank">{{ 'footer.privacy' | translate }}</a>
     </li>
 		<li>
       <a href="http://www.liarumantscha.ch" target="_blank">© Lia Rumantscha 1980 – {{ currentYear }}</a>
     </li>
 		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
-      <a (click)="openDownloadModal()" style="cursor: pointer;">export</a>
+      <a (click)="openDownloadModal()" style="cursor: pointer;">{{ 'footer.export' | translate }}</a>
     </li>
 	</ul>
 </div>

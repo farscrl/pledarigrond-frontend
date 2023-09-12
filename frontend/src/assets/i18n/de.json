@@ -61,9 +61,10 @@
   "footer": {
     "help": "Hilfe",
     "info": "Info",
-    "grammatica": "Grammatik",
+    "grammar": "Grammatik",
     "suggest": "Neuer Eintrag",
-    "maalr": "Provided by Maalr"
+    "export": "Exportieren",
+    "privacy": "Datenschutz"
   },
   "login": {
     "header": "Anmeldung",
