@@ -45,7 +45,6 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
   proofreader?: Proofreader.Proofreader;
 
   constructor(
-    private http: HttpClient,
     private selectedLanguageService: SelectedLanguageService,
     private translateService: TranslateService,
     private tracker: MatomoTracker,
@@ -99,7 +98,7 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
         SpellcheckerExtension.configure({
           proofreader: this,
           uiStrings: {
-            noSuggestions: 'Catto nignas propostas'
+            noSuggestions: this.translateService.instant('spellchecker.no_suggestion'),
           },
           onShowSuggestionsEvent: this.updateSuggestionBox.bind(this)
         })
@@ -168,7 +167,7 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
   private updateSuggestionBox(word: string) {
     const suggestionText = document.createElement('span');
     suggestionText.className = 'suggestion-text';
-    suggestionText.innerText = 'Trametter quest pled a la Lia Rumantscha sco proposta';
+    suggestionText.innerText = this.translateService.instant('spellchecker.send_suggestion');
 
     const suggestionLink = document.createElement("div");
     suggestionLink.className = 'suggestion-link';
