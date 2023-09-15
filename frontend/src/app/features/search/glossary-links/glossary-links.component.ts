@@ -27,7 +27,7 @@ export class GlossaryLinksComponent implements OnInit {
   }
 
   showSpellchecker() {
-      return this.idiom === 'surmiran' || this.idiom === 'sutsilvan';
+      return this.idiom !== 'sursilvan';
   }
 
   ngOnDestroy(): void {

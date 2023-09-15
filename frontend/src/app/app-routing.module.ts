@@ -22,7 +22,11 @@ const routes: Routes = [
       {
         path: '',
         component: PuterPlaceholderComponent
-      }
+      },
+      {
+        path: 'spellchecker',
+        component: SpellcheckerComponent,
+      },
     ]
   },
   {
@@ -31,6 +35,10 @@ const routes: Routes = [
       {
         path: '',
         component: SearchComponent
+      },
+      {
+        path: 'spellchecker',
+        component: SpellcheckerComponent,
       },
       {
         path: 'login',
@@ -150,7 +158,11 @@ const routes: Routes = [
       {
         path: '',
         component: ValladerPlaceholderComponent
-      }
+      },
+      {
+        path: 'spellchecker',
+        component: SpellcheckerComponent,
+      },
     ]
   },
   {

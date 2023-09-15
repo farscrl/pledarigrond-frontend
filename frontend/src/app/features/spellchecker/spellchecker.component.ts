@@ -138,11 +138,20 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
 
   private async loadProofreader() {
     switch (this.idiom) {
+      case 'puter':
+        this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-puter');
+        break;
+      case 'rumgr':
+        this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-rumgr');
+        break;
       case 'surmiran':
         this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-surmiran');
         break;
       case 'sutsilv':
         this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-sutsilv');
+        break;
+      case 'vallader':
+        this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-vallader');
         break;
       default:
         return;
