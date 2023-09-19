@@ -4,7 +4,7 @@ import { LemmaVersion } from 'src/app/models/lemma-version';
 import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
-import { SimpleModalService } from "ngx-simple-modal";
+import { NgxModalService } from "ngx-modalview";
 import { VerbsModalComponent } from '../verbs-modal/verbs-modal.component';
 import { SuggestModificationComponent } from '../suggest-modification/suggest-modification.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -34,7 +34,7 @@ export class SearchContentComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private selectedLanguageService: SelectedLanguageService,
     private translateService: TranslateService,
-    private simpleModalService: SimpleModalService,
+    private modalService: NgxModalService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private tracker: MatomoTracker,
@@ -120,12 +120,12 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   }
 
   modify(version: LemmaVersion) {
-    this.simpleModalService.addModal(SuggestModificationComponent, { lemmaVersion: version })
+    this.modalService.addModal(SuggestModificationComponent, { lemmaVersion: version })
       .subscribe();
   }
 
   showVerbsModal(version: LemmaVersion) {
-    this.simpleModalService.addModal(VerbsModalComponent, { lemmaVersion: version })
+    this.modalService.addModal(VerbsModalComponent, { lemmaVersion: version })
       .subscribe();
   }
 
@@ -218,7 +218,7 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   }
 
   openSuggestionModal() {
-    this.simpleModalService.addModal(SuggestionComponent, null)
+    this.modalService.addModal(SuggestionComponent, null)
       .subscribe();
   }
 

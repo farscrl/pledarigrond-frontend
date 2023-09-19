@@ -3,14 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
-import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
+import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent extends SimpleModalComponent<null, null> implements OnInit {
+export class RegistrationComponent extends NgxModalComponent<null, null> implements OnInit {
 
   email = '';
   password = '';
@@ -22,7 +22,7 @@ export class RegistrationComponent extends SimpleModalComponent<null, null> impl
     private router: Router,
     private route: ActivatedRoute,
     private translateService: TranslateService,
-    private simpleModalService: SimpleModalService,
+    private modalService: NgxModalService,
   ) {
     super();
   }
@@ -79,7 +79,7 @@ export class RegistrationComponent extends SimpleModalComponent<null, null> impl
 
   cancel() {
     this.reset();
-    this.simpleModalService.removeAll();
+    this.modalService.removeAll();
   }
 
   private redirect() {

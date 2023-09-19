@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OtherResourcesComponent, OtherResourcesType } from '../../other-resources/other-resources.component';
-import { SimpleModalService } from "ngx-simple-modal";
+import { NgxModalService } from "ngx-modalview";
 import { SelectedLanguageService } from "../../../services/selected-language.service";
 import { Subscription } from "rxjs";
 
@@ -16,7 +16,7 @@ export class GlossaryLinksComponent implements OnInit {
   private idiomSubscription?: Subscription;
 
     constructor(
-    private simpleModalService: SimpleModalService,
+    private modalService: NgxModalService,
     private selectedLanguageService: SelectedLanguageService,
   ) { }
 
@@ -37,7 +37,7 @@ export class GlossaryLinksComponent implements OnInit {
   }
 
   openLinksModal(type: OtherResourcesType) {
-    this.simpleModalService.addModal(OtherResourcesComponent, {resourceType: type})
+    this.modalService.addModal(OtherResourcesComponent, {resourceType: type})
       .subscribe();
   }
 }

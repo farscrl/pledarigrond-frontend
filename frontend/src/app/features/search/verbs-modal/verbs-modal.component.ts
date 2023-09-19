@@ -1,18 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LemmaVersion } from 'src/app/models/lemma-version';
-import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
+import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 
 @Component({
   selector: 'app-verbs-modal',
   templateUrl: './verbs-modal.component.html',
   styleUrls: ['./verbs-modal.component.scss']
 })
-export class VerbsModalComponent extends SimpleModalComponent<{lemmaVersion?: LemmaVersion}, null> implements OnInit {
+export class VerbsModalComponent extends NgxModalComponent<{lemmaVersion?: LemmaVersion}, null> implements OnInit {
 
   @Input()
   lemmaVersion?: LemmaVersion;
 
-  constructor(private simpleModalService: SimpleModalService) {
+  constructor(private modalService: NgxModalService) {
     super();
   }
 
@@ -20,6 +20,6 @@ export class VerbsModalComponent extends SimpleModalComponent<{lemmaVersion?: Le
   }
 
   closeOverlay() {
-    this.simpleModalService.removeAll();
+    this.modalService.removeAll();
   }
 }

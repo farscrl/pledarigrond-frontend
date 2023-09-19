@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {FrontendLanguage, Idiom, SelectedLanguageService} from 'src/app/services/selected-language.service';
-import { SimpleModalService } from "ngx-simple-modal";
+import { NgxModalService } from "ngx-modalview";
 import { SuggestionComponent } from './suggestion/suggestion.component';
 import { ExportComponent } from 'src/app/features/export/export.component';
 import { LanguageUtils } from 'src/app/utils/language-utils';
@@ -20,7 +20,7 @@ export class FooterComponent implements OnInit, OnDestroy {
   private languageSubscription?: Subscription;
   private frontendLanguageSubscription?: Subscription;
 
-  constructor(private selectedLanguageService: SelectedLanguageService, private simpleModalService: SimpleModalService, public languageUtils: LanguageUtils) { }
+  constructor(private selectedLanguageService: SelectedLanguageService, private modalService: NgxModalService, public languageUtils: LanguageUtils) { }
 
   ngOnInit(): void {
     this.languageSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(value => {
@@ -46,12 +46,12 @@ export class FooterComponent implements OnInit, OnDestroy {
   }
 
   openSuggestionModal() {
-    this.simpleModalService.addModal(SuggestionComponent, null)
+    this.modalService.addModal(SuggestionComponent, null)
       .subscribe();
   }
 
   openDownloadModal() {
-    this.simpleModalService.addModal(ExportComponent, null)
+    this.modalService.addModal(ExportComponent, null)
       .subscribe();
   }
 }

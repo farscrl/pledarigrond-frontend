@@ -2,7 +2,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { SimpleModalModule, defaultSimpleModalOptions } from 'ngx-simple-modal';
+import { NgxModalView, defaultNgxModalOptions } from 'ngx-modalview';
 import { NgxTiptapModule } from 'ngx-tiptap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -146,10 +146,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       defaultLanguage: 'rm-rumgr'
     }),
-    SimpleModalModule.forRoot(
+    NgxModalView.forRoot(
       {container: 'modal-container'},
       {
-        ...defaultSimpleModalOptions,
+        ...defaultNgxModalOptions,
         ...{
           closeOnEscape: true,
           closeOnClickOutside: true,

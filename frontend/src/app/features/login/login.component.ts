@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
-import { SimpleModalService } from "ngx-simple-modal";
+import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { RegistrationComponent } from './registration/registration.component';
 
 @Component({
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private simpleModalService: SimpleModalService,
+    private modalService: NgxModalService,
   ) { }
 
   ngOnInit(): void {
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
   }
 
   openRegistrationModal() {
-    this.simpleModalService.addModal(RegistrationComponent, null)
+    this.modalService.addModal(RegistrationComponent, null)
       .subscribe();
   }
 }

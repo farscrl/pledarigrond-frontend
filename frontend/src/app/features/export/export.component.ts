@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
+import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { AuthService } from 'src/app/services/auth.service';
 import { ExportService } from 'src/app/services/export.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
@@ -11,12 +11,12 @@ import { MatomoTracker } from "@ngx-matomo/tracker";
   templateUrl: './export.component.html',
   styleUrls: ['./export.component.scss']
 })
-export class ExportComponent extends SimpleModalComponent<null, null>  implements OnInit {
+export class ExportComponent extends NgxModalComponent<null, null>  implements OnInit {
 
   constructor(
     public authService: AuthService,
     private exportService: ExportService,
-    private simpleModalService: SimpleModalService,
+    private modalService: NgxModalService,
     private selectedLanguageService: SelectedLanguageService,
     private router: Router,
     private tracker: MatomoTracker,
@@ -28,7 +28,7 @@ export class ExportComponent extends SimpleModalComponent<null, null>  implement
   }
 
   closeOverlay() {
-    this.simpleModalService.removeAll();
+    this.modalService.removeAll();
   }
 
   export() {

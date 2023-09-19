@@ -12,7 +12,7 @@ import { MatomoTracker } from "@ngx-matomo/tracker";
 import { ModificationService } from "../../services/modification.service";
 import { LemmaVersion } from "../../models/lemma-version";
 import { AuthService } from "../../services/auth.service";
-import { SimpleModalService } from "ngx-simple-modal";
+import { NgxModalService } from "ngx-modalview";
 import {
   HunspellLanguage,
   ManualsSpellcheckerComponent,
@@ -50,7 +50,7 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
     private tracker: MatomoTracker,
     private modificationService: ModificationService,
     private authService: AuthService,
-    private simpleModalService: SimpleModalService,
+    private modalService: NgxModalService,
     private route: ActivatedRoute,
   ) { }
 
@@ -111,7 +111,7 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
   }
 
   openManual(manualType: ManualType, language: string, hunspellLanguage: HunspellLanguage) {
-    this.simpleModalService.addModal(ManualsSpellcheckerComponent, { manualType: manualType, language: language, hunspellLanguage: hunspellLanguage}).subscribe();
+    this.modalService.addModal(ManualsSpellcheckerComponent, { manualType: manualType, language: language, hunspellLanguage: hunspellLanguage}).subscribe();
   }
 
   // from IProofreaderInterface

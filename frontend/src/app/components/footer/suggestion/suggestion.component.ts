@@ -3,7 +3,7 @@ import { LemmaVersion } from 'src/app/models/lemma-version';
 import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
+import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { MatomoTracker } from "@ngx-matomo/tracker";
 
 @Component({
@@ -11,7 +11,7 @@ import { MatomoTracker } from "@ngx-matomo/tracker";
   templateUrl: './suggestion.component.html',
   styleUrls: ['./suggestion.component.scss']
 })
-export class SuggestionComponent extends SimpleModalComponent<null, null> implements OnInit {
+export class SuggestionComponent extends NgxModalComponent<null, null> implements OnInit {
 
   DStichwort: string = '';
   RStichwort: string = '';
@@ -26,7 +26,7 @@ export class SuggestionComponent extends SimpleModalComponent<null, null> implem
     private modificationService: ModificationService,
     private selectedLanguageService: SelectedLanguageService,
     private authService: AuthService,
-    private simpleModalService: SimpleModalService,
+    private modalService: NgxModalService,
     private tracker: MatomoTracker,
   ) {
     super();
@@ -37,7 +37,7 @@ export class SuggestionComponent extends SimpleModalComponent<null, null> implem
   }
 
   cancel() {
-    this.simpleModalService.removeAll();
+    this.modalService.removeAll();
   }
 
   reset() {
