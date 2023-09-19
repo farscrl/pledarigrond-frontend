@@ -1,7 +1,4 @@
 <div class="content">
-  <div class="backlink">
-    <a [routerLink]="'/' + idiom">← {{ 'spellchecker.back' | translate }}</a>
-  </div>
   <div class="main">
     <div class="spellchecker" spellcheck="false">
       <div *ngIf="isLoadingData" class="loading-notification">

@@ -1,28 +1,38 @@
-<div id="dic_navi_head">
-	<div class="dict_navi_item" [class.selected]="idiom === 'puter'"><a routerLink="/puter">
+<div class="dic_navi_head">
+	<a class="dict_navi_item" [class.selected]="idiom === 'puter'" routerLink="/puter">
     <span class="show-mobile">PT</span>
     <span class="hide-mobile">{{ 'languages.puter' | translate }}</span>
-  </a></div>
-	<div class="dict_navi_item" [class.selected]="idiom === 'rumgr'"><a routerLink="/rumantschgrischun">
+  </a>
+	<a class="dict_navi_item" [class.selected]="idiom === 'rumgr'" routerLink="/rumantschgrischun">
     <span class="show-mobile">RG</span>
     <span class="hide-mobile">{{ 'languages.rumantschgrischun' | translate }}</span>
-  </a></div>
-	<div class="dict_navi_item" [class.selected]="idiom === 'surmiran'"><a routerLink="/surmiran">
+  </a>
+	<a class="dict_navi_item" [class.selected]="idiom === 'surmiran'" routerLink="/surmiran">
     <span class="show-mobile">SM</span>
     <span class="hide-mobile">{{ 'languages.surmiran' | translate }}</span>
-  </a></div>
-	<div class="dict_navi_item" [class.selected]="idiom === 'sursilv'"><a routerLink="/sursilvan">
+  </a>
+	<a class="dict_navi_item" [class.selected]="idiom === 'sursilv'" routerLink="/sursilvan">
     <span class="show-mobile">SR</span>
     <span class="hide-mobile">{{ 'languages.sursilvan' | translate }}</span>
-  </a></div>
-	<div class="dict_navi_item" [class.selected]="idiom === 'sutsilv'"><a routerLink="/sutsilvan">
+  </a>
+	<a class="dict_navi_item" [class.selected]="idiom === 'sutsilv'" routerLink="/sutsilvan">
     <span class="show-mobile">ST</span>
     <span class="hide-mobile">{{ 'languages.sutsilvan' | translate }}</span>
-  </a></div>
-	<div class="dict_navi_item" [class.selected]="idiom === 'vallader'"><a routerLink="/vallader">
+  </a>
+	<a class="dict_navi_item" [class.selected]="idiom === 'vallader'" routerLink="/vallader">
     <span class="show-mobile">VL</span>
     <span class="hide-mobile">{{ 'languages.vallader' | translate }}</span>
-  </a></div>
+  </a>
+</div>
+<div class="dic_navi_head secondary" *ngIf="idiom !== 'sursilv'">
+  <a class="dict_navi_item" [class.selected]="!this.router.url.includes('spellchecker')" [routerLink]="'/' + urlSegment">
+    <span class="show-mobile">PLEDARI</span>
+    <span class="hide-mobile">{{ 'navi.pledari' | translate }}</span>
+  </a>
+  <a class="dict_navi_item" [class.selected]="this.router.url.includes('spellchecker')" [routerLink]="'/' + urlSegment + '/spellchecker'">
+    <span class="show-mobile">CORRECTURA</span>
+    <span class="hide-mobile">{{ 'navi.spellchecker' | translate }}</span>
+  </a>
 </div>
 
 <div id="dict_descript">

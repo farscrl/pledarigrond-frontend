@@ -26,10 +26,6 @@ export class GlossaryLinksComponent implements OnInit {
     });
   }
 
-  showSpellchecker() {
-      return this.idiom !== 'sursilvan';
-  }
-
   ngOnDestroy(): void {
     if (this.idiomSubscription) {
       this.idiomSubscription.unsubscribe();
