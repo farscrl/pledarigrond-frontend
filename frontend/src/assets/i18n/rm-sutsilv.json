@@ -219,5 +219,9 @@
     "loading": "Las datas vignan cargeadas - spitgear par plascher egn mumaint",
     "privacy": "La protecziùn da las Vossas datas e garantida: igl text ancastro bandùna betg igl Voss computer.",
     "sent_suggestion": "Proponieu da la Lia Rumantscha dad aschuntar «{{ word }}» sco pled valevel agl dicziunari da la controla ortografica."
+  },
+  "navi": {
+    "pledari": "pledari",
+    "spellchecker": "program da correctura"
   }
 }

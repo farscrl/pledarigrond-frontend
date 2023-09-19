@@ -218,6 +218,12 @@
       "redo": "wiederholen",
       "selectAll": "alles markieren",
       "copy": "kopieren"
-    }
+    },
+    "no_suggestion": "Keine Vorschläge gefunden",
+    "send_suggestion": "Dieses Wort der Lia Rumantscha als Vorschlag senden"
+  },
+  "navi": {
+    "pledari": "Wörterbuch",
+    "spellchecker": "Rechtschreibekorrektur"
   }
 }
