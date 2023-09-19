@@ -18,8 +18,10 @@ export class SpellcheckerMenubarComponent implements OnInit {
 
   copy() {
     if (this.editor) {
-      const blobInput = new Blob([this.editor.getHTML()], {type: 'text/html'});
-      const clipboardItemInput = new ClipboardItem({'text/html' : blobInput});
+      const clipboardItemInput = new ClipboardItem({
+        'text/plain': new Blob([this.editor.getText()], {type: 'text/plain'}),
+        'text/html' : new Blob([this.editor.getHTML()], {type: 'text/html'})
+      });
       navigator.clipboard.write([clipboardItemInput]);
     }
   }
