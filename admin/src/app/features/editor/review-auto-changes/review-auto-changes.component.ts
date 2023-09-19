@@ -190,7 +190,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       nzMaskClosable: false,
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lexEntryId: lemma.lexEntryId,
         directlyLoadDetailView: true,
       },

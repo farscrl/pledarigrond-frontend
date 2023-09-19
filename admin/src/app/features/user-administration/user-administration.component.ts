@@ -45,7 +45,7 @@ export class UserAdministrationComponent implements OnInit {
       nzClosable: false,
       nzMaskClosable: false,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         email: email,
       },
       nzOnOk: () => this.loadUsers(),

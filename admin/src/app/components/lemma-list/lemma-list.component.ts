@@ -83,7 +83,7 @@ export class LemmaListComponent implements OnInit {
       nzContent: ExportComponent,
       nzClosable: false,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         filter: this.filter,
       },
     });
@@ -165,7 +165,7 @@ export class LemmaListComponent implements OnInit {
       nzOkDanger: true,
       nzCancelText: this.translateService.instant('lexicon.lemma.delete.cancel'),
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
       },
       nzOnOk: () => this.dropEntryConfirmed(entry.id!),
       nzOnCancel: () => {}
@@ -180,7 +180,7 @@ export class LemmaListComponent implements OnInit {
       nzOkDanger: true,
       nzCancelText: this.translateService.instant('lexicon.lemma.reject.cancel'),
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
       },
       nzOnOk: () => this.dropRejectConfirmed(entry!),
       nzOnCancel: () => {}
@@ -196,7 +196,7 @@ export class LemmaListComponent implements OnInit {
       nzClosable: false,
       nzOkDanger: true,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
       },
       nzOnOk: () => this.rejectSelectedItemsConfirmed(),
       nzOnCancel: () => {}
@@ -236,7 +236,7 @@ export class LemmaListComponent implements OnInit {
       nzMaskClosable: false,
       nzWidth: 500,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lexEntry: lexEntry,
         dictionaryLanguage: dictionaryLanguage,
       },
@@ -280,7 +280,7 @@ export class LemmaListComponent implements OnInit {
       nzWidth: 1100,
       nzFooter: null,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lexEntry: lexEntry,
       },
     });
@@ -294,7 +294,7 @@ export class LemmaListComponent implements OnInit {
       nzMaskClosable: false,
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lexEntryId: entryId,
       },
       nzOnOk: () => this.reloadCurrentPage()

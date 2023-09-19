@@ -43,7 +43,7 @@ export class NameAdministrationComponent implements OnInit {
       nzClosable: false,
       nzMaskClosable: false,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         id: id,
       },
       nzOnOk: () => this.loadPage(this.pageNumber, this.pageSize),

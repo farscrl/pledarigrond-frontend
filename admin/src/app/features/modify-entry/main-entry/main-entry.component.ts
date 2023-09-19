@@ -119,7 +119,7 @@ export class MainEntryComponent implements OnInit {
       nzMaskClosable: false,
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lemmaVersion: this.lemmaVersion,
       },
     });
@@ -150,7 +150,7 @@ export class MainEntryComponent implements OnInit {
       nzMaskClosable: false,
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lemmaVersion: this.lemmaVersion,
       },
     });
@@ -181,7 +181,7 @@ export class MainEntryComponent implements OnInit {
       nzMaskClosable: false,
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lemmaVersion: this.lemmaVersion,
       },
     });
@@ -212,7 +212,7 @@ export class MainEntryComponent implements OnInit {
       nzMaskClosable: false,
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lemmaVersion: this.lemmaVersion,
       },
     });

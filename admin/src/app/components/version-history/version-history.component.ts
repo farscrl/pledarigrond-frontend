@@ -58,7 +58,7 @@ export class VersionHistoryComponent implements OnInit {
       nzClosable: false,
       nzOkDanger: true,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
       },
       nzOnOk: () => this.dropOutdatedHistoryConfirmed(),
       nzOnCancel: () => {}
@@ -95,7 +95,7 @@ export class VersionHistoryComponent implements OnInit {
       nzWidth: 1100,
       nzFooter: null,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
+      nzData: {
         lexEntry: lexEntry,
       },
     });

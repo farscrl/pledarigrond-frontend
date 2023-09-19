@@ -66,7 +66,7 @@ export class DbAdministrationComponent implements OnInit {
       nzClosable: false,
       nzMaskClosable: false,
       nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {},
+      nzData: {},
     });
 
     modal.afterClose.subscribe(() => {
