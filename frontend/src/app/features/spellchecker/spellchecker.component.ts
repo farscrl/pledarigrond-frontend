@@ -197,7 +197,7 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
     lemmaVersion.lemmaValues.contact_email = this.authService.getUsername();
 
     this.tracker.trackEvent('PROPOSTA-SPELLCHECKER', 'proposta spellcheker ' + this.selectedLanguageService.getSelectedLanguageUrlSegment());
-    this.modificationService.create(this.selectedLanguageService.getSelectedLanguageUrlSegment(), lemmaVersion).subscribe(data => {
+    this.modificationService.spellcheckerSuggestion(this.selectedLanguageService.getSelectedLanguageUrlSegment(), lemmaVersion).subscribe(data => {
       this.sentSuggestion = true;
       this.sentSuggestionWord = word;
 
