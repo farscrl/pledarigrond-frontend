@@ -10,5 +10,40 @@
   "navi": {
     "pledari": "pledari",
     "spellchecker": "program da correctura"
+  },
+  "spellchecker": {
+    "back": "turner al Pledari Grond",
+    "credits": "La controlla ortografica rumauntscha es ün proget da la |Pro Svizra Rumantscha| realiso in collavuraziun culla |Lia Rumantscha|. L'Uffizi federel da cultura ed il chantun Grischun sustegnan finanzialmaing il proget.",
+    "editor": {
+      "bold": "grass",
+      "bulletList": "glista na ordineda",
+      "clear_format": "allontaner formattaziuns",
+      "copy": "copcher",
+      "hard_break": "nouva lingia",
+      "heading1": "titul 1",
+      "heading2": "titul 2",
+      "highlight": "marker",
+      "italic": "cursiv",
+      "orderedList": "glista ordineda",
+      "paragraph": "paragraf",
+      "redo": "repeter",
+      "selectAll": "tscherner tuot",
+      "strike": "stricher",
+      "underline": "suottastricher",
+      "undo": "revocher",
+      "version": "versiun"
+    },
+    "install": {
+      "office": "Microsoft Office (pü tard)",
+      "other": "oter",
+      "title": "Installer sül computer",
+      "word": "Microsoft Word"
+    },
+    "instructions": "Per lascher correger ün text il po'L:a simplamaing copcher i'l formular cò daspera e clicker süls pleds suottastrichos per guarder las propostas da correctura.",
+    "loading": "Las datas vegnan chargedas - spetter per plaschair ün mumaint",
+    "no_suggestion": "Chatto üngünas propostas",
+    "privacy": "La protecziun da Sias datas es garantida: Il text inseri nu banduna Sieu computer.",
+    "send_suggestion": "Trametter quist pled a la Lia Rumantscha scu proposta",
+    "sent_suggestion": "Proponieu a la Lia Rumantscha dad agiundscher «{{ word }}» scu pled valabel al dicziunari da la controlla ortografica."
   }
 }

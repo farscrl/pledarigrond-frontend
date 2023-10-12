@@ -218,7 +218,9 @@
       "redo": "repeter",
       "selectAll": "tscherner tot",
       "copy": "cuptgier"
-    }
+    },
+    "no_suggestion": "Catto nignas propostas",
+    "send_suggestion": "Trametter quest pled a la Lia Rumantscha sco proposta"
   },
   "navi": {
     "pledari": "pledari",
