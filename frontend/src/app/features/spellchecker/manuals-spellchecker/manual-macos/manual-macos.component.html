@@ -1,3 +1,63 @@
+<div class="modal-content" *ngIf="language === 'rumantschgrischun'">
+  <h1>Installaziun da la controlla ortografica en macOS</h1>
+
+  <p>Ils programs da correctura ortografica rumantscha baseschan sin «Hunspell» e funcziunan era sin il sistem operativ macOS. Sch'il dicziunari rumantsch vegn installà directamain en macOS, stat la funcziun da correctura a disposiziun en numerus programs dad Apple, tranter auter en Mail e TextEdit. L'installaziun sto dentant succeder a moda manuala.</p>
+
+  <p>Cun ils suandants pass pon ins installar la correctura ortografica surmirana sin il sistem macOS:</p>
+
+  <ol>
+    <li>
+      <em>Telechargiar la suandanta datoteca sin il computer:</em><br>
+
+      <button (click)="downloadHunspell.emit()">{{hunspellLanguage}}.zip</button><br>
+    </li>
+
+    <li>
+      <em>Decumprimer il ZIP</em><br>
+      <p>
+        Cun cliccar duas giadas sin la datoteca vegn extratg in ordinatur che cuntegna quatter datotecas.<br>
+      </p>
+
+      <img src="assets/img/manuals/manual_macos_2.png">
+
+      <p>
+        - ina datoteca cun il dicziunari<br>
+        - ina datoteca cun reglas (grammaticalas)<br>
+        - ina datoteca cun la licenza ed<br>
+        - ina datoteca che indichescha la versiun
+      </p>
+    </li>
+
+    <li>
+      <em>Avrir l'ordinatur ~/Library/Spelling en il Finder</em>
+
+      <p>Avri per quest intent il Finder u x in ordinatur ed accedi a «Gehe zu» e «Gehe zum Ordner».</p>
+
+      <img src="assets/img/manuals/manual_macos_3a.png">
+
+      <p>Endatai lura «~/Library/Spelling» (senza virgulettas!) e cliccai sin «Öffnen».</p>
+
+      <img src="assets/img/manuals/manual_macos_3b.png">
+    </li>
+
+    <li>
+      <em>Copiar las quatter datotecas en l'ordinatur ch'è s'avert.</em>
+
+      <p></p>
+
+      <img src="assets/img/manuals/manual_macos_4.png">
+    </li>
+
+    <li>
+      <em>Serrar tut las fanestras e reaviar il sistem.</em>
+
+      <p>Ussa stat la correctura da l'ortografia a disposiziun, sch'ins tscherna «Rumantsch (Library)».</p>
+
+      <img src="assets/img/manuals/manual_macos_5.png">
+    </li>
+  </ol>
+</div>
+
 <div class="modal-content" *ngIf="language === 'surmiran'">
   <h1>Installaziun dalla controlla ortografica ainten macOS</h1>
 

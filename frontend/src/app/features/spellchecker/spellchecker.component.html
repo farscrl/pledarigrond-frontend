@@ -39,6 +39,14 @@
         <h2>
           {{ 'spellchecker.install.title' | translate }}
         </h2>
+        <ul *ngIf="idiom === 'rumgr'">
+          <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">{{ 'spellchecker.install.word' | translate }}</a></li>
+          <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">macOS</a></li>
+          <li><a href="https://extensions.libreoffice.org/en/extensions/show/21650" target="_blank">LibreOffice</a></li>
+          <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-surmiran" target="_blank">Mozilla Firefox</a></li>
+          <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-surmiran/" target="_blank">Mozilla Thunderbird</a></li>
+          <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">{{ 'spellchecker.install.other' | translate }}</a></li>
+        </ul>
         <ul *ngIf="idiom === 'surmiran'">
           <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">{{ 'spellchecker.install.word' | translate }}</a></li>
           <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">macOS</a></li>

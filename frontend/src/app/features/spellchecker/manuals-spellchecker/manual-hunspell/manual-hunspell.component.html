@@ -1,3 +1,31 @@
+<div class="modal-content" *ngIf="language === 'rumantschgrischun'">
+  <h1>Installaziun da la controlla ortografica en auters sistems</h1>
+
+  <p>Ils programs da correctura ortografica rumantscha baseschan sin «Hunspell» e funcziunan en numerus programs, tranter auter en Adobe InDesign ed SDL Trados.</p>
+
+  <p>Per l'installaziun en quests programs servan las suandantas datotecas. Ina cuntegna il dicziunari, l'autra reglas per generar ulteriurs pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
+
+  <p>
+    {{hunspellLanguage}}.dic<br>
+    {{hunspellLanguage}}.aff<br>
+    {{hunspellLanguage}}_version.txt<br>
+    {{hunspellLanguage}}_LICENSE.txt<br>
+  </p>
+
+  <p>Il zip cuntegna tuttas quatter datotecas:</p>
+
+  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">{{hunspellLanguage}}.zip</button>
+
+  <p>Consultai per plaschair las paginas d'agid dals programs correspundents per vegnir a savair co installar las datotecas.</p>
+
+  <p>Qua sutvart las colliaziuns a manuals per:</p>
+
+  <ul class="list">
+    <li><a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html" target="_blank">Adobe InDesign</a></li>
+    <li><a href="https://gateway.sdl.com/apex/communityknowledge?articleName=000001362" target="_blank">SDL Trados Studio</a></li>
+  </ul>
+</div>
+
 <div class="modal-content" *ngIf="language === 'surmiran'">
   <h1>Installaziun dalla controlla ortografica ainten oters sistems</h1>
 
