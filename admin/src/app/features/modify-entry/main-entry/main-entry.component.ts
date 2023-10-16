@@ -13,6 +13,7 @@ import { AdjectiveGenerationComponent } from '../adjective-generation/adjective-
 import { Language } from "../../../models/security";
 import { PronounGenerationComponent } from "../pronoun-generation/pronoun-generation.component";
 import { EnvironmentService } from "../../../services/environment.service";
+import { OtherGenerationComponent } from '../other-generation/other-generation.component';
 
 @Component({
   selector: 'app-main-entry',
@@ -207,6 +208,37 @@ export class MainEntryComponent implements OnInit {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.pronoun.title'),
       nzContent: PronounGenerationComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        lemmaVersion: this.lemmaVersion,
+      },
+    });
+    modal.afterClose.subscribe(value => {
+      if (value === undefined) {
+        return;
+      }
+      this.lemmaVersion!.lemmaValues = {
+        ...this.lemmaVersion?.lemmaValues,
+        ...value
+      };
+    });
+  }
+
+  editOther() {
+    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
+    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
+    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+
+    if (!this.lemmaVersion?.lemmaValues.baseForm || this.lemmaVersion?.lemmaValues.baseForm === "") {
+      this.lemmaVersion!.lemmaValues.baseForm = this.lemmaVersion?.lemmaValues.RStichwort;
+    }
+
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('edit.other.title'),
+      nzContent: OtherGenerationComponent,
       nzClosable: false,
       nzMaskClosable: false,
       nzWidth: 1100,

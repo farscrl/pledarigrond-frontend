@@ -108,11 +108,13 @@
             <nz-option nzValue="NOUN" [nzLabel]="'edit.lemma.inflection.noun' | translate"></nz-option>
             <nz-option nzValue="ADJECTIVE" [nzLabel]="'edit.lemma.inflection.adjective' | translate"></nz-option>
             <nz-option nzValue="PRONOUN" [nzLabel]="'edit.lemma.inflection.pronoun' | translate"></nz-option>
+            <nz-option nzValue="OTHER" [nzLabel]="'edit.lemma.inflection.other' | translate"></nz-option>
           </nz-select>
           <i nz-icon nzType="edit" class="infleciton-edit" (click)="editVerb()" *ngIf="validateForm.controls['RInflectionType'].value === 'V'"></i>
           <i nz-icon nzType="edit" class="infleciton-edit" (click)="editNoun()" *ngIf="validateForm.controls['RInflectionType'].value === 'NOUN'"></i>
           <i nz-icon nzType="edit" class="infleciton-edit" (click)="editAdjective()" *ngIf="validateForm.controls['RInflectionType'].value === 'ADJECTIVE'"></i>
           <i nz-icon nzType="edit" class="infleciton-edit" (click)="editPronoun()" *ngIf="validateForm.controls['RInflectionType'].value === 'PRONOUN'"></i>
+          <i nz-icon nzType="edit" class="infleciton-edit" (click)="editOther()" *ngIf="validateForm.controls['RInflectionType'].value === 'OTHER'"></i>
         </nz-form-control>
       </nz-form-item>
 

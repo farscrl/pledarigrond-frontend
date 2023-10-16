@@ -1,0 +1,60 @@
+<app-pronunciation-characters *ngIf="environmentService.isLadin()"></app-pronunciation-characters>
+<div>
+  {{ 'edit.other.description' | translate }}
+  <br>
+  {{ 'edit.other.example' | translate }}
+  <br>
+  <br>
+</div>
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="baseForm">{{ 'edit.other.forms.baseForm' | translate }}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="baseForm" id="baseForm" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="otherForm1">{{ 'edit.other.forms.otherForm1' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="otherForm1" id="otherForm1" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="otherForm2">{{ 'edit.other.forms.otherForm2' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="otherForm2" id="otherForm2" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="otherForm3">{{ 'edit.other.forms.otherForm3' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="otherForm3" id="otherForm3" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="otherForm4">{{ 'edit.other.forms.otherForm4' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="otherForm4" id="otherForm4" />
+        </nz-form-control>
+      </nz-form-item>
+
+    </div>
+  </div>
+</form>
+
+<div *nzModalFooter>
+  <div class="footer-buttons">
+    <div>
+      <button nz-button nzType="default" (click)="cancel()">{{ 'edit.cancel' | translate }}</button>
+      <button nz-button nzType="default" (click)="reset()">{{ 'edit.reset' | translate }}</button>
+    </div>
+    <div>
+      <button nz-button nzType="primary" (click)="ok()">{{ 'edit.ok' | translate }}</button>
+    </div>
+  </div>
+</div>

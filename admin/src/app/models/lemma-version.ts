@@ -174,6 +174,12 @@ export class LemmaValues {
 
   // adjective
   adverbialForm?: string;
+
+  // other
+  otherForm1?: string;
+  otherForm2?: string;
+  otherForm3?: string;
+  otherForm4?: string;
 }
 
 export class PgValues {

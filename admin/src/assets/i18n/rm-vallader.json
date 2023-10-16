@@ -294,7 +294,8 @@
         "verb": "Verb",
         "noun": "Substantiv",
         "adjective": "Adjectiv",
-        "pronoun": "Pronom"
+        "pronoun": "Pronom",
+        "other": "Auter"
       },
       "comment": "Commentari",
       "email": "E-mail"
@@ -352,6 +353,18 @@
         "fSingular": "feminin singular",
         "mPlural": "masculin plural",
         "fPlural": "feminin plural"
+      }
+    },
+    "other": {
+      "title": "Generar furmas specialas",
+      "description": "Quai formular lubescha da registrar variantas per  furmas spezialas. Quei vegn en spezial utilisà per l'export per ils spellcheckers. ",
+      "example": "P.ex. pudess la furma «dad» vegnir registrada per il pled «da».",
+      "forms": {
+        "baseForm": "Furma da basa",
+        "otherForm1": "furma alternativa 1",
+        "otherForm2": "furma alternativa 2",
+        "otherForm3": "furma alternativa 3",
+        "otherForm4": "furma alternativa 4"
       }
     },
     "cancel": "Interrumper",

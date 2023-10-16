@@ -294,7 +294,8 @@
         "verb": "Verb",
         "noun": "Noun",
         "adjective": "Adjective",
-        "pronoun": "Pronoun"
+        "pronoun": "Pronoun",
+        "other": "Other"
       },
       "comment": "Comment",
       "email": "E-Mail"
@@ -352,6 +353,18 @@
         "fSingular": "female singular",
         "mPlural": "male plural",
         "fPlural": "female plural"
+      }
+    },
+    "other": {
+      "title": "Generate special forms",
+      "description": "This form allows you to register variants for special forms. This is especially used for export for spellcheckers.",
+      "example": "For example, the form «dad» could be registered for the word «da».",
+      "forms": {
+        "baseForm": "Base form",
+        "otherForm1": "alternative form 1",
+        "otherForm2": "alternative form 2",
+        "otherForm3": "alternative form 3",
+        "otherForm4": "alternative form 4"
       }
     },
     "cancel": "Cancel",

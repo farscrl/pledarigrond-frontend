@@ -65,6 +65,7 @@ import { HeaderLadinComponent } from "./components/header-ladin/header-ladin.com
 import {
   PronunciationCharactersComponent
 } from "./components/pronunciation-characters/pronunciation-characters.component";
+import { OtherGenerationComponent } from './features/modify-entry/other-generation/other-generation.component';
 
 registerLocaleData(de);
 
@@ -122,6 +123,7 @@ export function tokenGetter() {
     DiffModalComponent,
     PronounGenerationComponent,
     PronunciationCharactersComponent,
+    OtherGenerationComponent,
   ],
   imports: [
     BrowserModule,
