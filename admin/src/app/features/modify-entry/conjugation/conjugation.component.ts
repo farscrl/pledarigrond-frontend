@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { InflectionSubType } from 'src/app/models/inflection';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { InflectionService } from 'src/app/services/inflection.service';
@@ -9,6 +9,11 @@ import { Language } from "../../../models/security";
 import { CopyService } from "../../../services/copy.service";
 import { EditorService } from "../../../services/editor.service";
 import { EnvironmentService } from "../../../services/environment.service";
+import { DiffModalData } from '../../diff-modal/diff-modal.component';
+
+export class ConjugationData {
+  lemmaVersion?: LemmaVersion;
+}
 
 @Component({
   selector: 'app-conjugation',
@@ -17,11 +22,8 @@ import { EnvironmentService } from "../../../services/environment.service";
 })
 export class ConjugationComponent implements OnInit {
 
-  @Input()
-  set lemmaVersion(lemmaVersion: LemmaVersion | undefined) {
-    this.workingLemmaVersion = JSON.parse(JSON.stringify(lemmaVersion));
-    this.originalLemmaVersion = JSON.parse(JSON.stringify(lemmaVersion));
-  }
+  private lemmaVersion?: LemmaVersion;
+
   get lexEntries(): LemmaVersion | undefined {
       return this.workingLemmaVersion;
   }
@@ -43,7 +45,14 @@ export class ConjugationComponent implements OnInit {
     public copyService: CopyService,
     public editorService: EditorService,
     public environmentService: EnvironmentService,
-  ) { }
+    @Inject(NZ_MODAL_DATA) data: ConjugationData
+  ) {
+    this.lemmaVersion = data.lemmaVersion;
+    if (this.lemmaVersion) {
+      this.workingLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+      this.originalLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+    }
+  }
 
   ngOnInit(): void {
     this.setUpForm();

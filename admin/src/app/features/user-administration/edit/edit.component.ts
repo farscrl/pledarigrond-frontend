@@ -1,9 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { Roles, User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 import { EnvironmentService } from "../../../services/environment.service";
+import { PronounGenerationData } from '../../modify-entry/pronoun-generation/pronoun-generation.component';
+
+export class EditUserData {
+  email?: string;
+}
 
 @Component({
   selector: 'app-edit',
@@ -12,7 +17,6 @@ import { EnvironmentService } from "../../../services/environment.service";
 })
 export class EditComponent implements OnInit {
 
-  @Input()
   email?: string;
 
   isLoading = false;
@@ -26,7 +30,10 @@ export class EditComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private userService: UsersService,
     public environmentService: EnvironmentService,
-  ) { }
+    @Inject(NZ_MODAL_DATA) data: EditUserData,
+  ) {
+    this.email = data.email;
+  }
 
   ngOnInit(): void {
     if (!!this.email) {

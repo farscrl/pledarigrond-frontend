@@ -165,8 +165,6 @@ export class LemmaListComponent implements OnInit {
       nzOkDanger: true,
       nzCancelText: this.translateService.instant('lexicon.lemma.delete.cancel'),
       nzViewContainerRef: this.viewContainerRef,
-      nzData: {
-      },
       nzOnOk: () => this.dropEntryConfirmed(entry.id!),
       nzOnCancel: () => {}
     });
@@ -180,8 +178,6 @@ export class LemmaListComponent implements OnInit {
       nzOkDanger: true,
       nzCancelText: this.translateService.instant('lexicon.lemma.reject.cancel'),
       nzViewContainerRef: this.viewContainerRef,
-      nzData: {
-      },
       nzOnOk: () => this.dropRejectConfirmed(entry!),
       nzOnCancel: () => {}
     });
@@ -196,8 +192,6 @@ export class LemmaListComponent implements OnInit {
       nzClosable: false,
       nzOkDanger: true,
       nzViewContainerRef: this.viewContainerRef,
-      nzData: {
-      },
       nzOnOk: () => this.rejectSelectedItemsConfirmed(),
       nzOnCancel: () => {}
     });

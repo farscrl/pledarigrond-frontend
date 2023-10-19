@@ -1,8 +1,12 @@
-import {Component, Input} from '@angular/core';
-import {NzModalRef} from "ng-zorro-antd/modal";
+import { Component, Inject } from '@angular/core';
+import { NZ_MODAL_DATA } from "ng-zorro-antd/modal";
 import {Language} from "../../models/security";
 import {LexEntry} from "../../models/lex-entry";
 import {LanguageSelectionService} from "../../services/language-selection.service";
+
+export class DiffModalData {
+  lexEntry: LexEntry = new LexEntry()
+}
 
 @Component({
   selector: 'app-diff-modal',
@@ -13,13 +17,13 @@ export class DiffModalComponent {
 
   language: Language = Language.RUMANTSCHGRISCHUN;
 
-  @Input()
-  lexEntry: LexEntry = new LexEntry();
+  lexEntry: LexEntry;
 
   constructor(
-    private modal: NzModalRef,
-    private languageSelectionService: LanguageSelectionService,
+    languageSelectionService: LanguageSelectionService,
+    @Inject(NZ_MODAL_DATA) data: DiffModalData
   ) {
+    this.lexEntry = data.lexEntry;
     this.language = languageSelectionService.getCurrentLanguage();
   }
 }

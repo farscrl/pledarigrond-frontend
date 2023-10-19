@@ -1,10 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { LemmaVersion } from '../../../models/lemma-version';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { InflectionService } from '../../../services/inflection.service';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { EnvironmentService } from '../../../services/environment.service';
+import { MainEntryData } from '../main-entry/main-entry.component';
+
+export class OtherGenerationData {
+  lemmaVersion?: LemmaVersion;
+}
 
 @Component({
   selector: 'app-other-generation',
@@ -13,11 +18,7 @@ import { EnvironmentService } from '../../../services/environment.service';
 })
 export class OtherGenerationComponent {
 
-  @Input()
-  set lemmaVersion(lemmaVersion: LemmaVersion | undefined) {
-    this.workingLemmaVersion = JSON.parse(JSON.stringify(lemmaVersion));
-    this.originalLemmaVersion = JSON.parse(JSON.stringify(lemmaVersion));
-  }
+  private lemmaVersion?: LemmaVersion;
 
   validateForm!: UntypedFormGroup;
 
@@ -28,7 +29,14 @@ export class OtherGenerationComponent {
     private fb: UntypedFormBuilder,
     private modal: NzModalRef,
     public environmentService: EnvironmentService,
-  ) { }
+    @Inject(NZ_MODAL_DATA) data: OtherGenerationData,
+  ) {
+    this.lemmaVersion = data.lemmaVersion;
+    if (this.lemmaVersion) {
+      this.workingLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+      this.originalLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+    }
+  }
 
   ngOnInit(): void {
     this.setUpForm();

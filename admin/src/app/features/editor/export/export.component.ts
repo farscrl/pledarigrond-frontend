@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { Component, Inject, OnInit } from '@angular/core';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { EditorQuery } from 'src/app/models/editor-query';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
@@ -13,6 +13,10 @@ export class ExportOption {
   checked: boolean = false;
 }
 
+export class ExportData {
+  filter?: SearchCriteria | EditorQuery;
+}
+
 @Component({
   selector: 'app-export',
   templateUrl: './export.component.html',
@@ -20,7 +24,6 @@ export class ExportOption {
 })
 export class ExportComponent implements OnInit {
 
-  @Input()
   filter?: SearchCriteria | EditorQuery;
 
   allChecked = false;
@@ -35,8 +38,9 @@ export class ExportComponent implements OnInit {
     private languageSelectionService: LanguageSelectionService,
     private translateService: TranslateService,
     private fileUtils: FileUtils,
+    @Inject(NZ_MODAL_DATA) data: ExportData
   ) {
-
+    this.filter = data.filter;
   }
 
   ngOnInit(): void {

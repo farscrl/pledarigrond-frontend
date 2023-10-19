@@ -1,9 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { Roles, User } from "../../../models/user";
-import { NzModalRef } from "ng-zorro-antd/modal";
+import { NZ_MODAL_DATA, NzModalRef } from "ng-zorro-antd/modal";
 import { Name } from "../../../models/name";
 import { NameService } from "../../../services/name.service";
+import { OtherGenerationData } from '../../modify-entry/other-generation/other-generation.component';
+
+export class EditNameData {
+  id?: string;
+}
 
 @Component({
   selector: 'app-edit-name',
@@ -12,7 +17,6 @@ import { NameService } from "../../../services/name.service";
 })
 export class EditNameComponent implements OnInit {
 
-  @Input()
   id?: string;
 
   isLoading = false;
@@ -25,7 +29,10 @@ export class EditNameComponent implements OnInit {
     private modal: NzModalRef,
     private fb: UntypedFormBuilder,
     private nameService: NameService,
-  ) { }
+    @Inject(NZ_MODAL_DATA) data: EditNameData,
+  ) {
+    this.id = data.id;
+  }
 
   ngOnInit(): void {
     if (!!this.id) {

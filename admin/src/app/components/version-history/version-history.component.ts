@@ -58,8 +58,6 @@ export class VersionHistoryComponent implements OnInit {
       nzClosable: false,
       nzOkDanger: true,
       nzViewContainerRef: this.viewContainerRef,
-      nzData: {
-      },
       nzOnOk: () => this.dropOutdatedHistoryConfirmed(),
       nzOnCancel: () => {}
     });

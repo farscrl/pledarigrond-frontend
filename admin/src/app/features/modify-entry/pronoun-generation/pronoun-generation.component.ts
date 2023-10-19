@@ -1,11 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { EnvironmentService } from "../../../services/environment.service";
+import { MainEntryData } from '../main-entry/main-entry.component';
 
+export class PronounGenerationData {
+  lemmaVersion?: LemmaVersion;
+}
 @Component({
   selector: 'app-pronoun-generation',
   templateUrl: './pronoun-generation.component.html',
@@ -13,11 +17,7 @@ import { EnvironmentService } from "../../../services/environment.service";
 })
 export class PronounGenerationComponent implements OnInit {
 
-  @Input()
-  set lemmaVersion(lemmaVersion: LemmaVersion | undefined) {
-    this.workingLemmaVersion = JSON.parse(JSON.stringify(lemmaVersion));
-    this.originalLemmaVersion = JSON.parse(JSON.stringify(lemmaVersion));
-  }
+  private lemmaVersion?: LemmaVersion;
 
   validateForm!: UntypedFormGroup;
 
@@ -30,7 +30,14 @@ export class PronounGenerationComponent implements OnInit {
     private languageSelectionService: LanguageSelectionService,
     private modal: NzModalRef,
     public environmentService: EnvironmentService,
-  ) { }
+    @Inject(NZ_MODAL_DATA) data: PronounGenerationData,
+  ) {
+    this.lemmaVersion = data.lemmaVersion;
+    if (this.lemmaVersion) {
+      this.workingLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+      this.originalLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+    }
+  }
 
   ngOnInit(): void {
     this.setUpForm();

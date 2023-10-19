@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
 import { EditorService } from 'src/app/services/editor.service';
@@ -14,6 +14,12 @@ import { Language } from "../../../models/security";
 import { PronounGenerationComponent } from "../pronoun-generation/pronoun-generation.component";
 import { EnvironmentService } from "../../../services/environment.service";
 import { OtherGenerationComponent } from '../other-generation/other-generation.component';
+import { DiffModalData } from '../../diff-modal/diff-modal.component';
+
+export class MainEntryData {
+  lexEntryId?: string;
+  directlyLoadDetailView = false;
+}
 
 @Component({
   selector: 'app-main-entry',
@@ -22,11 +28,8 @@ import { OtherGenerationComponent } from '../other-generation/other-generation.c
 })
 export class MainEntryComponent implements OnInit {
 
-  @Input()
   lexEntryId?: string;
-
-  @Input()
-  directlyLoadDetailView = false;
+  directlyLoadDetailView;
 
   isLoading = false;
 
@@ -55,7 +58,11 @@ export class MainEntryComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private translateService: TranslateService,
     public environmentService: EnvironmentService,
-  ) { }
+    @Inject(NZ_MODAL_DATA) data: MainEntryData,
+  ) {
+    this.lexEntryId = data.lexEntryId;
+    this.directlyLoadDetailView = data.directlyLoadDetailView;
+  }
 
   ngOnInit(): void {
     this.reset();

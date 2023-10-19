@@ -1,10 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { Component, Inject, OnInit } from '@angular/core';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+
+export class ChanceSortOrderData {
+  lexEntry?: LexEntry;
+  dictionaryLanguage?: DictionaryLanguage;
+}
 
 @Component({
   selector: 'app-change-sort-order',
@@ -13,9 +18,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 })
 export class ChangeSortOrderComponent implements OnInit {
 
-  @Input()
   lexEntry?: LexEntry;
-  @Input()
   dictionaryLanguage?: DictionaryLanguage;
 
   listStyle = {
@@ -32,7 +35,11 @@ export class ChangeSortOrderComponent implements OnInit {
     private editorService: EditorService,
     private languageSelectionService: LanguageSelectionService,
     private modal: NzModalRef,
-  ) { }
+    @Inject(NZ_MODAL_DATA) data: ChanceSortOrderData
+  ) {
+    this.lexEntry = data.lexEntry;
+    this.dictionaryLanguage = data.dictionaryLanguage;
+  }
 
   ngOnInit(): void {
     if (!this.lexEntry || !this.dictionaryLanguage) {
