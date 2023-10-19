@@ -265,6 +265,25 @@ export class LemmaListComponent implements OnInit {
     }
   }
 
+  getInflectionType(RInflectionType?: string): string {
+    if (!RInflectionType) {
+      return "";
+    }
+    switch (RInflectionType) {
+      case 'V':
+        return 'verb';
+      case 'NOUN':
+        return 'nomen';
+      case 'ADJECTIVE':
+        return 'adj.';
+      case 'PRONOUN':
+        return 'pron.';
+      case 'OTHER':
+        return 'auter';
+    }
+    return '';
+  }
+
   showDiff(lexEntry: LexEntry) {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.titles.edit'),

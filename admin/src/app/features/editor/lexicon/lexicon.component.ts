@@ -99,6 +99,7 @@ export class LexiconComponent implements OnInit {
       romanshSemantics: new LemmaListColumnDetail(true, false),
       romanshLink: new LemmaListColumnDetail(true, false),
       romanshConjugation: new LemmaListColumnDetail(true, false),
+      romanshInflectionType: new LemmaListColumnDetail(true, true),
       romanshAdditionalSearchTerms: new LemmaListColumnDetail(true, false),
       category: new LemmaListColumnDetail(true, false),
       comment: new LemmaListColumnDetail(true, false),
