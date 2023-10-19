@@ -48,6 +48,13 @@
   <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.lemmaValues.fPlural" [new]="newLemmaVersion.lemmaValues.fPlural"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
+<nz-descriptions nzTitle="Autras furmas" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'OTHER' || newLemmaVersion.lemmaValues.RInflectionType === 'OTHER'">
+  <nz-descriptions-item nzTitle="furma alternativa 1"><app-diff [old]="oldLemmaVersion.lemmaValues.otherForm1" [new]="newLemmaVersion.lemmaValues.otherForm1"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="furma alternativa 2"><app-diff [old]="oldLemmaVersion.lemmaValues.otherForm2" [new]="newLemmaVersion.lemmaValues.otherForm2"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="furma alternativa 3"><app-diff [old]="oldLemmaVersion.lemmaValues.otherForm3" [new]="newLemmaVersion.lemmaValues.otherForm3"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="furma alternativa 4"><app-diff [old]="oldLemmaVersion.lemmaValues.otherForm4" [new]="newLemmaVersion.lemmaValues.otherForm4"></app-diff></nz-descriptions-item>
+</nz-descriptions>
+
 <nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'V' || newLemmaVersion.lemmaValues.RInflectionType === 'V'">
   <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="oldLemmaVersion.lemmaValues.infinitiv" [new]="newLemmaVersion.lemmaValues.infinitiv"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.lemmaValues.RInflectionSubtype" [new]="newLemmaVersion.lemmaValues.RInflectionSubtype"></app-diff></nz-descriptions-item>
