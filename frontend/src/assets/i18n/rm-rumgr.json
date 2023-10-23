@@ -193,8 +193,8 @@
   },
   "spellchecker": {
     "back": "turnar al Pledari Grond",
-    "loading": "Las datas vignan cargedas - spitgier per plascheir en mument",
-    "no_suggestion": "Catto nignas propostas",
+    "loading": "Las datas vegnan chargiadas - spetgar per plaschair in mument",
+    "no_suggestion": "Chattà naginas propostas",
     "send_suggestion": "Trametter quest pled a la Lia Rumantscha sco proposta",
     "sent_suggestion": "Proponì a la Lia Rumantscha dad agiuntar «{{ word }}» sco pled valaivel al dicziunari da la controlla ortografica.",
     "instructions": "Per laschar curreger in text al pudais vus simplamain copiar en il formular qua dasperas e cliccar sin ils pleds sutlingiads per vesair las propostas da correctura.",
