@@ -1,3 +1,31 @@
+<div class="modal-content" *ngIf="language === 'puter'">
+  <h1>Installaziun da la controlla ortografica in oters sistems</h1>
+
+  <p>Ils programs da correctura ortografica rumauntscha as basan sün «Hunspell» e funcziunan in divers programs, tanter oter en Adobe InDesign ed SDL Trados.</p>
+
+  <p>Per l'installaziun in quists programs servan las seguaintas datotecas. Üna cuntegna il dicziunari, l’otra reglas per generer pleds in pü, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
+
+  <p>
+    {{hunspellLanguage}}.dic<br>
+    {{hunspellLanguage}}.aff<br>
+    {{hunspellLanguage}}_version.txt<br>
+    {{hunspellLanguage}}_LICENSE.txt<br>
+  </p>
+
+  <p>Il zip cuntegna tuottas quatter datotecas:</p>
+
+  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">{{hunspellLanguage}}.zip</button>
+
+  <p>Consultè per plaschair las paginas d’agüd dals programs correspundents per gnir a savair cu installer las datotecas.</p>
+
+  <p>Suotvart las colliaziuns a manuels per:</p>
+
+  <ul class="list">
+    <li><a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html" target="_blank">Adobe InDesign</a></li>
+    <li><a href="https://gateway.sdl.com/apex/communityknowledge?articleName=000001362" target="_blank">SDL Trados Studio</a></li>
+  </ul>
+</div>
+
 <div class="modal-content" *ngIf="language === 'rumantschgrischun'">
   <h1>Installaziun da la controlla ortografica en auters sistems</h1>
 
@@ -75,6 +103,34 @@
   <p>Consultad par plascher las paginas d'agid digls programs coraspundaints par vagnir a saver sco instalar las datotecas.</p>
 
   <p>Qua sutvart las culiaziùns a manuals par:</p>
+
+  <ul class="list">
+    <li><a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html" target="_blank">Adobe InDesign</a></li>
+    <li><a href="https://gateway.sdl.com/apex/communityknowledge?articleName=000001362" target="_blank">SDL Trados Studio</a></li>
+  </ul>
+</div>
+
+<div class="modal-content" *ngIf="language === 'vallader'">
+  <h1>Installaziun da la controlla ortografica in oters sistems</h1>
+
+  <p>Ils programs da correctura ortografica rumantscha as basan sün «Hunspell» e funcziunan in divers programs, tanter oter en Adobe InDesign ed SDL Trados.</p>
+
+  <p>Per l'installaziun in quists programs servan las seguaintas datotecas. Üna cuntegna il dicziunari, tschella reglas per generar ulteriurs pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
+
+  <p>
+    {{hunspellLanguage}}.dic<br>
+    {{hunspellLanguage}}.aff<br>
+    {{hunspellLanguage}}_version.txt<br>
+    {{hunspellLanguage}}_LICENSE.txt<br>
+  </p>
+
+  <p>Il zip cuntegna tuottas quatter datotecas:</p>
+
+  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">{{hunspellLanguage}}.zip</button>
+
+  <p>Consultai per plaschair las paginas d’agüd dals programs correspundents per gnir a savair co installar las datotecas.</p>
+
+  <p>Suotvart las colliaziuns a manuals per:</p>
 
   <ul class="list">
     <li><a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html" target="_blank">Adobe InDesign</a></li>

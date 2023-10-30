@@ -1,3 +1,63 @@
+<div class="modal-content" *ngIf="language === 'puter'">
+  <h1>Installaziun da la controlla ortografica in macOS</h1>
+
+  <p>Ils programs da correctura ortografica rumauntscha as basan sün «Hunspell» e funcziunan eir sül sistem operativ macOS. Scha'l dicziunari rumauntsch vain installo directamaing in macOS, sto la funcziun da correctura a disposiziun in divers programs dad Apple, traunter oter in Mail e TextEdit. L'installaziun stu però succeder da maniera manuela.</p>
+
+  <p>Culs seguaints pass as po que installer la correctura ortografica putera sül sistem macOS:</p>
+
+  <ol>
+    <li>
+      <em>Telecharger la seguainta datoteca sül computer:</em><br>
+
+      <button (click)="downloadHunspell.emit()">{{hunspellLanguage}}.zip</button><br>
+    </li>
+
+    <li>
+      <em>Decomprimer il ZIP</em><br>
+      <p>
+        Cun clicker duos voutas sülla datoteca vain extrat ün ordinatur chi cuntegna quatter datotecas.<br>
+      </p>
+
+      <img src="assets/img/manuals/manual_macos_2.png">
+
+      <p>
+        - üna datoteca cul dicziunari<br>
+        - üna datoteca cun reglas (grammaticalas)<br>
+        - üna datoteca cun la licenza ed<br>
+        - üna datoteca chi indichescha la versiun
+      </p>
+    </li>
+
+    <li>
+      <em>Avrir l'ordinatur ~/Library/Spelling i’l Finder</em>
+
+      <p>Avri per quist intent il Finder o x ün ordinatur e tschernè «Gehe zu» e «Gehe zum Ordner».</p>
+
+      <img src="assets/img/manuals/manual_macos_3a.png">
+
+      <p>Indatè alura «~/Library/Spelling» (sainza virgulettas!) e clickè sün «Öffnen».</p>
+
+      <img src="assets/img/manuals/manual_macos_3b.png">
+    </li>
+
+    <li>
+      <em>Copcher las quatter datotecas i’l ordinatur chi s’ho aviert.</em>
+
+      <p></p>
+
+      <img src="assets/img/manuals/manual_macos_4.png">
+    </li>
+
+    <li>
+      <em>Serrer tuot las fnestras e reset dal sistem.</em>
+
+      <p>Uossa sto la correctura ortografica a disposiziun, scha’s tscherna «Rumantsch (Library)».</p>
+
+      <img src="assets/img/manuals/manual_macos_5.png">
+    </li>
+  </ol>
+</div>
+
 <div class="modal-content" *ngIf="language === 'rumantschgrischun'">
   <h1>Installaziun da la controlla ortografica en macOS</h1>
 
@@ -175,6 +235,66 @@
       <em>Sarar tut las faneastras a meter ad ir igl sistem.</em>
 
       <p>Ussa stat la corectura da l'ortografeia a disposiziùn sch'ign tschearna «Rumantsch (Library)».</p>
+
+      <img src="assets/img/manuals/manual_macos_5.png">
+    </li>
+  </ol>
+</div>
+
+<div class="modal-content" *ngIf="language === 'vallader'">
+  <h1>Installaziun da la controlla ortografica in macOS</h1>
+
+  <p>Ils programs da correctura ortografica rumantscha as basan sün «Hunspell» e funcziunan eir sül sistem operativ macOS. Scha'l dicziunari rumantsch vain installà directamaing in macOS, sta la funcziun da correctura a disposiziun in divers programs dad Apple, tanter oter in Mail e TextEdit. L'installaziun sto però succeder da maniera manuala.</p>
+
+  <p>Culs seguaints pass as poja installar la correctura ortografica valladra sül sistem macOS:</p>
+
+  <ol>
+    <li>
+      <em>Telechargiar la seguainta datoteca sül computer:</em><br>
+
+      <button (click)="downloadHunspell.emit()">{{hunspellLanguage}}.zip</button><br>
+    </li>
+
+    <li>
+      <em>Decomprimar il ZIP</em><br>
+      <p>
+        Cun cliccar duos jadas sülla datoteca vain extrat ün ordinatur chi cuntegna quatter datotecas.<br>
+      </p>
+
+      <img src="assets/img/manuals/manual_macos_2.png">
+
+      <p>
+        - üna datoteca cul dicziunari<br>
+        - üna datoteca cun reglas (grammaticalas)<br>
+        - üna datoteca cun la licenza ed<br>
+        - üna datoteca chi indichescha la versiun
+      </p>
+    </li>
+
+    <li>
+      <em>Drivir l'ordinatur ~/Library/Spelling i’l Finder</em>
+
+      <p>Drivi per quist intent il Finder o x ün ordinatur e tschernai «Gehe zu» e «Gehe zum Ordner».</p>
+
+      <img src="assets/img/manuals/manual_macos_3a.png">
+
+      <p>Indatai lura «~/Library/Spelling» (sainza virgulettas!) e cliccai sün «Öffnen».</p>
+
+      <img src="assets/img/manuals/manual_macos_3b.png">
+    </li>
+
+    <li>
+      <em>Copchar las quatter datotecas i’l ordinatur chi s’ha drivi.</em>
+
+      <p></p>
+
+      <img src="assets/img/manuals/manual_macos_4.png">
+    </li>
+
+    <li>
+      <em>Serrar tuot las fanestras e reset dal sistem.</em>
+
+      <p>Uossa sta la correctura ortografica a disposiziun, schi’s tscherna «Rumantsch (Library)».</p>
 
       <img src="assets/img/manuals/manual_macos_5.png">
     </li>
