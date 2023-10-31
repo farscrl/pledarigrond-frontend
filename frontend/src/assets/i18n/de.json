@@ -190,7 +190,7 @@
   "spellchecker": {
     "back": "zurück zum Pledari Grond",
     "loading": "Die Daten werden geladen – es dauert nur einen Augenblick",
-    "sent_suggestion": "Der Lia Rumantscha vorgeschlagen «{{ word }}» als gültiges Wort in die Rechtschreibprüfung aufzunehmen.",
+    "sent_suggestion": "Der Redaktion vorgeschlagen «{{ word }}» als gültiges Wort in die Rechtschreibprüfung aufzunehmen.",
     "instructions": "Um einen Text prüfen zu lassen, können Sie ihn einfach in das nebenstehende Formular einfügen. Wenn Sie auf ein unterstrichenes Wort klicken, werden Ihnen Verbesserungsvorschläge angezeigt.",
     "privacy": "Der Schutz Ihrer Daten ist gewährleistet: Der eingefügte Text verlässt ihren Computer nicht.",
     "install": {
@@ -220,7 +220,7 @@
       "copy": "kopieren"
     },
     "no_suggestion": "Keine Vorschläge gefunden",
-    "send_suggestion": "Dieses Wort der Lia Rumantscha als Vorschlag senden"
+    "send_suggestion": "Dieses Wort der Redaktion als Vorschlag senden"
   },
   "navi": {
     "pledari": "Wörterbuch",
