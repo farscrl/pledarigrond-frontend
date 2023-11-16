@@ -73,6 +73,7 @@ export class SuggestionsComponent implements OnInit {
       romanshConjugation: new LemmaListColumnDetail(false, false),
       romanshInflectionType: new LemmaListColumnDetail(false, false),
       romanshAdditionalSearchTerms: new LemmaListColumnDetail(false, false),
+      romanshEtymology: new LemmaListColumnDetail(false, false),
       category: new LemmaListColumnDetail(false, false),
       comment: new LemmaListColumnDetail(true, false),
 

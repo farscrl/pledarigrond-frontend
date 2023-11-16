@@ -72,6 +72,7 @@ export class HistoryComponent implements OnInit {
       romanshConjugation: new LemmaListColumnDetail(true, false),
       romanshInflectionType: new LemmaListColumnDetail(false, false),
       romanshAdditionalSearchTerms: new LemmaListColumnDetail(true, false),
+      romanshEtymology: new LemmaListColumnDetail(true, false),
       category: new LemmaListColumnDetail(true, false),
       comment: new LemmaListColumnDetail(true, false),
 

@@ -38,6 +38,7 @@
         <li nz-menu-item *ngIf="columns.romanshConjugation.allowed"><label nz-checkbox [(ngModel)]="columns.romanshConjugation.active">{{ 'lexicon.lemma.columns.rm_conjugation' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.romanshInflectionType.allowed"><label nz-checkbox [(ngModel)]="columns.romanshInflectionType.active">{{ 'lexicon.lemma.columns.rm_inflection_type' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.romanshAdditionalSearchTerms.allowed"><label nz-checkbox [(ngModel)]="columns.romanshAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.rm_additional_search' | translate }}</label></li>
+        <li nz-menu-item *ngIf="columns.romanshEtymology.allowed"><label nz-checkbox [(ngModel)]="columns.romanshEtymology.active">{{ 'lexicon.lemma.columns.rm_etymology' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.category.allowed"><label nz-checkbox [(ngModel)]="columns.category.active">{{ 'lexicon.lemma.columns.category' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.comment.allowed"><label nz-checkbox [(ngModel)]="columns.comment.active">{{ 'lexicon.lemma.columns.comment' | translate }}</label></li>
       </ul>
@@ -89,6 +90,7 @@
       <th *ngIf="columns.romanshConjugation.active">{{ 'lexicon.lemma.columns.rm_conjugation' | translate }}</th>
       <th *ngIf="columns.romanshInflectionType.active" nzWidth="85px">{{ 'lexicon.lemma.columns.rm_inflection_type' | translate }}</th>
       <th *ngIf="columns.romanshAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.rm_additional_search' | translate }}</th>
+      <th *ngIf="columns.romanshEtymology.active">{{ 'lexicon.lemma.columns.rm_etymology' | translate }}</th>
       <th *ngIf="columns.category.active">{{ 'lexicon.lemma.columns.category' | translate }}</th>
       <th *ngIf="columns.comment.active" nzWidth="300px">{{ 'lexicon.lemma.columns.comment' | translate }}</th>
       <th><!--empty columnt to take up space--></th>
@@ -153,9 +155,10 @@
       <td *ngIf="columns.romanshConjugation.active">{{ data.mostRecent.lemmaValues.RFlex }}</td>
       <td *ngIf="columns.romanshInflectionType.active">{{ getInflectionType(data.mostRecent.lemmaValues.RInflectionType) }}</td>
       <td *ngIf="columns.romanshAdditionalSearchTerms.active">{{ data.mostRecent.lemmaValues.RTags }}</td>
+      <td *ngIf="columns.romanshEtymology.active">{{ data.mostRecent.lemmaValues.REtymologie }}</td>
       <td *ngIf="columns.category.active">{{ data.mostRecent.lemmaValues.categories }}</td>
       <td *ngIf="columns.comment.active">{{ data.mostRecent.lemmaValues.contact_comment }}</td>
-      <td><!--empty columnt to take up space--></td>
+      <td><!--empty column to take up space--></td>
     </tr>
   </tbody>
 </nz-table>

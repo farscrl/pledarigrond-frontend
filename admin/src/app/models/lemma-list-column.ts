@@ -26,6 +26,7 @@ export class LemmaListColumn {
   romanshConjugation: LemmaListColumnDetail = new LemmaListColumnDetail();
   romanshInflectionType: LemmaListColumnDetail = new LemmaListColumnDetail();
   romanshAdditionalSearchTerms: LemmaListColumnDetail = new LemmaListColumnDetail();
+  romanshEtymology: LemmaListColumnDetail = new LemmaListColumnDetail();
   category: LemmaListColumnDetail = new LemmaListColumnDetail();
   comment: LemmaListColumnDetail = new LemmaListColumnDetail();
 
