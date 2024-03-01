@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "^17.2.3",
     "@angular/router": "^17.2.3",
     "@angular/service-worker": "^17.2.3",
-    "@auth0/angular-jwt": "^5.1.2",
+    "@auth0/angular-jwt": "^5.2.0",
     "@farscrl/rumantsch-language-tools": "^1.0.1",
     "@farscrl/tiptap-extension-spellchecker": "^1.0.4",
     "@ngx-matomo/router": "^4.1.2",
