@@ -4,7 +4,7 @@ import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { AuthService } from 'src/app/services/auth.service';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
-import { MatomoTracker } from "@ngx-matomo/tracker";
+import { MatomoTracker } from "ngx-matomo-client";
 
 @Component({
   selector: 'app-suggest-modification',

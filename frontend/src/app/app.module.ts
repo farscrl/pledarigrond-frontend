@@ -57,8 +57,7 @@ import { OtherResourcesComponent } from './features/other-resources/other-resour
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { SpellcheckerComponent } from './features/spellchecker/spellchecker.component';
 import { SpellcheckerMenubarComponent } from './features/spellchecker/spellchecker-menubar/spellchecker-menubar.component';
-import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
-import { NgxMatomoRouterModule } from '@ngx-matomo/router';
+import { MatomoModule } from 'ngx-matomo-client';
 import { ManualsSpellcheckerComponent } from './features/spellchecker/manuals-spellchecker/manuals-spellchecker.component';
 import { ManualMacosComponent } from './features/spellchecker/manuals-spellchecker/manual-macos/manual-macos.component';
 import { ManualHunspellComponent } from './features/spellchecker/manuals-spellchecker/manual-hunspell/manual-hunspell.component';
@@ -161,11 +160,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     ),
     NgxTiptapModule,
-    NgxMatomoTrackerModule.forRoot({
+    MatomoModule.forRoot({
       siteId: environment.matomoTrackingId,
       trackerUrl: environment.matomoTrackingUrl,
     }),
-    NgxMatomoRouterModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

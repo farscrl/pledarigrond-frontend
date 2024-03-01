@@ -8,7 +8,7 @@ import { Highlight } from "@tiptap/extension-highlight";
 import { Subscription } from "rxjs";
 import { FrontendLanguage, Idiom, SelectedLanguageService } from "../../services/selected-language.service";
 import { TranslateService } from "@ngx-translate/core";
-import { MatomoTracker } from "@ngx-matomo/tracker";
+import { MatomoTracker } from "ngx-matomo-client";
 import { ModificationService } from "../../services/modification.service";
 import { LemmaVersion } from "../../models/lemma-version";
 import { AuthService } from "../../services/auth.service";

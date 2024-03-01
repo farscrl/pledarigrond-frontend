@@ -4,7 +4,7 @@ import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { AuthService } from 'src/app/services/auth.service';
 import { ExportService } from 'src/app/services/export.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
-import { MatomoTracker } from "@ngx-matomo/tracker";
+import { MatomoTracker } from "ngx-matomo-client";
 
 @Component({
   selector: 'app-export',
