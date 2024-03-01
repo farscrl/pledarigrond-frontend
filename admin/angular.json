@@ -161,13 +161,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "admin:build:production"
+              "buildTarget": "admin:build:production"
             },
             "development": {
-              "browserTarget": "admin:build:development"
+              "buildTarget": "admin:build:development"
             },
             "development-ladin": {
-              "browserTarget": "admin:build:development-ladin"
+              "buildTarget": "admin:build:development-ladin"
             }
           },
           "defaultConfiguration": "development"
@@ -175,7 +175,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "admin:build"
+            "buildTarget": "admin:build"
           }
         },
         "test": {
