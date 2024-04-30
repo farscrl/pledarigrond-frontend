@@ -101,6 +101,7 @@ export class EditComponent implements OnInit {
       roleSutsilvan: [this.user.roles.sutsilvanRole, [Validators.required]],
       roleVallader: [this.user.roles.valladerRole, [Validators.required]],
       roleNames: [this.user.roles.namesRole, [Validators.required]],
+      roleRegistrations: [this.user.roles.registrationsRole, [Validators.required]],
     });
   }
 
@@ -113,6 +114,7 @@ export class EditComponent implements OnInit {
     roles.sutsilvanRole = data.roleSutsilvan;
     roles.valladerRole = data.roleVallader;
     roles.namesRole = data.roleNames;
+    roles.registrationsRole = data.roleRegistrations;
 
     const user = new User();
     user.email = data.email;

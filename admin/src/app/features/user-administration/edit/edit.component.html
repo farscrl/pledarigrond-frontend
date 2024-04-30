@@ -95,6 +95,16 @@
       </nz-select>
     </nz-form-control>
   </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleNames">{{ 'users.edit.role' | translate }} {{ 'users.registrations' | translate }}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select formControlName="roleRegistrations">
+        <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
+        <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
 </form>
 
 <div *nzModalFooter>

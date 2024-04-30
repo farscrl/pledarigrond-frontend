@@ -20,6 +20,7 @@
             <th nzAlign="center" *ngIf="!environmentService.isLadin()">ST</th>
             <th nzAlign="center" *ngIf="environmentService.isLadin()">VL</th>
             <th nzAlign="center" *ngIf="!environmentService.isLadin()">{{ 'users.names' | translate}}</th>
+            <th nzAlign="center" *ngIf="!environmentService.isLadin()">{{ 'users.registrations' | translate}}</th>
             <th nzAlign="center">{{ 'users.actions' | translate}}</th>
           </tr>
         </thead>
@@ -34,6 +35,7 @@
             <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.sutsilvanRole"></app-user-role></td>
             <td nzAlign="center" *ngIf="environmentService.isLadin()"><app-user-role [role]="data.roles.valladerRole"></app-user-role></td>
             <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.namesRole"></app-user-role></td>
+            <td nzAlign="center"><app-user-role [role]="data.roles.registrationsRole"></app-user-role></td>
             <td nzAlign="center">
               <a (click)="newOrEdit(data.email)">{{ 'users.edit_action' | translate}}</a>
               <nz-divider nzType="vertical"></nz-divider>

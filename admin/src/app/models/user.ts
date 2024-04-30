@@ -18,6 +18,7 @@ export class Roles {
   valladerRole: EditorRole = 'NONE';
 
   namesRole: EditorRole = 'NONE';
+  registrationsRole: EditorRole = 'NONE'
 }
 
 export type EditorRole = 'ADMIN'|'EDITOR'|'GUEST'|'NONE';
