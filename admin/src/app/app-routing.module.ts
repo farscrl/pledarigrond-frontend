@@ -16,6 +16,7 @@ import { LoginComponent } from './features/login/login.component';
 import { NoPermissionsComponent } from './features/no-permissions/no-permissions.component';
 import { UserAdministrationComponent } from './features/user-administration/user-administration.component';
 import {NameAdministrationComponent} from "./features/name-administration/name-administration.component";
+import { ReviewPronunciationComponent } from './features/editor/review-pronunciation/review-pronunciation.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
                 path: "automatic",
                 component: ReviewAutoChangesComponent,
               },
+              {
+                path: "pronunciation",
+                component: ReviewPronunciationComponent,
+              }
             ]
           },
           {
@@ -136,6 +141,10 @@ const routes: Routes = [
                 path: "automatic",
                 component: ReviewAutoChangesComponent,
               },
+              {
+                path: "pronunciation",
+                component: ReviewPronunciationComponent,
+              }
             ]
           },
           {
@@ -196,6 +205,10 @@ const routes: Routes = [
                 path: "automatic",
                 component: ReviewAutoChangesComponent,
               },
+              {
+                path: "pronunciation",
+                component: ReviewPronunciationComponent,
+              }
             ]
           },
           {
@@ -256,6 +269,10 @@ const routes: Routes = [
                 path: "automatic",
                 component: ReviewAutoChangesComponent,
               },
+              {
+                path: "pronunciation",
+                component: ReviewPronunciationComponent,
+              }
             ]
           },
           {
@@ -316,6 +333,10 @@ const routes: Routes = [
                 path: "automatic",
                 component: ReviewAutoChangesComponent,
               },
+              {
+                path: "pronunciation",
+                component: ReviewPronunciationComponent,
+              }
             ]
           },
           {

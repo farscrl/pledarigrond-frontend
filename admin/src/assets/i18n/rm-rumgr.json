@@ -54,6 +54,7 @@
     "history_menu_item": "Verificaziun",
     "lexicon_menu_item": "Lexicon",
     "review_menu_item": "Repassar midadas automaticas",
+    "pronunciation_menu_item": "Repassar pronunzia",
     "filter": {
       "date_interval": "Interval da datas",
       "user_ip": "IP da l'utilisad*ra",
@@ -438,6 +439,19 @@
         "only_m": "Mo masculin",
         "no_adverbial": "Nagina furma adverbiala"
       }
+    }
+  },
+  "pronunciation": {
+    "filter": {
+      "todo": "Anc da pronunziar",
+      "postponed_registration": "Pronunzia spustada",
+      "in_review": "Per repassar",
+      "postponed_review": "Spustà repassar",
+      "completed": "Complettà",
+      "refused": "Refusà"
+    },
+    "list": {
+      "title": "Pronunzia"
     }
   },
   "diff": {

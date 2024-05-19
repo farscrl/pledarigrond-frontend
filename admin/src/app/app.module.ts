@@ -66,6 +66,7 @@ import {
   PronunciationCharactersComponent
 } from "./components/pronunciation-characters/pronunciation-characters.component";
 import { OtherGenerationComponent } from './features/modify-entry/other-generation/other-generation.component';
+import { ReviewPronunciationComponent } from './features/editor/review-pronunciation/review-pronunciation.component';
 
 registerLocaleData(de);
 
@@ -124,6 +125,7 @@ export function tokenGetter() {
     PronounGenerationComponent,
     PronunciationCharactersComponent,
     OtherGenerationComponent,
+    ReviewPronunciationComponent,
   ],
   imports: [
     BrowserModule,

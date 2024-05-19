@@ -12,6 +12,9 @@
   <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + currentLanguage + '/editor/automatic'"  *ngIf="showAutomaticReview()">
     {{ 'lexicon.review_menu_item' | translate }}
   </li>
+  <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + currentLanguage + '/editor/pronunciation'"  *ngIf="showPronunciationReview()">
+    {{ 'lexicon.pronunciation_menu_item' | translate }}
+  </li>
 
   <nz-divider nzType="vertical" *ngIf="authService.isAdmin()"></nz-divider>
   <i nz-icon nzType="laptop" nzTheme="outline" *ngIf="authService.isAdmin()"></i>

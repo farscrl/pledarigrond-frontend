@@ -32,6 +32,10 @@ export class NavigationHorizontalComponent implements OnInit {
     return this.currentLanguage === 'sursilvan';
   }
 
+  showPronunciationReview(): boolean {
+    return true;
+  }
+
   showFrontendLink(): boolean {
     return this.currentLanguage !== 'puter' && this.currentLanguage !== 'vallader';
   }

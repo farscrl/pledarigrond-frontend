@@ -54,6 +54,7 @@
     "history_menu_item": "History",
     "lexicon_menu_item": "Lexicon",
     "review_menu_item": "Review automatic changes",
+    "pronunciation_menu_item": "Review pronunciation",
     "filter": {
       "date_interval": "Date interval",
       "user_ip": "User IP",

@@ -53,6 +53,7 @@
     "history_menu_item": "Verificaziun",
     "lexicon_menu_item": "Lexicon",
     "review_menu_item": "Repassar midadas automaticas",
+    "pronunciation_menu_item": "Repassar pronunzia",
     "filter": {
       "date_interval": "Interval da datas",
       "user_ip": "IP da l'utilisad*ra",

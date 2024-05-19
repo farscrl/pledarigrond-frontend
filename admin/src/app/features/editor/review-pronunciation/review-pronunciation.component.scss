@@ -1,0 +1,100 @@
+nz-content {
+  background-color: white;
+  padding: 24px;
+}
+
+.type-filter {
+  margin-bottom: 24px;
+
+  .filter-divider {
+    height: 36px;
+    border-left: 1px solid grey;
+    margin-right: 24px;
+    margin-left: 24px;
+    top: -4px;
+  }
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-side {
+  height: calc(100vh - 64px - 48px - 47px - 82px - 24px - 24px);
+
+  nz-content {
+    overflow-y: scroll;
+    max-height: calc(100vh - 64px - 48px - 47px - 82px);
+  }
+}
+
+nz-page-header {
+  padding-left: 0;
+}
+
+nz-list-item.selected {
+  background-color: #9ec0e7;
+}
+
+.lemma-list {
+  margin-top: 16px;
+  overflow-y: scroll;
+  max-height: calc(100vh - 450px);
+}
+
+.button-accept {
+  border-color: #269a2f;
+  background-color: #269a2f;
+}
+
+.state-icon {
+  margin-left: 8px;
+  margin-right: 8px;
+  font-size: 18px;
+
+  &.accepted {
+    color: green;
+  }
+  &.rejected {
+    color: red;
+  }
+  &.edited {
+    color: blue;
+  }
+  &.later {
+    color: rgb(82, 82, 82);
+  }
+}
+
+.pg-pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.manual-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 24px;
+  align-items: center;
+}
+
+.keyboard {
+  margin-left: 4px;
+  font-size: 85%;
+  border: 1px solid grey;
+  color: black;
+  background-color: rgb(224, 224, 224);
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 3px;
+}
+
+nz-page-header-extra {
+  button {
+    margin-left: 8px;
+  }
+}
+
+
