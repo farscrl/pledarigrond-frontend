@@ -79,6 +79,15 @@
         <nz-descriptions-item [nzTitle]="'edit.lemma.rm_gender' | translate">{{ selectedRegistration?.rmGenus ?? '-' }}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate">{{ selectedRegistration?.rmSubsemantik  ?? '-'}}</nz-descriptions-item>
       </nz-descriptions>
+
+      <div *ngIf="lemmaVersions.length > 0">
+        <nz-descriptions [nzTitle]="'Vign attribuì a quests lemmas'"></nz-descriptions>
+        <ul>
+          <li *ngFor="let lv of lemmaVersions">
+            {{ lv.lemmaValues.RStichwort }} / {{ lv.lemmaValues.DStichwort }}
+          </li>
+        </ul>
+      </div>
     </nz-content>
   </div>
 </div>

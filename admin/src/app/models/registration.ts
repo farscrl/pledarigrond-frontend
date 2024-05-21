@@ -16,6 +16,7 @@ export class Registration {
   speakerComment?: string;
   reviewerComment?: string;
 
+  lemmaIds?: string[];
 
   createdDate?: string;
   lastModifiedDate?: string;

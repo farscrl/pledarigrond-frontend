@@ -1,8 +1,12 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration, RegistrationStatus } from '../../../models/registration';
 import { Page } from '../../../models/page';
 import { RegistrationService } from '../../../services/registration.service';
+import { EditorService } from '../../../services/editor.service';
+import { Language } from '../../../models/security';
+import { LanguageSelectionService } from '../../../services/language-selection.service';
+import { LemmaVersion } from '../../../models/lemma-version';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -23,7 +27,7 @@ export enum KEY_CODE {
   templateUrl: './review-pronunciation.component.html',
   styleUrl: './review-pronunciation.component.scss'
 })
-export class ReviewPronunciationComponent {
+export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   filter: ListFilter = new ListFilter();
   currentPage: Page<Registration> = new Page();
   isLoadingData = true;
@@ -34,6 +38,11 @@ export class ReviewPronunciationComponent {
   registrations: Registration[] = [];
 
   selectedRegistration?: Registration;
+
+  private idiom: Language = Language.RUMANTSCHGRISCHUN;
+  private idiomSubscription: any;
+
+  lemmaVersions: LemmaVersion[] = [];
 
   @ViewChild('audioControl') audioControl!: ElementRef<HTMLAudioElement>;
 
@@ -55,14 +64,24 @@ export class ReviewPronunciationComponent {
 
   constructor(
     private registrationService: RegistrationService,
+    private editorService: EditorService,
+    private languageSelectionService: LanguageSelectionService
   ) {
   }
 
   ngOnInit(): void {
+    this.idiomSubscription = this.languageSelectionService.getCurrentLanguageObservable().subscribe(idiom => {
+      this.idiom = idiom;
+    });
+
     this.filter.status = 'IN_REVIEW';
     this.filter.ascending = true;
 
     this.changePage(0);
+  }
+
+  ngOnDestroy() {
+    this.idiomSubscription?.unsubscribe();
   }
 
   changeStatus(status: RegistrationStatus) {
@@ -84,9 +103,18 @@ export class ReviewPronunciationComponent {
   }
 
   selectRegistration(registration: Registration) {
+    this.lemmaVersions = [];
     this.selectedRegistration = registration;
 
     this.play(registration);
+
+    registration.lemmaIds?.forEach(lemmaId => {
+      this.editorService.getLexEntry(this.idiom, lemmaId).subscribe(lexEntry => {
+        if (lexEntry.current) {
+          this.lemmaVersions.push(lexEntry.current);
+        }
+      });
+    });
   }
 
   acceptRegistration(registration: Registration) {
