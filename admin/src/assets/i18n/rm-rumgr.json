@@ -451,7 +451,17 @@
       "refused": "Refusà"
     },
     "list": {
-      "title": "Pronunzia"
+      "title": "Pronunzia",
+      "comments": "Commentaris",
+      "comment_speaker": "Commentari plidader",
+      "comment_reviewer": "Commentari repassar",
+      "grammar": "Grammatica"
+    },
+    "reject": {
+      "title": "Refusar pronunzia",
+      "comment": "Commentari",
+      "cancel": "Interrumper",
+      "reject": "Refusar"
     }
   },
   "diff": {

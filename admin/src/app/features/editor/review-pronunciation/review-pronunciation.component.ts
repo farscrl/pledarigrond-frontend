@@ -53,7 +53,9 @@ export class ReviewPronunciationComponent {
     }
   }
 
-  constructor(private registrationService: RegistrationService) {
+  constructor(
+    private registrationService: RegistrationService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -95,6 +97,9 @@ export class ReviewPronunciationComponent {
   }
 
   rejectRegistration(registration: Registration) {
+    const reviewerComment = prompt('Remartga al plidader');
+
+    registration.reviewerComment = reviewerComment || '';
     this.registrationService.rejectRegistration(registration).subscribe(() => {
       this.downOne();
       this.changePage(this.currentPage.number);
