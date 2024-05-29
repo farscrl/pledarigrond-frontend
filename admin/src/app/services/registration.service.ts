@@ -71,7 +71,7 @@ export class RegistrationService {
   }
 
   getMp3Url(registration: Registration) {
-    return `https://pg-data.b-cdn.net/pronunciation/dev/${registration.id}/${registration.id}.mp3?lastModifiedDate=${registration.lastModifiedDate}`;
+    return `https://pg-data.b-cdn.net/pronunciation/${environment.envName}/${registration.id}/${registration.id}.mp3?lastModifiedDate=${registration.lastModifiedDate}`;
   }
 
   private generateUrl(segment: string) {
