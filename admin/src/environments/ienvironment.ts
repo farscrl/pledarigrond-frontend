@@ -1,4 +1,5 @@
 export interface IEnvironment {
+  envName: string;
   production: boolean;
   apiUrl: string;
   apiHost: string;

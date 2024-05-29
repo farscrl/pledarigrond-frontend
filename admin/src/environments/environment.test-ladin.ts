@@ -5,6 +5,7 @@
 import { IEnvironment } from "./ienvironment";
 
 export const environment: IEnvironment = {
+  envName: 'test',
   production: true,
   apiUrl: 'https://admin-api-test.dicziunaris-ladins.ch',
   apiHost: 'admin-api-test.dicziunaris-ladins.ch',
