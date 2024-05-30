@@ -55,10 +55,16 @@
   </div>
 
   <div nz-col nzSpan="15" class="right-side">
-    <nz-content>
-      <div class="content" *ngIf="selectedRegistration">
+    <nz-content *ngIf="selectedRegistration">
+      <div class="content">
         <nz-page-header [nzGhost]="false">
-          <nz-page-header-title>{{ selectedRegistration.rmStichwort }} ⇔ {{ selectedRegistration.deStichwort }}</nz-page-header-title>
+          <nz-page-header-title>
+            <button nz-button nzType="primary" nzShape="circle">
+              <span nz-icon nzType="caret-right" nzTheme="outline" *ngIf="!isPlaying" (click)="play(selectedRegistration!)"></span>
+              <span nz-icon nzType="pause" nzTheme="outline" *ngIf="isPlaying" (click)="pause()"></span>
+            </button>
+            {{ selectedRegistration.rmStichwort }} ⇔ {{ selectedRegistration.deStichwort }}
+          </nz-page-header-title>
           <nz-page-header-extra>
             <button nz-button nzType="primary" class="button-accept" (click)="acceptRegistration(selectedRegistration)">{{ 'review.actions.accept' | translate }}<span class="keyboard">enter</span></button>
             <button nz-button nzType="primary" nzDanger (click)="rejectRegistration(selectedRegistration)">{{ 'review.actions.reject' | translate }}<span class="keyboard">del</span></button>
@@ -66,12 +72,16 @@
           </nz-page-header-extra>
         </nz-page-header>
       </div>
+    </nz-content>
 
+    <nz-content *ngIf="selectedRegistration">
       <nz-descriptions [nzTitle]="'pronunciation.list.comments' | translate">
         <nz-descriptions-item [nzTitle]="'pronunciation.list.comment_speaker' | translate">{{ selectedRegistration?.speakerComment ?? '-' }}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'pronunciation.list.comment_reviewer' | translate">{{ selectedRegistration?.reviewerComment ?? '-' }}</nz-descriptions-item>
       </nz-descriptions>
+    </nz-content>
 
+    <nz-content *ngIf="selectedRegistration">
       <nz-descriptions [nzTitle]="'pronunciation.list.grammar' | translate">
         <nz-descriptions-item [nzTitle]="'edit.lemma.rm' | translate">{{ selectedRegistration?.rmStichwort ?? '-' }}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'edit.lemma.de' | translate">{{ selectedRegistration?.deStichwort ?? '-' }}</nz-descriptions-item>
@@ -79,15 +89,15 @@
         <nz-descriptions-item [nzTitle]="'edit.lemma.rm_gender' | translate">{{ selectedRegistration?.rmGenus ?? '-' }}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate">{{ selectedRegistration?.rmSubsemantik  ?? '-'}}</nz-descriptions-item>
       </nz-descriptions>
+    </nz-content>
 
-      <div *ngIf="lemmaVersions.length > 0">
-        <nz-descriptions [nzTitle]="'Vign attribuì a quests lemmas'"></nz-descriptions>
-        <ul>
-          <li *ngFor="let lv of lemmaVersions">
-            {{ lv.lemmaValues.RStichwort }} / {{ lv.lemmaValues.DStichwort }}
-          </li>
-        </ul>
-      </div>
+    <nz-content *ngIf="selectedRegistration && lemmaVersions.length > 0">
+      <nz-descriptions [nzTitle]="'Vign attribuì a quests lemmas'"></nz-descriptions>
+      <ul>
+        <li *ngFor="let lv of lemmaVersions">
+          {{ lv.lemmaValues.RStichwort }} / {{ lv.lemmaValues.DStichwort }}
+        </li>
+      </ul>
     </nz-content>
   </div>
 </div>

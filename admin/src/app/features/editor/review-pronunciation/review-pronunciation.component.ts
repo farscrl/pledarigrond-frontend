@@ -19,7 +19,8 @@ export enum KEY_CODE {
   UP_ARROW = 38,
   DOWN_ARROW = 40,
   RIGHT_ARROW = 39,
-  LEFT_ARROW = 37
+  LEFT_ARROW = 37,
+  P_KEY = 80,
 }
 
 @Component({
@@ -38,6 +39,7 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   registrations: Registration[] = [];
 
   selectedRegistration?: Registration;
+  isPlaying = false;
 
   private idiom: Language = Language.RUMANTSCHGRISCHUN;
   private idiomSubscription: any;
@@ -59,6 +61,10 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
       this.downOne();
     } else if (event.keyCode === KEY_CODE.UP_ARROW) {
       this.upOne();
+    } else if (event.keyCode === KEY_CODE.P_KEY) {
+      if (this.selectedRegistration) {
+        this.play(this.selectedRegistration);
+      }
     }
   }
 
@@ -145,7 +151,20 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     const audioElement = this.audioControl.nativeElement;
     audioElement.src = this.registrationService.getMp3Url(registration);
     audioElement.load();
+    audioElement.addEventListener("ended", () => {
+      audioElement.currentTime = 0;
+      this.isPlaying = false;
+      console.log("audio ended");
+    });
+    this.isPlaying = true;
     await audioElement.play();
+  }
+
+  async pause() {
+    const audioElement = this.audioControl.nativeElement;
+    this.isPlaying = false;
+    audioElement.pause();
+    audioElement.currentTime = 0;
   }
 
   private upOne() {
