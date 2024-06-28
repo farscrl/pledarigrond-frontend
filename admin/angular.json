@@ -18,12 +18,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "../dist/admin",
+            "outputPath": {
+              "base": "../dist/admin"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -39,7 +42,8 @@
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -87,17 +91,13 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
             },
             "development-ladin": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
@@ -110,7 +110,9 @@
             },
             "test-ladin": {
               "baseHref": "/",
-              "outputPath": "../dist",
+              "outputPath": {
+                "base": "../dist"
+              },
               "budgets": [
                 {
                   "type": "initial",
@@ -133,7 +135,9 @@
             },
             "prod-ladin": {
               "baseHref": "/",
-              "outputPath": "../dist",
+              "outputPath": {
+                "base": "../dist"
+              },
               "budgets": [
                 {
                   "type": "initial",

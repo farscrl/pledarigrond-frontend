@@ -3,12 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { de_DE } from 'ng-zorro-antd/i18n';
+import { de_DE, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -40,7 +39,7 @@ import { StatusComponent } from './components/data/status/status.component';
 import { VerificationComponent } from './components/data/verification/verification.component';
 import { MainEntryComponent } from './features/modify-entry/main-entry/main-entry.component';
 import { interceptorProviders } from './auth/interceptors';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ConjugationComponent } from './features/modify-entry/conjugation/conjugation.component';
 import { ExportDumpComponent } from './features/admin/db-administration/export-dump/export-dump.component';
@@ -53,7 +52,9 @@ import { IdiomCardComponent } from './features/dashboard/idiom-card/idiom-card.c
 import { NoPermissionsComponent } from './features/no-permissions/no-permissions.component';
 import { NounGenerationComponent } from './features/modify-entry/noun-generation/noun-generation.component';
 import { DiffComponent } from './components/diff/diff.component';
-import { AdjectiveGenerationComponent } from './features/modify-entry/adjective-generation/adjective-generation.component';
+import {
+  AdjectiveGenerationComponent
+} from './features/modify-entry/adjective-generation/adjective-generation.component';
 import { NameAdministrationComponent } from "./features/name-administration/name-administration.component";
 import { EditNameComponent } from "./features/name-administration/edit-name/edit-name.component";
 import { NameCategoryComponent } from "./components/data/name-category/name-category.component";
@@ -131,7 +132,6 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
     NoopAnimationsModule,
     NgZorroAntdModule,
     JwtModule.forRoot({
@@ -145,9 +145,9 @@ export function tokenGetter() {
     TranslateModule.forRoot({
       defaultLanguage: 'rm-rumgr',
       loader: {
-          provide: TranslateLoader,
-          useFactory: (HttpLoaderFactory),
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: (HttpLoaderFactory),
+        deps: [HttpClient]
       }
     }),
     NgxSortableModule,
@@ -158,6 +158,7 @@ export function tokenGetter() {
     interceptorProviders,
     { provide: NZ_I18N, useValue: de_DE },
     FileUtils,
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   bootstrap: [AppComponent]
 })
