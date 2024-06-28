@@ -34,7 +34,7 @@
     "ngx-modalview": "^16.0.1",
     "ngx-tiptap": "^11.0.0",
     "remixicon": "^2.5.0",
-    "rxjs": "~7.4.0",
+    "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.4"
   },
