@@ -30,7 +30,7 @@
     "@tiptap/extension-underline": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
     "modern-css-reset": "^1.4.0",
-    "ngx-matomo-client": "^6.0.2",
+    "ngx-matomo-client": "^6.2.0",
     "ngx-modalview": "^16.0.1",
     "ngx-tiptap": "^11.0.0",
     "remixicon": "^2.5.0",
