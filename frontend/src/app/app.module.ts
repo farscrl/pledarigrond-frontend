@@ -1,8 +1,8 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgxModalView, defaultNgxModalOptions } from 'ngx-modalview';
+import { defaultNgxModalOptions, NgxModalView } from 'ngx-modalview';
 import { NgxTiptapModule } from 'ngx-tiptap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,8 +19,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { UserLoggedInGuard } from './auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PuterPlaceholderComponent } from './features/puter-placeholder/puter-placeholder.component';
 import { SursilvanPlaceholderComponent } from './features/sursilvan-placeholder/sursilvan-placeholder.component';
 import { ValladerPlaceholderComponent } from './features/vallader-placeholder/vallader-placeholder.component';
@@ -56,11 +56,17 @@ import { LanguageUtils } from './utils/language-utils';
 import { OtherResourcesComponent } from './features/other-resources/other-resources.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { SpellcheckerComponent } from './features/spellchecker/spellchecker.component';
-import { SpellcheckerMenubarComponent } from './features/spellchecker/spellchecker-menubar/spellchecker-menubar.component';
+import {
+  SpellcheckerMenubarComponent
+} from './features/spellchecker/spellchecker-menubar/spellchecker-menubar.component';
 import { MatomoModule } from 'ngx-matomo-client';
-import { ManualsSpellcheckerComponent } from './features/spellchecker/manuals-spellchecker/manuals-spellchecker.component';
+import {
+  ManualsSpellcheckerComponent
+} from './features/spellchecker/manuals-spellchecker/manuals-spellchecker.component';
 import { ManualMacosComponent } from './features/spellchecker/manuals-spellchecker/manual-macos/manual-macos.component';
-import { ManualHunspellComponent } from './features/spellchecker/manuals-spellchecker/manual-hunspell/manual-hunspell.component';
+import {
+  ManualHunspellComponent
+} from './features/spellchecker/manuals-spellchecker/manual-hunspell/manual-hunspell.component';
 import { ManualWordComponent } from './features/spellchecker/manuals-spellchecker/manual-word/manual-word.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -128,7 +134,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
     JwtModule.forRoot({
       config: {
@@ -174,6 +179,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     UserLoggedInGuard,
     UserNotLoggedInGuard,
+    provideHttpClient(withInterceptorsFromDi()),
     LanguageUtils
   ],
   bootstrap: [AppComponent]
