@@ -9,14 +9,14 @@
 <ngx-sortable [items]="itemsToReorder" name="" (listSorted)="listSorted($event)" [listStyle]="listStyle">
   <ng-template let-item="item">
       <div class="sortable-list-item">
-        {{ item.lemmaValues.DStichwort }}
-        <ng-container *ngIf="item.lemmaValues.DSubsemantik"> ({{ item.lemmaValues.DSubsemantik }})</ng-container>
-        <ng-container *ngIf="item.lemmaValues.DGenus"> [{{ item.lemmaValues.DGenus }}]</ng-container>
+        {{ item.lemmaValues.DStichwort }}<em></em>
+        <em *ngIf="item.lemmaValues.DSubsemantik"> ({{ item.lemmaValues.DSubsemantik }})</em>
+        <em *ngIf="item.lemmaValues.DGenus"> [{{ item.lemmaValues.DGenus }}]</em>
          ⇔
         {{ item.lemmaValues.RStichwort }}
-        <ng-container *ngIf="item.lemmaValues.RFlex"> [{{ item.lemmaValues.RFlex }}]</ng-container>
-        <ng-container *ngIf="item.lemmaValues.RSubsemantik"> ({{ item.lemmaValues.RSubsemantik }})</ng-container>
-        <ng-container *ngIf="item.lemmaValues.RGenus"> [{{ item.lemmaValues.RGenus }}]</ng-container>
+        <em *ngIf="item.lemmaValues.RFlex"> [{{ item.lemmaValues.RFlex }}]</em>
+        <em *ngIf="item.lemmaValues.RSubsemantik"> ({{ item.lemmaValues.RSubsemantik }})</em>
+        <em *ngIf="item.lemmaValues.RGenus"> [{{ item.lemmaValues.RGenus }}]</em>
       </div>
   </ng-template>
 </ngx-sortable>
