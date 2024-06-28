@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 import { EditorQuery } from 'src/app/models/editor-query';
 import { ngDebounce } from "../../../decorators/debounce.decorator";
 

@@ -1,13 +1,13 @@
 import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { LemmaVersion } from 'src/app/models/lemma-version';
-import {LexEntry, LexEntryUi} from 'src/app/models/lex-entry';
+import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
 
-import * as moment from 'moment';
+import moment from 'moment';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
-import {DiffModalComponent} from "../../features/diff-modal/diff-modal.component";
+import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 
 @Component({
   selector: 'app-version-history',

@@ -4,7 +4,7 @@ import { ExportComponent } from 'src/app/features/editor/export/export.component
 import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
 import { Page } from 'src/app/models/page';
 
-import * as moment from 'moment';
+import moment from 'moment';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { LemmaListColumn } from 'src/app/models/lemma-list-column';
