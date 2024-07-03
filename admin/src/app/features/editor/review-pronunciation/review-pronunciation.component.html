@@ -59,10 +59,7 @@
       <div class="content">
         <nz-page-header [nzGhost]="false">
           <nz-page-header-title>
-            <button nz-button nzType="primary" nzShape="circle">
-              <span nz-icon nzType="caret-right" nzTheme="outline" *ngIf="!isPlaying" (click)="play(selectedRegistration!)"></span>
-              <span nz-icon nzType="pause" nzTheme="outline" *ngIf="isPlaying" (click)="pause()"></span>
-            </button>
+            <app-audio-player [url]="getAudioUrl(selectedRegistration)"></app-audio-player>
             {{ selectedRegistration.rmStichwort }} ⇔ {{ selectedRegistration.deStichwort }}
           </nz-page-header-title>
           <nz-page-header-extra>
@@ -101,5 +98,3 @@
     </nz-content>
   </div>
 </div>
-
-<audio #audioControl></audio>

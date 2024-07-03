@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration, RegistrationStatus } from '../../../models/registration';
 import { Page } from '../../../models/page';
@@ -39,14 +39,11 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   registrations: Registration[] = [];
 
   selectedRegistration?: Registration;
-  isPlaying = false;
 
   private idiom: Language = Language.RUMANTSCHGRISCHUN;
   private idiomSubscription: any;
 
   lemmaVersions: LemmaVersion[] = [];
-
-  @ViewChild('audioControl') audioControl!: ElementRef<HTMLAudioElement>;
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -61,10 +58,6 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
       this.downOne();
     } else if (event.keyCode === KEY_CODE.UP_ARROW) {
       this.upOne();
-    } else if (event.keyCode === KEY_CODE.P_KEY) {
-      if (this.selectedRegistration) {
-        this.play(this.selectedRegistration);
-      }
     }
   }
 
@@ -112,8 +105,6 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     this.lemmaVersions = [];
     this.selectedRegistration = registration;
 
-    this.play(registration);
-
     registration.lemmaIds?.forEach(lemmaId => {
       this.editorService.getLexEntry(this.idiom, lemmaId).subscribe(lexEntry => {
         if (lexEntry.current) {
@@ -147,24 +138,8 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     });
   }
 
-  async play(registration: Registration) {
-    const audioElement = this.audioControl.nativeElement;
-    audioElement.src = this.registrationService.getMp3Url(registration);
-    audioElement.load();
-    audioElement.addEventListener("ended", () => {
-      audioElement.currentTime = 0;
-      this.isPlaying = false;
-      console.log("audio ended");
-    });
-    this.isPlaying = true;
-    await audioElement.play();
-  }
-
-  async pause() {
-    const audioElement = this.audioControl.nativeElement;
-    this.isPlaying = false;
-    audioElement.pause();
-    audioElement.currentTime = 0;
+  getAudioUrl(registration: Registration) {
+    return this.registrationService.getMp3Url(registration);
   }
 
   private upOne() {

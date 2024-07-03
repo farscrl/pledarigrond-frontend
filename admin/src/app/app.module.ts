@@ -68,6 +68,7 @@ import {
 } from "./components/pronunciation-characters/pronunciation-characters.component";
 import { OtherGenerationComponent } from './features/modify-entry/other-generation/other-generation.component';
 import { ReviewPronunciationComponent } from './features/editor/review-pronunciation/review-pronunciation.component';
+import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 
 registerLocaleData(de);
 
@@ -127,6 +128,7 @@ export function tokenGetter() {
     PronunciationCharactersComponent,
     OtherGenerationComponent,
     ReviewPronunciationComponent,
+    AudioPlayerComponent,
   ],
   imports: [
     BrowserModule,
