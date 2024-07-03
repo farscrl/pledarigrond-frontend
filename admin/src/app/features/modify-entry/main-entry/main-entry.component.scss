@@ -3,17 +3,17 @@
   margin-right: 8px;
 }
 
-.infleciton-edit {
+.inflection-edit {
   cursor: pointer;
   position: relative;
   top: 4px;
   font-size: 24px;
   color: #1890ff;
   transition: all 0.3s;
-}
 
-.infleciton-edit:hover {
-  color: #00509b;
+  &:hover {
+    color: #00509b;
+  }
 }
 
 .info-input {
