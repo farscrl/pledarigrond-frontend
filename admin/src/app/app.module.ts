@@ -69,6 +69,9 @@ import {
 import { OtherGenerationComponent } from './features/modify-entry/other-generation/other-generation.component';
 import { ReviewPronunciationComponent } from './features/editor/review-pronunciation/review-pronunciation.component';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
+import { PronunciationComponent } from './features/modify-entry/pronunciation/pronunciation.component';
+import { NzFlexDirective } from 'ng-zorro-antd/flex';
+import { RegistrationStatusComponent } from './components/data/registration-status/registration-status.component';
 
 registerLocaleData(de);
 
@@ -129,6 +132,8 @@ export function tokenGetter() {
     OtherGenerationComponent,
     ReviewPronunciationComponent,
     AudioPlayerComponent,
+    PronunciationComponent,
+    RegistrationStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -153,6 +158,7 @@ export function tokenGetter() {
       }
     }),
     NgxSortableModule,
+    NzFlexDirective,
   ],
   providers: [
     UserLoggedInGuard,

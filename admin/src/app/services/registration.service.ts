@@ -23,6 +23,9 @@ export class RegistrationService {
 
   getRegistrations(filter: ListFilter, page: number = 0, pageSize = 15) {
     let params: HttpParams = new HttpParams().set('ascending', filter.ascending ? 'true' : 'false');
+    if (filter.searchTerm) {
+      params = params.set('searchTerm', filter.searchTerm);
+    }
     if (filter.status) {
       params = params.set('status', filter.status);
     }
@@ -53,6 +56,18 @@ export class RegistrationService {
 
   postponeReviewRegistration(registration: Registration) {
     return this.httpClient.post<Registration>(this.generateUrl('/postpone_review'), registration);
+  }
+
+  addRegistrationToLemma(registration: Registration, lexEntryId: string) {
+    return this.httpClient.post<Registration>(this.generateUrl('/add_to_lemma/' + lexEntryId), registration);
+  }
+
+  didOrderRegistration(lexEntryId: string) {
+    return this.httpClient.post<boolean>(this.generateUrl('/did_order/' + lexEntryId), null);
+  }
+
+  orderRegistration(registration: Registration) {
+    return this.httpClient.post<Registration>(this.generateUrl('/order'), registration);
   }
 
   uploadFile(file: Blob, registration: Registration) {

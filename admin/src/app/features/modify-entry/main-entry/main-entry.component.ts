@@ -1,11 +1,10 @@
-import { Component, Inject, Input, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
-import { NzModalService } from 'ng-zorro-antd/modal';
 import { ConjugationComponent } from '../conjugation/conjugation.component';
 import { TranslateService } from '@ngx-translate/core';
 import { NounGenerationComponent } from '../noun-generation/noun-generation.component';
@@ -14,7 +13,7 @@ import { Language } from "../../../models/security";
 import { PronounGenerationComponent } from "../pronoun-generation/pronoun-generation.component";
 import { EnvironmentService } from "../../../services/environment.service";
 import { OtherGenerationComponent } from '../other-generation/other-generation.component';
-import { DiffModalData } from '../../diff-modal/diff-modal.component';
+import { PronunciationComponent } from '../pronunciation/pronunciation.component';
 
 export class MainEntryData {
   lexEntryId?: string;
@@ -45,7 +44,7 @@ export class MainEntryComponent implements OnInit {
   dGenderAutocompleteValues: string[] = [];
 
   private lexEntry?: LexEntry;
-  private lemmaVersion?: LemmaVersion;
+  public lemmaVersion?: LemmaVersion;
 
   validateForm!: UntypedFormGroup;
 
@@ -265,6 +264,20 @@ export class MainEntryComponent implements OnInit {
     });
   }
 
+  editPronunciation() {
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('edit.pronunciation.title'),
+      nzContent: PronunciationComponent,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzData: {
+        lexEntryId: this.lexEntryId,
+      },
+    });
+  }
+
   replyComment() {
     const r = this.translateService.instant('reply.romansh') + " = " + (this.lemmaVersion?.lemmaValues.RStichwort || "");
     const d = this.translateService.instant('reply.german') + " = " + (this.lemmaVersion?.lemmaValues.DStichwort || "");
@@ -345,6 +358,17 @@ export class MainEntryComponent implements OnInit {
       return;
     }
     this.dGenderAutocompleteValues = this.genderValues.filter(option => option.indexOf(searchValue) !== -1);
+  }
+
+  getAudioUrl(pronunciation: string) {
+    const parts = pronunciation.split('/');
+    if (parts.length < 2) {
+      throw new Error('pronunciation does not contain a slash or does not have two parts');
+    }
+    const env = parts[0];
+    const id = parts[1];
+
+    return `https://pg-data.b-cdn.net/pronunciation/${env}/${id}/${id}.mp3`;
   }
 
   private setUpForm() {

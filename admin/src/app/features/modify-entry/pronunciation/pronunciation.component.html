@@ -1,0 +1,61 @@
+<ng-container *ngIf="lemmaVersion && !isOrderActive">
+  Anc è nagina registraziun attribuida a quest lemma.
+</ng-container>
+<ng-container *ngIf="lemmaVersion && isOrderActive">
+  Ina registraziun per quest lemma è vegnida empustada.
+</ng-container>
+
+<div style="text-align: right" *ngIf="!isModifyActive">
+  <button nz-button nzType="primary" (click)="isModifyActive = true;">Modifitgar</button>
+</div>
+
+<nz-divider  *ngIf="isModifyActive"></nz-divider>
+
+<div class="combination-wrapper" nz-flex [nzGap]="80"  *ngIf="isModifyActive">
+  <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
+    <h3>Attribuir lemma existent</h3>
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input type="text" nz-input placeholder="input search text" [(ngModel)]="listFilter.searchTerm" (ngModelChange)="searchRegistrations()" />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search"></span></button>
+    </ng-template>
+
+    <nz-table #smallTable nzSize="small" [nzData]="searchResults" [nzFrontPagination]="false" [nzShowPagination]="false">
+      <thead>
+      <tr>
+        <th>Play</th>
+        <th>Pled per pronunziar</th>
+        <th>Status</th>
+        <th>Grammatica</th>
+        <th>Genus</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of smallTable.data" (click)="addPronunciation(data)">
+        <td><app-audio-player [url]="getAudioUrl(data)" *ngIf="data.status === 'COMPLETED'" /></td>
+        <td>{{ data.rmStichwort }}</td>
+        <td><app-registration-status [status]="data.status" /></td>
+        <td>{{ data.rmGrammatik }}</td>
+        <td>{{ data.rmGenus }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+
+  <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
+    <h3>Empustar ina pronunzia</h3>
+    <p>
+      Cun quest button po ina pronunzia vegnir empustada per quest pled. Il pled vegn agiuntà a la glista da tut las
+      pronunzias da registrar è vegn registrà cun la proxima iteraziun da pronunzias.
+    </p>
+    <button nz-button nzType="primary" nzSize="large">
+      <span nz-icon nzType="download"></span>
+      Empustar
+    </button>
+  </div>
+</div>
+
+<ng-template [nzModalFooter]>
+  <button nz-button nzType="primary" (click)="handleOk()">OK</button>
+</ng-template>

@@ -1,0 +1,6 @@
+<nz-tag [nzColor]="'blue'" *ngIf="status === 'TODO'">{{ 'data.registration_status.todo' | translate}}</nz-tag>
+<nz-tag [nzColor]="'blue'" *ngIf="status === 'POSTPONED_REGISTRATION'">{{ 'data.registration_status.postponed_registration' | translate}}</nz-tag>
+<nz-tag [nzColor]="'orange'" *ngIf="status === 'IN_REVIEW'">{{ 'data.registration_status.in_review' | translate}}</nz-tag>
+<nz-tag [nzColor]="'orange'" *ngIf="status === 'POSTPONED_REVIEW'">{{ 'data.registration_status.postponed_review' | translate}}</nz-tag>
+<nz-tag [nzColor]="'green'" *ngIf="status === 'COMPLETED'">{{ 'data.registration_status.completed' | translate}}</nz-tag>
+<nz-tag [nzColor]="'red'" *ngIf="status === 'REFUSED'">{{ 'data.registration_status.refused' | translate}}</nz-tag>

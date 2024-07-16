@@ -137,7 +137,8 @@
         "rm_additional_search": "Terms da tschertga supplementars (rm)",
         "rm_etymology": "Etimologia (rm)",
         "category": "Categoria",
-        "comment": "Commentari"
+        "comment": "Commentari",
+        "pronunciation": "Pronunzia"
       },
       "export": {
         "button": "Exportar",
@@ -266,6 +267,14 @@
       "company": "Interpresa",
       "abbreviation": "Scursanida",
       "other": "Auter"
+    },
+    "registration_status": {
+      "todo": "Anc da pronunziar",
+      "postponed_registration": "Pronunzia spustada",
+      "in_review": "Per repassar",
+      "postponed_review": "Spustà repassar",
+      "completed": "Cumplettà",
+      "refused": "Refusà"
     }
   },
   "edit": {
@@ -370,6 +379,9 @@
         "otherForm3": "furma alternativa 3",
         "otherForm4": "furma alternativa 4"
       }
+    },
+    "pronunciation": {
+      "title": "Pronunzia"
     },
     "cancel": "Interrumper",
     "reset": "Reinizialisar",

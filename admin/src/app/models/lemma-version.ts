@@ -180,6 +180,9 @@ export class LemmaValues {
   otherForm2?: string;
   otherForm3?: string;
   otherForm4?: string;
+
+  // pronunciation
+  RPronunciation?: string;
 }
 
 export class PgValues {

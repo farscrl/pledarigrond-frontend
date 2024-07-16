@@ -118,6 +118,18 @@
         </nz-form-control>
       </nz-form-item>
 
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionType">{{ 'lexicon.lemma.columns.pronunciation' | translate }}</nz-form-label>
+        <nz-form-control>
+          <ng-container *ngIf="!lemmaVersion?.lemmaValues?.RPronunciation">
+            nagina
+          </ng-container>
+          <ng-container *ngIf="lemmaVersion?.lemmaValues?.RPronunciation">
+            <app-audio-player [url]="getAudioUrl(lemmaVersion?.lemmaValues?.RPronunciation!)"></app-audio-player>
+          </ng-container>
+          <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronunciation()"></i>
+        </nz-form-control>
+      </nz-form-item>
     </div>
     <div nz-col nzSpan="12">
 
