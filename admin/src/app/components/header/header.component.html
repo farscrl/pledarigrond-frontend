@@ -1,9 +1,21 @@
 <nz-header>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu" [nzSelectable]="false">
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/rumantschgrischun" *ngIf="authService.isEditorRumantschgrischun()">Rumantsch Grischun</li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/surmiran" *ngIf="authService.isEditorSurmiran()">Surmiran</li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sursilvan" *ngIf="authService.isEditorSursilvan()">Sursilvan</li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sutsilvan" *ngIf="authService.isEditorSutsilvan()">Sutsilvan</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/rumantschgrischun" *ngIf="authService.isEditorRumantschgrischun()">
+      <span class="short">RG</span>
+      <span class="long">Rumantsch Grischun</span>
+    </li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/surmiran" *ngIf="authService.isEditorSurmiran()">
+      <span class="short">SM</span>
+      <span class="long">Surmiran</span>
+    </li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sursilvan" *ngIf="authService.isEditorSursilvan()">
+      <span class="short">SR</span>
+      <span class="long">Sursilvan</span>
+    </li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sutsilvan" *ngIf="authService.isEditorSutsilvan()">
+      <span class="short">ST</span>
+      <span class="long">Sutsilvan</span>
+    </li>
 
     <nz-divider nzType="vertical" *ngIf="authService.isEditorNames()"></nz-divider>
 

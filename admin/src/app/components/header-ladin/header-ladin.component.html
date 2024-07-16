@@ -1,7 +1,13 @@
 <nz-header>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu" [nzSelectable]="false">
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/puter" *ngIf="authService.isEditorPuter()">Puter</li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/vallader" *ngIf="authService.isEditorVallader()">Vallader</li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/puter" *ngIf="authService.isEditorPuter()">
+      <span class="short">PT</span>
+      <span class="long">Puter</span>
+    </li>
+    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/vallader" *ngIf="authService.isEditorVallader()">
+      <span class="short">VL</span>
+      <span class="long">Vallader</span>
+    </li>
 
     <nz-divider nzType="vertical" *ngIf="authService.isEditorNames()"></nz-divider>
 
