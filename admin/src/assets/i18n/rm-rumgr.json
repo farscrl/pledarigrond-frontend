@@ -446,6 +446,7 @@
       "reject": "Refusar",
       "modify": "Modifitgar",
       "later": "Repassar pli tard",
+      "delete": "stizzar",
       "automatic": {
         "title": "Correcturas automaticas",
         "only_m": "Mo masculin",

@@ -138,6 +138,13 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     });
   }
 
+  delete(registration: Registration) {
+    this.registrationService.deleteRegistration(registration).subscribe(() => {
+      this.downOne();
+      this.changePage(this.currentPage.number);
+    });
+  }
+
   getAudioUrl(registration: Registration) {
     return this.registrationService.getMp3Url(registration);
   }

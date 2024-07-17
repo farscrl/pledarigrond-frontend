@@ -58,6 +58,10 @@ export class RegistrationService {
     return this.httpClient.post<Registration>(this.generateUrl('/postpone_review'), registration);
   }
 
+  deleteRegistration(registration: Registration) {
+    return this.httpClient.delete<Registration>(this.generateUrl('', registration.id));
+  }
+
   addRegistrationToLemma(registration: Registration, lexEntryId: string) {
     return this.httpClient.post<Registration>(this.generateUrl('/add_to_lemma/' + lexEntryId), registration);
   }
@@ -89,7 +93,12 @@ export class RegistrationService {
     return `https://pg-data.b-cdn.net/pronunciation/${environment.envName}/${registration.id}/${registration.id}.mp3?lastModifiedDate=${registration.lastModifiedDate}`;
   }
 
-  private generateUrl(segment: string) {
-    return environment.apiUrl + "/" + this.idiom + this.registrationsBasePath + segment;
+  private generateUrl(segment: string, id?: string) {
+
+    let base = environment.apiUrl + "/" + this.idiom + this.registrationsBasePath;
+    if (id) {
+      base += "/" + id;
+    }
+    return base + segment;
   }
 }
