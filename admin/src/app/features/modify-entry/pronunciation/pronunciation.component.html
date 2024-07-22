@@ -32,7 +32,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let data of smallTable.data" (click)="addPronunciation(data)">
+      <tr *ngFor="let data of smallTable.data" (click)="addPronunciation(data)" class="existing-pronunciation">
         <td><app-audio-player [url]="getAudioUrl(data)" *ngIf="data.status === 'COMPLETED'" /></td>
         <td>{{ data.rmStichwort }}</td>
         <td><app-registration-status [status]="data.status" /></td>
