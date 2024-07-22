@@ -16,7 +16,7 @@ export class PronunciationComponent implements OnInit {
 
   isModifyActive = false;
 
-  orderedRegistration: Registration | undefined = undefined;
+  orderedRegistration: Registration | null = null;
 
   lexEntryId: string;
   lemmaVersion?: LemmaVersion;

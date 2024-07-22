@@ -1,7 +1,7 @@
-<ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration === undefined)">
+<ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration === null)">
   Anc è nagina registraziun attribuida a quest lemma.
 </ng-container>
-<ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration !== undefined) ">
+<ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration !== null) ">
   Ina registraziun per quest lemma è vegnida empustada:
   {{ orderedRegistration.rmStichwort }}
   <ng-container *ngIf="orderedRegistration.rmGrammatik">, {{ orderedRegistration.rmGrammatik }}</ng-container>

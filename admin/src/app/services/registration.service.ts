@@ -67,7 +67,7 @@ export class RegistrationService {
   }
 
   didOrderRegistration(lexEntryId: string) {
-    return this.httpClient.post<Registration | undefined>(this.generateUrl('/did_order/' + lexEntryId), null);
+    return this.httpClient.post<Registration | null>(this.generateUrl('/did_order/' + lexEntryId), null);
   }
 
   orderRegistration(registration: Registration) {
