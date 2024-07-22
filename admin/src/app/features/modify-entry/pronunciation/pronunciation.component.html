@@ -2,10 +2,12 @@
   Anc è nagina registraziun attribuida a quest lemma.
 </ng-container>
 <ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration !== null) ">
-  Ina registraziun per quest lemma è vegnida empustada:
-  {{ orderedRegistration.rmStichwort }}
+  Ina registraziun per quest lemma è vegnida empustada:<br>
+  <b>{{ orderedRegistration.rmStichwort }}</b>
   <ng-container *ngIf="orderedRegistration.rmGrammatik">, {{ orderedRegistration.rmGrammatik }}</ng-container>
   <ng-container *ngIf="orderedRegistration.rmGenus">, {{ orderedRegistration.rmGenus }}</ng-container>
+  <br>
+  <app-registration-status [status]="orderedRegistration.status"></app-registration-status>
 </ng-container>
 <ng-container *ngIf="lemmaVersion && !!lemmaVersion.lemmaValues.RPronunciation">
   Ina registraziun è gia attribuida a quest lemma:
