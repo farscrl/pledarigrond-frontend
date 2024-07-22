@@ -278,6 +278,9 @@ export class MainEntryComponent implements OnInit {
         lexEntryId: this.lexEntryId,
       },
     });
+    modal.afterClose.subscribe((rPronunciation: string | undefined) => {
+      this.lemmaVersion!.lemmaValues.RPronunciation = rPronunciation;
+    })
   }
 
   replyComment() {
