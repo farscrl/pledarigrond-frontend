@@ -63,10 +63,13 @@ export class PronunciationComponent implements OnInit {
       }
     });
   }
+
+  getAudioUrlByRegistration(registration: Registration) {
+    return this.registrationService.getMp3UrlByRegistration(registration);
   }
 
-  getAudioUrl(registration: Registration) {
-    return this.registrationService.getMp3Url(registration);
+  getAudioUrlById(id: string) {
+    return this.registrationService.getMp3UrlById(id);
   }
 
   handleOk() {

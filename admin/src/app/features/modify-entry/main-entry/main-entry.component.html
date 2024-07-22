@@ -125,7 +125,7 @@
             nagina
           </ng-container>
           <ng-container *ngIf="lemmaVersion?.lemmaValues?.RPronunciation">
-            <app-audio-player [url]="getAudioUrl(lemmaVersion?.lemmaValues?.RPronunciation!)"></app-audio-player>
+            <app-audio-player [url]="getAudioUrlById(lemmaVersion?.lemmaValues?.RPronunciation!)"></app-audio-player>
           </ng-container>
           <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronunciation()"></i>
         </nz-form-control>

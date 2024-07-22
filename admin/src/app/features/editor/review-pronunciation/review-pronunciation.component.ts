@@ -156,7 +156,7 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   }
 
   getAudioUrl(registration: Registration) {
-    return this.registrationService.getMp3Url(registration);
+    return this.registrationService.getMp3UrlByRegistration(registration);
   }
 
   private upOne() {

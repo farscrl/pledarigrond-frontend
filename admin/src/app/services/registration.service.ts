@@ -89,8 +89,19 @@ export class RegistrationService {
     return this.httpClient.post<Registration>(this.generateUrl('/upload'), formData, { headers });
   }
 
-  getMp3Url(registration: Registration) {
+  getMp3UrlByRegistration(registration: Registration) {
     return `https://pg-data.b-cdn.net/pronunciation/${environment.envName}/${registration.id}/${registration.id}.mp3?lastModifiedDate=${registration.lastModifiedDate}`;
+  }
+
+  getMp3UrlById(pronunciation: string) {
+    const parts = pronunciation.split('/');
+    if (parts.length < 2) {
+      throw new Error('pronunciation does not contain a slash or does not have two parts');
+    }
+    const env = parts[0];
+    const id = parts[1];
+
+    return `https://pg-data.b-cdn.net/pronunciation/${env}/${id}/${id}.mp3`;
   }
 
   private generateUrl(segment: string, id?: string) {

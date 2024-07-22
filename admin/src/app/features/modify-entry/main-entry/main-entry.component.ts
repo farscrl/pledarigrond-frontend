@@ -14,6 +14,7 @@ import { PronounGenerationComponent } from "../pronoun-generation/pronoun-genera
 import { EnvironmentService } from "../../../services/environment.service";
 import { OtherGenerationComponent } from '../other-generation/other-generation.component';
 import { PronunciationComponent } from '../pronunciation/pronunciation.component';
+import { RegistrationService } from '../../../services/registration.service';
 
 export class MainEntryData {
   lexEntryId?: string;
@@ -58,6 +59,7 @@ export class MainEntryComponent implements OnInit {
     private translateService: TranslateService,
     public environmentService: EnvironmentService,
     @Inject(NZ_MODAL_DATA) data: MainEntryData,
+    private registrationService: RegistrationService,
   ) {
     this.lexEntryId = data.lexEntryId;
     this.directlyLoadDetailView = data.directlyLoadDetailView;
@@ -360,15 +362,8 @@ export class MainEntryComponent implements OnInit {
     this.dGenderAutocompleteValues = this.genderValues.filter(option => option.indexOf(searchValue) !== -1);
   }
 
-  getAudioUrl(pronunciation: string) {
-    const parts = pronunciation.split('/');
-    if (parts.length < 2) {
-      throw new Error('pronunciation does not contain a slash or does not have two parts');
-    }
-    const env = parts[0];
-    const id = parts[1];
-
-    return `https://pg-data.b-cdn.net/pronunciation/${env}/${id}/${id}.mp3`;
+  getAudioUrlById(pronunciation: string) {
+    return this.registrationService.getMp3UrlById(pronunciation);
   }
 
   private setUpForm() {
