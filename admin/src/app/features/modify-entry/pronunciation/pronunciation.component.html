@@ -1,8 +1,15 @@
-<ng-container *ngIf="lemmaVersion && !isOrderActive">
+<ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration === undefined)">
   Anc è nagina registraziun attribuida a quest lemma.
 </ng-container>
-<ng-container *ngIf="lemmaVersion && isOrderActive">
-  Ina registraziun per quest lemma è vegnida empustada.
+<ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration !== undefined) ">
+  Ina registraziun per quest lemma è vegnida empustada:
+  {{ orderedRegistration.rmStichwort }}
+  <ng-container *ngIf="orderedRegistration.rmGrammatik">, {{ orderedRegistration.rmGrammatik }}</ng-container>
+  <ng-container *ngIf="orderedRegistration.rmGenus">, {{ orderedRegistration.rmGenus }}</ng-container>
+</ng-container>
+<ng-container *ngIf="lemmaVersion && !!lemmaVersion.lemmaValues.RPronunciation">
+  Ina registraziun è gia attribuida a quest lemma:
+  <app-audio-player [url]="getAudioUrlById(lemmaVersion?.lemmaValues?.RPronunciation!)"></app-audio-player>
 </ng-container>
 
 <div style="text-align: right" *ngIf="!isModifyActive">

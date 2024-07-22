@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from '../../../models/lemma-version';
 import { RegistrationService } from '../../../services/registration.service';
 import { ListFilter } from '../../../models/registration-filter';
@@ -16,7 +16,7 @@ export class PronunciationComponent implements OnInit {
 
   isModifyActive = false;
 
-  isOrderActive = false;
+  orderedRegistration: Registration | undefined = undefined;
 
   lexEntryId: string;
   lemmaVersion?: LemmaVersion;
@@ -30,6 +30,7 @@ export class PronunciationComponent implements OnInit {
     private editorService: EditorService,
     private languageSelectionService: LanguageSelectionService,
     private modalRef: NzModalRef,
+    private modal: NzModalService,
   ) {
     this.lexEntryId = data.lexEntryId;
   }
@@ -40,7 +41,7 @@ export class PronunciationComponent implements OnInit {
 
   didOrderRegistration() {
     this.registrationService.didOrderRegistration(this.lexEntryId).subscribe((value) => {
-      this.isOrderActive = value;
+      this.orderedRegistration = value;
     });
 
   }
