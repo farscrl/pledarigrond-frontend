@@ -77,6 +77,18 @@ export class PronunciationComponent implements OnInit {
     this.modalRef.close(this.lemmaVersion?.lemmaValues.RPronunciation);
   }
 
+  orderRegistration() {
+    const registration = new Registration();
+    registration.rmStichwort = this.lemmaVersion?.lemmaValues.RStichwort;
+    registration.deStichwort = this.lemmaVersion?.lemmaValues.DStichwort;
+    registration.rmGenus = this.lemmaVersion?.lemmaValues.RGenus;
+    registration.rmGrammatik = this.lemmaVersion?.lemmaValues.RGrammatik;
+
+    this.registrationService.orderRegistration(registration).subscribe(() => {
+      this.init();
+    });
+  }
+
   private init() {
     this.isModifyActive = false;
     this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntryId).subscribe(entry => {
