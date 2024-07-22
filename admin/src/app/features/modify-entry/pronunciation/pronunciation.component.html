@@ -20,7 +20,7 @@
 
 <div class="combination-wrapper" nz-flex [nzGap]="80"  *ngIf="isModifyActive">
   <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
-    <h3>Attribuir lemma existent</h3>
+    <h3>Attribuir registraziun existenta</h3>
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
       <input type="text" nz-input placeholder="input search text" [(ngModel)]="listFilter.searchTerm" (ngModelChange)="searchRegistrations()" />
     </nz-input-group>
@@ -53,8 +53,8 @@
   <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
     <h3>Empustar ina pronunzia</h3>
     <p>
-      Cun quest button po ina pronunzia vegnir empustada per quest pled. Il pled vegn agiuntà a la glista da tut las
-      pronunzias da registrar è vegn registrà cun la proxima iteraziun da pronunzias.
+      Cun quest button po ina pronunzia vegnir empustada per «{{ lemmaVersion?.lemmaValues?.RStichwort }}». Il pled vegn agiuntà a la glista da tut las
+      pronunzias da registrar.
     </p>
     <button nz-button nzType="primary" nzSize="large">
       <span nz-icon nzType="download"></span>
