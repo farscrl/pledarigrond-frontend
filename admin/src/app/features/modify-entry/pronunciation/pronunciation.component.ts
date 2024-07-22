@@ -78,6 +78,7 @@ export class PronunciationComponent implements OnInit {
   }
 
   private init() {
+    this.isModifyActive = false;
     this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntryId).subscribe(entry => {
       this.lemmaVersion = entry.current;
 
