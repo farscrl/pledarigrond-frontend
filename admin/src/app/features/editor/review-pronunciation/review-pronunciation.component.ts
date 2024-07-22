@@ -7,6 +7,7 @@ import { EditorService } from '../../../services/editor.service';
 import { Language } from '../../../models/security';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
 import { LemmaVersion } from '../../../models/lemma-version';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -64,7 +65,8 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   constructor(
     private registrationService: RegistrationService,
     private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService
+    private languageSelectionService: LanguageSelectionService,
+    private modal: NzModalService,
   ) {
   }
 
@@ -139,10 +141,18 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   }
 
   delete(registration: Registration) {
-    this.registrationService.deleteRegistration(registration).subscribe(() => {
-      this.downOne();
-      this.changePage(this.currentPage.number);
+    this.modal.confirm({
+      nzTitle: 'Vuls ti propi stizzar la pronunzia «' + registration.rmStichwort + '»?',
+      nzOkText: 'Stizzar',
+      nzCancelText: 'Interrumper',
+      nzOnOk: () => {
+        this.registrationService.deleteRegistration(registration).subscribe(() => {
+          this.downOne();
+          this.changePage(this.currentPage.number);
+        });
+      }
     });
+
   }
 
   getAudioUrl(registration: Registration) {

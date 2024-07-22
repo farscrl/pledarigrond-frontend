@@ -52,11 +52,17 @@ export class PronunciationComponent implements OnInit {
   }
 
   addPronunciation(registration: Registration) {
-    if (confirm('Vuls ti propi agiuntar la pronunzia (' + registration.rmStichwort + ') a quest lemma?')) {
-      this.registrationService.addRegistrationToLemma(registration, this.lexEntryId).subscribe(() => {
-        this.init();
-      });
-    }
+    this.modal.confirm({
+      nzTitle: 'Vuls ti propi attribuir la pronunzia (' + registration.rmStichwort + ') a quest lemma?',
+      nzOkText: 'Attribuir',
+      nzCancelText: 'Interrumper',
+      nzOnOk: () => {
+        this.registrationService.addRegistrationToLemma(registration, this.lexEntryId).subscribe(() => {
+          this.init();
+        });
+      }
+    });
+  }
   }
 
   getAudioUrl(registration: Registration) {
