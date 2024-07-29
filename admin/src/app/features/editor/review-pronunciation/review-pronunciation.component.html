@@ -59,7 +59,9 @@
       <div class="content">
         <nz-page-header [nzGhost]="false">
           <nz-page-header-title>
-            <app-audio-player [url]="getAudioUrl(selectedRegistration)"></app-audio-player>
+            <ng-container *ngIf="selectedRegistration.status === 'IN_REVIEW' || selectedRegistration.status === 'POSTPONED_REVIEW' || selectedRegistration.status === 'COMPLETED' || selectedRegistration.status === 'REFUSED'">
+              <app-audio-player [url]="getAudioUrl(selectedRegistration)"></app-audio-player>
+            </ng-container>
             {{ selectedRegistration.rmStichwort }} ⇔ {{ selectedRegistration.deStichwort }}
           </nz-page-header-title>
           <nz-page-header-extra>
