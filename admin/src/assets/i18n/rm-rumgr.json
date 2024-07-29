@@ -312,7 +312,9 @@
       },
       "comment": "Commentari",
       "email": "E-mail",
-      "examples": "Exempels"
+      "examples": "Exempels",
+      "example": "Exempel",
+      "example_placeholder": "Endatar l'exempel"
     },
     "conjugation": {
       "title": "Conjugaziun",

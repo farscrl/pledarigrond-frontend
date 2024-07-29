@@ -171,7 +171,7 @@
     <div *ngFor="let example of exampleControls.controls; let i = index">
       <nz-form-item>
         <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-          <input type="text" [formControlName]="i" nz-input placeholder="input search text" />
+          <input type="text" [formControlName]="i" nz-input [placeholder]="'edit.lemma.example_placeholder' | translate" />
         </nz-input-group>
         <ng-template #suffixIconButton>
           <button nz-button nzType="primary" nzSearch  (click)="removeExample(i)"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
