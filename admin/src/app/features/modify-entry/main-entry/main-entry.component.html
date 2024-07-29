@@ -166,6 +166,25 @@
   </div>
 
   <nz-divider></nz-divider>
+  <h2>{{ 'edit.lemma.examples' | translate }}</h2>
+  <div formArrayName="RExamples">
+    <div *ngFor="let example of exampleControls.controls; let i = index">
+      <nz-form-item>
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+          <input type="text" [formControlName]="i" nz-input placeholder="input search text" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+          <button nz-button nzType="primary" nzSearch  (click)="removeExample(i)"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
+        </ng-template>
+      </nz-form-item>
+
+    </div>
+    <div class="add-example-button">
+      <button nz-button nzType="primary" (click)="addExample()"><span nz-icon nzType="plus-circle" nzTheme="outline"></span></button>
+    </div>
+  </div>
+
+  <nz-divider></nz-divider>
 
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="contact_comment">{{ 'edit.lemma.comment' | translate }}</nz-form-label>

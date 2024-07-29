@@ -1,5 +1,12 @@
 import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators
+} from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
@@ -394,7 +401,11 @@ export class MainEntryComponent implements OnInit {
 
       contact_comment: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_comment),
       contact_email: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_email),
+
+      RExamples: this.fb.array([]),
     });
+
+    this.loadExamples(this.lemmaVersion?.lemmaValues.RExamples);
 
     if (this.directlyLoadDetailView) {
       if (this.validateForm.controls['RInflectionType'].value === 'V') {
@@ -439,6 +450,11 @@ export class MainEntryComponent implements OnInit {
       ...this.lemmaVersion?.lemmaValues,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
+    lemmaVersion.lemmaValues.RExamples = this.exampleControls.value.join('\n');
+    if (lemmaVersion.lemmaValues.RExamples === "") {
+      delete lemmaVersion.lemmaValues.RExamples;
+    }
+
     lexEntry.versionHistory.push(lemmaVersion);
     lexEntry.current = lemmaVersion;
     lexEntry.mostRecent = lemmaVersion;
@@ -458,6 +474,11 @@ export class MainEntryComponent implements OnInit {
       ...this.lemmaVersion?.lemmaValues,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
+    lemmaVersion.lemmaValues.RExamples = this.exampleControls.value.join('\n');
+    if (lemmaVersion.lemmaValues.RExamples === "") {
+      delete lemmaVersion.lemmaValues.RExamples;
+    }
+
     if (asSuggestion) {
       this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
         this.modal.triggerOk();
@@ -473,5 +494,26 @@ export class MainEntryComponent implements OnInit {
         console.error(error);
       });
     }
+  }
+
+  get exampleControls(): FormArray {
+    return this.validateForm.get('RExamples') as FormArray;
+  }
+
+  addExample(exampleText: string = ''): void {
+    this.exampleControls.push(new FormControl(exampleText));
+  }
+
+  removeExample(index: number): void {
+    this.exampleControls.removeAt(index);
+  }
+
+  private loadExamples(examplesString: string | undefined): void {
+    if (!examplesString) {
+      return;
+    }
+
+    const examples = examplesString.split('\n');
+    examples.forEach(example => this.addExample(example));
   }
 }
