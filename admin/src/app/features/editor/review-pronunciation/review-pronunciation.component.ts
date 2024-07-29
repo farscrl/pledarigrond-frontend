@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration, RegistrationStatus } from '../../../models/registration';
 import { Page } from '../../../models/page';
@@ -8,6 +8,7 @@ import { Language } from '../../../models/security';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
 import { LemmaVersion } from '../../../models/lemma-version';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { AudioPlayerComponent } from '../../../components/audio-player/audio-player.component';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -45,6 +46,9 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   private idiomSubscription: any;
 
   lemmaVersions: LemmaVersion[] = [];
+
+  @ViewChild(AudioPlayerComponent, { static: false })
+  private audioPlayerComponent: AudioPlayerComponent | undefined;
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -106,6 +110,13 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   selectRegistration(registration: Registration) {
     this.lemmaVersions = [];
     this.selectedRegistration = registration;
+
+    // running this in a timeout to make sure the audio player is ready
+    setTimeout(() => {
+      if (this.audioPlayerComponent) {
+        this.audioPlayerComponent.play();
+      }
+    }, 20);
 
     registration.lemmaIds?.forEach(lemmaId => {
       this.editorService.getLexEntry(this.idiom, lemmaId).subscribe(lexEntry => {
