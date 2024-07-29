@@ -74,18 +74,18 @@
 
     <nz-content *ngIf="selectedRegistration">
       <nz-descriptions [nzTitle]="'pronunciation.list.comments' | translate">
-        <nz-descriptions-item [nzTitle]="'pronunciation.list.comment_speaker' | translate">{{ selectedRegistration?.speakerComment ?? '-' }}</nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'pronunciation.list.comment_reviewer' | translate">{{ selectedRegistration?.reviewerComment ?? '-' }}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'pronunciation.list.comment_speaker' | translate">{{ selectedRegistration.speakerComment ?? '-' }}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'pronunciation.list.comment_reviewer' | translate">{{ selectedRegistration.reviewerComment ?? '-' }}</nz-descriptions-item>
       </nz-descriptions>
     </nz-content>
 
     <nz-content *ngIf="selectedRegistration">
       <nz-descriptions [nzTitle]="'pronunciation.list.grammar' | translate">
-        <nz-descriptions-item [nzTitle]="'edit.lemma.rm' | translate">{{ selectedRegistration?.rmStichwort ?? '-' }}</nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'edit.lemma.de' | translate">{{ selectedRegistration?.deStichwort ?? '-' }}</nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'edit.lemma.rm_grammar' | translate">{{ selectedRegistration?.rmGrammatik ?? '-' }}</nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'edit.lemma.rm_gender' | translate">{{ selectedRegistration?.rmGenus ?? '-' }}</nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate">{{ selectedRegistration?.rmSubsemantik  ?? '-'}}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'edit.lemma.rm' | translate">{{ selectedRegistration.rmStichwort ?? '-' }}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'edit.lemma.de' | translate">{{ selectedRegistration.deStichwort ?? '-' }}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'edit.lemma.rm_grammar' | translate">{{ selectedRegistration.rmGrammatik ?? '-' }}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'edit.lemma.rm_gender' | translate">{{ selectedRegistration.rmGenus ?? '-' }}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate">{{ selectedRegistration.rmSubsemantik  ?? '-'}}</nz-descriptions-item>
       </nz-descriptions>
     </nz-content>
 
