@@ -126,7 +126,7 @@ export class ConjugationComponent implements OnInit {
 
   hasComposedWithFields(): boolean {
     const language = this.languageSelectionService.getCurrentLanguage();
-    return (language === Language.PUTER || language === Language.VALLADER);
+    return (language === Language.PUTER || language === Language.VALLADER || language === Language.SURSILVAN);
   }
 
   copyConjugation() {
