@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { InflectionSubType } from 'src/app/models/inflection';
@@ -9,7 +9,6 @@ import { Language } from "../../../models/security";
 import { CopyService } from "../../../services/copy.service";
 import { EditorService } from "../../../services/editor.service";
 import { EnvironmentService } from "../../../services/environment.service";
-import { DiffModalData } from '../../diff-modal/diff-modal.component';
 
 export class ConjugationData {
   lemmaVersion?: LemmaVersion;
@@ -112,7 +111,12 @@ export class ConjugationComponent implements OnInit {
 
   hasConjunctiv2(): boolean {
     const language = this.languageSelectionService.getCurrentLanguage();
-    return (language === Language.PUTER || language === Language.VALLADER || language === Language.SURSILVAN);
+    return (language === Language.PUTER || language === Language.VALLADER || language === Language.SURSILVAN || language == Language.SUTSILVAN);
+  }
+
+  hasCundizionalIndirect(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
+    return (language === Language.SUTSILVAN || language === Language.SURSILVAN);
   }
 
   hasExtendedImperativ(): boolean {
@@ -188,6 +192,13 @@ export class ConjugationComponent implements OnInit {
       cundizionalplural1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalplural1),
       cundizionalplural2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalplural2),
       cundizionalplural3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalplural3),
+
+      cundizionalindirectsing1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalindirectsing1),
+      cundizionalindirectsing2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalindirectsing2),
+      cundizionalindirectsing3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalindirectsing3),
+      cundizionalindirectplural1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalindirectplural1),
+      cundizionalindirectplural2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalindirectplural2),
+      cundizionalindirectplural3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.cundizionalindirectplural3),
 
       futursing1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futursing1),
       futursing2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.futursing2),
@@ -314,6 +325,13 @@ export class ConjugationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.cundizionalplural1 ||
       this.workingLemmaVersion.lemmaValues.cundizionalplural2 ||
       this.workingLemmaVersion.lemmaValues.cundizionalplural3 ||
+
+      this.workingLemmaVersion.lemmaValues.cundizionalindirectsing1 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalindirectsing2 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalindirectsing3 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalindirectplural1 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalindirectplural2 ||
+      this.workingLemmaVersion.lemmaValues.cundizionalindirectplural3 ||
 
       this.workingLemmaVersion.lemmaValues.futursing1 ||
       this.workingLemmaVersion.lemmaValues.futursing2 ||
@@ -452,13 +470,6 @@ export class ConjugationComponent implements OnInit {
     this.workingLemmaVersion.lemmaValues.conjunctiv2plural1 = toCopy.lemmaValues.conjunctiv2plural1;
     this.workingLemmaVersion.lemmaValues.conjunctiv2plural2 = toCopy.lemmaValues.conjunctiv2plural2;
     this.workingLemmaVersion.lemmaValues.conjunctiv2plural3 = toCopy.lemmaValues.conjunctiv2plural3;
-
-    this.workingLemmaVersion.lemmaValues.conjunctivimperfectsing1 = toCopy.lemmaValues.conjunctivimperfectsing1;
-    this.workingLemmaVersion.lemmaValues.conjunctivimperfectsing2 = toCopy.lemmaValues.conjunctivimperfectsing2;
-    this.workingLemmaVersion.lemmaValues.conjunctivimperfectsing3 = toCopy.lemmaValues.conjunctivimperfectsing3;
-    this.workingLemmaVersion.lemmaValues.conjunctivimperfectplural1 = toCopy.lemmaValues.conjunctivimperfectplural1;
-    this.workingLemmaVersion.lemmaValues.conjunctivimperfectplural2 = toCopy.lemmaValues.conjunctivimperfectplural2;
-    this.workingLemmaVersion.lemmaValues.conjunctivimperfectplural3 = toCopy.lemmaValues.conjunctivimperfectplural3;
 
     this.workingLemmaVersion.lemmaValues.cundizionalsing1 = toCopy.lemmaValues.cundizionalsing1;
     this.workingLemmaVersion.lemmaValues.cundizionalsing2 = toCopy.lemmaValues.cundizionalsing2;

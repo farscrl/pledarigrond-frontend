@@ -246,6 +246,45 @@
             </nz-form-control>
           </nz-form-item>
         </div>
+        <div nz-col nzSpan="12" *ngIf="hasCundizionalIndirect()">
+          <h2>{{ 'edit.conjugation.forms.cundiziunal_indirect' | translate }}</h2>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing1"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="cundizionalindirectsing1" id="cundizionalindirectsing1" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing2"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="cundizionalindirectsing2" id="cundizionalindirectsing2" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="cundizionalindirectsing3" id="cundizionalindirectsing3" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural1"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="cundizionalindirectplural1" id="cundizionalindirectplural1" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural2"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="cundizionalindirectplural2" id="cundizionalindirectplural2" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural3"></nz-form-label> -->
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <textarea nzAutosize nz-input formControlName="cundizionalindirectplural3" id="cundizionalindirectplural3" [readonly]="isRegular"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
 
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.futur' | translate }}</h2>
