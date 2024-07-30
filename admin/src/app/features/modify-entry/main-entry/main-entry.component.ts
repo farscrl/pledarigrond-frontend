@@ -1,12 +1,5 @@
 import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
-import {
-  FormArray,
-  FormControl,
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators
-} from '@angular/forms';
+import { FormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
@@ -402,10 +395,10 @@ export class MainEntryComponent implements OnInit {
       contact_comment: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_comment),
       contact_email: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_email),
 
-      RExamples: this.fb.array([]),
+      examples: this.fb.array([]),
     });
 
-    this.loadExamples(this.lemmaVersion?.lemmaValues.RExamples);
+    this.loadExamples(this.lemmaVersion?.lemmaValues.examples);
 
     if (this.directlyLoadDetailView) {
       if (this.validateForm.controls['RInflectionType'].value === 'V') {
@@ -450,9 +443,9 @@ export class MainEntryComponent implements OnInit {
       ...this.lemmaVersion?.lemmaValues,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
-    lemmaVersion.lemmaValues.RExamples = this.exampleControls.value.join('\n');
-    if (lemmaVersion.lemmaValues.RExamples === "") {
-      delete lemmaVersion.lemmaValues.RExamples;
+    lemmaVersion.lemmaValues.examples = this.joinExampleStrings();
+    if (lemmaVersion.lemmaValues.examples === "") {
+      delete lemmaVersion.lemmaValues.examples;
     }
 
     lexEntry.versionHistory.push(lemmaVersion);
@@ -474,9 +467,9 @@ export class MainEntryComponent implements OnInit {
       ...this.lemmaVersion?.lemmaValues,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
-    lemmaVersion.lemmaValues.RExamples = this.exampleControls.value.join('\n');
-    if (lemmaVersion.lemmaValues.RExamples === "") {
-      delete lemmaVersion.lemmaValues.RExamples;
+    lemmaVersion.lemmaValues.examples = this.joinExampleStrings();
+    if (lemmaVersion.lemmaValues.examples === "") {
+      delete lemmaVersion.lemmaValues.examples;
     }
 
     if (asSuggestion) {
@@ -497,11 +490,15 @@ export class MainEntryComponent implements OnInit {
   }
 
   get exampleControls(): FormArray {
-    return this.validateForm.get('RExamples') as FormArray;
+    return this.validateForm.get('examples') as FormArray;
   }
 
   addExample(exampleText: string = ''): void {
-    this.exampleControls.push(new FormControl(exampleText));
+    const { rm, de } = this.splitExampleString(exampleText);
+    this.exampleControls.push(this.fb.group({
+      exampleRm: rm,
+      exampleDe: de
+    }));
   }
 
   removeExample(index: number): void {
@@ -515,5 +512,21 @@ export class MainEntryComponent implements OnInit {
 
     const examples = examplesString.split('\n');
     examples.forEach(example => this.addExample(example));
+  }
+
+  splitExampleString(str: string) {
+    const parts = str.split('###');
+    const rm = parts[0];
+    const de = parts.length > 1 ? parts.slice(1).join('###') : '';
+
+    return { rm, de };
+  }
+
+  joinExampleString(group: UntypedFormGroup) {
+    return `${group.value.exampleRm}###${group.value.exampleDe}`;
+  }
+
+  joinExampleStrings() {
+    return this.exampleControls.controls.map(group => this.joinExampleString(group as UntypedFormGroup)).join('\n');
   }
 }

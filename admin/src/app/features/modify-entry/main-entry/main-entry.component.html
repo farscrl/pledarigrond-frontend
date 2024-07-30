@@ -167,16 +167,30 @@
 
   <nz-divider></nz-divider>
   <h2>{{ 'edit.lemma.examples' | translate }}</h2>
-  <div formArrayName="RExamples">
+  <div formArrayName="examples">
     <div *ngFor="let example of exampleControls.controls; let i = index">
-      <nz-form-item>
-        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-          <input type="text" [formControlName]="i" nz-input [placeholder]="'edit.lemma.example_placeholder' | translate" />
-        </nz-input-group>
-        <ng-template #suffixIconButton>
+      <div nz-row [formGroupName]="i">
+        <div nz-col nzSpan="11">
+          <nz-form-item>
+            <nz-input-group>
+              <input type="text" formControlName="exampleRm" nz-input [placeholder]="'edit.lemma.example_placeholder_rm' | translate" />
+            </nz-input-group>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="1">
+        </div>
+        <div nz-col nzSpan="11">
+          <nz-form-item>
+            <nz-input-group>
+              <input type="text" formControlName="exampleDe" nz-input [placeholder]="'edit.lemma.example_placeholder_de' | translate" />
+            </nz-input-group>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="1" class="remove-button">
           <button nz-button nzType="primary" nzSearch  (click)="removeExample(i)"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
-        </ng-template>
-      </nz-form-item>
+        </div>
+      </div>
+
 
     </div>
     <div class="add-example-button">

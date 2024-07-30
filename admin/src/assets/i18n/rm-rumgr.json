@@ -315,7 +315,8 @@
       "email": "E-mail",
       "examples": "Exempels",
       "example": "Exempel",
-      "example_placeholder": "Endatar l'exempel"
+      "example_placeholder_rm": "Endatar l'exempel per rumantsch",
+      "example_placeholder_de": "Endatar l'exempel per tudestg"
     },
     "conjugation": {
       "title": "Conjugaziun",

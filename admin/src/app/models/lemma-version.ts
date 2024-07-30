@@ -44,7 +44,7 @@ export class LemmaValues {
   categories?: string;
   REtymologie?: string;
 
-  RExamples?: string;
+  examples?: string;
 
   infinitiv?: string;
 
