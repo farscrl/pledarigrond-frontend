@@ -9,7 +9,6 @@
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu>
         <li nz-menu-item nzDanger (click)="importDb()">{{ 'database.import.button' | translate}}</li>
-        <!--<li nz-menu-item nzDanger (click)="reloadDemoData()" [nzDisabled]="isReloadingDemoData">Reload Demo-Data</li>-->
         <li nz-menu-item nzDanger (click)="dropDb()">{{ 'database.drop.button' | translate}}</li>
       </ul>
     </nz-dropdown-menu>

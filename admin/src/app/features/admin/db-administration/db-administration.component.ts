@@ -83,30 +83,6 @@ export class DbAdministrationComponent implements OnInit {
     });
   }
 
-  reloadDemoData() {
-    this.modalService.confirm({
-      nzTitle: 'Do you really want to load demo-data into the database?',
-      nzContent: '<b style="color: red;">' + this.languageSelectionService.getCurrentLanguage() + '</b>',
-      nzOkText: 'Yes',
-      nzOkType: 'primary',
-      nzOkDanger: true,
-      nzOnOk: () => this.reloadDemoDataConfirmed(),
-      nzCancelText: 'No',
-      nzOnCancel: () => {}
-    });
-  }
-
-  reloadDemoDataConfirmed() {
-    this.isReloadingDemoData = true;
-    this.dbService.reloadDemoData(this.languageSelectionService.getCurrentLanguage()).subscribe(() => {
-      this.isReloadingDemoData = false;
-    },
-    error => {
-      this.isReloadingDemoData = false;
-      console.error(error);
-    });
-  }
-
   dropDb() {
     this.modalService.confirm({
       nzTitle: this.translateService.instant('database.drop.title'),
