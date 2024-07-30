@@ -110,6 +110,7 @@
     },
     "lemma": {
       "results_info": "Las endataziuns {{start}} fin {{end}} da {{total}} vegnan mussadas.",
+      "no_results": "Chattà nagins elements",
       "columns": {
         "title": "Colonnas",
         "diff": "Diff",

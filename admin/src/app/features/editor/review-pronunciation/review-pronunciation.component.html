@@ -22,11 +22,17 @@
         <nz-page-header-title>{{ 'pronunciation.list.title' | translate }}</nz-page-header-title>
       </nz-page-header>
 
-      {{ 'lexicon.lemma.results_info' | translate:{
-      start: (currentPage.number*currentPage.size) + 1,
-      end: math.min((currentPage.number + 1) * currentPage.size, currentPage.totalElements),
-      total: currentPage.totalElements
-    } }}
+      <ng-container *ngIf="registrations.length > 0">
+        {{ 'lexicon.lemma.results_info' | translate:{
+            start: (currentPage.number*currentPage.size) + 1,
+            end: math.min((currentPage.number + 1) * currentPage.size, currentPage.totalElements),
+            total: currentPage.totalElements
+          }
+        }}
+      </ng-container>
+      <ng-container *ngIf="registrations.length === 0">
+        {{ 'lexicon.lemma.no_results' | translate }}
+      </ng-container>
 
       <div class="lemma-list">
         <nz-list [nzLoading]="isLoadingData">
