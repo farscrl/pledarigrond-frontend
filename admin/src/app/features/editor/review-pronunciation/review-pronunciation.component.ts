@@ -82,7 +82,7 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     this.filter.status = 'IN_REVIEW';
     this.filter.ascending = true;
 
-    this.changePage(0);
+    this.changePage(0, true);
   }
 
   ngOnDestroy() {
@@ -91,10 +91,10 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
 
   changeStatus(status: RegistrationStatus) {
     this.filter.status = status;
-    this.changePage(0);
+    this.changePage(0, true);
   }
 
-  changePage(pageNumber: number)  {
+  changePage(pageNumber: number, jumpToTop = false) {
     if (pageNumber > 0) {
       pageNumber--;
     }
@@ -104,6 +104,15 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
       this.currentPage = page as Page<Registration>;
 
       this.registrations = this.currentPage.content;
+
+      if (!jumpToTop) {
+        return;
+      }
+      if (this.registrations.length > 0) {
+        this.selectRegistration(this.registrations[0]);
+      } else {
+        this.selectedRegistration = undefined;
+      }
     });
   }
 

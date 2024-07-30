@@ -49,7 +49,7 @@
           [nzTotal]="currentPage.totalElements"
           [nzSize]="'small'"
           *ngIf="currentPage && currentPage.totalElements > 0"
-          (nzPageIndexChange)="changePage($event)"></nz-pagination>
+          (nzPageIndexChange)="changePage($event, true)"></nz-pagination>
       </div>
     </nz-content>
   </div>
