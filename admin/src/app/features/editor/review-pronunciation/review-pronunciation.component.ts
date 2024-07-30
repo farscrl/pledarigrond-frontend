@@ -170,6 +170,22 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     return this.registrationService.getMp3UrlByRegistration(registration);
   }
 
+  showPlayButton(status: RegistrationStatus) {
+    return status === 'IN_REVIEW' || status === 'POSTPONED_REVIEW' || status === 'COMPLETED' || status === 'REFUSED';
+  }
+
+  showAcceptButton(status: RegistrationStatus) {
+    return status === 'IN_REVIEW' || status === 'POSTPONED_REVIEW' || status === 'REFUSED';
+  }
+
+  showRejectButton(status: RegistrationStatus) {
+    return status === 'IN_REVIEW' || status === 'POSTPONED_REVIEW' || status === 'COMPLETED';
+  }
+
+  showPostponeButton(status: RegistrationStatus) {
+    return status === 'IN_REVIEW';
+  }
+
   private upOne() {
     if (!this.selectedRegistration) {
       return;
