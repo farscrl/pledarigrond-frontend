@@ -129,6 +129,11 @@ export class ConjugationComponent implements OnInit {
     return (language === Language.PUTER || language === Language.VALLADER || language === Language.SURSILVAN);
   }
 
+  hasPredicativ(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
+    return (language === Language.SURSILVAN);
+  }
+
   copyConjugation() {
     this.copyService.copyConjugation(this.workingLemmaVersion?.lexEntryId!, this.workingLemmaVersion.lemmaValues.infinitiv!);
   }
@@ -218,6 +223,7 @@ export class ConjugationComponent implements OnInit {
       participperfectfs: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.participperfectfs),
       participperfectmp: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.participperfectmp),
       participperfectfp: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.participperfectfp),
+      participperfectmspredicativ: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.participperfectmspredicativ),
 
       imperativ1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ1),
       imperativ2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.imperativ2),
@@ -351,6 +357,7 @@ export class ConjugationComponent implements OnInit {
       this.workingLemmaVersion.lemmaValues.participperfectfs ||
       this.workingLemmaVersion.lemmaValues.participperfectmp ||
       this.workingLemmaVersion.lemmaValues.participperfectfp ||
+      this.workingLemmaVersion.lemmaValues.participperfectmspredicativ ||
 
       this.workingLemmaVersion.lemmaValues.imperativ1 ||
       this.workingLemmaVersion.lemmaValues.imperativ2 ||
@@ -456,6 +463,7 @@ export class ConjugationComponent implements OnInit {
     this.workingLemmaVersion.lemmaValues.participperfectfs = toCopy.lemmaValues.participperfectfs;
     this.workingLemmaVersion.lemmaValues.participperfectmp = toCopy.lemmaValues.participperfectmp;
     this.workingLemmaVersion.lemmaValues.participperfectfp = toCopy.lemmaValues.participperfectfp;
+    this.workingLemmaVersion.lemmaValues.participperfectmspredicativ = toCopy.lemmaValues.participperfectmspredicativ;
 
     this.workingLemmaVersion.lemmaValues.conjunctivsing1 = toCopy.lemmaValues.conjunctivsing1;
     this.workingLemmaVersion.lemmaValues.conjunctivsing2 = toCopy.lemmaValues.conjunctivsing2;

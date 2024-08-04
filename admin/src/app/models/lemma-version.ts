@@ -66,6 +66,7 @@ export class LemmaValues {
   participperfectfs?: string;
   participperfectmp?: string;
   participperfectfp?: string;
+  participperfectmspredicativ?: string;
 
   conjunctivsing1?: string;
   conjunctivsing2?: string;
