@@ -65,7 +65,7 @@
   <nz-descriptions-item nzTitle="Conjugaziun regulara"><app-diff [old]="oldLemmaVersion.lemmaValues.RRegularInflection" [new]="newLemmaVersion.lemmaValues.RRegularInflection"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<div class="conjugaziuns" *ngIf="oldLemmaVersion.lemmaValues.RInflectionType === 'V' || newLemmaVersion.lemmaValues.RInflectionType === 'V'">
+<div class="conjugaziuns" *ngIf="(oldLemmaVersion.lemmaValues.RInflectionType === 'V' || newLemmaVersion.lemmaValues.RInflectionType === 'V') && !referenceVerb">
   <div class="conjugaziun">
     <div><b>Preschent</b></div>
     <app-diff [old]="oldLemmaVersion.lemmaValues.preschentsing1" [new]="newLemmaVersion.lemmaValues.preschentsing1"></app-diff><br>
@@ -207,6 +207,7 @@
     <app-diff [old]="oldLemmaVersion.lemmaValues.participperfectfs" [new]="newLemmaVersion.lemmaValues.participperfectfs"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.participperfectmp" [new]="newLemmaVersion.lemmaValues.participperfectmp"></app-diff><br>
     <app-diff [old]="oldLemmaVersion.lemmaValues.participperfectfp" [new]="newLemmaVersion.lemmaValues.participperfectfp"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.lemmaValues.participperfectmspredicativ" [new]="newLemmaVersion.lemmaValues.participperfectmspredicativ" *ngIf="language === 'sursilvan'"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
@@ -222,5 +223,367 @@
   <div class="conjugaziun">
     <div><b>Gerundi</b></div>
     <app-diff [old]="oldLemmaVersion.lemmaValues.gerundium" [new]="newLemmaVersion.lemmaValues.gerundium"></app-diff><br>
+  </div>
+</div>
+
+<div class="conjugaziuns with-reference" *ngIf="(oldLemmaVersion.lemmaValues.RInflectionType === 'V' || newLemmaVersion.lemmaValues.RInflectionType === 'V') && !!referenceVerb">
+  <div class="conjugaziun">
+    <div><b>Preschent</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.preschentsing1 }}</td>
+        <td class="reference">{{ referenceVerb.preschentsing1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentsing1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.preschentsing1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.preschentsing2 }}</td>
+        <td class="reference">{{ referenceVerb.preschentsing2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentsing2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.preschentsing2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.preschentsing3 }}</td>
+        <td class="reference">{{ referenceVerb.preschentsing3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentsing3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.preschentsing3)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.preschentplural1 }}</td>
+        <td class="reference">{{ referenceVerb.preschentplural1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentplural1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.preschentplural1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.preschentplural2 }}</td>
+        <td class="reference">{{ referenceVerb.preschentplural2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentplural2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.preschentplural2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.preschentplural3 }}</td>
+        <td class="reference">{{ referenceVerb.preschentplural3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentplural3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.preschentplural3)"></app-diff></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Imperfect</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.imperfectsing1 }}</td>
+        <td class="reference">{{ referenceVerb.imperfectsing1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.imperfectsing1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.imperfectsing2 }}</td>
+        <td class="reference">{{ referenceVerb.imperfectsing2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.imperfectsing2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.imperfectsing3 }}</td>
+        <td class="reference">{{ referenceVerb.imperfectsing3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.imperfectsing3)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.imperfectplural1 }}</td>
+        <td class="reference">{{ referenceVerb.imperfectplural1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.imperfectplural1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.imperfectplural2 }}</td>
+        <td class="reference">{{ referenceVerb.imperfectplural2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.imperfectplural2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.imperfectplural3 }}</td>
+        <td class="reference">{{ referenceVerb.imperfectplural3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.imperfectplural3)"></app-diff></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Conjunctiv</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctivsing1 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivsing1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctivsing1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctivsing2 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivsing2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctivsing2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctivsing3 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivsing3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctivsing3)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctivplural1 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivplural1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctivplural1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctivplural2 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivplural2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctivplural2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctivplural3 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivplural3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctivplural3)"></app-diff></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'sursilvan'">
+    <div><b>Conjunctiv imperfect</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctiv2sing1 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivimpsing1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctiv2sing1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctiv2sing2 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivimpsing2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctiv2sing2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctiv2sing3 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivimpsing3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctiv2sing3)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctiv2plural1 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivimpplural1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctiv2plural1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctiv2plural2 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivimpplural2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctiv2plural2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.conjunctiv2plural3 }}</td>
+        <td class="reference">{{ referenceVerb.conjunctivimpplural3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.conjunctiv2plural3)"></app-diff></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Cundiziunal</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalsing1 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalsing1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalsing1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalsing2 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalsing2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalsing2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalsing3 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalsing3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalsing3)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalplural1 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalplural1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalplural1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalplural2 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalplural2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalplural2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalplural3 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalplural3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalplural3)"></app-diff></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan'">
+    <div><b>Cundiziunal indirect</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalindirectsing1 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalindsing1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalindirectsing1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalindirectsing2 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalindsing2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalindirectsing2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalindirectsing3 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalindsing3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalindirectsing3)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalindirectplural1 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalindplural1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalindirectplural1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalindirectplural2 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalindplural2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalindirectplural2)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.cundizionalindirectplural3 }}</td>
+        <td class="reference">{{ referenceVerb.cundizionalindplural3 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural3" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.cundizionalindirectplural3)"></app-diff></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Futur</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.futursing1 }}</td>
+        <td class="reference"></td>
+        <td class="diff"></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.futursing2 }}</td>
+        <td class="reference"></td>
+        <td class="diff"></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.futursing3 }}</td>
+        <td class="reference"></td>
+        <td class="diff"></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.futurplural1 }}</td>
+        <td class="reference"></td>
+        <td class="diff"></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.futurplural2 }}</td>
+        <td class="reference"></td>
+        <td class="diff"></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.futurplural3 }}</td>
+        <td class="reference"></td>
+        <td class="diff"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Particip Perfect</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.participperfectms }}</td>
+        <td class="reference"></td>
+        <td class="diff"></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.participperfectfs }}</td>
+        <td class="reference">{{ referenceVerb.participperfectfs }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectfs" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.participperfectfs)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.participperfectmp }}</td>
+        <td class="reference">{{ referenceVerb.participperfectmp }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectmp" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.participperfectmp)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.participperfectfp }}</td>
+        <td class="reference">{{ referenceVerb.participperfectfp }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectfp" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.participperfectfp)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.participperfectmspredicativ }}</td>
+        <td class="reference">{{ referenceVerb.participperfectms }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectms" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.participperfectmspredicativ)"></app-diff></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Imperativ</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.imperativ1 }}</td>
+        <td class="reference">{{ referenceVerb.imperativ1 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperativ1" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.imperativ1)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.imperativ2 }}</td>
+        <td class="reference">{{ referenceVerb.imperativ2 }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperativ2" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.imperativ2)"></app-diff></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="conjugaziun">
+    <div><b>Gerundi</b></div>
+    <table>
+      <tr>
+        <th>Generau</th>
+        <th>Referenza</th>
+        <th>Diff</th>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.lemmaValues.gerundium }}</td>
+        <td class="reference">{{ referenceVerb.gerundium }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.gerundium" [new]="removeSurilvanPronouns(newLemmaVersion.lemmaValues.gerundium)"></app-diff></td>
+      </tr>
+    </table>
   </div>
 </div>

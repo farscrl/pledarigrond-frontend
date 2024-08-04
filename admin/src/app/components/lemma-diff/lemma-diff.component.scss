@@ -9,4 +9,32 @@
     flex-shrink: 1;
     flex-grow: 1;
   }
+
+  &.with-reference {
+    .conjugaziun {
+      padding-right: 16px;
+    }
+
+    table {
+      width: 100%;
+
+      th {
+        text-align: left;
+        font-weight: normal;
+        background-color: #c5c5c5;
+      }
+
+      tr {
+        border-bottom: 1px solid #bfbfbf;
+      }
+
+      td {
+        white-space: pre-wrap;
+
+        &.diff {
+          font-family: monospace;
+        }
+      }
+    }
+  }
 }

@@ -93,7 +93,7 @@
           <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} <span class="keyboard">1</span></button>
         </div>
 
-        <app-lemma-diff [language]="language!" [lexEntry]="selectedLexEntry!"></app-lemma-diff>
+        <app-lemma-diff [language]="language!" [lexEntry]="selectedLexEntry!" [referenceVerb]="referenceInflection"></app-lemma-diff>
       </div>
     </nz-content>
   </div>

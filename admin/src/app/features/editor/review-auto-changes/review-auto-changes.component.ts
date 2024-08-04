@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, ViewContainerRef } from '@angular/core';
 import { LemmaVersionUi } from 'src/app/models/lemma-version';
 import { LexEntry } from 'src/app/models/lex-entry';
-import { EditorSearchCriteria, SearchCriteria } from 'src/app/models/search-criteria';
+import { EditorSearchCriteria } from 'src/app/models/search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -12,6 +12,7 @@ import { Page } from 'src/app/models/page';
 import { InflectionType } from 'src/app/models/inflection';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { Language } from "../../../models/security";
+import { ReferenceVerbDto } from '../../../models/reference-verb-dto';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -41,6 +42,8 @@ export class ReviewAutoChangesComponent implements OnInit {
   lemmas: LemmaVersionUi[] = [];
   selectedLemma?: LemmaVersionUi;
   selectedLexEntry?: LexEntry;
+
+  referenceInflection?: ReferenceVerbDto;
 
   searchCriteria: EditorSearchCriteria = new EditorSearchCriteria();
 
@@ -133,6 +136,12 @@ export class ReviewAutoChangesComponent implements OnInit {
       // newly created entries have current == most recent and current != approved -> to have a correct diff, we set current to an empty lemmaValue
       if (this.selectedLexEntry.current.internalId === this.selectedLexEntry.mostRecent.internalId && !this.selectedLexEntry.current.approved) {
         this.selectedLexEntry.current = new LemmaVersionUi();
+      }
+
+      if (this.languageSelectionService.getCurrentLanguage() === Language.SURSILVAN) {
+        this.editorService.getReferenceInflection(Language.SURSILVAN, this.selectedLexEntry.mostRecent.lemmaValues.RStichwort!).subscribe(reference => {
+          this.referenceInflection = reference;
+        });
       }
     });
   }

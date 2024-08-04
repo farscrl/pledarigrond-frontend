@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {LexEntry, LexEntryUi} from "../../models/lex-entry";
-import {Language} from "../../models/security";
-import {LemmaVersion} from "../../models/lemma-version";
+import { Component, Input, OnInit } from '@angular/core';
+import { LexEntry } from "../../models/lex-entry";
+import { Language } from "../../models/security";
+import { LemmaVersion } from "../../models/lemma-version";
+import { ReferenceVerbDto } from '../../models/reference-verb-dto';
 
 @Component({
   selector: 'app-lemma-diff',
@@ -17,6 +18,9 @@ export class LemmaDiffComponent implements OnInit{
 
   @Input()
   showComments = false;
+
+  @Input()
+  referenceVerb?: ReferenceVerbDto;
 
   oldLemmaVersion: LemmaVersion = new LemmaVersion();
   newLemmaVersion: LemmaVersion = new LemmaVersion();

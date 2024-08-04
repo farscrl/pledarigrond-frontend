@@ -9,6 +9,7 @@ import { Page } from '../models/page';
 import { EditorSearchCriteria, SearchCriteria } from '../models/search-criteria';
 import { Language } from '../models/security';
 import { environment } from './../../environments/environment';
+import { ReferenceVerbDto } from '../models/reference-verb-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -121,6 +122,18 @@ export class EditorService {
     };
 
     return this.httpClient.get<any>(this.generateUrl(language, 'search_suggestions'), httpOptions);
+  }
+
+  getReferenceInflection(language: Language, searchTerm: string): Observable<ReferenceVerbDto> {
+    let params: HttpParams = new HttpParams();
+
+    params = params.set('searchTerm', searchTerm);
+
+    const httpOptions = {
+      params: params
+    };
+
+    return this.httpClient.get<any>(this.generateUrl(language, 'reference_inflection'), httpOptions);
   }
 
   getSortOrder(language: Language, lemma: string, dictionaryLanguage: DictionaryLanguage): Observable<LemmaVersion[]> {
