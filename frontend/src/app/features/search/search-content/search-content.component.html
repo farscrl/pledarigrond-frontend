@@ -5,7 +5,7 @@
     <div class="search-results">
       <span id="searchPhrase"> {{ searchCriteria.searchPhrase }}</span>
       <span id="searchStats">
-        {{ 'search.results' | translate:{ start : startIndex, end : stopIndex, total : totalEntries } }}
+        {{ 'search.results' | translate:{ start : startIndex, end : stopIndex, total : totalEntries|thousandSeparator } }}
       </span>
 
       <table class="resultlist">

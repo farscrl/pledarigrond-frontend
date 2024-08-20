@@ -69,6 +69,7 @@ import {
 } from './features/spellchecker/manuals-spellchecker/manual-hunspell/manual-hunspell.component';
 import { ManualWordComponent } from './features/spellchecker/manuals-spellchecker/manual-word/manual-word.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ThousandSeparatorPipe } from './pipes/thousand-separator.pipe';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -122,6 +123,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ExportComponent,
     TranslateCutPipe,
     HighlighterPipe,
+    ThousandSeparatorPipe,
     OtherResourcesComponent,
     AutofocusDirective,
     SpellcheckerComponent,
@@ -131,51 +133,51 @@ export function HttpLoaderFactory(http: HttpClient) {
     ManualHunspellComponent,
     ManualWordComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: [environment.apiHost],
-        disallowedRoutes: [environment.apiUrl + '/users/token']
-      }
-    }),
-    TranslateModule.forRoot({
-      loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-      },
-      defaultLanguage: 'rm-rumgr'
-    }),
-    NgxModalView.forRoot(
-      {container: 'modal-container'},
-      {
-        ...defaultNgxModalOptions,
-        ...{
-          closeOnEscape: true,
-          closeOnClickOutside: true,
-          wrapperDefaultClasses: 'pg-modal pg-modal--fade',
-          wrapperClass: 'pg-modal--fade-in',
-          animationDuration: 0,
-          autoFocus: false
-        }
-      }
-    ),
-    NgxTiptapModule,
-    MatomoModule.forRoot({
-      siteId: environment.matomoTrackingId,
-      trackerUrl: environment.matomoTrackingUrl,
-    }),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                allowedDomains: [environment.apiHost],
+                disallowedRoutes: [environment.apiUrl + '/users/token']
+            }
+        }),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            },
+            defaultLanguage: 'rm-rumgr'
+        }),
+        NgxModalView.forRoot(
+            {container: 'modal-container'},
+            {
+                ...defaultNgxModalOptions,
+                ...{
+                    closeOnEscape: true,
+                    closeOnClickOutside: true,
+                    wrapperDefaultClasses: 'pg-modal pg-modal--fade',
+                    wrapperClass: 'pg-modal--fade-in',
+                    animationDuration: 0,
+                    autoFocus: false
+                }
+            }
+        ),
+        NgxTiptapModule,
+        MatomoModule.forRoot({
+            siteId: environment.matomoTrackingId,
+            trackerUrl: environment.matomoTrackingUrl,
+        }),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+    ],
   providers: [
     UserLoggedInGuard,
     UserNotLoggedInGuard,
