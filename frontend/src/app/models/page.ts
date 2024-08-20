@@ -11,3 +11,8 @@ export class Page<T> {
   numberOfElements: number = 0;
   empty: boolean = true;
 }
+
+export class SearchPage<T> extends Page<T> {
+  suggestionsRm: string[] = [];
+  suggestionsDe: string[] = [];
+}

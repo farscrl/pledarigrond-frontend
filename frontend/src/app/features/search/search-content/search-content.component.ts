@@ -20,6 +20,8 @@ export class SearchContentComponent implements OnInit, OnDestroy {
 
   searchCriteria: SearchCriteria = new SearchCriteria();
   searchResults: LemmaVersion[] = [];
+  searchSuggestionsRm: string[] = [];
+  searchSuggestionsDe: string[] = [];
   startIndex = 1;
   stopIndex = 15;
   totalEntries = 1;
@@ -225,6 +227,8 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   private executeSarch(page = 0) {
     this.searchService.getResults(this.selectedLanguageService.getSelectedLanguageUrlSegment(), this.searchCriteria, page).subscribe(data => {
       this.searchResults = data.content;
+      this.searchSuggestionsRm = data.suggestionsRm;
+      this.searchSuggestionsDe = data.suggestionsDe;
       this.pageSize = data.size;
       this.startIndex = (data.number * data.size) + 1;
       this.stopIndex = Math.min(data.totalElements, (data.number + 1) * data.size);
