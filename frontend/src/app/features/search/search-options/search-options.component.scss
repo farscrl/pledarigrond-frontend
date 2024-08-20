@@ -131,7 +131,7 @@
     height: 5px;
     border-radius: 50%;
     background: rgb(0, 200, 255);
- }
+  }
 }
 
 /* Customize the label (the container) */
@@ -211,31 +211,32 @@
   a {
     height: 42px;
     width: 42px;
-  background-image: url(/assets/img/more_inactive.png);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 22px 22px;
-
-  &:hover {
-    background-image: url(/assets/img/more_active.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 22px 22px;
-  }
-
-  &.active {
-    background-image: url(/assets/img/less_inactive.png);
+    background-image: url(/assets/img/more_inactive.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 22px 22px;
 
     &:hover {
-      background-image: url(/assets/img/less_active.png);
+      background-image: url(/assets/img/more_active.png);
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 22px 22px;
+      cursor: pointer;
     }
-  }
+
+    &.active {
+      background-image: url(/assets/img/less_inactive.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 22px 22px;
+
+      &:hover {
+        background-image: url(/assets/img/less_active.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 22px 22px;
+      }
+    }
   }
 }
 
@@ -247,6 +248,6 @@
 
 @media (max-width: 767px) {
   .small {
-      display: none;
+    display: none;
   }
 }

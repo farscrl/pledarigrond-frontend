@@ -4,10 +4,12 @@ export class SearchCriteria {
   searchMethod: SearchMethod = 'NORMAL';
   highlight: boolean = false;
   suggestions: boolean = false;
+  sortBy: SortBy = 'GERMAN';
 }
 
 export type SearchDirection = 'BOTH'|'ROMANSH'|'GERMAN';
 export type SearchMethod = 'NORMAL'|'INTERN'|'PREFIX'|'SUFFIX'|'EXACT';
+export type SortBy = 'ROMANSH'|'GERMAN';
 
 export class SearchCriteriaUrl {
   searchPhrase: string | null = null;

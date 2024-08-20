@@ -16,6 +16,9 @@
   display: block;
   width: 100%;
 }
+#searchStats {
+  font-weight: 100;
+}
 
 #searchStats {
   color: rgb(163, 163, 163);
@@ -86,8 +89,9 @@ th {
   font-size: 13px;
 	line-height: 22px;
 	font-weight: 400;
-	color: rgb(132, 132, 132);
-  color: rgb(163, 163, 163);
+	// color: rgb(132, 132, 132);
+  // color: rgb(163, 163, 163);
+  user-select: none;
 }
 
 .pagination {
@@ -245,4 +249,16 @@ th {
 .link-to-suggestion {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.sort-icon {
+  position: relative;
+  top: 3px;
+  cursor: pointer;
+  color: rgb(163, 163, 163);
+
+  &.active {
+    color: unset;
+    cursor: unset;
+  }
 }

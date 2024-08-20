@@ -31,11 +31,23 @@ export class SearchOptionsComponent implements OnInit {
     this.showDetails = !this.showDetails;
   }
 
-  emitSearch() {
+  emitSearch(resetSortBy: boolean) {
+    if (resetSortBy) {
+      this.resetSortBy();
+    }
+
     this.searchCriteriaChange.emit(this.searchCriteria);
   }
 
   forceSarch() {
     this.forceSearchCriteriaChange.emit(this.searchCriteria);
+  }
+
+  private resetSortBy() {
+    if (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') {
+      this.searchCriteria.sortBy = 'GERMAN';
+    } else {
+      this.searchCriteria.sortBy = 'ROMANSH';
+    }
   }
 }

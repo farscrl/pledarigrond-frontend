@@ -32,6 +32,10 @@ export class SearchService {
       params = params.set('suggestions', searchCriteria.suggestions);
     }
 
+    if (!!searchCriteria.sortBy) {
+      params = params.set('sortBy', searchCriteria.sortBy);
+    }
+
     if (page !== 0) {
       params = params.set('page', page);
     }

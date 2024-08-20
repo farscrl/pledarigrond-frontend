@@ -149,6 +149,43 @@ export class SearchContentComponent implements OnInit, OnDestroy {
     return this.translateService.instant(key);
   }
 
+  getIsSortActive(isFirst: boolean): boolean {
+    if (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') {
+      if (isFirst) {
+        return this.searchCriteria.sortBy === 'GERMAN';
+      } else {
+        return this.searchCriteria.sortBy === 'ROMANSH';
+      }
+    } else {
+      if (!isFirst) {
+        return this.searchCriteria.sortBy === 'ROMANSH';
+      } else {
+        return this.searchCriteria.sortBy === 'GERMAN';
+      }
+    }
+  }
+
+  toggleSearchBy(isFirst: boolean) {
+    debugger;
+    const oldDirection = this.searchCriteria.sortBy;
+    if (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') {
+      if (isFirst) {
+        this.searchCriteria.sortBy = 'GERMAN';
+      } else {
+        this.searchCriteria.sortBy = 'ROMANSH';
+      }
+    } else {
+      if (!isFirst) {
+        this.searchCriteria.sortBy =  'GERMAN';
+      } else {
+        this.searchCriteria.sortBy = 'ROMANSH';
+      }
+    }
+    if (oldDirection !== this.searchCriteria.sortBy) {
+      this.searchImmediate(this.searchCriteria);
+    }
+  }
+
   containsLink(lemma: LemmaVersion, isFirst: boolean): string | undefined {
     if (
       (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') && isFirst

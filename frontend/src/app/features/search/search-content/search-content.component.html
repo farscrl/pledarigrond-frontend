@@ -3,7 +3,7 @@
 
   <div class="result-container" *ngIf="searchResults.length > 0">
     <div class="search-results">
-      <span id="searchphrase"> {{ searchCriteria.searchPhrase }}</span>
+      <span id="searchPhrase"> {{ searchCriteria.searchPhrase }}</span>
       <span id="searchStats">
         {{ 'search.results' | translate:{ start : startIndex, end : stopIndex, total : totalEntries } }}
       </span>
@@ -15,12 +15,18 @@
             <th>
               <span class="column_title">
                 {{ getLanguageName(true) }}
+                <span class="sort-icon" [class.active]="getIsSortActive(true)">
+                  <i class="ri-sort-desc" (click)="toggleSearchBy(true)"></i>
+                </span>
               </span>
             </th>
             <th></th>
             <th>
               <span class="column_title">
                 {{ getLanguageName(false) }}
+                <span class="sort-icon" [class.active]="getIsSortActive(false)">
+                  <i class="ri-sort-desc" (click)="toggleSearchBy(false)"></i>
+                </span>
               </span>
             </th>
             <th></th>

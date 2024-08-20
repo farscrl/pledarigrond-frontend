@@ -6,7 +6,7 @@
           <div class="small"></div>
           <div class="main">
             <label class="control-label">{{ 'search.searchPhrase' | translate }}</label>
-            <input type="text" name="searchPhrase" id="searchPhrase" [(ngModel)]="searchCriteria.searchPhrase" (keyup)="emitSearch()" autocomplete="off" autofocus #searchPhrase>
+            <input type="text" name="searchPhrase" id="searchPhrase" [(ngModel)]="searchCriteria.searchPhrase" (keyup)="emitSearch(false)" autocomplete="off" autofocus #searchPhrase>
           </div>
           <div class="small" style="margin-left: 32px;">
             <button (click)="forceSarch()">{{ 'search.search' | translate }}</button>
@@ -16,21 +16,21 @@
         <div class="horizontal-options">
           <label class="radio">
             <input type="radio" name="searchDirection" value="BOTH"
-              [(ngModel)]="searchCriteria.searchDirection" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.searchDirection" (ngModelChange)="emitSearch(true)">
             <span>{{ 'search.both' | translate }}</span>
             <span class="checkmark"></span>
           </label>
 
           <label class="radio">
             <input type="radio" name="searchDirection" value="ROMANSH"
-              [(ngModel)]="searchCriteria.searchDirection" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.searchDirection" (ngModelChange)="emitSearch(true)">
             <span>{{ 'search.romansh' | translate }}</span>
             <span class="checkmark"></span>
           </label>
 
           <label class="radio">
             <input type="radio" name="searchDirection" value="GERMAN"
-              [(ngModel)]="searchCriteria.searchDirection" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.searchDirection" (ngModelChange)="emitSearch(true)">
             <span>{{ 'search.german' | translate }}</span>
             <span class="checkmark"></span>
           </label>
@@ -39,35 +39,35 @@
         <div class="horizontal-options">
           <label class="radio">
             <input type="radio" name="searchMethod" value="NORMAL"
-              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch(true)">
             <span>{{ 'search.normal' | translate }}</span>
             <span class="checkmark"></span>
           </label>
 
           <label class="radio">
             <input type="radio" name="searchMethod" value="INTERN"
-              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch(true)">
             <span>{{ 'search.intern' | translate }}</span>
             <span class="checkmark"></span>
           </label>
 
           <label class="radio">
             <input type="radio" name="searchMethod" value="PREFIX"
-              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch(true)">
             <span>{{ 'search.prefix' | translate }}</span>
             <span class="checkmark"></span>
           </label>
 
           <label class="radio">
             <input type="radio" name="searchMethod" value="SUFFIX"
-              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch(true)">
             <span>{{ 'search.suffix' | translate }}</span>
             <span class="checkmark"></span>
           </label>
 
           <label class="radio">
             <input type="radio" name="searchMethod" value="EXACT"
-              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.searchMethod" (ngModelChange)="emitSearch(true)">
             <span>{{ 'search.exact' | translate }}</span>
             <span class="checkmark"></span>
           </label>
@@ -76,7 +76,7 @@
         <div class="horizontal-options">
           <label class="checkbox">
             <input type="checkbox" name="highlight"
-              [(ngModel)]="searchCriteria.highlight" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.highlight" (ngModelChange)="emitSearch(false)">
             <span>{{ 'search.highlight' | translate }}</span>
             <span class="checkmark"></span>
           </label>
@@ -85,7 +85,7 @@
         <div class="horizontal-options">
           <label class="checkbox">
             <input type="checkbox" name="suggestions"
-              [(ngModel)]="searchCriteria.suggestions" (ngModelChange)="emitSearch()">
+              [(ngModel)]="searchCriteria.suggestions" (ngModelChange)="emitSearch(false)">
             <span>{{ 'search.suggestions' | translate }}</span>
             <span class="checkmark"></span>
           </label>
