@@ -2,6 +2,8 @@
   <div class="modal-content" *ngIf="lemmaVersion">
     <h3>{{ lemmaVersion.lemmaValues.RStichwort }} <span>({{ lemmaVersion.lemmaValues.DStichwort }})</span></h3>
       <br>
+      <app-details-example [lemmaVersion]="lemmaVersion"></app-details-example>
+
       <app-details-verb [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'V'" [idiom]="idiom"></app-details-verb>
       <app-details-subst [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'NOUN'"></app-details-subst>
       <app-details-adj [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'ADJECTIVE'"></app-details-adj>

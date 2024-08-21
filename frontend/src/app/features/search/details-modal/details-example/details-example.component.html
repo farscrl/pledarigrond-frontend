@@ -1,0 +1,11 @@
+<ng-container *ngIf="examples.length > 0">
+  <b>Exempels d'utilisaziun</b>
+
+  @for (example of examples;track example) {
+    <div class="example">
+      <div class="rm-example">{{ example.rm }}</div>
+      <div class="de-example">{{ example.de }}</div>
+    </div>
+  }
+
+</ng-container>
