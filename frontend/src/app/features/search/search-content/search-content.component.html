@@ -11,8 +11,7 @@
       <table class="resultlist">
         <thead>
           <tr>
-            <th></th>
-            <th>
+            <th colspan="2">
               <span class="column_title">
                 {{ getLanguageName(true) }}
                 <span class="sort-icon" [class.active]="getIsSortActive(true)">
@@ -20,8 +19,7 @@
                 </span>
               </span>
             </th>
-            <th></th>
-            <th>
+            <th colspan="2">
               <span class="column_title">
                 {{ getLanguageName(false) }}
                 <span class="sort-icon" [class.active]="getIsSortActive(false)">
@@ -36,7 +34,7 @@
           <tr *ngFor="let result of searchResults">
             <td>
               <div>
-                <span class="verb_overlay" *ngIf="hasVerbLink(result, true)" (click)="showVerbsModal(result)">V</span>
+                <span class="details_overlay" *ngIf="hasDetailsLink(result, true)" (click)="showDetailsModal(result)"><i class="ri-information-fill"></i></span>
               </div>
             </td>
             <td [class.unverified]="result.verification === 'UNVERIFIED'">
@@ -49,7 +47,7 @@
             </td>
             <td>
               <div>
-                <span class="verb_overlay" *ngIf="hasVerbLink(result, false)" (click)="showVerbsModal(result)">V</span>
+                <span class="details_overlay" *ngIf="hasDetailsLink(result, false)" (click)="showDetailsModal(result)"><i class="ri-information-fill"></i></span>
               </div>
             </td>
             <td [class.unverified]="result.verification === 'UNVERIFIED'">

@@ -1,0 +1,26 @@
+<table>
+  <tr *ngIf="sing1">
+    <td class="pronoun" [innerHTML]="replaceComma(sing1Pronoun)"></td>
+    <td [innerHtml]="replaceComma(sing1)"></td>
+  </tr>
+  <tr *ngIf="sing2">
+    <td class="pronoun" [innerHTML]="replaceComma(sing2Pronoun)"></td>
+    <td [innerHtml]="replaceComma(sing2)"></td>
+  </tr>
+  <tr *ngIf="sing3">
+    <td class="pronoun" [innerHTML]="replaceComma(sing3Pronoun)"></td>
+    <td [innerHtml]="replaceComma(sing3)"></td>
+  </tr>
+  <tr *ngIf="plural1">
+    <td class="pronoun" [innerHTML]="replaceComma(plural1Pronoun)"></td>
+    <td [innerHtml]="replaceComma(plural1)"></td>
+  </tr>
+  <tr *ngIf="plural2">
+    <td class="pronoun" [innerHTML]="replaceComma(plural2Pronoun)"></td>
+    <td [innerHtml]="replaceComma(plural2)"></td>
+  </tr>
+  <tr *ngIf="plural3">
+    <td class="pronoun" [innerHTML]="replaceComma(plural3Pronoun)"></td>
+    <td [innerHtml]="replaceComma(plural3)"></td>
+  </tr>
+</table>

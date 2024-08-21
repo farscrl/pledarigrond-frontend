@@ -37,7 +37,7 @@
   }
 
   td:nth-of-type(1) {
-    width: 20px;
+    width: 16px;
   }
 
   td:nth-of-type(2) {
@@ -45,7 +45,7 @@
   }
 
   td:nth-of-type(3) {
-    width: 20px;
+    width: 16px;
   }
 
   td:nth-of-type(4) {
@@ -198,17 +198,19 @@ th {
   }
 }
 
-.verb_overlay {
-	background-color: rgb(0, 200, 255);
-	color: white;
+.details_overlay {
 	text-decoration: none;
-	padding: 0 5px 0 6px;
-	margin-right: 6px;
-  cursor: pointer;
+	margin-right: 2px;
+
+  i {
+    cursor: pointer;
+    color: rgb(0, 200, 255);
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {
-  .verb_overlay {
+  .details_overlay {
 		margin-left: 0;
 		padding: 0 2px;
 	}

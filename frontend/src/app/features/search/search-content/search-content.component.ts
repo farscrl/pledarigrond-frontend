@@ -5,7 +5,7 @@ import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteri
 import { SearchService } from 'src/app/services/search.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { NgxModalService } from "ngx-modalview";
-import { VerbsModalComponent } from '../verbs-modal/verbs-modal.component';
+import { DetailsModalComponent } from '../details-modal/details-modal.component';
 import { SuggestModificationComponent } from '../suggest-modification/suggest-modification.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SuggestionComponent } from 'src/app/components/footer/suggestion/suggestion.component';
@@ -126,8 +126,8 @@ export class SearchContentComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  showVerbsModal(version: LemmaVersion) {
-    this.modalService.addModal(VerbsModalComponent, { lemmaVersion: version })
+  showDetailsModal(version: LemmaVersion) {
+    this.modalService.addModal(DetailsModalComponent, { lemmaVersion: version })
       .subscribe();
   }
 
@@ -243,8 +243,11 @@ export class SearchContentComponent implements OnInit, OnDestroy {
     this.search(this.searchCriteria);
   }
 
-  hasVerbLink(lemma: LemmaVersion, isFirst: boolean): boolean {
-    if (!lemma.lemmaValues.RInflectionType || lemma.lemmaValues.RInflectionType !== 'V') {
+  hasDetailsLink(lemma: LemmaVersion, isFirst: boolean): boolean {
+    if (
+      (!lemma.lemmaValues.RInflectionType || (lemma.lemmaValues.RInflectionType !== 'V' && lemma.lemmaValues.RInflectionType !== 'NOUN' && lemma.lemmaValues.RInflectionType !== 'ADJECTIVE'))
+      && (!lemma.lemmaValues.examples || lemma.lemmaValues.examples === "")
+      ) {
       return false;
     }
 

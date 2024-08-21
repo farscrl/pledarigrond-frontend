@@ -1,7 +1,4 @@
-import { User } from "./user";
-
 export class LemmaVersion {
-  userInfo?: User;
   lemmaValues: LemmaValues = new LemmaValues();
   pgValues: PgValues = new PgValues();
   ip?: string;
@@ -10,22 +7,30 @@ export class LemmaVersion {
   status: Status = 'UNDEFINED';
   approved: boolean = false;
   verification: Verification = 'UNVERIFIED';
-  creatorRole?: string;
   internalId: number = 0;
   verifierId?: any;
   lexEntryId?: any;
 }
 
+export class LemmaVersionUi extends LemmaVersion {
+  selected: boolean = false;
+  local_review_status: 'ACCEPTED'|'REJECTED'|'EDITED'|'LATER'|'UNDEFINED' = 'UNDEFINED';
+}
+
 export class LemmaValues {
   DStichwort?: string;
+  DGrammatik?: string;
   DSubsemantik?: string;
   DGenus?: string;
   DTags?: string;
+
   RStichwort?: string;
+  RGrammatik?: string;
   RFlex?: string;
   RTags?: string;
   RInflectionType?: string;
   RInflectionSubtype?: string;
+  RRegularInflection?: string;
   RSubsemantik?: string;
   RGenus?: string;
   contact_email?: string;
@@ -33,6 +38,9 @@ export class LemmaValues {
   DRedirect?: string;
   RRedirect?: string;
   categories?: string;
+  REtymologie?: string;
+
+  examples?: string;
 
   infinitiv?: string;
 
@@ -54,6 +62,7 @@ export class LemmaValues {
   participperfectfs?: string;
   participperfectmp?: string;
   participperfectfp?: string;
+  participperfectmspredicativ?: string;
 
   conjunctivsing1?: string;
   conjunctivsing2?: string;
@@ -62,12 +71,26 @@ export class LemmaValues {
   conjunctivplural2?: string;
   conjunctivplural3?: string;
 
+  conjunctiv2sing1?: string;
+  conjunctiv2sing2?: string;
+  conjunctiv2sing3?: string;
+  conjunctiv2plural1?: string;
+  conjunctiv2plural2?: string;
+  conjunctiv2plural3?: string;
+
   cundizionalsing1?: string;
   cundizionalsing2?: string;
   cundizionalsing3?: string;
   cundizionalplural1?: string;
   cundizionalplural2?: string;
   cundizionalplural3?: string;
+
+  cundizionalindirectsing1?: string;
+  cundizionalindirectsing2?: string;
+  cundizionalindirectsing3?: string;
+  cundizionalindirectplural1?: string;
+  cundizionalindirectplural2?: string;
+  cundizionalindirectplural3?: string;
 
   futursing1?: string;
   futursing2?: string;
@@ -91,6 +114,67 @@ export class LemmaValues {
   imperativ6?: string;
 
   gerundium?: string;
+  composedWith?: string;
+
+  preschentsing1enclitic?: string;
+  preschentsing2enclitic?: string;
+  preschentsing3encliticm?: string;
+  preschentsing3encliticf?: string;
+  preschentplural1enclitic?: string;
+  preschentplural2enclitic?: string;
+  preschentplural3enclitic?: string;
+
+  imperfectsing1enclitic?: string;
+  imperfectsing2enclitic?: string;
+  imperfectsing3encliticm?: string;
+  imperfectsing3encliticf?: string;
+  imperfectplural1enclitic?: string;
+  imperfectplural2enclitic?: string;
+  imperfectplural3enclitic?: string;
+
+  cundizionalsing1enclitic?: string;
+  cundizionalsing2enclitic?: string;
+  cundizionalsing3encliticm?: string;
+  cundizionalsing3encliticf?: string;
+  cundizionalplural1enclitic?: string;
+  cundizionalplural2enclitic?: string;
+  cundizionalplural3enclitic?: string;
+
+  futursing1enclitic?: string;
+  futursing2enclitic?: string;
+  futursing3encliticm?: string;
+  futursing3encliticf?: string;
+  futurplural1enclitic?: string;
+  futurplural2enclitic?: string;
+  futurplural3enclitic?: string;
+
+  futurdubitativsing1enclitic?: string;
+  futurdubitativsing2enclitic?: string;
+  futurdubitativsing3encliticm?: string;
+  futurdubitativsing3encliticf?: string;
+  futurdubitativplural1enclitic?: string;
+  futurdubitativplural2enclitic?: string;
+  futurdubitativplural3enclitic?: string;
+
+  // noun
+  baseForm?: string;
+  mSingular?: string;
+  fSingular?: string;
+  mPlural?: string;
+  fPlural?: string;
+  pluralCollectiv?: string;
+
+  // adjective
+  adverbialForm?: string;
+
+  // other
+  otherForm1?: string;
+  otherForm2?: string;
+  otherForm3?: string;
+  otherForm4?: string;
+
+  // pronunciation
+  RPronunciation?: string;
 }
 
 export class PgValues {

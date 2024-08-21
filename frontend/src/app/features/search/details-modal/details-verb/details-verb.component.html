@@ -1,0 +1,93 @@
+<ng-container *ngIf="lemmaVersion">
+
+  <div class="conjugation-elements">
+    <div>
+      <b>{{ 'verbOverlayPopup.present' | translate }}</b><br>
+      <app-conjugation-personal
+        [sing1]="lemmaVersion.lemmaValues.preschentsing1" [sing1Pronoun]="pronouns.preschentsing1"
+        [sing2]="lemmaVersion.lemmaValues.preschentsing2" [sing2Pronoun]="pronouns.preschentsing2"
+        [sing3]="lemmaVersion.lemmaValues.preschentsing3" [sing3Pronoun]="pronouns.preschentsing3"
+        [plural1]="lemmaVersion.lemmaValues.preschentplural1" [plural1Pronoun]="pronouns.preschentplural1"
+        [plural2]="lemmaVersion.lemmaValues.preschentplural2" [plural2Pronoun]="pronouns.preschentplural2"
+        [plural3]="lemmaVersion.lemmaValues.preschentplural3" [plural3Pronoun]="pronouns.preschentplural3">
+      </app-conjugation-personal>
+    </div>
+
+    <div>
+      <b>{{ 'verbOverlayPopup.imperfect' | translate }}</b><br>
+      <app-conjugation-personal
+        [sing1]="lemmaVersion.lemmaValues.imperfectsing1" [sing1Pronoun]="pronouns.imperfectsing1"
+        [sing2]="lemmaVersion.lemmaValues.imperfectsing2" [sing2Pronoun]="pronouns.imperfectsing2"
+        [sing3]="lemmaVersion.lemmaValues.imperfectsing3" [sing3Pronoun]="pronouns.imperfectsing3"
+        [plural1]="lemmaVersion.lemmaValues.imperfectplural1" [plural1Pronoun]="pronouns.imperfectplural1"
+        [plural2]="lemmaVersion.lemmaValues.imperfectplural2" [plural2Pronoun]="pronouns.imperfectplural2"
+        [plural3]="lemmaVersion.lemmaValues.imperfectplural3" [plural3Pronoun]="pronouns.imperfectplural3">
+      </app-conjugation-personal>
+    </div>
+
+    <div>
+      <b>{{ 'verbOverlayPopup.conjunctive' | translate }}</b><br>
+      <app-conjugation-personal
+        [sing1]="lemmaVersion.lemmaValues.conjunctivsing1" [sing1Pronoun]="pronouns.conjunctivsing1"
+        [sing2]="lemmaVersion.lemmaValues.conjunctivsing2" [sing2Pronoun]="pronouns.conjunctivsing2"
+        [sing3]="lemmaVersion.lemmaValues.conjunctivsing3" [sing3Pronoun]="pronouns.conjunctivsing3"
+        [plural1]="lemmaVersion.lemmaValues.conjunctivplural1" [plural1Pronoun]="pronouns.conjunctivplural1"
+        [plural2]="lemmaVersion.lemmaValues.conjunctivplural2" [plural2Pronoun]="pronouns.conjunctivplural2"
+        [plural3]="lemmaVersion.lemmaValues.conjunctivplural3" [plural3Pronoun]="pronouns.conjunctivplural3">
+      </app-conjugation-personal>
+    </div>
+
+    <div>
+      <b>{{ 'verbOverlayPopup.conditional' | translate }}</b><br>
+      <app-conjugation-personal
+        [sing1]="lemmaVersion.lemmaValues.cundizionalsing1" [sing1Pronoun]="pronouns.cundizionalsing1"
+        [sing2]="lemmaVersion.lemmaValues.cundizionalsing2" [sing2Pronoun]="pronouns.cundizionalsing2"
+        [sing3]="lemmaVersion.lemmaValues.cundizionalsing3" [sing3Pronoun]="pronouns.cundizionalsing3"
+        [plural1]="lemmaVersion.lemmaValues.cundizionalplural1" [plural1Pronoun]="pronouns.cundizionalplural1"
+        [plural2]="lemmaVersion.lemmaValues.cundizionalplural2" [plural2Pronoun]="pronouns.cundizionalplural2"
+        [plural3]="lemmaVersion.lemmaValues.cundizionalplural3" [plural3Pronoun]="pronouns.cundizionalplural3">
+      </app-conjugation-personal>
+    </div>
+
+    <div>
+      <b>{{ 'verbOverlayPopup.future' | translate }}</b><br>
+      <app-conjugation-personal
+        [sing1]="lemmaVersion.lemmaValues.futursing1" [sing1Pronoun]="pronouns.futursing1"
+        [sing2]="lemmaVersion.lemmaValues.futursing2" [sing2Pronoun]="pronouns.futursing2"
+        [sing3]="lemmaVersion.lemmaValues.futursing3" [sing3Pronoun]="pronouns.futursing3"
+        [plural1]="lemmaVersion.lemmaValues.futurplural1" [plural1Pronoun]="pronouns.futurplural1"
+        [plural2]="lemmaVersion.lemmaValues.futurplural2" [plural2Pronoun]="pronouns.futurplural2"
+        [plural3]="lemmaVersion.lemmaValues.futurplural3" [plural3Pronoun]="pronouns.futurplural3">
+      </app-conjugation-personal>
+    </div>
+
+    <div>
+      <b>{{ 'verbOverlayPopup.particip' | translate }}</b><br>
+      <app-conjugation-impersonal
+        [form1]="lemmaVersion.lemmaValues.participperfectms"
+        [form2]="lemmaVersion.lemmaValues.participperfectfs"
+        [form3]="lemmaVersion.lemmaValues.participperfectmp"
+        [form4]="lemmaVersion.lemmaValues.participperfectfp">
+      </app-conjugation-impersonal>
+    </div>
+
+    <div>
+      <b>{{ 'verbOverlayPopup.imperative' | translate }}</b><br>
+      <app-conjugation-impersonal
+        [form1]="lemmaVersion.lemmaValues.imperativ1"
+        [form2]="lemmaVersion.lemmaValues.imperativ2">
+        [form2]="lemmaVersion.lemmaValues.imperativ3">
+        [form2]="lemmaVersion.lemmaValues.imperativ4">
+        [form2]="lemmaVersion.lemmaValues.imperativ5">
+        [form2]="lemmaVersion.lemmaValues.imperativ6">
+      </app-conjugation-impersonal>
+    </div>
+
+    <div>
+      <b>{{ 'verbOverlayPopup.gerund' | translate }}</b><br>
+      <app-conjugation-impersonal
+        [form1]="lemmaVersion.lemmaValues.gerundium">
+      </app-conjugation-impersonal>
+    </div>
+  </div>
+</ng-container>

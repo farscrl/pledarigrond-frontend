@@ -48,7 +48,7 @@ import { HelpRumgrComponent } from './features/static/help/rumgr/help-rumgr/help
 import { InfoSurmiranDeComponent } from './features/static/info/surmiran/info-surmiran-de/info-surmiran-de.component';
 import { SuggestionComponent } from './components/footer/suggestion/suggestion.component';
 import { SuggestModificationComponent } from './features/search/suggest-modification/suggest-modification.component';
-import { VerbsModalComponent } from './features/search/verbs-modal/verbs-modal.component';
+import { DetailsModalComponent } from './features/search/details-modal/details-modal.component';
 import { ExportComponent } from './features/export/export.component';
 import { TranslateCutPipe } from './pipes/translate-cut.pipe';
 import { HighlighterPipe } from './pipes/highlighter.pipe';
@@ -70,6 +70,15 @@ import {
 import { ManualWordComponent } from './features/spellchecker/manuals-spellchecker/manual-word/manual-word.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ThousandSeparatorPipe } from './pipes/thousand-separator.pipe';
+import { DetailsVerbComponent } from './features/search/details-modal/details-verb/details-verb.component';
+import { DetailsAdjComponent } from './features/search/details-modal/details-adj/details-adj.component';
+import { DetailsSubstComponent } from './features/search/details-modal/details-subst/details-subst.component';
+import {
+  ConjugationPersonalComponent
+} from './features/search/details-modal/details-verb/conjugation-personal/conjugation-personal.component';
+import {
+  ConjugationImpersonalComponent
+} from './features/search/details-modal/details-verb/conjugation-impersonal/conjugation-impersonal.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -119,7 +128,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     InfoSurmiranDeComponent,
     SuggestionComponent,
     SuggestModificationComponent,
-    VerbsModalComponent,
+    DetailsModalComponent,
     ExportComponent,
     TranslateCutPipe,
     HighlighterPipe,
@@ -132,52 +141,57 @@ export function HttpLoaderFactory(http: HttpClient) {
     ManualMacosComponent,
     ManualHunspellComponent,
     ManualWordComponent,
+    DetailsVerbComponent,
+    DetailsSubstComponent,
+    DetailsAdjComponent,
+    ConjugationPersonalComponent,
+    ConjugationImpersonalComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        JwtModule.forRoot({
-            config: {
-                tokenGetter: tokenGetter,
-                allowedDomains: [environment.apiHost],
-                disallowedRoutes: [environment.apiUrl + '/users/token']
-            }
-        }),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            },
-            defaultLanguage: 'rm-rumgr'
-        }),
-        NgxModalView.forRoot(
-            {container: 'modal-container'},
-            {
-                ...defaultNgxModalOptions,
-                ...{
-                    closeOnEscape: true,
-                    closeOnClickOutside: true,
-                    wrapperDefaultClasses: 'pg-modal pg-modal--fade',
-                    wrapperClass: 'pg-modal--fade-in',
-                    animationDuration: 0,
-                    autoFocus: false
-                }
-            }
-        ),
-        NgxTiptapModule,
-        MatomoModule.forRoot({
-            siteId: environment.matomoTrackingId,
-            trackerUrl: environment.matomoTrackingUrl,
-        }),
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000'
-        }),
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.apiHost],
+        disallowedRoutes: [environment.apiUrl + '/users/token']
+      }
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'rm-rumgr'
+    }),
+    NgxModalView.forRoot(
+      {container: 'modal-container'},
+      {
+        ...defaultNgxModalOptions,
+        ...{
+          closeOnEscape: true,
+          closeOnClickOutside: true,
+          wrapperDefaultClasses: 'pg-modal pg-modal--fade',
+          wrapperClass: 'pg-modal--fade-in',
+          animationDuration: 0,
+          autoFocus: false
+        }
+      }
+    ),
+    NgxTiptapModule,
+    MatomoModule.forRoot({
+      siteId: environment.matomoTrackingId,
+      trackerUrl: environment.matomoTrackingUrl,
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+  ],
   providers: [
     UserLoggedInGuard,
     UserNotLoggedInGuard,
