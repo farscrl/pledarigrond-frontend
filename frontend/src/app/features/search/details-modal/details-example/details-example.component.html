@@ -1,5 +1,5 @@
-<ng-container *ngIf="examples.length > 0">
-  <b>Exempels d'utilisaziun</b>
+<div class="content" *ngIf="examples.length > 0">
+  <h4>Exempels d'utilisaziun</h4>
 
   @for (example of examples;track example) {
     <div class="example">
@@ -7,5 +7,4 @@
       <div class="de-example">{{ example.de }}</div>
     </div>
   }
-
-</ng-container>
+</div>
