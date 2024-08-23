@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./conjugation-impersonal.component.scss'],
 })
 export class ConjugationImpersonalComponent implements OnInit {
+  @Input() public title?: string;
+  
   @Input() public form1?: string;
 
   @Input() public form2?: string;

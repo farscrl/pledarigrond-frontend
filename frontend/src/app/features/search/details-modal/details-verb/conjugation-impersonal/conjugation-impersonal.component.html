@@ -1,22 +1,32 @@
 <table>
+  <tr *ngIf="title">
+    <th></th>
+    <th>{{ title }}</th>
+  </tr>
   <tr *ngIf="form1">
+    <td class="pronoun"></td>
     <td [innerHtml]="replaceComma(form1)"></td>
   </tr>
   <tr *ngIf="form2">
+    <td class="pronoun"></td>
     <td [innerHtml]="replaceComma(form2)"></td>
   </tr>
   <tr *ngIf="form3">
+    <td class="pronoun"></td>
     <td [innerHtml]="replaceComma(form3)"></td>
   </tr>
   <tr *ngIf="form4">
+    <td class="pronoun"></td>
     <td [innerHtml]="replaceComma(form4)"></td>
   </tr>
 
   <tr *ngIf="form5">
+    <td class="pronoun"></td>
     <td [innerHtml]="replaceComma(form5)"></td>
   </tr>
 
   <tr *ngIf="form6">
+    <td class="pronoun"></td>
     <td [innerHtml]="replaceComma(form6)"></td>
   </tr>
 </table>

@@ -1,9 +1,9 @@
 <div class="content" *ngIf="lemmaVersion">
-
+  <h4>Conjugaziun</h4>
   <div class="conjugation-elements">
     <div>
-      <b>{{ 'verbOverlayPopup.present' | translate }}</b><br>
       <app-conjugation-personal
+        [title]="'verbOverlayPopup.present' | translate"
         [sing1]="lemmaVersion.lemmaValues.preschentsing1" [sing1Pronoun]="pronouns.preschentsing1"
         [sing2]="lemmaVersion.lemmaValues.preschentsing2" [sing2Pronoun]="pronouns.preschentsing2"
         [sing3]="lemmaVersion.lemmaValues.preschentsing3" [sing3Pronoun]="pronouns.preschentsing3"
@@ -14,8 +14,8 @@
     </div>
 
     <div>
-      <b>{{ 'verbOverlayPopup.imperfect' | translate }}</b><br>
       <app-conjugation-personal
+        [title]="'verbOverlayPopup.imperfect' | translate"
         [sing1]="lemmaVersion.lemmaValues.imperfectsing1" [sing1Pronoun]="pronouns.imperfectsing1"
         [sing2]="lemmaVersion.lemmaValues.imperfectsing2" [sing2Pronoun]="pronouns.imperfectsing2"
         [sing3]="lemmaVersion.lemmaValues.imperfectsing3" [sing3Pronoun]="pronouns.imperfectsing3"
@@ -26,8 +26,8 @@
     </div>
 
     <div>
-      <b>{{ 'verbOverlayPopup.conjunctive' | translate }}</b><br>
       <app-conjugation-personal
+        [title]="'verbOverlayPopup.conjunctive' | translate"
         [sing1]="lemmaVersion.lemmaValues.conjunctivsing1" [sing1Pronoun]="pronouns.conjunctivsing1"
         [sing2]="lemmaVersion.lemmaValues.conjunctivsing2" [sing2Pronoun]="pronouns.conjunctivsing2"
         [sing3]="lemmaVersion.lemmaValues.conjunctivsing3" [sing3Pronoun]="pronouns.conjunctivsing3"
@@ -38,8 +38,8 @@
     </div>
 
     <div>
-      <b>{{ 'verbOverlayPopup.conditional' | translate }}</b><br>
       <app-conjugation-personal
+        [title]="'verbOverlayPopup.conditional' | translate"
         [sing1]="lemmaVersion.lemmaValues.cundizionalsing1" [sing1Pronoun]="pronouns.cundizionalsing1"
         [sing2]="lemmaVersion.lemmaValues.cundizionalsing2" [sing2Pronoun]="pronouns.cundizionalsing2"
         [sing3]="lemmaVersion.lemmaValues.cundizionalsing3" [sing3Pronoun]="pronouns.cundizionalsing3"
@@ -50,8 +50,8 @@
     </div>
 
     <div>
-      <b>{{ 'verbOverlayPopup.future' | translate }}</b><br>
       <app-conjugation-personal
+        [title]="'verbOverlayPopup.future' | translate"
         [sing1]="lemmaVersion.lemmaValues.futursing1" [sing1Pronoun]="pronouns.futursing1"
         [sing2]="lemmaVersion.lemmaValues.futursing2" [sing2Pronoun]="pronouns.futursing2"
         [sing3]="lemmaVersion.lemmaValues.futursing3" [sing3Pronoun]="pronouns.futursing3"
@@ -62,8 +62,8 @@
     </div>
 
     <div>
-      <b>{{ 'verbOverlayPopup.particip' | translate }}</b><br>
       <app-conjugation-impersonal
+        [title]="'verbOverlayPopup.particip' | translate"
         [form1]="lemmaVersion.lemmaValues.participperfectms"
         [form2]="lemmaVersion.lemmaValues.participperfectfs"
         [form3]="lemmaVersion.lemmaValues.participperfectmp"
@@ -72,8 +72,8 @@
     </div>
 
     <div>
-      <b>{{ 'verbOverlayPopup.imperative' | translate }}</b><br>
       <app-conjugation-impersonal
+        [title]="'verbOverlayPopup.imperative' | translate"
         [form1]="lemmaVersion.lemmaValues.imperativ1"
         [form2]="lemmaVersion.lemmaValues.imperativ2">
         [form2]="lemmaVersion.lemmaValues.imperativ3">
@@ -84,8 +84,8 @@
     </div>
 
     <div>
-      <b>{{ 'verbOverlayPopup.gerund' | translate }}</b><br>
       <app-conjugation-impersonal
+        [title]="'verbOverlayPopup.gerund' | translate"
         [form1]="lemmaVersion.lemmaValues.gerundium">
       </app-conjugation-impersonal>
     </div>

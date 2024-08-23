@@ -1,11 +1,29 @@
+:host {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
 table {
   // border-top: 1px solid #dadada;
   width: 100%;
 }
+
 tr {
   // border-bottom: 1px solid #dadada;
 }
 
+th {
+  text-align: left;
+}
+
 td {
   padding: 0;
+}
+
+.pronoun {
+  width: 90px;
+  text-align: right;
+  margin-right: 8px;
+  padding-right: 8px;
+  color: grey;
 }

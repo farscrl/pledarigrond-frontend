@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./conjugation-personal.component.scss'],
 })
 export class ConjugationPersonalComponent implements OnInit {
+  @Input() public title?: string;
+
   @Input() public sing1?: string;
   @Input() public sing1Pronoun?: string;
 
@@ -34,7 +36,7 @@ export class ConjugationPersonalComponent implements OnInit {
     if (!input) {
       return "";
     }
-    
+
     const items = input.split(/[,|\n]/);
     return items.map(e => {
       return e.trim();
