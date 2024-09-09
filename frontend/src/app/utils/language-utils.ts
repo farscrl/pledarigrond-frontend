@@ -5,7 +5,7 @@ import { Idiom } from "../services/selected-language.service";
 export class LanguageUtils {
 
   isSupportedLanguage(idiom: Idiom): boolean {
-    if (idiom === 'rumgr' || idiom === 'surmiran' || idiom === 'sutsilv') {
+    if (idiom === 'rumgr' || idiom === 'surmiran' || idiom === 'sutsilv' || idiom === 'sursilv') {
       return true;
     }
 

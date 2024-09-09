@@ -12,8 +12,9 @@ import { InfoRumgrComponent } from './features/static/info/rumgr/info-rumgr/info
 import { InfoSurmiranComponent } from './features/static/info/surmiran/info-surmiran/info-surmiran.component';
 import { InfoSutsilvComponent } from './features/static/info/sutsilv/info-sutsilv/info-sutsilv.component';
 import { StaticComponent } from './features/static/static.component';
-import { SursilvanPlaceholderComponent } from './features/sursilvan-placeholder/sursilvan-placeholder.component';
 import { ValladerPlaceholderComponent } from './features/vallader-placeholder/vallader-placeholder.component';
+import { InfoSursilvanComponent } from './features/static/info/sursilvan/info-sursilvan/info-sursilvan.component';
+import { HelpSursilvanComponent } from './features/static/help/sursilvan/help-sursilvan/help-sursilvan.component';
 
 const routes: Routes = [
   {
@@ -127,7 +128,17 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            component: InfoSurmiranComponent
+            component: InfoSursilvanComponent
+          }
+        ]
+      },
+      {
+        path: 'help',
+        component: StaticComponent,
+        children: [
+          {
+            path: "",
+            component: HelpSursilvanComponent
           }
         ]
       }
