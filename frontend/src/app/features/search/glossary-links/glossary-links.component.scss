@@ -32,9 +32,7 @@
 
 @media (min-width: 1180px) {
   :host {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+    padding-top: 450px;
+    display: inline-block;
   }
 }
