@@ -1,11 +1,22 @@
 <div class="pg-modal-wrapper">
   <div class="modal-content" *ngIf="lemmaVersion">
-    <h3>{{ lemmaVersion.lemmaValues.RStichwort }} <span>({{ lemmaVersion.lemmaValues.DStichwort }})</span></h3>
-      <app-details-example [lemmaVersion]="lemmaVersion"></app-details-example>
+    <h3>
+      {{ removeCf(lemmaVersion.lemmaValues.RStichwort) }}
+      <ng-container *ngIf="!!lemmaVersion.lemmaValues.RFlex"> <i>[{{ lemmaVersion.lemmaValues.RFlex }}]</i></ng-container>
+      <ng-container *ngIf="!!lemmaVersion.lemmaValues.RSubsemantik"> ({{ lemmaVersion.lemmaValues.RSubsemantik}})</ng-container>
+      <ng-container *ngIf="!!lemmaVersion.lemmaValues.RGenus"> <i>[{{ lemmaVersion.lemmaValues.RGenus }}]</i></ng-container>
+      <span class="german">
+        {{ removeCf(lemmaVersion.lemmaValues.DStichwort) }}
+        <ng-container *ngIf="!!lemmaVersion.lemmaValues.DSubsemantik"> ({{ lemmaVersion.lemmaValues.DSubsemantik}})</ng-container>
+        <ng-container *ngIf="!!lemmaVersion.lemmaValues.DGenus"> <i>[{{ lemmaVersion.lemmaValues.DGenus }}]</i></ng-container>
+      </span>
+    </h3>
 
-      <app-details-verb [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'V'" [idiom]="idiom"></app-details-verb>
-      <app-details-subst [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'NOUN'"></app-details-subst>
-      <app-details-adj [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'ADJECTIVE'"></app-details-adj>
+    <app-details-example [lemmaVersion]="lemmaVersion"></app-details-example>
+
+    <app-details-verb [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'V'" [idiom]="idiom"></app-details-verb>
+    <app-details-subst [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'NOUN'"></app-details-subst>
+    <app-details-adj [lemmaVersion]="lemmaVersion" *ngIf="lemmaVersion.lemmaValues.RInflectionType === 'ADJECTIVE'"></app-details-adj>
   </div>
   <div class="pg-modal-footer">
     <a class="btn" (click)="closeOverlay()">{{ 'verbOverlayPopup.closeButton' | translate }}</a>

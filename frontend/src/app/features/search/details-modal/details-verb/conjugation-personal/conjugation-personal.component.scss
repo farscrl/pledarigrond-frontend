@@ -1,19 +1,21 @@
 :host {
   margin-bottom: 20px;
   display: inline-block;
+  width: 100%;
 }
 
 table {
-  // border-top: 1px solid #dadada;
+  // border-top: 1px solid #938c8c;
   width: 100%;
 }
 
 tr {
-  // border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #938c8c;
 }
 
 th {
   text-align: left;
+  font-weight: normal;
 }
 
 td {

@@ -156,11 +156,18 @@
     "present": "Preschent",
     "imperfect": "Imperfect",
     "conjunctive": "Conjunctiv",
+    "conjunctive2": "Conjunctiv imperfect",
     "particip": "Particip Perfect",
     "conditional": "Cundiziunal",
+    "conditionalIndirect": "Cundiziunal indirect",
     "future": "Futur",
+    "futureDubitativ": "Futur",
     "gerund": "Gerundi",
-    "imperative": "Imperativ"
+    "imperative": "Imperativ",
+    "showEnclitic": "Mussar las furmas encliticas",
+    "hideEnclitic": "Zuppentar las furmas encliticas",
+    "examples": "Exempels d'utilisaziun",
+    "etymology": "Etimologia"
   },
   "editor": {
     "modify": {

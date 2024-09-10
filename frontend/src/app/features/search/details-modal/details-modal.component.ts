@@ -37,4 +37,14 @@ export class DetailsModalComponent extends NgxModalComponent<{lemmaVersion?: Lem
   closeOverlay() {
     this.modalService.removeAll();
   }
+
+  removeCf(input: string | undefined) {
+    if (!input) {
+      return '';
+    }
+    if (input.startsWith('cf. ')) {
+      return input.slice(4);
+    }
+    return input;
+  }
 }

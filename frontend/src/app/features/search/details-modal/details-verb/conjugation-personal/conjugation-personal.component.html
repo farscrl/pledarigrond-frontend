@@ -1,7 +1,6 @@
 <table>
   <tr *ngIf="title">
-    <th></th>
-    <th>{{ title }}</th>
+    <th colspan="2">{{ title }}</th>
   </tr>
   <tr *ngIf="sing1">
     <td class="pronoun" [innerHTML]="replaceComma(sing1Pronoun)"></td>
@@ -14,6 +13,10 @@
   <tr *ngIf="sing3">
     <td class="pronoun" [innerHTML]="replaceComma(sing3Pronoun)"></td>
     <td [innerHtml]="replaceComma(sing3)"></td>
+  </tr>
+  <tr *ngIf="sing3Alt">
+    <td class="pronoun" [innerHTML]="replaceComma(sing3PronounAlt)"></td>
+    <td [innerHtml]="replaceComma(sing3Alt)"></td>
   </tr>
   <tr *ngIf="plural1">
     <td class="pronoun" [innerHTML]="replaceComma(plural1Pronoun)"></td>

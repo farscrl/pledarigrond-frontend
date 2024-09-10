@@ -37,6 +37,18 @@
       </app-conjugation-personal>
     </div>
 
+    <div *ngIf="hasConjunctiv2()">
+      <app-conjugation-personal
+        [title]="'verbOverlayPopup.conjunctive2' | translate"
+        [sing1]="lemmaCopy.lemmaValues.conjunctiv2sing1" [sing1Pronoun]="pronouns.conjunctiv2sing1"
+        [sing2]="lemmaCopy.lemmaValues.conjunctiv2sing2" [sing2Pronoun]="pronouns.conjunctiv2sing2"
+        [sing3]="lemmaCopy.lemmaValues.conjunctiv2sing3" [sing3Pronoun]="pronouns.conjunctiv2sing3"
+        [plural1]="lemmaCopy.lemmaValues.conjunctiv2plural1" [plural1Pronoun]="pronouns.conjunctiv2plural1"
+        [plural2]="lemmaCopy.lemmaValues.conjunctiv2plural2" [plural2Pronoun]="pronouns.conjunctiv2plural2"
+        [plural3]="lemmaCopy.lemmaValues.conjunctiv2plural3" [plural3Pronoun]="pronouns.conjunctiv2plural3">
+      </app-conjugation-personal>
+    </div>
+
     <div>
       <app-conjugation-personal
         [title]="'verbOverlayPopup.conditional' | translate"
@@ -46,6 +58,18 @@
         [plural1]="lemmaCopy.lemmaValues.cundizionalplural1" [plural1Pronoun]="pronouns.cundizionalplural1"
         [plural2]="lemmaCopy.lemmaValues.cundizionalplural2" [plural2Pronoun]="pronouns.cundizionalplural2"
         [plural3]="lemmaCopy.lemmaValues.cundizionalplural3" [plural3Pronoun]="pronouns.cundizionalplural3">
+      </app-conjugation-personal>
+    </div>
+
+    <div *ngIf="hasCundizionalIndirect()">
+      <app-conjugation-personal
+        [title]="'verbOverlayPopup.conditionalIndirect' | translate"
+        [sing1]="lemmaCopy.lemmaValues.cundizionalindirectsing1" [sing1Pronoun]="pronouns.cundizionalindirectsing1"
+        [sing2]="lemmaCopy.lemmaValues.cundizionalindirectsing2" [sing2Pronoun]="pronouns.cundizionalindirectsing2"
+        [sing3]="lemmaCopy.lemmaValues.cundizionalindirectsing3" [sing3Pronoun]="pronouns.cundizionalindirectsing3"
+        [plural1]="lemmaCopy.lemmaValues.cundizionalindirectplural1" [plural1Pronoun]="pronouns.cundizionalindirectplural1"
+        [plural2]="lemmaCopy.lemmaValues.cundizionalindirectplural2" [plural2Pronoun]="pronouns.cundizionalindirectplural2"
+        [plural3]="lemmaCopy.lemmaValues.cundizionalindirectplural3" [plural3Pronoun]="pronouns.cundizionalindirectplural3">
       </app-conjugation-personal>
     </div>
 
@@ -61,13 +85,26 @@
       </app-conjugation-personal>
     </div>
 
+    <div *ngIf="hasFuturDubitativ()">
+      <app-conjugation-personal
+        [title]="'verbOverlayPopup.futureDubitativ' | translate"
+        [sing1]="lemmaCopy.lemmaValues.futurdubitativsing1" [sing1Pronoun]="pronouns.futurdubitativsing1"
+        [sing2]="lemmaCopy.lemmaValues.futurdubitativsing2" [sing2Pronoun]="pronouns.futurdubitativsing2"
+        [sing3]="lemmaCopy.lemmaValues.futurdubitativsing3" [sing3Pronoun]="pronouns.futurdubitativsing3"
+        [plural1]="lemmaCopy.lemmaValues.futurdubitativplural1" [plural1Pronoun]="pronouns.futurdubitativplural1"
+        [plural2]="lemmaCopy.lemmaValues.futurdubitativplural2" [plural2Pronoun]="pronouns.futurdubitativplural2"
+        [plural3]="lemmaCopy.lemmaValues.futurdubitativplural3" [plural3Pronoun]="pronouns.futurdubitativplural3">
+      </app-conjugation-personal>
+    </div>
+
     <div>
       <app-conjugation-impersonal
         [title]="'verbOverlayPopup.particip' | translate"
         [form1]="lemmaCopy.lemmaValues.participperfectms"
         [form2]="lemmaCopy.lemmaValues.participperfectfs"
         [form3]="lemmaCopy.lemmaValues.participperfectmp"
-        [form4]="lemmaCopy.lemmaValues.participperfectfp">
+        [form4]="lemmaCopy.lemmaValues.participperfectfp"
+        [form5]="lemmaCopy.lemmaValues.participperfectmspredicativ">
       </app-conjugation-impersonal>
     </div>
 
@@ -75,11 +112,11 @@
       <app-conjugation-impersonal
         [title]="'verbOverlayPopup.imperative' | translate"
         [form1]="lemmaCopy.lemmaValues.imperativ1"
-        [form2]="lemmaCopy.lemmaValues.imperativ2">
-        [form2]="lemmaCopy.lemmaValues.imperativ3">
-        [form2]="lemmaCopy.lemmaValues.imperativ4">
-        [form2]="lemmaCopy.lemmaValues.imperativ5">
-        [form2]="lemmaCopy.lemmaValues.imperativ6">
+        [form2]="lemmaCopy.lemmaValues.imperativ2"
+        [form3]="lemmaCopy.lemmaValues.imperativ3"
+        [form4]="lemmaCopy.lemmaValues.imperativ4"
+        [form5]="lemmaCopy.lemmaValues.imperativ5"
+        [form6]="lemmaCopy.lemmaValues.imperativ6">
       </app-conjugation-impersonal>
     </div>
 
@@ -90,4 +127,86 @@
       </app-conjugation-impersonal>
     </div>
   </div>
+
+
+  <div class="enclitic" *ngIf="hasEncliticForms()">
+    <div class="enclitic-toggle" (click)="toggleEnclitic()">
+      <span *ngIf="!areEncliticEnabled">
+        <i class="ri-arrow-right-s-fill"></i>
+        {{ 'verbOverlayPopup.showEnclitic' | translate }}
+      </span>
+      <span *ngIf="areEncliticEnabled">
+        <i class="ri-arrow-down-s-fill"></i>
+        {{ 'verbOverlayPopup.hideEnclitic' | translate }}
+      </span>
+    </div>
+
+    <div class="conjugation-elements enclitic" [class.show]="areEncliticEnabled">
+      <div>
+        <app-conjugation-personal
+          [title]="'verbOverlayPopup.present' | translate"
+          [sing1]="lemmaCopy.lemmaValues.preschentsing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.preschentsing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.preschentsing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.preschentsing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.preschentplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.preschentplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.preschentplural3enclitic">
+        </app-conjugation-personal>
+      </div>
+
+      <div>
+        <app-conjugation-personal
+          [title]="'verbOverlayPopup.imperfect' | translate"
+          [sing1]="lemmaCopy.lemmaValues.imperfectsing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.imperfectsing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.imperfectsing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.imperfectsing3encliticm"
+          [plural1]="lemmaCopy.lemmaValues.imperfectplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.imperfectplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.imperfectplural3enclitic">
+        </app-conjugation-personal>
+      </div>
+
+      <div>
+        <app-conjugation-personal
+          [title]="'verbOverlayPopup.conditional' | translate"
+          [sing1]="lemmaCopy.lemmaValues.cundizionalsing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.cundizionalsing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.cundizionalsing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.cundizionalsing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.cundizionalplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.cundizionalplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.cundizionalplural3enclitic">
+        </app-conjugation-personal>
+      </div>
+
+      <div *ngIf="hasEncliticFutur()">
+        <app-conjugation-personal
+          [title]="'verbOverlayPopup.future' | translate"
+          [sing1]="lemmaCopy.lemmaValues.futursing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.futursing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.futursing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.futursing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.futurplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.futurplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.futurplural3enclitic">
+        </app-conjugation-personal>
+      </div>
+
+      <div *ngIf="hasEncliticFuturDubitativ()">
+        <app-conjugation-personal
+          [title]="'verbOverlayPopup.futureDubitativ' | translate"
+          [sing1]="lemmaCopy.lemmaValues.futurdubitativsing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.futurdubitativsing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.futurdubitativsing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.futurdubitativsing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.futurdubitativplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.futurdubitativplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.futurdubitativplural3enclitic">
+        </app-conjugation-personal>
+      </div>
+    </div>
+  </div>
 </div>
+

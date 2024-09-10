@@ -28,7 +28,28 @@ tr, td {
   gap: 16px;
   flex-wrap: wrap;
 
+  &.enclitic {
+    display: none;
+
+    &.show {
+      display: flex;
+    }
+  }
+
   div {
     width: calc(50% - 8px);
+  }
+}
+
+.enclitic-toggle {
+  cursor: pointer;
+  margin-bottom: 20px;
+
+  span {
+    i {
+      font-size: 120%;
+      position: relative;
+      top: 3px;
+    }
   }
 }

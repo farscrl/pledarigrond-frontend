@@ -1,5 +1,5 @@
 <div class="content" *ngIf="examples.length > 0">
-  <h4>Exempels d'utilisaziun</h4>
+  <h4>{{ 'verbOverlayPopup.examples' | translate }}</h4>
 
   @for (example of examples;track example) {
     <div class="example">
@@ -7,4 +7,9 @@
       <div class="de-example">{{ example.de }}</div>
     </div>
   }
+</div>
+
+<div class="content" *ngIf="lemmaVersion?.lemmaValues?.REtymologie">
+  <h4>{{ 'verbOverlayPopup.etymology' | translate }}</h4>
+  <div class="etymology">{{ lemmaVersion?.lemmaValues?.REtymologie }}</div>
 </div>

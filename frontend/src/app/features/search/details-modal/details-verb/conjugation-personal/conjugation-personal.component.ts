@@ -17,6 +17,9 @@ export class ConjugationPersonalComponent implements OnInit {
   @Input() public sing3?: string;
   @Input() public sing3Pronoun?: string;
 
+  @Input() public sing3Alt?: string;
+  @Input() public sing3PronounAlt?: string;
+
   @Input() public plural1?: string;
   @Input() public plural1Pronoun?: string;
 
