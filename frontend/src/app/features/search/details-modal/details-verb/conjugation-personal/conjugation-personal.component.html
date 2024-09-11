@@ -1,7 +1,5 @@
+<div class="title"  *ngIf="title">{{ title }}</div>
 <table>
-  <tr *ngIf="title">
-    <th colspan="2">{{ title }}</th>
-  </tr>
   <tr *ngIf="sing1">
     <td class="pronoun" [innerHTML]="replaceComma(sing1Pronoun)"></td>
     <td [innerHtml]="replaceComma(sing1)"></td>

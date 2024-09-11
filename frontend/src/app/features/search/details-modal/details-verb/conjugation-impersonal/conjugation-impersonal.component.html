@@ -1,7 +1,5 @@
+<div class="title"  *ngIf="title">{{ title }}</div>
 <table>
-  <tr *ngIf="title">
-    <th>{{ title }}</th>
-  </tr>
   <tr *ngIf="form1">
     <td [innerHtml]="replaceComma(form1)"></td>
   </tr>

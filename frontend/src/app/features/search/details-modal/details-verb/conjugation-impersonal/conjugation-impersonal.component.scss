@@ -1,21 +1,23 @@
 :host {
   margin-bottom: 20px;
   display: inline-block;
-  width: 100%;
+}
+
+.title {
+  font-weight: normal;
+  margin-bottom: 4px;
 }
 
 table {
-  // border-top: 1px solid #938c8c;
-  width: 100%;
+  // border-top: 1px solid #cfcfcf;
 }
 
 tr {
-  border-bottom: 1px solid #938c8c;
-}
+  border-bottom: 1px solid #cfcfcf;
 
-th {
-  text-align: left;
-  font-weight: normal;
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 td {
@@ -24,7 +26,6 @@ td {
 
 .pronoun {
   width: 90px;
-  text-align: right;
   margin-right: 8px;
   padding-right: 8px;
   color: grey;

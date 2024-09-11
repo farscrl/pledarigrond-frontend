@@ -2,26 +2,6 @@
   padding-bottom: 32px;
 }
 
-table {
-  width:100%;
-  white-space: pre-line;
-}
-
-tr, td {
-  display: block;
-}
-
-@media (min-width: 768px) {
-  tr {
-    display: table-row;
-  }
-
-  td {
-    display: table-cell;
-  }
-}
-
-
 .conjugation-elements {
   display: flex;
   flex-direction: row;
@@ -37,7 +17,11 @@ tr, td {
   }
 
   div {
-    width: calc(50% - 8px);
+    width: 100%;
+    
+    @media (min-width: 768px) {
+      width: calc(50% - 8px);
+    }
   }
 }
 
