@@ -1,0 +1,21 @@
+<nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton" class="search-bar">
+  <input type="text" nz-input placeholder="pled per tschertgar" [value]="searchTerm" #searchTermField (keyup.enter)=search(searchTermField.value) />
+</nz-input-group>
+<ng-template #suffixIconButton>
+  <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search" (click)="search(searchTermField.value)" [nzSpin]="isLoading"></span></button>
+</ng-template>
+
+<ng-container *ngIf="searchTerm">
+  <ul nz-list [nzDataSource]="examples" nzBordered>
+    @for (item of examples; track item) {
+      <li nz-list-item nzNoFlex class="example-item">
+        <span [innerHTML]="item | highlighter:searchTerm:true"></span>
+        <ul nz-list-item-actions>
+          <nz-list-item-action>
+            <a (click)="select(item)">tscherner</a>
+          </nz-list-item-action>
+        </ul>
+      </li>
+    }
+  </ul>
+</ng-container>

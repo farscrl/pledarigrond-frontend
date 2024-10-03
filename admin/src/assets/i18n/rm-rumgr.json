@@ -389,6 +389,9 @@
     "pronunciation": {
       "title": "Pronunzia"
     },
+    "corpus": {
+      "title": "Tschertgar en il corpus"
+    },
     "cancel": "Interrumper",
     "reset": "Reinizialisar",
     "save": "Memorisar",

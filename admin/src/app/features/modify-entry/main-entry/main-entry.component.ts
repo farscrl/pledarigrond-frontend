@@ -15,6 +15,7 @@ import { EnvironmentService } from "../../../services/environment.service";
 import { OtherGenerationComponent } from '../other-generation/other-generation.component';
 import { PronunciationComponent } from '../pronunciation/pronunciation.component';
 import { RegistrationService } from '../../../services/registration.service';
+import { FindCorpusEntryComponent } from '../find-corpus-entry/find-corpus-entry.component';
 
 export class MainEntryData {
   lexEntryId?: string;
@@ -503,6 +504,30 @@ export class MainEntryComponent implements OnInit {
 
   removeExample(index: number): void {
     this.exampleControls.removeAt(index);
+  }
+
+  searchExamples(index: number) {
+    const searchTerm = this.validateForm.value.RStichwort;
+
+    const modal = this.modalService.create({
+      nzTitle: this.translateService.instant('edit.corpus.title'),
+      nzContent: FindCorpusEntryComponent,
+      nzClosable: true,
+      nzMaskClosable: true,
+      nzWidth: 1100,
+      nzViewContainerRef: this.viewContainerRef,
+      nzFooter: null,
+      nzData: {
+        searchTerm,
+      },
+    });
+    modal.afterClose.subscribe(value => {
+      if (value === undefined) {
+        return;
+      }
+
+      this.exampleControls.at(index).get('exampleRm')!.setValue(value);
+    })
   }
 
   private loadExamples(examplesString: string | undefined): void {

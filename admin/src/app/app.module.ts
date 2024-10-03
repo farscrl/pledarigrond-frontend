@@ -72,6 +72,7 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
 import { PronunciationComponent } from './features/modify-entry/pronunciation/pronunciation.component';
 import { NzFlexDirective } from 'ng-zorro-antd/flex';
 import { RegistrationStatusComponent } from './components/data/registration-status/registration-status.component';
+import { FindCorpusEntryComponent } from './features/modify-entry/find-corpus-entry/find-corpus-entry.component';
 
 registerLocaleData(de);
 
@@ -134,6 +135,7 @@ export function tokenGetter() {
     AudioPlayerComponent,
     PronunciationComponent,
     RegistrationStatusComponent,
+    FindCorpusEntryComponent,
   ],
   imports: [
     BrowserModule,
