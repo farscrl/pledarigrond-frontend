@@ -80,6 +80,7 @@ import {
   ConjugationImpersonalComponent
 } from './features/search/details-modal/details-verb/conjugation-impersonal/conjugation-impersonal.component';
 import { DetailsExampleComponent } from './features/search/details-modal/details-example/details-example.component';
+import { SuggestionsComponent } from './features/search/search-content/suggestions/suggestions.component';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -148,6 +149,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DetailsExampleComponent,
     ConjugationPersonalComponent,
     ConjugationImpersonalComponent,
+    SuggestionsComponent,
   ],
   imports: [
     BrowserModule,

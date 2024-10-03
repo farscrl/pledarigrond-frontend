@@ -1,0 +1,14 @@
+<p *ngIf="searchSuggestionsRm.length > 0 && searchCriteria.searchDirection != 'GERMAN'">
+  Has ti manegià
+  @for (suggestion of searchSuggestionsRm; track suggestion; let index = $index) {
+    <span (click)="linkToLemma(searchSuggestionsRm[index])" class="link-to-suggestion">{{ searchSuggestionsRm[index] }}</span>@if (index < searchSuggestionsRm.length - 2) {, }
+    @if (index === searchSuggestionsRm.length - 2) { u }
+  }?
+</p>
+<p *ngIf="searchSuggestionsDe.length > 0 && searchCriteria.searchDirection != 'ROMANSH'">
+  Meinten Sie
+  @for (suggestion of searchSuggestionsDe; track suggestion; let index = $index) {
+    <span (click)="linkToLemma(searchSuggestionsDe[index])" class="link-to-suggestion">{{ searchSuggestionsDe[index] }}</span>@if (index < searchSuggestionsDe.length - 2) {, }
+    @if (index === searchSuggestionsDe.length - 2) { oder }
+  }?
+</p>

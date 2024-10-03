@@ -248,11 +248,6 @@ th {
   }
 }
 
-.link-to-suggestion {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
 .sort-icon {
   position: relative;
   top: 3px;
@@ -263,4 +258,8 @@ th {
     color: unset;
     cursor: unset;
   }
+}
+
+.search-suggestions {
+  margin-top: 40px;
 }

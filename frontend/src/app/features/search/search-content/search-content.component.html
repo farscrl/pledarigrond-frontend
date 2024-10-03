@@ -81,6 +81,10 @@
         </ul>
       </div>
     </div>
+
+    <div class="search-suggestions">
+      <app-suggestions [searchCriteria]="searchCriteria" [searchSuggestionsDe]="searchSuggestionsDe" [searchSuggestionsRm]="searchSuggestionsRm" (linkTo)="linkToLemma($event)"></app-suggestions>
+    </div>
   </div>
 
   <div *ngIf="searchResults.length === 0 && searchCriteria.searchPhrase && searchCriteria.searchPhrase !== ''">
@@ -90,20 +94,7 @@
           {{ 'search.not_found' | translate:{ searchPhrase : searchCriteria.searchPhrase } }}
 
         </p>
-        <p *ngIf="searchSuggestionsRm.length > 0 && searchCriteria.searchDirection != 'GERMAN'">
-          Has ti manegià
-          @for (suggestion of searchSuggestionsRm; track suggestion; let index = $index) {
-            <span (click)="linkToLemma(searchSuggestionsRm[index])" class="link-to-suggestion">{{ searchSuggestionsRm[index] }}</span>@if (index < searchSuggestionsRm.length - 2) {, }
-            @if (index === searchSuggestionsRm.length - 2) { u }
-          }?
-        </p>
-        <p *ngIf="searchSuggestionsDe.length > 0 && searchCriteria.searchDirection != 'ROMANSH'">
-          Meinten Sie
-          @for (suggestion of searchSuggestionsDe; track suggestion; let index = $index) {
-            <span (click)="linkToLemma(searchSuggestionsDe[index])" class="link-to-suggestion">{{ searchSuggestionsDe[index] }}</span>@if (index < searchSuggestionsDe.length - 2) {, }
-            @if (index === searchSuggestionsDe.length - 2) { oder }
-          }?
-        </p>
+        <app-suggestions [searchCriteria]="searchCriteria" [searchSuggestionsDe]="searchSuggestionsDe" [searchSuggestionsRm]="searchSuggestionsRm" (linkTo)="linkToLemma($event)"></app-suggestions>
       </div>
       <a class="btn" (click)="openSuggestionModal()"><i class="icon-info-sign"></i>far ina proposta </a>
     </div>
