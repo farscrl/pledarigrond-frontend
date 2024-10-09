@@ -34,6 +34,7 @@ export class FindCorpusEntryComponent implements OnInit{
   search(searchTerm: string) {
     this.searchTerm = searchTerm;
     this.isLoading = true;
+    this.examples = [];
     this.corpusService.find(this.languageSelectionService.getCurrentLanguage(), searchTerm).subscribe(examples => {
       this.examples = examples;
       this.isLoading = false;
