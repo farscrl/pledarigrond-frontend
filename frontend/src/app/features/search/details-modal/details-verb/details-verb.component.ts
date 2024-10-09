@@ -117,6 +117,11 @@ export class DetailsVerbComponent implements OnChanges {
     [this.lemmaCopy.lemmaValues.cundizionalindirectsing1, this.pronouns.cundizionalindirectsing1] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalindirectsing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.lemmaCopy.lemmaValues.futursing1, this.pronouns.futursing1] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futursing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.lemmaCopy.lemmaValues.futurdubitativsing1, this.pronouns.futurdubitativsing1] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativsing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.preschentsing1enclitic, this.pronouns.preschentsing1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentsing1enclitic, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.imperfectsing1enclitic, this.pronouns.imperfectsing1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectsing1enclitic, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.cundizionalsing1enclitic, this.pronouns.cundizionalsing1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalsing1enclitic, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.futursing1enclitic, this.pronouns.futursing1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futursing1enclitic, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.futurdubitativsing1enclitic, this.pronouns.futurdubitativsing1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativsing1enclitic, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
 
     [this.lemmaCopy.lemmaValues.preschentsing2, this.pronouns.preschentsing2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentsing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
     [this.lemmaCopy.lemmaValues.imperfectsing2, this.pronouns.imperfectsing2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectsing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
@@ -126,6 +131,11 @@ export class DetailsVerbComponent implements OnChanges {
     [this.lemmaCopy.lemmaValues.cundizionalindirectsing2, this.pronouns.cundizionalindirectsing2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalindirectsing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
     [this.lemmaCopy.lemmaValues.futursing2, this.pronouns.futursing2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futursing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
     [this.lemmaCopy.lemmaValues.futurdubitativsing2, this.pronouns.futurdubitativsing2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativsing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
+    [this.lemmaCopy.lemmaValues.preschentsing2enclitic, this.pronouns.preschentsing2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentsing2enclitic, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
+    [this.lemmaCopy.lemmaValues.imperfectsing2enclitic, this.pronouns.imperfectsing2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectsing2enclitic, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
+    [this.lemmaCopy.lemmaValues.cundizionalsing2enclitic, this.pronouns.cundizionalsing2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalsing2enclitic, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
+    [this.lemmaCopy.lemmaValues.futursing2enclitic, this.pronouns.futursing2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futursing2enclitic, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
+    [this.lemmaCopy.lemmaValues.futurdubitativsing2enclitic, this.pronouns.futurdubitativsing2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativsing2enclitic, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
 
     [this.lemmaCopy.lemmaValues.preschentsing3, this.pronouns.preschentsing3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentsing3, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.lemmaCopy.lemmaValues.imperfectsing3, this.pronouns.imperfectsing3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectsing3, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
@@ -135,6 +145,16 @@ export class DetailsVerbComponent implements OnChanges {
     [this.lemmaCopy.lemmaValues.cundizionalindirectsing3, this.pronouns.cundizionalindirectsing3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalindirectsing3, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.lemmaCopy.lemmaValues.futursing3, this.pronouns.futursing3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futursing3, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.lemmaCopy.lemmaValues.futurdubitativsing3, this.pronouns.futurdubitativsing3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativsing3, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.preschentsing3encliticm, this.pronouns.preschentsing3encliticm] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentsing3encliticm, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.preschentsing3encliticf, this.pronouns.preschentsing3encliticf] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentsing3encliticf, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.imperfectsing3encliticm, this.pronouns.imperfectsing3encliticm] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectsing3encliticm, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.imperfectsing3encliticf, this.pronouns.imperfectsing3encliticf] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectsing3encliticf, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.cundizionalsing3encliticm, this.pronouns.cundizionalsing3encliticm] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalsing3encliticm, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.cundizionalsing3encliticf, this.pronouns.cundizionalsing3encliticf] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalsing3encliticf, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.futursing3encliticm, this.pronouns.futursing3encliticm] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futursing3encliticm, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.futursing3encliticf, this.pronouns.futursing3encliticf] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futursing3encliticf, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.futurdubitativsing3encliticm, this.pronouns.futurdubitativsing3encliticm] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativsing3encliticm, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.lemmaCopy.lemmaValues.futurdubitativsing3encliticf, this.pronouns.futurdubitativsing3encliticf] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativsing3encliticf, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
 
     [this.lemmaCopy.lemmaValues.preschentplural1, this.pronouns.preschentplural1] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentplural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
     [this.lemmaCopy.lemmaValues.imperfectplural1, this.pronouns.imperfectplural1] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectplural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
@@ -144,6 +164,11 @@ export class DetailsVerbComponent implements OnChanges {
     [this.lemmaCopy.lemmaValues.cundizionalindirectplural1, this.pronouns.cundizionalindirectplural1] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalindirectplural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
     [this.lemmaCopy.lemmaValues.futurplural1, this.pronouns.futurplural1] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurplural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
     [this.lemmaCopy.lemmaValues.futurdubitativplural1, this.pronouns.futurdubitativplural1] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativplural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
+    [this.lemmaCopy.lemmaValues.preschentplural1enclitic, this.pronouns.preschentplural1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentplural1enclitic, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
+    [this.lemmaCopy.lemmaValues.imperfectplural1enclitic, this.pronouns.imperfectplural1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectplural1enclitic, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
+    [this.lemmaCopy.lemmaValues.cundizionalplural1enclitic, this.pronouns.cundizionalplural1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalplural1enclitic, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
+    [this.lemmaCopy.lemmaValues.futurplural1enclitic, this.pronouns.futurplural1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurplural1enclitic, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
+    [this.lemmaCopy.lemmaValues.futurdubitativplural1enclitic, this.pronouns.futurdubitativplural1enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativplural1enclitic, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
 
     [this.lemmaCopy.lemmaValues.preschentplural2, this.pronouns.preschentplural2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentplural2, [ppConj[4], pp[4], pp[8], ppRefl[4], ppReflVowel[4]]);
     [this.lemmaCopy.lemmaValues.imperfectplural2, this.pronouns.imperfectplural2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectplural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
@@ -153,6 +178,11 @@ export class DetailsVerbComponent implements OnChanges {
     [this.lemmaCopy.lemmaValues.cundizionalindirectplural2, this.pronouns.cundizionalindirectplural2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalindirectplural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
     [this.lemmaCopy.lemmaValues.futurplural2, this.pronouns.futurplural2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurplural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
     [this.lemmaCopy.lemmaValues.futurdubitativplural2, this.pronouns.futurdubitativplural2] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativplural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
+    [this.lemmaCopy.lemmaValues.preschentplural2enclitic, this.pronouns.preschentplural2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentplural2enclitic, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
+    [this.lemmaCopy.lemmaValues.imperfectplural2enclitic, this.pronouns.imperfectplural2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectplural2enclitic, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
+    [this.lemmaCopy.lemmaValues.cundizionalplural2enclitic, this.pronouns.cundizionalplural2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalplural2enclitic, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
+    [this.lemmaCopy.lemmaValues.futurplural2enclitic, this.pronouns.futurplural2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurplural2enclitic, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
+    [this.lemmaCopy.lemmaValues.futurdubitativplural2enclitic, this.pronouns.futurdubitativplural2enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativplural2enclitic, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
 
     [this.lemmaCopy.lemmaValues.preschentplural3, this.pronouns.preschentplural3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentplural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
     [this.lemmaCopy.lemmaValues.imperfectplural3, this.pronouns.imperfectplural3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectplural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
@@ -162,6 +192,11 @@ export class DetailsVerbComponent implements OnChanges {
     [this.lemmaCopy.lemmaValues.cundizionalindirectplural3, this.pronouns.cundizionalindirectplural3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalindirectplural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
     [this.lemmaCopy.lemmaValues.futurplural3, this.pronouns.futurplural3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurplural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
     [this.lemmaCopy.lemmaValues.futurdubitativplural3, this.pronouns.futurdubitativplural3] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativplural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
+    [this.lemmaCopy.lemmaValues.preschentplural3enclitic, this.pronouns.preschentplural3enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.preschentplural3enclitic, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
+    [this.lemmaCopy.lemmaValues.imperfectplural3enclitic, this.pronouns.imperfectplural3enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.imperfectplural3enclitic, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
+    [this.lemmaCopy.lemmaValues.cundizionalplural3enclitic, this.pronouns.cundizionalplural3enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.cundizionalplural3enclitic, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
+    [this.lemmaCopy.lemmaValues.futurplural3enclitic, this.pronouns.futurplural3enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurplural3enclitic, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
+    [this.lemmaCopy.lemmaValues.futurdubitativplural3enclitic, this.pronouns.futurdubitativplural3enclitic] = this.extractPrefixes(this.lemmaCopy.lemmaValues.futurdubitativplural3enclitic, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
   }
 
   private extractPrefixes(lemma: string|undefined, prefixCandidates: string[]): string[] {

@@ -145,65 +145,65 @@
       <div>
         <app-conjugation-personal
           [title]="'verbOverlayPopup.present' | translate"
-          [sing1]="lemmaCopy.lemmaValues.preschentsing1enclitic"
-          [sing2]="lemmaCopy.lemmaValues.preschentsing2enclitic"
-          [sing3]="lemmaCopy.lemmaValues.preschentsing3encliticm"
-          [sing3Alt]="lemmaCopy.lemmaValues.preschentsing3encliticf"
-          [plural1]="lemmaCopy.lemmaValues.preschentplural1enclitic"
-          [plural2]="lemmaCopy.lemmaValues.preschentplural2enclitic"
-          [plural3]="lemmaCopy.lemmaValues.preschentplural3enclitic">
+          [sing1]="lemmaCopy.lemmaValues.preschentsing1enclitic" [sing1Pronoun]="pronouns.preschentsing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.preschentsing2enclitic" [sing2Pronoun]="pronouns.preschentsing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.preschentsing3encliticm" [sing3Pronoun]="pronouns.preschentsing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.preschentsing3encliticf" [sing3PronounAlt]="pronouns.preschentsing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.preschentplural1enclitic" [plural1Pronoun]="pronouns.preschentplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.preschentplural2enclitic" [plural2Pronoun]="pronouns.preschentplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.preschentplural3enclitic" [plural3Pronoun]="pronouns.preschentplural3enclitic">
         </app-conjugation-personal>
       </div>
 
       <div>
         <app-conjugation-personal
           [title]="'verbOverlayPopup.imperfect' | translate"
-          [sing1]="lemmaCopy.lemmaValues.imperfectsing1enclitic"
-          [sing2]="lemmaCopy.lemmaValues.imperfectsing2enclitic"
-          [sing3]="lemmaCopy.lemmaValues.imperfectsing3encliticm"
-          [sing3Alt]="lemmaCopy.lemmaValues.imperfectsing3encliticf"
-          [plural1]="lemmaCopy.lemmaValues.imperfectplural1enclitic"
-          [plural2]="lemmaCopy.lemmaValues.imperfectplural2enclitic"
-          [plural3]="lemmaCopy.lemmaValues.imperfectplural3enclitic">
+          [sing1]="lemmaCopy.lemmaValues.imperfectsing1enclitic" [sing1Pronoun]="pronouns.imperfectsing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.imperfectsing2enclitic" [sing2Pronoun]="pronouns.imperfectsing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.imperfectsing3encliticm" [sing3Pronoun]="pronouns.imperfectsing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.imperfectsing3encliticf" [sing3PronounAlt]="pronouns.imperfectsing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.imperfectplural1enclitic" [plural1Pronoun]="pronouns.imperfectplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.imperfectplural2enclitic" [plural2Pronoun]="pronouns.imperfectplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.imperfectplural3enclitic" [plural3Pronoun]="pronouns.imperfectplural3enclitic">
         </app-conjugation-personal>
       </div>
 
       <div>
         <app-conjugation-personal
           [title]="'verbOverlayPopup.conditional' | translate"
-          [sing1]="lemmaCopy.lemmaValues.cundizionalsing1enclitic"
-          [sing2]="lemmaCopy.lemmaValues.cundizionalsing2enclitic"
-          [sing3]="lemmaCopy.lemmaValues.cundizionalsing3encliticm"
-          [sing3Alt]="lemmaCopy.lemmaValues.cundizionalsing3encliticf"
-          [plural1]="lemmaCopy.lemmaValues.cundizionalplural1enclitic"
-          [plural2]="lemmaCopy.lemmaValues.cundizionalplural2enclitic"
-          [plural3]="lemmaCopy.lemmaValues.cundizionalplural3enclitic">
+          [sing1]="lemmaCopy.lemmaValues.cundizionalsing1enclitic" [sing1Pronoun]="pronouns.cundizionalsing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.cundizionalsing2enclitic" [sing2Pronoun]="pronouns.cundizionalsing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.cundizionalsing3encliticm" [sing3Pronoun]="pronouns.cundizionalsing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.cundizionalsing3encliticf" [sing3PronounAlt]="pronouns.cundizionalsing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.cundizionalplural1enclitic" [plural1Pronoun]="pronouns.cundizionalplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.cundizionalplural2enclitic" [plural2Pronoun]="pronouns.cundizionalplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.cundizionalplural3enclitic" [plural3Pronoun]="pronouns.cundizionalplural3enclitic">
         </app-conjugation-personal>
       </div>
 
       <div *ngIf="hasEncliticFutur()">
         <app-conjugation-personal
           [title]="'verbOverlayPopup.future' | translate"
-          [sing1]="lemmaCopy.lemmaValues.futursing1enclitic"
-          [sing2]="lemmaCopy.lemmaValues.futursing2enclitic"
-          [sing3]="lemmaCopy.lemmaValues.futursing3encliticm"
-          [sing3Alt]="lemmaCopy.lemmaValues.futursing3encliticf"
-          [plural1]="lemmaCopy.lemmaValues.futurplural1enclitic"
-          [plural2]="lemmaCopy.lemmaValues.futurplural2enclitic"
-          [plural3]="lemmaCopy.lemmaValues.futurplural3enclitic">
+          [sing1]="lemmaCopy.lemmaValues.futursing1enclitic" [sing1Pronoun]="pronouns.futursing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.futursing2enclitic" [sing2Pronoun]="pronouns.futursing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.futursing3encliticm" [sing3Pronoun]="pronouns.futursing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.futursing3encliticf" [sing3PronounAlt]="pronouns.futursing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.futurplural1enclitic" [plural1Pronoun]="pronouns.futurplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.futurplural2enclitic" [plural2Pronoun]="pronouns.futurplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.futurplural3enclitic" [plural3Pronoun]="pronouns.futurplural3enclitic">
         </app-conjugation-personal>
       </div>
 
       <div *ngIf="hasEncliticFuturDubitativ()">
         <app-conjugation-personal
           [title]="'verbOverlayPopup.futureDubitativ' | translate"
-          [sing1]="lemmaCopy.lemmaValues.futurdubitativsing1enclitic"
-          [sing2]="lemmaCopy.lemmaValues.futurdubitativsing2enclitic"
-          [sing3]="lemmaCopy.lemmaValues.futurdubitativsing3encliticm"
-          [sing3Alt]="lemmaCopy.lemmaValues.futurdubitativsing3encliticf"
-          [plural1]="lemmaCopy.lemmaValues.futurdubitativplural1enclitic"
-          [plural2]="lemmaCopy.lemmaValues.futurdubitativplural2enclitic"
-          [plural3]="lemmaCopy.lemmaValues.futurdubitativplural3enclitic">
+          [sing1]="lemmaCopy.lemmaValues.futurdubitativsing1enclitic" [sing1Pronoun]="pronouns.futurdubitativsing1enclitic"
+          [sing2]="lemmaCopy.lemmaValues.futurdubitativsing2enclitic" [sing2Pronoun]="pronouns.futurdubitativsing2enclitic"
+          [sing3]="lemmaCopy.lemmaValues.futurdubitativsing3encliticm" [sing3Pronoun]="pronouns.futurdubitativsing3encliticm"
+          [sing3Alt]="lemmaCopy.lemmaValues.futurdubitativsing3encliticf" [sing3PronounAlt]="pronouns.futurdubitativsing3encliticf"
+          [plural1]="lemmaCopy.lemmaValues.futurdubitativplural1enclitic" [plural1Pronoun]="pronouns.futurdubitativplural1enclitic"
+          [plural2]="lemmaCopy.lemmaValues.futurdubitativplural2enclitic" [plural2Pronoun]="pronouns.futurdubitativplural2enclitic"
+          [plural3]="lemmaCopy.lemmaValues.futurdubitativplural3enclitic" [plural3Pronoun]="pronouns.futurdubitativplural3enclitic">
         </app-conjugation-personal>
       </div>
     </div>
