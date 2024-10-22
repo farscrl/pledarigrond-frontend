@@ -16,7 +16,7 @@
             <th nzAlign="center" *ngIf="environmentService.isLadin()">PT</th>
             <th nzAlign="center" *ngIf="!environmentService.isLadin()">RG</th>
             <th nzAlign="center" *ngIf="!environmentService.isLadin()">SM</th>
-            <!--<th nzAlign="center" *ngIf="!environmentService.isLadin()">SR</th>-->
+            <th nzAlign="center" *ngIf="!environmentService.isLadin()">SR</th>
             <th nzAlign="center" *ngIf="!environmentService.isLadin()">ST</th>
             <th nzAlign="center" *ngIf="environmentService.isLadin()">VL</th>
             <th nzAlign="center" *ngIf="!environmentService.isLadin()">{{ 'users.names' | translate}}</th>
@@ -31,7 +31,7 @@
             <td nzAlign="center" *ngIf="environmentService.isLadin()"><app-user-role [role]="data.roles.rolePuter"></app-user-role></td>
             <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleRumantschGrischun"></app-user-role></td>
             <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleSurmiran"></app-user-role></td>
-            <!--<td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.sursilvanRole"></app-user-role></td>-->
+            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleSursilvan"></app-user-role></td>
             <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleSutsilvan"></app-user-role></td>
             <td nzAlign="center" *ngIf="environmentService.isLadin()"><app-user-role [role]="data.roles.roleVallader"></app-user-role></td>
             <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleNames"></app-user-role></td>
