@@ -66,7 +66,6 @@
     "help": "agid",
     "info": "infos",
     "grammar": "grammatica",
-    "inclusive": "lingua inclusiva",
     "suggest": "far ina nova proposta",
     "privacy": "protecziun da datas",
     "export": "export"
@@ -98,6 +97,7 @@
     "spellchecker": "program da correctura ortografica",
     "other": "ulteriurs dicziunaris",
     "glossary": "glossaris",
+    "inclusive": "lingua inclusiva",
     "readmore": "legia dapli"
   },
   "update": {

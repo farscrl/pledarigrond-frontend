@@ -62,7 +62,6 @@
     "help": "Hilfe",
     "info": "Info",
     "grammar": "Grammatik",
-    "inclusive": "Inklusive Sprache",
     "suggest": "Neuer Eintrag",
     "export": "Exportieren",
     "privacy": "Datenschutz"
@@ -94,6 +93,7 @@
     "spellchecker": "Rechtschreibprüfung",
     "other": "Andere Wörterbücher",
     "glossary": "Glossare",
+    "inclusive": "Inklusive Sprache",
     "readmore": "legia dapli"
   },
   "update": {
