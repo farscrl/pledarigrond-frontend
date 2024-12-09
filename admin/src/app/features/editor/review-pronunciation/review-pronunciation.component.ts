@@ -144,7 +144,7 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   }
 
   rejectRegistration(registration: Registration) {
-    const reviewerComment = prompt('Remartga al plidader');
+    const reviewerComment = prompt('Remartga per la pledadra');
 
     registration.reviewerComment = reviewerComment || '';
     this.registrationService.rejectRegistration(registration).subscribe(() => {
