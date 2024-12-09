@@ -13,7 +13,7 @@ import { IEnvironment } from "./ienvironment";
 import 'zone.js/plugins/zone-error'; // Included with Angular CLI.
 
 export const environment: IEnvironment = {
-  envName: 'dev',
+  envName: 'dev-ladin',
   production: false,
   apiUrl: 'http://localhost:8080',
   apiHost: 'localhost:8080',
