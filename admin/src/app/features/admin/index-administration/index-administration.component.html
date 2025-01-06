@@ -2,7 +2,9 @@
   <nz-page-header-title>{{ 'index.title' | translate}}</nz-page-header-title>
   <nz-page-header-subtitle>{{ 'index.subtitle' | translate}}</nz-page-header-subtitle>
   <nz-page-header-extra>
-    <button nz-button nzType="primary" nzDanger (click)="rebuildIndex()" [nzLoading]="isRebuilding">{{ 'index.rebuild_button' | translate}}</button>
+    {{ 'index.rebuild_button' | translate}}:
+    <button nz-button nzType="primary" nzDanger (click)="rebuildIndex()" [nzLoading]="isRebuilding" style="margin-right: 4px">{{ 'index.rebuild_search_index' | translate}}</button>
+    <button nz-button nzType="primary" nzDanger (click)="rebuildSuggestionsIndex()" [nzLoading]="isRebuildingSuggestions">{{ 'index.rebuild_suggestions_index' | translate}}</button>
   </nz-page-header-extra>
 </nz-page-header>
 

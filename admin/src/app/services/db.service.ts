@@ -55,6 +55,10 @@ export class DbService {
     return this.httpClient.post<void>(this.generateUrl(language, 'rebuild_index'), null);
   }
 
+  rebuildSuggestionsIndex(language: Language): Observable<void> {
+    return this.httpClient.post<void>(this.generateUrl(language, 'rebuild_suggestions_index'), null);
+  }
+
   private generateUrl(language: Language, segment: string) {
     return environment.apiUrl + "/" + language + this.dbBasePath + segment;
   }

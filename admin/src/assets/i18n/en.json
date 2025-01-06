@@ -225,6 +225,8 @@
     "title": "Index",
     "subtitle": "Lucene index administration",
     "rebuild_button": "Rebuild",
+    "rebuild_search_index": "search in dex",
+    "rebuild_suggestions_index": "suggestions index",
     "stats": {
       "indexed": "Indexed",
       "approved": "Approved",

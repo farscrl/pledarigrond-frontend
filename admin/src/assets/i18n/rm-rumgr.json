@@ -228,6 +228,8 @@
     "title": "Index",
     "subtitle": "Administraziun da l'index da Lucene",
     "rebuild_button": "Crear da nov",
+    "rebuild_search_index": "index per tschertgar",
+    "rebuild_suggestions_index": "index per propostas",
     "stats": {
       "indexed": "Indexà",
       "approved": "Approvà",
