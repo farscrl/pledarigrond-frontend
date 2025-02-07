@@ -11,6 +11,7 @@
         <label nz-radio nzValue="COMPLETED">{{ 'pronunciation.filter.completed' | translate }}</label>
         <label nz-radio nzValue="REFUSED">{{ 'pronunciation.filter.refused' | translate }}</label>
       </nz-radio-group>
+      <input nz-input [(ngModel)]="filter.searchTerm" style="width: 200px; margin-left: 36px;" [placeholder]="'lexicon.filter.search' | translate" (ngModelChange)="changePage(0)">
     </nz-content>
   </div>
 </div>
