@@ -50,9 +50,11 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   @ViewChild(AudioPlayerComponent, { static: false })
   private audioPlayerComponent: AudioPlayerComponent | undefined;
 
+  private ignoreKeyEvents = false;
+
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if ( !this.selectedRegistration) {
+    if (!this.selectedRegistration || this.ignoreKeyEvents) {
       return;
     }
     if(event.keyCode == KEY_CODE.ENTER){
@@ -144,10 +146,22 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   }
 
   rejectRegistration(registration: Registration) {
+    this.ignoreKeyEvents = true;
     const reviewerComment = prompt('Remartga per la pledadra');
+
+    // 'cancel' or 'esc'-key
+    if (reviewerComment === null) {
+      setTimeout(() => {
+        this.ignoreKeyEvents = false;
+      }, 50);
+      return;
+    }
 
     registration.reviewerComment = reviewerComment || '';
     this.registrationService.rejectRegistration(registration).subscribe(() => {
+      setTimeout(() => {
+        this.ignoreKeyEvents = false;
+      }, 50);
       this.downOne();
       this.changePage(this.currentPage.number);
     });
