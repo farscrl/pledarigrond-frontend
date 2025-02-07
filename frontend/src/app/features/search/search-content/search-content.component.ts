@@ -10,6 +10,7 @@ import { SuggestModificationComponent } from '../suggest-modification/suggest-mo
 import { ActivatedRoute, Router } from '@angular/router';
 import { SuggestionComponent } from 'src/app/components/footer/suggestion/suggestion.component';
 import { MatomoTracker } from "ngx-matomo-client";
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-search-content',
@@ -31,6 +32,8 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   pagination = new PaginationDisplay();
 
   updateUrlParamsTimer: any;
+
+  private cancelPreviousRequest = new Subject<void>();
 
   constructor(
     private searchService: SearchService,
@@ -107,7 +110,7 @@ export class SearchContentComponent implements OnInit, OnDestroy {
 
   search(data: SearchCriteria) {
     this.searchCriteria = data;
-    this.executeSarch();
+    this.executeSearch();
     clearTimeout(this.updateUrlParamsTimer);
     this.updateUrlParamsTimer = setTimeout(() => {
       this.updateUrlParams();
@@ -116,7 +119,7 @@ export class SearchContentComponent implements OnInit, OnDestroy {
 
   searchImmediate(data: SearchCriteria) {
     this.searchCriteria = data;
-    this.executeSarch();
+    this.executeSearch();
     clearTimeout(this.updateUrlParamsTimer);
     this.updateUrlParams();
   }
@@ -132,7 +135,7 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   }
 
   goToPage(pageNr: number) {
-    this.executeSarch(pageNr);
+    this.executeSearch(pageNr);
   }
 
   getLanguageName(isFirst: boolean) {
@@ -264,8 +267,12 @@ export class SearchContentComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  private executeSarch(page = 0) {
-    this.searchService.getResults(this.selectedLanguageService.getSelectedLanguageUrlSegment(), this.searchCriteria, page).subscribe(data => {
+  private executeSearch(page = 0) {
+    this.cancelPreviousRequest.next();
+
+    this.searchService.getResults(this.selectedLanguageService.getSelectedLanguageUrlSegment(), this.searchCriteria, page).pipe(
+      takeUntil(this.cancelPreviousRequest)
+    ).subscribe(data => {
       this.searchResults = data.content;
       this.searchSuggestionsRm = data.suggestionsRm;
       this.searchSuggestionsDe = data.suggestionsDe;

@@ -3,9 +3,10 @@ import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-lis
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
 import { Page } from 'src/app/models/page';
-import { EditorSearchCriteria, SearchCriteria } from 'src/app/models/search-criteria';
+import { EditorSearchCriteria } from 'src/app/models/search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-lexicon',
@@ -24,6 +25,8 @@ export class LexiconComponent implements OnInit {
 
   selectedLexEntry?: LexEntryUi;
 
+  private cancelPreviousRequest = new Subject<void>();
+
   constructor(private languageSelectionService: LanguageSelectionService, private editorService: EditorService) { }
 
   ngOnInit(): void {
@@ -36,7 +39,11 @@ export class LexiconComponent implements OnInit {
   }
 
   changePage(page: number) {
-    this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, page).subscribe(page => {
+    this.cancelPreviousRequest.next();
+
+    this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, page).pipe(
+      takeUntil(this.cancelPreviousRequest)
+    ).subscribe(page => {
       this.results = page;
       this.virtualResults = this.lemmaVersionPageToLexEntryPage(page);
     });
