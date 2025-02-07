@@ -28,10 +28,6 @@ export class SearchService {
       params = params.set('searchMethod', searchCriteria.searchMethod);
     }
 
-    if (!!searchCriteria.suggestions && (searchCriteria.suggestions)) {
-      params = params.set('suggestions', searchCriteria.suggestions);
-    }
-
     if (!!searchCriteria.sortBy) {
       params = params.set('sortBy', searchCriteria.sortBy);
     }

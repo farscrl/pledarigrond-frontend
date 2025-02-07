@@ -81,16 +81,8 @@
             <span class="checkmark"></span>
           </label>
         </div>
-
-        <div class="horizontal-options">
-          <label class="checkbox">
-            <input type="checkbox" name="suggestions"
-              [(ngModel)]="searchCriteria.suggestions" (ngModelChange)="emitSearch(false)">
-            <span>{{ 'search.suggestions' | translate }}</span>
-            <span class="checkmark"></span>
-          </label>
-        </div>
       </div>
+      
       <div class="horizontal-options toggle-details" >
         <a (click)="toggleDetails()" [title]="showDetails ? ('search.less_options' | translate) : ('search.more_options' | translate)" [class.active]="showDetails"></a>
       </div>

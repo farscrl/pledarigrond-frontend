@@ -238,10 +238,6 @@ export class EditorService {
       params = params.set('searchMethod', searchCriteria.searchMethod);
     }
 
-    if (!!searchCriteria.suggestions && (searchCriteria.suggestions)) {
-      params = params.set('suggestions', searchCriteria.suggestions);
-    }
-
     const editorSearchCriteria = searchCriteria as EditorSearchCriteria;
     if (!!editorSearchCriteria.category && editorSearchCriteria.category != "") {
       params = params.set('category', editorSearchCriteria.category);

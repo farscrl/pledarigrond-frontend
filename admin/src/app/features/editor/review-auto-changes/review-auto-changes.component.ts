@@ -93,7 +93,6 @@ export class ReviewAutoChangesComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchCriteria.onlyAutomaticChanged = true;
-    this.searchCriteria.suggestions = true;
     this.searchCriteria.searchDirection = 'ROMANSH';
     this.searchCriteria.verification = 'UNVERIFIED';
     this.searchCriteria.showReviewLater = false;

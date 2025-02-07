@@ -22,7 +22,7 @@ export class SearchOptionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.searchCriteria.searchDirection != 'BOTH' || this.searchCriteria.searchMethod !== 'NORMAL' || this.searchCriteria.suggestions !== false || this.searchCriteria.highlight !== false) {
+    if (this.searchCriteria.searchDirection != 'BOTH' || this.searchCriteria.searchMethod !== 'NORMAL' || this.searchCriteria.highlight !== false) {
       this.showDetails = true;
     }
   }

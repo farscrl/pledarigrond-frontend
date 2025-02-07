@@ -86,15 +86,11 @@ export class SearchContentComponent implements OnInit, OnDestroy {
       if (params['highlight']) {
         urlSerarchCriteria.highlight = true;
       }
-      if (params['suggestions']) {
-        urlSerarchCriteria.suggestions = true;
-      }
 
       if (urlSerarchCriteria.searchPhrase === this.searchCriteria.searchPhrase &&
         urlSerarchCriteria.searchDirection === this.searchCriteria.searchDirection &&
         urlSerarchCriteria.searchMethod === this.searchCriteria.searchMethod &&
-        urlSerarchCriteria.highlight === this.searchCriteria.highlight &&
-        urlSerarchCriteria.suggestions === this.searchCriteria.suggestions) {
+        urlSerarchCriteria.highlight === this.searchCriteria.highlight) {
           // search criteria identic -> do not search again
           return;
         }
@@ -329,9 +325,6 @@ export class SearchContentComponent implements OnInit, OnDestroy {
       }else if (this.searchCriteria.searchMethod === 'EXACT') {
         url.searchMethod = 'exact';
       }
-    }
-    if (this.searchCriteria.suggestions != false) {
-      url.suggestions = true;
     }
     if (this.searchCriteria.highlight != false) {
       url.highlight = true;

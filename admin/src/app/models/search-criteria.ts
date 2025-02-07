@@ -5,7 +5,6 @@ export class SearchCriteria {
   searchDirection: SearchDirection = 'BOTH';
   searchMethod: SearchMethod = 'NORMAL';
   highlight: boolean = false;
-  suggestions: boolean = false;
 }
 
 export class EditorSearchCriteria extends SearchCriteria {
