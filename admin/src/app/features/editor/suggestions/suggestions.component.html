@@ -9,7 +9,7 @@
         (dateRangeSelected)="search($event)"
         [(userFilter)]="userFilter"
         [verifierFilter]="verifierFilter"
-        ></app-duration>
+      ></app-duration>
     </nz-content>
 
     <nz-content>
@@ -18,23 +18,24 @@
         <nz-page-header-subtitle>{{ 'lexicon.lemma_history.subtitle' | translate }}</nz-page-header-subtitle>
       </nz-page-header>
       <app-version-history
-      [lexEntry]="selectedLexEntry"
+        [entry]="selectedEntry"
       ></app-version-history>
     </nz-content>
   </div>
 
   <div nz-col nzSpan="15" class="right-side">
     <nz-content>
-      <app-lemma-list
-        [lexEntries]="results"
-        (updatePage)="changePage($event)"
-        (showDetailsForLexEntry)="showLexEntryDetails($event)"
+      <app-dictionary-list
+        [items]="items"
+        [paginationInfo]="paginationInfo"
+        (updatePage)="loadPage($event)"
+        (showDetailsForEntryId)="showLexEntryDetails($event)"
         (addUserFilter)="userFilter = $event"
         (addVerifierFilter)="verifierFilter = $event"
         [columns]="columns"
         [filter]="currentEditorQuery"
         [showRejectButton]="true"
-        ></app-lemma-list>
+      ></app-dictionary-list>
     </nz-content>
   </div>
 </div>

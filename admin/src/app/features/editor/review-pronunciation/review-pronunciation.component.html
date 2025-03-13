@@ -96,11 +96,11 @@
       </nz-descriptions>
     </nz-content>
 
-    <nz-content *ngIf="selectedRegistration && lemmaVersions.length > 0">
+    <nz-content *ngIf="selectedRegistration && entryVersions.length > 0">
       <nz-descriptions [nzTitle]="'Vign attribuì a quests lemmas'"></nz-descriptions>
       <ul>
-        <li *ngFor="let lv of lemmaVersions">
-          {{ lv.lemmaValues.RStichwort }} / {{ lv.lemmaValues.DStichwort }}
+        <li *ngFor="let lv of entryVersions">
+          {{ lv.rmStichwort }} / {{ lv.deStichwort }}
         </li>
       </ul>
     </nz-content>

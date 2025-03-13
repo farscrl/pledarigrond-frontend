@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
-import { LemmaVersion } from 'src/app/models/lemma-version';
-import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
-import { Page } from 'src/app/models/page';
 import { EditorSearchCriteria } from 'src/app/models/search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { Subject, takeUntil } from 'rxjs';
+import { DictionaryListItem, PaginationInfo } from '../../../models/dictionary-list';
+import { EntryDto } from '../../../models/dictionary';
 
 @Component({
     selector: 'app-lexicon',
@@ -15,72 +14,55 @@ import { Subject, takeUntil } from 'rxjs';
     standalone: false
 })
 export class LexiconComponent implements OnInit {
+  paginationInfo: PaginationInfo = new PaginationInfo();
+  items: DictionaryListItem[]  = [];
+  columns: LemmaListColumn = new LemmaListColumn();
 
   searchCriteria: EditorSearchCriteria = new EditorSearchCriteria();
 
-  results: Page<LemmaVersion>  = new Page<LemmaVersion>();
-  columns: LemmaListColumn = new LemmaListColumn();
-
-  // we only have lemma-versions. the list component expects lex-entries. Thus, we generate fake lex-entries with only one version
-  virtualResults: Page<LexEntry> = new Page<LexEntry>();
-
-  selectedLexEntry?: LexEntryUi;
+  selectedEntry?: EntryDto;
 
   private cancelPreviousRequest = new Subject<void>();
 
-  constructor(private languageSelectionService: LanguageSelectionService, private editorService: EditorService) { }
+  constructor(private languageSelectionService: LanguageSelectionService, private editorService: EditorService) {
+    this.columns = this.generateColumns();
+  }
 
   ngOnInit(): void {
-    this.columns = this.generateColumns();
+    this.loadPage(0);
   }
 
   search(searchCriteria: EditorSearchCriteria) {
     this.searchCriteria = searchCriteria;
-    this.changePage(0);
+    this.loadPage(0);
   }
 
-  changePage(page: number) {
+  loadPage(page: number) {
     this.cancelPreviousRequest.next();
 
     this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, page).pipe(
       takeUntil(this.cancelPreviousRequest)
     ).subscribe(page => {
-      this.results = page;
-      this.virtualResults = this.lemmaVersionPageToLexEntryPage(page);
+      this.paginationInfo = new PaginationInfo(page);
+      this.items = page.content.map(v => ({
+        entryId: v.entryId,
+        publicationStatus: v.publicationStatus,
+
+        version: v,
+
+        selected: false,
+        disabled: false
+      }));
     });
   }
 
-  showLexEntryDetails(lexEntry: LexEntryUi) {
-    if (!lexEntry || !lexEntry.id) {
+  showLexEntryDetails(entryId: string) {
+    if (!entryId) {
       return;
     }
-    // as we only have fake lex-entries, we load the complete lex-entry to show the details
-    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!).subscribe((data) => {
-      this.selectedLexEntry = data as LexEntryUi;
+    this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe((data) => {
+      this.selectedEntry = data;
     });
-  }
-
-  private lemmaVersionPageToLexEntryPage(page: Page<LemmaVersion>): Page<LexEntry> {
-    const virtualPage = new Page<LexEntry>();
-    page.content.forEach(el => {
-      const lexEntry = new LexEntry();
-      lexEntry.current = el;
-      lexEntry.mostRecent = el;
-      lexEntry.id = el.lexEntryId;
-      virtualPage.content.push(lexEntry);
-    });
-    virtualPage.pageable = page.pageable;
-    virtualPage.last = page.last;
-    virtualPage.totalPages = page.totalPages;
-    virtualPage.totalElements = page.totalElements;
-    virtualPage.first = page.first;
-    virtualPage.size = page.size;
-    virtualPage.number = page.number;
-    virtualPage.sort = page.sort;
-    virtualPage.numberOfElements = page.numberOfElements;
-    virtualPage.empty = page.empty;
-
-    return virtualPage;
   }
 
   private generateColumns(): LemmaListColumn {

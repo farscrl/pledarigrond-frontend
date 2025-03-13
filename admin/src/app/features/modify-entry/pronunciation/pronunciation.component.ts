@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { LemmaVersion } from '../../../models/lemma-version';
 import { RegistrationService } from '../../../services/registration.service';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration } from '../../../models/registration';
 import { EditorService } from '../../../services/editor.service';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
+import { EntryVersionInternalDto } from '../../../models/dictionary';
 
 @Component({
     selector: 'app-pronunciation',
@@ -19,8 +19,8 @@ export class PronunciationComponent implements OnInit {
 
   orderedRegistration: Registration | null = null;
 
-  lexEntryId: string;
-  lemmaVersion?: LemmaVersion;
+  entryId: string;
+  entryVersion?: EntryVersionInternalDto;
   listFilter = new ListFilter();
 
   searchResults: Registration[] = [];
@@ -33,7 +33,7 @@ export class PronunciationComponent implements OnInit {
     private modalRef: NzModalRef,
     private modal: NzModalService,
   ) {
-    this.lexEntryId = data.lexEntryId;
+    this.entryId = data.lexEntryId;
   }
 
   ngOnInit() {
@@ -41,7 +41,7 @@ export class PronunciationComponent implements OnInit {
   }
 
   didOrderRegistration() {
-    this.registrationService.didOrderRegistration(this.lexEntryId).subscribe((value) => {
+    this.registrationService.didOrderRegistration(this.entryId).subscribe((value) => {
       this.orderedRegistration = value;
     });
 
@@ -59,7 +59,7 @@ export class PronunciationComponent implements OnInit {
       nzOkText: 'Attribuir',
       nzCancelText: 'Interrumper',
       nzOnOk: () => {
-        this.registrationService.addRegistrationToLemma(registration, this.lexEntryId).subscribe(() => {
+        this.registrationService.addRegistrationToLemma(registration, this.entryId).subscribe(() => {
           this.init();
         });
       }
@@ -75,15 +75,15 @@ export class PronunciationComponent implements OnInit {
   }
 
   handleOk() {
-    this.modalRef.close(this.lemmaVersion?.lemmaValues.RPronunciation);
+    this.modalRef.close(this.entryVersion?.rmPronunciation);
   }
 
   orderRegistration() {
     const registration = new Registration();
-    registration.rmStichwort = this.lemmaVersion?.lemmaValues.RStichwort;
-    registration.deStichwort = this.lemmaVersion?.lemmaValues.DStichwort;
-    registration.rmGenus = this.lemmaVersion?.lemmaValues.RGenus;
-    registration.rmGrammatik = this.lemmaVersion?.lemmaValues.RGrammatik;
+    registration.rmStichwort = this.entryVersion?.rmStichwort;
+    registration.deStichwort = this.entryVersion?.deStichwort;
+    registration.rmGenus = this.entryVersion?.rmGenus;
+    registration.rmGrammatik = this.entryVersion?.rmGrammatik;
 
     this.registrationService.orderRegistration(registration).subscribe(() => {
       this.init();
@@ -92,12 +92,12 @@ export class PronunciationComponent implements OnInit {
 
   private init() {
     this.isModifyActive = false;
-    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntryId).subscribe(entry => {
-      this.lemmaVersion = entry.current;
+    this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.entryId).subscribe(entry => {
+      this.entryVersion = entry.current;
 
       this.didOrderRegistration();
 
-      this.listFilter.searchTerm = this.lemmaVersion.lemmaValues.RStichwort;
+      this.listFilter.searchTerm = this.entryVersion?.rmStichwort;
       this.searchRegistrations();
     })
   }

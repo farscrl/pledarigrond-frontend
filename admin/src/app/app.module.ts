@@ -30,7 +30,7 @@ import { ReviewAutoChangesComponent } from './features/editor/review-auto-change
 import { HistoryComponent } from './features/editor/history/history.component';
 import { DurationComponent } from './components/filters/duration/duration.component';
 import { VersionHistoryComponent } from './components/version-history/version-history.component';
-import { LemmaListComponent } from './components/lemma-list/lemma-list.component';
+import { DictionaryListComponent } from './components/dictionary-list/dictionary-list.component';
 import { LexiconFilterComponent } from './components/filters/lexicon-filter/lexicon-filter.component';
 import { ExportComponent } from './features/editor/export/export.component';
 import { NavigationHorizontalComponent } from './components/navigation-horizontal/navigation-horizontal.component';
@@ -104,7 +104,7 @@ export function tokenGetter() {
     HistoryComponent,
     DurationComponent,
     VersionHistoryComponent,
-    LemmaListComponent,
+    DictionaryListComponent,
     LexiconFilterComponent,
     ExportComponent,
     NavigationHorizontalComponent,

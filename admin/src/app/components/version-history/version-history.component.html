@@ -17,27 +17,27 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of versionHistory; let i = index">
+    <tr *ngFor="let version of versionHistory; let i = index">
       <td>
-        <input type="radio" value="data" name="diffBefore" (change)="beforeChanged(data)" *ngIf="i !== 0">
+        <input type="radio" value="data" name="diffBefore" (change)="beforeChanged(version)" *ngIf="i !== 0">
       </td>
       <td>
-        <input type="radio" value="data" name="diffAfter" (change)="afterChanged(data)">
+        <input type="radio" value="data" name="diffAfter" (change)="afterChanged(version)">
       </td>
       <td>
-        <app-verification [verification]="data.verification"></app-verification><br>
-        <app-status [status]="data.status"></app-status>
+        <app-verification [verification]="version.versionStatus"></app-verification><br>
+        <app-status [status]="entry?.publicationStatus"></app-status>
       </td>
       <td>
-        <app-user-role [role]="data.creatorRole"></app-user-role><br>
-        {{ data.ip }}
+        <app-user-role [role]="version.creatorRole"></app-user-role><br>
+        {{ version.creatorIp }}
       </td>
       <td>
-        {{ data.lemmaValues.DStichwort }} ⇔ {{ data.lemmaValues.RStichwort }}
+        {{ version.deStichwort }} ⇔ {{ version.rmStichwort }}
       </td>
       <td>
-        {{ formateDate(data.timestamp) }}<br>
-        {{ formateTime(data.timestamp) }}
+        {{ formateDate(version.timestamp) }}<br>
+        {{ formateTime(version.timestamp) }}
       </td>
     </tr>
   <tr *ngIf="versionHistory.length > 0">
@@ -57,13 +57,13 @@
   <nz-empty nzNotFoundImage="simple" [nzNotFoundContent]="'lexicon.lemma_history.no_item_selected' | translate"></nz-empty>
 </ng-template>
 
-<div class="button-container" *ngIf="this.selectedLexEntry">
-  <button nz-button nzType="primary" (click)="showDiff()" [disabled]="!diffOldLemmaVersion || !diffNewLemmaVersion">
+<div class="button-container" *ngIf="this.entry">
+  <button nz-button nzType="primary" (click)="showDiff()" [disabled]="!diffOldEntryVersion || !diffNewEntryVersion">
     <span nz-icon nzType="diff" nzTheme="outline"></span>
     {{ 'lexicon.lemma_history.show_diff_button' | translate}}
   </button>
 
-  <button nz-button nzDanger nzType="primary" (click)="dropOutdatedHistory()" [disabled]="!this.selectedLexEntry">
+  <button nz-button nzDanger nzType="primary" (click)="dropOutdatedHistory()" [disabled]="!this.entry">
     <i nz-icon nzType="delete"></i>
     {{ 'lexicon.lemma_history.delete_history_button' | translate}}
   </button>

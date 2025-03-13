@@ -6,9 +6,9 @@ import { RegistrationService } from '../../../services/registration.service';
 import { EditorService } from '../../../services/editor.service';
 import { Language } from '../../../models/security';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
-import { LemmaVersion } from '../../../models/lemma-version';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AudioPlayerComponent } from '../../../components/audio-player/audio-player.component';
+import { EntryVersionInternalDto } from '../../../models/dictionary';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -46,7 +46,7 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   private idiom: Language = Language.RUMANTSCHGRISCHUN;
   private idiomSubscription: any;
 
-  lemmaVersions: LemmaVersion[] = [];
+  entryVersions: EntryVersionInternalDto[] = [];
 
   @ViewChild(AudioPlayerComponent, { static: false })
   private audioPlayerComponent: AudioPlayerComponent | undefined;
@@ -120,7 +120,7 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   }
 
   selectRegistration(registration: Registration) {
-    this.lemmaVersions = [];
+    this.entryVersions = [];
     this.selectedRegistration = registration;
 
     // running this in a timeout to make sure the audio player is ready
@@ -131,9 +131,9 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     }, 20);
 
     registration.lemmaIds?.forEach(lemmaId => {
-      this.editorService.getLexEntry(this.idiom, lemmaId).subscribe(lexEntry => {
+      this.editorService.getEntry(this.idiom, lemmaId).subscribe(lexEntry => {
         if (lexEntry.current) {
-          this.lemmaVersions.push(lexEntry.current);
+          this.entryVersions.push(lexEntry.current);
         }
       });
     });

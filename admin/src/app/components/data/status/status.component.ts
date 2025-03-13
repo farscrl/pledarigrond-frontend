@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Status } from 'src/app/models/lemma-version';
+import { PublicationStatus } from 'src/app/models/lemma-version';
 
 @Component({
     selector: 'app-status',
@@ -10,7 +10,7 @@ import { Status } from 'src/app/models/lemma-version';
 export class StatusComponent implements OnInit {
 
   @Input()
-  status?: Status;
+  status?: PublicationStatus;
 
   constructor() { }
 

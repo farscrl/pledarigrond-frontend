@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LemmaListComponent } from './lemma-list.component';
+import { DictionaryListComponent } from './dictionary-list.component';
 
 describe('LemmaListComponent', () => {
-  let component: LemmaListComponent;
-  let fixture: ComponentFixture<LemmaListComponent>;
+  let component: DictionaryListComponent;
+  let fixture: ComponentFixture<DictionaryListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LemmaListComponent ]
+      declarations: [ DictionaryListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LemmaListComponent);
+    fixture = TestBed.createComponent(DictionaryListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

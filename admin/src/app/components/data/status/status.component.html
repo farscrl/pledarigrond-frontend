@@ -1,4 +1,4 @@
-<nz-tag [nzColor]="'red'" *ngIf="status === 'DELETED'">{{ 'data.status.deleted' | translate}}</nz-tag>
-<nz-tag *ngIf="status === 'NEW_ENTRY'">{{ 'data.status.new_entry' | translate}}</nz-tag>
-<nz-tag *ngIf="status === 'NEW_MODIFICATION'">{{ 'data.status.new_modification' | translate}}</nz-tag>
-<nz-tag [nzColor]="'red'" *ngIf="status === 'UNDEFINED'">{{ 'data.status.undefined' | translate}}</nz-tag>
+<nz-tag *ngIf="status === 'SUGGESTION'">{{ 'data.status.new_entry' | translate}}</nz-tag>
+<nz-tag *ngIf="status === 'MODIFIED'">{{ 'data.status.new_modification' | translate}}</nz-tag>
+<nz-tag *ngIf="status === 'PUBLISHED'">{{ 'data.status.published' | translate}}</nz-tag>
+<nz-tag [nzColor]="'red'" *ngIf="status === 'INVALID'">{{ 'data.status.undefined' | translate}}</nz-tag>

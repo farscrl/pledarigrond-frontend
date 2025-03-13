@@ -1,24 +1,32 @@
 import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 import { FormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { LemmaVersion } from 'src/app/models/lemma-version';
-import { LexEntry } from 'src/app/models/lex-entry';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
-import { ConjugationComponent } from '../conjugation/conjugation.component';
 import { TranslateService } from '@ngx-translate/core';
 import { NounGenerationComponent } from '../noun-generation/noun-generation.component';
 import { AdjectiveGenerationComponent } from '../adjective-generation/adjective-generation.component';
-import { Language } from "../../../models/security";
 import { PronounGenerationComponent } from "../pronoun-generation/pronoun-generation.component";
 import { EnvironmentService } from "../../../services/environment.service";
 import { OtherGenerationComponent } from '../other-generation/other-generation.component';
 import { PronunciationComponent } from '../pronunciation/pronunciation.component';
 import { RegistrationService } from '../../../services/registration.service';
 import { FindCorpusEntryComponent } from '../find-corpus-entry/find-corpus-entry.component';
+import {
+  Adjective,
+  EntryVersionDto,
+  EntryVersionInternalDto,
+  Example,
+  Inflection,
+  Noun,
+  Other,
+  Pronoun,
+  Verb
+} from '../../../models/dictionary';
 
 export class MainEntryData {
-  lexEntryId?: string;
+  entryIdToChange?: string;
+  entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView = false;
 }
 
@@ -30,7 +38,7 @@ export class MainEntryData {
 })
 export class MainEntryComponent implements OnInit {
 
-  lexEntryId?: string;
+  entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView;
 
   isLoading = false;
@@ -46,8 +54,7 @@ export class MainEntryComponent implements OnInit {
   rGenderAutocompleteValues: string[] = [];
   dGenderAutocompleteValues: string[] = [];
 
-  private lexEntry?: LexEntry;
-  public lemmaVersion?: LemmaVersion;
+  public entryVersion: EntryVersionInternalDto = new EntryVersionInternalDto();
 
   validateForm!: UntypedFormGroup;
 
@@ -63,7 +70,7 @@ export class MainEntryComponent implements OnInit {
     @Inject(NZ_MODAL_DATA) data: MainEntryData,
     private registrationService: RegistrationService,
   ) {
-    this.lexEntryId = data.lexEntryId;
+    this.entryVersionToChange = data.entryVersionToChange;
     this.directlyLoadDetailView = data.directlyLoadDetailView;
   }
 
@@ -81,21 +88,18 @@ export class MainEntryComponent implements OnInit {
   }
 
   reset() {
-    this.lemmaVersion = new LemmaVersion();
+    this.entryVersion = new EntryVersionInternalDto();
     this.setUpForm();
 
-    if (this.lexEntryId) {
-      this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntryId).subscribe(entry => {
-        this.lexEntry = entry;
-        this.lemmaVersion = JSON.parse(JSON.stringify(entry.mostRecent));
-        this.setUpForm();
-      });
+    if (this.entryVersionToChange) {
+      this.entryVersion = JSON.parse(JSON.stringify(this.entryVersionToChange));
+      this.setUpForm();
     }
   }
 
   save(asSuggestion: boolean) {
     if (this.validateForm.valid) {
-      if (!!this.lexEntryId) {
+      if (!!this.entryVersion.entryId) {
         this.updateEntry(asSuggestion);
       } else {
         this.saveNewEntry(asSuggestion);
@@ -110,47 +114,54 @@ export class MainEntryComponent implements OnInit {
     }
   }
 
-  doesSupportVerb(language: Language): boolean {
-    return true;
-  }
-
   editVerb() {
-    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
-    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
-    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
-    if (!this.lemmaVersion?.lemmaValues.infinitiv || this.lemmaVersion?.lemmaValues.infinitiv === "") {
-      this.lemmaVersion!.lemmaValues.infinitiv = this.lemmaVersion?.lemmaValues.RStichwort;
+    this.entryVersion.rmStichwort = this.validateForm.controls['rmStichwort'].value;
+    this.entryVersion.rmGenus = this.validateForm.controls['rmGenus'].value;
+    this.entryVersion.rmFlex = this.validateForm.controls['rmFlex'].value;
+    if (!this.entryVersion.inflection) {
+      this.entryVersion.inflection = new Inflection();
+      this.entryVersion.inflection.inflectionType = "V";
+    }
+    if (!this.entryVersion.inflection.verb) {
+      this.entryVersion.inflection.verb = new Verb();
+    }
+    if (!this.entryVersion.inflection.verb.infinitiv || this.entryVersion.inflection.verb.infinitiv === "") {
+      this.entryVersion.inflection.verb.infinitiv = this.entryVersion.rmStichwort;
     }
 
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.conjugation.title'),
-      nzContent: ConjugationComponent,
+      // nzContent: ConjugationComponent, TODO: re-enable
       nzClosable: false,
       nzMaskClosable: false,
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lemmaVersion: this.lemmaVersion,
+        entryVersion: this.entryVersion,
       },
     });
     modal.afterClose.subscribe(value => {
       if (value === undefined) {
         return;
       }
-      this.lemmaVersion!.lemmaValues = {
-        ...this.lemmaVersion?.lemmaValues,
-        ...value
-      };
+      this.entryVersion.inflection!.verb = value;
     })
   }
 
   editNoun() {
-    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
-    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
-    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+    this.entryVersion.rmStichwort = this.validateForm.controls['rmStichwort'].value;
+    this.entryVersion.rmGenus = this.validateForm.controls['rmGenus'].value;
+    this.entryVersion.rmFlex = this.validateForm.controls['rmFlex'].value;
+    if (!this.entryVersion.inflection) {
+      this.entryVersion.inflection = new Inflection();
+      this.entryVersion.inflection.inflectionType = "NOUN";
+    }
+    if (!this.entryVersion.inflection.noun) {
+      this.entryVersion.inflection.noun = new Noun();
+    }
 
-    if (!this.lemmaVersion?.lemmaValues.baseForm || this.lemmaVersion?.lemmaValues.baseForm === "") {
-      this.lemmaVersion!.lemmaValues.baseForm = this.lemmaVersion?.lemmaValues.RStichwort;
+    if (!this.entryVersion.inflection.noun.baseForm || this.entryVersion.inflection.noun.baseForm === "") {
+      this.entryVersion.inflection.noun.baseForm = this.entryVersion.rmStichwort;
     }
 
     const modal = this.modalService.create({
@@ -161,27 +172,31 @@ export class MainEntryComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lemmaVersion: this.lemmaVersion,
+        entryVersion: this.entryVersion,
       },
     });
     modal.afterClose.subscribe(value => {
       if (value === undefined) {
         return;
       }
-      this.lemmaVersion!.lemmaValues = {
-        ...this.lemmaVersion?.lemmaValues,
-        ...value
-      };
+      this.entryVersion.inflection!.noun = value;
     });
   }
 
   editAdjective() {
-    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
-    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
-    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+    this.entryVersion.rmStichwort = this.validateForm.controls['rmStichwort'].value;
+    this.entryVersion.rmGenus = this.validateForm.controls['rmGenus'].value;
+    this.entryVersion.rmFlex = this.validateForm.controls['rmFlex'].value;
+    if (!this.entryVersion.inflection) {
+      this.entryVersion.inflection = new Inflection();
+      this.entryVersion.inflection.inflectionType = "ADJECTIVE";
+    }
+    if (!this.entryVersion.inflection.adjective) {
+      this.entryVersion.inflection.adjective = new Adjective();
+    }
 
-    if (!this.lemmaVersion?.lemmaValues.baseForm || this.lemmaVersion?.lemmaValues.baseForm === "") {
-      this.lemmaVersion!.lemmaValues.baseForm = this.lemmaVersion?.lemmaValues.RStichwort;
+    if (!this.entryVersion.inflection.adjective.baseForm || this.entryVersion.inflection.adjective.baseForm === "") {
+      this.entryVersion.inflection.adjective.baseForm = this.entryVersion.rmStichwort;
     }
 
     const modal = this.modalService.create({
@@ -192,27 +207,31 @@ export class MainEntryComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lemmaVersion: this.lemmaVersion,
+        entryVersion: this.entryVersion,
       },
     });
     modal.afterClose.subscribe(value => {
       if (value === undefined) {
         return;
       }
-      this.lemmaVersion!.lemmaValues = {
-        ...this.lemmaVersion?.lemmaValues,
-        ...value
-      };
+      this.entryVersion.inflection!.adjective = value;
     });
   }
 
   editPronoun() {
-    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
-    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
-    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+    this.entryVersion.rmStichwort = this.validateForm.controls['rmStichwort'].value;
+    this.entryVersion.rmGenus = this.validateForm.controls['rmGenus'].value;
+    this.entryVersion.rmFlex = this.validateForm.controls['rmFlex'].value;
+    if (!this.entryVersion.inflection) {
+      this.entryVersion.inflection = new Inflection();
+      this.entryVersion.inflection.inflectionType = "PRONOUN";
+    }
+    if (!this.entryVersion.inflection.pronoun) {
+      this.entryVersion.inflection.pronoun = new Pronoun();
+    }
 
-    if (!this.lemmaVersion?.lemmaValues.baseForm || this.lemmaVersion?.lemmaValues.baseForm === "") {
-      this.lemmaVersion!.lemmaValues.baseForm = this.lemmaVersion?.lemmaValues.RStichwort;
+    if (!this.entryVersion.inflection.pronoun.baseForm || this.entryVersion.inflection.pronoun.baseForm === "") {
+      this.entryVersion.inflection.pronoun.baseForm = this.entryVersion.rmStichwort;
     }
 
     const modal = this.modalService.create({
@@ -223,27 +242,31 @@ export class MainEntryComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lemmaVersion: this.lemmaVersion,
+        entryVersion: this.entryVersion,
       },
     });
     modal.afterClose.subscribe(value => {
       if (value === undefined) {
         return;
       }
-      this.lemmaVersion!.lemmaValues = {
-        ...this.lemmaVersion?.lemmaValues,
-        ...value
-      };
+      this.entryVersion.inflection!.pronoun = value;
     });
   }
 
   editOther() {
-    this.lemmaVersion!.lemmaValues.RStichwort = this.validateForm.controls['RStichwort'].value;
-    this.lemmaVersion!.lemmaValues.RGenus = this.validateForm.controls['RGenus'].value;
-    this.lemmaVersion!.lemmaValues.RFlex = this.validateForm.controls['RFlex'].value;
+    this.entryVersion.rmStichwort = this.validateForm.controls['rmStichwort'].value;
+    this.entryVersion.rmGenus = this.validateForm.controls['rmGenus'].value;
+    this.entryVersion.rmFlex = this.validateForm.controls['rmFlex'].value;
+    if (!this.entryVersion.inflection) {
+      this.entryVersion.inflection = new Inflection();
+      this.entryVersion.inflection.inflectionType = "OTHER";
+    }
+    if (!this.entryVersion.inflection.other) {
+      this.entryVersion.inflection.other = new Other();
+    }
 
-    if (!this.lemmaVersion?.lemmaValues.baseForm || this.lemmaVersion?.lemmaValues.baseForm === "") {
-      this.lemmaVersion!.lemmaValues.baseForm = this.lemmaVersion?.lemmaValues.RStichwort;
+    if (!this.entryVersion.inflection.other.baseForm || this.entryVersion.inflection.other.baseForm === "") {
+      this.entryVersion.inflection.other.baseForm = this.entryVersion.rmStichwort;
     }
 
     const modal = this.modalService.create({
@@ -254,17 +277,14 @@ export class MainEntryComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lemmaVersion: this.lemmaVersion,
+        entryVersion: this.entryVersion,
       },
     });
     modal.afterClose.subscribe(value => {
       if (value === undefined) {
         return;
       }
-      this.lemmaVersion!.lemmaValues = {
-        ...this.lemmaVersion?.lemmaValues,
-        ...value
-      };
+      this.entryVersion.inflection!.other = value;
     });
   }
 
@@ -277,22 +297,22 @@ export class MainEntryComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lexEntryId: this.lexEntryId,
+        entryId: this.entryVersion.entryId,
       },
     });
     modal.afterClose.subscribe((rPronunciation: string | undefined) => {
-      this.lemmaVersion!.lemmaValues.RPronunciation = rPronunciation;
+      this.entryVersion.rmPronunciation = rPronunciation;
     })
   }
 
   replyComment() {
-    const r = this.translateService.instant('reply.romansh') + " = " + (this.lemmaVersion?.lemmaValues.RStichwort || "");
-    const d = this.translateService.instant('reply.german') + " = " + (this.lemmaVersion?.lemmaValues.DStichwort || "");
-    const remartga = this.translateService.instant('reply.comment') + "\n" + (this.lemmaVersion?.lemmaValues.contact_comment || "");
+    const r = this.translateService.instant('reply.romansh') + " = " + (this.entryVersion.rmStichwort || "");
+    const d = this.translateService.instant('reply.german') + " = " + (this.entryVersion.deStichwort || "");
+    const remartga = this.translateService.instant('reply.comment') + "\n" + (this.entryVersion.userComment || "");
 
     window.location.assign(
       "mailto:" +
-      (this.lemmaVersion?.lemmaValues.contact_email || "") +
+      (this.entryVersion.userEmail || "") +
       "?subject=" +
       this.translateService.instant('reply.subject') +
       "&cc=pg@rumantsch.ch&body=" +
@@ -312,25 +332,25 @@ export class MainEntryComponent implements OnInit {
   }
 
   rSemanticsChanged() {
-    const value = this.validateForm.controls['RSubsemantik'].value;
+    const value = this.validateForm.controls['rmSubsemantik'].value;
     if (value === "") {
       this.rSemanticsAutocomplete = [];
       return;
     }
 
-    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'RSubsemantik', value).subscribe(data => {
+    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'rmSubsemantik', value).subscribe(data => {
       this.rSemanticsAutocomplete = data;
     });
   }
 
   dSemanticsChanged() {
-    const value = this.validateForm.controls['DSubsemantik'].value;
+    const value = this.validateForm.controls['deSubsemantik'].value;
     if (value === "") {
       this.dSemanticsAutocomplete = [];
       return;
     }
 
-    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'DSubsemantik', value).subscribe(data => {
+    this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'deSubsemantik', value).subscribe(data => {
       this.dSemanticsAutocomplete = data;
     });
   }
@@ -375,41 +395,41 @@ export class MainEntryComponent implements OnInit {
     this.setupDropdownValues();
 
     this.validateForm = this.fb.group({
-      DStichwort: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DStichwort, Validators.required),
-      DGrammatik: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DGrammatik),
-      DSubsemantik: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DSubsemantik),
-      DGenus: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DGenus),
-      DTags: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DTags),
+      deStichwort: new UntypedFormControl(this.entryVersion.deStichwort, Validators.required),
+      deGrammatik: new UntypedFormControl(this.entryVersion.deGrammatik),
+      deSubsemantik: new UntypedFormControl(this.entryVersion.deSubsemantik),
+      deGenus: new UntypedFormControl(this.entryVersion.deGenus),
+      deTags: new UntypedFormControl(this.entryVersion.deTags),
 
-      RStichwort: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RStichwort, Validators.required),
-      RGrammatik: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RGrammatik),
-      RSubsemantik: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RSubsemantik),
-      RGenus: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RGenus),
-      RFlex: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RFlex),
-      RTags: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RTags),
-      RInflectionType: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RInflectionType),
+      rmStichwort: new UntypedFormControl(this.entryVersion.rmStichwort, Validators.required),
+      rmGrammatik: new UntypedFormControl(this.entryVersion.rmGrammatik),
+      rmSubsemantik: new UntypedFormControl(this.entryVersion.rmSubsemantik),
+      rmGenus: new UntypedFormControl(this.entryVersion.rmGenus),
+      rmFlex: new UntypedFormControl(this.entryVersion.rmFlex),
+      rmTags: new UntypedFormControl(this.entryVersion.rmTags),
+      inflectionType: new UntypedFormControl(this.entryVersion.inflection?.inflectionType),
 
-      DRedirect: new UntypedFormControl(this.lemmaVersion?.lemmaValues.DRedirect),
-      RRedirect: new UntypedFormControl(this.lemmaVersion?.lemmaValues.RRedirect),
-      categories: new UntypedFormControl(this.lemmaVersion?.lemmaValues.categories),
-      REtymologie: new UntypedFormControl(this.lemmaVersion?.lemmaValues.REtymologie),
+      deRedirect: new UntypedFormControl(this.entryVersion.deRedirect),
+      rmRedirect: new UntypedFormControl(this.entryVersion.rmRedirect),
+      categories: new UntypedFormControl(this.entryVersion.categories),
+      rmEtymologie: new UntypedFormControl(this.entryVersion.rmEtymologie),
 
-      contact_comment: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_comment),
-      contact_email: new UntypedFormControl(this.lemmaVersion?.lemmaValues.contact_email),
+      userComment: new UntypedFormControl(this.entryVersion.userComment),
+      userEmail: new UntypedFormControl(this.entryVersion.userEmail),
 
       examples: this.fb.array([]),
     });
 
-    this.loadExamples(this.lemmaVersion?.lemmaValues.examples);
+    this.loadExamples(this.entryVersion.examples);
 
     if (this.directlyLoadDetailView) {
-      if (this.validateForm.controls['RInflectionType'].value === 'V') {
+      if (this.validateForm.controls['inflectionType'].value === 'V') {
         this.editVerb();
         this.directlyLoadDetailView = false;
-      } else if (this.validateForm.controls['RInflectionType'].value === 'NOUN') {
+      } else if (this.validateForm.controls['inflectionType'].value === 'NOUN') {
         this.editNoun();
         this.directlyLoadDetailView = false;
-      } else if (this.validateForm.controls['RInflectionType'].value === 'ADJECTIVE') {
+      } else if (this.validateForm.controls['inflectionType'].value === 'ADJECTIVE') {
         this.editAdjective();
         this.directlyLoadDetailView = false;
       }
@@ -417,44 +437,34 @@ export class MainEntryComponent implements OnInit {
   }
 
   private setupDropdownValues() {
-    if (this.lemmaVersion?.lemmaValues.DGrammatik && !this.grammarValues.includes(this.lemmaVersion?.lemmaValues.DGrammatik)) {
-      this.grammarValues.push(this.lemmaVersion?.lemmaValues.DGrammatik);
+    if (this.entryVersion.deGrammatik && !this.grammarValues.includes(this.entryVersion.deGrammatik)) {
+      this.grammarValues.push(this.entryVersion.deGrammatik);
     }
-    if (this.lemmaVersion?.lemmaValues.RGrammatik && !this.grammarValues.includes(this.lemmaVersion?.lemmaValues.RGrammatik)) {
-      this.grammarValues.push(this.lemmaVersion?.lemmaValues.RGrammatik);
-    }
-
-    if (this.lemmaVersion?.lemmaValues.DGenus && !this.genderValues.includes(this.lemmaVersion?.lemmaValues.DGenus)) {
-      this.genderValues.push(this.lemmaVersion?.lemmaValues.DGenus);
-    }
-    if (this.lemmaVersion?.lemmaValues.RGenus && !this.genderValues.includes(this.lemmaVersion?.lemmaValues.RGenus)) {
-      this.genderValues.push(this.lemmaVersion?.lemmaValues.RGenus);
+    if (this.entryVersion.rmGrammatik && !this.grammarValues.includes(this.entryVersion.rmGrammatik)) {
+      this.grammarValues.push(this.entryVersion.rmGrammatik);
     }
 
-    this.rGrammarAutocompleteChanged(this.lemmaVersion?.lemmaValues.RGrammatik);
-    this.dGrammarAutocompleteChanged(this.lemmaVersion?.lemmaValues.DGrammatik);
-    this.rGenderAutocompleteChanged(this.lemmaVersion?.lemmaValues.RGenus);
-    this.dGenderAutocompleteChanged(this.lemmaVersion?.lemmaValues.DGenus);
+    if (this.entryVersion.deGenus && !this.genderValues.includes(this.entryVersion.deGenus)) {
+      this.genderValues.push(this.entryVersion.deGenus);
+    }
+    if (this.entryVersion.rmGenus && !this.genderValues.includes(this.entryVersion.rmGenus)) {
+      this.genderValues.push(this.entryVersion.rmGenus);
+    }
+
+    this.rGrammarAutocompleteChanged(this.entryVersion.rmGrammatik);
+    this.dGrammarAutocompleteChanged(this.entryVersion.deGrammatik);
+    this.rGenderAutocompleteChanged(this.entryVersion.rmGenus);
+    this.dGenderAutocompleteChanged(this.entryVersion.deGenus);
   }
 
   private saveNewEntry(asSuggestion: boolean) {
-    const lexEntry = new LexEntry();
-    const lemmaVersion = new LemmaVersion();
-    lemmaVersion.lexEntryId = this.lemmaVersion?.lexEntryId;
-    lemmaVersion.lemmaValues = {
-      ...this.lemmaVersion?.lemmaValues,
+    let entryVersion = {
+      ...this.entryVersion,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
-    lemmaVersion.lemmaValues.examples = this.joinExampleStrings();
-    if (lemmaVersion.lemmaValues.examples === "") {
-      delete lemmaVersion.lemmaValues.examples;
-    }
+    entryVersion.examples = this.joinExampleStrings();
 
-    lexEntry.versionHistory.push(lemmaVersion);
-    lexEntry.current = lemmaVersion;
-    lexEntry.mostRecent = lemmaVersion;
-
-    this.editorService.newLexEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry, asSuggestion).subscribe(data => {
+    this.editorService.newEntry(this.languageSelectionService.getCurrentLanguage(), entryVersion, asSuggestion).subscribe(data => {
       this.modal.triggerOk();
       this.cancel();
     }, error => {
@@ -463,26 +473,23 @@ export class MainEntryComponent implements OnInit {
   }
 
   private updateEntry(asSuggestion: boolean) {
-    const lemmaVersion = new LemmaVersion();
-    lemmaVersion.lexEntryId = this.lemmaVersion?.lexEntryId;
-    lemmaVersion.lemmaValues = {
-      ...this.lemmaVersion?.lemmaValues,
+    let entryVersion = new EntryVersionDto();
+    entryVersion.entryId = this.entryVersion.entryId;
+    entryVersion = {
+      ...this.entryVersion,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
-    lemmaVersion.lemmaValues.examples = this.joinExampleStrings();
-    if (lemmaVersion.lemmaValues.examples === "") {
-      delete lemmaVersion.lemmaValues.examples;
-    }
+    entryVersion.examples = this.joinExampleStrings();
 
     if (asSuggestion) {
-      this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
+      this.editorService.modifyEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, entryVersion).subscribe(data => {
         this.modal.triggerOk();
         this.cancel();
       }, error => {
         console.error(error);
       });
     } else {
-      this.editorService.modifyAndAccepptLexEntry(this.languageSelectionService.getCurrentLanguage(), this.lexEntry!.id!, lemmaVersion).subscribe(data => {
+      this.editorService.modifyAndAccepptEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, entryVersion).subscribe(data => {
         this.modal.triggerOk();
         this.cancel();
       }, error => {
@@ -495,11 +502,13 @@ export class MainEntryComponent implements OnInit {
     return this.validateForm.get('examples') as FormArray;
   }
 
-  addExample(exampleText: string = ''): void {
-    const { rm, de } = this.splitExampleString(exampleText);
+  addExample(example?: Example): void {
+    if (!example) {
+      example = new Example();
+    }
     this.exampleControls.push(this.fb.group({
-      exampleRm: rm,
-      exampleDe: de
+      exampleRm: example.rm,
+      exampleDe: example.de
     }));
   }
 
@@ -508,7 +517,7 @@ export class MainEntryComponent implements OnInit {
   }
 
   searchExamples(index: number) {
-    const searchTerm = this.validateForm.value.RStichwort;
+    const searchTerm = this.validateForm.value.rmStichwort;
 
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.corpus.title'),
@@ -531,28 +540,20 @@ export class MainEntryComponent implements OnInit {
     })
   }
 
-  private loadExamples(examplesString: string | undefined): void {
-    if (!examplesString) {
-      return;
-    }
-
-    const examples = examplesString.split('\n');
+  private loadExamples(examples: Example[] = []): void {
     examples.forEach(example => this.addExample(example));
   }
 
-  splitExampleString(str: string) {
-    const parts = str.split('###');
-    const rm = parts[0];
-    const de = parts.length > 1 ? parts.slice(1).join('###') : '';
-
-    return { rm, de };
+  joinExampleString(group: UntypedFormGroup): Example {
+    const ex = new Example();
+    ex.rm = group.value.exampleRm;
+    ex.de = group.value.exampleDe;
+    return ex;
   }
 
-  joinExampleString(group: UntypedFormGroup) {
-    return `${group.value.exampleRm}###${group.value.exampleDe}`;
-  }
-
-  joinExampleStrings() {
-    return this.exampleControls.controls.map(group => this.joinExampleString(group as UntypedFormGroup)).join('\n');
+  joinExampleStrings(): Example[] {
+    const examples: Example[] = [];
+    this.exampleControls.controls.forEach(group => examples.push(this.joinExampleString(group as UntypedFormGroup)));
+    return examples;
   }
 }

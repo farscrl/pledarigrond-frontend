@@ -1,6 +1,4 @@
 import { Component, HostListener, OnInit, ViewContainerRef } from '@angular/core';
-import { LemmaVersionUi } from 'src/app/models/lemma-version';
-import { LexEntry } from 'src/app/models/lex-entry';
 import { EditorSearchCriteria } from 'src/app/models/search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
@@ -13,6 +11,8 @@ import { InflectionType } from 'src/app/models/inflection';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { Language } from "../../../models/security";
 import { ReferenceVerbDto } from '../../../models/reference-verb-dto';
+import { EntryDto, EntryVersionExtendedDto, EntryVersionInternalDto, Inflection } from '../../../models/dictionary';
+import { AutoReviewListItem } from '../../../models/dictionary-list';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -39,10 +39,10 @@ export class ReviewAutoChangesComponent implements OnInit {
   isLoadingData = true;
   isWindowOpen = false;
 
-  currentPage: Page<LemmaVersionUi> = new Page();
-  lemmas: LemmaVersionUi[] = [];
-  selectedLemma?: LemmaVersionUi;
-  selectedLexEntry?: LexEntry;
+  currentPage: Page<EntryVersionExtendedDto> = new Page();
+  reviewItems: AutoReviewListItem[] = [];
+  selectedEntryVersion?: AutoReviewListItem;
+  selectedEntry?: EntryDto;
 
   referenceInflection?: ReferenceVerbDto;
 
@@ -52,7 +52,7 @@ export class ReviewAutoChangesComponent implements OnInit {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (this.isWindowOpen || !this.selectedLemma) {
+    if (this.isWindowOpen || !this.selectedEntryVersion) {
       return;
     }
     if(event.keyCode == KEY_CODE.ENTER){
@@ -66,13 +66,13 @@ export class ReviewAutoChangesComponent implements OnInit {
     } else if (event.keyCode === KEY_CODE.UP_ARROW) {
       this.upOne();
     }
-    if (this.selectedLexEntry && this.selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'NOUN') {
+    if (this.selectedEntry && this.selectedEntryVersion.version.inflection?.inflectionType === 'NOUN') {
       if(event.keyCode == KEY_CODE.KEY1){
         this.nounChangeOnlyMale();
       }
     }
 
-    if (this.selectedLexEntry && this.selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'ADJECTIVE') {
+    if (this.selectedEntry && this.selectedEntryVersion.version.inflection?.inflectionType === 'ADJECTIVE') {
       if(event.keyCode == KEY_CODE.KEY1){
         this.adjectiveNoAdverbialForm();
       }
@@ -93,53 +93,37 @@ export class ReviewAutoChangesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.language = this.languageSelectionService.getCurrentLanguage();
+
     this.searchCriteria.onlyAutomaticChanged = true;
     this.searchCriteria.searchDirection = 'ROMANSH';
     this.searchCriteria.verification = 'UNVERIFIED';
     this.searchCriteria.showReviewLater = false;
 
     this.changePage(0);
-
-    this.language = this.languageSelectionService.getCurrentLanguage();
   }
 
-  ngAfterViewChecked() {
-    /*
-    if (!this.selectedLemma) {
-      return;
-    }
-    const el =  document.querySelector('#list-id-' + this.selectedLemma.lexEntryId);
-    if (el) {
-      el.scrollIntoView({
-        behavior: 'auto',
-        block: 'center',
-        inline: 'center'
-    });
-    }
-    */
-  }
-
-  selectLemma(lemma: LemmaVersionUi) {
-    if (lemma.selected) {
-      this.selectedLexEntry = undefined;
-      lemma.selected = false;
-      this.selectedLemma = undefined;
+  selectLemma(item: AutoReviewListItem) {
+    if (item.selected) {
+      item.selected = false;
+      this.selectedEntry = undefined;
+      this.selectedEntryVersion = undefined;
       return;
     }
 
     this.deselectAll();
-    lemma.selected = true;
-    this.selectedLemma = lemma;
-    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lemma.lexEntryId).subscribe(entry => {
-      this.selectedLexEntry = entry;
+    item.selected = true;
+    this.selectedEntryVersion = item;
+    this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), item.entryId).subscribe(entry => {
+      this.selectedEntry = entry;
 
       // newly created entries have current == most recent and current != approved -> to have a correct diff, we set current to an empty lemmaValue
-      if (this.selectedLexEntry.current.internalId === this.selectedLexEntry.mostRecent.internalId && !this.selectedLexEntry.current.approved) {
-        this.selectedLexEntry.current = new LemmaVersionUi();
+      if (this.selectedEntry.current?.versionId === this.selectedEntry.mostRecent.versionId && !(this.selectedEntry.current.versionStatus === "Accepted")) {
+        this.selectedEntry.current = new EntryVersionInternalDto();
       }
 
       if (this.languageSelectionService.getCurrentLanguage() === Language.SURSILVAN) {
-        this.editorService.getReferenceInflection(Language.SURSILVAN, this.selectedLexEntry.mostRecent.lemmaValues.RStichwort!).subscribe(reference => {
+        this.editorService.getReferenceInflection(Language.SURSILVAN, this.selectedEntry.mostRecent.rmStichwort!).subscribe(reference => {
           this.referenceInflection = reference;
         });
       }
@@ -147,12 +131,12 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   acceptSelectedLemma() {
-    if (!this.selectedLexEntry || !this.selectedLemma) {
+    if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
-    const lemma = this.selectedLemma;
-    this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
-      this.selectedLemma!.local_review_status = 'ACCEPTED';
+    const lemma = this.selectedEntryVersion;
+    this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version).subscribe((entry) => {
+      this.selectedEntryVersion!.local_review_status = 'ACCEPTED';
       this.downOne();
     }, (error) => {
       console.error(error);
@@ -160,12 +144,11 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   rejectSelectedLemma() {
-    if (!this.selectedLexEntry || !this.selectedLemma) {
+    if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
-    const lemma = this.selectedLemma;
-    this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId, this.selectedLemma).subscribe((entry) => {
-      this.selectedLemma!.local_review_status = 'REJECTED';
+    this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version).subscribe((entry) => {
+      this.selectedEntryVersion!.local_review_status = 'REJECTED';
       this.downOne();
     }, (error) => {
       console.error(error);
@@ -173,12 +156,11 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   reviewLater() {
-    if (!this.selectedLexEntry || !this.selectedLemma) {
+    if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
-    const lemma = this.selectedLemma;
-    this.editorService.reviewLaterLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLemma.lexEntryId).subscribe((entry) => {
-      this.selectedLemma!.local_review_status = 'LATER';
+    this.editorService.reviewEntryLater(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId).subscribe((entry) => {
+      this.selectedEntryVersion!.local_review_status = 'LATER';
       this.downOne();
     }, (error) => {
       console.error(error);
@@ -186,10 +168,9 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   editSelectedLemma() {
-    if (!this.selectedLexEntry || !this.selectedLemma) {
+    if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
-    const lemma = this.selectedLemma;
 
     this.isWindowOpen = true;
     const modal = this.modalService.create({
@@ -200,13 +181,13 @@ export class ReviewAutoChangesComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lexEntryId: lemma.lexEntryId,
+        lexEntryId: this.selectedEntryVersion,
         directlyLoadDetailView: true,
       },
       nzOnOk: () => {
-        this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), lemma.lexEntryId).subscribe(entry => {
+        this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion!.entryId).subscribe(entry => {
           this.replaceLemma(entry);
-          this.selectedLemma!.local_review_status = 'ACCEPTED';
+          this.selectedEntryVersion!.local_review_status = 'ACCEPTED';
           this.downOne();
         });
       },
@@ -218,22 +199,23 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   nounChangeOnlyMale() {
-    this.generateNewInflection('NOUN', "1", this.selectedLemma!.lemmaValues.RStichwort!);
+    this.generateNewInflection('NOUN', "1", this.selectedEntryVersion!.version.rmStichwort!);
   }
 
   adjectiveNoAdverbialForm() {
-    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedLexEntry?.mostRecent));
+    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.mostRecent));
 
+    // TODO implement me correctly
     // delete adverbial form
     delete workingLemmaVersion.lemmaValues.adverbialForm;
 
-    // reset automaticly created values
+    // reset automatically created values
     delete workingLemmaVersion.pgValues.timestamp;
     delete workingLemmaVersion.timestamp;
     delete workingLemmaVersion.userId;
     delete workingLemmaVersion.pgValues.creator;
 
-    this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLexEntry!.id!, workingLemmaVersion).subscribe((entry) => {
+    this.editorService.modifyEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntry!.entryId, workingLemmaVersion).subscribe((entry) => {
       this.replaceLemma(entry);
     });
   }
@@ -252,21 +234,27 @@ export class ReviewAutoChangesComponent implements OnInit {
     }
     this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, pageNumber, 50).subscribe(page => {
       this.isLoadingData = false;
-      this.currentPage = page as Page<LemmaVersionUi>;
-      this.lemmas = this.filterLexEntryIds(page.content as LemmaVersionUi[]);
+      this.currentPage = page;
+      this.reviewItems = page.content.map(value => ({
+        entryId: value.entryId,
+        version: value,
+        selected: false,
+        local_review_status: 'UNDEFINED',
+      }));
+      this.reviewItems = this.filterLexEntryIds(this.reviewItems);
       this.jumpToNext();
     });
   }
 
   private deselectAll() {
-    this.lemmas.forEach(lemma => {
+    this.reviewItems.forEach(lemma => {
       lemma.selected = false;
     });
   }
 
   private jumpToNext() {
-    for(let i = 0; i < this.lemmas.length; i++) {
-      const lemma = this.lemmas[i];
+    for(let i = 0; i < this.reviewItems.length; i++) {
+      const lemma = this.reviewItems[i];
       if (!lemma.local_review_status || lemma.local_review_status === 'UNDEFINED') {
         this.selectLemma(lemma);
         return;
@@ -275,69 +263,66 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   private upOne() {
-    if (!this.selectedLemma) {
+    if (!this.selectedEntryVersion) {
       return;
     }
 
-    const sl = this.selectedLemma;
-    const idx = this.lemmas.findIndex(el => el.lexEntryId === sl.lexEntryId);
+    const sl = this.selectedEntryVersion;
+    const idx = this.reviewItems.findIndex(el => el.entryId === sl.entryId);
 
     if (idx - 1 > -1) {
-      this.selectLemma(this.lemmas[idx-1]);
+      this.selectLemma(this.reviewItems[idx-1]);
     }
   }
 
   private downOne() {
-    if (!this.selectedLemma) {
+    if (!this.selectedEntryVersion) {
       return;
     }
 
-    const sl = this.selectedLemma;
-    const idx = this.lemmas.findIndex(el => el.lexEntryId === sl.lexEntryId);
+    const sl = this.selectedEntryVersion;
+    const idx = this.reviewItems.findIndex(el => el.entryId === sl.entryId);
 
-    if (idx + 1 < this.lemmas.length) {
-      this.selectLemma(this.lemmas[idx+1]);
+    if (idx + 1 < this.reviewItems.length) {
+      this.selectLemma(this.reviewItems[idx+1]);
     }
   }
 
   private generateNewInflection(type: InflectionType, subTypeId: string, baseForm: string) {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), type, subTypeId, baseForm).subscribe(values => {
-      const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedLexEntry?.mostRecent));
-      workingLemmaVersion.lemmaValues.RInflectionSubtype = subTypeId;
+      const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.mostRecent)) as EntryVersionInternalDto;
+      workingLemmaVersion.inflection = new Inflection();
+      workingLemmaVersion.inflection.inflectionSubtype = subTypeId;
 
-      // reset automatically created values
-      delete workingLemmaVersion.pgValues.timestamp;
-      delete workingLemmaVersion.timestamp;
-      delete workingLemmaVersion.userId;
-      delete workingLemmaVersion.pgValues.creator;
+      // TODO: save inflection
 
-      workingLemmaVersion.lemmaValues = {
-        ...workingLemmaVersion.lemmaValues,
-        ...values.inflectionValues
-      };
-      this.editorService.modifyLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLexEntry!.id!, workingLemmaVersion).subscribe((entry) => {
+      this.editorService.modifyEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntry!.entryId, workingLemmaVersion).subscribe((entry) => {
         this.replaceLemma(entry);
       })
     });
   }
 
-  private replaceLemma(entry: LexEntry) {
-    this.selectedLexEntry = entry;
-    this.selectedLemma = entry.mostRecent as LemmaVersionUi;
-    this.selectedLemma.selected = true;
+  private replaceLemma(entry: EntryDto) {
+    this.selectedEntry = entry;
+    this.selectedEntryVersion = {
+      entryId: entry.entryId,
+      version: entry.mostRecent,
+      selected: true,
+      local_review_status: 'UNDEFINED',
+    };
 
-    for (let i = 0; i < this.lemmas.length; i++) {
-      if (this.lemmas[i].lexEntryId === entry.mostRecent.lexEntryId) {
-        this.lemmas[i] = entry.mostRecent as LemmaVersionUi;
+    for (let i = 0; i < this.reviewItems.length; i++) {
+      if (this.reviewItems[i].entryId === entry.entryId) {
+        this.reviewItems[i] = this.selectedEntryVersion;
       }
     }
   }
 
-  private filterLexEntryIds(entries: LemmaVersionUi[]): LemmaVersionUi[] {
-    const returnValue: LemmaVersionUi[] = [];
+  private filterLexEntryIds(entries: AutoReviewListItem[]): AutoReviewListItem[] {
+    const returnValue: AutoReviewListItem[] = [];
 
     entries.forEach(e => {
-      if (!returnValue.some(lv => lv.lexEntryId === e.lexEntryId)) {
+      if (!returnValue.some(lv => lv.entryId === e.entryId)) {
         returnValue.push(e);
       }
     });

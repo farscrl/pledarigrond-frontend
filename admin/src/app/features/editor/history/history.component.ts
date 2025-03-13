@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorQuery } from 'src/app/models/editor-query';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
-import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
-import { Page } from 'src/app/models/page';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { DictionaryListItem, PaginationInfo } from '../../../models/dictionary-list';
+import { EntryDto } from '../../../models/dictionary';
 
 @Component({
     selector: 'app-history',
@@ -13,38 +13,54 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
     standalone: false
 })
 export class HistoryComponent implements OnInit {
-
-  results: Page<LexEntry>  = new Page<LexEntry>();
+  paginationInfo: PaginationInfo = new PaginationInfo();
+  items: DictionaryListItem[]  = [];
   columns: LemmaListColumn = new LemmaListColumn();
 
   currentEditorQuery?: EditorQuery;
 
-  selectedLexEntry?: LexEntryUi;
+  selectedEntry?: EntryDto;
 
   userFilter?: string;
   verifierFilter?: string;
 
-  constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) { }
+  constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) {
+    this.columns = this.generateColumns();
+  }
 
   ngOnInit(): void {
-    this.columns = this.generateColumns();
+    this.loadPage(0);
   }
 
   search(editorQuery: EditorQuery) {
     // only unverified entries
-    editorQuery.verification = 'ACCEPTED';
+    editorQuery.versionStatus = 'ACCEPTED';
     this.currentEditorQuery = editorQuery;
-    this.changePage(0);
+    this.loadPage(0);
   }
 
-  changePage(page: number) {
-    this.editorService.getAllLexEntries(this.languageSelectionService.getCurrentLanguage(), this.currentEditorQuery!, page).subscribe(page => {
-      this.results = page;
+  loadPage(page: number) {
+    this.editorService.getAllEntries(this.languageSelectionService.getCurrentLanguage(), this.currentEditorQuery!, page).subscribe(page => {
+      this.paginationInfo = new PaginationInfo(page);
+      this.items = page.content.map(v => ({
+        entryId: v.entryId,
+        publicationStatus: v.publicationStatus,
+
+        version: v.version,
+
+        selected: false,
+        disabled: false
+      }));
     });
   }
 
-  showLexEntryDetails(lexEntry: LexEntryUi) {
-    this.selectedLexEntry = lexEntry;
+  showLexEntryDetails(entryId: string) {
+    if (!entryId) {
+      return;
+    }
+    this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe((data) => {
+      this.selectedEntry = data;
+    });
   }
 
   private generateColumns(): LemmaListColumn {

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Verification } from 'src/app/models/lemma-version';
-import { EditorRole } from 'src/app/models/user';
+import { VersionStatus } from '../../../models/dictionary';
 
 @Component({
     selector: 'app-verification',
@@ -11,7 +10,7 @@ import { EditorRole } from 'src/app/models/user';
 export class VerificationComponent implements OnInit {
 
   @Input()
-  verification?: Verification;
+  verification?: VersionStatus;
 
   constructor() { }
 

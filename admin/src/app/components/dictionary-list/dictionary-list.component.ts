@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewContainerRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ExportComponent } from 'src/app/features/editor/export/export.component';
-import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
 import { Page } from 'src/app/models/page';
 
 import moment from 'moment';
@@ -16,14 +15,16 @@ import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
 import { TranslateService } from '@ngx-translate/core';
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
+import { EntryVersionDto, EntryVersionInternalDto, NormalizedEntryVersionDto } from '../../models/dictionary';
+import { DictionaryListItem, PaginationInfo } from '../../models/dictionary-list';
 
 @Component({
-    selector: 'app-lemma-list',
-    templateUrl: './lemma-list.component.html',
-    styleUrls: ['./lemma-list.component.scss'],
-    standalone: false
+  selector: 'app-dictionary-list',
+  templateUrl: './dictionary-list.component.html',
+  styleUrls: ['./dictionary-list.component.scss'],
+  standalone: false
 })
-export class LemmaListComponent implements OnInit {
+export class DictionaryListComponent {
 
   @Input()
   columns: LemmaListColumn = new LemmaListColumn();
@@ -31,16 +32,11 @@ export class LemmaListComponent implements OnInit {
   @Input()
   filter?: SearchCriteria | EditorQuery;
 
-  @Input() set lexEntries(page: Page<LexEntry> | undefined) {
-    this.resultPage = page;
-    if (!!page) {
-      this.listOfLexEntries = page.content as LexEntryUi[];
-    }
-    this.showDetailsForLexEntry.emit(undefined);
-  }
-  get lexEntries(): Page<LexEntry> | undefined {
-      return this.resultPage;
-  }
+  @Input()
+  items!: DictionaryListItem[];
+
+  @Input()
+  paginationInfo!: PaginationInfo;
 
   @Input()
   showRejectButton = false;
@@ -49,10 +45,11 @@ export class LemmaListComponent implements OnInit {
   updatePage = new EventEmitter<number>();
 
   @Output()
-  showDetailsForLexEntry = new EventEmitter<LexEntryUi>();
+  showDetailsForEntryId = new EventEmitter<string>();
 
   @Output()
   addUserFilter = new EventEmitter<string>();
+
   @Output()
   addVerifierFilter = new EventEmitter<string>();
 
@@ -60,11 +57,10 @@ export class LemmaListComponent implements OnInit {
   math = Math;
 
 
-  resultPage?: Page<LexEntry>;
+  resultPage?: Page<NormalizedEntryVersionDto>;
   checked = false;
   loading = false;
   indeterminate = false;
-  listOfLexEntries: LexEntryUi[] = [];
   setOfCheckedId = new Set<string>();
 
   constructor(
@@ -74,9 +70,6 @@ export class LemmaListComponent implements OnInit {
     private languageSelectionService: LanguageSelectionService,
     private translateService: TranslateService,
   ) { }
-
-  ngOnInit(): void {
-  }
 
   exportResults() {
     const modal = this.modalService.create({
@@ -94,17 +87,17 @@ export class LemmaListComponent implements OnInit {
     this.updatePage.emit(pageNumber - 1);
   }
 
-  selectRow(lexEntry: LexEntryUi) {
-    const isSelected = lexEntry.selected;
-    this.listOfLexEntries.forEach(e => {
+  selectRow(item: DictionaryListItem) {
+    const isSelected = item.selected;
+    this.items.forEach(e => {
       e.selected = false;
     });
-    lexEntry.selected = !isSelected;
+    item.selected = !isSelected;
 
-    if (lexEntry.selected) {
-      this.showDetailsForLexEntry.emit(lexEntry);
+    if (item.selected) {
+      this.showDetailsForEntryId.emit(item.entryId);
     } else {
-      this.showDetailsForLexEntry.emit(undefined);
+      this.showDetailsForEntryId.emit(undefined);
     }
   }
 
@@ -117,36 +110,36 @@ export class LemmaListComponent implements OnInit {
   }
 
   refreshCheckedStatus(): void {
-    const listOfEnabledData = this.listOfLexEntries.filter(({ disabled }) => !disabled);
-    this.checked = listOfEnabledData.every(({ id }) => this.setOfCheckedId.has(id!));
-    this.indeterminate = listOfEnabledData.some(({ id }) => this.setOfCheckedId.has(id!)) && !this.checked;
+    const listOfEnabledData = this.items.filter(({ disabled }) => !disabled);
+    this.checked = listOfEnabledData.every(({ entryId }) => this.setOfCheckedId.has(entryId!));
+    this.indeterminate = listOfEnabledData.some(({ entryId }) => this.setOfCheckedId.has(entryId!)) && !this.checked;
   }
 
   onAllChecked(checked: boolean): void {
-    this.listOfLexEntries
+    this.items
       .filter(({ disabled }) => !disabled)
-      .forEach(({ id }) => this.updateCheckedSet(id!, checked));
+      .forEach(({ entryId }) => this.updateCheckedSet(entryId!, checked));
     this.refreshCheckedStatus();
   }
 
-  onItemChecked(id: string, checked: boolean): void {
-    this.updateCheckedSet(id, checked);
+  onItemChecked(entryId: string, checked: boolean): void {
+    this.updateCheckedSet(entryId, checked);
     this.refreshCheckedStatus();
   }
 
-  updateCheckedSet(id: string, checked: boolean): void {
+  updateCheckedSet(entryId: string, checked: boolean): void {
     if (checked) {
-      this.setOfCheckedId.add(id);
+      this.setOfCheckedId.add(entryId);
     } else {
-      this.setOfCheckedId.delete(id);
+      this.setOfCheckedId.delete(entryId);
     }
   }
 
-  formateDate(timestamp: number): string {
+  formateDate(timestamp: Date): string {
     return moment(timestamp).format("DD-MM-YYYY");
   }
 
-  formateTime(timestamp: number): string {
+  formateTime(timestamp: Date): string {
     return moment(timestamp).format("HH:mm:ss")
   }
 
@@ -154,32 +147,33 @@ export class LemmaListComponent implements OnInit {
     this.openLemmaModal();
   }
 
-  editEntry(entryId: string) {
-    this.openLemmaModal(entryId);
+  editEntry(version: EntryVersionInternalDto) {
+    // TODO: implement
+    // this.openLemmaModal(entryId);
   }
 
-  dropEntry(entry: LexEntry) {
+  dropEntry(item: DictionaryListItem) {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('lexicon.lemma.delete.title'),
-      nzContent: '<b style="color: red;">' +  entry.current.lemmaValues.DStichwort + ' / ' + entry.current.lemmaValues.RStichwort + '</b>',
+      nzContent: '<b style="color: red;">' +  item.version.deStichwort + ' / ' + item.version.rmStichwort + '</b>',
       nzClosable: false,
       nzOkDanger: true,
       nzCancelText: this.translateService.instant('lexicon.lemma.delete.cancel'),
       nzViewContainerRef: this.viewContainerRef,
-      nzOnOk: () => this.dropEntryConfirmed(entry.id!),
+      nzOnOk: () => this.dropEntryVersionConfirmed(item.entryId),
       nzOnCancel: () => {}
     });
   }
 
-  rejectEntry(entry: LexEntry) {
+  rejectEntryVersion(item: DictionaryListItem) {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('lexicon.lemma.reject.title'),
-      nzContent: '<b style="color: red;">' +  entry.current.lemmaValues.DStichwort + ' / ' + entry.current.lemmaValues.RStichwort + '</b>',
+      nzContent: '<b style="color: red;">' +  item.version.deStichwort + ' / ' + item.version.rmStichwort + '</b>',
       nzClosable: false,
       nzOkDanger: true,
       nzCancelText: this.translateService.instant('lexicon.lemma.reject.cancel'),
       nzViewContainerRef: this.viewContainerRef,
-      nzOnOk: () => this.dropRejectConfirmed(entry!),
+      nzOnOk: () => this.rejectEntryVersionConfirmed(item),
       nzOnCancel: () => {}
     });
   }
@@ -201,19 +195,13 @@ export class LemmaListComponent implements OnInit {
   rejectSelectedItemsConfirmed() {
     const subscriptions: Observable<any>[] = [];
     this.setOfCheckedId.forEach(id => {
-      const items =this.listOfLexEntries.filter(entry => entry.id === id);
+      const items = this.items.filter(entry => entry.entryId === id);
       if (items && items.length === 1) {
-        const lexEntry = items[0];
+        const item = items[0];
 
         // only applicable to unverified items
-        if (lexEntry.mostRecent.verification === 'UNVERIFIED') {
-          if (lexEntry.mostRecent.status === 'NEW_ENTRY') {
-            // drop new entries
-            subscriptions.push(this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!));
-          } else {
-            // reject changed entries
-            subscriptions.push(this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!, lexEntry.mostRecent));
-          }
+        if (item.version.versionStatus === 'Unverified') {
+          subscriptions.push(this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), item.entryId, item.version));
         }
         this.onItemChecked(id, false);
       }
@@ -224,7 +212,7 @@ export class LemmaListComponent implements OnInit {
     });
   }
 
-  startReorder(lexEntry: LexEntry, dictionaryLanguage: DictionaryLanguage) {
+  startReorder(item: DictionaryListItem, dictionaryLanguage: DictionaryLanguage) {
     const modal = this.modalService.create({
       nzContent: ChangeSortOrderComponent,
       nzClosable: false,
@@ -232,35 +220,35 @@ export class LemmaListComponent implements OnInit {
       nzWidth: 500,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lexEntry: lexEntry,
+        entryVersion: item.version,
         dictionaryLanguage: dictionaryLanguage,
       },
       nzOnOk: () => this.reloadCurrentPage()
     });
   }
 
-  getLemma(entry: LexEntry, isRomansh: boolean) {
+  getLemma(entry: EntryVersionDto, isRomansh: boolean) {
     if (!isRomansh) {
       // german
-      let value = entry.mostRecent.lemmaValues.DStichwort;
-      if (!!entry.mostRecent.lemmaValues.DSubsemantik) {
-        value += " (" + entry.mostRecent.lemmaValues.DSubsemantik + ")";
+      let value = entry.deStichwort;
+      if (!!entry.deSubsemantik) {
+        value += " (" + entry.deSubsemantik + ")";
       }
-      if (!!entry.mostRecent.lemmaValues.DGenus) {
-        value += " <i>[" + entry.mostRecent.lemmaValues.DGenus + "]</i>";
+      if (!!entry.deGenus) {
+        value += " <i>[" + entry.deGenus + "]</i>";
       }
       return value
     } else {
       // romansh
-      let value = entry.mostRecent.lemmaValues.RStichwort;
-      if (!!entry.mostRecent.lemmaValues.RFlex) {
-        value += " <i>[" + entry.mostRecent.lemmaValues.RFlex + "]</i>";
+      let value = entry.rmStichwort;
+      if (!!entry.rmFlex) {
+        value += " <i>[" + entry.rmFlex + "]</i>";
       }
-      if (!!entry.mostRecent.lemmaValues.RSubsemantik) {
-        value += " (" + entry.mostRecent.lemmaValues.RSubsemantik + ")";
+      if (!!entry.rmSubsemantik) {
+        value += " (" + entry.rmSubsemantik + ")";
       }
-      if (!!entry.mostRecent.lemmaValues.RGenus) {
-        value += " <i>[" + entry.mostRecent.lemmaValues.RGenus + "]</i>";
+      if (!!entry.rmGenus) {
+        value += " <i>[" + entry.rmGenus + "]</i>";
       }
       return value
     }
@@ -285,7 +273,7 @@ export class LemmaListComponent implements OnInit {
     return '';
   }
 
-  showDiff(lexEntry: LexEntry) {
+  showDiff(version: EntryVersionInternalDto) {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.titles.edit'),
       nzContent: DiffModalComponent,
@@ -295,7 +283,8 @@ export class LemmaListComponent implements OnInit {
       nzFooter: null,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lexEntry: lexEntry,
+        original: null,
+        change: version,
       },
     });
   }
@@ -309,7 +298,8 @@ export class LemmaListComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lexEntryId: entryId,
+        entryId: entryId,
+        // TODO: pass version?
       },
       nzOnOk: () => this.reloadCurrentPage()
     });
@@ -319,14 +309,14 @@ export class LemmaListComponent implements OnInit {
     this.updatePage.emit(this.resultPage!.number);
   }
 
-  private dropEntryConfirmed(entryId: string) {
+  private dropEntryVersionConfirmed(entryId: string) {
     this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe(() => {
       this.updatePage.emit(this.resultPage!.number);
     });
   }
 
-  private dropRejectConfirmed(lexEntry: LexEntry) {
-    this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), lexEntry.id!, lexEntry.mostRecent).subscribe(() => {
+  private rejectEntryVersionConfirmed(item: DictionaryListItem) {
+    this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), item.entryId, item.version).subscribe(() => {
       this.updatePage.emit(this.resultPage!.number);
     });
   }

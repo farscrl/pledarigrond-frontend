@@ -36,7 +36,7 @@
 
       <div class="lemma-list">
         <nz-list [nzLoading]="isLoadingData">
-          <nz-list-item *ngFor="let item of lemmas" (click)="selectLemma(item)" [class.selected]="item.selected" id="list-id-{{ item.lexEntryId }}">
+          <nz-list-item *ngFor="let item of reviewItems" (click)="selectLemma(item)" [class.selected]="item.selected" id="list-id-{{ item.entryId }}">
             <ng-container >
               <i nz-icon
               [nzType]="item.local_review_status === 'ACCEPTED' ? 'check-circle' : item.local_review_status === 'REJECTED' ? 'close-circle' : item.local_review_status === 'EDITED' ? 'info-circle' : item.local_review_status === 'LATER' ? 'clock-circle' : 'question-circle'"
@@ -46,9 +46,9 @@
               [class.edited]="item.local_review_status === 'EDITED'"
               [class.later]="item.local_review_status === 'LATER'"
               ></i>
-              <nz-list-item-meta nzDescription="{{ item.lemmaValues.RGrammatik }}">
+              <nz-list-item-meta nzDescription="{{ item.version.rmGrammatik }}">
                 <nz-list-item-meta-title>
-                  <a>{{ item.lemmaValues.RStichwort }} ⇔ {{ item.lemmaValues.DStichwort }}</a>
+                  <a>{{ item.version.rmStichwort }} ⇔ {{ item.version.deStichwort }}</a>
                 </nz-list-item-meta-title>
               </nz-list-item-meta>
             </ng-container>
@@ -70,9 +70,9 @@
 
   <div nz-col nzSpan="15" class="right-side">
     <nz-content>
-      <div class="content" *ngIf="selectedLexEntry">
+      <div class="content" *ngIf="selectedEntry">
         <nz-page-header [nzGhost]="false">
-          <nz-page-header-title>{{ selectedLexEntry.mostRecent.lemmaValues.RStichwort }} ⇔ {{ selectedLexEntry.mostRecent.lemmaValues.DStichwort }}</nz-page-header-title>
+          <nz-page-header-title>{{ selectedEntry.mostRecent.rmStichwort }} ⇔ {{ selectedEntry.mostRecent.deStichwort }}</nz-page-header-title>
           <nz-page-header-extra>
             <button nz-button nzType="primary"  class="button-accept" (click)="acceptSelectedLemma()">{{ 'review.actions.accept' | translate }}<span class="keyboard">enter</span></button>
             <button nz-button nzType="primary" nzDanger (click)="rejectSelectedLemma()">{{ 'review.actions.reject' | translate }}<span class="keyboard">del</span></button>
@@ -81,19 +81,19 @@
           </nz-page-header-extra>
         </nz-page-header>
 
-        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'NOUN'">
+        <div class="manual-actions" *ngIf="selectedEntry.mostRecent.inflection?.inflectionType === 'NOUN'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
           <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} <span class="keyboard">1</span></button>
         </div>
-        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'V-'">
+        <div class="manual-actions" *ngIf="selectedEntry.mostRecent.inflection?.inflectionType === 'V'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
         </div>
-        <div class="manual-actions" *ngIf="selectedLexEntry.mostRecent.lemmaValues.RInflectionType === 'ADJECTIVE'">
+        <div class="manual-actions" *ngIf="selectedEntry.mostRecent.inflection?.inflectionType === 'ADJECTIVE'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
           <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} <span class="keyboard">1</span></button>
         </div>
 
-        <app-lemma-diff [language]="language!" [lexEntry]="selectedLexEntry!" [referenceVerb]="referenceInflection"></app-lemma-diff>
+        <app-lemma-diff [language]="language!" [oldLemmaVersion]="selectedEntry.current!" [newLemmaVersion]="selectedEntryVersion!.version" [referenceVerb]="referenceInflection"></app-lemma-diff>
       </div>
     </nz-content>
   </div>

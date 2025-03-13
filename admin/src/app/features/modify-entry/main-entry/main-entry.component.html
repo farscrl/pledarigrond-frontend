@@ -13,9 +13,9 @@
     </div>
     <div nz-col nzSpan="12">
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="REtymologie">{{ 'edit.lemma.etymology' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rmEtymologie">{{ 'edit.lemma.etymology' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="REtymologie" id="REtymologie"/>
+          <input nz-input formControlName="rmEtymologie" id="rmEtymologie"/>
         </nz-form-control>
       </nz-form-item>
 
@@ -27,47 +27,47 @@
     <div nz-col nzSpan="12">
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="DStichwort">{{ 'edit.lemma.de' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="deStichwort">{{ 'edit.lemma.de' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DStichwort" id="DStichwort" />
+          <input nz-input formControlName="deStichwort" id="deStichwort" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGenus">{{ 'edit.lemma.de_gender' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deGenus">{{ 'edit.lemma.de_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DGenus" id="DGenus" [nzAutocomplete]="dGenderAutocomplete" (ngModelChange)="dGenderAutocompleteChanged($event)"/>
+          <input nz-input formControlName="deGenus" id="deGenus" [nzAutocomplete]="dGenderAutocomplete" (ngModelChange)="dGenderAutocompleteChanged($event)"/>
           <nz-autocomplete [nzDataSource]="dGenderAutocompleteValues" nzBackfill #dGenderAutocomplete></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DTags">{{ 'edit.lemma.de_tags' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deTags">{{ 'edit.lemma.de_tags' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DTags" id="DTags" />
+          <input nz-input formControlName="deTags" id="deTags" />
         </nz-form-control>
       </nz-form-item>
 
     </div>
     <div nz-col nzSpan="12">
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DGrammatik">{{ 'edit.lemma.de_grammar' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deGrammatik">{{ 'edit.lemma.de_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DGrammatik" id="DGrammatik" [nzAutocomplete]="dGrammarAutocomplete" (ngModelChange)="dGrammarAutocompleteChanged($event)"/>
+          <input nz-input formControlName="deGrammatik" id="deGrammatik" [nzAutocomplete]="dGrammarAutocomplete" (ngModelChange)="dGrammarAutocompleteChanged($event)"/>
           <nz-autocomplete [nzDataSource]="dGrammarAutocompleteValues" nzBackfill #dGrammarAutocomplete></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DSubsemantik">{{ 'edit.lemma.de_semantics' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deSubsemantik">{{ 'edit.lemma.de_semantics' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DSubsemantik" id="DSubsemantik" [nzAutocomplete]="dSemanticsAuto" (input)="dSemanticsChanged()"/>
+          <input nz-input formControlName="deSubsemantik" id="deSubsemantik" [nzAutocomplete]="dSemanticsAuto" (input)="dSemanticsChanged()"/>
           <nz-autocomplete [nzDataSource]="dSemanticsAutocomplete" nzBackfill #dSemanticsAuto></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="DRedirect">{{ 'edit.lemma.de_link' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deRedirect">{{ 'edit.lemma.de_link' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="DRedirect" id="DRedirect" />
+          <input nz-input formControlName="deRedirect" id="deRedirect" />
         </nz-form-control>
       </nz-form-item>
     </div>
@@ -80,29 +80,29 @@
     <div nz-col nzSpan="12">
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="RStichwort">{{ 'edit.lemma.rm' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="rmStichwort">{{ 'edit.lemma.rm' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RStichwort" id="RStichwort" />
+          <input nz-input formControlName="rmStichwort" id="rmStichwort" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGenus">{{ 'edit.lemma.rm_gender' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rmGenus">{{ 'edit.lemma.rm_gender' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RGenus" id="RGenus" [nzAutocomplete]="rGenderAutocomplete" (ngModelChange)="rGenderAutocompleteChanged($event)"/>
+          <input nz-input formControlName="rmGenus" id="rmGenus" [nzAutocomplete]="rGenderAutocomplete" (ngModelChange)="rGenderAutocompleteChanged($event)"/>
           <nz-autocomplete [nzDataSource]="rGenderAutocompleteValues" nzBackfill #rGenderAutocomplete></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RTags">{{ 'edit.lemma.rm_tags' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rmTags">{{ 'edit.lemma.rm_tags' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RTags" id="RTags" />
+          <input nz-input formControlName="rmTags" id="rmTags" />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionType">{{ 'edit.lemma.inflection.title' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inflectionType">{{ 'edit.lemma.inflection.title' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <nz-select formControlName="RInflectionType" id="RInflectionType" class="inflection-selection">
+          <nz-select formControlName="inflectionType" id="inflectionType" class="inflection-selection">
             <nz-option nzValue="" [nzLabel]="'edit.lemma.inflection.none' | translate"></nz-option>
             <nz-option nzValue="V" [nzLabel]="'edit.lemma.inflection.verb' | translate"></nz-option>
             <nz-option nzValue="NOUN" [nzLabel]="'edit.lemma.inflection.noun' | translate"></nz-option>
@@ -110,22 +110,22 @@
             <nz-option nzValue="PRONOUN" [nzLabel]="'edit.lemma.inflection.pronoun' | translate"></nz-option>
             <nz-option nzValue="OTHER" [nzLabel]="'edit.lemma.inflection.other' | translate"></nz-option>
           </nz-select>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editVerb()" *ngIf="validateForm.controls['RInflectionType'].value === 'V'"></i>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editNoun()" *ngIf="validateForm.controls['RInflectionType'].value === 'NOUN'"></i>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editAdjective()" *ngIf="validateForm.controls['RInflectionType'].value === 'ADJECTIVE'"></i>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronoun()" *ngIf="validateForm.controls['RInflectionType'].value === 'PRONOUN'"></i>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editOther()" *ngIf="validateForm.controls['RInflectionType'].value === 'OTHER'"></i>
+          <i nz-icon nzType="edit" class="inflection-edit" (click)="editVerb()" *ngIf="validateForm.controls['inflectionType'].value === 'V'"></i>
+          <i nz-icon nzType="edit" class="inflection-edit" (click)="editNoun()" *ngIf="validateForm.controls['inflectionType'].value === 'NOUN'"></i>
+          <i nz-icon nzType="edit" class="inflection-edit" (click)="editAdjective()" *ngIf="validateForm.controls['inflectionType'].value === 'ADJECTIVE'"></i>
+          <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronoun()" *ngIf="validateForm.controls['inflectionType'].value === 'PRONOUN'"></i>
+          <i nz-icon nzType="edit" class="inflection-edit" (click)="editOther()" *ngIf="validateForm.controls['inflectionType'].value === 'OTHER'"></i>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RInflectionType">{{ 'lexicon.lemma.columns.pronunciation' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inflectionType">{{ 'lexicon.lemma.columns.pronunciation' | translate }}</nz-form-label>
         <nz-form-control>
-          <ng-container *ngIf="!lemmaVersion?.lemmaValues?.RPronunciation">
+          <ng-container *ngIf="!entryVersion?.rmPronunciation">
             nagina
           </ng-container>
-          <ng-container *ngIf="lemmaVersion?.lemmaValues?.RPronunciation">
-            <app-audio-player [url]="getAudioUrlById(lemmaVersion?.lemmaValues?.RPronunciation!)"></app-audio-player>
+          <ng-container *ngIf="entryVersion?.rmPronunciation">
+            <app-audio-player [url]="getAudioUrlById(entryVersion.rmPronunciation!)"></app-audio-player>
           </ng-container>
           <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronunciation()"></i>
         </nz-form-control>
@@ -134,32 +134,32 @@
     <div nz-col nzSpan="12">
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RGrammatik">{{ 'edit.lemma.rm_grammar' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rmGrammatik">{{ 'edit.lemma.rm_grammar' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RGrammatik" id="RGrammatik" [nzAutocomplete]="rGrammarAutocomplete" (ngModelChange)="rGrammarAutocompleteChanged($event)"/>
+          <input nz-input formControlName="rmGrammatik" id="rmGrammatik" [nzAutocomplete]="rGrammarAutocomplete" (ngModelChange)="rGrammarAutocompleteChanged($event)"/>
           <nz-autocomplete [nzDataSource]="rGrammarAutocompleteValues" nzBackfill #rGrammarAutocomplete></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RSubsemantik">{{ 'edit.lemma.rm_semantics' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rmSubsemantik">{{ 'edit.lemma.rm_semantics' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RSubsemantik" id="RSubsemantik" [nzAutocomplete]="rSemanticsAuto" (input)="rSemanticsChanged()"/>
+          <input nz-input formControlName="rmSubsemantik" id="rmSubsemantik" [nzAutocomplete]="rSemanticsAuto" (input)="rSemanticsChanged()"/>
           <nz-autocomplete [nzDataSource]="rSemanticsAutocomplete" nzBackfill #rSemanticsAuto></nz-autocomplete>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RRedirect">{{ 'edit.lemma.rm_link' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rmRedirect">{{ 'edit.lemma.rm_link' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RRedirect" id="RRedirect" />
+          <input nz-input formControlName="rmRedirect" id="rmRedirect" />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="RFlex">{{ 'edit.lemma.rm_conjugation' | translate }}</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rmFlex">{{ 'edit.lemma.rm_conjugation' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="RFlex" id="RFlex" />
+          <input nz-input formControlName="rmFlex" id="rmFlex" />
         </nz-form-control>
       </nz-form-item>
     </div>
@@ -209,9 +209,9 @@
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="contact_email">{{ 'edit.lemma.email' | translate }}</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="userEmail">{{ 'edit.lemma.email' | translate }}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input formControlName="contact_email" id="contact_email" />
+      <input nz-input formControlName="userEmail" id="userEmail" />
       <button nz-button nzType="default" class="reply-comment" (click)="replyComment()">{{ 'reply.button' | translate }}</button>
     </nz-form-control>
   </nz-form-item>
@@ -224,8 +224,8 @@
       <button nz-button nzType="default" (click)="reset()">{{ 'edit.reset' | translate }}</button>
     </div>
     <div>
-      <button nz-button nzType="default" (click)="save(false)" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save' : 'edit.create') | translate }}</button>
-      <button nz-button nzType="primary" (click)="save(true)" [nzLoading]="isLoading">{{ (!!lexEntryId ? 'edit.save_suggestion' : 'edit.create_suggestion') | translate }}</button>
+      <button nz-button nzType="default" (click)="save(true)" [nzLoading]="isLoading">{{ (!!entryVersion.entryId ? 'edit.save_suggestion' : 'edit.create_suggestion') | translate }}</button>
+      <button nz-button nzType="primary" (click)="save(false)" [nzLoading]="isLoading">{{ (!!entryVersion.entryId ? 'edit.save' : 'edit.create') | translate }}</button>
     </div>
   </div>
 </div>

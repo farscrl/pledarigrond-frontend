@@ -1,13 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
-import { LemmaVersion } from 'src/app/models/lemma-version';
-import { LexEntry } from 'src/app/models/lex-entry';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { EntryVersionInternalDto } from '../../models/dictionary';
 
 export class ChanceSortOrderData {
-  lexEntry?: LexEntry;
+  entryVersion?: EntryVersionInternalDto;
   dictionaryLanguage?: DictionaryLanguage;
 }
 
@@ -19,7 +18,7 @@ export class ChanceSortOrderData {
 })
 export class ChangeSortOrderComponent implements OnInit {
 
-  lexEntry?: LexEntry;
+  entryVersion?: EntryVersionInternalDto;
   dictionaryLanguage?: DictionaryLanguage;
 
   listStyle = {
@@ -27,8 +26,8 @@ export class ChangeSortOrderComponent implements OnInit {
   };
 
   searchString: string = "";
-  itemsToReorder: LemmaVersion[] = [];
-  sortedItems = [];
+  itemsToReorder: EntryVersionInternalDto[] = [];
+  sortedItems: EntryVersionInternalDto[] = [];
 
   isSaving = false;
 
@@ -38,19 +37,19 @@ export class ChangeSortOrderComponent implements OnInit {
     private modal: NzModalRef,
     @Inject(NZ_MODAL_DATA) data: ChanceSortOrderData
   ) {
-    this.lexEntry = data.lexEntry;
+    this.entryVersion = data.entryVersion;
     this.dictionaryLanguage = data.dictionaryLanguage;
   }
 
   ngOnInit(): void {
-    if (!this.lexEntry || !this.dictionaryLanguage) {
+    if (!this.entryVersion || !this.dictionaryLanguage) {
       return;
     }
 
     if (this.dictionaryLanguage === 'GERMAN') {
-      this.searchString = this.lexEntry.current.lemmaValues.DStichwort!;
+      this.searchString = this.entryVersion.deStichwort!;
     } else {
-      this.searchString = this.lexEntry.current.lemmaValues.RStichwort!;
+      this.searchString = this.entryVersion.rmStichwort!;
     }
 
     this.editorService.getSortOrder(this.languageSelectionService.getCurrentLanguage(), this.searchString, this.dictionaryLanguage).subscribe(data => {
@@ -60,7 +59,7 @@ export class ChangeSortOrderComponent implements OnInit {
     });
   }
 
-  listSorted(items: any) {
+  listSorted(items: EntryVersionInternalDto[]) {
     this.sortedItems = items;
   }
 

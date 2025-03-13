@@ -143,8 +143,9 @@ export class ConjugationComponent implements OnInit {
     if (!this.copyService.canPasteConjugation()) {
       return;
     }
-    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.copyService.lexEntryId!).subscribe(lexEntry => {
-      this.copyVerbForms(lexEntry.current);
+    this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.copyService.lexEntryId!).subscribe(lexEntry => {
+      // TODO: re-enable
+      //this.copyVerbForms(lexEntry.current);
     });
   }
 

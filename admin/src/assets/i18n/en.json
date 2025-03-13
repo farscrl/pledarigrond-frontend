@@ -246,6 +246,7 @@
       "deleted": "Deleted",
       "new_entry": "New entry",
       "new_modification": "New modification",
+      "published": "Published",
       "undefined": "Undefined"
     },
     "role": {

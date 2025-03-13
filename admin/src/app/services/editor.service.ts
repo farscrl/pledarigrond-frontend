@@ -3,13 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DictionaryLanguage } from '../models/dictionary-language';
 import { EditorQuery } from '../models/editor-query';
-import { LemmaVersion } from '../models/lemma-version';
-import { LexEntry } from '../models/lex-entry';
 import { Page } from '../models/page';
 import { EditorSearchCriteria, SearchCriteria } from '../models/search-criteria';
 import { Language } from '../models/security';
-import { environment } from './../../environments/environment';
+import { environment } from '../../environments/environment';
 import { ReferenceVerbDto } from '../models/reference-verb-dto';
+import {
+  EntryDto,
+  EntryVersionDto,
+  EntryVersionExtendedDto,
+  EntryVersionInternalDto,
+  NormalizedEntryVersionDto
+} from '../models/dictionary';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +25,7 @@ export class EditorService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllLexEntries(language: Language, editorQuery: EditorQuery, page: number): Observable<Page<LexEntry>> {
+  getAllEntries(language: Language, editorQuery: EditorQuery, page: number): Observable<Page<NormalizedEntryVersionDto>> {
     let params: HttpParams = new HttpParams();
 
     params = this.editorQueryToHttpParam(editorQuery, params);
@@ -33,10 +38,10 @@ export class EditorService {
       params: params
     };
 
-    return this.httpClient.get<Page<LexEntry>>(this.generateUrl(language, 'lex_entries'), httpOptions);
+    return this.httpClient.get<Page<NormalizedEntryVersionDto>>(this.generateUrl(language, 'entries'), httpOptions);
   }
 
-  searchLemmaVersions(language: Language, searchCriteria: SearchCriteria, page: number, pageSize = 15): Observable<Page<LemmaVersion>> {
+  searchLemmaVersions(language: Language, searchCriteria: SearchCriteria, page: number, pageSize = 15): Observable<Page<EntryVersionExtendedDto>> {
     let params: HttpParams = new HttpParams();
 
     params = this.searchCriteriaToHttpParam(searchCriteria, params);
@@ -53,14 +58,14 @@ export class EditorService {
       params: params
     };
 
-    return this.httpClient.get<Page<LemmaVersion>>(this.generateUrl(language, 'search'), httpOptions);
+    return this.httpClient.get<Page<EntryVersionExtendedDto>>(this.generateUrl(language, 'search'), httpOptions);
   }
 
-  getLexEntry(language: Language, id: string) {
-    return this.httpClient.get<LexEntry>(this.generateUrl(language, 'lex_entries/' + id));
+  getEntry(language: Language, id: string): Observable<EntryDto> {
+    return this.httpClient.get<EntryDto>(this.generateUrl(language, 'lex_entries/' + id));
   }
 
-  newLexEntry(language: Language, lexEntry: LexEntry, asSuggestion: boolean) {
+  newEntry(language: Language, version: EntryVersionDto, asSuggestion: boolean) {
     let params: HttpParams = new HttpParams();
 
     if (asSuggestion) {
@@ -71,40 +76,40 @@ export class EditorService {
       params: params
     };
 
-    const body: any = Object.assign({}, lexEntry);
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/'), body, httpOptions);
+    const body: any = Object.assign({}, version);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/'), body, httpOptions);
   }
 
-  modifyAndAccepptLexEntry(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
-    const body: any = Object.assign({}, lemmaVersion);
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_and_accept_version'), body);
+  modifyAndAccepptEntryVersion(language: Language, entryId: string, version: EntryVersionDto) {
+    const body: any = Object.assign({}, version);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_and_accept_version'), body);
   }
 
-  modifyLexEntry(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
-    const body: any = Object.assign({}, lemmaVersion);
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_version'), body);
+  modifyEntryVersion(language: Language, entryId: string, version: EntryVersionDto): Observable<EntryDto> {
+    const body: any = Object.assign({}, version);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_version'), body);
   }
 
-  reviewLaterLexEntry(language: Language, entryId: string) {
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/review_later_version'), null);
+  reviewEntryLater(language: Language, entryId: string) {
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/review_later_version'), null);
   }
 
   dropEntry(language: Language, entryId: string) {
-    return this.httpClient.delete<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId));
+    return this.httpClient.delete<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId));
   }
 
-  acceptVersion(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
-    const body: any = Object.assign({}, lemmaVersion);
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/accept_version'), body);
+  acceptVersion(language: Language, entryId: string, version: EntryVersionInternalDto) {
+    const body: any = Object.assign({}, version);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/accept_version'), body);
   }
 
-  rejectVersion(language: Language, entryId: string, lemmaVersion: LemmaVersion) {
-    const body: any = Object.assign({}, lemmaVersion);
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/reject_version'), body);
+  rejectVersion(language: Language, entryId: string, version: EntryVersionInternalDto) {
+    const body: any = Object.assign({}, version);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/reject_version'), body);
   }
 
   dropOutdatedHistory(language: Language, entryId: string) {
-    return this.httpClient.post<LexEntry>(this.generateUrl(language, 'lex_entries/' + entryId + '/drop_outdated_history'), null);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/drop_outdated_history'), null);
   }
 
   getChoiceFieldsSuggestions(language: Language) {
@@ -136,7 +141,7 @@ export class EditorService {
     return this.httpClient.get<any>(this.generateUrl(language, 'reference_inflection'), httpOptions);
   }
 
-  getSortOrder(language: Language, lemma: string, dictionaryLanguage: DictionaryLanguage): Observable<LemmaVersion[]> {
+  getSortOrder(language: Language, lemma: string, dictionaryLanguage: DictionaryLanguage): Observable<EntryVersionInternalDto[]> {
     let params: HttpParams = new HttpParams();
 
     params = params.set('dictionaryLanguage', dictionaryLanguage);
@@ -146,10 +151,10 @@ export class EditorService {
       params: params
     };
 
-    return this.httpClient.get<any>(this.generateUrl(language, 'get_order'), httpOptions);
+    return this.httpClient.get<EntryVersionInternalDto[]>(this.generateUrl(language, 'get_order'), httpOptions);
   }
 
-  saveSortOrder(language: Language,  dictionaryLanguage: DictionaryLanguage, lemmas: LemmaVersion[]) {
+  saveSortOrder(language: Language,  dictionaryLanguage: DictionaryLanguage, lemmas: EntryVersionInternalDto[]) {
     let params: HttpParams = new HttpParams();
 
     params = params.set('dictionaryLanguage', dictionaryLanguage);
@@ -160,7 +165,7 @@ export class EditorService {
       params: params
     };
 
-    return this.httpClient.post<any>(this.generateUrl(language, 'update_order'), body, httpOptions);
+    return this.httpClient.post<EntryVersionInternalDto[]>(this.generateUrl(language, 'update_order'), body, httpOptions);
   }
 
   exportFieldsByEditorQuery(language: Language, editorQuery: EditorQuery, fields: string[]): Observable<HttpResponse<Blob>> {
@@ -210,8 +215,8 @@ export class EditorService {
       params = params.set('endTime', editorQuery.endTime);
     }
 
-    if (!!editorQuery.verification) {
-      params = params.set('verification', editorQuery.verification);
+    if (!!editorQuery.versionStatus) {
+      params = params.set('versionStatus', editorQuery.versionStatus);
     }
 
     if (!!editorQuery.userOrIp) {

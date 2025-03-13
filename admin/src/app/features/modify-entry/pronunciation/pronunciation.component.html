@@ -1,7 +1,7 @@
-<ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration === null)">
+<ng-container *ngIf="entryVersion && !entryVersion.rmPronunciation && (orderedRegistration === null)">
   Anc è nagina registraziun attribuida a quest lemma.
 </ng-container>
-<ng-container *ngIf="lemmaVersion && !lemmaVersion.lemmaValues.RPronunciation && (orderedRegistration !== null) ">
+<ng-container *ngIf="entryVersion && !entryVersion.rmPronunciation && (orderedRegistration !== null) ">
   Ina registraziun per quest lemma è vegnida empustada:<br>
   <b>{{ orderedRegistration.rmStichwort }}</b>
   <ng-container *ngIf="orderedRegistration.rmGrammatik">, {{ orderedRegistration.rmGrammatik }}</ng-container>
@@ -9,9 +9,9 @@
   <br>
   <app-registration-status [status]="orderedRegistration.status"></app-registration-status>
 </ng-container>
-<ng-container *ngIf="lemmaVersion && !!lemmaVersion.lemmaValues.RPronunciation">
+<ng-container *ngIf="entryVersion && !!entryVersion.rmPronunciation">
   Ina registraziun è gia attribuida a quest lemma:
-  <app-audio-player [url]="getAudioUrlById(lemmaVersion.lemmaValues.RPronunciation!)"></app-audio-player>
+  <app-audio-player [url]="getAudioUrlById(entryVersion.rmPronunciation!)"></app-audio-player>
 </ng-container>
 
 <div style="text-align: right" *ngIf="!isModifyActive">
@@ -55,7 +55,7 @@
   <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
     <h3>Empustar ina pronunzia</h3>
     <p>
-      Cun quest button po ina pronunzia vegnir empustada per «{{ lemmaVersion?.lemmaValues?.RStichwort }}». Il pled vegn agiuntà a la glista da tut las
+      Cun quest button po ina pronunzia vegnir empustada per «{{ entryVersion?.rmStichwort }}». Il pled vegn agiuntà a la glista da tut las
       pronunzias da registrar.
     </p>
     <button nz-button nzType="primary" nzSize="large" (click)="orderRegistration()">

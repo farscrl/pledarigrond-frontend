@@ -62,7 +62,7 @@
   nzSize="small"
   #rowSelectionTable
   nzShowPagination="false"
-  [nzData]="listOfLexEntries"
+  [nzData]="items"
 >
   <thead>
     <tr>
@@ -97,67 +97,67 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of listOfLexEntries" (click)="selectRow(data)" [class.selected]="data.selected">
+    <tr *ngFor="let item of items" (click)="selectRow(item)" [class.selected]="item.selected">
       <td
         nzLeft
-        [nzChecked]="setOfCheckedId.has(data.id!)"
-        [nzDisabled]="data.disabled"
-        (nzCheckedChange)="onItemChecked(data.id!, $event)"
+        [nzChecked]="setOfCheckedId.has(item.version.versionId)"
+        [nzDisabled]="item.disabled"
+        (nzCheckedChange)="onItemChecked(item.version.versionId, $event)"
         *ngIf="columns.checkMultiple.active"
       ></td>
       <td *ngIf="columns.diff.active" nzLeft class="small">
-        <span nz-icon nzType="diff" nzTheme="outline" (click)="showDiff(data)" class="button-icon"></span>
+        <span nz-icon nzType="diff" nzTheme="outline" (click)="showDiff(item.version)" class="button-icon"></span>
       </td>
       <td *ngIf="columns.user.active" nzLeft class="small">
-        <app-user-role [role]="data.mostRecent.creatorRole"></app-user-role><br>
-        <span *ngIf="data.mostRecent.userId" style="font-size: 90%;">{{ data.mostRecent.userId === 'guest@pledarigrond.ch' ? ('data.role.guest' | translate | uppercase ) : data.mostRecent.userId }}</span>
-        {{ data.mostRecent.ip ? data.mostRecent.ip : '-' }}
+        <app-user-role [role]="item.version.creatorRole"></app-user-role><br>
+        <span *ngIf="item.version.creator" style="font-size: 90%;">{{ item.version.creator === 'guest@pledarigrond.ch' ? ('data.role.guest' | translate | uppercase ) : item.version.creator }}</span>
+        {{ item.version.creatorIp ? item.version.creatorIp : '-' }}
       </td>
       <td *ngIf="columns.verifier.active" nzLeft class="small">
-        {{ data.mostRecent.verifierId }}
+        {{ item.version.verifier }}
       </td>
       <td *ngIf="columns.filter.active" class="button-column">
-        <button nz-button nzSize="small" nzType="default" (click)="filterUser(data.mostRecent.ip); $event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.filter_user' | translate }}</button>
-        <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(data.mostRecent.verifierId); $event.stopPropagation();" class="wide-button" *ngIf="data.mostRecent.verifierId" style="margin-top: 4px;">{{ 'lexicon.lemma.table_actions.filter_verifier' | translate }}</button>
+        <button nz-button nzSize="small" nzType="default" (click)="filterUser(item.version.creatorIp); $event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.filter_user' | translate }}</button>
+        <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(item.version.verifier); $event.stopPropagation();" class="wide-button" *ngIf="item.version.verifier" style="margin-top: 4px;">{{ 'lexicon.lemma.table_actions.filter_verifier' | translate }}</button>
       </td>
       <td *ngIf="columns.entry.active">
-        <div [innerHtml]="(getLemma(data, false) | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (getLemma(data, true) | highlighter:filter!.searchPhrase:filter!.highlight)"></div>
-        <div style="font-size: 85%; font-style: italic;">{{ (data.mostRecent.lemmaValues.contact_comment && data.mostRecent.lemmaValues.contact_comment.length > 35) ? ((data.mostRecent.lemmaValues.contact_comment | slice:0:35)+'...') : (data.mostRecent.lemmaValues.contact_comment) }}</div>
+        <div [innerHtml]="(getLemma(item.version, false) | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (getLemma(item.version, true) | highlighter:filter!.searchPhrase:filter!.highlight)"></div>
+        <div style="font-size: 85%; font-style: italic;">{{ (item.version.userComment && item.version.userComment.length > 35) ? ((item.version.userComment | slice:0:35)+'...') : (item.version.userComment) }}</div>
       </td>
       <td *ngIf="columns.actions.active" class="button-column">
-        <button nz-button nzSize="small" nzType="primary" (click)="editEntry(data.id!); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.edit' | translate }}</button><br>
-        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(data); $event.stopPropagation();" *ngIf="(showRejectButton && data.mostRecent.status !== 'NEW_MODIFICATION') || (showRejectButton && data.mostRecent.status === 'NEW_MODIFICATION' && data.mostRecent.verification === 'ACCEPTED') || !showRejectButton">{{ 'lexicon.lemma.table_actions.delete' | translate }}</button>
-        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="rejectEntry(data); $event.stopPropagation();" *ngIf="showRejectButton && data.mostRecent.status === 'NEW_MODIFICATION' && data.mostRecent.verification !== 'ACCEPTED'">{{ 'lexicon.lemma.table_actions.reject' | translate }}</button>
+        <button nz-button nzSize="small" nzType="primary" (click)="editEntry(item.version); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.edit' | translate }}</button><br>
+        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(item); $event.stopPropagation();" *ngIf="(showRejectButton && item.version.versionStatus !== 'Unverified') || !showRejectButton">{{ 'lexicon.lemma.table_actions.delete' | translate }}</button>
+        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="rejectEntryVersion(item); $event.stopPropagation();" *ngIf="showRejectButton && item.version.versionStatus === 'Unverified'">{{ 'lexicon.lemma.table_actions.reject' | translate }}</button>
       </td>
       <td *ngIf="columns.order.active" class="button-column">
-        <button nz-button nzSize="small" (click)="startReorder(data, 'ROMANSH');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_rm' | translate }}</button><br>
-        <button nz-button nzSize="small" (click)="startReorder(data, 'GERMAN');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_de' | translate }}</button>
+        <button nz-button nzSize="small" (click)="startReorder(item, 'ROMANSH');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_rm' | translate }}</button><br>
+        <button nz-button nzSize="small" (click)="startReorder(item, 'GERMAN');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_de' | translate }}</button>
       </td>
       <td *ngIf="columns.state.active" class="small">
-        <app-verification [verification]="data.mostRecent.verification"></app-verification><br>
-        <app-status [status]="data.mostRecent.status"></app-status>
+        <app-verification [verification]="item.version.versionStatus"></app-verification><br>
+        <app-status [status]="item.publicationStatus"></app-status>
       </td>
       <td *ngIf="columns.created.active" class="small">
-        {{ formateDate(data.mostRecent.timestamp) }}<br>
-        {{ formateTime(data.mostRecent.timestamp) }}
+        {{ formateDate(item.version.timestamp) }}<br>
+        {{ formateTime(item.version.timestamp) }}
       </td>
-      <td *ngIf="columns.german.active">{{ data.mostRecent.lemmaValues.DStichwort }}</td>
-      <td *ngIf="columns.germanGrammar.active">{{ data.mostRecent.lemmaValues.DGrammatik }}</td>
-      <td *ngIf="columns.germanGender.active">{{ data.mostRecent.lemmaValues.DGenus }}</td>
-      <td *ngIf="columns.germanSemantics.active">{{ data.mostRecent.lemmaValues.DSubsemantik }}</td>
-      <td *ngIf="columns.germanLink.active">{{ data.mostRecent.lemmaValues.DRedirect }}</td>
-      <td *ngIf="columns.germanAdditionalSearchTerms.active">{{ data.mostRecent.lemmaValues.DTags }}</td>
-      <td *ngIf="columns.romansh.active">{{ data.mostRecent.lemmaValues.RStichwort }}</td>
-      <td *ngIf="columns.romanshGrammar.active">{{ data.mostRecent.lemmaValues.RGrammatik }}</td>
-      <td *ngIf="columns.romanshGender.active">{{ data.mostRecent.lemmaValues.RStichwort }}</td>
-      <td *ngIf="columns.romanshSemantics.active">{{ data.mostRecent.lemmaValues.RSubsemantik }}</td>
-      <td *ngIf="columns.romanshLink.active">{{ data.mostRecent.lemmaValues.RRedirect }}</td>
-      <td *ngIf="columns.romanshConjugation.active">{{ data.mostRecent.lemmaValues.RFlex }}</td>
-      <td *ngIf="columns.romanshInflectionType.active">{{ getInflectionType(data.mostRecent.lemmaValues.RInflectionType) }}</td>
-      <td *ngIf="columns.romanshAdditionalSearchTerms.active">{{ data.mostRecent.lemmaValues.RTags }}</td>
-      <td *ngIf="columns.romanshEtymology.active">{{ data.mostRecent.lemmaValues.REtymologie }}</td>
-      <td *ngIf="columns.category.active">{{ data.mostRecent.lemmaValues.categories }}</td>
-      <td *ngIf="columns.comment.active">{{ data.mostRecent.lemmaValues.contact_comment }}</td>
+      <td *ngIf="columns.german.active">{{ item.version.deStichwort }}</td>
+      <td *ngIf="columns.germanGrammar.active">{{ item.version.deGrammatik }}</td>
+      <td *ngIf="columns.germanGender.active">{{ item.version.deGenus }}</td>
+      <td *ngIf="columns.germanSemantics.active">{{ item.version.deSubsemantik }}</td>
+      <td *ngIf="columns.germanLink.active">{{ item.version.deRedirect }}</td>
+      <td *ngIf="columns.germanAdditionalSearchTerms.active">{{ item.version.deTags }}</td>
+      <td *ngIf="columns.romansh.active">{{ item.version.rmStichwort }}</td>
+      <td *ngIf="columns.romanshGrammar.active">{{ item.version.rmGrammatik }}</td>
+      <td *ngIf="columns.romanshGender.active">{{ item.version.rmGenus }}</td>
+      <td *ngIf="columns.romanshSemantics.active">{{ item.version.rmSubsemantik }}</td>
+      <td *ngIf="columns.romanshLink.active">{{ item.version.rmRedirect }}</td>
+      <td *ngIf="columns.romanshConjugation.active">{{ item.version.rmFlex }}</td>
+      <td *ngIf="columns.romanshInflectionType.active">{{ getInflectionType(item.version.inflection?.inflectionType) }}</td>
+      <td *ngIf="columns.romanshAdditionalSearchTerms.active">{{ item.version.rmTags }}</td>
+      <td *ngIf="columns.romanshEtymology.active">{{ item.version.rmEtymologie }}</td>
+      <td *ngIf="columns.category.active">{{ item.version.categories }}</td>
+      <td *ngIf="columns.comment.active">{{ item.version.userComment }}</td>
       <td><!--empty column to take up space--></td>
     </tr>
   </tbody>

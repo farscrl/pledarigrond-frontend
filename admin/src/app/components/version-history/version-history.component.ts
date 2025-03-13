@@ -1,6 +1,4 @@
-import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { LemmaVersion } from 'src/app/models/lemma-version';
-import { LexEntry, LexEntryUi } from 'src/app/models/lex-entry';
+import { Component, Input, OnChanges, SimpleChanges, ViewContainerRef } from '@angular/core';
 
 import moment from 'moment';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -8,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
+import { EntryDto, EntryVersionInternalDto } from '../../models/dictionary';
 
 @Component({
     selector: 'app-version-history',
@@ -15,22 +14,17 @@ import { DiffModalComponent } from "../../features/diff-modal/diff-modal.compone
     styleUrls: ['./version-history.component.scss'],
     standalone: false
 })
-export class VersionHistoryComponent implements OnInit {
+export class VersionHistoryComponent implements OnChanges {
 
   loading = false;
 
   @Input()
-  set lexEntry(lexEntry: LexEntryUi | undefined) {
-    this.selectedLexEntry = lexEntry;
-    this.extractHistory();
-  }
+  entry?: EntryDto;
 
-  selectedLexEntry?: LexEntryUi;
+  versionHistory: readonly EntryVersionInternalDto[] = [];
 
-  versionHistory: readonly LemmaVersion[] = [];
-
-  diffOldLemmaVersion: LemmaVersion | undefined;
-  diffNewLemmaVersion: LemmaVersion | undefined;
+  diffOldEntryVersion: EntryVersionInternalDto | undefined;
+  diffNewEntryVersion: EntryVersionInternalDto | undefined;
 
   constructor(
     private modalService: NzModalService,
@@ -40,22 +34,24 @@ export class VersionHistoryComponent implements OnInit {
     private languageSelectionService: LanguageSelectionService,
   ) { }
 
-  ngOnInit(): void {
-
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['entry']) {
+      this.extractHistory();
+    }
   }
 
-  formateDate(timestamp: number): string {
+  formateDate(timestamp: Date): string {
     return moment(timestamp).format("DD-MM-YYYY");
   }
 
-  formateTime(timestamp: number): string {
+  formateTime(timestamp: Date): string {
     return moment(timestamp).format("HH:mm:ss")
   }
 
   dropOutdatedHistory() {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('lexicon.lemma_history.delete_history_confirmation'),
-      nzContent: '<b style="color: red;">' +  this.selectedLexEntry!.current.lemmaValues.DStichwort + ' / ' + this.selectedLexEntry!.current.lemmaValues.RStichwort + '</b>',
+      nzContent: '<b style="color: red;">' +  this.entry!.current?.deStichwort + ' / ' + this.entry!.current?.rmStichwort + '</b>',
       nzClosable: false,
       nzOkDanger: true,
       nzViewContainerRef: this.viewContainerRef,
@@ -64,28 +60,21 @@ export class VersionHistoryComponent implements OnInit {
     });
   }
 
-  beforeChanged(lemmaVersion?: LemmaVersion) {
-    if (!lemmaVersion) {
-      lemmaVersion = new LemmaVersion();
+  beforeChanged(version?: EntryVersionInternalDto) {
+    if (!version) {
+      version = new EntryVersionInternalDto();
     }
-    this.diffOldLemmaVersion = lemmaVersion;
+    this.diffOldEntryVersion = version;
   }
 
-  afterChanged(lemmaVersion?: LemmaVersion) {
-    if (!lemmaVersion) {
-      lemmaVersion = new LemmaVersion();
+  afterChanged(version?: EntryVersionInternalDto) {
+    if (!version) {
+      version = new EntryVersionInternalDto();
     }
-    this.diffNewLemmaVersion = lemmaVersion;
+    this.diffNewEntryVersion = version;
   }
 
   showDiff() {
-    // diff view is implemented to take lex entry. Thus, we create a new lexEntry with the lemmaVersions to compare.
-    const lexEntry = new LexEntry();
-    lexEntry.current =  JSON.parse(JSON.stringify(this.diffOldLemmaVersion!));
-    lexEntry.current.internalId = 0;
-    lexEntry.mostRecent =JSON.parse(JSON.stringify(this.diffNewLemmaVersion!));
-    lexEntry.mostRecent.internalId = 1;
-
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.titles.edit'),
       nzContent: DiffModalComponent,
@@ -95,28 +84,29 @@ export class VersionHistoryComponent implements OnInit {
       nzFooter: null,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lexEntry: lexEntry,
+        oldLemmaVersion: this.diffOldEntryVersion,
+        newLemmaVersion: this.diffNewEntryVersion!,
       },
     });
   }
 
   private extractHistory() {
-    if (this.selectedLexEntry) {
-      this.versionHistory = this.selectedLexEntry.versionHistory;
+    if (this.entry) {
+      this.versionHistory = this.entry.versions;
     } else {
       this.versionHistory = []
     }
   }
 
   private dropOutdatedHistoryConfirmed() {
-    this.editorService.dropOutdatedHistory(this.languageSelectionService.getCurrentLanguage(), this.selectedLexEntry!.id!).subscribe(() => {
+    this.editorService.dropOutdatedHistory(this.languageSelectionService.getCurrentLanguage(), this.entry!.entryId).subscribe(() => {
       this.reloadEntry();
     });
   }
 
   private reloadEntry() {
-    this.editorService.getLexEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedLexEntry!.id!).subscribe(entry => {
-      this.selectedLexEntry = entry as LexEntryUi;
+    this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.entry!.entryId).subscribe(entry => {
+      this.entry = entry;
       this.extractHistory();
     });
   }
