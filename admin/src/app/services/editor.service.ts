@@ -62,7 +62,7 @@ export class EditorService {
   }
 
   getEntry(language: Language, id: string): Observable<EntryDto> {
-    return this.httpClient.get<EntryDto>(this.generateUrl(language, 'lex_entries/' + id));
+    return this.httpClient.get<EntryDto>(this.generateUrl(language, 'entries/' + id));
   }
 
   newEntry(language: Language, version: EntryVersionDto, asSuggestion: boolean) {
@@ -77,39 +77,39 @@ export class EditorService {
     };
 
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/'), body, httpOptions);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/'), body, httpOptions);
   }
 
   modifyAndAccepptEntryVersion(language: Language, entryId: string, version: EntryVersionDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_and_accept_version'), body);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/modify_and_accept_version'), body);
   }
 
   modifyEntryVersion(language: Language, entryId: string, version: EntryVersionDto): Observable<EntryDto> {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/modify_version'), body);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/modify_version'), body);
   }
 
   reviewEntryLater(language: Language, entryId: string) {
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/review_later_version'), null);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/review_later_version'), null);
   }
 
   dropEntry(language: Language, entryId: string) {
-    return this.httpClient.delete<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId));
+    return this.httpClient.delete<EntryDto>(this.generateUrl(language, 'entries/' + entryId));
   }
 
   acceptVersion(language: Language, entryId: string, version: EntryVersionInternalDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/accept_version'), body);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/accept_version'), body);
   }
 
   rejectVersion(language: Language, entryId: string, version: EntryVersionInternalDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/reject_version'), body);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/reject_version'), body);
   }
 
   dropOutdatedHistory(language: Language, entryId: string) {
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'lex_entries/' + entryId + '/drop_outdated_history'), null);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/drop_outdated_history'), null);
   }
 
   getChoiceFieldsSuggestions(language: Language) {
@@ -177,7 +177,7 @@ export class EditorService {
     let zipHeaders = new HttpHeaders();
     zipHeaders = zipHeaders.set('Accept', 'application/zip');
 
-    return this.httpClient.post(this.generateUrl(language, 'lex_entries_export'), body, {
+    return this.httpClient.post(this.generateUrl(language, 'entries_export'), body, {
       params: params,
       headers: zipHeaders,
       responseType: 'blob',
