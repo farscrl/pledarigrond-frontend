@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 
 @Component({
-  selector: 'app-other-resources',
-  templateUrl: './other-resources.component.html',
-  styleUrls: ['./other-resources.component.scss']
+    selector: 'app-other-resources',
+    templateUrl: './other-resources.component.html',
+    styleUrls: ['./other-resources.component.scss'],
+    standalone: false
 })
 export class OtherResourcesComponent extends NgxModalComponent<{resourceType: OtherResourcesType|undefined}, null> implements OnInit {
 

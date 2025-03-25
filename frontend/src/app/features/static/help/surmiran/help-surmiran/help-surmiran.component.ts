@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
 @Component({
-  selector: 'app-help-surmiran',
-  templateUrl: './help-surmiran.component.html'
+    selector: 'app-help-surmiran',
+    templateUrl: './help-surmiran.component.html',
+    standalone: false
 })
 export class HelpSurmiranComponent implements OnInit {
 

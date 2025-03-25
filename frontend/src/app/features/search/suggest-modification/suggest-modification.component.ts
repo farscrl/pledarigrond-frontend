@@ -7,9 +7,10 @@ import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { MatomoTracker } from "ngx-matomo-client";
 
 @Component({
-  selector: 'app-suggest-modification',
-  templateUrl: './suggest-modification.component.html',
-  styleUrls: ['./suggest-modification.component.scss']
+    selector: 'app-suggest-modification',
+    templateUrl: './suggest-modification.component.html',
+    styleUrls: ['./suggest-modification.component.scss'],
+    standalone: false
 })
 export class SuggestModificationComponent extends NgxModalComponent<{lemmaVersion: LemmaVersion}, null> implements OnInit {
 

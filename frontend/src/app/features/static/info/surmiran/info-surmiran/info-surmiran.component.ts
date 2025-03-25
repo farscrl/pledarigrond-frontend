@@ -4,8 +4,9 @@ import { InfoService } from 'src/app/services/info.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
 @Component({
-  selector: 'app-info-surmiran',
-  templateUrl: './info-surmiran.component.html'
+    selector: 'app-info-surmiran',
+    templateUrl: './info-surmiran.component.html',
+    standalone: false
 })
 export class InfoSurmiranComponent implements OnInit {
 

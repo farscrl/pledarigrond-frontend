@@ -5,9 +5,10 @@ import { Idiom, SelectedLanguageService } from '../../../services/selected-langu
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-details-modal',
-  templateUrl: './details-modal.component.html',
-  styleUrls: ['./details-modal.component.scss']
+    selector: 'app-details-modal',
+    templateUrl: './details-modal.component.html',
+    styleUrls: ['./details-modal.component.scss'],
+    standalone: false
 })
 export class DetailsModalComponent extends NgxModalComponent<{lemmaVersion?: LemmaVersion}, null> implements OnInit, OnDestroy {
 

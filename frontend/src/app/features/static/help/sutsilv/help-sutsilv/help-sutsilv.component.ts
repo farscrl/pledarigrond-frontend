@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
 @Component({
-  selector: 'app-help-sutsilv',
-  templateUrl: './help-sutsilv.component.html'
+    selector: 'app-help-sutsilv',
+    templateUrl: './help-sutsilv.component.html',
+    standalone: false
 })
 export class HelpSutsilvComponent implements OnInit {
 

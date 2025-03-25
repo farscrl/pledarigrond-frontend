@@ -2,9 +2,10 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { LemmaVersion } from '../../../../models/lemma-version';
 
 @Component({
-  selector: 'app-details-example',
-  templateUrl: './details-example.component.html',
-  styleUrl: './details-example.component.scss'
+    selector: 'app-details-example',
+    templateUrl: './details-example.component.html',
+    styleUrl: './details-example.component.scss',
+    standalone: false
 })
 export class DetailsExampleComponent implements OnChanges {
 

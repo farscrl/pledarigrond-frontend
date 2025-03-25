@@ -4,8 +4,9 @@ import { InfoService } from 'src/app/services/info.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
 @Component({
-  selector: 'app-info-rumgr',
-  templateUrl: './info-rumgr.component.html'
+    selector: 'app-info-rumgr',
+    templateUrl: './info-rumgr.component.html',
+    standalone: false
 })
 export class InfoRumgrComponent implements OnInit {
 

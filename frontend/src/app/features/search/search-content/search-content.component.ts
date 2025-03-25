@@ -13,9 +13,10 @@ import { MatomoTracker } from "ngx-matomo-client";
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-search-content',
-  templateUrl: './search-content.component.html',
-  styleUrls: ['./search-content.component.scss']
+    selector: 'app-search-content',
+    templateUrl: './search-content.component.html',
+    styleUrls: ['./search-content.component.scss'],
+    standalone: false
 })
 export class SearchContentComponent implements OnInit, OnDestroy {
 

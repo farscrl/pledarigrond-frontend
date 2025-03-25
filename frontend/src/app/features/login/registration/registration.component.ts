@@ -6,9 +6,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+    selector: 'app-registration',
+    templateUrl: './registration.component.html',
+    styleUrls: ['./registration.component.scss'],
+    standalone: false
 })
 export class RegistrationComponent extends NgxModalComponent<null, null> implements OnInit {
 

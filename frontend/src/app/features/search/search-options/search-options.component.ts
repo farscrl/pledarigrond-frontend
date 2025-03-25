@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 
 @Component({
-  selector: 'app-search-options',
-  templateUrl: './search-options.component.html',
-  styleUrls: ['./search-options.component.scss']
+    selector: 'app-search-options',
+    templateUrl: './search-options.component.html',
+    styleUrls: ['./search-options.component.scss'],
+    standalone: false
 })
 export class SearchOptionsComponent implements OnInit {
 

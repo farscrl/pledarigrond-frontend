@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { NgxModalComponent } from "ngx-modalview";
 
 @Component({
-  selector: 'app-manuals-spellchecker',
-  templateUrl: './manuals-spellchecker.component.html',
-  styleUrls: ['./manuals-spellchecker.component.scss']
+    selector: 'app-manuals-spellchecker',
+    templateUrl: './manuals-spellchecker.component.html',
+    styleUrls: ['./manuals-spellchecker.component.scss'],
+    standalone: false
 })
 export class ManualsSpellcheckerComponent extends NgxModalComponent<{manualType: ManualType, language: ManualLanguage, hunspellLanguage: HunspellLanguage }, null> {
 

@@ -4,9 +4,10 @@ import { Idiom } from '../../../../services/selected-language.service';
 import { LemmaVersion } from '../../../../models/lemma-version';
 
 @Component({
-  selector: 'app-details-verb',
-  templateUrl: './details-verb.component.html',
-  styleUrl: './details-verb.component.scss'
+    selector: 'app-details-verb',
+    templateUrl: './details-verb.component.html',
+    styleUrl: './details-verb.component.scss',
+    standalone: false
 })
 export class DetailsVerbComponent implements OnChanges {
   @Input()

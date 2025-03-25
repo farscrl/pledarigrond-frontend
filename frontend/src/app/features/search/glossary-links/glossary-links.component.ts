@@ -5,9 +5,10 @@ import { SelectedLanguageService } from "../../../services/selected-language.ser
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-glossary-links',
-  templateUrl: './glossary-links.component.html',
-  styleUrls: ['./glossary-links.component.scss']
+    selector: 'app-glossary-links',
+    templateUrl: './glossary-links.component.html',
+    styleUrls: ['./glossary-links.component.scss'],
+    standalone: false
 })
 export class GlossaryLinksComponent implements OnInit {
 

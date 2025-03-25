@@ -7,9 +7,10 @@ import { ExportComponent } from 'src/app/features/export/export.component';
 import { LanguageUtils } from 'src/app/utils/language-utils';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+    selector: 'app-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.scss'],
+    standalone: false
 })
 export class FooterComponent implements OnInit, OnDestroy {
 

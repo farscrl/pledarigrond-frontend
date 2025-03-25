@@ -2,9 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import { Editor } from '@tiptap/core';
 
 @Component({
-  selector: 'app-spellchecker-menubar',
-  templateUrl: './spellchecker-menubar.component.html',
-  styleUrls: ['./spellchecker-menubar.component.scss']
+    selector: 'app-spellchecker-menubar',
+    templateUrl: './spellchecker-menubar.component.html',
+    styleUrls: ['./spellchecker-menubar.component.scss'],
+    standalone: false
 })
 export class SpellcheckerMenubarComponent implements OnInit {
 

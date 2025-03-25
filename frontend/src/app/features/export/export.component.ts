@@ -7,9 +7,10 @@ import { SelectedLanguageService } from 'src/app/services/selected-language.serv
 import { MatomoTracker } from "ngx-matomo-client";
 
 @Component({
-  selector: 'app-export',
-  templateUrl: './export.component.html',
-  styleUrls: ['./export.component.scss']
+    selector: 'app-export',
+    templateUrl: './export.component.html',
+    styleUrls: ['./export.component.scss'],
+    standalone: false
 })
 export class ExportComponent extends NgxModalComponent<null, null>  implements OnInit {
 

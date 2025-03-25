@@ -5,9 +5,10 @@ import { FeedService } from 'src/app/services/feed.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
 @Component({
-  selector: 'app-rss-feed',
-  templateUrl: './rss-feed.component.html',
-  styleUrls: ['./rss-feed.component.scss']
+    selector: 'app-rss-feed',
+    templateUrl: './rss-feed.component.html',
+    styleUrls: ['./rss-feed.component.scss'],
+    standalone: false
 })
 export class RssFeedComponent implements OnInit, OnDestroy {
 

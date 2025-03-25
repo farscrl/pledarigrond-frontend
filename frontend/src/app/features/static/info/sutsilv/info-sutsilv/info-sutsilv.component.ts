@@ -4,8 +4,9 @@ import { InfoService } from 'src/app/services/info.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
 @Component({
-  selector: 'app-info-sutsilv',
-  templateUrl: './info-sutsilv.component.html'
+    selector: 'app-info-sutsilv',
+    templateUrl: './info-sutsilv.component.html',
+    standalone: false
 })
 export class InfoSutsilvComponent implements OnInit, OnDestroy {
 
