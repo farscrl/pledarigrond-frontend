@@ -196,7 +196,7 @@
     "privacy": "Der Schutz Ihrer Daten ist gewährleistet: Der eingefügte Text verlässt ihren Computer nicht.",
     "install": {
       "title": "Auf dem Computer installieren",
-      "other": "anderes (Hunspell)",
+      "other": "anderes (inkl. Silbentrennung)",
       "word": "Microsoft Word",
       "office": "Microsoft Office (später)"
     },
