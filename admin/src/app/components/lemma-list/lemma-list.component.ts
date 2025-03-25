@@ -18,9 +18,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 
 @Component({
-  selector: 'app-lemma-list',
-  templateUrl: './lemma-list.component.html',
-  styleUrls: ['./lemma-list.component.scss']
+    selector: 'app-lemma-list',
+    templateUrl: './lemma-list.component.html',
+    styleUrls: ['./lemma-list.component.scss'],
+    standalone: false
 })
 export class LemmaListComponent implements OnInit {
 

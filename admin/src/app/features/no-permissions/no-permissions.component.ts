@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-no-permissions',
-  templateUrl: './no-permissions.component.html',
-  styleUrls: ['./no-permissions.component.scss']
+    selector: 'app-no-permissions',
+    templateUrl: './no-permissions.component.html',
+    styleUrls: ['./no-permissions.component.scss'],
+    standalone: false
 })
 export class NoPermissionsComponent implements OnInit {
 

@@ -11,9 +11,10 @@ export class EditUserData {
 }
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+    selector: 'app-edit',
+    templateUrl: './edit.component.html',
+    styleUrls: ['./edit.component.scss'],
+    standalone: false
 })
 export class EditComponent implements OnInit {
 

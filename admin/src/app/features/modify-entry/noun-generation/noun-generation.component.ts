@@ -13,9 +13,10 @@ export class NounGenerationData {
 }
 
 @Component({
-  selector: 'app-noun-generation',
-  templateUrl: './noun-generation.component.html',
-  styleUrls: ['./noun-generation.component.scss']
+    selector: 'app-noun-generation',
+    templateUrl: './noun-generation.component.html',
+    styleUrls: ['./noun-generation.component.scss'],
+    standalone: false
 })
 export class NounGenerationComponent implements OnInit {
 

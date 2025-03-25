@@ -8,9 +8,10 @@ import { EditorService } from '../../../services/editor.service';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
 
 @Component({
-  selector: 'app-pronunciation',
-  templateUrl: './pronunciation.component.html',
-  styleUrl: './pronunciation.component.scss'
+    selector: 'app-pronunciation',
+    templateUrl: './pronunciation.component.html',
+    styleUrl: './pronunciation.component.scss',
+    standalone: false
 })
 export class PronunciationComponent implements OnInit {
 

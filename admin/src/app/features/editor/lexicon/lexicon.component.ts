@@ -9,9 +9,10 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-lexicon',
-  templateUrl: './lexicon.component.html',
-  styleUrls: ['./lexicon.component.scss']
+    selector: 'app-lexicon',
+    templateUrl: './lexicon.component.html',
+    styleUrls: ['./lexicon.component.scss'],
+    standalone: false
 })
 export class LexiconComponent implements OnInit {
 

@@ -29,9 +29,10 @@ export enum KEY_CODE {
 }
 
 @Component({
-  selector: 'app-review-auto-changes',
-  templateUrl: './review-auto-changes.component.html',
-  styleUrls: ['./review-auto-changes.component.scss']
+    selector: 'app-review-auto-changes',
+    templateUrl: './review-auto-changes.component.html',
+    styleUrls: ['./review-auto-changes.component.scss'],
+    standalone: false
 })
 export class ReviewAutoChangesComponent implements OnInit {
 

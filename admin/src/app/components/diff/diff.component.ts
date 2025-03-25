@@ -2,9 +2,10 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import {diffChars} from 'diff'
 
 @Component({
-  selector: 'app-diff',
-  templateUrl: './diff.component.html',
-  styleUrls: ['./diff.component.scss']
+    selector: 'app-diff',
+    templateUrl: './diff.component.html',
+    styleUrls: ['./diff.component.scss'],
+    standalone: false
 })
 export class DiffComponent implements OnInit, OnChanges {
 

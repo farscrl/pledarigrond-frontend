@@ -12,9 +12,10 @@ export class ChanceSortOrderData {
 }
 
 @Component({
-  selector: 'app-change-sort-order',
-  templateUrl: './change-sort-order.component.html',
-  styleUrls: ['./change-sort-order.component.scss']
+    selector: 'app-change-sort-order',
+    templateUrl: './change-sort-order.component.html',
+    styleUrls: ['./change-sort-order.component.scss'],
+    standalone: false
 })
 export class ChangeSortOrderComponent implements OnInit {
 

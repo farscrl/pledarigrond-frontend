@@ -4,9 +4,10 @@ import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
-  selector: 'app-index-administration',
-  templateUrl: './index-administration.component.html',
-  styleUrls: ['./index-administration.component.scss']
+    selector: 'app-index-administration',
+    templateUrl: './index-administration.component.html',
+    styleUrls: ['./index-administration.component.scss'],
+    standalone: false
 })
 export class IndexAdministrationComponent implements OnInit {
 

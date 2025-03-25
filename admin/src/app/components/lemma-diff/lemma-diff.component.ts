@@ -5,9 +5,10 @@ import { LemmaVersion } from "../../models/lemma-version";
 import { ReferenceVerbDto } from '../../models/reference-verb-dto';
 
 @Component({
-  selector: 'app-lemma-diff',
-  templateUrl: './lemma-diff.component.html',
-  styleUrls: ['./lemma-diff.component.scss']
+    selector: 'app-lemma-diff',
+    templateUrl: './lemma-diff.component.html',
+    styleUrls: ['./lemma-diff.component.scss'],
+    standalone: false
 })
 export class LemmaDiffComponent implements OnInit{
   @Input()

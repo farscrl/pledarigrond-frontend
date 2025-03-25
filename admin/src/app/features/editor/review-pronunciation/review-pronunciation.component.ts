@@ -26,9 +26,10 @@ export enum KEY_CODE {
 }
 
 @Component({
-  selector: 'app-review-pronunciation',
-  templateUrl: './review-pronunciation.component.html',
-  styleUrl: './review-pronunciation.component.scss'
+    selector: 'app-review-pronunciation',
+    templateUrl: './review-pronunciation.component.html',
+    styleUrl: './review-pronunciation.component.scss',
+    standalone: false
 })
 export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   filter: ListFilter = new ListFilter();

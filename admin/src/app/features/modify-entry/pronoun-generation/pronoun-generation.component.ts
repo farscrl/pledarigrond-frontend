@@ -11,9 +11,10 @@ export class PronounGenerationData {
   lemmaVersion?: LemmaVersion;
 }
 @Component({
-  selector: 'app-pronoun-generation',
-  templateUrl: './pronoun-generation.component.html',
-  styleUrls: ['./pronoun-generation.component.scss']
+    selector: 'app-pronoun-generation',
+    templateUrl: './pronoun-generation.component.html',
+    styleUrls: ['./pronoun-generation.component.scss'],
+    standalone: false
 })
 export class PronounGenerationComponent implements OnInit {
 

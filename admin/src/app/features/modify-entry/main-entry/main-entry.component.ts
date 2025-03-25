@@ -23,9 +23,10 @@ export class MainEntryData {
 }
 
 @Component({
-  selector: 'app-main-entry',
-  templateUrl: './main-entry.component.html',
-  styleUrls: ['./main-entry.component.scss']
+    selector: 'app-main-entry',
+    templateUrl: './main-entry.component.html',
+    styleUrls: ['./main-entry.component.scss'],
+    standalone: false
 })
 export class MainEntryComponent implements OnInit {
 

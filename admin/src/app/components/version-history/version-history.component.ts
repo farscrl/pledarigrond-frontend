@@ -10,9 +10,10 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 
 @Component({
-  selector: 'app-version-history',
-  templateUrl: './version-history.component.html',
-  styleUrls: ['./version-history.component.scss']
+    selector: 'app-version-history',
+    templateUrl: './version-history.component.html',
+    styleUrls: ['./version-history.component.scss'],
+    standalone: false
 })
 export class VersionHistoryComponent implements OnInit {
 

@@ -5,9 +5,10 @@ import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
-  selector: 'app-import-dump',
-  templateUrl: './import-dump.component.html',
-  styleUrls: ['./import-dump.component.scss']
+    selector: 'app-import-dump',
+    templateUrl: './import-dump.component.html',
+    styleUrls: ['./import-dump.component.scss'],
+    standalone: false
 })
 export class ImportDumpComponent implements OnInit {
 

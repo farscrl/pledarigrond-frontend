@@ -12,9 +12,10 @@ export class OtherGenerationData {
 }
 
 @Component({
-  selector: 'app-other-generation',
-  templateUrl: './other-generation.component.html',
-  styleUrls: ['./other-generation.component.scss']
+    selector: 'app-other-generation',
+    templateUrl: './other-generation.component.html',
+    styleUrls: ['./other-generation.component.scss'],
+    standalone: false
 })
 export class OtherGenerationComponent {
 

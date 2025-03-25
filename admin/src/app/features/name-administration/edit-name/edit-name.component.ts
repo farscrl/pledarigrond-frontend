@@ -11,9 +11,10 @@ export class EditNameData {
 }
 
 @Component({
-  selector: 'app-edit-name',
-  templateUrl: './edit-name.component.html',
-  styleUrls: ['./edit-name.component.scss']
+    selector: 'app-edit-name',
+    templateUrl: './edit-name.component.html',
+    styleUrls: ['./edit-name.component.scss'],
+    standalone: false
 })
 export class EditNameComponent implements OnInit {
 

@@ -8,9 +8,10 @@ export class FindCorpusEntryData {
 }
 
 @Component({
-  selector: 'app-find-corpus-entry',
-  templateUrl: './find-corpus-entry.component.html',
-  styleUrl: './find-corpus-entry.component.scss'
+    selector: 'app-find-corpus-entry',
+    templateUrl: './find-corpus-entry.component.html',
+    styleUrl: './find-corpus-entry.component.scss',
+    standalone: false
 })
 export class FindCorpusEntryComponent implements OnInit{
 

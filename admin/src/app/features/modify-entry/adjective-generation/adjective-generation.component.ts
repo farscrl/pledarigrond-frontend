@@ -12,9 +12,10 @@ export class AdjectiveGenerationData {
   lemmaVersion?: LemmaVersion;
 }
 @Component({
-  selector: 'app-adjective-generation',
-  templateUrl: './adjective-generation.component.html',
-  styleUrls: ['./adjective-generation.component.scss']
+    selector: 'app-adjective-generation',
+    templateUrl: './adjective-generation.component.html',
+    styleUrls: ['./adjective-generation.component.scss'],
+    standalone: false
 })
 export class AdjectiveGenerationComponent implements OnInit {
 

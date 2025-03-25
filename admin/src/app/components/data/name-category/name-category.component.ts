@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NameCategory } from "../../../models/name";
 
 @Component({
-  selector: 'app-name-category',
-  templateUrl: './name-category.component.html',
-  styleUrls: ['./name-category.component.scss']
+    selector: 'app-name-category',
+    templateUrl: './name-category.component.html',
+    styleUrls: ['./name-category.component.scss'],
+    standalone: false
 })
 export class NameCategoryComponent implements OnInit {
 

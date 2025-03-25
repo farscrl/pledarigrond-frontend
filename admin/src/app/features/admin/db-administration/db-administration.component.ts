@@ -9,9 +9,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { FileUtils } from 'src/app/utils/file.utils';
 
 @Component({
-  selector: 'app-db-administration',
-  templateUrl: './db-administration.component.html',
-  styleUrls: ['./db-administration.component.scss']
+    selector: 'app-db-administration',
+    templateUrl: './db-administration.component.html',
+    styleUrls: ['./db-administration.component.scss'],
+    standalone: false
 })
 export class DbAdministrationComponent implements OnInit {
 

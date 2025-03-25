@@ -5,9 +5,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FrontendLanguage, LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: false
 })
 export class HeaderComponent implements OnInit {
 

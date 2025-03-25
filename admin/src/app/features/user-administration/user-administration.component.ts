@@ -7,9 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { EnvironmentService } from "../../services/environment.service";
 
 @Component({
-  selector: 'app-user-administration',
-  templateUrl: './user-administration.component.html',
-  styleUrls: ['./user-administration.component.scss']
+    selector: 'app-user-administration',
+    templateUrl: './user-administration.component.html',
+    styleUrls: ['./user-administration.component.scss'],
+    standalone: false
 })
 export class UserAdministrationComponent implements OnInit {
 

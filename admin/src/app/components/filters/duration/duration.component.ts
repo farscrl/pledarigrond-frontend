@@ -4,9 +4,10 @@ import { EditorQuery } from 'src/app/models/editor-query';
 import { ngDebounce } from "../../../decorators/debounce.decorator";
 
 @Component({
-  selector: 'app-duration',
-  templateUrl: './duration.component.html',
-  styleUrls: ['./duration.component.scss']
+    selector: 'app-duration',
+    templateUrl: './duration.component.html',
+    styleUrls: ['./duration.component.scss'],
+    standalone: false
 })
 export class DurationComponent implements OnInit {
 

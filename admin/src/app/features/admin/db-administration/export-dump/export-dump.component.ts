@@ -5,9 +5,10 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { FileUtils } from 'src/app/utils/file.utils';
 
 @Component({
-  selector: 'app-export-dump',
-  templateUrl: './export-dump.component.html',
-  styleUrls: ['./export-dump.component.scss']
+    selector: 'app-export-dump',
+    templateUrl: './export-dump.component.html',
+    styleUrls: ['./export-dump.component.scss'],
+    standalone: false
 })
 export class ExportDumpComponent implements OnInit {
 

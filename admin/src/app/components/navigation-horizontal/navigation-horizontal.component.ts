@@ -5,9 +5,10 @@ import { environment } from './../../../environments/environment';
 import { Language } from "../../models/security";
 
 @Component({
-  selector: 'app-navigation-horizontal',
-  templateUrl: './navigation-horizontal.component.html',
-  styleUrls: ['./navigation-horizontal.component.scss']
+    selector: 'app-navigation-horizontal',
+    templateUrl: './navigation-horizontal.component.html',
+    styleUrls: ['./navigation-horizontal.component.scss'],
+    standalone: false
 })
 export class NavigationHorizontalComponent implements OnInit {
 

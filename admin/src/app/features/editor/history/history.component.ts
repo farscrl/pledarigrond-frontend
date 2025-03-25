@@ -7,9 +7,10 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
-  selector: 'app-history',
-  templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss'],
+    selector: 'app-history',
+    templateUrl: './history.component.html',
+    styleUrls: ['./history.component.scss'],
+    standalone: false
 })
 export class HistoryComponent implements OnInit {
 

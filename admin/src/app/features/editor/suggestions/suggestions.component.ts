@@ -8,9 +8,10 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 
 
 @Component({
-  selector: 'app-suggestions',
-  templateUrl: './suggestions.component.html',
-  styleUrls: ['./suggestions.component.scss']
+    selector: 'app-suggestions',
+    templateUrl: './suggestions.component.html',
+    styleUrls: ['./suggestions.component.scss'],
+    standalone: false
 })
 export class SuggestionsComponent implements OnInit {
 

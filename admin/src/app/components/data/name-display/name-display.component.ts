@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-name-display',
-  templateUrl: './name-display.component.html',
-  styleUrls: ['./name-display.component.scss']
+    selector: 'app-name-display',
+    templateUrl: './name-display.component.html',
+    styleUrls: ['./name-display.component.scss'],
+    standalone: false
 })
 export class NameDisplayComponent implements OnInit {
 

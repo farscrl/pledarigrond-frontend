@@ -5,9 +5,10 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
-  selector: 'app-lexicon-filter',
-  templateUrl: './lexicon-filter.component.html',
-  styleUrls: ['./lexicon-filter.component.scss']
+    selector: 'app-lexicon-filter',
+    templateUrl: './lexicon-filter.component.html',
+    styleUrls: ['./lexicon-filter.component.scss'],
+    standalone: false
 })
 export class LexiconFilterComponent implements OnInit {
 

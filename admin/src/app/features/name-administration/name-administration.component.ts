@@ -6,9 +6,10 @@ import { NameService } from "../../services/name.service";
 import { Name } from "../../models/name";
 
 @Component({
-  selector: 'app-name-administration',
-  templateUrl: './name-administration.component.html',
-  styleUrls: ['./name-administration.component.scss']
+    selector: 'app-name-administration',
+    templateUrl: './name-administration.component.html',
+    styleUrls: ['./name-administration.component.scss'],
+    standalone: false
 })
 export class NameAdministrationComponent implements OnInit {
 

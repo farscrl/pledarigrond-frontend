@@ -3,9 +3,10 @@ import { Verification } from 'src/app/models/lemma-version';
 import { EditorRole } from 'src/app/models/user';
 
 @Component({
-  selector: 'app-verification',
-  templateUrl: './verification.component.html',
-  styleUrls: ['./verification.component.scss']
+    selector: 'app-verification',
+    templateUrl: './verification.component.html',
+    styleUrls: ['./verification.component.scss'],
+    standalone: false
 })
 export class VerificationComponent implements OnInit {
 

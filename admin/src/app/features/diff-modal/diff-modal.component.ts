@@ -9,9 +9,10 @@ export class DiffModalData {
 }
 
 @Component({
-  selector: 'app-diff-modal',
-  templateUrl: './diff-modal.component.html',
-  styleUrls: ['./diff-modal.component.scss']
+    selector: 'app-diff-modal',
+    templateUrl: './diff-modal.component.html',
+    styleUrls: ['./diff-modal.component.scss'],
+    standalone: false
 })
 export class DiffModalComponent {
 

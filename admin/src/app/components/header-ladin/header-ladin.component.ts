@@ -5,9 +5,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FrontendLanguage, LanguageSelectionService } from 'src/app/services/language-selection.service';
 
 @Component({
-  selector: 'app-ladin-header',
-  templateUrl: './header-ladin.component.html',
-  styleUrls: ['./header-ladin.component.scss']
+    selector: 'app-ladin-header',
+    templateUrl: './header-ladin.component.html',
+    styleUrls: ['./header-ladin.component.scss'],
+    standalone: false
 })
 export class HeaderLadinComponent implements OnInit {
 
