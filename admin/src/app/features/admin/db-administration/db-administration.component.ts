@@ -18,7 +18,6 @@ export class DbAdministrationComponent implements OnInit {
 
   dbInfos: DbInfos = new DbInfos();
   isLoadingDbInfos = false;
-  isReloadingDemoData = false;
   backupInfos: BackupInfos = new BackupInfos();
 
   constructor(

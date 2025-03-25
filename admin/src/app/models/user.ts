@@ -1,5 +1,7 @@
 export class User {
   email: string = "";
+  firstName: string = "";
+  lastName: string = "";
   password?: string = "";
   admin: boolean = false;
 
@@ -10,15 +12,15 @@ export class User {
 }
 
 export class Roles {
-  puterRole: EditorRole = 'NONE';
-  rumantschgrischunRole: EditorRole = 'NONE';
-  surmiranRole: EditorRole = 'NONE';
-  sursilvanRole: EditorRole = 'NONE';
-  sutsilvanRole: EditorRole = 'NONE';
-  valladerRole: EditorRole = 'NONE';
+  rolePuter: EditorRole = 'NONE';
+  roleRumantschGrischun: EditorRole = 'NONE';
+  roleSurmiran: EditorRole = 'NONE';
+  roleSursilvan: EditorRole = 'NONE';
+  roleSutsilvan: EditorRole = 'NONE';
+  roleVallader: EditorRole = 'NONE';
 
-  namesRole: EditorRole = 'NONE';
-  registrationsRole: EditorRole = 'NONE'
+  roleNames: EditorRole = 'NONE';
+  roleRegistrations: EditorRole = 'NONE'
 }
 
 export type EditorRole = 'ADMIN'|'EDITOR'|'GUEST'|'NONE';

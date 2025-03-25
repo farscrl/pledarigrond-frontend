@@ -14,9 +14,6 @@ export class ExportDumpComponent implements OnInit {
 
   isDownloadingDb = false;
 
-  includeVersionHistory = true;
-  anonymizeData = false;
-
   constructor(
     private modal: NzModalRef,
     private dbService: DbService,
@@ -29,7 +26,7 @@ export class ExportDumpComponent implements OnInit {
 
   export() {
     this.isDownloadingDb = true;
-    this.dbService.exportDb(this.languageSelectionService.getCurrentLanguage(), this.includeVersionHistory, this.anonymizeData).subscribe(data => {
+    this.dbService.exportDb(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
       this.isDownloadingDb = false;
       const fileName = this.fileUtils.getFileNameFromContentDispositionHeader(data.headers, 'pledarigrond-export.zip');
       this.fileUtils.downloadFile(data, fileName);

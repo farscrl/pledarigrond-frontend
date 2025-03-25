@@ -176,11 +176,9 @@
     "title": "Database",
     "subtitle": "Database administration",
     "dump": {
-      "button": "Backup",
+      "button": "Backup…",
       "title": "Create DB backup",
-      "instructions": "For a full backup, export the version history and do not anonymize the entries. In any case, the downloaded file will contain a MD5-Checksum which can be used to verify the integrity of the data.",
-      "include_history": "Export complete version history",
-      "anonymize_data": "Anonymize data",
+      "instructions": "The downloaded file will contain a MD5-Checksum which can be used to verify the integrity of the data.",
       "cancel": "Cancel",
       "exporting": "Exporting",
       "start": "Start export"
@@ -205,9 +203,6 @@
       "versions": "Versions",
       "approved": "Approved",
       "suggested": "Suggested",
-      "deleted": "Deleted",
-      "outdated": "Outdated",
-      "other": "Other",
       "refresh_button": "Refresh"
     },
     "backup": {

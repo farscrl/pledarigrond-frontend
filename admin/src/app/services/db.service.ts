@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BackupInfos, DbInfos, IndexInfos } from '../models/db-infos';
@@ -17,12 +17,8 @@ export class DbService {
     return this.httpClient.get<DbInfos>(this.generateUrl(language, 'db_stats'));
   }
 
-  exportDb(language: Language, includeVersionHistory: boolean, anonymizeData: boolean): Observable<HttpResponse<Blob>> {
-    let params: HttpParams = new HttpParams();
-    params = params.set('includeVersionHistory', includeVersionHistory);
-    params = params.set('anonymizeData', anonymizeData);
-
-    return this.httpClient.post(this.generateUrl(language, 'export_db'), params, { responseType: 'blob', observe: 'response' });
+  exportDb(language: Language): Observable<HttpResponse<Blob>> {
+    return this.httpClient.post(this.generateUrl(language, 'export_db'), null, { responseType: 'blob', observe: 'response' });
   }
 
   importDb(language: Language, formData: FormData): Observable<void> {

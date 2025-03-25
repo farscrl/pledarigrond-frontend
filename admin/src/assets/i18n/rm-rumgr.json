@@ -179,11 +179,9 @@
     "title": "Banca da datas",
     "subtitle": "Administraziun da la banca da datas",
     "dump": {
-      "button": "Backup",
+      "button": "Backup…",
       "title": "Crear in backup da la banca da datas",
-      "instructions": "Per far ina copia da segirezza cumpletta tscherner l'entira cronologia da las midadas e betg anonimisar las datas. La datoteca generada cuntegna ina summa da controlla MD5 che po servir per controllar l'integritad da las datas.",
-      "include_history": "Exportar la cronologia cumpletta da las midadas",
-      "anonymize_data": "Anonimisar las datas",
+      "instructions": "La datoteca generada cuntegna ina summa da controlla MD5 che po servir per controllar l'integritad da las datas.",
       "cancel": "Interrumper",
       "exporting": "Exportar",
       "start": "Lantschar l'export"
@@ -208,9 +206,6 @@
       "versions": "Versiuns",
       "approved": "Approvà",
       "suggested": "Propostas",
-      "deleted": "Stizzà",
-      "outdated": "Antiquà",
-      "other": "Auter",
       "refresh_button": "Actualisar"
     },
     "backup": {

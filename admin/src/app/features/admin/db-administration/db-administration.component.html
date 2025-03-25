@@ -21,24 +21,13 @@
       <nz-statistic [nzValue]="(dbInfos.numberOfEntries| number)!" [nzTitle]="'database.stats.entries' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfLemmata| number)!" [nzTitle]="'database.stats.versions' | translate"></nz-statistic>
+      <nz-statistic [nzValue]="(dbInfos.numberOfVersions| number)!" [nzTitle]="'database.stats.versions' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
       <nz-statistic [nzValue]="(dbInfos.numberOfApproved| number)!" [nzTitle]="'database.stats.approved' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
       <nz-statistic [nzValue]="(dbInfos.numberOfSuggestions| number)!" [nzTitle]="'database.stats.suggested' | translate"></nz-statistic>
-    </nz-col>
-  </nz-row>
-  <nz-row [nzGutter]="16">
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfDeleted| number)!" [nzTitle]="'database.stats.deleted' | translate"></nz-statistic>
-    </nz-col>
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfOutdated| number)!" [nzTitle]="'database.stats.outdated' | translate"></nz-statistic>
-    </nz-col>
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(dbInfos.numberOfUndefined| number)!" [nzTitle]="'database.stats.other' | translate"></nz-statistic>
     </nz-col>
   </nz-row>
   <nz-row [nzGutter]="16">
@@ -58,7 +47,7 @@
   <nz-row [nzGutter]="16">
     <nz-col [nzSpan]="12">
       <nz-statistic [nzValue]="backupInfos.triggerTime" [nzTitle]="'database.backup.frequency' | translate"></nz-statistic>
-      <nz-statistic [nzValue]="(backupInfos.backupNums| number)!" [nzTitle]="'database.backup.max_backups' | translate"></nz-statistic>
+      <nz-statistic [nzValue]="(backupInfos.backupNumber| number)!" [nzTitle]="'database.backup.max_backups' | translate"></nz-statistic>
       <nz-statistic [nzValue]="backupInfos.backupLocation ? backupInfos.backupLocation : '-'" [nzTitle]="'database.backup.location' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="12">

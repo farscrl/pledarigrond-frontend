@@ -28,14 +28,14 @@
           <tr *ngFor="let data of basicTable.data">
             <td>{{ data.email }}</td>
             <td nzAlign="center" class="admin-icon" [class.is-admin]="data.admin"><i nz-icon nzType="check-circle" nzTheme="outline" *ngIf="data.admin"></i><i nz-icon nzType="stop" nzTheme="outline" *ngIf="!data.admin"></i></td>
-            <td nzAlign="center" *ngIf="environmentService.isLadin()"><app-user-role [role]="data.roles.puterRole"></app-user-role></td>
-            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.rumantschgrischunRole"></app-user-role></td>
-            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.surmiranRole"></app-user-role></td>
+            <td nzAlign="center" *ngIf="environmentService.isLadin()"><app-user-role [role]="data.roles.rolePuter"></app-user-role></td>
+            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleRumantschGrischun"></app-user-role></td>
+            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleSurmiran"></app-user-role></td>
             <!--<td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.sursilvanRole"></app-user-role></td>-->
-            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.sutsilvanRole"></app-user-role></td>
-            <td nzAlign="center" *ngIf="environmentService.isLadin()"><app-user-role [role]="data.roles.valladerRole"></app-user-role></td>
-            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.namesRole"></app-user-role></td>
-            <td nzAlign="center"><app-user-role [role]="data.roles.registrationsRole"></app-user-role></td>
+            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleSutsilvan"></app-user-role></td>
+            <td nzAlign="center" *ngIf="environmentService.isLadin()"><app-user-role [role]="data.roles.roleVallader"></app-user-role></td>
+            <td nzAlign="center" *ngIf="!environmentService.isLadin()"><app-user-role [role]="data.roles.roleNames"></app-user-role></td>
+            <td nzAlign="center"><app-user-role [role]="data.roles.roleRegistrations"></app-user-role></td>
             <td nzAlign="center">
               <a (click)="newOrEdit(data.email)">{{ 'users.edit_action' | translate}}</a>
               <nz-divider nzType="vertical"></nz-divider>

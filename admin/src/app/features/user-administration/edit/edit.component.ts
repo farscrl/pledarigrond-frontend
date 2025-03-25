@@ -1,10 +1,9 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { Roles, User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 import { EnvironmentService } from "../../../services/environment.service";
-import { PronounGenerationData } from '../../modify-entry/pronoun-generation/pronoun-generation.component';
 
 export class EditUserData {
   email?: string;
@@ -95,27 +94,27 @@ export class EditComponent implements OnInit {
       email: [this.user.email, [Validators.email, Validators.required]],
       password: [this.user.password, !!this.email ? [] : [Validators.required, Validators.minLength(6)]],
       admin: [this.user.admin],
-      rolePuter: [this.user.roles.puterRole, [Validators.required]],
-      roleRumantschgrischun: [this.user.roles.rumantschgrischunRole, [Validators.required]],
-      roleSurmiran: [this.user.roles.surmiranRole, [Validators.required]],
-      roleSursilvan: [this.user.roles.sursilvanRole, [Validators.required]],
-      roleSutsilvan: [this.user.roles.sutsilvanRole, [Validators.required]],
-      roleVallader: [this.user.roles.valladerRole, [Validators.required]],
-      roleNames: [this.user.roles.namesRole, [Validators.required]],
-      roleRegistrations: [this.user.roles.registrationsRole, [Validators.required]],
+      rolePuter: [this.user.roles.rolePuter, [Validators.required]],
+      roleRumantschgrischun: [this.user.roles.roleRumantschGrischun, [Validators.required]],
+      roleSurmiran: [this.user.roles.roleSurmiran, [Validators.required]],
+      roleSursilvan: [this.user.roles.roleSursilvan, [Validators.required]],
+      roleSutsilvan: [this.user.roles.roleSutsilvan, [Validators.required]],
+      roleVallader: [this.user.roles.roleVallader, [Validators.required]],
+      roleNames: [this.user.roles.roleNames, [Validators.required]],
+      roleRegistrations: [this.user.roles.roleRegistrations, [Validators.required]],
     });
   }
 
   private toUser(data: any): User {
     const roles = new Roles();
-    roles.puterRole = data.rolePuter;
-    roles.rumantschgrischunRole = data.roleRumantschgrischun;
-    roles.surmiranRole = data.roleSurmiran;
-    roles.sursilvanRole = data.roleSursilvan;
-    roles.sutsilvanRole = data.roleSutsilvan;
-    roles.valladerRole = data.roleVallader;
-    roles.namesRole = data.roleNames;
-    roles.registrationsRole = data.roleRegistrations;
+    roles.rolePuter = data.rolePuter;
+    roles.roleRumantschGrischun = data.roleRumantschgrischun;
+    roles.roleSurmiran = data.roleSurmiran;
+    roles.roleSursilvan = data.roleSursilvan;
+    roles.roleSutsilvan = data.roleSutsilvan;
+    roles.roleVallader = data.roleVallader;
+    roles.roleNames = data.roleNames;
+    roles.roleRegistrations = data.roleRegistrations;
 
     const user = new User();
     user.email = data.email;
