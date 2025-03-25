@@ -1,11 +1,17 @@
-<div class="pg-modal-wrapper" *ngIf="manualType === 'macos'">
-  <app-manual-macos [language]="language!" (downloadHunspell)="downloadHunspell()" [hunspellLanguage]="hunspellLanguage"></app-manual-macos>
-</div>
+@if (manualType === 'macos') {
+  <div class="pg-modal-wrapper">
+    <app-manual-macos [language]="language!" (downloadHunspell)="downloadHunspell()" [hunspellLanguage]="hunspellLanguage"></app-manual-macos>
+  </div>
+}
 
-<div class="pg-modal-wrapper" *ngIf="manualType === 'hunspell'">
-  <app-manual-hunspell [language]="language!" (downloadHunspell)="downloadHunspell()" [hunspellLanguage]="hunspellLanguage"></app-manual-hunspell>
-</div>
+@if (manualType === 'hunspell') {
+  <div class="pg-modal-wrapper">
+    <app-manual-hunspell [language]="language!" (downloadHunspell)="downloadHunspell()" [hunspellLanguage]="hunspellLanguage"></app-manual-hunspell>
+  </div>
+}
 
-<div class="pg-modal-wrapper" *ngIf="manualType === 'word'">
-  <app-manual-word [language]="language!"></app-manual-word>
-</div>
+@if (manualType === 'word') {
+  <div class="pg-modal-wrapper">
+    <app-manual-word [language]="language!"></app-manual-word>
+  </div>
+}

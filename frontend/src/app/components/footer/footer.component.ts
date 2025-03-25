@@ -6,11 +6,14 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 import { ExportComponent } from 'src/app/features/export/export.component';
 import { LanguageUtils } from 'src/app/utils/language-utils';
 
+import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss'],
-    standalone: false
+    imports: [RouterLink, TranslatePipe]
 })
 export class FooterComponent implements OnInit, OnDestroy {
 

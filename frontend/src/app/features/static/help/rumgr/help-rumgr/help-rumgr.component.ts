@@ -2,10 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
+import { HelpRumgrRmComponent } from '../help-rumgr-rm/help-rumgr-rm.component';
+import { HelpRumgrDeComponent } from '../help-rumgr-de/help-rumgr-de.component';
+
 @Component({
     selector: 'app-help-rumgr',
     templateUrl: './help-rumgr.component.html',
-    standalone: false
+    imports: [HelpRumgrRmComponent, HelpRumgrDeComponent]
 })
 export class HelpRumgrComponent implements OnInit {
 

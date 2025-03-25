@@ -1,15 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { environment } from './../../../environments/environment';
 
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    standalone: false
+    imports: [RouterLink, TranslatePipe]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 

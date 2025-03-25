@@ -8,8 +8,8 @@ describe('SpellcheckerMenubarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SpellcheckerMenubarComponent ]
-    })
+    imports: [SpellcheckerMenubarComponent]
+})
     .compileComponents();
   });
 

@@ -4,49 +4,49 @@
 
     <div>{{ 'suggest.suggest' | translate }}</div>
 
-    <ng-container *ngIf="showFormError">
+    @if (showFormError) {
       <div style="color: red;">
         <br>
-        {{ 'dialog.error.field' | translate }}
-        <br><br>
-      </div>
-    </ng-container>
+          {{ 'dialog.error.field' | translate }}
+          <br><br>
+        </div>
+      }
 
-    <div class="double-row">
-      <div class="control-group">
-        <label class="control-label">{{ 'search.header_de' | translate }}</label>
-        <div class="controls">
-          <input type="text" id="DStichwort" [(ngModel)]="DStichwort">
-          <span class="help-inline"></span>
+      <div class="double-row">
+        <div class="control-group">
+          <label class="control-label">{{ 'search.header_de' | translate }}</label>
+          <div class="controls">
+            <input type="text" id="DStichwort" [(ngModel)]="DStichwort">
+            <span class="help-inline"></span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">{{ 'search.header_rm' | translate }}</label>
+          <div class="controls">
+            <input type="text" id="RStichwort" [(ngModel)]="RStichwort">
+            <span class="help-inline"></span>
+          </div>
         </div>
       </div>
 
-      <div class="control-group">
-        <label class="control-label">{{ 'search.header_rm' | translate }}</label>
-        <div class="controls">
-          <input type="text" id="RStichwort" [(ngModel)]="RStichwort">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label">{{ 'dialog.comment' | translate }}</label>
+          <textarea rows="3" style="width: 100%; resize: none;" [(ngModel)]="comment"></textarea>
           <span class="help-inline"></span>
         </div>
-      </div>
+
+        <div class="control-group">
+          <label class="control-label">{{ 'dialog.email' | translate }}</label>
+          <input type="email" style="width: 100%;" [(ngModel)]="email">
+        </div>
+      </fieldset>
     </div>
 
-    <fieldset>
-      <div class="control-group">
-        <label class="control-label">{{ 'dialog.comment' | translate }}</label>
-        <textarea rows="3" style="width: 100%; resize: none;" [(ngModel)]="comment"></textarea>
-        <span class="help-inline"></span>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label">{{ 'dialog.email' | translate }}</label>
-        <input type="email" style="width: 100%;" [(ngModel)]="email">
-      </div>
-    </fieldset>
+    <div class="pg-modal-footer">
+      <a class="btn" (click)="cancel()"><i></i> {{ 'button.cancel' | translate }} </a>
+      <a class="btn" (click)="reset()"><i></i> {{ 'button.clear' | translate }} </a>
+      <a class="btn btn-primary" (click)="send()"><i></i> {{ 'button.ok' | translate }} </a>
+    </div>
   </div>
-
-  <div class="pg-modal-footer">
-    <a class="btn" (click)="cancel()"><i></i> {{ 'button.cancel' | translate }} </a>
-    <a class="btn" (click)="reset()"><i></i> {{ 'button.clear' | translate }} </a>
-    <a class="btn btn-primary" (click)="send()"><i></i> {{ 'button.ok' | translate }} </a>
-  </div>
-</div>

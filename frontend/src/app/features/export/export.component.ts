@@ -6,11 +6,14 @@ import { ExportService } from 'src/app/services/export.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { MatomoTracker } from "ngx-matomo-client";
 
+import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateCutPipe } from '../../pipes/translate-cut.pipe';
+
 @Component({
     selector: 'app-export',
     templateUrl: './export.component.html',
     styleUrls: ['./export.component.scss'],
-    standalone: false
+    imports: [TranslatePipe, TranslateCutPipe]
 })
 export class ExportComponent extends NgxModalComponent<null, null>  implements OnInit {
 

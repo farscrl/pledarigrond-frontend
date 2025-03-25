@@ -8,8 +8,8 @@ describe('ManualMacosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManualMacosComponent ]
-    })
+    imports: [ManualMacosComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ManualMacosComponent);

@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ThousandSeparatorPipe } from '../../../../../pipes/thousand-separator.pipe';
 
 @Component({
     selector: 'app-info-sutsilv-rm',
     templateUrl: './info-sutsilv-rm.component.html',
-    standalone: false
+    imports: [ThousandSeparatorPipe]
 })
 export class InfoSutsilvRmComponent implements OnInit {
 

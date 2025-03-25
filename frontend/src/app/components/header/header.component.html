@@ -1,28 +1,32 @@
 <div id="navi_head">
 
-	<div id="languages-widget">
-		<a class="navi_a_common link-icon" [class.lang_selected]="frontendLanguage === 'rm'" (click)="changeFrontendLanguage('rm')">R</a>
-		<span class="navi_a_common"> | </span>
-		<a class="navi_a_common link-icon" [class.lang_selected]="frontendLanguage === 'de'" (click)="changeFrontendLanguage('de')">D</a>
-	</div>
+  <div id="languages-widget">
+    <a class="navi_a_common link-icon" [class.lang_selected]="frontendLanguage === 'rm'" (click)="changeFrontendLanguage('rm')">R</a>
+    <span class="navi_a_common"> | </span>
+    <a class="navi_a_common link-icon" [class.lang_selected]="frontendLanguage === 'de'" (click)="changeFrontendLanguage('de')">D</a>
+  </div>
 
-	<div id="brand_title">
-		<a class="brand active" [routerLink]="'/' + selectedLanguageService.getSelectedLanguageUrlSegment()">PLEDARI GROND</a>
-	</div>
+  <div id="brand_title">
+    <a class="brand active" [routerLink]="'/' + selectedLanguageService.getSelectedLanguageUrlSegment()">PLEDARI GROND</a>
+  </div>
 
-	<div id="login-widget" *ngIf="!isLoggedIn">
-		<a class="navi_a_common login-icon link-icon" [title]="'header.login' | translate" (click)="login()">
-			LOG
-		</a>
-	</div>
+  @if (!isLoggedIn) {
+    <div id="login-widget">
+      <a class="navi_a_common login-icon link-icon" [title]="'header.login' | translate" (click)="login()">
+        LOG
+      </a>
+    </div>
+  }
 
-  <div id="login-widget" *ngIf="isLoggedIn">
-		<a class="navi_a_common link-icon" title="{{ loggedInUser }}" (click)="goToBackend()">
-			<span id="u_name" class="hide-mobile">{{ loggedInUser }}</span>
-      <span id="u_name" class="show-mobile">{{ loggedInUserShort }}</span>
-		</a>
-		<span class="navi_a_common"> | </span>
-		<a title="Logout" class="navi_a_common login-icon link-icon" (click)="logout()"></a>
-	</div>
+  @if (isLoggedIn) {
+    <div id="login-widget">
+      <a class="navi_a_common link-icon" title="{{ loggedInUser }}" (click)="goToBackend()">
+        <span class="hide-mobile">{{ loggedInUser }}</span>
+        <span class="show-mobile">{{ loggedInUserShort }}</span>
+      </a>
+      <span class="navi_a_common"> | </span>
+      <a title="Logout" class="navi_a_common login-icon link-icon" (click)="logout()"></a>
+    </div>
+  }
 
 </div>

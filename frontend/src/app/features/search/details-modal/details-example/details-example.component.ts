@@ -1,11 +1,13 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { LemmaVersion } from '../../../../models/lemma-version';
 
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-details-example',
     templateUrl: './details-example.component.html',
     styleUrl: './details-example.component.scss',
-    standalone: false
+    imports: [TranslatePipe]
 })
 export class DetailsExampleComponent implements OnChanges {
 

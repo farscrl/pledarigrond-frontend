@@ -5,11 +5,14 @@ import { AuthService } from 'src/app/services/auth.service';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { RegistrationComponent } from './registration/registration.component';
 
+import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    standalone: false
+    imports: [FormsModule, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
 

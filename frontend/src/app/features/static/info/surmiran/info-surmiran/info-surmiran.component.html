@@ -1,6 +1,6 @@
-<ng-container *ngIf="frontEndLanguage == 'rm'">
+@if (frontEndLanguage == 'rm') {
   <app-info-surmiran-rm [nbrEntries]="nbrEntries"></app-info-surmiran-rm>
-</ng-container>
-<ng-container *ngIf="frontEndLanguage == 'de'">
+}
+@if (frontEndLanguage == 'de') {
   <app-info-surmiran-de [nbrEntries]="nbrEntries"></app-info-surmiran-de>
-</ng-container>
+}

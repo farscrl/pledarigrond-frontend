@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+
 @Component({
     selector: 'app-conjugation-personal',
     templateUrl: './conjugation-personal.component.html',
     styleUrls: ['./conjugation-personal.component.scss'],
-    standalone: false
+    imports: []
 })
 export class ConjugationPersonalComponent implements OnInit {
   @Input() public title?: string;

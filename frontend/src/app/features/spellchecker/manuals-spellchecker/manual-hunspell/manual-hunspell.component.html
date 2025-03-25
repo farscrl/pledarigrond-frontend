@@ -1,351 +1,279 @@
-<div class="modal-content" *ngIf="language === 'puter'">
-  <h1>Installaziun da la correctura ortografica in oters sistems</h1>
-
-  <p>La correctura ortografica rumauntscha as basa sülla software da «Hunspell» e funcziuna in numerus programs, traunter oter in Adobe InDesign ed SDL Trados.</p>
-
-  <p>Per l’installer in quists programs servan las seguaintas datotecas. Üna cuntegna il dicziunari, l'otra reglas per generer ulteriuras fuormas da pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
-
-  <p>
-    {{hunspellLanguage}}.dic<br>
-    {{hunspellLanguage}}.aff<br>
-    {{hunspellLanguage}}_version.txt<br>
-    {{hunspellLanguage}}_LICENSE.txt<br>
-  </p>
-
-  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecharger</button>
-
-  <p>Consultè per plaschair las paginas d'agüd dals programs correspundents per gnir a savair cu installer las datotecas.</p>
-
-
-  <h1>Separaziun da silbas automatica pel rumauntsch</h1>
-
-  <p>
-    Il ZIP survart cuntegna eir las datotecas Hunspell necessarias pella separaziun da silbas automatica.
-    L’interpraisa far.ch ho sviluppo ils models da la separaziun da silbas per incumbenza da la Fundaziun Medias Rumantschas.
-  </p>
-
-  <h1>Remarchas per l’installaziun in Adobe InDesign:</h1>
-
-  <p>
-    L’installaziun in Adobe InDesign es displaschaivelmaing ün pô cumplicheda. Da principi descriva Adobe cò ils pass necessaris per l’installaziun:<br>
-    <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
-    Sün Windows funcziuna quist‘installaziun tenor nossa experienza dret bain.
-  </p>
-
-  <p>Que do però differents problems cha’l manuel dad Adobe nu resguarda:</p>
-
-  <ul>
-    <li>
-      La via chi maina a l’ordinatur correspundent po varier da la via indicheda. Magari eir tschercher cò: <br>
-      <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tuot tenor adatter l’an)
-    </li>
-    <li>
-      L’installaziun sün MacOS nu funcziuna scu indicho i’l manuel. Sün MacOS chaschuna la modificaziun da la datoteca «Info.plist» problems. (Eir cun deactiver la funcziun da «code signing».)<br>
-      Nus arcumandains perque da na modificher la datoteca «Info.plist», ma da rimplazzer las datotecas dad ün’otra lingua cha vus nun ütilisais. Cò l’exaimpel cul rumen:<br>
-      Renumner las datotecas rumauntschas in «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e rimplazzer las datotecas i’l ordinatur «ro_RO».<br>
-      Que as stu alura natürelmaing tscherner la lingua correspundenta in InDesign, dimena in quist cas il rumen.
-
-    </li>
-  </ul>
-</div>
-
-<div class="modal-content" *ngIf="language === 'rumantschgrischun'">
-  <h1>Installaziun da la correctura ortografica en auters sistems</h1>
-
-  <p>La correctura ortografica rumantscha sa basa sin la software da «Hunspell» e funcziuna en numerus programs, tranter auter en Adobe InDesign e SDL Trados.</p>
-
-  <p>Per l’installar en quests programs servan las suandantas datotecas. Ina cuntegna il dicziunari, l'autra reglas per generar ulteriuras furmas da pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
-
-  <p>
-    {{hunspellLanguage}}.dic<br>
-    {{hunspellLanguage}}.aff<br>
-    {{hunspellLanguage}}_version.txt<br>
-    {{hunspellLanguage}}_LICENSE.txt<br>
-  </p>
-
-  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telechargiar</button>
-
-  <p>Consultai per plaschair las paginas d'agid dals programs correspundents per vegnir a savair co installar las datotecas.</p>
-
-
-  <h1>Separaziun da silbas automatica per il rumantsch</h1>
-
-  <p>
-    Il ZIP survart cuntegna era las datotecas Hunspell necessarias per la separaziun da silbas automatica.
-    L’interpresa far.ch ha sviluppà ils models da la separaziun da silbas per incumbensa da la Fundaziun Medias Rumantschas.
-  </p>
-
-  <h1>Remartgas per l’installaziun en Adobe InDesign:</h1>
-
-  <p>
-    L’installaziun en Adobe InDesign è deplorablamain in pau cumplitgada. Da princip descriva Adobe qua ils pass necessaris per l’installaziun:<br>
-    <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
-    Sin Windows funcziuna questa installaziun tenor nossa experientscha pulit bain.
-  </p>
-
-  <p>I dat dentant differents problems ch’il manual dad Adobe na resguarda betg:</p>
-
-  <ul>
-    <li>
-      La via che maina a l’ordinatur correspundent po variar da la via inditgada. Magari era tschertgar qua:<br>
-      <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tut tenor adattar l’onn)
-    </li>
-    <li>
-      L’installaziun sin MacOS na funcziuna betg sco inditgà en il manual. Sin MacOS chaschuna la modificaziun da la datoteca «Info.plist» problems. (Era cun deactivar la funcziun da «code signing».)<br>
-      Nus recumandain perquai da betg modifitgar la datoteca «Info.plist», mabain da remplazzar las datotecas dad in’autra lingua che vus n’utilisais betg. Qua l’exempel cun il rumen:<br>
-      Renumnar las datotecas rumantschas en «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e remplazzar las datotecas en l’ordinatur «ro_RO».<br>
-      Ins sto lura natiralmain tscherner la lingua correspundenta en InDesign, pia en quest cas il rumen.
-    </li>
-  </ul>
-</div>
-
-<div class="modal-content" *ngIf="language === 'surmiran'">
-  <h1>Installaziun dalla correctura ortografica ainten oters sistems</h1>
-
-  <p>La correctura ortografica rumantscha sa basa sen la software da «Hunspell» e funcziunescha an numerous programs, tranter oter an Adobe InDesign e SDL Trados.</p>
-
-  <p>Per igl installar ainten chels programs servan las suandontas dateias. Egna cuntigna igl dicziunari, l’otra reglas per generar ulteriouras furmas da pleds, la terza indicaziun davart la versiun e la quarta la licenza.</p>
-
-  <p>
-    {{hunspellLanguage}}.dic<br>
-    {{hunspellLanguage}}.aff<br>
-    {{hunspellLanguage}}_version.txt<br>
-    {{hunspellLanguage}}_LICENSE.txt<br>
-  </p>
-
-  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecarger</button>
-
-  <p>Consulte per plascheir las paginas d'ageid digls programs correspondents per neir a saveir scu installar las dateias.</p>
-
-
-  <h1>Zavrada an silbas automatica pigl rumantsch</h1>
-
-  <p>
-    Igl ZIP survart cuntigna er las dateias Hunspell necessarias per la zavrada an silbas automatica.
-    L’interpresa far.ch ò sviluppo igls models dalla zavrada an silbas per incumbensa dalla Fundaziun Medias Rumantschas.
-  </p>
-
-  <h1>Remartgas per l’installaziun an Adobe InDesign:</h1>
-
-  <p>
-    L’installaziun an Adobe InDesign è deplorablamaintg en po cumplitgeida. Da prancepi descreiva Adobe cò igls pass necessaris per l’installaziun:<br>
-    <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
-    Sen Windows funcziunescha chella installaziun tenor la nossa experientscha pulit bagn.
-  </p>
-
-  <p>I dat dantant differents problems tg’igl manual dad Adobe na risguarda betg:</p>
-
-  <ul>
-    <li>
-      La veia tgi magna agl ordinatour correspondent pò variier dalla veia inditgeida. Forsa er tschartger cò:<br>
-      <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tot tenor adattar igl onn)
-    </li>
-    <li>
-      L’installaziun sen MacOS na funcziunescha betg scu inditgia aint igl manual. Sen MacOS caschunga la modificaziun dalla dateia «Info.plist» problems. (Er cun deactivar la funcziun da «code signing».)<br>
-      Nous recumandagn perchegl da betg modifitgier la dateia «Info.plist», mabagn da ramplazzar las dateias d’en oter lungatg tgi Vous na duvrez betg. Cò igl exaimpel cugl rumen:<br>
-      Midar igl nom dallas dateias rumantschas an «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e ramplazzar las dateias aint igl ordinatour «ro_RO».<br>
-      Alloura ins stò naturalmaintg tscherner igl lungatg correspondent an InDesign, damai an chel cass igl rumen.
-    </li>
-  </ul>
-</div>
-
-<div class="modal-content" *ngIf="language === 'sursilvan'">
-  <h1>Installaziun dalla correctura ortografica en auters sistems</h1>
-
-  <p>La correctura ortografica romontscha sebasa sin la software da «Hunspell» e funcziuna en numerus programs, denter auter en Adobe InDesign e SDL Trados.</p>
-
-  <p>Per installar ella en quels programs surveschan las suandontas datotecas. Ina cuntegn il dicziunari, l'autra reglas per generar ulteriuras fuormas da plaids, la tiarza indicaziuns davart la versiun e la quarta la licenza.</p>
-
-  <p>
-    {{hunspellLanguage}}.dic<br>
-    {{hunspellLanguage}}.aff<br>
-    {{hunspellLanguage}}_version.txt<br>
-    {{hunspellLanguage}}_LICENSE.txt<br>
-  </p>
-
-  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecargar</button>
-
-  <p>Fagei aschi bien e consultei las paginas d'agid dils programs corrispundents per endriescher co installar las datotecas.</p>
-
-
-  <h1>Separaziun da silbas automatica per il romontsch</h1>
-
-  <p>
-    Il ZIP survart cuntegn era las datotecas Hunspell necessarias per la separaziun da silbas automatica.
-    L’interpresa far.ch ha sviluppau ils models dalla separaziun da silbas per incumbensa dalla Fundaziun Medias Rumantschas.
-  </p>
-
-  <h1>Remarcas per l’installaziun en Adobe InDesign:</h1>
-
-  <p>
-    L’installaziun en Adobe InDesign ei deplorablamein empau cumplicada. Da princip descriva Adobe cheu ils pass necessaris per l’installaziun:<br>
-    <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
-    Sin Windows funcziuna l’installaziun tenor nossa experientscha pulit bein.
-  </p>
-
-  <p>Ei dat denton differents problems ch’il manual dad Adobe risguarda buc:</p>
-
-  <ul>
-    <li>
-      La via che meina agl ordinatur corrispundent sa variar dalla via indicada. Magari era encurir cheu: <br>
-      <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tut tenor adattar igl onn)
-    </li>
-    <li>
-      L’installaziun sin MacOS funcziuna buca sco indicau el manual. Sin MacOS caschuna la modificaziun dalla datoteca «Info.plist» problems. (Era cun deactivar la funcziun da «code signing».)<br>
-      Nus recumandein perquei da buca modificar la datoteca «Info.plist», mobein da remplazzar las datotecas dad in auter lungatg che vus duvreis buca. Cheu igl exempel cun il rumen:<br>
-      Renumnar las datotecas romontschas en «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e remplazzar las datotecas egl ordinatur «ro_RO».<br>
-      Ins sto lu naturalmein tscharner il lungatg corrispundent en InDesign, pia en quei cass il rumen.
-    </li>
-  </ul>
-</div>
-
-<div class="modal-content" *ngIf="language === 'sutsilvan'">
-  <h1>Instalaziùn da la corectura ortografica an oters sistems</h1>
-
-  <p>La corectura ortografica rumàntscha sabasa sen la software da «Hunspell» a funcziunescha an dumbrus programs, trànter oter agl Adobe InDesign ad agl SDL Trados.</p>
-
-  <p>Par instalar la corectura ortografica an quels programs surveschan las savundàntas datotecas. Egna cuntegna igl pledari, l'otra las reglas par generar ulteriuras furmas da pleds, la tearza cuntegna las indicaziùns davart la versiùn a la quarta la lizenza.</p>
-
-  <p>
-    {{hunspellLanguage}}.dic<br>
-    {{hunspellLanguage}}.aff<br>
-    {{hunspellLanguage}}_version.txt<br>
-    {{hunspellLanguage}}_LICENSE.txt<br>
-  </p>
-
-  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecargear</button>
-
-  <p>Consultad par plascher las paginas d'agid digls programs coraspundaints par vagnir a saver co instalar las datotecas.</p>
-
-
-  <h1>Separaziùn da silbas automatica pigl rumàntsch</h1>
-
-  <p>
-    Igl ZIP survart cuntegna ear las datotecas Hunspell nezessarias par la separaziùn da silbas automatica.
-    L’interpresa far.ch â svilupo igls models da la separaziùn da silbas par la Fundaziùn Medias Rumàntschas.
-  </p>
-
-  <h1>Remartgas par l’instalaziùn agl Adobe InDesign:</h1>
-
-  <p>
-    L’instalaziùn agl Adobe InDesign e deplorablameing ampo cumplitgeada. Da prinzip descriva Adobe qua igls pass nezessaris par l’instalaziùn:<br>
-    <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
-    Sen Windows funcziunescha quella instalaziùn tanor la nossa experienztga detg pulit.
-  </p>
-
-  <p>Igl dat dantànt diferaints problems c’igl manual dad Adobe risguarda betga:</p>
-
-  <ul>
-    <li>
-      La veia ca magna tigl urdanader coraspundaint sa variear da la veia inditgeada. Magari ear ancurir a qua:<br>
-      <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tut tanor adatar igl on)
-    </li>
-    <li>
-      L’instalaziùn segl MacOS funcziunescha betga sco inditgieu agl manual. Segl MacOS caschùna la modificaziùn da la datoteca «Info.plist» problems. (Ear cun deactivar la funcziùn da «code signing».)<br>
-      Nus racumandagn parquegl da betga modifitgear la datoteca «Info.plist», mobagn da ramplazar las datotecas d’egn oter lungatg ca vus duvraz betga. Qua egn exaimpel cugl rumen:<br>
-      Midar igl num da las datotecas rumàntschas an «hyph_ro_RO.dic», «ro_RO.dic» a «ro_RO.aff» a ramplazar las datotecas agl urdanader «ro_RO».<br>
-      Ign sto lura natiralmeing tschearner igl lungatg coraspundaint agl InDesign, peia an que cass igl rumen.
-    </li>
-  </ul>
-</div>
-
-<div class="modal-content" *ngIf="language === 'vallader'">
-  <h1>Installaziun da la correctura ortografica in oters sistems</h1>
-
-  <p>La correctura ortografica rumantscha as basa sün la software da «Hunspell» e funcziuna in numerus programs, tanter oter in Adobe InDesign e SDL Trados.</p>
-
-  <p>Per l’installaziun in quists programs servan las seguaintas datotecas. Üna cuntegna il dicziunari, tschella reglas per generar ulteriuras fuormas da pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
-
-  <p>
-    {{hunspellLanguage}}.dic<br>
-    {{hunspellLanguage}}.aff<br>
-    {{hunspellLanguage}}_version.txt<br>
-    {{hunspellLanguage}}_LICENSE.txt<br>
-  </p>
-
-  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telechargiar</button>
-
-  <p>Per plaschair consultar las paginas d'agüd dals programs correspundents per gnir a savair co installar las datotecas.</p>
-
-
-  <h1>Separaziun da silbas automatica per il rumantsch</h1>
-
-  <p>
-    Il ZIP survart cuntegna eir las datotecas Hunspell necessarias per la separaziun da silbas automatica.
-    L’interpraisa far.ch ha sviluppà ils models da la separaziun da silbas per incumbenza da la Fundaziun Medias Rumantschas.
-  </p>
-
-  <h1>Remarchas per l’installaziun in Adobe InDesign:</h1>
-
-  <p>
-    L’installaziun in Adobe InDesign es displaschaivelmaing ün pa cumplichada. Da princip descriva Adobe qua ils pass necessaris per l’installaziun:<br>
-    <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
-    Sün Windows funcziuna quista installaziun tenor nossa experienza dret bain.
-  </p>
-
-  <p>I dà tantüna differents problems cha’l manual dad Adobe nu resguarda:</p>
-
-  <ul>
-    <li>
-      La via chi maina a l’ordinatur correspundent po variar da la via indichada. Magara eir tscherchar qua:<br>
-      <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tuot tenor adattar l’on)
-    </li>
-    <li>
-      L’installaziun sün MacOS nu funcziuna sco indichà aint il manual. Sün MacOS chaschuna la modificaziun da la datoteca «Info.plist» problems. (Eir cun deactivar la funcziun da «code signing».)<br>
-      Nus racumandain perquai da nu modifichar la datoteca «Info.plist», ma da rimplazzar las datotecas dad ün’otra lingua ch’El/Ella nu douvra nu dovrais. Qua l’exaimpel cul rumen:<br>
-      Müdar il nom da las datotecas rumantschas in «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e rimplazzar las datotecas in l’ordinatur «ro_RO».<br>
-      I’s sto lura natüralmaing tscherner la lingua correspundenta in InDesign, dimena in quist cas il rumen.
-    </li>
-  </ul>
-</div>
-
-<div class="modal-content" *ngIf="language === 'de'">
-  <h1>Installation der Rechtschreibprüfung auf anderen Systemen</h1>
-
-  <p>Die romanische Rechtschreibprüfung basiert auf der Software «Hunspell». Diese funktioniert mit einer Vielzahl an Programmen, unter anderem mit Adobe InDesign und SDL Trados.</p>
-
-  <p>Die folgenden Dateien werden für die Installation in diesen Programmen benötigt. Die erste Datei enthält das Wörterbuch, die Zweite die Regeln um weitere Wörter zu generieren, die Dritte enthält Angaben zur Version und die Vierte die Lizenz. </p>
-
-  <p>
-    {{hunspellLanguage}}.dic<br>
-    {{hunspellLanguage}}.aff<br>
-    {{hunspellLanguage}}_version.txt<br>
-    {{hunspellLanguage}}_LICENSE.txt<br>
-  </p>
-
-  <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecharger</button>
-
-  <p>Consultè per plaschair las paginas d'agüd dals programs correspundents per gnir a savair cu installer las datotecas.</p>
-
-
-  <h1>Separaziun da silbas automatica pel rumauntsch</h1>
-
-  <p>
-    Il ZIP survart cuntegna eir las datotecas Hunspell necessarias pella separaziun da silbas automatica.
-    L’interpraisa far.ch ho sviluppo ils models da la separaziun da silbas per incumbenza da la Fundaziun Medias Rumantschas.
-  </p>
-
-  <h1>Remarchas per l’installaziun in Adobe InDesign:</h1>
-
-  <p>
-    L’installaziun in Adobe InDesign es displaschaivelmaing ün pô cumplicheda. Da principi descriva Adobe cò ils pass necessaris per l’installaziun:<br>
-    <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
-    Sün Windows funcziuna quist‘installaziun tenor nossa experienza dret bain.
-  </p>
-
-  <p>Que do però differents problems cha’l manuel dad Adobe nu resguarda:</p>
-
-  <ul>
-    <li>
-      La via chi maina a l’ordinatur correspundent po varier da la via indicheda. Magari eir tschercher cò: <br>
-      <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tuot tenor adatter l’an)
-    </li>
-    <li>
-      L’installaziun sün MacOS nu funcziuna scu indicho i’l manuel. Sün MacOS chaschuna la modificaziun da la datoteca «Info.plist» problems. (Eir cun deactiver la funcziun da «code signing».)<br>
-      Nus arcumandains perque da na modificher la datoteca «Info.plist», ma da rimplazzer las datotecas dad ün’otra lingua cha vus nun ütilisais. Cò l’exaimpel cul rumen:<br>
-      Renumner las datotecas rumauntschas in «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e rimplazzer las datotecas i’l ordinatur «ro_RO».<br>
-      Que as stu alura natürelmaing tscherner la lingua correspundenta in InDesign, dimena in quist cas il rumen.
-
-    </li>
-  </ul>
-</div>
+@if (language === 'puter') {
+  <div class="modal-content">
+    <h1>Installaziun da la correctura ortografica in oters sistems</h1>
+    <p>La correctura ortografica rumauntscha as basa sülla software da «Hunspell» e funcziuna in numerus programs, traunter oter in Adobe InDesign ed SDL Trados.</p>
+    <p>Per l’installer in quists programs servan las seguaintas datotecas. Üna cuntegna il dicziunari, l'otra reglas per generer ulteriuras fuormas da pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
+    <p>
+      {{hunspellLanguage}}.dic<br>
+      {{hunspellLanguage}}.aff<br>
+      {{hunspellLanguage}}_version.txt<br>
+      {{hunspellLanguage}}_LICENSE.txt<br>
+    </p>
+    <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecharger</button>
+    <p>Consultè per plaschair las paginas d'agüd dals programs correspundents per gnir a savair cu installer las datotecas.</p>
+    <h1>Separaziun da silbas automatica pel rumauntsch</h1>
+    <p>
+      Il ZIP survart cuntegna eir las datotecas Hunspell necessarias pella separaziun da silbas automatica.
+      L’interpraisa far.ch ho sviluppo ils models da la separaziun da silbas per incumbenza da la Fundaziun Medias Rumantschas.
+    </p>
+    <h1>Remarchas per l’installaziun in Adobe InDesign:</h1>
+    <p>
+      L’installaziun in Adobe InDesign es displaschaivelmaing ün pô cumplicheda. Da principi descriva Adobe cò ils pass necessaris per l’installaziun:<br>
+      <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
+      Sün Windows funcziuna quist‘installaziun tenor nossa experienza dret bain.
+    </p>
+    <p>Que do però differents problems cha’l manuel dad Adobe nu resguarda:</p>
+    <ul>
+      <li>
+        La via chi maina a l’ordinatur correspundent po varier da la via indicheda. Magari eir tschercher cò: <br>
+        <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tuot tenor adatter l’an)
+      </li>
+      <li>
+        L’installaziun sün MacOS nu funcziuna scu indicho i’l manuel. Sün MacOS chaschuna la modificaziun da la datoteca «Info.plist» problems. (Eir cun deactiver la funcziun da «code signing».)<br>
+        Nus arcumandains perque da na modificher la datoteca «Info.plist», ma da rimplazzer las datotecas dad ün’otra lingua cha vus nun ütilisais. Cò l’exaimpel cul rumen:<br>
+        Renumner las datotecas rumauntschas in «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e rimplazzer las datotecas i’l ordinatur «ro_RO».<br>
+        Que as stu alura natürelmaing tscherner la lingua correspundenta in InDesign, dimena in quist cas il rumen.
+      </li>
+    </ul>
+  </div>
+}
+
+@if (language === 'rumantschgrischun') {
+  <div class="modal-content">
+    <h1>Installaziun da la correctura ortografica en auters sistems</h1>
+    <p>La correctura ortografica rumantscha sa basa sin la software da «Hunspell» e funcziuna en numerus programs, tranter auter en Adobe InDesign e SDL Trados.</p>
+    <p>Per l’installar en quests programs servan las suandantas datotecas. Ina cuntegna il dicziunari, l'autra reglas per generar ulteriuras furmas da pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
+    <p>
+      {{hunspellLanguage}}.dic<br>
+      {{hunspellLanguage}}.aff<br>
+      {{hunspellLanguage}}_version.txt<br>
+      {{hunspellLanguage}}_LICENSE.txt<br>
+    </p>
+    <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telechargiar</button>
+    <p>Consultai per plaschair las paginas d'agid dals programs correspundents per vegnir a savair co installar las datotecas.</p>
+    <h1>Separaziun da silbas automatica per il rumantsch</h1>
+    <p>
+      Il ZIP survart cuntegna era las datotecas Hunspell necessarias per la separaziun da silbas automatica.
+      L’interpresa far.ch ha sviluppà ils models da la separaziun da silbas per incumbensa da la Fundaziun Medias Rumantschas.
+    </p>
+    <h1>Remartgas per l’installaziun en Adobe InDesign:</h1>
+    <p>
+      L’installaziun en Adobe InDesign è deplorablamain in pau cumplitgada. Da princip descriva Adobe qua ils pass necessaris per l’installaziun:<br>
+      <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
+      Sin Windows funcziuna questa installaziun tenor nossa experientscha pulit bain.
+    </p>
+    <p>I dat dentant differents problems ch’il manual dad Adobe na resguarda betg:</p>
+    <ul>
+      <li>
+        La via che maina a l’ordinatur correspundent po variar da la via inditgada. Magari era tschertgar qua:<br>
+        <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tut tenor adattar l’onn)
+      </li>
+      <li>
+        L’installaziun sin MacOS na funcziuna betg sco inditgà en il manual. Sin MacOS chaschuna la modificaziun da la datoteca «Info.plist» problems. (Era cun deactivar la funcziun da «code signing».)<br>
+        Nus recumandain perquai da betg modifitgar la datoteca «Info.plist», mabain da remplazzar las datotecas dad in’autra lingua che vus n’utilisais betg. Qua l’exempel cun il rumen:<br>
+        Renumnar las datotecas rumantschas en «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e remplazzar las datotecas en l’ordinatur «ro_RO».<br>
+        Ins sto lura natiralmain tscherner la lingua correspundenta en InDesign, pia en quest cas il rumen.
+      </li>
+    </ul>
+  </div>
+}
+
+@if (language === 'surmiran') {
+  <div class="modal-content">
+    <h1>Installaziun dalla correctura ortografica ainten oters sistems</h1>
+    <p>La correctura ortografica rumantscha sa basa sen la software da «Hunspell» e funcziunescha an numerous programs, tranter oter an Adobe InDesign e SDL Trados.</p>
+    <p>Per igl installar ainten chels programs servan las suandontas dateias. Egna cuntigna igl dicziunari, l’otra reglas per generar ulteriouras furmas da pleds, la terza indicaziun davart la versiun e la quarta la licenza.</p>
+    <p>
+      {{hunspellLanguage}}.dic<br>
+      {{hunspellLanguage}}.aff<br>
+      {{hunspellLanguage}}_version.txt<br>
+      {{hunspellLanguage}}_LICENSE.txt<br>
+    </p>
+    <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecarger</button>
+    <p>Consulte per plascheir las paginas d'ageid digls programs correspondents per neir a saveir scu installar las dateias.</p>
+    <h1>Zavrada an silbas automatica pigl rumantsch</h1>
+    <p>
+      Igl ZIP survart cuntigna er las dateias Hunspell necessarias per la zavrada an silbas automatica.
+      L’interpresa far.ch ò sviluppo igls models dalla zavrada an silbas per incumbensa dalla Fundaziun Medias Rumantschas.
+    </p>
+    <h1>Remartgas per l’installaziun an Adobe InDesign:</h1>
+    <p>
+      L’installaziun an Adobe InDesign è deplorablamaintg en po cumplitgeida. Da prancepi descreiva Adobe cò igls pass necessaris per l’installaziun:<br>
+      <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
+      Sen Windows funcziunescha chella installaziun tenor la nossa experientscha pulit bagn.
+    </p>
+    <p>I dat dantant differents problems tg’igl manual dad Adobe na risguarda betg:</p>
+    <ul>
+      <li>
+        La veia tgi magna agl ordinatour correspondent pò variier dalla veia inditgeida. Forsa er tschartger cò:<br>
+        <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tot tenor adattar igl onn)
+      </li>
+      <li>
+        L’installaziun sen MacOS na funcziunescha betg scu inditgia aint igl manual. Sen MacOS caschunga la modificaziun dalla dateia «Info.plist» problems. (Er cun deactivar la funcziun da «code signing».)<br>
+        Nous recumandagn perchegl da betg modifitgier la dateia «Info.plist», mabagn da ramplazzar las dateias d’en oter lungatg tgi Vous na duvrez betg. Cò igl exaimpel cugl rumen:<br>
+        Midar igl nom dallas dateias rumantschas an «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e ramplazzar las dateias aint igl ordinatour «ro_RO».<br>
+        Alloura ins stò naturalmaintg tscherner igl lungatg correspondent an InDesign, damai an chel cass igl rumen.
+      </li>
+    </ul>
+  </div>
+}
+
+@if (language === 'sursilvan') {
+  <div class="modal-content">
+    <h1>Installaziun dalla correctura ortografica en auters sistems</h1>
+    <p>La correctura ortografica romontscha sebasa sin la software da «Hunspell» e funcziuna en numerus programs, denter auter en Adobe InDesign e SDL Trados.</p>
+    <p>Per installar ella en quels programs surveschan las suandontas datotecas. Ina cuntegn il dicziunari, l'autra reglas per generar ulteriuras fuormas da plaids, la tiarza indicaziuns davart la versiun e la quarta la licenza.</p>
+    <p>
+      {{hunspellLanguage}}.dic<br>
+      {{hunspellLanguage}}.aff<br>
+      {{hunspellLanguage}}_version.txt<br>
+      {{hunspellLanguage}}_LICENSE.txt<br>
+    </p>
+    <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecargar</button>
+    <p>Fagei aschi bien e consultei las paginas d'agid dils programs corrispundents per endriescher co installar las datotecas.</p>
+    <h1>Separaziun da silbas automatica per il romontsch</h1>
+    <p>
+      Il ZIP survart cuntegn era las datotecas Hunspell necessarias per la separaziun da silbas automatica.
+      L’interpresa far.ch ha sviluppau ils models dalla separaziun da silbas per incumbensa dalla Fundaziun Medias Rumantschas.
+    </p>
+    <h1>Remarcas per l’installaziun en Adobe InDesign:</h1>
+    <p>
+      L’installaziun en Adobe InDesign ei deplorablamein empau cumplicada. Da princip descriva Adobe cheu ils pass necessaris per l’installaziun:<br>
+      <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
+      Sin Windows funcziuna l’installaziun tenor nossa experientscha pulit bein.
+    </p>
+    <p>Ei dat denton differents problems ch’il manual dad Adobe risguarda buc:</p>
+    <ul>
+      <li>
+        La via che meina agl ordinatur corrispundent sa variar dalla via indicada. Magari era encurir cheu: <br>
+        <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tut tenor adattar igl onn)
+      </li>
+      <li>
+        L’installaziun sin MacOS funcziuna buca sco indicau el manual. Sin MacOS caschuna la modificaziun dalla datoteca «Info.plist» problems. (Era cun deactivar la funcziun da «code signing».)<br>
+        Nus recumandein perquei da buca modificar la datoteca «Info.plist», mobein da remplazzar las datotecas dad in auter lungatg che vus duvreis buca. Cheu igl exempel cun il rumen:<br>
+        Renumnar las datotecas romontschas en «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e remplazzar las datotecas egl ordinatur «ro_RO».<br>
+        Ins sto lu naturalmein tscharner il lungatg corrispundent en InDesign, pia en quei cass il rumen.
+      </li>
+    </ul>
+  </div>
+}
+
+@if (language === 'sutsilvan') {
+  <div class="modal-content">
+    <h1>Instalaziùn da la corectura ortografica an oters sistems</h1>
+    <p>La corectura ortografica rumàntscha sabasa sen la software da «Hunspell» a funcziunescha an dumbrus programs, trànter oter agl Adobe InDesign ad agl SDL Trados.</p>
+    <p>Par instalar la corectura ortografica an quels programs surveschan las savundàntas datotecas. Egna cuntegna igl pledari, l'otra las reglas par generar ulteriuras furmas da pleds, la tearza cuntegna las indicaziùns davart la versiùn a la quarta la lizenza.</p>
+    <p>
+      {{hunspellLanguage}}.dic<br>
+      {{hunspellLanguage}}.aff<br>
+      {{hunspellLanguage}}_version.txt<br>
+      {{hunspellLanguage}}_LICENSE.txt<br>
+    </p>
+    <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecargear</button>
+    <p>Consultad par plascher las paginas d'agid digls programs coraspundaints par vagnir a saver co instalar las datotecas.</p>
+    <h1>Separaziùn da silbas automatica pigl rumàntsch</h1>
+    <p>
+      Igl ZIP survart cuntegna ear las datotecas Hunspell nezessarias par la separaziùn da silbas automatica.
+      L’interpresa far.ch â svilupo igls models da la separaziùn da silbas par la Fundaziùn Medias Rumàntschas.
+    </p>
+    <h1>Remartgas par l’instalaziùn agl Adobe InDesign:</h1>
+    <p>
+      L’instalaziùn agl Adobe InDesign e deplorablameing ampo cumplitgeada. Da prinzip descriva Adobe qua igls pass nezessaris par l’instalaziùn:<br>
+      <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
+      Sen Windows funcziunescha quella instalaziùn tanor la nossa experienztga detg pulit.
+    </p>
+    <p>Igl dat dantànt diferaints problems c’igl manual dad Adobe risguarda betga:</p>
+    <ul>
+      <li>
+        La veia ca magna tigl urdanader coraspundaint sa variear da la veia inditgeada. Magari ear ancurir a qua:<br>
+        <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tut tanor adatar igl on)
+      </li>
+      <li>
+        L’instalaziùn segl MacOS funcziunescha betga sco inditgieu agl manual. Segl MacOS caschùna la modificaziùn da la datoteca «Info.plist» problems. (Ear cun deactivar la funcziùn da «code signing».)<br>
+        Nus racumandagn parquegl da betga modifitgear la datoteca «Info.plist», mobagn da ramplazar las datotecas d’egn oter lungatg ca vus duvraz betga. Qua egn exaimpel cugl rumen:<br>
+        Midar igl num da las datotecas rumàntschas an «hyph_ro_RO.dic», «ro_RO.dic» a «ro_RO.aff» a ramplazar las datotecas agl urdanader «ro_RO».<br>
+        Ign sto lura natiralmeing tschearner igl lungatg coraspundaint agl InDesign, peia an que cass igl rumen.
+      </li>
+    </ul>
+  </div>
+}
+
+@if (language === 'vallader') {
+  <div class="modal-content">
+    <h1>Installaziun da la correctura ortografica in oters sistems</h1>
+    <p>La correctura ortografica rumantscha as basa sün la software da «Hunspell» e funcziuna in numerus programs, tanter oter in Adobe InDesign e SDL Trados.</p>
+    <p>Per l’installaziun in quists programs servan las seguaintas datotecas. Üna cuntegna il dicziunari, tschella reglas per generar ulteriuras fuormas da pleds, la terza indicaziuns davart la versiun e la quarta la licenza.</p>
+    <p>
+      {{hunspellLanguage}}.dic<br>
+      {{hunspellLanguage}}.aff<br>
+      {{hunspellLanguage}}_version.txt<br>
+      {{hunspellLanguage}}_LICENSE.txt<br>
+    </p>
+    <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telechargiar</button>
+    <p>Per plaschair consultar las paginas d'agüd dals programs correspundents per gnir a savair co installar las datotecas.</p>
+    <h1>Separaziun da silbas automatica per il rumantsch</h1>
+    <p>
+      Il ZIP survart cuntegna eir las datotecas Hunspell necessarias per la separaziun da silbas automatica.
+      L’interpraisa far.ch ha sviluppà ils models da la separaziun da silbas per incumbenza da la Fundaziun Medias Rumantschas.
+    </p>
+    <h1>Remarchas per l’installaziun in Adobe InDesign:</h1>
+    <p>
+      L’installaziun in Adobe InDesign es displaschaivelmaing ün pa cumplichada. Da princip descriva Adobe qua ils pass necessaris per l’installaziun:<br>
+      <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
+      Sün Windows funcziuna quista installaziun tenor nossa experienza dret bain.
+    </p>
+    <p>I dà tantüna differents problems cha’l manual dad Adobe nu resguarda:</p>
+    <ul>
+      <li>
+        La via chi maina a l’ordinatur correspundent po variar da la via indichada. Magara eir tscherchar qua:<br>
+        <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tuot tenor adattar l’on)
+      </li>
+      <li>
+        L’installaziun sün MacOS nu funcziuna sco indichà aint il manual. Sün MacOS chaschuna la modificaziun da la datoteca «Info.plist» problems. (Eir cun deactivar la funcziun da «code signing».)<br>
+        Nus racumandain perquai da nu modifichar la datoteca «Info.plist», ma da rimplazzar las datotecas dad ün’otra lingua ch’El/Ella nu douvra nu dovrais. Qua l’exaimpel cul rumen:<br>
+        Müdar il nom da las datotecas rumantschas in «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e rimplazzar las datotecas in l’ordinatur «ro_RO».<br>
+        I’s sto lura natüralmaing tscherner la lingua correspundenta in InDesign, dimena in quist cas il rumen.
+      </li>
+    </ul>
+  </div>
+}
+
+@if (language === 'de') {
+  <div class="modal-content">
+    <h1>Installation der Rechtschreibprüfung auf anderen Systemen</h1>
+    <p>Die romanische Rechtschreibprüfung basiert auf der Software «Hunspell». Diese funktioniert mit einer Vielzahl an Programmen, unter anderem mit Adobe InDesign und SDL Trados.</p>
+    <p>Die folgenden Dateien werden für die Installation in diesen Programmen benötigt. Die erste Datei enthält das Wörterbuch, die Zweite die Regeln um weitere Wörter zu generieren, die Dritte enthält Angaben zur Version und die Vierte die Lizenz. </p>
+    <p>
+      {{hunspellLanguage}}.dic<br>
+      {{hunspellLanguage}}.aff<br>
+      {{hunspellLanguage}}_version.txt<br>
+      {{hunspellLanguage}}_LICENSE.txt<br>
+    </p>
+    <button (click)="downloadHunspell.emit()" style="margin-bottom: 44px">Telecharger</button>
+    <p>Consultè per plaschair las paginas d'agüd dals programs correspundents per gnir a savair cu installer las datotecas.</p>
+    <h1>Separaziun da silbas automatica pel rumauntsch</h1>
+    <p>
+      Il ZIP survart cuntegna eir las datotecas Hunspell necessarias pella separaziun da silbas automatica.
+      L’interpraisa far.ch ho sviluppo ils models da la separaziun da silbas per incumbenza da la Fundaziun Medias Rumantschas.
+    </p>
+    <h1>Remarchas per l’installaziun in Adobe InDesign:</h1>
+    <p>
+      L’installaziun in Adobe InDesign es displaschaivelmaing ün pô cumplicheda. Da principi descriva Adobe cò ils pass necessaris per l’installaziun:<br>
+      <a href="https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html">https://helpx.adobe.com/ch_de/indesign/kb/add_cs_dictionaries.html</a><br>
+      Sün Windows funcziuna quist‘installaziun tenor nossa experienza dret bain.
+    </p>
+    <p>Que do però differents problems cha’l manuel dad Adobe nu resguarda:</p>
+    <ul>
+      <li>
+        La via chi maina a l’ordinatur correspundent po varier da la via indicheda. Magari eir tschercher cò: <br>
+        <em>C:\Program Files\Adobe\Adobe InDesign 2024\Resources\Dictionaries\LILO\Linguistics\Providers\Plugins2\AdobeHunspellPlugin\Dictionaries</em> (tuot tenor adatter l’an)
+      </li>
+      <li>
+        L’installaziun sün MacOS nu funcziuna scu indicho i’l manuel. Sün MacOS chaschuna la modificaziun da la datoteca «Info.plist» problems. (Eir cun deactiver la funcziun da «code signing».)<br>
+        Nus arcumandains perque da na modificher la datoteca «Info.plist», ma da rimplazzer las datotecas dad ün’otra lingua cha vus nun ütilisais. Cò l’exaimpel cul rumen:<br>
+        Renumner las datotecas rumauntschas in «hyph_ro_RO.dic», «ro_RO.dic» e «ro_RO.aff» e rimplazzer las datotecas i’l ordinatur «ro_RO».<br>
+        Que as stu alura natürelmaing tscherner la lingua correspundenta in InDesign, dimena in quist cas il rumen.
+      </li>
+    </ul>
+  </div>
+}

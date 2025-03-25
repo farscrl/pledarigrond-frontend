@@ -1,31 +1,35 @@
 <div class="pg-modal-wrapper">
-  <div class="modal-content" *ngIf="resourceType === 'dictionaries'">
-    <h3>{{ 'promo.other' | translate }}</h3>
-    <ul class=" ext_links_dicts">
-      <li>
-        <a href="https://www.pledari.ch" target="_blank">https://www.pledari.ch</a>
-      </li>
-      <li>
-        <a href="https://www.bargunsenar.ch" target="_blank">https://www.bargunsenar.ch</a>
-      </li>
-    </ul>
-  </div>
+  @if (resourceType === 'dictionaries') {
+    <div class="modal-content">
+      <h3>{{ 'promo.other' | translate }}</h3>
+      <ul class=" ext_links_dicts">
+        <li>
+          <a href="https://www.pledari.ch" target="_blank">https://www.pledari.ch</a>
+        </li>
+        <li>
+          <a href="https://www.bargunsenar.ch" target="_blank">https://www.bargunsenar.ch</a>
+        </li>
+      </ul>
+    </div>
+  }
 
-  <div class="modal-content" *ngIf="resourceType === 'glossaries'">
-    <h3>{{ 'promo.glossary' | translate }}</h3>
-    <ul class=" ext_links_dicts">
-      <li>
-        <a href="http://www.liarumantscha.ch/?changeLang=_de#type-product=dicziunari_gourmet_w%C3%B6rterbuch_id1321" target="_blank">{{ 'other_resources.gourmet' | translate }}</a>
-      </li>
-      <li>
-        <a href="http://www.liarumantscha.ch/?changeLang=_de#type-product=flora_helvetica_id1288" target="_blank">{{ 'other_resources.flora' | translate }}</a>
-      </li>
-      <li>
-        <a href="http://www.avionary.info/" target="_blank">{{ 'other_resources.avionary' | translate }}</a>
-      </li>
-      <li>
-        <a href="http://www.liarumantscha.ch/?changeLang=_de#type-product=osl_-_2309_ballape._reglas%2C_trics_e_tips_id66"  target="_blank">{{ 'other_resources.ballape' | translate }}</a>
-      </li>
-    </ul>
-  </div>
+  @if (resourceType === 'glossaries') {
+    <div class="modal-content">
+      <h3>{{ 'promo.glossary' | translate }}</h3>
+      <ul class=" ext_links_dicts">
+        <li>
+          <a href="http://www.liarumantscha.ch/?changeLang=_de#type-product=dicziunari_gourmet_w%C3%B6rterbuch_id1321" target="_blank">{{ 'other_resources.gourmet' | translate }}</a>
+        </li>
+        <li>
+          <a href="http://www.liarumantscha.ch/?changeLang=_de#type-product=flora_helvetica_id1288" target="_blank">{{ 'other_resources.flora' | translate }}</a>
+        </li>
+        <li>
+          <a href="http://www.avionary.info/" target="_blank">{{ 'other_resources.avionary' | translate }}</a>
+        </li>
+        <li>
+          <a href="http://www.liarumantscha.ch/?changeLang=_de#type-product=osl_-_2309_ballape._reglas%2C_trics_e_tips_id66"  target="_blank">{{ 'other_resources.ballape' | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  }
 </div>

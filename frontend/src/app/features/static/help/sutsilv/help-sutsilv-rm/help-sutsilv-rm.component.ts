@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-help-sutsilv-rm',
-    templateUrl: './help-sutsilv-rm.component.html',
-    standalone: false
+    templateUrl: './help-sutsilv-rm.component.html'
 })
 export class HelpSutsilvRmComponent implements OnInit {
 

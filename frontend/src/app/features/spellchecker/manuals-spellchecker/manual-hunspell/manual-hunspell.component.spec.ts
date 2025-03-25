@@ -8,8 +8,8 @@ describe('ManualHunspellComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManualHunspellComponent ]
-    })
+    imports: [ManualHunspellComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ManualHunspellComponent);

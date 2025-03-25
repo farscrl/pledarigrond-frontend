@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-registration',
     templateUrl: './registration.component.html',
     styleUrls: ['./registration.component.scss'],
-    standalone: false
+    imports: [FormsModule, TranslatePipe]
 })
 export class RegistrationComponent extends NgxModalComponent<null, null> implements OnInit {
 

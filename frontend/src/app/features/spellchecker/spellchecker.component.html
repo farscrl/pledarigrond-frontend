@@ -1,20 +1,22 @@
 <div class="content">
   <div class="main">
     <div class="spellchecker" spellcheck="false">
-      <div *ngIf="isLoadingData" class="loading-notification">
-        {{ 'spellchecker.loading' | translate }}
-      </div>
-      <ng-container *ngIf="editor">
+      @if (isLoadingData) {
+        <div class="loading-notification">
+          {{ 'spellchecker.loading' | translate }}
+        </div>
+      }
+      @if (editor) {
         <div class="editor">
           <div class="editor__header">
             <app-spellchecker-menubar [editor]="editor"></app-spellchecker-menubar>
           </div>
-          <ng-container *ngIf="sentSuggestion">
+          @if (sentSuggestion) {
             <div class="editor__notification">
               <div class="text">{{ 'spellchecker.sent_suggestion' | translate:{'word': sentSuggestionWord } }}</div>
               <div class="icon"><i class="ri-close-fill" (click)="closeSuggestionNotification()"></i></div>
             </div>
-          </ng-container>
+          }
           <div class="editor__content">
             <tiptap-editor [editor]="editor" [(ngModel)]="value"></tiptap-editor>
           </div>
@@ -25,8 +27,7 @@
             </div>
           </div>
         </div>
-
-      </ng-container>
+      }
     </div>
     <div class="infos">
       <div class="instructions">
@@ -36,58 +37,68 @@
           {{ 'spellchecker.privacy' | translate }}
         </p>
         <br>
-        <h2>
-          {{ 'spellchecker.install.title' | translate }}
-        </h2>
-        <ul *ngIf="idiom === 'puter'">
-          <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'puter', 'rm-puter')">{{ 'spellchecker.install.word' | translate }}</a></li>
-          <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'puter', 'rm-puter')">macOS</a></li>
-          <li><a href="https://extensions.libreoffice.org/en/extensions/show/41991" target="_blank">LibreOffice</a></li>
-          <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-rumantsch-puter" target="_blank">Mozilla Firefox</a></li>
-          <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-rumauntsch-puter" target="_blank">Mozilla Thunderbird</a></li>
-          <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'puter', 'rm-puter')">{{ 'spellchecker.install.other' | translate }}</a></li>
-        </ul>
-        <ul *ngIf="idiom === 'rumgr'">
-          <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">{{ 'spellchecker.install.word' | translate }}</a></li>
-          <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">macOS</a></li>
-          <li><a href="https://extensions.libreoffice.org/en/extensions/show/41993" target="_blank">LibreOffice</a></li>
-          <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-rumgr" target="_blank">Mozilla Firefox</a></li>
-          <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-rumgr" target="_blank">Mozilla Thunderbird</a></li>
-          <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">{{ 'spellchecker.install.other' | translate }}</a></li>
-        </ul>
-        <ul *ngIf="idiom === 'surmiran'">
-          <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">{{ 'spellchecker.install.word' | translate }}</a></li>
-          <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">macOS</a></li>
-          <li><a href="https://extensions.libreoffice.org/en/extensions/show/21650" target="_blank">LibreOffice</a></li>
-          <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-surmiran" target="_blank">Mozilla Firefox</a></li>
-          <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-surmiran" target="_blank">Mozilla Thunderbird</a></li>
-          <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">{{ 'spellchecker.install.other' | translate }}</a></li>
-        </ul>
-        <ul *ngIf="idiom === 'sutsilv'">
-          <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'sutsilvan', 'rm-sutsilv')">{{ 'spellchecker.install.word' | translate }}</a></li>
-          <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'sutsilvan', 'rm-sutsilv')">macOS</a></li>
-          <li><a href="https://extensions.libreoffice.org/en/extensions/show/34151" target="_blank">LibreOffice</a></li>
-          <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-sutsilvan/" target="_blank">Mozilla Firefox</a></li>
-          <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-sutsilvan" target="_blank">Mozilla Thunderbird</a></li>
-          <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'sutsilvan', 'rm-sutsilv')">{{ 'spellchecker.install.other' | translate }}</a></li>
-        </ul>
-        <ul *ngIf="idiom === 'vallader'">
-          <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'vallader', 'rm-vallader')">{{ 'spellchecker.install.word' | translate }}</a></li>
-          <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'vallader', 'rm-vallader')">macOS</a></li>
-          <li><a href="https://extensions.libreoffice.org/en/extensions/show/41992" target="_blank">LibreOffice</a></li>
-          <li><a href="https://addons.mozilla.org/firefox/addon/spellcheck-rumantsch-vallader" target="_blank">Mozilla Firefox</a></li>
-          <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellcheck-rumantsch-vallader" target="_blank">Mozilla Thunderbird</a></li>
-          <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'vallader', 'rm-vallader')">{{ 'spellchecker.install.other' | translate }}</a></li>
-        </ul>
-      </div>
-      <div class="credits">
-        {{ 'spellchecker.credits'
+          <h2>
+            {{ 'spellchecker.install.title' | translate }}
+          </h2>
+          @if (idiom === 'puter') {
+            <ul>
+              <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'puter', 'rm-puter')">{{ 'spellchecker.install.word' | translate }}</a></li>
+              <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'puter', 'rm-puter')">macOS</a></li>
+              <li><a href="https://extensions.libreoffice.org/en/extensions/show/41991" target="_blank">LibreOffice</a></li>
+              <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-rumantsch-puter" target="_blank">Mozilla Firefox</a></li>
+              <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-rumauntsch-puter" target="_blank">Mozilla Thunderbird</a></li>
+              <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'puter', 'rm-puter')">{{ 'spellchecker.install.other' | translate }}</a></li>
+            </ul>
+          }
+          @if (idiom === 'rumgr') {
+            <ul>
+              <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">{{ 'spellchecker.install.word' | translate }}</a></li>
+              <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">macOS</a></li>
+              <li><a href="https://extensions.libreoffice.org/en/extensions/show/41993" target="_blank">LibreOffice</a></li>
+              <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-rumgr" target="_blank">Mozilla Firefox</a></li>
+              <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-rumgr" target="_blank">Mozilla Thunderbird</a></li>
+              <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">{{ 'spellchecker.install.other' | translate }}</a></li>
+            </ul>
+          }
+          @if (idiom === 'surmiran') {
+            <ul>
+              <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">{{ 'spellchecker.install.word' | translate }}</a></li>
+              <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">macOS</a></li>
+              <li><a href="https://extensions.libreoffice.org/en/extensions/show/21650" target="_blank">LibreOffice</a></li>
+              <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-surmiran" target="_blank">Mozilla Firefox</a></li>
+              <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-surmiran" target="_blank">Mozilla Thunderbird</a></li>
+              <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">{{ 'spellchecker.install.other' | translate }}</a></li>
+            </ul>
+          }
+          @if (idiom === 'sutsilv') {
+            <ul>
+              <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'sutsilvan', 'rm-sutsilv')">{{ 'spellchecker.install.word' | translate }}</a></li>
+              <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'sutsilvan', 'rm-sutsilv')">macOS</a></li>
+              <li><a href="https://extensions.libreoffice.org/en/extensions/show/34151" target="_blank">LibreOffice</a></li>
+              <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-sutsilvan/" target="_blank">Mozilla Firefox</a></li>
+              <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-sutsilvan" target="_blank">Mozilla Thunderbird</a></li>
+              <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'sutsilvan', 'rm-sutsilv')">{{ 'spellchecker.install.other' | translate }}</a></li>
+            </ul>
+          }
+          @if (idiom === 'vallader') {
+            <ul>
+              <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'vallader', 'rm-vallader')">{{ 'spellchecker.install.word' | translate }}</a></li>
+              <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'vallader', 'rm-vallader')">macOS</a></li>
+              <li><a href="https://extensions.libreoffice.org/en/extensions/show/41992" target="_blank">LibreOffice</a></li>
+              <li><a href="https://addons.mozilla.org/firefox/addon/spellcheck-rumantsch-vallader" target="_blank">Mozilla Firefox</a></li>
+              <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellcheck-rumantsch-vallader" target="_blank">Mozilla Thunderbird</a></li>
+              <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'vallader', 'rm-vallader')">{{ 'spellchecker.install.other' | translate }}</a></li>
+            </ul>
+          }
+        </div>
+        <div class="credits">
+          {{ 'spellchecker.credits'
           | translate | translateCut:'0' }}<a href="https://www.rumantsch.ch/" target="_blank">{{ 'spellchecker.credits'
-          | translate | translateCut:'1' }}</a>{{ 'spellchecker.credits'
-          | translate | translateCut:'2' }}<a href="http://www.liarumantscha.ch" target="_blank">{{ 'spellchecker.credits'
-          | translate | translateCut:'3' }}</a>{{ 'spellchecker.credits'
-          | translate | translateCut:'4' }}
-      </div>
+        | translate | translateCut:'1' }}</a>{{ 'spellchecker.credits'
+        | translate | translateCut:'2' }}<a href="http://www.liarumantscha.ch" target="_blank">{{ 'spellchecker.credits'
+      | translate | translateCut:'3' }}</a>{{ 'spellchecker.credits'
+      | translate | translateCut:'4' }}
     </div>
   </div>
+</div>
 </div>

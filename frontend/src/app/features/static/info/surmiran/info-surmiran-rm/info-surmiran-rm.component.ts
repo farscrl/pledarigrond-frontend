@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ThousandSeparatorPipe } from '../../../../../pipes/thousand-separator.pipe';
 
 @Component({
     selector: 'app-info-surmiran-rm',
     templateUrl: './info-surmiran-rm.component.html',
-    standalone: false
+    imports: [ThousandSeparatorPipe]
 })
 export class InfoSurmiranRmComponent implements OnInit {
 

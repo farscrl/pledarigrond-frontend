@@ -3,12 +3,16 @@ import { TranslateService } from '@ngx-translate/core';
 import { SwUpdate, VersionReadyEvent } from "@angular/service-worker";
 import { filter } from "rxjs";
 import { map } from "rxjs/operators";
+import { HeaderComponent } from './components/header/header.component';
+import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
+import { MainComponent } from './components/main/main.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: false
+    imports: [HeaderComponent, LanguageSelectionComponent, MainComponent, FooterComponent]
 })
 export class AppComponent {
   constructor(translate: TranslateService, private swUpdate: SwUpdate) {

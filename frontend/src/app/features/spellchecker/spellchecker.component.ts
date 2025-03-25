@@ -7,7 +7,7 @@ import { Underline } from "@tiptap/extension-underline";
 import { Highlight } from "@tiptap/extension-highlight";
 import { Subscription } from "rxjs";
 import { FrontendLanguage, Idiom, SelectedLanguageService } from "../../services/selected-language.service";
-import { TranslateService } from "@ngx-translate/core";
+import { TranslateService, TranslatePipe } from "@ngx-translate/core";
 import { MatomoTracker } from "ngx-matomo-client";
 import { ModificationService } from "../../services/modification.service";
 import { LemmaVersion } from "../../models/lemma-version";
@@ -21,11 +21,16 @@ import {
 import { ActivatedRoute } from "@angular/router";
 import { Proofreader } from '@farscrl/rumantsch-language-tools';
 
+import { SpellcheckerMenubarComponent } from './spellchecker-menubar/spellchecker-menubar.component';
+import { TiptapEditorDirective } from 'ngx-tiptap';
+import { FormsModule } from '@angular/forms';
+import { TranslateCutPipe } from '../../pipes/translate-cut.pipe';
+
 @Component({
     selector: 'app-spellchecker',
     templateUrl: './spellchecker.component.html',
     styleUrls: ['./spellchecker.component.scss'],
-    standalone: false
+    imports: [SpellcheckerMenubarComponent, TiptapEditorDirective, FormsModule, TranslatePipe, TranslateCutPipe]
 })
 export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
 

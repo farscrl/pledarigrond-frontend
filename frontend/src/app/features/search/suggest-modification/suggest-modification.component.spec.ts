@@ -8,8 +8,8 @@ describe('SuggestModificationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SuggestModificationComponent ]
-    })
+    imports: [SuggestModificationComponent]
+})
     .compileComponents();
   });
 

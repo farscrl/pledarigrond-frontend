@@ -1,6 +1,6 @@
-<ng-container *ngIf="frontEndLanguage == 'rm'">
+@if (frontEndLanguage == 'rm') {
   <app-help-rumgr-rm></app-help-rumgr-rm>
-</ng-container>
-<ng-container *ngIf="frontEndLanguage == 'de'">
+}
+@if (frontEndLanguage == 'de') {
   <app-help-rumgr-de></app-help-rumgr-de>
-</ng-container>
+}

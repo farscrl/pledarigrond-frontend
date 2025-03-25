@@ -1,11 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { NgxModalComponent } from "ngx-modalview";
 
+import { ManualMacosComponent } from './manual-macos/manual-macos.component';
+import { ManualHunspellComponent } from './manual-hunspell/manual-hunspell.component';
+import { ManualWordComponent } from './manual-word/manual-word.component';
+
 @Component({
     selector: 'app-manuals-spellchecker',
     templateUrl: './manuals-spellchecker.component.html',
     styleUrls: ['./manuals-spellchecker.component.scss'],
-    standalone: false
+    imports: [ManualMacosComponent, ManualHunspellComponent, ManualWordComponent]
 })
 export class ManualsSpellcheckerComponent extends NgxModalComponent<{manualType: ManualType, language: ManualLanguage, hunspellLanguage: HunspellLanguage }, null> {
 

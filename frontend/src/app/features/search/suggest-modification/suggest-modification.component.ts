@@ -6,11 +6,14 @@ import { AuthService } from 'src/app/services/auth.service';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { MatomoTracker } from "ngx-matomo-client";
 
+import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-suggest-modification',
     templateUrl: './suggest-modification.component.html',
     styleUrls: ['./suggest-modification.component.scss'],
-    standalone: false
+    imports: [FormsModule, TranslatePipe]
 })
 export class SuggestModificationComponent extends NgxModalComponent<{lemmaVersion: LemmaVersion}, null> implements OnInit {
 

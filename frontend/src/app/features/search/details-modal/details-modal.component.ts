@@ -4,11 +4,17 @@ import { NgxModalComponent, NgxModalService } from "ngx-modalview";
 import { Idiom, SelectedLanguageService } from '../../../services/selected-language.service';
 import { Subscription } from 'rxjs';
 
+import { DetailsExampleComponent } from './details-example/details-example.component';
+import { DetailsVerbComponent } from './details-verb/details-verb.component';
+import { DetailsSubstComponent } from './details-subst/details-subst.component';
+import { DetailsAdjComponent } from './details-adj/details-adj.component';
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-details-modal',
     templateUrl: './details-modal.component.html',
     styleUrls: ['./details-modal.component.scss'],
-    standalone: false
+    imports: [DetailsExampleComponent, DetailsVerbComponent, DetailsSubstComponent, DetailsAdjComponent, TranslatePipe]
 })
 export class DetailsModalComponent extends NgxModalComponent<{lemmaVersion?: LemmaVersion}, null> implements OnInit, OnDestroy {
 

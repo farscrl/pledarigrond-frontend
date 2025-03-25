@@ -3,12 +3,13 @@ import { Subscription } from 'rxjs';
 import { FeedEntry } from 'src/app/models/feed';
 import { FeedService } from 'src/app/services/feed.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
+import { SlicePipe } from '@angular/common';
 
 @Component({
     selector: 'app-rss-feed',
     templateUrl: './rss-feed.component.html',
     styleUrls: ['./rss-feed.component.scss'],
-    standalone: false
+    imports: [SlicePipe]
 })
 export class RssFeedComponent implements OnInit, OnDestroy {
 

@@ -1,15 +1,18 @@
-<div class="content" *ngIf="examples.length > 0">
-  <h4>{{ 'verbOverlayPopup.examples' | translate }}</h4>
+@if (examples.length > 0) {
+  <div class="content">
+    <h4>{{ 'verbOverlayPopup.examples' | translate }}</h4>
+    @for (example of examples;track example) {
+      <div class="example">
+        <div class="rm-example">{{ example.rm }}</div>
+        <div class="de-example">{{ example.de }}</div>
+      </div>
+    }
+  </div>
+}
 
-  @for (example of examples;track example) {
-    <div class="example">
-      <div class="rm-example">{{ example.rm }}</div>
-      <div class="de-example">{{ example.de }}</div>
-    </div>
-  }
-</div>
-
-<div class="content" *ngIf="lemmaVersion?.lemmaValues?.REtymologie">
-  <h4>{{ 'verbOverlayPopup.etymology' | translate }}</h4>
-  <div class="etymology">{{ lemmaVersion?.lemmaValues?.REtymologie }}</div>
-</div>
+@if (lemmaVersion?.lemmaValues?.REtymologie) {
+  <div class="content">
+    <h4>{{ 'verbOverlayPopup.etymology' | translate }}</h4>
+    <div class="etymology">{{ lemmaVersion?.lemmaValues?.REtymologie }}</div>
+  </div>
+}

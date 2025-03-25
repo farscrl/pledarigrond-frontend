@@ -3,10 +3,13 @@ import { Subscription } from 'rxjs';
 import { InfoService } from 'src/app/services/info.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
+import { InfoRumgrRmComponent } from '../info-rumgr-rm/info-rumgr-rm.component';
+import { InfoRumgrDeComponent } from '../info-rumgr-de/info-rumgr-de.component';
+
 @Component({
     selector: 'app-info-rumgr',
     templateUrl: './info-rumgr.component.html',
-    standalone: false
+    imports: [InfoRumgrRmComponent, InfoRumgrDeComponent]
 })
 export class InfoRumgrComponent implements OnInit {
 

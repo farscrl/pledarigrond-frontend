@@ -1,11 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SearchCriteria } from 'src/app/models/search-criteria';
+import { FormsModule } from '@angular/forms';
+import { AutofocusDirective } from '../../../directives/autofocus.directive';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-search-options',
     templateUrl: './search-options.component.html',
     styleUrls: ['./search-options.component.scss'],
-    standalone: false
+    imports: [FormsModule, AutofocusDirective, TranslatePipe]
 })
 export class SearchOptionsComponent implements OnInit {
 

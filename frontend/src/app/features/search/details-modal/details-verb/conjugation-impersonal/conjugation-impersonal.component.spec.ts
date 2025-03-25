@@ -9,9 +9,8 @@ describe('ConjugationImpersonalComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConjugationImpersonalComponent ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+    imports: [IonicModule.forRoot(), ConjugationImpersonalComponent]
+}).compileComponents();
 
     fixture = TestBed.createComponent(ConjugationImpersonalComponent);
     component = fixture.componentInstance;

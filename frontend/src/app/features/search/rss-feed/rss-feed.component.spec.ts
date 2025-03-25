@@ -8,8 +8,8 @@ describe('RssFeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RssFeedComponent ]
-    })
+    imports: [RssFeedComponent]
+})
     .compileComponents();
   });
 

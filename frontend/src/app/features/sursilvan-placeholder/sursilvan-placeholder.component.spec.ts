@@ -8,8 +8,8 @@ describe('SursilvanPlaceholderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SursilvanPlaceholderComponent ]
-    })
+    imports: [SursilvanPlaceholderComponent]
+})
     .compileComponents();
   });
 

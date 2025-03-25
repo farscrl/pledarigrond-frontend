@@ -3,12 +3,13 @@ import { OtherResourcesComponent, OtherResourcesType } from '../../other-resourc
 import { NgxModalService } from "ngx-modalview";
 import { SelectedLanguageService } from "../../../services/selected-language.service";
 import { Subscription } from "rxjs";
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-glossary-links',
     templateUrl: './glossary-links.component.html',
     styleUrls: ['./glossary-links.component.scss'],
-    standalone: false
+    imports: [TranslatePipe]
 })
 export class GlossaryLinksComponent implements OnInit {
 

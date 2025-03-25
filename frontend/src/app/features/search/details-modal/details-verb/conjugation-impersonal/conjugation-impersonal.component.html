@@ -1,21 +1,35 @@
-<div class="title"  *ngIf="title">{{ title }}</div>
+@if (title) {
+  <div class="title" >{{ title }}</div>
+}
 <table>
-  <tr *ngIf="form1">
-    <td [innerHtml]="replaceComma(form1)"></td>
-  </tr>
-  <tr *ngIf="form2">
-    <td [innerHtml]="replaceComma(form2)"></td>
-  </tr>
-  <tr *ngIf="form3">
-    <td [innerHtml]="replaceComma(form3)"></td>
-  </tr>
-  <tr *ngIf="form4">
-    <td [innerHtml]="replaceComma(form4)"></td>
-  </tr>
-  <tr *ngIf="form5">
-    <td [innerHtml]="replaceComma(form5)"></td>
-  </tr>
-  <tr *ngIf="form6">
-    <td [innerHtml]="replaceComma(form6)"></td>
-  </tr>
+  @if (form1) {
+    <tr>
+      <td [innerHtml]="replaceComma(form1)"></td>
+    </tr>
+  }
+  @if (form2) {
+    <tr>
+      <td [innerHtml]="replaceComma(form2)"></td>
+    </tr>
+  }
+  @if (form3) {
+    <tr>
+      <td [innerHtml]="replaceComma(form3)"></td>
+    </tr>
+  }
+  @if (form4) {
+    <tr>
+      <td [innerHtml]="replaceComma(form4)"></td>
+    </tr>
+  }
+  @if (form5) {
+    <tr>
+      <td [innerHtml]="replaceComma(form5)"></td>
+    </tr>
+  }
+  @if (form6) {
+    <tr>
+      <td [innerHtml]="replaceComma(form6)"></td>
+    </tr>
+  }
 </table>

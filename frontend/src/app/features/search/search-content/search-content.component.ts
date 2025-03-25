@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { LemmaVersion } from 'src/app/models/lemma-version';
 import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
@@ -11,12 +11,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SuggestionComponent } from 'src/app/components/footer/suggestion/suggestion.component';
 import { MatomoTracker } from "ngx-matomo-client";
 import { Subject, takeUntil } from 'rxjs';
+import { SearchOptionsComponent } from '../search-options/search-options.component';
+
+import { SuggestionsComponent } from './suggestions/suggestions.component';
+import { HighlighterPipe } from '../../../pipes/highlighter.pipe';
+import { ThousandSeparatorPipe } from '../../../pipes/thousand-separator.pipe';
 
 @Component({
     selector: 'app-search-content',
     templateUrl: './search-content.component.html',
     styleUrls: ['./search-content.component.scss'],
-    standalone: false
+    imports: [SearchOptionsComponent, SuggestionsComponent, TranslatePipe, HighlighterPipe, ThousandSeparatorPipe]
 })
 export class SearchContentComponent implements OnInit, OnDestroy {
 

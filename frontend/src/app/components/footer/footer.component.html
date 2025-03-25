@@ -1,28 +1,42 @@
 <div id="navi_bottom">
-	<ul id="navi_bottom_menu">
-		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
-      <a (click)="openSuggestionModal()" style="cursor: pointer;">{{ 'footer.suggest' | translate }}</a>
-    </li>
-		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
-      <a [routerLink]="'/' + idiomLong + '/help'">{{ 'footer.help' | translate }}</a>
-    </li>
-		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
-      <a [routerLink]="'/' + idiomLong + '/info'">{{ 'footer.info' | translate }}</a>
-    </li>
-		<li *ngIf="idiom === 'rumgr'">
-      <a href="/assets/pdf/grammatica_RG.pdf" id="grammatica" target="_blank" class="hide-mobile">{{ 'footer.grammar' | translate }}</a>
-    </li>
-    <li *ngIf="frontEndLanguage === 'de'">
-      <a href="https://www.liarumantscha.ch/de/datenschutzerklaerung" target="_blank">{{ 'footer.privacy' | translate }}</a>
-    </li>
-    <li *ngIf="frontEndLanguage !== 'de'">
-      <a href="https://www.liarumantscha.ch/rm/decleraziun-davart-la-protecziun-da-datas" target="_blank">{{ 'footer.privacy' | translate }}</a>
-    </li>
-		<li>
+  <ul id="navi_bottom_menu">
+    @if (languageUtils.isSupportedLanguage(idiom)) {
+      <li>
+        <a (click)="openSuggestionModal()" style="cursor: pointer;">{{ 'footer.suggest' | translate }}</a>
+      </li>
+    }
+    @if (languageUtils.isSupportedLanguage(idiom)) {
+      <li>
+        <a [routerLink]="'/' + idiomLong + '/help'">{{ 'footer.help' | translate }}</a>
+      </li>
+    }
+    @if (languageUtils.isSupportedLanguage(idiom)) {
+      <li>
+        <a [routerLink]="'/' + idiomLong + '/info'">{{ 'footer.info' | translate }}</a>
+      </li>
+    }
+    @if (idiom === 'rumgr') {
+      <li>
+        <a href="/assets/pdf/grammatica_RG.pdf" id="grammatica" target="_blank" class="hide-mobile">{{ 'footer.grammar' | translate }}</a>
+      </li>
+    }
+    @if (frontEndLanguage === 'de') {
+      <li>
+        <a href="https://www.liarumantscha.ch/de/datenschutzerklaerung" target="_blank">{{ 'footer.privacy' | translate }}</a>
+      </li>
+    }
+    @if (frontEndLanguage !== 'de') {
+      <li>
+        <a href="https://www.liarumantscha.ch/rm/decleraziun-davart-la-protecziun-da-datas" target="_blank">{{ 'footer.privacy' | translate }}</a>
+      </li>
+    }
+    <li>
       <a href="http://www.liarumantscha.ch" target="_blank">© Lia Rumantscha 1980 – {{ currentYear }}</a>
     </li>
-		<li *ngIf="languageUtils.isSupportedLanguage(idiom)">
-      <a (click)="openDownloadModal()" style="cursor: pointer;">{{ 'footer.export' | translate }}</a>
-    </li>
-	</ul>
+    @if (languageUtils.isSupportedLanguage(idiom)) {
+      <li>
+        <a (click)="openDownloadModal()" style="cursor: pointer;">{{ 'footer.export' | translate }}</a>
+      </li>
+    }
+  </ul>
 </div>

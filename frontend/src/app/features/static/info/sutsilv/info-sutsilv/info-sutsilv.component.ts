@@ -3,10 +3,13 @@ import { Subscription } from 'rxjs';
 import { InfoService } from 'src/app/services/info.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
+import { InfoSutsilvRmComponent } from '../info-sutsilv-rm/info-sutsilv-rm.component';
+import { InfoSutsilvDeComponent } from '../info-sutsilv-de/info-sutsilv-de.component';
+
 @Component({
     selector: 'app-info-sutsilv',
     templateUrl: './info-sutsilv.component.html',
-    standalone: false
+    imports: [InfoSutsilvRmComponent, InfoSutsilvDeComponent]
 })
 export class InfoSutsilvComponent implements OnInit, OnDestroy {
 

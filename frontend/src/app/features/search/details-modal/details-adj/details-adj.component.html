@@ -1,26 +1,29 @@
-<div class="content" *ngIf="lemmaVersion">
-  <h4>Furmas da l'adjectiv</h4>
-  <table>
-    <tr>
-      <th></th>
-      <th>masculin</th>
-      <th>feminin</th>
-    </tr>
-    <tr>
-      <td>singular</td>
-      <td>{{ lemmaVersion.lemmaValues.mSingular ? lemmaVersion.lemmaValues.mSingular : '-' }}</td>
-      <td>{{ lemmaVersion.lemmaValues.fSingular ? lemmaVersion.lemmaValues.fSingular : '-' }}</td>
-    </tr>
-    <tr>
-      <td>plural</td>
-      <td>{{ lemmaVersion.lemmaValues.mPlural ? lemmaVersion.lemmaValues.mPlural : '-'  }}</td>
-      <td>{{ lemmaVersion.lemmaValues.fPlural ? lemmaVersion.lemmaValues.fPlural : '-'  }}</td>
-    </tr>
-    <tr *ngIf="lemmaVersion.lemmaValues.adverbialForm">
-      <td>furma adverbiala</td>
-      <td>-</td>
-      <td>{{ lemmaVersion.lemmaValues.adverbialForm ? lemmaVersion.lemmaValues.adverbialForm : '-'  }}</td>
-    </tr>
-  </table>
-
-</div>
+@if (lemmaVersion) {
+  <div class="content">
+    <h4>Furmas da l'adjectiv</h4>
+    <table>
+      <tr>
+        <th></th>
+        <th>masculin</th>
+        <th>feminin</th>
+      </tr>
+      <tr>
+        <td>singular</td>
+        <td>{{ lemmaVersion.lemmaValues.mSingular ? lemmaVersion.lemmaValues.mSingular : '-' }}</td>
+        <td>{{ lemmaVersion.lemmaValues.fSingular ? lemmaVersion.lemmaValues.fSingular : '-' }}</td>
+      </tr>
+      <tr>
+        <td>plural</td>
+        <td>{{ lemmaVersion.lemmaValues.mPlural ? lemmaVersion.lemmaValues.mPlural : '-'  }}</td>
+        <td>{{ lemmaVersion.lemmaValues.fPlural ? lemmaVersion.lemmaValues.fPlural : '-'  }}</td>
+      </tr>
+      @if (lemmaVersion.lemmaValues.adverbialForm) {
+        <tr>
+          <td>furma adverbiala</td>
+          <td>-</td>
+          <td>{{ lemmaVersion.lemmaValues.adverbialForm ? lemmaVersion.lemmaValues.adverbialForm : '-'  }}</td>
+        </tr>
+      }
+    </table>
+  </div>
+}

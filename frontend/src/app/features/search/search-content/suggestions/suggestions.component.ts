@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SearchCriteria } from '../../../../models/search-criteria';
 
+
 @Component({
     selector: 'app-suggestions',
     templateUrl: './suggestions.component.html',
     styleUrl: './suggestions.component.scss',
-    standalone: false
+    imports: []
 })
 export class SuggestionsComponent {
   @Input() searchCriteria: SearchCriteria = new SearchCriteria();

@@ -1,9 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-    name: 'highlighter',
-    standalone: false
-})
+@Pipe({ name: 'highlighter' })
 export class HighlighterPipe implements PipeTransform {
 
   transform(value: any, args: string, apply: boolean): unknown {

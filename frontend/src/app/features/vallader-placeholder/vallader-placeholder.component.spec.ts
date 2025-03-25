@@ -8,8 +8,8 @@ describe('ValladerPlaceholderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ValladerPlaceholderComponent ]
-    })
+    imports: [ValladerPlaceholderComponent]
+})
     .compileComponents();
   });
 

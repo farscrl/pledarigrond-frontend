@@ -8,8 +8,8 @@ describe('GlossaryLinksComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GlossaryLinksComponent ]
-    })
+    imports: [GlossaryLinksComponent]
+})
     .compileComponents();
   });
 

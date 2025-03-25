@@ -1,11 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-other-resources',
     templateUrl: './other-resources.component.html',
     styleUrls: ['./other-resources.component.scss'],
-    standalone: false
+    imports: [TranslatePipe]
 })
 export class OtherResourcesComponent extends NgxModalComponent<{resourceType: OtherResourcesType|undefined}, null> implements OnInit {
 

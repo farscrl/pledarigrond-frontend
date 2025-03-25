@@ -1,10 +1,12 @@
 <div id="feed_container">
-  <div class="feed" *ngFor="let el of feedEntries; index as i;" [class.visible]="i === visibleFeedIndex">
-    <div class="excerpt">«{{ (el.text.length > 120) ? ((el.text | slice:0:120) + '…') : (el.text) }}»</div>
-    <div class="feedLinkWrap">
-      <i>
-        <a class="readMore" href="{{ el.url }}" target="_blank">legia dapli</a>
-      </i>
+  @for (el of feedEntries; track el; let i = $index) {
+    <div class="feed" [class.visible]="i === visibleFeedIndex">
+      <div class="excerpt">«{{ (el.text.length > 120) ? ((el.text | slice:0:120) + '…') : (el.text) }}»</div>
+      <div class="feedLinkWrap">
+        <i>
+          <a class="readMore" href="{{ el.url }}" target="_blank">legia dapli</a>
+        </i>
+      </div>
     </div>
-  </div>
+  }
 </div>

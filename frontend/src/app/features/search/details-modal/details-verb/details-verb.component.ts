@@ -3,11 +3,15 @@ import { Pronouns } from '../../../../models/pronouns';
 import { Idiom } from '../../../../services/selected-language.service';
 import { LemmaVersion } from '../../../../models/lemma-version';
 
+import { ConjugationPersonalComponent } from './conjugation-personal/conjugation-personal.component';
+import { ConjugationImpersonalComponent } from './conjugation-impersonal/conjugation-impersonal.component';
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-details-verb',
     templateUrl: './details-verb.component.html',
     styleUrl: './details-verb.component.scss',
-    standalone: false
+    imports: [ConjugationPersonalComponent, ConjugationImpersonalComponent, TranslatePipe]
 })
 export class DetailsVerbComponent implements OnChanges {
   @Input()
