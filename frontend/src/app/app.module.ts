@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { defaultNgxModalOptions, NgxModalView } from 'ngx-modalview';
-import { NgxTiptapModule } from 'ngx-tiptap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +18,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { UserLoggedInGuard } from './auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService, TranslateDirective, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PuterPlaceholderComponent } from './features/puter-placeholder/puter-placeholder.component';
 import { SursilvanPlaceholderComponent } from './features/sursilvan-placeholder/sursilvan-placeholder.component';
@@ -59,7 +58,7 @@ import { SpellcheckerComponent } from './features/spellchecker/spellchecker.comp
 import {
   SpellcheckerMenubarComponent
 } from './features/spellchecker/spellchecker-menubar/spellchecker-menubar.component';
-import { MatomoModule } from 'ngx-matomo-client';
+import { MatomoTrackClickDirective, provideMatomo, withRouter } from 'ngx-matomo-client';
 import {
   ManualsSpellcheckerComponent
 } from './features/spellchecker/manuals-spellchecker/manuals-spellchecker.component';
@@ -81,6 +80,7 @@ import {
 } from './features/search/details-modal/details-verb/conjugation-impersonal/conjugation-impersonal.component';
 import { DetailsExampleComponent } from './features/search/details-modal/details-example/details-example.component';
 import { SuggestionsComponent } from './features/search/search-content/suggestions/suggestions.component';
+import { TiptapEditorDirective } from 'ngx-tiptap';
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -162,14 +162,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         disallowedRoutes: [environment.apiUrl + '/users/token']
       }
     }),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      defaultLanguage: 'rm-rumgr'
-    }),
     NgxModalView.forRoot(
       {container: 'modal-container'},
       {
@@ -184,23 +176,37 @@ export function HttpLoaderFactory(http: HttpClient) {
         }
       }
     ),
-    NgxTiptapModule,
-    MatomoModule.forRoot({
-      siteId: environment.matomoTrackingId,
-      trackerUrl: environment.matomoTrackingUrl,
-    }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    TranslatePipe,
+    TranslateDirective,
+    MatomoTrackClickDirective,
+    TiptapEditorDirective,
   ],
   providers: [
     UserLoggedInGuard,
     UserNotLoggedInGuard,
     provideHttpClient(withInterceptorsFromDi()),
-    LanguageUtils
+    LanguageUtils,
+    provideMatomo(
+      {
+        siteId: environment.matomoTrackingId,
+        trackerUrl: environment.matomoTrackingUrl,
+      },
+      withRouter()
+    ),
+    provideTranslateService({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'rm-rumgr'
+    }),
   ],
   bootstrap: [AppComponent]
 })

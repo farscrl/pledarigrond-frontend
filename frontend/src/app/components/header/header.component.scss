@@ -5,18 +5,7 @@
 	height: 48px;
 	z-index: 1000;
 	background-color: rgb(0, 200, 255);
-	background-image: linear-gradient(bottom, rgb(0, 179, 255) 0%,
-		rgb(0, 200, 255) 100%);
-	background-image: -o-linear-gradient(bottom, rgb(0, 179, 255) 0%,
-		rgb(0, 200, 255) 100%);
-	background-image: -moz-linear-gradient(bottom, rgb(0, 179, 255) 0%,
-		rgb(0, 200, 255) 100%);
-	background-image: -webkit-linear-gradient(bottom, rgb(0, 179, 255) 0%,
-		rgb(0, 200, 255) 100%);
-	background-image: -ms-linear-gradient(bottom, rgb(0, 179, 255) 0%,
-		rgb(0, 200, 255) 100%);
-	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(0, 179
-		, 255)), color-stop(1, rgb(0, 200, 255)));
+	background-image: linear-gradient(to top, rgb(0, 179, 255) 0%, rgb(0, 200, 255) 100%);
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
