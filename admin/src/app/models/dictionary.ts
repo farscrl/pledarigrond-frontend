@@ -93,19 +93,19 @@ export class Verb {
   imperfect?: PersonalVerb;
   conjunctiv?: PersonalVerb;
   conjunctiv2?: PersonalVerb;
-  cundizional?: PersonalVerb;
-  condiizionalindirect?: PersonalVerb;
-  participperfect?: ParticipPerfect;
+  cundiziunal?: PersonalVerb;
+  cundiziunalIndirect?: PersonalVerb;
+  participPerfect?: ParticipPerfect;
   imperativ?: Imperativ;
   gerundium?: string;
   futur?: PersonalVerb;
-  futurdubitativ?: PersonalVerb;
+  futurDubitativ?: PersonalVerb;
 
   preschentEnclitic?: PersonalVerbEnclitic;
   imperfectEnclitic?: PersonalVerbEnclitic;
   cundizionalEnclitic?: PersonalVerbEnclitic;
   futurEnclitic?: PersonalVerbEnclitic;
-  futurdubitativEnclitic?: PersonalVerbEnclitic;
+  futurDubitativEnclitic?: PersonalVerbEnclitic;
 }
 
 export class PersonalVerb {

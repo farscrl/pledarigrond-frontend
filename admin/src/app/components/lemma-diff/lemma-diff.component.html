@@ -13,221 +13,220 @@
   <nz-descriptions-item [nzTitle]="'edit.lemma.de_link' | translate"><app-diff [old]="oldLemmaVersion.deRedirect" [new]="newLemmaVersion.deRedirect"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<!--
 <nz-descriptions [nzTitle]="'edit.lemma.romansh' | translate">
-  <nz-descriptions-item [nzTitle]="'edit.lemma.rm' | translate"><app-diff [old]="oldLemmaVersion.RStichwort" [new]="newLemmaVersion.RStichwort"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_gender' | translate"><app-diff [old]="oldLemmaVersion.RGenus" [new]="newLemmaVersion.RGenus"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_tags' | translate"><app-diff [old]="oldLemmaVersion.RTags" [new]="newLemmaVersion.RTags"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_grammar' | translate"><app-diff [old]="oldLemmaVersion.RGrammatik" [new]="newLemmaVersion.RGrammatik"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate"><app-diff [old]="oldLemmaVersion.RSubsemantik" [new]="newLemmaVersion.RSubsemantik"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_link' | translate"><app-diff [old]="oldLemmaVersion.RRedirect" [new]="newLemmaVersion.RRedirect"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item [nzTitle]="'edit.lemma.inflection.title' | translate"><app-diff [old]="oldLemmaVersion.RInflectionType" [new]="newLemmaVersion.RInflectionType"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm' | translate"><app-diff [old]="oldLemmaVersion.rmStichwort" [new]="newLemmaVersion.rmStichwort"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_gender' | translate"><app-diff [old]="oldLemmaVersion.rmGenus" [new]="newLemmaVersion.rmGenus"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_tags' | translate"><app-diff [old]="oldLemmaVersion.rmTags" [new]="newLemmaVersion.rmTags"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_grammar' | translate"><app-diff [old]="oldLemmaVersion.rmGrammatik" [new]="newLemmaVersion.rmGrammatik"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate"><app-diff [old]="oldLemmaVersion.rmSubsemantik" [new]="newLemmaVersion.rmSubsemantik"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_link' | translate"><app-diff [old]="oldLemmaVersion.rmRedirect" [new]="newLemmaVersion.rmRedirect"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.inflection.title' | translate"><app-diff [old]="oldLemmaVersion.inflection?.inflectionType" [new]="newLemmaVersion.inflection?.inflectionType"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<nz-descriptions nzTitle="Flexiuns da substantivs" *ngIf="oldLemmaVersion.RInflectionType === 'NOUN' || newLemmaVersion.RInflectionType === 'NOUN'">
-  <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="oldLemmaVersion.baseForm" [new]="newLemmaVersion.baseForm"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.mSingular" [new]="newLemmaVersion.mSingular"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.fSingular" [new]="newLemmaVersion.fSingular"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.RInflectionSubtype" [new]="newLemmaVersion.RInflectionSubtype"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.mPlural" [new]="newLemmaVersion.mPlural"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.fPlural" [new]="newLemmaVersion.fPlural"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="coll"><app-diff [old]="oldLemmaVersion.pluralCollectiv" [new]="newLemmaVersion.pluralCollectiv"></app-diff></nz-descriptions-item>
+<nz-descriptions nzTitle="Flexiuns da substantivs" *ngIf="oldLemmaVersion.inflection?.inflectionType === 'NOUN' || newLemmaVersion.inflection?.inflectionType === 'NOUN'">
+  <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="oldLemmaVersion.inflection?.noun?.baseForm" [new]="newLemmaVersion.inflection?.noun?.baseForm"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.inflection?.noun?.mSingular" [new]="newLemmaVersion.inflection?.noun?.mSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.inflection?.noun?.fSingular" [new]="newLemmaVersion.inflection?.noun?.fSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.inflection?.inflectionSubtype" [new]="newLemmaVersion.inflection?.inflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.inflection?.noun?.mPlural" [new]="newLemmaVersion.inflection?.noun?.mPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.inflection?.noun?.fPlural" [new]="newLemmaVersion.inflection?.noun?.fPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="coll"><app-diff [old]="oldLemmaVersion.inflection?.noun?.pluralCollectiv" [new]="newLemmaVersion.inflection?.noun?.pluralCollectiv"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<nz-descriptions nzTitle="Flexiuns dad adjectivs" *ngIf="oldLemmaVersion.RInflectionType === 'ADJECTIVE' || newLemmaVersion.RInflectionType === 'ADJECTIVE'">
-  <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="oldLemmaVersion.baseForm" [new]="newLemmaVersion.baseForm"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.mSingular" [new]="newLemmaVersion.mSingular"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.fSingular" [new]="newLemmaVersion.fSingular"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.RInflectionSubtype" [new]="newLemmaVersion.RInflectionSubtype"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.mPlural" [new]="newLemmaVersion.mPlural"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.fPlural" [new]="newLemmaVersion.fPlural"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="oldLemmaVersion.adverbialForm" [new]="newLemmaVersion.adverbialForm"></app-diff></nz-descriptions-item>
+<nz-descriptions nzTitle="Flexiuns dad adjectivs" *ngIf="oldLemmaVersion.inflection?.inflectionType === 'ADJECTIVE' || newLemmaVersion.inflection?.inflectionType === 'ADJECTIVE'">
+  <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="oldLemmaVersion.inflection?.adjective?.baseForm" [new]="newLemmaVersion.inflection?.adjective?.baseForm"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.inflection?.adjective?.mSingular" [new]="newLemmaVersion.inflection?.adjective?.mSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.inflection?.adjective?.fSingular" [new]="newLemmaVersion.inflection?.adjective?.fSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.inflection?.inflectionSubtype" [new]="newLemmaVersion.inflection?.inflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.inflection?.adjective?.mPlural" [new]="newLemmaVersion.inflection?.adjective?.mPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.inflection?.adjective?.fPlural" [new]="newLemmaVersion.inflection?.adjective?.fPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="oldLemmaVersion.inflection?.adjective?.adverbialForm" [new]="newLemmaVersion.inflection?.adjective?.adverbialForm"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<nz-descriptions nzTitle="Flexiuns da pronoms" *ngIf="oldLemmaVersion.RInflectionType === 'PRONOUN' || newLemmaVersion.RInflectionType === 'PRONOUN'">
-  <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="oldLemmaVersion.baseForm" [new]="newLemmaVersion.baseForm"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.mSingular" [new]="newLemmaVersion.mSingular"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.fSingular" [new]="newLemmaVersion.fSingular"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.mPlural" [new]="newLemmaVersion.mPlural"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.fPlural" [new]="newLemmaVersion.fPlural"></app-diff></nz-descriptions-item>
+<nz-descriptions nzTitle="Flexiuns da pronoms" *ngIf="oldLemmaVersion.inflection?.inflectionType === 'PRONOUN' || newLemmaVersion.inflection?.inflectionType === 'PRONOUN'">
+  <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="oldLemmaVersion.inflection?.pronoun?.baseForm" [new]="newLemmaVersion.inflection?.pronoun?.baseForm"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m sing"><app-diff [old]="oldLemmaVersion.inflection?.pronoun?.mSingular" [new]="newLemmaVersion.inflection?.pronoun?.mSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f sing"><app-diff [old]="oldLemmaVersion.inflection?.pronoun?.fSingular" [new]="newLemmaVersion.inflection?.pronoun?.fSingular"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="m plural"><app-diff [old]="oldLemmaVersion.inflection?.pronoun?.mPlural" [new]="newLemmaVersion.inflection?.pronoun?.mPlural"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="f plural"><app-diff [old]="oldLemmaVersion.inflection?.pronoun?.fPlural" [new]="newLemmaVersion.inflection?.pronoun?.fPlural"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<nz-descriptions nzTitle="Autras furmas" *ngIf="oldLemmaVersion.RInflectionType === 'OTHER' || newLemmaVersion.RInflectionType === 'OTHER'">
-  <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="oldLemmaVersion.baseForm" [new]="newLemmaVersion.baseForm"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="furma alternativa 1"><app-diff [old]="oldLemmaVersion.otherForm1" [new]="newLemmaVersion.otherForm1"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="furma alternativa 2"><app-diff [old]="oldLemmaVersion.otherForm2" [new]="newLemmaVersion.otherForm2"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="furma alternativa 3"><app-diff [old]="oldLemmaVersion.otherForm3" [new]="newLemmaVersion.otherForm3"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="furma alternativa 4"><app-diff [old]="oldLemmaVersion.otherForm4" [new]="newLemmaVersion.otherForm4"></app-diff></nz-descriptions-item>
+<nz-descriptions nzTitle="Autras furmas" *ngIf="oldLemmaVersion.inflection?.inflectionType === 'OTHER' || newLemmaVersion.inflection?.inflectionType === 'OTHER'">
+  <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="oldLemmaVersion.inflection?.other?.baseForm" [new]="newLemmaVersion.inflection?.other?.baseForm"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="furma alternativa 1"><app-diff [old]="oldLemmaVersion.inflection?.other?.otherForm1" [new]="newLemmaVersion.inflection?.other?.otherForm1"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="furma alternativa 2"><app-diff [old]="oldLemmaVersion.inflection?.other?.otherForm2" [new]="newLemmaVersion.inflection?.other?.otherForm2"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="furma alternativa 3"><app-diff [old]="oldLemmaVersion.inflection?.other?.otherForm3" [new]="newLemmaVersion.inflection?.other?.otherForm3"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="furma alternativa 4"><app-diff [old]="oldLemmaVersion.inflection?.other?.otherForm4" [new]="newLemmaVersion.inflection?.other?.otherForm4"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="oldLemmaVersion.RInflectionType === 'V' || newLemmaVersion.RInflectionType === 'V'">
-  <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="oldLemmaVersion.infinitiv" [new]="newLemmaVersion.infinitiv"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.RInflectionSubtype" [new]="newLemmaVersion.RInflectionSubtype"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Conjugaziun regulara"><app-diff [old]="oldLemmaVersion.RRegularInflection" [new]="newLemmaVersion.RRegularInflection"></app-diff></nz-descriptions-item>
+<nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="oldLemmaVersion.inflection?.inflectionType === 'V' || newLemmaVersion.inflection?.inflectionType === 'V'">
+  <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="oldLemmaVersion.inflection?.verb?.infinitiv" [new]="newLemmaVersion.inflection?.verb?.infinitiv"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.inflection?.inflectionSubtype" [new]="newLemmaVersion.inflection?.inflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Conjugaziun regulara"><app-diff [old]="oldLemmaVersion.inflection?.verb?.irregular?.toString() ?? '-'" [new]="newLemmaVersion.inflection?.verb?.irregular?.toString() ?? '-'"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<div class="conjugaziuns" *ngIf="(oldLemmaVersion.RInflectionType === 'V' || newLemmaVersion.RInflectionType === 'V') && !referenceVerb">
+<div class="conjugaziuns" *ngIf="(oldLemmaVersion.inflection?.inflectionType === 'V' || newLemmaVersion.inflection?.inflectionType === 'V') && !referenceVerb">
   <div class="conjugaziun">
     <div><b>Preschent</b></div>
-    <app-diff [old]="oldLemmaVersion.preschentsing1" [new]="newLemmaVersion.preschentsing1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentsing2" [new]="newLemmaVersion.preschentsing2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentsing3" [new]="newLemmaVersion.preschentsing3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentplural1" [new]="newLemmaVersion.preschentplural1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentplural2" [new]="newLemmaVersion.preschentplural2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentplural3" [new]="newLemmaVersion.preschentplural3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschent?.sing1" [new]="newLemmaVersion.inflection?.verb?.preschent?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschent?.sing2" [new]="newLemmaVersion.inflection?.verb?.preschent?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschent?.sing3" [new]="newLemmaVersion.inflection?.verb?.preschent?.sing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschent?.plural1" [new]="newLemmaVersion.inflection?.verb?.preschent?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschent?.plural2" [new]="newLemmaVersion.inflection?.verb?.preschent?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschent?.plural3" [new]="newLemmaVersion.inflection?.verb?.preschent?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
     <div><b>Imperfect</b></div>
-    <app-diff [old]="oldLemmaVersion.imperfectsing1" [new]="newLemmaVersion.imperfectsing1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectsing2" [new]="newLemmaVersion.imperfectsing2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectsing3" [new]="newLemmaVersion.imperfectsing3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectplural1" [new]="newLemmaVersion.imperfectplural1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectplural2" [new]="newLemmaVersion.imperfectplural2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectplural3" [new]="newLemmaVersion.imperfectplural3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfect?.sing1" [new]="newLemmaVersion.inflection?.verb?.imperfect?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfect?.sing2" [new]="newLemmaVersion.inflection?.verb?.imperfect?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfect?.sing3" [new]="newLemmaVersion.inflection?.verb?.imperfect?.sing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfect?.plural1" [new]="newLemmaVersion.inflection?.verb?.imperfect?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfect?.plural2" [new]="newLemmaVersion.inflection?.verb?.imperfect?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfect?.plural3" [new]="newLemmaVersion.inflection?.verb?.imperfect?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
     <div><b>Conjunctiv</b></div>
-    <app-diff [old]="oldLemmaVersion.conjunctivsing1" [new]="newLemmaVersion.conjunctivsing1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctivsing2" [new]="newLemmaVersion.conjunctivsing2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctivsing3" [new]="newLemmaVersion.conjunctivsing3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctivplural1" [new]="newLemmaVersion.conjunctivplural1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctivplural2" [new]="newLemmaVersion.conjunctivplural2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctivplural3" [new]="newLemmaVersion.conjunctivplural3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv?.sing1" [new]="newLemmaVersion.inflection?.verb?.conjunctiv?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv?.sing2" [new]="newLemmaVersion.inflection?.verb?.conjunctiv?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv?.sing3" [new]="newLemmaVersion.inflection?.verb?.conjunctiv?.sing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv?.plural1" [new]="newLemmaVersion.inflection?.verb?.conjunctiv?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv?.plural2" [new]="newLemmaVersion.inflection?.verb?.conjunctiv?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv?.plural3" [new]="newLemmaVersion.inflection?.verb?.conjunctiv?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'sursilvan'">
     <div><b>Conjunctiv imperfect</b></div>
-    <app-diff [old]="oldLemmaVersion.conjunctiv2sing1" [new]="newLemmaVersion.conjunctiv2sing1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctiv2sing2" [new]="newLemmaVersion.conjunctiv2sing2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctiv2sing3" [new]="newLemmaVersion.conjunctiv2sing3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctiv2plural1" [new]="newLemmaVersion.conjunctiv2plural1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctiv2plural2" [new]="newLemmaVersion.conjunctiv2plural2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.conjunctiv2plural3" [new]="newLemmaVersion.conjunctiv2plural3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv2?.sing1" [new]="newLemmaVersion.inflection?.verb?.conjunctiv2?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv2?.sing2" [new]="newLemmaVersion.inflection?.verb?.conjunctiv2?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv2?.sing3" [new]="newLemmaVersion.inflection?.verb?.conjunctiv2?.sing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv2?.plural1" [new]="newLemmaVersion.inflection?.verb?.conjunctiv2?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv2?.plural2" [new]="newLemmaVersion.inflection?.verb?.conjunctiv2?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.conjunctiv2?.plural3" [new]="newLemmaVersion.inflection?.verb?.conjunctiv2?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
     <div><b>Cundiziunal</b></div>
-    <app-diff [old]="oldLemmaVersion.cundizionalsing1" [new]="newLemmaVersion.cundizionalsing1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalsing2" [new]="newLemmaVersion.cundizionalsing2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalsing3" [new]="newLemmaVersion.cundizionalsing3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalplural1" [new]="newLemmaVersion.cundizionalplural1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalplural2" [new]="newLemmaVersion.cundizionalplural2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalplural3" [new]="newLemmaVersion.cundizionalplural3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunal?.sing1" [new]="newLemmaVersion.inflection?.verb?.cundiziunal?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunal?.sing2" [new]="newLemmaVersion.inflection?.verb?.cundiziunal?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunal?.sing3" [new]="newLemmaVersion.inflection?.verb?.cundiziunal?.sing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunal?.plural1" [new]="newLemmaVersion.inflection?.verb?.cundiziunal?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunal?.plural2" [new]="newLemmaVersion.inflection?.verb?.cundiziunal?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunal?.plural3" [new]="newLemmaVersion.inflection?.verb?.cundiziunal?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun" *ngIf="language === 'sutsilvan'">
     <div><b>Cundiziunal indirect</b></div>
-    <app-diff [old]="oldLemmaVersion.cundizionalindirectsing1" [new]="newLemmaVersion.cundizionalindirectsing1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalindirectsing2" [new]="newLemmaVersion.cundizionalindirectsing2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalindirectsing3" [new]="newLemmaVersion.cundizionalindirectsing3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalindirectplural1" [new]="newLemmaVersion.cundizionalindirectplural1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalindirectplural2" [new]="newLemmaVersion.cundizionalindirectplural2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalindirectplural3" [new]="newLemmaVersion.cundizionalindirectplural3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing1" [new]="newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing2" [new]="newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing3" [new]="newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural1" [new]="newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural2" [new]="newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural3" [new]="newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
     <div><b>Futur</b></div>
-    <app-diff [old]="oldLemmaVersion.futursing1" [new]="newLemmaVersion.futursing1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futursing2" [new]="newLemmaVersion.futursing2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futursing3" [new]="newLemmaVersion.futursing3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurplural1" [new]="newLemmaVersion.futurplural1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurplural2" [new]="newLemmaVersion.futurplural2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurplural3" [new]="newLemmaVersion.futurplural3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futur?.sing1" [new]="newLemmaVersion.inflection?.verb?.futur?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futur?.sing2" [new]="newLemmaVersion.inflection?.verb?.futur?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futur?.sing3" [new]="newLemmaVersion.inflection?.verb?.futur?.sing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futur?.plural1" [new]="newLemmaVersion.inflection?.verb?.futur?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futur?.plural2" [new]="newLemmaVersion.inflection?.verb?.futur?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futur?.plural3" [new]="newLemmaVersion.inflection?.verb?.futur?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun" *ngIf="language === 'puter'">
     <div><b>Futur dubitativ</b></div>
-    <app-diff [old]="oldLemmaVersion.futurdubitativsing1" [new]="newLemmaVersion.futurdubitativsing1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativsing2" [new]="newLemmaVersion.futurdubitativsing2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativsing3" [new]="newLemmaVersion.futurdubitativsing3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativplural1" [new]="newLemmaVersion.futurdubitativplural1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativplural2" [new]="newLemmaVersion.futurdubitativplural2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativplural3" [new]="newLemmaVersion.futurdubitativplural3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativ?.sing1" [new]="newLemmaVersion.inflection?.verb?.futurDubitativ?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativ?.sing2" [new]="newLemmaVersion.inflection?.verb?.futurDubitativ?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativ?.sing3" [new]="newLemmaVersion.inflection?.verb?.futurDubitativ?.sing3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativ?.plural1" [new]="newLemmaVersion.inflection?.verb?.futurDubitativ?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativ?.plural2" [new]="newLemmaVersion.inflection?.verb?.futurDubitativ?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativ?.plural3" [new]="newLemmaVersion.inflection?.verb?.futurDubitativ?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran' || language === 'puter' || language === 'vallader'">
     <div><b>Preschent enclitic</b></div>
-    <app-diff [old]="oldLemmaVersion.preschentsing1enclitic" [new]="newLemmaVersion.preschentsing1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentsing2enclitic" [new]="newLemmaVersion.preschentsing2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentsing3encliticm" [new]="newLemmaVersion.preschentsing3encliticm"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentsing3encliticf" [new]="newLemmaVersion.preschentsing3encliticf"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentplural1enclitic" [new]="newLemmaVersion.preschentplural1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentplural2enclitic" [new]="newLemmaVersion.preschentplural2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.preschentplural3enclitic" [new]="newLemmaVersion.preschentplural3enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschentEnclitic?.sing1" [new]="newLemmaVersion.inflection?.verb?.preschentEnclitic?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschentEnclitic?.sing2" [new]="newLemmaVersion.inflection?.verb?.preschentEnclitic?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschentEnclitic?.sing3m" [new]="newLemmaVersion.inflection?.verb?.preschentEnclitic?.sing3m"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschentEnclitic?.sing3f" [new]="newLemmaVersion.inflection?.verb?.preschentEnclitic?.sing3f"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschentEnclitic?.plural1" [new]="newLemmaVersion.inflection?.verb?.preschentEnclitic?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschentEnclitic?.plural2" [new]="newLemmaVersion.inflection?.verb?.preschentEnclitic?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschentEnclitic?.plural3" [new]="newLemmaVersion.inflection?.verb?.preschentEnclitic?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran' || language === 'puter' || language === 'vallader'">
     <div><b>Imperfect enclitic</b></div>
-    <app-diff [old]="oldLemmaVersion.imperfectsing1enclitic" [new]="newLemmaVersion.imperfectsing1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectsing2enclitic" [new]="newLemmaVersion.imperfectsing2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectsing3encliticm" [new]="newLemmaVersion.imperfectsing3encliticm"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectsing3encliticf" [new]="newLemmaVersion.imperfectsing3encliticf"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectplural1enclitic" [new]="newLemmaVersion.imperfectplural1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectplural2enclitic" [new]="newLemmaVersion.imperfectplural2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperfectplural3enclitic" [new]="newLemmaVersion.imperfectplural3enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfectEnclitic?.sing1" [new]="newLemmaVersion.inflection?.verb?.imperfectEnclitic?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfectEnclitic?.sing2" [new]="newLemmaVersion.inflection?.verb?.imperfectEnclitic?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfectEnclitic?.sing3m" [new]="newLemmaVersion.inflection?.verb?.imperfectEnclitic?.sing3m"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfectEnclitic?.sing3f" [new]="newLemmaVersion.inflection?.verb?.imperfectEnclitic?.sing3f"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfectEnclitic?.plural1" [new]="newLemmaVersion.inflection?.verb?.imperfectEnclitic?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfectEnclitic?.plural2" [new]="newLemmaVersion.inflection?.verb?.imperfectEnclitic?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperfectEnclitic?.plural3" [new]="newLemmaVersion.inflection?.verb?.imperfectEnclitic?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'surmiran' || language === 'puter' || language === 'vallader'">
     <div><b>Cundiziunal enclitic</b></div>
-    <app-diff [old]="oldLemmaVersion.cundizionalsing1enclitic" [new]="newLemmaVersion.cundizionalsing1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalsing2enclitic" [new]="newLemmaVersion.cundizionalsing2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalsing3encliticm" [new]="newLemmaVersion.cundizionalsing3encliticm"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalsing3encliticf" [new]="newLemmaVersion.cundizionalsing3encliticf"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalplural1enclitic" [new]="newLemmaVersion.cundizionalplural1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalplural2enclitic" [new]="newLemmaVersion.cundizionalplural2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.cundizionalplural3enclitic" [new]="newLemmaVersion.cundizionalplural3enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundizionalEnclitic?.sing1" [new]="newLemmaVersion.inflection?.verb?.cundizionalEnclitic?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundizionalEnclitic?.sing2" [new]="newLemmaVersion.inflection?.verb?.cundizionalEnclitic?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundizionalEnclitic?.sing3m" [new]="newLemmaVersion.inflection?.verb?.cundizionalEnclitic?.sing3m"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundizionalEnclitic?.sing3f" [new]="newLemmaVersion.inflection?.verb?.cundizionalEnclitic?.sing3f"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundizionalEnclitic?.plural1" [new]="newLemmaVersion.inflection?.verb?.cundizionalEnclitic?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundizionalEnclitic?.plural2" [new]="newLemmaVersion.inflection?.verb?.cundizionalEnclitic?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.cundizionalEnclitic?.plural3" [new]="newLemmaVersion.inflection?.verb?.cundizionalEnclitic?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun" *ngIf="language === 'surmiran' || language === 'puter' || language === 'vallader'">
     <div><b>Futur enclitic</b></div>
-    <app-diff [old]="oldLemmaVersion.futursing1enclitic" [new]="newLemmaVersion.futursing1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futursing2enclitic" [new]="newLemmaVersion.futursing2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futursing3encliticm" [new]="newLemmaVersion.futursing3encliticm"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futursing3encliticf" [new]="newLemmaVersion.futursing3encliticf"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurplural1enclitic" [new]="newLemmaVersion.futurplural1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurplural2enclitic" [new]="newLemmaVersion.futurplural2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurplural3enclitic" [new]="newLemmaVersion.futurplural3enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurEnclitic?.sing1" [new]="newLemmaVersion.inflection?.verb?.futurEnclitic?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurEnclitic?.sing2" [new]="newLemmaVersion.inflection?.verb?.futurEnclitic?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurEnclitic?.sing3m" [new]="newLemmaVersion.inflection?.verb?.futurEnclitic?.sing3m"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurEnclitic?.sing3f" [new]="newLemmaVersion.inflection?.verb?.futurEnclitic?.sing3f"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurEnclitic?.plural1" [new]="newLemmaVersion.inflection?.verb?.futurEnclitic?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurEnclitic?.plural2" [new]="newLemmaVersion.inflection?.verb?.futurEnclitic?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurEnclitic?.plural3" [new]="newLemmaVersion.inflection?.verb?.futurEnclitic?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun" *ngIf="language === 'puter'">
     <div><b>Futur dubitativ enclitic</b></div>
-    <app-diff [old]="oldLemmaVersion.futurdubitativsing1enclitic" [new]="newLemmaVersion.futurdubitativsing1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativsing2enclitic" [new]="newLemmaVersion.futurdubitativsing2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativsing3encliticm" [new]="newLemmaVersion.futurdubitativsing3encliticm"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativsing3encliticf" [new]="newLemmaVersion.futurdubitativsing3encliticf"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativplural1enclitic" [new]="newLemmaVersion.futurdubitativplural1enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativplural2enclitic" [new]="newLemmaVersion.futurdubitativplural2enclitic"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.futurdubitativplural3enclitic" [new]="newLemmaVersion.futurdubitativplural3enclitic"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.sing1" [new]="newLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.sing1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.sing2" [new]="newLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.sing2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.sing3m" [new]="newLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.sing3m"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.sing3f" [new]="newLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.sing3f"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.plural1" [new]="newLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.plural1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.plural2" [new]="newLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.plural2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.plural3" [new]="newLemmaVersion.inflection?.verb?.futurDubitativEnclitic?.plural3"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
     <div><b>Particip Perfect</b></div>
-    <app-diff [old]="oldLemmaVersion.participperfectms" [new]="newLemmaVersion.participperfectms"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.participperfectfs" [new]="newLemmaVersion.participperfectfs"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.participperfectmp" [new]="newLemmaVersion.participperfectmp"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.participperfectfp" [new]="newLemmaVersion.participperfectfp"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.participperfectmspredicativ" [new]="newLemmaVersion.participperfectmspredicativ" *ngIf="language === 'sursilvan'"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.participPerfect?.ms" [new]="newLemmaVersion.inflection?.verb?.participPerfect?.ms"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.participPerfect?.fs" [new]="newLemmaVersion.inflection?.verb?.participPerfect?.fs"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.participPerfect?.mp" [new]="newLemmaVersion.inflection?.verb?.participPerfect?.mp"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.participPerfect?.fp" [new]="newLemmaVersion.inflection?.verb?.participPerfect?.fp"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.participPerfect?.msPredicativ" [new]="newLemmaVersion.inflection?.verb?.participPerfect?.msPredicativ" *ngIf="language === 'sursilvan'"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
     <div><b>Imperativ</b></div>
-    <app-diff [old]="oldLemmaVersion.imperativ1" [new]="newLemmaVersion.imperativ1"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperativ2" [new]="newLemmaVersion.imperativ2"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperativ3" [new]="newLemmaVersion.imperativ3"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperativ4" [new]="newLemmaVersion.imperativ4"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperativ5" [new]="newLemmaVersion.imperativ5"></app-diff><br>
-    <app-diff [old]="oldLemmaVersion.imperativ6" [new]="newLemmaVersion.imperativ6"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperativ?.singular" [new]="newLemmaVersion.inflection?.verb?.imperativ?.singular"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperativ?.plural" [new]="newLemmaVersion.inflection?.verb?.imperativ?.plural"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperativ?.form1" [new]="newLemmaVersion.inflection?.verb?.imperativ?.form1"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperativ?.form2" [new]="newLemmaVersion.inflection?.verb?.imperativ?.form2"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperativ?.form3" [new]="newLemmaVersion.inflection?.verb?.imperativ?.form3"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.imperativ?.form4" [new]="newLemmaVersion.inflection?.verb?.imperativ?.form4"></app-diff><br>
   </div>
 
   <div class="conjugaziun">
     <div><b>Gerundi</b></div>
-    <app-diff [old]="oldLemmaVersion.gerundium" [new]="newLemmaVersion.gerundium"></app-diff><br>
+    <app-diff [old]="oldLemmaVersion.inflection?.verb?.gerundium" [new]="newLemmaVersion.inflection?.verb?.gerundium"></app-diff><br>
   </div>
 </div>
 
-<div class="conjugaziuns with-reference" *ngIf="(oldLemmaVersion.RInflectionType === 'V' || newLemmaVersion.RInflectionType === 'V') && !!referenceVerb">
+<div class="conjugaziuns with-reference" *ngIf="(oldLemmaVersion.inflection?.inflectionType === 'V' || newLemmaVersion.inflection?.inflectionType === 'V') && !!referenceVerb">
   <div class="conjugaziun">
     <div><b>Preschent</b></div>
     <table>
@@ -237,34 +236,34 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.preschentsing1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.preschent?.sing1 }}</td>
         <td class="reference">{{ referenceVerb.preschentsing1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.preschentsing1" [new]="removeSurilvanPronouns(newLemmaVersion.preschentsing1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentsing1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.preschent?.sing1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.preschentsing2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.preschent?.sing2 }}</td>
         <td class="reference">{{ referenceVerb.preschentsing2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.preschentsing2" [new]="removeSurilvanPronouns(newLemmaVersion.preschentsing2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentsing2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.preschent?.sing2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.preschentsing3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.preschent?.sing3 }}</td>
         <td class="reference">{{ referenceVerb.preschentsing3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.preschentsing3" [new]="removeSurilvanPronouns(newLemmaVersion.preschentsing3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentsing3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.preschent?.sing3)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.preschentplural1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.preschent?.plural1 }}</td>
         <td class="reference">{{ referenceVerb.preschentplural1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.preschentplural1" [new]="removeSurilvanPronouns(newLemmaVersion.preschentplural1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentplural1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.preschent?.plural1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.preschentplural2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.preschent?.plural2 }}</td>
         <td class="reference">{{ referenceVerb.preschentplural2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.preschentplural2" [new]="removeSurilvanPronouns(newLemmaVersion.preschentplural2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentplural2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.preschent?.plural2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.preschentplural3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.preschent?.plural3 }}</td>
         <td class="reference">{{ referenceVerb.preschentplural3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.preschentplural3" [new]="removeSurilvanPronouns(newLemmaVersion.preschentplural3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.preschentplural3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.preschent?.plural3)"></app-diff></td>
       </tr>
     </table>
   </div>
@@ -278,34 +277,34 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.imperfectsing1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.imperfect?.sing1 }}</td>
         <td class="reference">{{ referenceVerb.imperfectsing1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing1" [new]="removeSurilvanPronouns(newLemmaVersion.imperfectsing1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.imperfect?.sing1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.imperfectsing2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.imperfect?.sing2 }}</td>
         <td class="reference">{{ referenceVerb.imperfectsing2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing2" [new]="removeSurilvanPronouns(newLemmaVersion.imperfectsing2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.imperfect?.sing2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.imperfectsing3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.imperfect?.sing3 }}</td>
         <td class="reference">{{ referenceVerb.imperfectsing3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing3" [new]="removeSurilvanPronouns(newLemmaVersion.imperfectsing3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectsing3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.imperfect?.sing3)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.imperfectplural1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.imperfect?.plural1 }}</td>
         <td class="reference">{{ referenceVerb.imperfectplural1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural1" [new]="removeSurilvanPronouns(newLemmaVersion.imperfectplural1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.imperfect?.plural1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.imperfectplural2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.imperfect?.plural2 }}</td>
         <td class="reference">{{ referenceVerb.imperfectplural2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural2" [new]="removeSurilvanPronouns(newLemmaVersion.imperfectplural2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.imperfect?.plural2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.imperfectplural3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.imperfect?.plural3 }}</td>
         <td class="reference">{{ referenceVerb.imperfectplural3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural3" [new]="removeSurilvanPronouns(newLemmaVersion.imperfectplural3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperfectplural3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.imperfect?.plural3)"></app-diff></td>
       </tr>
     </table>
   </div>
@@ -319,34 +318,34 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctivsing1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv?.sing1 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivsing1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing1" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctivsing1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv?.sing1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctivsing2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv?.sing2 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivsing2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing2" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctivsing2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv?.sing2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctivsing3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv?.sing3 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivsing3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing3" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctivsing3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivsing3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv?.sing3)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctivplural1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv?.plural1 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivplural1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural1" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctivplural1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv?.plural1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctivplural2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv?.plural2 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivplural2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural2" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctivplural2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv?.plural2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctivplural3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv?.plural3 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivplural3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural3" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctivplural3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivplural3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv?.plural3)"></app-diff></td>
       </tr>
     </table>
   </div>
@@ -360,34 +359,34 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctiv2sing1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv2?.sing1 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivimpsing1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing1" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctiv2sing1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv2?.sing1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctiv2sing2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv2?.sing2 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivimpsing2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing2" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctiv2sing2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv2?.sing2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctiv2sing3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv2?.sing3 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivimpsing3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing3" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctiv2sing3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpsing3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv2?.sing3)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctiv2plural1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv2?.plural1 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivimpplural1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural1" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctiv2plural1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv2?.plural1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctiv2plural2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv2?.plural2 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivimpplural2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural2" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctiv2plural2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv2?.plural2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.conjunctiv2plural3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.conjunctiv2?.plural3 }}</td>
         <td class="reference">{{ referenceVerb.conjunctivimpplural3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural3" [new]="removeSurilvanPronouns(newLemmaVersion.conjunctiv2plural3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.conjunctivimpplural3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.conjunctiv2?.plural3)"></app-diff></td>
       </tr>
     </table>
   </div>
@@ -401,34 +400,34 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalsing1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunal?.sing1 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalsing1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing1" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalsing1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunal?.sing1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalsing2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunal?.sing2 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalsing2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing2" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalsing2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunal?.sing2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalsing3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunal?.sing3 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalsing3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing3" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalsing3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalsing3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunal?.sing3)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalplural1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunal?.plural1 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalplural1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural1" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalplural1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunal?.plural1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalplural2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunal?.plural2 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalplural2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural2" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalplural2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunal?.plural2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalplural3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunal?.plural3 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalplural3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural3" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalplural3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalplural3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunal?.plural3)"></app-diff></td>
       </tr>
     </table>
   </div>
@@ -442,34 +441,34 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalindirectsing1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing1 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalindsing1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing1" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalindirectsing1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalindirectsing2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing2 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalindsing2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing2" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalindirectsing2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalindirectsing3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing3 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalindsing3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing3" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalindirectsing3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindsing3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.sing3)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalindirectplural1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural1 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalindplural1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural1" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalindirectplural1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural1)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalindirectplural2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural2 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalindplural2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural2" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalindirectplural2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural2)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.cundizionalindirectplural3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural3 }}</td>
         <td class="reference">{{ referenceVerb.cundizionalindplural3 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural3" [new]="removeSurilvanPronouns(newLemmaVersion.cundizionalindirectplural3)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.cundizionalindplural3" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.cundiziunalIndirect?.plural3)"></app-diff></td>
       </tr>
     </table>
   </div>
@@ -483,32 +482,32 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.futursing1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.futur?.sing1 }}</td>
         <td class="reference"></td>
         <td class="diff"></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.futursing2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.futur?.sing2 }}</td>
         <td class="reference"></td>
         <td class="diff"></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.futursing3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.futur?.sing3 }}</td>
         <td class="reference"></td>
         <td class="diff"></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.futurplural1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.futur?.plural1 }}</td>
         <td class="reference"></td>
         <td class="diff"></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.futurplural2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.futur?.plural2 }}</td>
         <td class="reference"></td>
         <td class="diff"></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.futurplural3 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.futur?.plural3 }}</td>
         <td class="reference"></td>
         <td class="diff"></td>
       </tr>
@@ -524,29 +523,29 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.participperfectms }}</td>
-        <td class="reference"></td>
-        <td class="diff"></td>
-      </tr>
-      <tr>
-        <td class="generated">{{ newLemmaVersion.participperfectfs }}</td>
-        <td class="reference">{{ referenceVerb.participperfectfs }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.participperfectfs" [new]="removeSurilvanPronouns(newLemmaVersion.participperfectfs)"></app-diff></td>
-      </tr>
-      <tr>
-        <td class="generated">{{ newLemmaVersion.participperfectmp }}</td>
-        <td class="reference">{{ referenceVerb.participperfectmp }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.participperfectmp" [new]="removeSurilvanPronouns(newLemmaVersion.participperfectmp)"></app-diff></td>
-      </tr>
-      <tr>
-        <td class="generated">{{ newLemmaVersion.participperfectfp }}</td>
-        <td class="reference">{{ referenceVerb.participperfectfp }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.participperfectfp" [new]="removeSurilvanPronouns(newLemmaVersion.participperfectfp)"></app-diff></td>
-      </tr>
-      <tr>
-        <td class="generated">{{ newLemmaVersion.participperfectmspredicativ }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.participPerfect?.ms }}</td>
         <td class="reference">{{ referenceVerb.participperfectms }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.participperfectms" [new]="removeSurilvanPronouns(newLemmaVersion.participperfectmspredicativ)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectms" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.participPerfect?.ms)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.participPerfect?.fs }}</td>
+        <td class="reference">{{ referenceVerb.participperfectfs }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectfs" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.participPerfect?.fs)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.participPerfect?.mp }}</td>
+        <td class="reference">{{ referenceVerb.participperfectmp }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectmp" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.participPerfect?.mp)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.participPerfect?.fp }}</td>
+        <td class="reference">{{ referenceVerb.participperfectfp }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectfp" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.participPerfect?.fp)"></app-diff></td>
+      </tr>
+      <tr>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.participPerfect?.msPredicativ }}</td>
+        <td class="reference">{{ referenceVerb.participperfectms }}</td>
+        <td class="diff"><app-diff [old]="referenceVerb.participperfectms" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.participPerfect?.msPredicativ)"></app-diff></td>
       </tr>
     </table>
   </div>
@@ -560,14 +559,14 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.imperativ1 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.imperativ?.singular }}</td>
         <td class="reference">{{ referenceVerb.imperativ1 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.imperativ1" [new]="removeSurilvanPronouns(newLemmaVersion.imperativ1)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperativ1" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.imperativ?.singular)"></app-diff></td>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.imperativ2 }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.imperativ?.plural }}</td>
         <td class="reference">{{ referenceVerb.imperativ2 }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.imperativ2" [new]="removeSurilvanPronouns(newLemmaVersion.imperativ2)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.imperativ2" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.imperativ?.plural)"></app-diff></td>
       </tr>
     </table>
   </div>
@@ -581,11 +580,10 @@
         <th>Diff</th>
       </tr>
       <tr>
-        <td class="generated">{{ newLemmaVersion.gerundium }}</td>
+        <td class="generated">{{ newLemmaVersion.inflection?.verb?.gerundium }}</td>
         <td class="reference">{{ referenceVerb.gerundium }}</td>
-        <td class="diff"><app-diff [old]="referenceVerb.gerundium" [new]="removeSurilvanPronouns(newLemmaVersion.gerundium)"></app-diff></td>
+        <td class="diff"><app-diff [old]="referenceVerb.gerundium" [new]="removeSurilvanPronouns(newLemmaVersion.inflection?.verb?.gerundium)"></app-diff></td>
       </tr>
     </table>
   </div>
 </div>
--->
