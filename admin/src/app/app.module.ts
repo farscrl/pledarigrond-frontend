@@ -35,8 +35,6 @@ import { LexiconFilterComponent } from './components/filters/lexicon-filter/lexi
 import { ExportComponent } from './features/editor/export/export.component';
 import { NavigationHorizontalComponent } from './components/navigation-horizontal/navigation-horizontal.component';
 import { UserRoleComponent } from './components/data/user-role/user-role.component';
-import { StatusComponent } from './components/data/status/status.component';
-import { VerificationComponent } from './components/data/verification/verification.component';
 import { MainEntryComponent } from './features/modify-entry/main-entry/main-entry.component';
 import { interceptorProviders } from './auth/interceptors';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -110,9 +108,7 @@ export function tokenGetter() {
     ExportComponent,
     NavigationHorizontalComponent,
     UserRoleComponent,
-    StatusComponent,
     ActionComponent,
-    VerificationComponent,
     MainEntryComponent,
     ConjugationComponent,
     ExportDumpComponent,
