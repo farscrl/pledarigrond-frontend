@@ -19,9 +19,9 @@
         <li nz-menu-item *ngIf="columns.verifier.allowed"><label nz-checkbox [(ngModel)]="columns.verifier.active">{{ 'lexicon.lemma.columns.verifier' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.filter.allowed"><label nz-checkbox [(ngModel)]="columns.filter.active">{{ 'lexicon.lemma.columns.filter' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.entry.allowed"><label nz-checkbox [(ngModel)]="columns.entry.active">{{ 'lexicon.lemma.columns.entry' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.actions.allowed"><label nz-checkbox [(ngModel)]="columns.actions.active">{{ 'lexicon.lemma.columns.actions' | translate }}</label></li>
+        <li nz-menu-item *ngIf="columns.actions.allowed"><label nz-checkbox [(ngModel)]="columns.actions.active">{{ 'lexicon.lemma.columns.buttons' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.order.allowed"><label nz-checkbox [(ngModel)]="columns.order.active">{{ 'lexicon.lemma.columns.order' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.state.allowed"><label nz-checkbox [(ngModel)]="columns.state.active">{{ 'lexicon.lemma.columns.state' | translate }}</label></li>
+        <li nz-menu-item *ngIf="columns.state.allowed"><label nz-checkbox [(ngModel)]="columns.state.active">{{ 'lexicon.lemma.columns.action' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.created.allowed"><label nz-checkbox [(ngModel)]="columns.created.active">{{ 'lexicon.lemma.columns.created' | translate }}</label></li>
         <nz-divider></nz-divider>
         <li nz-menu-item *ngIf="columns.german.allowed"><label nz-checkbox [(ngModel)]="columns.german.active">{{ 'lexicon.lemma.columns.de' | translate }}</label></li>
@@ -72,9 +72,9 @@
       <th *ngIf="columns.verifier.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.verifier' | translate }}</th>
       <th *ngIf="columns.filter.active" nzWidth="120px">{{ 'lexicon.lemma.columns.filter' | translate }}</th>
       <th *ngIf="columns.entry.active" nzWidth="200px">{{ 'lexicon.lemma.columns.entry' | translate }}</th>
-      <th *ngIf="columns.actions.active" nzWidth="110px">{{ 'lexicon.lemma.columns.actions' | translate }}</th>
+      <th *ngIf="columns.actions.active" nzWidth="110px">{{ 'lexicon.lemma.columns.buttons' | translate }}</th>
       <th *ngIf="columns.order.active" nzWidth="155px">{{ 'lexicon.lemma.columns.order' | translate }}</th>
-      <th *ngIf="columns.state.active" nzWidth="130px">{{ 'lexicon.lemma.columns.state' | translate }}</th>
+      <th *ngIf="columns.state.active" nzWidth="130px">{{ 'lexicon.lemma.columns.action' | translate }}</th>
       <th *ngIf="columns.created.active" nzWidth="120px">{{ 'lexicon.lemma.columns.created' | translate }}</th>
       <th *ngIf="columns.german.active">{{ 'lexicon.lemma.columns.de' | translate }}</th>
       <th *ngIf="columns.germanGrammar.active">{{ 'lexicon.lemma.columns.de_grammar' | translate }}</th>
@@ -134,8 +134,7 @@
         <button nz-button nzSize="small" (click)="startReorder(item, 'GERMAN');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_de' | translate }}</button>
       </td>
       <td *ngIf="columns.state.active" class="small">
-        <app-verification [verification]="item.version.versionStatus"></app-verification><br>
-        <app-status [status]="item.publicationStatus"></app-status>
+        <app-action [action]="item.version.action"></app-action>
       </td>
       <td *ngIf="columns.created.active" class="small">
         {{ formateDate(item.version.timestamp) }}<br>

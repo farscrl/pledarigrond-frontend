@@ -68,7 +68,7 @@ export class HistoryComponent implements OnInit {
       diff: new LemmaListColumnDetail(false, false),
       user: new LemmaListColumnDetail(true, true),
       verifier: new LemmaListColumnDetail(true, true),
-      filter: new LemmaListColumnDetail(true, true),
+      filter: new LemmaListColumnDetail(true, false),
       entry: new LemmaListColumnDetail(true, true),
       actions: new LemmaListColumnDetail(true, true),
       order: new LemmaListColumnDetail(false, false),

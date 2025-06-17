@@ -70,7 +70,7 @@ export class SuggestionsComponent implements OnInit {
       diff: new LemmaListColumnDetail(true, true),
       user: new LemmaListColumnDetail(true, true),
       verifier: new LemmaListColumnDetail(false, false),
-      filter: new LemmaListColumnDetail(true, true),
+      filter: new LemmaListColumnDetail(true, false),
       entry: new LemmaListColumnDetail(true, true),
       actions: new LemmaListColumnDetail(true, true),
       order: new LemmaListColumnDetail(false, false),
