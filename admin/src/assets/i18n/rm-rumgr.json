@@ -102,6 +102,7 @@
       "state": "Status",
       "user": "Utilisad*ra",
       "entry": "Endataziun",
+      "action": "Acziun",
       "changed": "Midà",
       "no_item_selected": "Tscherner in'endataziun da vart dretga per vesair qua la cronologia cun las versiuns dal lemma.",
       "delete_history_button": "Stizzar cronologia",
@@ -241,11 +242,26 @@
   },
   "data": {
     "status": {
+      "suggestion": "Proposta",
       "deleted": "Stizzà",
       "new_entry": "Nova endataziun",
       "new_modification": "Nova modificaziun",
       "published": "Publitgà",
       "undefined": "Betg definì"
+    },
+    "action": {
+      "suggested_entry": "Proponì endataziun",
+      "accepted_entry": "Acceptà endataziun",
+      "created_entry": "Creà endataziun",
+
+      "suggested_modification": "Proponì modificaziun",
+      "accepted_modification": "Acceptà modificaziun",
+      "refused_modification": "Refusà modificaziun",
+      "created_modification": "Creà modificaziun",
+
+      "changed_order": "Midà successiun",
+
+      "unknown": "Nunenconuschent"
     },
     "role": {
       "admin": "Admin",

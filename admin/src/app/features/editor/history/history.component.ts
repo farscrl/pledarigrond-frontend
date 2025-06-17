@@ -33,8 +33,8 @@ export class HistoryComponent implements OnInit {
   }
 
   search(editorQuery: EditorQuery) {
-    // only unverified entries
-    editorQuery.versionStatus = 'ACCEPTED';
+    // verified entries
+    editorQuery.state = 'PUBLISHED';
     this.currentEditorQuery = editorQuery;
     this.loadPage(0);
   }

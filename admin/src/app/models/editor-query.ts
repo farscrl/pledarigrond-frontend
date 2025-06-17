@@ -1,11 +1,10 @@
-import { PublicationStatus, VersionStatus } from "./lemma-version"
+import { PublicationStatus } from './dictionary';
 
 export class EditorQuery {
-  state?: PublicationStatus[];
+  state?: PublicationStatus;
   userOrIp?: string;
   verifier?: string;
   role?: string;
-  versionStatus?: VersionStatus;
   startTime?: number;
   endTime?: number;
 

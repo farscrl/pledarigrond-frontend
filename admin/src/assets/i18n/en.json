@@ -244,6 +244,20 @@
       "published": "Published",
       "undefined": "Undefined"
     },
+    "action": {
+      "suggested_entry": "Suggested Entry",
+      "accepted_entry": "Accepted Entry",
+      "created_entry": "Created Entry",
+
+      "suggested_modification": "Suggested Modification",
+      "accepted_modification": "Accepted Modification",
+      "refused_modification": "Refused Modification",
+      "created_modification": "Created Modification",
+
+      "changed_order": "Changed Order",
+
+      "unknown": "Unknown"
+    },
     "role": {
       "admin": "Admin",
       "editor": "Editor",

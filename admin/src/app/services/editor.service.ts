@@ -207,16 +207,20 @@ export class EditorService {
   }
 
   private editorQueryToHttpParam(editorQuery: EditorQuery, params: HttpParams): HttpParams {
+    if (!editorQuery) {
+      return params;
+    }
+    
+    if (!!editorQuery.state) {
+      params = params.set('state', editorQuery.state);
+    }
+
     if (!!editorQuery.startTime) {
       params = params.set('startTime', editorQuery.startTime);
     }
 
     if (!!editorQuery.endTime) {
       params = params.set('endTime', editorQuery.endTime);
-    }
-
-    if (!!editorQuery.versionStatus) {
-      params = params.set('versionStatus', editorQuery.versionStatus);
     }
 
     if (!!editorQuery.userOrIp) {

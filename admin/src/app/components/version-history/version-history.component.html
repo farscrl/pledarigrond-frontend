@@ -10,10 +10,9 @@
     <tr>
       <th>-</th>
       <th>+</th>
-      <th>{{ 'lexicon.lemma_history.state' | translate }}</th>
+      <th>{{ 'lexicon.lemma_history.action' | translate }}</th>
       <th>{{ 'lexicon.lemma_history.user' | translate }}</th>
       <th>{{ 'lexicon.lemma_history.entry' | translate }}</th>
-      <th>{{ 'lexicon.lemma_history.changed' | translate }}</th>
     </tr>
   </thead>
   <tbody>
@@ -25,8 +24,8 @@
         <input type="radio" value="data" name="diffAfter" (change)="afterChanged(version)">
       </td>
       <td>
-        <app-verification [verification]="version.versionStatus"></app-verification><br>
-        <app-status [status]="entry?.publicationStatus"></app-status>
+        {{ formateDateTime(version.timestamp) }}
+        <app-action [action]="version.action"></app-action>
       </td>
       <td>
         <app-user-role [role]="version.creatorRole"></app-user-role><br>
@@ -34,10 +33,6 @@
       </td>
       <td>
         {{ version.deStichwort }} ⇔ {{ version.rmStichwort }}
-      </td>
-      <td>
-        {{ formateDate(version.timestamp) }}<br>
-        {{ formateTime(version.timestamp) }}
       </td>
     </tr>
   <tr *ngIf="versionHistory.length > 0">

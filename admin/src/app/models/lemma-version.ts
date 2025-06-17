@@ -186,7 +186,5 @@ export class PgValues {
   creator_role?: String;
 }
 
-export type PublicationStatus = 'SUGGESTION'|'PUBLISHED'|'MODIFIED'|'INVALID';
 export type Status = 'DELETED'|'NEW_ENTRY'|'NEW_MODIFICATION'|'UNDEFINED'; // TODO: remove if not used anymore
 export type Verification = 'REJECTED'|'ACCEPTED'|'OUTDATED'|'UNVERIFIED'; // TODO: remove if not used anymore
-export type VersionStatus = 'REJECTED'|'ACCEPTED'|'UNVERIFIED';

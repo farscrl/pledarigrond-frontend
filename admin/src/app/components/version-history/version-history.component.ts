@@ -40,8 +40,8 @@ export class VersionHistoryComponent implements OnChanges {
     }
   }
 
-  formateDate(timestamp: Date): string {
-    return moment(timestamp).format("DD-MM-YYYY");
+  formateDateTime(timestamp: Date): string {
+    return moment(timestamp).format("DD-MM-YYYY HH:mm:ss");
   }
 
   formateTime(timestamp: Date): string {

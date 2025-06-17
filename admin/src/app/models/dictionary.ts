@@ -3,6 +3,7 @@ import { EditorRole } from './user';
 export class EntryVersionDto {
   versionId!: string;
   entryId!: string;
+  action!: Action;
 
   // info romansh
   rmStichwort?: string;
@@ -180,7 +181,9 @@ export class Other {
 
 export type InflectionType = 'NONE'|'V'|'NOUN'|'ADJECTIVE'|'PRONOUN'|'OTHER';
 
-export type PublicationStatus = 'SUGGESTION' | 'PUBLISHED' | 'MODIFIED' | 'INVALID';
+export type PublicationStatus = 'HAS_SUGGESTION'|'PUBLISHED'|'INVALID';
+
+export type Action = | 'SUGGESTED_ENTRY' | 'ACCEPTED_ENTRY' | 'CREATED_ENTRY' | 'SUGGESTED_MODIFICATION' | 'ACCEPTED_MODIFICATION' | 'REFUSED_MODIFICATION' | 'CREATED_MODIFICATION' | 'CHANGED_ORDER' | 'UNKNOWN';
 
 export type VersionStatus = 'Rejected' | 'Accepted' | 'Unverified';
 

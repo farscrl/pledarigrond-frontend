@@ -35,7 +35,7 @@ export class SuggestionsComponent implements OnInit {
 
   search(editorQuery: EditorQuery) {
     // only unverified entries
-    editorQuery.versionStatus = 'UNVERIFIED';
+    editorQuery.state = 'HAS_SUGGESTION';
     this.currentEditorQuery = editorQuery;
     this.loadPage(0);
   }
@@ -56,6 +56,7 @@ export class SuggestionsComponent implements OnInit {
   }
 
   showLexEntryDetails(entryId: string) {
+    console.log('showLexEntryDetails', entryId);
     if (!entryId) {
       return;
     }

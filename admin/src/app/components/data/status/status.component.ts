@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PublicationStatus } from 'src/app/models/lemma-version';
+import { PublicationStatus } from '../../../models/dictionary';
 
 @Component({
     selector: 'app-status',
