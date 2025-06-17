@@ -1,11 +1,11 @@
 <nz-tag [nzColor]="'yellow'" *ngIf="action === 'SUGGESTED_ENTRY'">{{ 'data.action.suggested_entry' | translate }}</nz-tag>
-<nz-tag [nzColor]="'green'" *ngIf="action === 'ACCEPTED_ENTRY'">{{ 'data.action.accepted_entry' | translate }}</nz-tag>
-<nz-tag [nzColor]="'blue'" *ngIf="action === 'CREATED_ENTRY'">{{ 'data.action.created_entry' | translate }}</nz-tag>
+<nz-tag [nzColor]="'blue'" *ngIf="action === 'ACCEPTED_ENTRY'">{{ 'data.action.accepted_entry' | translate }}</nz-tag>
+<nz-tag [nzColor]="'green'" *ngIf="action === 'CREATED_ENTRY'">{{ 'data.action.created_entry' | translate }}</nz-tag>
 
 <nz-tag [nzColor]="'yellow'" *ngIf="action === 'SUGGESTED_MODIFICATION'">{{ 'data.action.suggested_modification' | translate }}</nz-tag>
-<nz-tag [nzColor]="'green'" *ngIf="action === 'ACCEPTED_MODIFICATION'">{{ 'data.action.accepted_modification' | translate }}</nz-tag>
+<nz-tag [nzColor]="'blue'" *ngIf="action === 'ACCEPTED_MODIFICATION'">{{ 'data.action.accepted_modification' | translate }}</nz-tag>
 <nz-tag [nzColor]="'red'" *ngIf="action === 'REFUSED_MODIFICATION'">{{ 'data.action.refused_modification' | translate }}</nz-tag>
-<nz-tag [nzColor]="'blue'" *ngIf="action === 'CREATED_MODIFICATION'">{{ 'data.action.created_modification' | translate }}</nz-tag>
+<nz-tag [nzColor]="'green'" *ngIf="action === 'CREATED_MODIFICATION'">{{ 'data.action.created_modification' | translate }}</nz-tag>
 
 <nz-tag [nzColor]="'orange'" *ngIf="action === 'CHANGED_ORDER'">{{ 'data.action.changed_order' | translate }}</nz-tag>
 
