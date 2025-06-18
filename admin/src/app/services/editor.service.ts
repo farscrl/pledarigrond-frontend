@@ -77,7 +77,7 @@ export class EditorService {
     };
 
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/'), body, httpOptions);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries'), body, httpOptions);
   }
 
   modifyAndAccepptEntryVersion(language: Language, entryId: string, version: EntryVersionDto) {
@@ -210,7 +210,7 @@ export class EditorService {
     if (!editorQuery) {
       return params;
     }
-    
+
     if (!!editorQuery.state) {
       params = params.set('state', editorQuery.state);
     }
