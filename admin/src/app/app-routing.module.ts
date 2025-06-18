@@ -15,8 +15,10 @@ import { SuggestionsComponent } from './features/editor/suggestions/suggestions.
 import { LoginComponent } from './features/login/login.component';
 import { NoPermissionsComponent } from './features/no-permissions/no-permissions.component';
 import { UserAdministrationComponent } from './features/user-administration/user-administration.component';
-import {NameAdministrationComponent} from "./features/name-administration/name-administration.component";
+import { NameAdministrationComponent } from "./features/name-administration/name-administration.component";
 import { ReviewPronunciationComponent } from './features/editor/review-pronunciation/review-pronunciation.component';
+import { Language } from './models/security';
+import { LanguageResolver } from './resolver/language.resolver';
 
 const routes: Routes = [
   {
@@ -43,7 +45,9 @@ const routes: Routes = [
       {
         path: 'rumantschgrischun',
         canActivate: [UserLoggedInGuard],
+        resolve: { lang: LanguageResolver },
         data: {
+          currentLanguage: Language.RUMANTSCHGRISCHUN,
           expected_role: 'ROLE_EDITOR_RUMANTSCHGRISCHUN'
         },
         children: [
@@ -107,7 +111,9 @@ const routes: Routes = [
       {
         path: 'sursilvan',
         canActivate: [UserLoggedInGuard],
+        resolve: { lang: LanguageResolver },
         data: {
+          currentLanguage: Language.SURSILVAN,
           expected_role: 'ROLE_EDITOR_SURSILVAN'
         },
         children: [
@@ -167,7 +173,9 @@ const routes: Routes = [
       {
         path: 'surmiran',
         canActivate: [UserLoggedInGuard],
+        resolve: { lang: LanguageResolver },
         data: {
+          currentLanguage: Language.SURMIRAN,
           expected_role: 'ROLE_EDITOR_SURMIRAN'
         },
         children: [
@@ -231,7 +239,9 @@ const routes: Routes = [
       {
         path: 'puter',
         canActivate: [UserLoggedInGuard],
+        resolve: { lang: LanguageResolver },
         data: {
+          currentLanguage: Language.PUTER,
           expected_role: 'ROLE_EDITOR_PUTER'
         },
         children: [
@@ -295,7 +305,9 @@ const routes: Routes = [
       {
         path: 'vallader',
         canActivate: [UserLoggedInGuard],
+        resolve: { lang: LanguageResolver },
         data: {
+          currentLanguage: Language.VALLADER,
           expected_role: 'ROLE_EDITOR_VALLADER'
         },
         children: [
@@ -359,7 +371,9 @@ const routes: Routes = [
       {
         path: 'sutsilvan',
         canActivate: [UserLoggedInGuard],
+        resolve: { lang: LanguageResolver },
         data: {
+          currentLanguage: Language.SUTSILVAN,
           expected_role: 'ROLE_EDITOR_SUTSILVAN'
         },
         children: [
