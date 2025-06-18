@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewContainerRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ExportComponent } from 'src/app/features/editor/export/export.component';
-import { Page } from 'src/app/models/page';
 
 import moment from 'moment';
 import { EditorService } from 'src/app/services/editor.service';
@@ -15,7 +14,7 @@ import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
 import { TranslateService } from '@ngx-translate/core';
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
-import { EntryVersionDto, EntryVersionInternalDto, NormalizedEntryVersionDto } from '../../models/dictionary';
+import { EntryVersionDto, EntryVersionInternalDto } from '../../models/dictionary';
 import { DictionaryListItem, PaginationInfo } from '../../models/dictionary-list';
 
 @Component({
@@ -57,7 +56,6 @@ export class DictionaryListComponent {
   math = Math;
 
 
-  resultPage?: Page<NormalizedEntryVersionDto>;
   checked = false;
   loading = false;
   indeterminate = false;
@@ -306,18 +304,18 @@ export class DictionaryListComponent {
   }
 
   private reloadCurrentPage() {
-    this.updatePage.emit(this.resultPage!.number);
+    this.updatePage.emit(this.paginationInfo!.number);
   }
 
   private dropEntryVersionConfirmed(entryId: string) {
     this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), entryId).subscribe(() => {
-      this.updatePage.emit(this.resultPage!.number);
+      this.updatePage.emit(this.paginationInfo!.number);
     });
   }
 
   private rejectEntryVersionConfirmed(item: DictionaryListItem) {
     this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), item.entryId, item.version).subscribe(() => {
-      this.updatePage.emit(this.resultPage!.number);
+      this.updatePage.emit(this.paginationInfo!.number);
     });
   }
 }

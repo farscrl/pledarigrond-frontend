@@ -1,10 +1,10 @@
 <div class="header-actions">
   <div>
-    <span *ngIf="resultPage && resultPage.totalElements > 0">
+    <span *ngIf="paginationInfo && paginationInfo.totalElements > 0">
       {{ 'lexicon.lemma.results_info' | translate:{
-        start: (resultPage.number*resultPage.size) + 1,
-        end: math.min((resultPage.number + 1) * resultPage.size, resultPage.totalElements),
-        total: resultPage.totalElements
+        start: (paginationInfo.number*paginationInfo.size) + 1,
+        end: math.min((paginationInfo.number + 1) * paginationInfo.size, paginationInfo.totalElements),
+        total: paginationInfo.totalElements
       } }}
     </span>
   </div>
@@ -181,10 +181,10 @@
   </div>
 
   <nz-pagination
-    [nzPageIndex]="(resultPage!.number) + 1"
-    [nzPageSize]="resultPage.size"
-    [nzTotal]="resultPage.totalElements"
-    *ngIf="resultPage && resultPage.totalElements > 0"
+    [nzPageIndex]="(paginationInfo!.number) + 1"
+    [nzPageSize]="paginationInfo.size"
+    [nzTotal]="paginationInfo.totalElements"
+    *ngIf="paginationInfo && paginationInfo.totalElements > 0"
     (nzPageIndexChange)="changePage($event)"></nz-pagination>
 </div>
 
