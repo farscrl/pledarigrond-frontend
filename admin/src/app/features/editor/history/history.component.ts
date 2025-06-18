@@ -40,6 +40,10 @@ export class HistoryComponent implements OnInit {
   }
 
   loadPage(page: number) {
+    if (!this.currentEditorQuery) {
+      return;
+    }
+    
     this.editorService.getAllEntries(this.languageSelectionService.getCurrentLanguage(), this.currentEditorQuery!, page).subscribe(page => {
       this.paginationInfo = new PaginationInfo(page);
       this.items = page.content.map(v => ({
