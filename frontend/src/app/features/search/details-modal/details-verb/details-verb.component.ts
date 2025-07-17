@@ -104,7 +104,11 @@ export class DetailsVerbComponent implements OnChanges {
         this.extractPronouns(ppVallConj, ppVall, ppVallRefl, ppVallReflVowel);
         break;
       case 'sursilv':
-        // TODO
+        const ppSursilvConj = ["che jeu ", "che ti ", "ch'el/ella ", "che nus ", "che vus ", "ch'els/ellas ", "ch'i ", "ch'igl"];
+        const ppSursilv = ["jeu ", "ti ", "el/ella ", "nus ", "vus ", "els/ellas ", "i ", "igl ", ""];
+        const ppSursilvRefl = ["", "", "", "", "", "", "", ""];
+        const ppSursilvReflVowel = ["s'", "s'", "s'", "s'", "s'", "s'", "s'", "s'"];
+        this.extractPronouns(ppSursilvConj, ppSursilv, ppSursilvRefl, ppSursilvReflVowel);
         break;
       default:
       // do nothing
