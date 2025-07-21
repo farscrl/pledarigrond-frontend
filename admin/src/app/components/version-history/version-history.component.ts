@@ -49,9 +49,13 @@ export class VersionHistoryComponent implements OnChanges {
   }
 
   dropOutdatedHistory() {
+    let lemma = this.entry!.current?.deStichwort + ' ⇔ ' + this.entry!.current?.rmStichwort;
+    if (!this.entry!.current) {
+      lemma = this.entry!.suggestions.length > 0 ? this.entry!.suggestions[0].deStichwort + ' ⇔ ' + this.entry!.suggestions[0].rmStichwort : '';
+    }
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('lexicon.lemma_history.delete_history_confirmation'),
-      nzContent: '<b style="color: red;">' +  this.entry!.current?.deStichwort + ' / ' + this.entry!.current?.rmStichwort + '</b>',
+      nzContent: lemma,
       nzClosable: false,
       nzOkDanger: true,
       nzViewContainerRef: this.viewContainerRef,
