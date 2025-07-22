@@ -181,7 +181,8 @@ export class ReviewAutoChangesComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        lexEntryId: this.selectedEntryVersion,
+        entryIdToChange: this.selectedEntryVersion.entryId,
+        entryVersionToChange: this.selectedEntryVersion,
         directlyLoadDetailView: true,
       },
       nzOnOk: () => {

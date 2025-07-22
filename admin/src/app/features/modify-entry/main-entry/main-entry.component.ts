@@ -37,7 +37,7 @@ export class MainEntryData {
     standalone: false
 })
 export class MainEntryComponent implements OnInit {
-
+  entryIdToChange?: string;
   entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView;
 
@@ -70,6 +70,7 @@ export class MainEntryComponent implements OnInit {
     @Inject(NZ_MODAL_DATA) data: MainEntryData,
     private registrationService: RegistrationService,
   ) {
+    this.entryIdToChange = data.entryIdToChange;
     this.entryVersionToChange = data.entryVersionToChange;
     this.directlyLoadDetailView = data.directlyLoadDetailView;
   }

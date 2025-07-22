@@ -125,7 +125,7 @@
         <div style="font-size: 85%; font-style: italic;">{{ (item.version.userComment && item.version.userComment.length > 35) ? ((item.version.userComment | slice:0:35)+'...') : (item.version.userComment) }}</div>
       </td>
       <td *ngIf="columns.actions.active" class="button-column">
-        <button nz-button nzSize="small" nzType="primary" (click)="editEntry(item.version); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.edit' | translate }}</button><br>
+        <button nz-button nzSize="small" nzType="primary" (click)="editEntry(item); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.edit' | translate }}</button><br>
         <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(item); $event.stopPropagation();" *ngIf="(showRejectButton && item.version.versionStatus !== 'Unverified') || !showRejectButton">{{ 'lexicon.lemma.table_actions.delete' | translate }}</button>
         <button nz-button nzSize="small" nzType="primary" nzDanger (click)="rejectEntryVersion(item); $event.stopPropagation();" *ngIf="showRejectButton && item.version.versionStatus === 'Unverified'">{{ 'lexicon.lemma.table_actions.reject' | translate }}</button>
       </td>

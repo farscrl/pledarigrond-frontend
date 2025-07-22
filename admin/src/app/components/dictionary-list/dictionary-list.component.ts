@@ -145,9 +145,8 @@ export class DictionaryListComponent {
     this.openLemmaModal();
   }
 
-  editEntry(version: EntryVersionInternalDto) {
-    // TODO: implement
-    // this.openLemmaModal(entryId);
+  editEntry(item: DictionaryListItem) {
+    this.openLemmaModal(item.entryId, item.version);
   }
 
   dropEntry(item: DictionaryListItem) {
@@ -288,7 +287,7 @@ export class DictionaryListComponent {
     });
   }
 
-  private openLemmaModal(entryId?: string) {
+  private openLemmaModal(entryId?: string, version?: EntryVersionInternalDto) {
     const modal = this.modalService.create({
       nzTitle: !!entryId ? this.translateService.instant('edit.titles.edit') : this.translateService.instant('edit.titles.add'),
       nzContent: MainEntryComponent,
@@ -297,8 +296,8 @@ export class DictionaryListComponent {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        entryId: entryId,
-        // TODO: pass version?
+        entryIdToChange: entryId,
+        entryVersionToChange: version,
       },
       nzOnOk: () => this.reloadCurrentPage()
     });
