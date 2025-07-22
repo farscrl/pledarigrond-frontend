@@ -152,7 +152,7 @@ export class DictionaryListComponent {
   dropEntry(item: DictionaryListItem) {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('lexicon.lemma.delete.title'),
-      nzContent: '<b style="color: red;">' +  item.version.deStichwort + ' / ' + item.version.rmStichwort + '</b>',
+      nzContent: item.version.deStichwort + ' ⇔ ' + item.version.rmStichwort,
       nzClosable: false,
       nzOkDanger: true,
       nzCancelText: this.translateService.instant('lexicon.lemma.delete.cancel'),
@@ -165,7 +165,7 @@ export class DictionaryListComponent {
   rejectEntryVersion(item: DictionaryListItem) {
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('lexicon.lemma.reject.title'),
-      nzContent: '<b style="color: red;">' +  item.version.deStichwort + ' / ' + item.version.rmStichwort + '</b>',
+      nzContent: item.version.deStichwort + ' ⇔ ' + item.version.rmStichwort,
       nzClosable: false,
       nzOkDanger: true,
       nzCancelText: this.translateService.instant('lexicon.lemma.reject.cancel'),
@@ -180,7 +180,7 @@ export class DictionaryListComponent {
 
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('lexicon.lemma.multiedit.title'),
-      nzContent: '<b style="color: red;">' + this.translateService.instant('lexicon.lemma.multiedit.content', {count}) + '</b>',
+      nzContent: this.translateService.instant('lexicon.lemma.multiedit.content', {count}),
       nzClosable: false,
       nzOkDanger: true,
       nzViewContainerRef: this.viewContainerRef,
@@ -197,7 +197,7 @@ export class DictionaryListComponent {
         const item = items[0];
 
         // only applicable to unverified items
-        if (item.version.versionStatus === 'Unverified') {
+        if (item.version.action === 'SUGGESTED_MODIFICATION') {
           subscriptions.push(this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), item.entryId, item.version));
         }
         this.onItemChecked(id, false);

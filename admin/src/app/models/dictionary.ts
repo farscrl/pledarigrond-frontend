@@ -49,7 +49,6 @@ export class EntryDto implements EntryInfos {
 
 export class EntryVersionInternalDto extends EntryVersionDto {
   timestamp!: Date;
-  versionStatus!: VersionStatus;
 
   userComment?: string;
   userEmail?: string;
@@ -184,8 +183,6 @@ export type InflectionType = 'NONE'|'VERB'|'NOUN'|'ADJECTIVE'|'PRONOUN'|'OTHER';
 export type PublicationStatus = 'HAS_SUGGESTION'|'PUBLISHED'|'INVALID';
 
 export type Action = | 'SUGGESTED_ENTRY' | 'ACCEPTED_ENTRY' | 'CREATED_ENTRY' | 'SUGGESTED_MODIFICATION' | 'ACCEPTED_MODIFICATION' | 'REFUSED_MODIFICATION' | 'CREATED_MODIFICATION' | 'CHANGED_ORDER' | 'UNKNOWN';
-
-export type VersionStatus = 'Rejected' | 'Accepted' | 'Unverified';
 
 export class NormalizedEntryVersionDto implements EntryInfos {
   entryId!: string;
