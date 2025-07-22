@@ -28,6 +28,7 @@ export class MainEntryData {
   entryIdToChange?: string;
   entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView = false;
+  replaceSuggestion = false;
 }
 
 @Component({
@@ -40,6 +41,7 @@ export class MainEntryComponent implements OnInit {
   entryIdToChange?: string;
   entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView;
+  replaceSuggestion;
 
   isLoading = false;
 
@@ -73,6 +75,7 @@ export class MainEntryComponent implements OnInit {
     this.entryIdToChange = data.entryIdToChange;
     this.entryVersionToChange = data.entryVersionToChange;
     this.directlyLoadDetailView = data.directlyLoadDetailView;
+    this.replaceSuggestion = data.replaceSuggestion;
   }
 
   ngOnInit(): void {
@@ -482,20 +485,38 @@ export class MainEntryComponent implements OnInit {
     };
     entryVersion.examples = this.joinExampleStrings();
 
-    if (asSuggestion) {
-      this.editorService.modifyEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, entryVersion).subscribe(data => {
-        this.modal.triggerOk();
-        this.cancel();
-      }, error => {
-        console.error(error);
-      });
+    if (this.replaceSuggestion && this.entryVersionToChange) {
+      if (asSuggestion) {
+        this.editorService.replaceSuggestionWithSuggestion(this.languageSelectionService.getCurrentLanguage(), this.entryVersionToChange.versionId, this.entryVersion.entryId, entryVersion).subscribe(data => {
+          this.modal.triggerOk();
+          this.cancel();
+        }, error => {
+          console.error(error);
+        });
+      } else {
+        this.editorService.replaceSuggestionAndAccept(this.languageSelectionService.getCurrentLanguage(), this.entryVersionToChange.versionId, this.entryVersion.entryId, entryVersion).subscribe(data => {
+          this.modal.triggerOk();
+          this.cancel();
+        }, error => {
+          console.error(error);
+        });
+      }
     } else {
-      this.editorService.modifyAndAcceptEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, entryVersion).subscribe(data => {
-        this.modal.triggerOk();
-        this.cancel();
-      }, error => {
-        console.error(error);
-      });
+      if (asSuggestion) {
+        this.editorService.modifyEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, entryVersion).subscribe(data => {
+          this.modal.triggerOk();
+          this.cancel();
+        }, error => {
+          console.error(error);
+        });
+      } else {
+        this.editorService.modifyAndAcceptEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, entryVersion).subscribe(data => {
+          this.modal.triggerOk();
+          this.cancel();
+        }, error => {
+          console.error(error);
+        });
+      }
     }
   }
 

@@ -90,6 +90,16 @@ export class EditorService {
     return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/suggest_version'), body);
   }
 
+  replaceSuggestionWithSuggestion(language: Language, entryId: string, versionToReplaceId: string, version: EntryVersionDto): Observable<EntryDto> {
+    const body: any = Object.assign({}, version);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/replace_suggestion/' + versionToReplaceId), body);
+  }
+
+  replaceSuggestionAndAccept(language: Language, entryId: string, versionToReplaceId: string, version: EntryVersionDto): Observable<EntryDto> {
+    const body: any = Object.assign({}, version);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/replace_suggestion_and_accept/' + versionToReplaceId), body);
+  }
+
   reviewEntryLater(language: Language, entryId: string, version: EntryVersionInternalDto) {
     return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/review_later_version/' + version.versionId), null);
   }
