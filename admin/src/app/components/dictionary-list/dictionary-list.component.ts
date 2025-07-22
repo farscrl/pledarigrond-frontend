@@ -40,6 +40,9 @@ export class DictionaryListComponent {
   @Input()
   showRejectButton = false;
 
+  @Input()
+  replaceSuggestion = false;
+
   @Output()
   updatePage = new EventEmitter<number>();
 
@@ -287,6 +290,7 @@ export class DictionaryListComponent {
       nzData: {
         entryIdToChange: entryId,
         entryVersionToChange: version,
+        replaceSuggestion: this.replaceSuggestion,
       },
       nzOnOk: () => this.reloadCurrentPage()
     });

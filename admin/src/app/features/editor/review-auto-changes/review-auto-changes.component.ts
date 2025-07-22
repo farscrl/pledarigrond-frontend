@@ -185,6 +185,7 @@ export class ReviewAutoChangesComponent implements OnInit {
         entryIdToChange: this.selectedEntryVersion.entryId,
         entryVersionToChange: this.selectedEntryVersion,
         directlyLoadDetailView: true,
+        replaceSuggestion: true,
       },
       nzOnOk: () => {
         this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion!.entryId).subscribe(entry => {

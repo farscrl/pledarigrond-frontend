@@ -487,14 +487,14 @@ export class MainEntryComponent implements OnInit {
 
     if (this.replaceSuggestion && this.entryVersionToChange) {
       if (asSuggestion) {
-        this.editorService.replaceSuggestionWithSuggestion(this.languageSelectionService.getCurrentLanguage(), this.entryVersionToChange.versionId, this.entryVersion.entryId, entryVersion).subscribe(data => {
+        this.editorService.replaceSuggestionWithSuggestion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, this.entryVersionToChange.versionId, entryVersion).subscribe(data => {
           this.modal.triggerOk();
           this.cancel();
         }, error => {
           console.error(error);
         });
       } else {
-        this.editorService.replaceSuggestionAndAccept(this.languageSelectionService.getCurrentLanguage(), this.entryVersionToChange.versionId, this.entryVersion.entryId, entryVersion).subscribe(data => {
+        this.editorService.replaceSuggestionAndAccept(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, this.entryVersionToChange.versionId, entryVersion).subscribe(data => {
           this.modal.triggerOk();
           this.cancel();
         }, error => {
