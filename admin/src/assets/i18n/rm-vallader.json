@@ -57,7 +57,6 @@
     "filter": {
       "date_interval": "Interval da datas",
       "user_ip": "IP da l'utilisad*ra",
-      "verifier": "Revisur*a",
       "search_term": "Pled u expressiun che Vus tschertgais",
       "highlight": "Marcar il pled u l'expressiun che Vus tschertgais",
       "show_more": "Dapli opziuns da tschertgar",
@@ -113,7 +112,6 @@
         "title": "Colonnas",
         "diff": "Diff",
         "user": "Utilisad*ra",
-        "verifier": "Revisur*a",
         "filter": "Filter",
         "entry": "Endataziun",
         "actions": "Acziuns",
@@ -147,7 +145,6 @@
       "new_button": "Nova endataziun",
       "table_actions": {
         "filter_user": "Filtrar utilisad*ra",
-        "filter_verifier": "Filtrar revisur*a",
         "edit": "Modifitgar",
         "delete": "Stizzar",
         "reject": "Refusar",

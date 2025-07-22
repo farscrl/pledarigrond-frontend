@@ -23,7 +23,6 @@ export class SuggestionsComponent implements OnInit {
   selectedEntry?: EntryDto;
 
   userFilter?: string;
-  verifierFilter?: string;
 
   constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) {
     this.columns = this.generateColumns();
@@ -73,7 +72,6 @@ export class SuggestionsComponent implements OnInit {
     return {
       diff: new LemmaListColumnDetail(true, true),
       user: new LemmaListColumnDetail(true, true),
-      verifier: new LemmaListColumnDetail(false, false),
       filter: new LemmaListColumnDetail(true, false),
       entry: new LemmaListColumnDetail(true, true),
       actions: new LemmaListColumnDetail(true, true),

@@ -27,18 +27,6 @@
   </nz-form-control>
 </nz-form-item>
 
-<nz-form-item *ngIf="selectedVerifierFilter">
-  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">{{ 'lexicon.filter.verifier' | translate}}</nz-form-label>
-  <nz-form-control [nzSm]="14" [nzXs]="24">
-    <nz-input-group [nzSuffix]="verifierFilterSuffixTemplate">
-      <input nz-input id="verifier" [value]="selectedVerifierFilter" [disabled]="true"/>
-    </nz-input-group>
-    <ng-template #verifierFilterSuffixTemplate>
-      <i nz-icon nz-tooltip nzTooltipTitle="Remove verifier filter" nzType="close-circle" (click)="removeVerifierFilter()"></i>
-    </ng-template>
-  </nz-form-control>
-</nz-form-item>
-
 <div class="search-area">
   <button nz-button nzType="default" (click)="resetDate()">
     <i nz-icon [nzRotate]="230" nzType="redo"></i>

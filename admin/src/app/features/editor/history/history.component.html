@@ -8,7 +8,6 @@
       <app-duration
         (dateRangeSelected)="search($event)"
         [(userFilter)]="userFilter"
-        [(verifierFilter)]="verifierFilter"
         ></app-duration>
     </nz-content>
 
@@ -31,7 +30,6 @@
         (updatePage)="loadPage($event)"
         (showDetailsForEntryId)="showLexEntryDetails($event)"
         (addUserFilter)="userFilter = $event"
-        (addVerifierFilter)="verifierFilter = $event"
         [columns]="columns"
         [filter]="currentEditorQuery"
         ></app-dictionary-list>

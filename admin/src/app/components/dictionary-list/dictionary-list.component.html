@@ -16,7 +16,6 @@
     <nz-dropdown-menu #menu4="nzDropdownMenu">
       <ul nz-menu>
         <li nz-menu-item *ngIf="columns.user.allowed"><label nz-checkbox [(ngModel)]="columns.user.active">{{ 'lexicon.lemma.columns.user' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.verifier.allowed"><label nz-checkbox [(ngModel)]="columns.verifier.active">{{ 'lexicon.lemma.columns.verifier' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.filter.allowed"><label nz-checkbox [(ngModel)]="columns.filter.active">{{ 'lexicon.lemma.columns.filter' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.entry.allowed"><label nz-checkbox [(ngModel)]="columns.entry.active">{{ 'lexicon.lemma.columns.entry' | translate }}</label></li>
         <li nz-menu-item *ngIf="columns.actions.allowed"><label nz-checkbox [(ngModel)]="columns.actions.active">{{ 'lexicon.lemma.columns.buttons' | translate }}</label></li>
@@ -69,7 +68,6 @@
       <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="columns.checkMultiple.active" nzLeft nzWidth="70px"></th>
       <th *ngIf="columns.diff.active" nzLeft nzWidth="44px">{{ 'lexicon.lemma.columns.diff' | translate }}</th>
       <th *ngIf="columns.user.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.user' | translate }}</th>
-      <th *ngIf="columns.verifier.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.verifier' | translate }}</th>
       <th *ngIf="columns.filter.active" nzWidth="120px">{{ 'lexicon.lemma.columns.filter' | translate }}</th>
       <th *ngIf="columns.entry.active" nzWidth="200px">{{ 'lexicon.lemma.columns.entry' | translate }}</th>
       <th *ngIf="columns.actions.active" nzWidth="110px">{{ 'lexicon.lemma.columns.buttons' | translate }}</th>
@@ -113,12 +111,8 @@
         <span *ngIf="item.version.creator" style="font-size: 90%;">{{ item.version.creator === 'guest@pledarigrond.ch' ? ('data.role.guest' | translate | uppercase ) : item.version.creator }}</span>
         {{ item.version.creatorIp ? item.version.creatorIp : '-' }}
       </td>
-      <td *ngIf="columns.verifier.active" nzLeft class="small">
-        {{ item.version.verifier }}
-      </td>
       <td *ngIf="columns.filter.active" class="button-column">
         <button nz-button nzSize="small" nzType="default" (click)="filterUser(item.version.creatorIp); $event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.filter_user' | translate }}</button>
-        <button nz-button nzSize="small" nzType="default" (click)="filterVerifier(item.version.verifier); $event.stopPropagation();" class="wide-button" *ngIf="item.version.verifier" style="margin-top: 4px;">{{ 'lexicon.lemma.table_actions.filter_verifier' | translate }}</button>
       </td>
       <td *ngIf="columns.entry.active">
         <div [innerHtml]="(getLemma(item.version, false) | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (getLemma(item.version, true) | highlighter:filter!.searchPhrase:filter!.highlight)"></div>

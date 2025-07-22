@@ -3,7 +3,6 @@ export class LemmaListColumn {
 
   // Infos about the creation of the lex entry
   user: LemmaListColumnDetail = new LemmaListColumnDetail();
-  verifier: LemmaListColumnDetail = new LemmaListColumnDetail();
   filter: LemmaListColumnDetail = new LemmaListColumnDetail();
   entry: LemmaListColumnDetail = new LemmaListColumnDetail();
   actions: LemmaListColumnDetail = new LemmaListColumnDetail();

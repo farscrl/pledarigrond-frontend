@@ -237,10 +237,6 @@ export class EditorService {
       params = params.set('userOrIp', editorQuery.userOrIp);
     }
 
-    if (!!editorQuery.verifier) {
-      params = params.set('verifier', editorQuery.verifier);
-    }
-
     return params;
   }
 

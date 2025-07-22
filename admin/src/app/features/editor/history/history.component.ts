@@ -22,7 +22,6 @@ export class HistoryComponent implements OnInit {
   selectedEntry?: EntryDto;
 
   userFilter?: string;
-  verifierFilter?: string;
 
   constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) {
     this.columns = this.generateColumns();
@@ -43,7 +42,7 @@ export class HistoryComponent implements OnInit {
     if (!this.currentEditorQuery) {
       return;
     }
-    
+
     this.editorService.getAllEntries(this.languageSelectionService.getCurrentLanguage(), this.currentEditorQuery!, page).subscribe(page => {
       this.paginationInfo = new PaginationInfo(page);
       this.items = page.content.map(v => ({
@@ -71,7 +70,6 @@ export class HistoryComponent implements OnInit {
     return {
       diff: new LemmaListColumnDetail(false, false),
       user: new LemmaListColumnDetail(true, true),
-      verifier: new LemmaListColumnDetail(true, true),
       filter: new LemmaListColumnDetail(true, false),
       entry: new LemmaListColumnDetail(true, true),
       actions: new LemmaListColumnDetail(true, true),

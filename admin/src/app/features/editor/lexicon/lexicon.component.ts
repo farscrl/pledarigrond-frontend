@@ -69,7 +69,6 @@ export class LexiconComponent implements OnInit {
     return {
       diff: new LemmaListColumnDetail(false, false),
       user: new LemmaListColumnDetail(false, false),
-      verifier: new LemmaListColumnDetail(false, false),
       filter: new LemmaListColumnDetail(false, false),
       entry: new LemmaListColumnDetail(true, true),
       actions: new LemmaListColumnDetail(true, true),

@@ -58,7 +58,6 @@
     "filter": {
       "date_interval": "Date interval",
       "user_ip": "User IP",
-      "verifier": "Verifier",
       "search_term": "Search Term",
       "highlight": "Highlight search results",
       "show_more": "More search options",
@@ -114,7 +113,6 @@
         "title": "Columns",
         "diff": "Diff",
         "user": "User",
-        "verifier": "Verifier",
         "filter": "Filter",
         "entry": "Entry",
         "actions": "Actions",
@@ -148,7 +146,6 @@
       "new_button": "Add new entry",
       "table_actions": {
         "filter_user": "Filter user",
-        "filter_verifier": "Filter verifier",
         "edit": "Edit",
         "delete": "Delete",
         "reject": "Reject",

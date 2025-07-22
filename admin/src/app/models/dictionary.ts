@@ -56,7 +56,6 @@ export class EntryVersionInternalDto extends EntryVersionDto {
   creator!: string;
   creatorIp!: string;
   creatorRole!: EditorRole;
-  verifier?: string;
 
   automaticChange: boolean = false;
 }

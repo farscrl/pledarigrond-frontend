@@ -49,9 +49,6 @@ export class DictionaryListComponent {
   @Output()
   addUserFilter = new EventEmitter<string>();
 
-  @Output()
-  addVerifierFilter = new EventEmitter<string>();
-
   // used to pass math functions to template
   math = Math;
 
@@ -101,10 +98,6 @@ export class DictionaryListComponent {
 
   filterUser(user?: string) {
     this.addUserFilter.emit(user);
-  }
-
-  filterVerifier(verifier?: string) {
-    this.addVerifierFilter.emit(verifier);
   }
 
   refreshCheckedStatus(): void {
