@@ -1,4 +1,4 @@
-@if (lemmaVersion) {
+@if (version) {
   <div class="content">
     <h4>Furmas dal substantiv</h4>
     <table>
@@ -9,19 +9,19 @@
       </tr>
       <tr>
         <td>singular</td>
-        <td>{{ lemmaVersion.lemmaValues.mSingular ? lemmaVersion.lemmaValues.mSingular : '-' }}</td>
-        <td>{{ lemmaVersion.lemmaValues.fSingular ? lemmaVersion.lemmaValues.fSingular : '-' }}</td>
+        <td>{{ version.inflection!.noun!.mSingular ? version.inflection!.noun!.mSingular : '-' }}</td>
+        <td>{{ version.inflection!.noun!.fSingular ? version.inflection!.noun!.fSingular : '-' }}</td>
       </tr>
       <tr>
         <td>plural</td>
-        <td>{{ lemmaVersion.lemmaValues.mPlural ? lemmaVersion.lemmaValues.mPlural : '-'  }}</td>
-        <td>{{ lemmaVersion.lemmaValues.fPlural ? lemmaVersion.lemmaValues.fPlural : '-'  }}</td>
+        <td>{{ version.inflection!.noun!.mPlural ? version.inflection!.noun!.mPlural : '-'  }}</td>
+        <td>{{ version.inflection!.noun!.fPlural ? version.inflection!.noun!.fPlural : '-'  }}</td>
       </tr>
-      @if (lemmaVersion.lemmaValues.pluralCollectiv) {
+      @if (version.inflection!.noun!.pluralCollectiv) {
         <tr>
           <td>collectiv</td>
           <td>-</td>
-          <td>{{ lemmaVersion.lemmaValues.pluralCollectiv ? lemmaVersion.lemmaValues.pluralCollectiv : '-'  }}</td>
+          <td>{{ version.inflection!.noun!.pluralCollectiv ? version.inflection!.noun!.pluralCollectiv : '-'  }}</td>
         </tr>
       }
     </table>

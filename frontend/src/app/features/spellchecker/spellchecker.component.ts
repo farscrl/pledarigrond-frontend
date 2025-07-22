@@ -1,16 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
-import SpellcheckerExtension, { IProofreaderInterface, ITextWithPosition } from '@farscrl/tiptap-extension-spellchecker';
+import SpellcheckerExtension, {
+  IProofreaderInterface,
+  ITextWithPosition
+} from '@farscrl/tiptap-extension-spellchecker';
 import { Underline } from "@tiptap/extension-underline";
 import { Highlight } from "@tiptap/extension-highlight";
 import { Subscription } from "rxjs";
 import { FrontendLanguage, Idiom, SelectedLanguageService } from "../../services/selected-language.service";
-import { TranslateService, TranslatePipe } from "@ngx-translate/core";
+import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import { MatomoTracker } from "ngx-matomo-client";
 import { ModificationService } from "../../services/modification.service";
-import { LemmaVersion } from "../../models/lemma-version";
 import { AuthService } from "../../services/auth.service";
 import { NgxModalService } from "ngx-modalview";
 import {
@@ -25,6 +26,7 @@ import { SpellcheckerMenubarComponent } from './spellchecker-menubar/spellchecke
 import { TiptapEditorDirective } from 'ngx-tiptap';
 import { FormsModule } from '@angular/forms';
 import { TranslateCutPipe } from '../../pipes/translate-cut.pipe';
+import { EntryVersionDto } from '../../models/dictionary';
 
 @Component({
     selector: 'app-spellchecker',
@@ -196,14 +198,14 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
   }
 
   private suggestWord(word: string) {
-    const lemmaVersion = new LemmaVersion();
-    lemmaVersion.lemmaValues.RStichwort = word;
-    lemmaVersion.lemmaValues.DStichwort = '';
-    lemmaVersion.lemmaValues.contact_comment = 'Proposta via spellchecker online';
-    lemmaVersion.lemmaValues.contact_email = this.authService.getUsername();
+    const version = new EntryVersionDto();
+    version.rmStichwort = word;
+    version.deStichwort = '';
+    version.userComment = 'Proposta via spellchecker online';
+    version.userEmail = this.authService.getUsername();
 
     this.tracker.trackEvent('PROPOSTA-SPELLCHECKER', 'proposta spellcheker ' + this.selectedLanguageService.getSelectedLanguageUrlSegment());
-    this.modificationService.spellcheckerSuggestion(this.selectedLanguageService.getSelectedLanguageUrlSegment(), lemmaVersion).subscribe(data => {
+    this.modificationService.spellcheckerSuggestion(this.selectedLanguageService.getSelectedLanguageUrlSegment(), version).subscribe(data => {
       this.sentSuggestion = true;
       this.sentSuggestionWord = word;
 

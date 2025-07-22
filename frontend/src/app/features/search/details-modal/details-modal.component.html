@@ -1,38 +1,38 @@
 <div class="pg-modal-wrapper">
-  @if (lemmaVersion) {
+  @if (version) {
     <div class="modal-content">
       <h3>
-        {{ removeCf(lemmaVersion.lemmaValues.RStichwort) }}@if (!!lemmaVersion.lemmaValues.RFlex) {
-        <i>[{{ lemmaVersion.lemmaValues.RFlex }}]</i>
-        }@if (!!lemmaVersion.lemmaValues.RSubsemantik) {
-        ({{ lemmaVersion.lemmaValues.RSubsemantik}})
+        {{ removeCf(version.rmStichwort) }}@if (!!version.rmFlex) {
+        <i>[{{ version.rmFlex }}]</i>
+        }@if (!!version.rmSubsemantik) {
+        ({{ version.rmSubsemantik}})
       }
-      @if (!!lemmaVersion.lemmaValues.RGenus) {
-        <i>[{{ lemmaVersion.lemmaValues.RGenus }}]</i>
-        }@if (!!lemmaVersion.lemmaValues.RGrammatik) {
+      @if (!!version.rmGenus) {
+        <i>[{{ version.rmGenus }}]</i>
+        }@if (!!version.rmGrammatik) {
         <i
-        >, {{ lemmaVersion.lemmaValues.RGrammatik }}</i>
+        >, {{ version.rmGrammatik }}</i>
       }
       <span class="german">
-        {{ removeCf(lemmaVersion.lemmaValues.DStichwort) }}@if (!!lemmaVersion.lemmaValues.DSubsemantik) {
-        ({{ lemmaVersion.lemmaValues.DSubsemantik}})
-        }@if (!!lemmaVersion.lemmaValues.DGenus) {
-        <i>[{{ lemmaVersion.lemmaValues.DGenus }}]</i>
-        }@if (!!lemmaVersion.lemmaValues.DGrammatik) {
+        {{ removeCf(version.deStichwort) }}@if (!!version.deSubsemantik) {
+        ({{ version.deSubsemantik}})
+        }@if (!!version.deGenus) {
+        <i>[{{ version.deGenus }}]</i>
+        }@if (!!version.deGrammatik) {
         <i
-        >, {{ lemmaVersion.lemmaValues.DGrammatik }}</i>
+        >, {{ version.deGrammatik }}</i>
       }
     </span>
   </h3>
-  <app-details-example [lemmaVersion]="lemmaVersion"></app-details-example>
-  @if (lemmaVersion.lemmaValues.RInflectionType === 'V') {
-    <app-details-verb [lemmaVersion]="lemmaVersion" [idiom]="idiom"></app-details-verb>
+  <app-details-example [version]="version"></app-details-example>
+  @if (version.inflection?.inflectionType === 'VERB') {
+    <app-details-verb [version]="version" [idiom]="idiom"></app-details-verb>
   }
-  @if (lemmaVersion.lemmaValues.RInflectionType === 'NOUN') {
-    <app-details-subst [lemmaVersion]="lemmaVersion"></app-details-subst>
+  @if (version.inflection?.inflectionType === 'NOUN') {
+    <app-details-subst [version]="version"></app-details-subst>
   }
-  @if (lemmaVersion.lemmaValues.RInflectionType === 'ADJECTIVE') {
-    <app-details-adj [lemmaVersion]="lemmaVersion"></app-details-adj>
+  @if (version.inflection?.inflectionType === 'ADJECTIVE') {
+    <app-details-adj [version]="version"></app-details-adj>
   }
 </div>
 }

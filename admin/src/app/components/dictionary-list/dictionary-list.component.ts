@@ -257,7 +257,7 @@ export class DictionaryListComponent {
       return "";
     }
     switch (RInflectionType) {
-      case 'V':
+      case 'VERB':
         return 'verb';
       case 'NOUN':
         return 'nomen';

@@ -40,7 +40,7 @@
                     }
                   </div>
                 </td>
-                <td [class.unverified]="result.verification === 'UNVERIFIED'">
+                <td>
                   @if (containsLink(result, true)) {
                     → <a [innerHtml]="getLemma(result, true, containsLink(result, true)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, true)!)"></a>
                   }
@@ -55,7 +55,7 @@
                     }
                   </div>
                 </td>
-                <td [class.unverified]="result.verification === 'UNVERIFIED'">
+                <td>
                   @if (containsLink(result, false)) {
                     → <a [innerHtml]="getLemma(result, false, containsLink(result, false)) | highlighter:searchCriteria.searchPhrase:searchCriteria.highlight" class="lemma-link" (click)="linkToLemma(containsLink(result, false)!)"></a>
                   }

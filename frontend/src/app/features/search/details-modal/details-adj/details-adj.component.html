@@ -1,4 +1,4 @@
-@if (lemmaVersion) {
+@if (version) {
   <div class="content">
     <h4>Furmas da l'adjectiv</h4>
     <table>
@@ -9,19 +9,19 @@
       </tr>
       <tr>
         <td>singular</td>
-        <td>{{ lemmaVersion.lemmaValues.mSingular ? lemmaVersion.lemmaValues.mSingular : '-' }}</td>
-        <td>{{ lemmaVersion.lemmaValues.fSingular ? lemmaVersion.lemmaValues.fSingular : '-' }}</td>
+        <td>{{ version.inflection!.adjective!.mSingular ? version.inflection!.adjective!.mSingular : '-' }}</td>
+        <td>{{ version.inflection!.adjective!.fSingular ? version.inflection!.adjective!.fSingular : '-' }}</td>
       </tr>
       <tr>
         <td>plural</td>
-        <td>{{ lemmaVersion.lemmaValues.mPlural ? lemmaVersion.lemmaValues.mPlural : '-'  }}</td>
-        <td>{{ lemmaVersion.lemmaValues.fPlural ? lemmaVersion.lemmaValues.fPlural : '-'  }}</td>
+        <td>{{ version.inflection!.adjective!.mPlural ? version.inflection!.adjective!.mPlural : '-'  }}</td>
+        <td>{{ version.inflection!.adjective!.fPlural ? version.inflection!.adjective!.fPlural : '-'  }}</td>
       </tr>
-      @if (lemmaVersion.lemmaValues.adverbialForm) {
+      @if (version.inflection!.adjective!.adverbialForm) {
         <tr>
           <td>furma adverbiala</td>
           <td>-</td>
-          <td>{{ lemmaVersion.lemmaValues.adverbialForm ? lemmaVersion.lemmaValues.adverbialForm : '-'  }}</td>
+          <td>{{ version.inflection!.adjective!.adverbialForm ? version.inflection!.adjective!.adverbialForm : '-'  }}</td>
         </tr>
       }
     </table>

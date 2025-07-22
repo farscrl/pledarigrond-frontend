@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { LemmaVersion } from 'src/app/models/lemma-version';
 import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { AuthService } from 'src/app/services/auth.service';
-import {NgxModalComponent, NgxModalService} from "ngx-modalview";
+import { NgxModalComponent, NgxModalService } from "ngx-modalview";
 import { MatomoTracker } from "ngx-matomo-client";
 
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
+import { EntryVersionDto } from '../../../models/dictionary';
 
 @Component({
     selector: 'app-suggestion',
@@ -17,8 +17,8 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class SuggestionComponent extends NgxModalComponent<null, null> implements OnInit {
 
-  DStichwort: string = '';
-  RStichwort: string = '';
+  deStichwort: string = '';
+  rmStichwort: string = '';
   comment: string = '';
   email: string = '';
 
@@ -45,27 +45,27 @@ export class SuggestionComponent extends NgxModalComponent<null, null> implement
   }
 
   reset() {
-    this.DStichwort = '';
-    this.RStichwort = '';
+    this.deStichwort = '';
+    this.rmStichwort = '';
     this.comment = '';
     this.email = this.authService.getUsername();
   }
 
   send() {
     this.showFormError = false;
-    if (this.DStichwort === '' && this.RStichwort === '' && this.comment === '') {
+    if (this.deStichwort === '' && this.rmStichwort === '' && this.comment === '') {
       this.showFormError = true;
       return;
     }
 
-    const lv = new LemmaVersion();
-    lv.lemmaValues.RStichwort = this.RStichwort;
-    lv.lemmaValues.DStichwort = this.DStichwort;
-    lv.lemmaValues.contact_comment = this.comment;
-    lv.lemmaValues.contact_email = this.email;
+    const entryVersion = new EntryVersionDto();
+    entryVersion.rmStichwort = this.rmStichwort;
+    entryVersion.deStichwort = this.deStichwort;
+    entryVersion.userComment = this.comment;
+    entryVersion.userEmail = this.email;
 
     this.tracker.trackEvent('PROPOSTA', 'proposta ' + this.selectedLanguageService.getSelectedLanguageUrlSegment());
-    this.modificationService.create(this.selectedLanguageService.getSelectedLanguageUrlSegment(), lv).subscribe(data => {
+    this.modificationService.create(this.selectedLanguageService.getSelectedLanguageUrlSegment(), entryVersion).subscribe(data => {
       this.cancel();
     }, error => {
       console.error(error);

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { LemmaVersion } from '../../../../models/lemma-version';
+import { EntryVersionDto } from '../../../../models/dictionary';
 
 
 @Component({
@@ -10,5 +10,5 @@ import { LemmaVersion } from '../../../../models/lemma-version';
 })
 export class DetailsAdjComponent {
   @Input()
-  lemmaVersion?: LemmaVersion;
+  version?: EntryVersionDto;
 }

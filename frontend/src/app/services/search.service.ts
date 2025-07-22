@@ -1,10 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LemmaVersion } from '../models/lemma-version';
 import { SearchPage } from '../models/page';
 import { SearchCriteria } from '../models/search-criteria';
 import { environment } from './../../environments/environment';
+import { EntryVersionDto } from '../models/dictionary';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class SearchService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getResults(language: string, searchCriteria: SearchCriteria, page = 1): Observable<SearchPage<LemmaVersion>> {
+  getResults(language: string, searchCriteria: SearchCriteria, page = 1): Observable<SearchPage<EntryVersionDto>> {
     let params: HttpParams = new HttpParams();
 
     if (!!searchCriteria.searchPhrase && searchCriteria.searchPhrase !== "") {
@@ -40,7 +40,7 @@ export class SearchService {
       params: params
     };
 
-    return this.httpClient.get<SearchPage<LemmaVersion>>(this.getSearchUrl(language), httpOptions);
+    return this.httpClient.get<SearchPage<EntryVersionDto>>(this.getSearchUrl(language), httpOptions);
   }
 
   private getSearchUrl(language: string): string {

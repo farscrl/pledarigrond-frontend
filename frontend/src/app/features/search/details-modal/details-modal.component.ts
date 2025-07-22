@@ -1,5 +1,4 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { LemmaVersion } from 'src/app/models/lemma-version';
 import { NgxModalComponent, NgxModalService } from "ngx-modalview";
 import { Idiom, SelectedLanguageService } from '../../../services/selected-language.service';
 import { Subscription } from 'rxjs';
@@ -9,6 +8,7 @@ import { DetailsVerbComponent } from './details-verb/details-verb.component';
 import { DetailsSubstComponent } from './details-subst/details-subst.component';
 import { DetailsAdjComponent } from './details-adj/details-adj.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { EntryVersionDto } from '../../../models/dictionary';
 
 @Component({
     selector: 'app-details-modal',
@@ -16,10 +16,10 @@ import { TranslatePipe } from '@ngx-translate/core';
     styleUrls: ['./details-modal.component.scss'],
     imports: [DetailsExampleComponent, DetailsVerbComponent, DetailsSubstComponent, DetailsAdjComponent, TranslatePipe]
 })
-export class DetailsModalComponent extends NgxModalComponent<{lemmaVersion?: LemmaVersion}, null> implements OnInit, OnDestroy {
+export class DetailsModalComponent extends NgxModalComponent<{version?: EntryVersionDto}, null> implements OnInit, OnDestroy {
 
   @Input()
-  lemmaVersion?: LemmaVersion;
+  version?: EntryVersionDto;
 
   idiom: Idiom = 'rumgr';
   private idiomSubscription: Subscription;

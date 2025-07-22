@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TranslateService, TranslatePipe } from '@ngx-translate/core';
-import { LemmaVersion } from 'src/app/models/lemma-version';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
@@ -16,6 +15,7 @@ import { SearchOptionsComponent } from '../search-options/search-options.compone
 import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { HighlighterPipe } from '../../../pipes/highlighter.pipe';
 import { ThousandSeparatorPipe } from '../../../pipes/thousand-separator.pipe';
+import { EntryVersionDto } from '../../../models/dictionary';
 
 @Component({
     selector: 'app-search-content',
@@ -26,7 +26,7 @@ import { ThousandSeparatorPipe } from '../../../pipes/thousand-separator.pipe';
 export class SearchContentComponent implements OnInit, OnDestroy {
 
   searchCriteria: SearchCriteria = new SearchCriteria();
-  searchResults: LemmaVersion[] = [];
+  searchResults: EntryVersionDto[] = [];
   searchSuggestionsRm: string[] = [];
   searchSuggestionsDe: string[] = [];
   startIndex = 1;
@@ -126,13 +126,13 @@ export class SearchContentComponent implements OnInit, OnDestroy {
     this.updateUrlParams();
   }
 
-  modify(version: LemmaVersion) {
-    this.modalService.addModal(SuggestModificationComponent, { lemmaVersion: version })
+  modify(version: EntryVersionDto) {
+    this.modalService.addModal(SuggestModificationComponent, { version: version })
       .subscribe();
   }
 
-  showDetailsModal(version: LemmaVersion) {
-    this.modalService.addModal(DetailsModalComponent, { lemmaVersion: version })
+  showDetailsModal(version: EntryVersionDto) {
+    this.modalService.addModal(DetailsModalComponent, { version: version })
       .subscribe();
   }
 
@@ -191,52 +191,52 @@ export class SearchContentComponent implements OnInit, OnDestroy {
     }
   }
 
-  containsLink(lemma: LemmaVersion, isFirst: boolean): string | undefined {
+  containsLink(version: EntryVersionDto, isFirst: boolean): string | undefined {
     if (
       (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') && isFirst
       || this.searchCriteria.searchDirection === 'ROMANSH' && !isFirst
     ) {
       // german
-      if(lemma.lemmaValues.DRedirect && lemma.lemmaValues.DRedirect != "" && lemma.lemmaValues.DStichwort?.startsWith('cf. ')) {
-        return lemma.lemmaValues.DStichwort?.slice(4);
+      if(version.deRedirect && version.deRedirect != "" && version.deStichwort?.startsWith('cf. ')) {
+        return version.deStichwort?.slice(4);
       } else {
         return undefined;
       }
     } else {
       // romansh
-      if (lemma.lemmaValues.RRedirect && lemma.lemmaValues.RRedirect != "" && lemma.lemmaValues.RStichwort?.startsWith('cf. ')) {
-        return lemma.lemmaValues.RStichwort?.slice(4);
+      if (version.rmRedirect && version.rmRedirect != "" && version.rmStichwort?.startsWith('cf. ')) {
+        return version.rmStichwort?.slice(4);
       }else {
         return undefined;
       }
     }
   }
 
-  getLemma(lemma: LemmaVersion, isFirst: boolean, overrideMainText = "") {
+  getLemma(version: EntryVersionDto, isFirst: boolean, overrideMainText = "") {
     if (
       (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') && isFirst
       || this.searchCriteria.searchDirection === 'ROMANSH' && !isFirst
     ) {
       // german
-      let value = overrideMainText !== "" ? overrideMainText : lemma.lemmaValues.DStichwort;
-      if (!!lemma.lemmaValues.DSubsemantik) {
-        value += " (" + lemma.lemmaValues.DSubsemantik + ")";
+      let value = overrideMainText !== "" ? overrideMainText : version.deStichwort;
+      if (!!version.deSubsemantik) {
+        value += " (" + version.deSubsemantik + ")";
       }
-      if (!!lemma.lemmaValues.DGenus) {
-        value += " <i>[" + lemma.lemmaValues.DGenus + "]</i>";
+      if (!!version.deGenus) {
+        value += " <i>[" + version.deGenus + "]</i>";
       }
       return value
     } else {
       // romansh
-      let value = overrideMainText !== "" ? overrideMainText : lemma.lemmaValues.RStichwort;
-      if (!!lemma.lemmaValues.RFlex) {
-        value += " <i>[" + lemma.lemmaValues.RFlex + "]</i>";
+      let value = overrideMainText !== "" ? overrideMainText : version.rmStichwort;
+      if (!!version.rmFlex) {
+        value += " <i>[" + version.rmFlex + "]</i>";
       }
-      if (!!lemma.lemmaValues.RSubsemantik) {
-        value += " (" + lemma.lemmaValues.RSubsemantik + ")";
+      if (!!version.rmSubsemantik) {
+        value += " (" + version.rmSubsemantik + ")";
       }
-      if (!!lemma.lemmaValues.RGenus) {
-        value += " <i>[" + lemma.lemmaValues.RGenus + "]</i>";
+      if (!!version.rmGenus) {
+        value += " <i>[" + version.rmGenus + "]</i>";
       }
       return value
     }
@@ -248,10 +248,11 @@ export class SearchContentComponent implements OnInit, OnDestroy {
     this.search(this.searchCriteria);
   }
 
-  hasDetailsLink(lemma: LemmaVersion, isFirst: boolean): boolean {
+  hasDetailsLink(version: EntryVersionDto, isFirst: boolean): boolean {
+    debugger;
     if (
-      (!lemma.lemmaValues.RInflectionType || (lemma.lemmaValues.RInflectionType !== 'V' && lemma.lemmaValues.RInflectionType !== 'NOUN' && lemma.lemmaValues.RInflectionType !== 'ADJECTIVE'))
-      && (!lemma.lemmaValues.examples || lemma.lemmaValues.examples === "")
+      (!version.inflection || (version.inflection.inflectionType !== 'VERB' && version.inflection.inflectionType !== 'NOUN' && version.inflection.inflectionType !== 'ADJECTIVE'))
+      && (!version.examples || version.examples.length === 0)
       ) {
       return false;
     }

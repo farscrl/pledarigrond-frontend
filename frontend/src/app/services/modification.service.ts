@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LemmaVersion } from '../models/lemma-version';
 import { environment } from './../../environments/environment';
+import { EntryVersionDto } from '../models/dictionary';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +10,19 @@ export class ModificationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  create(language: string, version: LemmaVersion) {
+  create(language: string, version: EntryVersionDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<LemmaVersion>(this.getModificationUrl(language), body);
+    return this.httpClient.post<EntryVersionDto>(this.getModificationUrl(language), body);
   }
 
-  suggestChange(language: string, id: string, version: LemmaVersion) {
+  suggestChange(language: string, id: string, version: EntryVersionDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<LemmaVersion>(this.getModificationUrl(language, id), body);
+    return this.httpClient.post<EntryVersionDto>(this.getModificationUrl(language, id), body);
   }
 
-  spellcheckerSuggestion(language: string, version: LemmaVersion) {
+  spellcheckerSuggestion(language: string, version: EntryVersionDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<LemmaVersion>(this.getModificationUrlSpellchecker(language), body);
+    return this.httpClient.post<EntryVersionDto>(this.getModificationUrlSpellchecker(language), body);
   }
 
   private getModificationUrl(language: string, id?: string): string {

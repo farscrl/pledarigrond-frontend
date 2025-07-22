@@ -16,7 +16,7 @@
         <div class="control-group">
           <label class="control-label">{{ 'search.header_de' | translate }}</label>
           <div class="controls">
-            <input type="text" id="DStichwort" [(ngModel)]="changedLemmaVersion!.lemmaValues.DStichwort">
+            <input type="text" id="DStichwort" [(ngModel)]="changedVersion!.deStichwort">
             <span class="help-inline"></span>
           </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="control-group">
           <label class="control-label">{{ 'search.header_rm' | translate }}</label>
           <div class="controls">
-            <input type="text" id="RStichwort" [(ngModel)]="changedLemmaVersion!.lemmaValues.RStichwort">
+            <input type="text" id="RStichwort" [(ngModel)]="changedVersion!.rmStichwort">
             <span class="help-inline"></span>
           </div>
         </div>
@@ -33,13 +33,13 @@
       <fieldset>
         <div class="control-group">
           <label class="control-label">{{ 'dialog.comment' | translate }}</label>
-          <textarea  rows="3" style="width: 100%; resize: none;" [(ngModel)]="changedLemmaVersion!.lemmaValues.contact_comment"></textarea>
+          <textarea  rows="3" style="width: 100%; resize: none;" [(ngModel)]="changedVersion!.userComment"></textarea>
           <span class="help-inline"></span>
         </div>
 
         <div class="control-group">
           <label class="control-label">{{ 'dialog.email' | translate }}</label>
-          <input type="email" style="width: 100%;" [(ngModel)]="changedLemmaVersion!.lemmaValues.contact_email">
+          <input type="email" style="width: 100%;" [(ngModel)]="changedVersion!.userEmail">
         </div>
       </fieldset>
     </div>
