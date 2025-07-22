@@ -80,18 +80,18 @@ export class EditorService {
     return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries'), body, httpOptions);
   }
 
-  modifyAndAccepptEntryVersion(language: Language, entryId: string, version: EntryVersionDto) {
+  modifyAndAcceptEntryVersion(language: Language, entryId: string, version: EntryVersionDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/modify_and_accept_version'), body);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/add_version'), body);
   }
 
   modifyEntryVersion(language: Language, entryId: string, version: EntryVersionDto): Observable<EntryDto> {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/modify_version'), body);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/suggest_version'), body);
   }
 
-  reviewEntryLater(language: Language, entryId: string) {
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/review_later_version'), null);
+  reviewEntryLater(language: Language, entryId: string, version: EntryVersionInternalDto) {
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/review_later_version/' + version.versionId), null);
   }
 
   dropEntry(language: Language, entryId: string) {
@@ -100,12 +100,12 @@ export class EditorService {
 
   acceptVersion(language: Language, entryId: string, version: EntryVersionInternalDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/accept_version'), body);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/accept_version/' + version.versionId), body);
   }
 
   rejectVersion(language: Language, entryId: string, version: EntryVersionInternalDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/reject_version'), body);
+    return this.httpClient.post<EntryDto>(this.generateUrl(language, 'entries/' + entryId + '/reject_version/' + version.versionId), body);
   }
 
   dropOutdatedHistory(language: Language, entryId: string) {

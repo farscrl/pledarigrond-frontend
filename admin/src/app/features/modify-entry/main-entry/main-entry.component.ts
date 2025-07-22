@@ -490,7 +490,7 @@ export class MainEntryComponent implements OnInit {
         console.error(error);
       });
     } else {
-      this.editorService.modifyAndAccepptEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, entryVersion).subscribe(data => {
+      this.editorService.modifyAndAcceptEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.entryVersion.entryId, entryVersion).subscribe(data => {
         this.modal.triggerOk();
         this.cancel();
       }, error => {

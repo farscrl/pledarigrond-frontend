@@ -7,7 +7,7 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { LemmaListColumn } from 'src/app/models/lemma-list-column';
 import { MainEntryComponent } from 'src/app/features/modify-entry/main-entry/main-entry.component';
-import { firstValueFrom, forkJoin, Observable } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorQuery } from 'src/app/models/editor-query';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
@@ -189,24 +189,20 @@ export class DictionaryListComponent {
     });
   }
 
-  rejectSelectedItemsConfirmed() {
-    const subscriptions: Observable<any>[] = [];
-    this.setOfCheckedId.forEach(id => {
-      const items = this.items.filter(entry => entry.entryId === id);
+  async rejectSelectedItemsConfirmed() {
+    for (const id of this.setOfCheckedId) {
+      const items = this.items.filter(entry => entry.version.versionId === id);
       if (items && items.length === 1) {
         const item = items[0];
 
         // only applicable to unverified items
         if (item.version.action === 'SUGGESTED_MODIFICATION') {
-          subscriptions.push(this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), item.entryId, item.version));
+          await firstValueFrom(this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), item.entryId, item.version));
         }
         this.onItemChecked(id, false);
       }
-    });
-
-    forkJoin(subscriptions).subscribe(() => {
-      this.reloadCurrentPage();
-    });
+    }
+    this.reloadCurrentPage();
   }
 
   startReorder(item: DictionaryListItem, dictionaryLanguage: DictionaryLanguage) {
