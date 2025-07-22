@@ -114,4 +114,6 @@ export class VersionHistoryComponent implements OnChanges {
       this.extractHistory();
     });
   }
+
+  protected readonly EntryVersionInternalDto = EntryVersionInternalDto;
 }

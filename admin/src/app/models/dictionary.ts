@@ -58,6 +58,13 @@ export class EntryVersionInternalDto extends EntryVersionDto {
   creatorRole!: EditorRole;
 
   automaticChange: boolean = false;
+
+  static getName(entry: EntryVersionInternalDto) {
+    if (entry.creator && entry.creator != 'guest@pledarigrond.ch') {
+      return entry.creator;
+    }
+    return entry.creatorIp;
+  }
 }
 
 // TODO: check how this is structured in the backend

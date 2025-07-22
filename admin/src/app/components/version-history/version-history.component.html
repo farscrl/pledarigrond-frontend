@@ -29,7 +29,7 @@
       </td>
       <td>
         <app-user-role [role]="version.creatorRole"></app-user-role><br>
-        {{ version.creatorIp }}
+        {{ EntryVersionInternalDto.getName(version) }}
       </td>
       <td>
         {{ version.deStichwort }} ⇔ {{ version.rmStichwort }}
