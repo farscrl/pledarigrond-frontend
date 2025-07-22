@@ -214,10 +214,13 @@
     <div><b>Imperativ</b></div>
     <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.singular" [new]="changedVersion.inflection?.verb?.imperativ?.singular"></app-diff><br>
     <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.plural" [new]="changedVersion.inflection?.verb?.imperativ?.plural"></app-diff><br>
-    <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.form1" [new]="changedVersion.inflection?.verb?.imperativ?.form1"></app-diff><br>
-    <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.form2" [new]="changedVersion.inflection?.verb?.imperativ?.form2"></app-diff><br>
-    <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.form3" [new]="changedVersion.inflection?.verb?.imperativ?.form3"></app-diff><br>
-    <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.form4" [new]="changedVersion.inflection?.verb?.imperativ?.form4"></app-diff><br>
+    <ng-container *ngIf="language === 'puter' || language === 'vallader'">
+      <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.form1" [new]="changedVersion.inflection?.verb?.imperativ?.form1"></app-diff><br>
+      <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.form2" [new]="changedVersion.inflection?.verb?.imperativ?.form2"></app-diff><br>
+      <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.form3" [new]="changedVersion.inflection?.verb?.imperativ?.form3"></app-diff><br>
+      <app-diff [old]="originalVersion.inflection?.verb?.imperativ?.form4" [new]="changedVersion.inflection?.verb?.imperativ?.form4"></app-diff><br>
+    </ng-container>
+
   </div>
 
   <div class="conjugaziun">
