@@ -160,7 +160,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
-    this.editorService.reviewEntryLater(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId).subscribe((entry) => {
+    this.editorService.reviewEntryLater(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version).subscribe((entry) => {
       this.selectedEntryVersion!.local_review_status = 'LATER';
       this.downOne();
     }, (error) => {
