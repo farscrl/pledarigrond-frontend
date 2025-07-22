@@ -6,6 +6,7 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { TranslateService } from '@ngx-translate/core';
 import { FileUtils } from 'src/app/utils/file.utils';
+import { NzCheckboxOption } from 'ng-zorro-antd/checkbox';
 
 export class ExportOption {
   label: string = "";
@@ -29,7 +30,8 @@ export class ExportComponent implements OnInit {
 
   allChecked = false;
   indeterminate = false;
-  checkOptions: ExportOption[] = [];
+  checkOptions: NzCheckboxOption[] = [];
+  selectedFields: NzCheckboxOption['value'][] = []
 
   isExporting = false;
 
@@ -46,44 +48,41 @@ export class ExportComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkOptions = [
-      { label: this.translateService.instant('lexicon.lemma.columns.de'), value: 'deStichwort', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.de_grammar'), value: 'deGrammatik', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.de_gender'), value: 'deGenus', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.de_semantics'), value: 'deSubsemantik', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.de_link'), value: 'deRedirect', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.de_additional_search'), value: 'deTags', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.rm'), value: 'rmStichwort', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.rm_grammar'), value: 'rmGrammatik', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.rm_gender'), value: 'rmGenus', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.rm_semantics'), value: 'rmSubsemantik', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.rm_link'), value: 'rmRedirect', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.rm_conjugation'), value: 'rmFlex', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.rm_additional_search'), value: 'rmTags', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.category'), value: 'categories', checked: false },
-      { label: this.translateService.instant('lexicon.lemma.columns.comment'), value: 'userComment', checked: false },
+      { label: this.translateService.instant('lexicon.lemma.columns.de'), value: 'deStichwort' },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_grammar'), value: 'deGrammatik' },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_gender'), value: 'deGenus' },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_semantics'), value: 'deSubsemantik' },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_link'), value: 'deRedirect' },
+      { label: this.translateService.instant('lexicon.lemma.columns.de_additional_search'), value: 'deTags' },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm'), value: 'rmStichwort' },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_grammar'), value: 'rmGrammatik' },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_gender'), value: 'rmGenus' },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_semantics'), value: 'rmSubsemantik' },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_link'), value: 'rmRedirect' },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_conjugation'), value: 'rmFlex' },
+      { label: this.translateService.instant('lexicon.lemma.columns.rm_additional_search'), value: 'rmTags' },
+      { label: this.translateService.instant('lexicon.lemma.columns.category'), value: 'categories' },
+      { label: this.translateService.instant('lexicon.lemma.columns.comment'), value: 'userComment' },
     ];
   }
 
   updateAllChecked(): void {
     this.indeterminate = false;
     if (this.allChecked) {
-      this.checkOptions = this.checkOptions.map(item => ({
-        ...item,
-        checked: true
-      }));
+      this.selectedFields = [];
+      this.checkOptions.forEach(option => {
+        this.selectedFields.push(option.value);
+      })
     } else {
-      this.checkOptions = this.checkOptions.map(item => ({
-        ...item,
-        checked: false
-      }));
+      this.selectedFields = [];
     }
   }
 
   updateSingleChecked(): void {
-    if (this.checkOptions.every(item => !item.checked)) {
+    if (this.selectedFields.length === 0) {
       this.allChecked = false;
       this.indeterminate = false;
-    } else if (this.checkOptions.every(item => item.checked)) {
+    } else if (this.selectedFields.length === this.checkOptions.length) {
       this.allChecked = true;
       this.indeterminate = false;
     } else {
@@ -97,12 +96,9 @@ export class ExportComponent implements OnInit {
 
   export() {
     this.isExporting = true;
-    const items = this.checkOptions.filter(item => item.checked === true);
-    const fields: string[] = [];
-    items.forEach(item => fields.push(item.value));
 
     if (this.filter instanceof SearchCriteria) {
-      this.editorService.exportFieldsBySearchCriteria(this.languageSelectionService.getCurrentLanguage(), this.filter, fields).subscribe(data => {
+      this.editorService.exportFieldsBySearchCriteria(this.languageSelectionService.getCurrentLanguage(), this.filter, this.selectedFields as string[]).subscribe(data => {
         const fileName = this.fileUtils.getFileNameFromContentDispositionHeader(data.headers, "pledarigrond_field_export_tsv.zip");
         this.fileUtils.downloadFile(data, fileName);
         this.isExporting = false;
@@ -113,7 +109,7 @@ export class ExportComponent implements OnInit {
     }
 
     if (this.filter instanceof EditorQuery) {
-      this.editorService.exportFieldsByEditorQuery(this.languageSelectionService.getCurrentLanguage(), this.filter, fields).subscribe(data => {
+      this.editorService.exportFieldsByEditorQuery(this.languageSelectionService.getCurrentLanguage(), this.filter, this.selectedFields as string[]).subscribe(data => {
         const fileName = this.fileUtils.getFileNameFromContentDispositionHeader(data.headers, "pledarigrond_field_export_tsv.zip");
         this.fileUtils.downloadFile(data, fileName);
         this.isExporting = false;
