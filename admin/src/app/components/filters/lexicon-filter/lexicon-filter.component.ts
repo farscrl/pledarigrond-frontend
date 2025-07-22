@@ -69,12 +69,12 @@ export class LexiconFilterComponent implements OnInit {
 
     const subscriptions: Observable<any>[] = [];
     if (this.searchCriteria.searchDirection === 'BOTH') {
-      subscriptions.push(this.getRSubsemanticObservable(value));
-      subscriptions.push(this.getDSubsemanticObservable(value));
+      subscriptions.push(this.getRmSubsemanticObservable(value));
+      subscriptions.push(this.getDeSubsemanticObservable(value));
     } else if (this.searchCriteria.searchDirection === 'ROMANSH') {
-      subscriptions.push(this.getRSubsemanticObservable(value));
+      subscriptions.push(this.getRmSubsemanticObservable(value));
     } else if (this.searchCriteria.searchDirection === 'GERMAN') {
-      subscriptions.push(this.getDSubsemanticObservable(value));
+      subscriptions.push(this.getDeSubsemanticObservable(value));
     }
 
     forkJoin(subscriptions).subscribe((data) => {
@@ -86,11 +86,11 @@ export class LexiconFilterComponent implements OnInit {
     });
   }
 
-  private getDSubsemanticObservable(value: string): Observable<any> {
-    return this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'DSubsemantik', value);
+  private getDeSubsemanticObservable(value: string): Observable<any> {
+    return this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'deSubsemantik', value);
   }
 
-  private getRSubsemanticObservable(value: string): Observable<any> {
-    return this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'RSubsemantik', value);
+  private getRmSubsemanticObservable(value: string): Observable<any> {
+    return this.editorService.getSearchSuggestions(this.languageSelectionService.getCurrentLanguage(), 'rmSubsemantik', value);
   }
 }
