@@ -179,7 +179,7 @@ export class Other {
 }
 
 
-export type InflectionType = 'NONE'|'V'|'NOUN'|'ADJECTIVE'|'PRONOUN'|'OTHER';
+export type InflectionType = 'NONE'|'VERB'|'NOUN'|'ADJECTIVE'|'PRONOUN'|'OTHER';
 
 export type PublicationStatus = 'HAS_SUGGESTION'|'PUBLISHED'|'INVALID';
 

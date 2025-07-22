@@ -120,7 +120,7 @@ export class MainEntryComponent implements OnInit {
     this.entryVersion.rmFlex = this.validateForm.controls['rmFlex'].value;
     if (!this.entryVersion.inflection) {
       this.entryVersion.inflection = new Inflection();
-      this.entryVersion.inflection.inflectionType = "V";
+      this.entryVersion.inflection.inflectionType = "VERB";
     }
     if (!this.entryVersion.inflection.verb) {
       this.entryVersion.inflection.verb = new Verb();

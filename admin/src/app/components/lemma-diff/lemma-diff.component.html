@@ -59,13 +59,13 @@
   <nz-descriptions-item nzTitle="furma alternativa 4"><app-diff [old]="oldLemmaVersion.inflection?.other?.otherForm4" [new]="newLemmaVersion.inflection?.other?.otherForm4"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="oldLemmaVersion.inflection?.inflectionType === 'V' || newLemmaVersion.inflection?.inflectionType === 'V'">
+<nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="oldLemmaVersion.inflection?.inflectionType === 'VERB' || newLemmaVersion.inflection?.inflectionType === 'VERB'">
   <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="oldLemmaVersion.inflection?.verb?.infinitiv" [new]="newLemmaVersion.inflection?.verb?.infinitiv"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="oldLemmaVersion.inflection?.inflectionSubtype" [new]="newLemmaVersion.inflection?.inflectionSubtype"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="Conjugaziun regulara"><app-diff [old]="oldLemmaVersion.inflection?.verb?.irregular?.toString() ?? '-'" [new]="newLemmaVersion.inflection?.verb?.irregular?.toString() ?? '-'"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
-<div class="conjugaziuns" *ngIf="(oldLemmaVersion.inflection?.inflectionType === 'V' || newLemmaVersion.inflection?.inflectionType === 'V') && !referenceVerb">
+<div class="conjugaziuns" *ngIf="(oldLemmaVersion.inflection?.inflectionType === 'VERB' || newLemmaVersion.inflection?.inflectionType === 'VERB') && !referenceVerb">
   <div class="conjugaziun">
     <div><b>Preschent</b></div>
     <app-diff [old]="oldLemmaVersion.inflection?.verb?.preschent?.sing1" [new]="newLemmaVersion.inflection?.verb?.preschent?.sing1"></app-diff><br>
@@ -226,7 +226,7 @@
   </div>
 </div>
 
-<div class="conjugaziuns with-reference" *ngIf="(oldLemmaVersion.inflection?.inflectionType === 'V' || newLemmaVersion.inflection?.inflectionType === 'V') && !!referenceVerb">
+<div class="conjugaziuns with-reference" *ngIf="(oldLemmaVersion.inflection?.inflectionType === 'VERB' || newLemmaVersion.inflection?.inflectionType === 'VERB') && !!referenceVerb">
   <div class="conjugaziun">
     <div><b>Preschent</b></div>
     <table>

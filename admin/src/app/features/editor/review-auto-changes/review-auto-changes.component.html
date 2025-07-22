@@ -85,7 +85,7 @@
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
           <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} <span class="keyboard">1</span></button>
         </div>
-        <div class="manual-actions" *ngIf="selectedEntry.mostRecent.inflection?.inflectionType === 'V'">
+        <div class="manual-actions" *ngIf="selectedEntry.mostRecent.inflection?.inflectionType === 'VERB'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
         </div>
         <div class="manual-actions" *ngIf="selectedEntry.mostRecent.inflection?.inflectionType === 'ADJECTIVE'">
