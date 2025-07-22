@@ -88,15 +88,15 @@ export class VersionHistoryComponent implements OnChanges {
       nzFooter: null,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        oldLemmaVersion: this.diffOldEntryVersion,
-        newLemmaVersion: this.diffNewEntryVersion!,
+        original: this.diffOldEntryVersion,
+        change: this.diffNewEntryVersion!,
       },
     });
   }
 
   private extractHistory() {
     if (this.entry) {
-      this.versionHistory = this.entry.versions;
+      this.versionHistory = this.entry.versions.slice().reverse();
     } else {
       this.versionHistory = []
     }
