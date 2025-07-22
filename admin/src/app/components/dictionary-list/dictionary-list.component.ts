@@ -7,7 +7,7 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { LemmaListColumn } from 'src/app/models/lemma-list-column';
 import { MainEntryComponent } from 'src/app/features/modify-entry/main-entry/main-entry.component';
-import { forkJoin, Observable } from 'rxjs';
+import { firstValueFrom, forkJoin, Observable } from 'rxjs';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 import { EditorQuery } from 'src/app/models/editor-query';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
@@ -271,7 +271,8 @@ export class DictionaryListComponent {
     return '';
   }
 
-  showDiff(version: EntryVersionInternalDto) {
+  async showDiff(item: DictionaryListItem, version: EntryVersionInternalDto) {
+    const entry = await firstValueFrom(this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), item.entryId));
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.titles.edit'),
       nzContent: DiffModalComponent,
@@ -281,7 +282,7 @@ export class DictionaryListComponent {
       nzFooter: null,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        original: null,
+        original: entry.current,
         change: version,
       },
     });

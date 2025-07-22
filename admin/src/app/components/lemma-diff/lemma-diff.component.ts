@@ -14,10 +14,10 @@ export class LemmaDiffComponent {
   language: Language = Language.RUMANTSCHGRISCHUN;
 
   @Input()
-  oldLemmaVersion: EntryVersionInternalDto = new EntryVersionInternalDto();
+  originalVersion: EntryVersionInternalDto = new EntryVersionInternalDto();
 
   @Input()
-  newLemmaVersion: EntryVersionInternalDto = new EntryVersionInternalDto();
+  changedVersion: EntryVersionInternalDto = new EntryVersionInternalDto();
 
   @Input()
   showComments = false;
@@ -25,7 +25,7 @@ export class LemmaDiffComponent {
   @Input()
   referenceVerb?: ReferenceVerbDto;
 
-  removeSurilvanPronouns(value?: string): string|undefined {
+  removeSursilvanPronouns(value?: string): string|undefined {
     if (value === undefined) {
       return undefined;
     }

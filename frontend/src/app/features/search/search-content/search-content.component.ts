@@ -171,7 +171,6 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   }
 
   toggleSearchBy(isFirst: boolean) {
-    debugger;
     const oldDirection = this.searchCriteria.sortBy;
     if (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') {
       if (isFirst) {
@@ -249,7 +248,6 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   }
 
   hasDetailsLink(version: EntryVersionDto, isFirst: boolean): boolean {
-    debugger;
     if (
       (!version.inflection || (version.inflection.inflectionType !== 'VERB' && version.inflection.inflectionType !== 'NOUN' && version.inflection.inflectionType !== 'ADJECTIVE'))
       && (!version.examples || version.examples.length === 0)
