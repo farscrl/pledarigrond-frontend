@@ -60,7 +60,7 @@ export class Verb {
   preschent?: PersonalVerb;
   imperfect?: PersonalVerb;
   conjunctiv?: PersonalVerb;
-  conjunctiv2?: PersonalVerb;
+  conjunctivImperfect?: PersonalVerb;
   cundiziunal?: PersonalVerb;
   cundiziunalIndirect?: PersonalVerb;
   participPerfect?: ParticipPerfect;
@@ -106,10 +106,10 @@ export class ParticipPerfect {
 export class Imperativ {
   singular?: string;
   plural?: string;
-  form1?: string;
-  form2?: string;
   form3?: string;
   form4?: string;
+  form5?: string;
+  form6?: string;
 }
 
 export class Noun {
