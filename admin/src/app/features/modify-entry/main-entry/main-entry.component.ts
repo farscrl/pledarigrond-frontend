@@ -23,6 +23,7 @@ import {
   Pronoun,
   Verb
 } from '../../../models/dictionary';
+import { ConjugationComponent } from '../conjugation/conjugation.component';
 
 export class MainEntryData {
   entryIdToChange?: string;
@@ -135,13 +136,13 @@ export class MainEntryComponent implements OnInit {
 
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.conjugation.title'),
-      // nzContent: ConjugationComponent, TODO: re-enable
+      nzContent: ConjugationComponent,
       nzClosable: false,
       nzMaskClosable: false,
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        entryVersion: this.entryVersion,
+        version: this.entryVersion,
       },
     });
     modal.afterClose.subscribe(value => {

@@ -34,7 +34,7 @@ export class DiffModalComponent {
     this.originalVersion.inflection.verb.preschent = this.originalVersion.inflection.verb.preschent || {};
     this.originalVersion.inflection.verb.imperfect = this.originalVersion.inflection.verb.imperfect || {};
     this.originalVersion.inflection.verb.conjunctiv = this.originalVersion.inflection.verb.conjunctiv || {};
-    this.originalVersion.inflection.verb.conjunctiv2 = this.originalVersion.inflection.verb.conjunctiv2 || {};
+    this.originalVersion.inflection.verb.conjunctivImperfect = this.originalVersion.inflection.verb.conjunctivImperfect || {};
     this.originalVersion.inflection.verb.cundiziunal = this.originalVersion.inflection.verb.cundiziunal || {};
     this.originalVersion.inflection.verb.cundiziunalIndirect = this.originalVersion.inflection.verb.cundiziunalIndirect || {};
     this.originalVersion.inflection.verb.futur = this.originalVersion.inflection.verb.futur || {};
@@ -54,7 +54,7 @@ export class DiffModalComponent {
     this.changedVersion.inflection.verb.preschent = this.changedVersion.inflection.verb.preschent || {};
     this.changedVersion.inflection.verb.imperfect = this.changedVersion.inflection.verb.imperfect || {};
     this.changedVersion.inflection.verb.conjunctiv = this.changedVersion.inflection.verb.conjunctiv || {};
-    this.changedVersion.inflection.verb.conjunctiv2 = this.changedVersion.inflection.verb.conjunctiv2 || {};
+    this.changedVersion.inflection.verb.conjunctivImperfect = this.changedVersion.inflection.verb.conjunctivImperfect || {};
     this.changedVersion.inflection.verb.cundiziunal = this.changedVersion.inflection.verb.cundiziunal || {};
     this.changedVersion.inflection.verb.cundiziunalIndirect = this.changedVersion.inflection.verb.cundiziunalIndirect || {};
     this.changedVersion.inflection.verb.futur = this.changedVersion.inflection.verb.futur || {};
