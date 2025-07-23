@@ -27,7 +27,7 @@
   <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="originalVersion.inflection?.noun?.baseForm" [new]="changedVersion.inflection?.noun?.baseForm"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="m sing"><app-diff [old]="originalVersion.inflection?.noun?.mSingular" [new]="changedVersion.inflection?.noun?.mSingular"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="f sing"><app-diff [old]="originalVersion.inflection?.noun?.fSingular" [new]="changedVersion.inflection?.noun?.fSingular"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="originalVersion.inflection?.inflectionSubtype" [new]="changedVersion.inflection?.inflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="originalVersion.inflection?.noun?.inflectionSubtype" [new]="changedVersion.inflection?.noun?.inflectionSubtype"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="m plural"><app-diff [old]="originalVersion.inflection?.noun?.mPlural" [new]="changedVersion.inflection?.noun?.mPlural"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="f plural"><app-diff [old]="originalVersion.inflection?.noun?.fPlural" [new]="changedVersion.inflection?.noun?.fPlural"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="coll"><app-diff [old]="originalVersion.inflection?.noun?.pluralCollectiv" [new]="changedVersion.inflection?.noun?.pluralCollectiv"></app-diff></nz-descriptions-item>
@@ -37,7 +37,7 @@
   <nz-descriptions-item nzTitle="furma da basa"><app-diff [old]="originalVersion.inflection?.adjective?.baseForm" [new]="changedVersion.inflection?.adjective?.baseForm"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="m sing"><app-diff [old]="originalVersion.inflection?.adjective?.mSingular" [new]="changedVersion.inflection?.adjective?.mSingular"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="f sing"><app-diff [old]="originalVersion.inflection?.adjective?.fSingular" [new]="changedVersion.inflection?.adjective?.fSingular"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="originalVersion.inflection?.inflectionSubtype" [new]="changedVersion.inflection?.inflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="originalVersion.inflection?.adjective?.inflectionSubtype" [new]="changedVersion.inflection?.adjective?.inflectionSubtype"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="m plural"><app-diff [old]="originalVersion.inflection?.adjective?.mPlural" [new]="changedVersion.inflection?.adjective?.mPlural"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="f plural"><app-diff [old]="originalVersion.inflection?.adjective?.fPlural" [new]="changedVersion.inflection?.adjective?.fPlural"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="originalVersion.inflection?.adjective?.adverbialForm" [new]="changedVersion.inflection?.adjective?.adverbialForm"></app-diff></nz-descriptions-item>
@@ -61,7 +61,7 @@
 
 <nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="originalVersion.inflection?.inflectionType === 'VERB' || changedVersion.inflection?.inflectionType === 'VERB'">
   <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="originalVersion.inflection?.verb?.infinitiv" [new]="changedVersion.inflection?.verb?.infinitiv"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="originalVersion.inflection?.inflectionSubtype" [new]="changedVersion.inflection?.inflectionSubtype"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="originalVersion.inflection?.verb?.inflectionSubtype" [new]="changedVersion.inflection?.verb?.inflectionSubtype"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="Conjugaziun regulara"><app-diff [old]="originalVersion.inflection?.verb?.irregular?.toString() ?? '-'" [new]="changedVersion.inflection?.verb?.irregular?.toString() ?? '-'"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 

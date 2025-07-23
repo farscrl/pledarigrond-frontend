@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { InflectionResponse, InflectionType } from '../models/inflection';
+import { InflectionType } from '../models/inflection';
 import { Language } from '../models/security';
 import { environment } from './../../environments/environment';
+import { Inflection } from '../models/dictionary';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class InflectionService {
     return this.httpClient.get<any>(this.generateUrl(language, type, 'subtypes'));
   }
 
-  guessInflectionForms(language: Language, type: InflectionType, baseForm: string, genus?: string, flex?: string): Observable<InflectionResponse> {
+  guessInflectionForms(language: Language, type: InflectionType, baseForm: string, genus?: string, flex?: string): Observable<Inflection> {
     let params: HttpParams = new HttpParams();
 
     if (genus) {
@@ -34,7 +35,7 @@ export class InflectionService {
     return this.httpClient.get<any>(this.generateUrl(language, type, "subtypes" + '/' + baseForm), httpOptions);
   }
 
-  getInflectionForms(language: Language, type: InflectionType, subType: string, baseForm: string): Observable<InflectionResponse> {
+  getInflectionForms(language: Language, type: InflectionType, subType: string, baseForm: string): Observable<Inflection> {
     if (baseForm) {
       baseForm = encodeURIComponent(baseForm);
     }

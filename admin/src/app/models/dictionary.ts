@@ -79,7 +79,6 @@ export class Example {
 
 export class Inflection {
   inflectionType?: InflectionType;
-  inflectionSubtype?: string;
 
   // These types (Verb, Noun, Adjective, Pronoun, Other) should be defined elsewhere in your codebase.
   verb?: Verb;
@@ -92,6 +91,8 @@ export class Inflection {
 export class Verb {
   infinitiv?: string;
   irregular?: boolean;
+  inflectionSubtype?: string;
+  isReflexive?: boolean;
   composedWith?: string;
 
   preschent?: PersonalVerb;
@@ -151,24 +152,34 @@ export class Imperativ {
 
 export class Noun {
   baseForm?: string;
+  irregular?: boolean;
+  inflectionSubtype?: string;
+
   mSingular?: string;
   fSingular?: string;
   mPlural?: string;
   fPlural?: string;
+
   pluralCollectiv?: string;
 }
 
 export class Adjective {
   baseForm?: string;
+  irregular?: boolean;
+  inflectionSubtype?: string;
+
   mSingular?: string;
   fSingular?: string;
   mPlural?: string;
   fPlural?: string;
+
   adverbialForm?: string;
+  pridicative?: string;
 }
 
 export class Pronoun {
   baseForm?: string;
+
   mSingular?: string;
   fSingular?: string;
   mPlural?: string;
@@ -177,6 +188,7 @@ export class Pronoun {
 
 export class Other {
   baseForm?: string;
+
   otherForm1?: string;
   otherForm2?: string;
   otherForm3?: string;

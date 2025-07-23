@@ -1,4 +1,4 @@
-export type InflectionType = 'V'|'NOUN'|'ADJECTIVE'|'PRONOUN'|undefined;
+export type InflectionType = 'VERB'|'NOUN'|'ADJECTIVE'|'PRONOUN'|undefined;
 
 export class InflectionSubType {
   id: string = "";
@@ -7,7 +7,3 @@ export class InflectionSubType {
   isSubtype: boolean = false;
 }
 
-export class InflectionResponse {
-  inflectionSubType: InflectionSubType = new InflectionSubType();
-  inflectionValues: any;
-}

@@ -295,7 +295,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), type, subTypeId, baseForm).subscribe(values => {
       const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.mostRecent)) as EntryVersionInternalDto;
       workingLemmaVersion.inflection = new Inflection();
-      workingLemmaVersion.inflection.inflectionSubtype = subTypeId;
+      // workingLemmaVersion.inflection.inflectionSubtype = subTypeId; // TODO: do this
 
       // TODO: save inflection
 

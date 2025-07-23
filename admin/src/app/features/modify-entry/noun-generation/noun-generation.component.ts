@@ -1,15 +1,14 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { InflectionSubType } from 'src/app/models/inflection';
-import { LemmaVersion } from 'src/app/models/lemma-version';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { EnvironmentService } from "../../../services/environment.service";
-import { MainEntryData } from '../main-entry/main-entry.component';
+import { EntryVersionInternalDto, Noun } from '../../../models/dictionary';
 
 export class NounGenerationData {
-  lemmaVersion?: LemmaVersion;
+  version?: EntryVersionInternalDto;
 }
 
 @Component({
@@ -20,14 +19,13 @@ export class NounGenerationData {
 })
 export class NounGenerationComponent implements OnInit {
 
-  private lemmaVersion?: LemmaVersion;
+  private version?: EntryVersionInternalDto;
 
   validateForm!: UntypedFormGroup;
 
   subTypes: InflectionSubType[] = [];
 
-  workingLemmaVersion: LemmaVersion = new LemmaVersion();
-  originalLemmaVersion?: LemmaVersion;
+  working: Noun = new Noun();
 
   isRegular = true;
 
@@ -39,10 +37,9 @@ export class NounGenerationComponent implements OnInit {
     public environmentService: EnvironmentService,
     @Inject(NZ_MODAL_DATA) data: NounGenerationData,
   ) {
-    this.lemmaVersion = data.lemmaVersion;
-    if (this.lemmaVersion) {
-      this.workingLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
-      this.originalLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+    this.version = data.version;
+    if (this.version) {
+      this.working = JSON.parse(JSON.stringify(this.version.inflection?.noun || new Noun()));
     }
   }
 
@@ -52,7 +49,7 @@ export class NounGenerationComponent implements OnInit {
     this.inflectionService.getInflectionSubtypes(this.languageSelectionService.getCurrentLanguage(), 'NOUN').subscribe(value => {
       this.subTypes = value;
     });
-    if (this.workingLemmaVersion.lemmaValues.RRegularInflection === "false") {
+    if (this.working.irregular === true) {
       this.isRegular = false;
     }
 
@@ -62,7 +59,7 @@ export class NounGenerationComponent implements OnInit {
   }
 
   updateForms() {
-    this.generateForms(this.validateForm.controls['RInflectionSubtype'].value, this.validateForm.controls['baseForm'].value);
+    this.generateForms(this.validateForm.controls['inflectionSubtype'].value, this.validateForm.controls['baseForm'].value);
   }
 
   cancel() {
@@ -70,7 +67,7 @@ export class NounGenerationComponent implements OnInit {
   }
 
   reset() {
-    this.workingLemmaVersion = JSON.parse(JSON.stringify(this.originalLemmaVersion));
+    this.working = JSON.parse(JSON.stringify(this.version!.inflection?.noun || new Noun()));
     this.setUpForm();
   }
 
@@ -88,33 +85,42 @@ export class NounGenerationComponent implements OnInit {
   }
 
   private returnValues() {
-    this.modal.close(this.validateForm.getRawValue());
+
+    this.working.baseForm = this.validateForm.get('baseForm')?.value;
+    this.working.inflectionSubtype = this.validateForm.get('inflectionSubtype')?.value;
+    this.working.irregular = this.validateForm.get('irregular')?.value;
+
+    this.working.mSingular = this.validateForm.get('mSingular')?.value;
+    this.working.fSingular = this.validateForm.get('fSingular')?.value;
+    this.working.mPlural = this.validateForm.get('mPlural')?.value;
+    this.working.fPlural = this.validateForm.get('fPlural')?.value;
+    this.working.pluralCollectiv = this.validateForm.get('pluralCollectiv')?.value;
+
+    this.modal.close(this.working);
   }
 
   private setUpForm() {
+    console.log(this.working)
     this.validateForm = this.fb.group({
-      baseForm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.baseForm),
-      RInflectionSubtype: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.RInflectionSubtype ? this.workingLemmaVersion.lemmaValues.RInflectionSubtype : ""),
-      RRegularInflection: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.RRegularInflection ? this.workingLemmaVersion.lemmaValues.RRegularInflection : true),
+      baseForm: new UntypedFormControl(this.working.baseForm),
+      inflectionSubtype: new UntypedFormControl(this.working.inflectionSubtype ? this.working.inflectionSubtype : ""),
+      irregular: new UntypedFormControl(this.working.irregular ? this.working.irregular : false),
 
-      mSingular: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.mSingular),
-      fSingular: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.fSingular),
-      mPlural: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.mPlural),
-      fPlural: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.fPlural),
-      pluralCollectiv: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.pluralCollectiv),
+      mSingular: new UntypedFormControl(this.working.mSingular),
+      fSingular: new UntypedFormControl(this.working.fSingular),
+      mPlural: new UntypedFormControl(this.working.mPlural),
+      fPlural: new UntypedFormControl(this.working.fPlural),
+      pluralCollectiv: new UntypedFormControl(this.working.pluralCollectiv),
     });
-    this.validateForm.get("RRegularInflection")!.valueChanges.subscribe(value => {
-      this.isRegular = value;
+    this.validateForm.get("irregular")!.valueChanges.subscribe(value => {
+      this.isRegular = !value;
    });
   }
 
   private generateForms(subTypeId: string, baseForm: string) {
-    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', subTypeId, baseForm).subscribe(values => {
-      this.workingLemmaVersion.lemmaValues.RInflectionSubtype = subTypeId;
-      this.workingLemmaVersion.lemmaValues = {
-        ...this.workingLemmaVersion.lemmaValues,
-        ...values.inflectionValues
-      };
+    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', subTypeId, baseForm).subscribe(inflection => {
+      console.log(inflection);
+      this.working = inflection.noun!;
       this.isRegular = true;
       this.setUpForm();
     });
@@ -122,11 +128,11 @@ export class NounGenerationComponent implements OnInit {
 
   private shouldGuessInflectionSubtype(): boolean {
     if (
-      this.workingLemmaVersion.lemmaValues.mSingular ||
-      this.workingLemmaVersion.lemmaValues.fSingular ||
-      this.workingLemmaVersion.lemmaValues.mPlural ||
-      this.workingLemmaVersion.lemmaValues.fPlural ||
-      this.workingLemmaVersion.lemmaValues.pluralCollectiv
+      this.working.mSingular ||
+      this.working.fSingular ||
+      this.working.mPlural ||
+      this.working.fPlural ||
+      this.working.pluralCollectiv
     ) {
       return false;
     }
@@ -134,25 +140,21 @@ export class NounGenerationComponent implements OnInit {
   }
 
   private guessInflectionSubtype() {
-    const baseForm = this.workingLemmaVersion.lemmaValues.baseForm ? this.workingLemmaVersion.lemmaValues.baseForm : this.workingLemmaVersion.lemmaValues.RStichwort ? this.workingLemmaVersion.lemmaValues.RStichwort : "";
+    const baseForm = this.working.baseForm ? this.working.baseForm : this.version?.rmStichwort ? this.version.rmStichwort : "";
     if (baseForm === "") {
       console.log("No base form defined, guessing impossible");
       return;
     }
 
-    const genus = this.workingLemmaVersion.lemmaValues.RGenus;
-    const flex = this.workingLemmaVersion.lemmaValues.RFlex;
-    this.inflectionService.guessInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', baseForm, genus, flex).subscribe(values => {
+    const genus = this.version?.rmGenus;
+    const flex = this.version?.rmFlex;
+    this.inflectionService.guessInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', baseForm, genus, flex).subscribe(inflection => {
       // for short words the guessing can be empty -> just ignore empty response
-      if (!values) {
+      if (!inflection) {
         return;
       }
       this.isRegular = true;
-      this.workingLemmaVersion.lemmaValues.RInflectionSubtype = values.inflectionSubType.id;
-      this.workingLemmaVersion.lemmaValues = {
-        ...this.workingLemmaVersion.lemmaValues,
-        ...values.inflectionValues
-      };
+      this.working = inflection.noun!;
       this.setUpForm();
     });
   }
