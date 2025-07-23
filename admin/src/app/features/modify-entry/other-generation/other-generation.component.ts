@@ -1,14 +1,11 @@
-import { Component, Inject, Input } from '@angular/core';
-import { LemmaVersion } from '../../../models/lemma-version';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { InflectionService } from '../../../services/inflection.service';
-import { LanguageSelectionService } from '../../../services/language-selection.service';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { EnvironmentService } from '../../../services/environment.service';
-import { MainEntryData } from '../main-entry/main-entry.component';
+import { EntryVersionInternalDto, Other, Pronoun } from '../../../models/dictionary';
 
 export class OtherGenerationData {
-  lemmaVersion?: LemmaVersion;
+  version?: EntryVersionInternalDto;
 }
 
 @Component({
@@ -17,14 +14,13 @@ export class OtherGenerationData {
     styleUrls: ['./other-generation.component.scss'],
     standalone: false
 })
-export class OtherGenerationComponent {
+export class OtherGenerationComponent implements OnInit{
 
-  private lemmaVersion?: LemmaVersion;
+  private version?: EntryVersionInternalDto;
 
   validateForm!: UntypedFormGroup;
 
-  workingLemmaVersion: LemmaVersion = new LemmaVersion();
-  originalLemmaVersion?: LemmaVersion;
+  working: Other = new Other();
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -32,10 +28,9 @@ export class OtherGenerationComponent {
     public environmentService: EnvironmentService,
     @Inject(NZ_MODAL_DATA) data: OtherGenerationData,
   ) {
-    this.lemmaVersion = data.lemmaVersion;
-    if (this.lemmaVersion) {
-      this.workingLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
-      this.originalLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+    this.version = data.version;
+    if (this.version) {
+      this.working = JSON.parse(JSON.stringify(this.version.inflection?.other || new Pronoun()));
     }
   }
 
@@ -48,7 +43,7 @@ export class OtherGenerationComponent {
   }
 
   reset() {
-    this.workingLemmaVersion = JSON.parse(JSON.stringify(this.originalLemmaVersion));
+    this.working = JSON.parse(JSON.stringify(this.version!.inflection?.other || new Pronoun()));
     this.setUpForm();
   }
 
@@ -66,17 +61,24 @@ export class OtherGenerationComponent {
   }
 
   private returnValues() {
+    this.working.baseForm = this.validateForm.get('baseForm')?.value;
+
+    this.working.otherForm1 = this.validateForm.get('otherForm1')?.value;
+    this.working.otherForm2 = this.validateForm.get('otherForm2')?.value;
+    this.working.otherForm3 = this.validateForm.get('otherForm3')?.value;
+    this.working.otherForm4 = this.validateForm.get('otherForm4')?.value;
+
     this.modal.close(this.validateForm.getRawValue());
   }
 
   private setUpForm() {
     this.validateForm = this.fb.group({
-      baseForm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.baseForm),
+      baseForm: new UntypedFormControl(this.working.baseForm),
 
-      otherForm1: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.otherForm1),
-      otherForm2: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.otherForm2),
-      otherForm3: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.otherForm3),
-      otherForm4: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.otherForm4),
+      otherForm1: new UntypedFormControl(this.working.otherForm1),
+      otherForm2: new UntypedFormControl(this.working.otherForm2),
+      otherForm3: new UntypedFormControl(this.working.otherForm3),
+      otherForm4: new UntypedFormControl(this.working.otherForm4),
     });
   }
 }

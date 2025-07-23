@@ -1,14 +1,11 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
-import { LemmaVersion } from 'src/app/models/lemma-version';
-import { InflectionService } from 'src/app/services/inflection.service';
-import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { EnvironmentService } from "../../../services/environment.service";
-import { MainEntryData } from '../main-entry/main-entry.component';
+import { EntryVersionInternalDto, Pronoun } from '../../../models/dictionary';
 
 export class PronounGenerationData {
-  lemmaVersion?: LemmaVersion;
+  version?: EntryVersionInternalDto;
 }
 @Component({
     selector: 'app-pronoun-generation',
@@ -18,25 +15,21 @@ export class PronounGenerationData {
 })
 export class PronounGenerationComponent implements OnInit {
 
-  private lemmaVersion?: LemmaVersion;
+  private version?: EntryVersionInternalDto;
 
   validateForm!: UntypedFormGroup;
 
-  workingLemmaVersion: LemmaVersion = new LemmaVersion();
-  originalLemmaVersion?: LemmaVersion;
+  working: Pronoun = new Pronoun();
 
   constructor(
     private fb: UntypedFormBuilder,
-    private inflectionService: InflectionService,
-    private languageSelectionService: LanguageSelectionService,
     private modal: NzModalRef,
     public environmentService: EnvironmentService,
     @Inject(NZ_MODAL_DATA) data: PronounGenerationData,
   ) {
-    this.lemmaVersion = data.lemmaVersion;
-    if (this.lemmaVersion) {
-      this.workingLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
-      this.originalLemmaVersion = JSON.parse(JSON.stringify(this.lemmaVersion));
+    this.version = data.version;
+    if (this.version) {
+      this.working = JSON.parse(JSON.stringify(this.version.inflection?.pronoun || new Pronoun()));
     }
   }
 
@@ -49,7 +42,7 @@ export class PronounGenerationComponent implements OnInit {
   }
 
   reset() {
-    this.workingLemmaVersion = JSON.parse(JSON.stringify(this.originalLemmaVersion));
+    this.working = JSON.parse(JSON.stringify(this.version!.inflection?.pronoun || new Pronoun()));
     this.setUpForm();
   }
 
@@ -67,17 +60,24 @@ export class PronounGenerationComponent implements OnInit {
   }
 
   private returnValues() {
-    this.modal.close(this.validateForm.getRawValue());
+    this.working.baseForm = this.validateForm.get('baseForm')?.value;
+
+    this.working.mSingular = this.validateForm.get('mSingular')?.value;
+    this.working.fSingular = this.validateForm.get('fSingular')?.value;
+    this.working.mPlural = this.validateForm.get('mPlural')?.value;
+    this.working.fPlural = this.validateForm.get('fPlural')?.value;
+
+    this.modal.close(this.working);
   }
 
   private setUpForm() {
     this.validateForm = this.fb.group({
-      baseForm: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.baseForm),
+      baseForm: new UntypedFormControl(this.working.baseForm),
 
-      mSingular: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.mSingular),
-      fSingular: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.fSingular),
-      mPlural: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.mPlural),
-      fPlural: new UntypedFormControl(this.workingLemmaVersion.lemmaValues.fPlural),
+      mSingular: new UntypedFormControl(this.working.mSingular),
+      fSingular: new UntypedFormControl(this.working.fSingular),
+      mPlural: new UntypedFormControl(this.working.mPlural),
+      fPlural: new UntypedFormControl(this.working.fPlural),
     });
   }
 }
