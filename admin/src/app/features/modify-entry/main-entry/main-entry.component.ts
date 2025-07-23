@@ -211,7 +211,7 @@ export class MainEntryComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        entryVersion: this.entryVersion,
+        version: this.entryVersion,
       },
     });
     modal.afterClose.subscribe(value => {

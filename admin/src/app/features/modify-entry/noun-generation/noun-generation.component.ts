@@ -85,7 +85,6 @@ export class NounGenerationComponent implements OnInit {
   }
 
   private returnValues() {
-
     this.working.baseForm = this.validateForm.get('baseForm')?.value;
     this.working.inflectionSubtype = this.validateForm.get('inflectionSubtype')?.value;
     this.working.irregular = this.validateForm.get('irregular')?.value;
@@ -100,7 +99,6 @@ export class NounGenerationComponent implements OnInit {
   }
 
   private setUpForm() {
-    console.log(this.working)
     this.validateForm = this.fb.group({
       baseForm: new UntypedFormControl(this.working.baseForm),
       inflectionSubtype: new UntypedFormControl(this.working.inflectionSubtype ? this.working.inflectionSubtype : ""),
@@ -119,7 +117,6 @@ export class NounGenerationComponent implements OnInit {
 
   private generateForms(subTypeId: string, baseForm: string) {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', subTypeId, baseForm).subscribe(inflection => {
-      console.log(inflection);
       this.working = inflection.noun!;
       this.isRegular = true;
       this.setUpForm();
