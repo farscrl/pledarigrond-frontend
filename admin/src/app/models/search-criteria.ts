@@ -1,5 +1,3 @@
-import { Verification } from "./lemma-version";
-
 export class SearchCriteria {
   searchPhrase: string = "";
   searchDirection: SearchDirection = 'BOTH';
@@ -15,10 +13,9 @@ export class EditorSearchCriteria extends SearchCriteria {
   onlyAutomaticChanged: boolean = false;
   excludeAutomaticChanged: boolean = false;
   automaticChangesType: AutomaticChangesType = 'ALL';
-  verification?: Verification;
   showReviewLater?: boolean;
 }
 
 export type SearchDirection = 'BOTH'|'ROMANSH'|'GERMAN';
 export type SearchMethod = 'NORMAL'|'INTERN'|'PREFIX'|'SUFFIX'|'EXACT';
-export type AutomaticChangesType = 'ALL'|'VERBA'|'NOUNS'|'ADJECTIVES';
+export type AutomaticChangesType = 'ALL'|'VERBS'|'NOUNS'|'ADJECTIVES';

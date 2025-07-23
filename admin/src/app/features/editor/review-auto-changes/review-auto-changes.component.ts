@@ -97,7 +97,6 @@ export class ReviewAutoChangesComponent implements OnInit {
 
     this.searchCriteria.onlyAutomaticChanged = true;
     this.searchCriteria.searchDirection = 'ROMANSH';
-    this.searchCriteria.verification = 'UNVERIFIED';
     this.searchCriteria.showReviewLater = false;
 
     this.changePage(0);

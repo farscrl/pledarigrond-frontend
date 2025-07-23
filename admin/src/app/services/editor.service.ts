@@ -286,10 +286,6 @@ export class EditorService {
       params = params.set('showReviewLater', editorSearchCriteria.showReviewLater);
     }
 
-    if (!!editorSearchCriteria.verification && (editorSearchCriteria.verification)) {
-      params = params.set('verification', editorSearchCriteria.verification);
-    }
-
     return params;
   }
 }
