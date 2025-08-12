@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DictionaryLanguage } from '../models/dictionary-language';
-import { EditorQuery } from '../models/editor-query';
+import { DbSearchCriteria } from '../models/db-search-criteria';
 import { Page } from '../models/page';
-import { EditorSearchCriteria, SearchCriteria } from '../models/search-criteria';
+import { EditorSearchCriteria, LuceneSearchCriteria } from '../models/lucene-search-criteria';
 import { Language } from '../models/security';
 import { environment } from '../../environments/environment';
 import { ReferenceVerbDto } from '../models/reference-verb-dto';
@@ -25,7 +25,7 @@ export class EditorService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllEntries(language: Language, editorQuery: EditorQuery, page: number): Observable<Page<NormalizedEntryVersionDto>> {
+  getAllEntries(language: Language, editorQuery: DbSearchCriteria, page: number): Observable<Page<NormalizedEntryVersionDto>> {
     let params: HttpParams = new HttpParams();
 
     params = this.editorQueryToHttpParam(editorQuery, params);
@@ -41,7 +41,7 @@ export class EditorService {
     return this.httpClient.get<Page<NormalizedEntryVersionDto>>(this.generateUrl(language, 'entries'), httpOptions);
   }
 
-  searchLemmaVersions(language: Language, searchCriteria: SearchCriteria, page: number, pageSize = 15): Observable<Page<EntryVersionExtendedDto>> {
+  searchLemmaVersions(language: Language, searchCriteria: LuceneSearchCriteria, page: number, pageSize = 15): Observable<Page<EntryVersionExtendedDto>> {
     let params: HttpParams = new HttpParams();
 
     params = this.searchCriteriaToHttpParam(searchCriteria, params);
@@ -178,7 +178,7 @@ export class EditorService {
     return this.httpClient.post<EntryVersionInternalDto[]>(this.generateUrl(language, 'update_order'), body, httpOptions);
   }
 
-  exportFieldsByEditorQuery(language: Language, editorQuery: EditorQuery, fields: string[]): Observable<HttpResponse<Blob>> {
+  exportFieldsByEditorQuery(language: Language, editorQuery: DbSearchCriteria, fields: string[]): Observable<HttpResponse<Blob>> {
     let params: HttpParams = new HttpParams();
 
     params = this.editorQueryToHttpParam(editorQuery, params);
@@ -195,7 +195,7 @@ export class EditorService {
     });
   }
 
-  exportFieldsBySearchCriteria(language: Language, searchCriteria: SearchCriteria, fields: string[]): Observable<HttpResponse<Blob>> {
+  exportFieldsBySearchCriteria(language: Language, searchCriteria: LuceneSearchCriteria, fields: string[]): Observable<HttpResponse<Blob>> {
     let params: HttpParams = new HttpParams();
 
     params = this.searchCriteriaToHttpParam(searchCriteria, params);
@@ -216,9 +216,37 @@ export class EditorService {
     return environment.apiUrl + "/" + language + this.editorBasePath + segment;
   }
 
-  private editorQueryToHttpParam(editorQuery: EditorQuery, params: HttpParams): HttpParams {
+  private editorQueryToHttpParam(editorQuery: DbSearchCriteria, params: HttpParams): HttpParams {
     if (!editorQuery) {
       return params;
+    }
+
+    if (!!editorQuery.searchPhrase && editorQuery.searchPhrase !== "") {
+      params = params.set('searchPhrase', editorQuery.searchPhrase);
+    }
+
+    if (!!editorQuery.searchDirection && editorQuery.searchDirection !== 'BOTH') {
+      params = params.set('searchDirection', editorQuery.searchDirection);
+    }
+
+    if (!!editorQuery.searchMethod && editorQuery.searchMethod !== 'NORMAL') {
+      params = params.set('searchMethod', editorQuery.searchMethod);
+    }
+
+    if (!!editorQuery.onlyAutomaticChanged && (editorQuery.onlyAutomaticChanged)) {
+      params = params.set('onlyAutomaticChanged', 'true');
+    }
+
+    if (editorQuery.excludeAutomaticChanges != null && !editorQuery.excludeAutomaticChanges) {
+      params = params.set('excludeAutomaticChanges', 'false');
+    }
+
+    if (!!editorQuery.inflectionType) {
+      params = params.set('inflectionType', editorQuery.inflectionType);
+    }
+
+    if (editorQuery.showReviewLater !== undefined) {
+      params = params.set('showReviewLater', editorQuery.showReviewLater ? 'true' : 'false');
     }
 
     if (!!editorQuery.state) {
@@ -240,7 +268,7 @@ export class EditorService {
     return params;
   }
 
-  private searchCriteriaToHttpParam(searchCriteria: SearchCriteria|EditorSearchCriteria, params: HttpParams): HttpParams {
+  private searchCriteriaToHttpParam(searchCriteria: LuceneSearchCriteria|EditorSearchCriteria, params: HttpParams): HttpParams {
     if (!!searchCriteria.searchPhrase && searchCriteria.searchPhrase !== "") {
       params = params.set('searchPhrase', searchCriteria.searchPhrase);
     }

@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit, ViewContainerRef } from '@angular/core';
-import { EditorSearchCriteria } from 'src/app/models/search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -11,8 +10,9 @@ import { InflectionType } from 'src/app/models/inflection';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { Language } from "../../../models/security";
 import { ReferenceVerbDto } from '../../../models/reference-verb-dto';
-import { EntryDto, EntryVersionExtendedDto, EntryVersionInternalDto, Inflection } from '../../../models/dictionary';
+import { EntryDto, EntryVersionInternalDto, Inflection, NormalizedEntryVersionDto } from '../../../models/dictionary';
 import { AutoReviewListItem } from '../../../models/dictionary-list';
+import { DbSearchCriteria } from '../../../models/db-search-criteria';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -39,14 +39,14 @@ export class ReviewAutoChangesComponent implements OnInit {
   isLoadingData = true;
   isWindowOpen = false;
 
-  currentPage: Page<EntryVersionExtendedDto> = new Page();
+  currentPage: Page<NormalizedEntryVersionDto> = new Page();
   reviewItems: AutoReviewListItem[] = [];
   selectedEntryVersion?: AutoReviewListItem;
   selectedEntry?: EntryDto;
 
   referenceInflection?: ReferenceVerbDto;
 
-  searchCriteria: EditorSearchCriteria = new EditorSearchCriteria();
+  searchCriteria: DbSearchCriteria = new DbSearchCriteria();
 
   language: Language | undefined;
 
@@ -66,21 +66,21 @@ export class ReviewAutoChangesComponent implements OnInit {
     } else if (event.keyCode === KEY_CODE.UP_ARROW) {
       this.upOne();
     }
-    if (this.selectedEntry && this.selectedEntryVersion.version.inflection?.inflectionType === 'NOUN') {
+    if (this.selectedEntry && this.selectedEntryVersion.version.version.inflection?.inflectionType === 'NOUN') {
       if(event.keyCode == KEY_CODE.KEY1){
         this.nounChangeOnlyMale();
       }
     }
 
-    if (this.selectedEntry && this.selectedEntryVersion.version.inflection?.inflectionType === 'ADJECTIVE') {
+    if (this.selectedEntry && this.selectedEntryVersion.version.version.inflection?.inflectionType === 'ADJECTIVE') {
       if(event.keyCode == KEY_CODE.KEY1){
         this.adjectiveNoAdverbialForm();
       }
     }
   }
 
-    // used to pass math functions to template
-    math = Math;
+  // used to pass math functions to template
+  math = Math;
 
   constructor(
     private editorService: EditorService,
@@ -95,7 +95,9 @@ export class ReviewAutoChangesComponent implements OnInit {
   ngOnInit(): void {
     this.language = this.languageSelectionService.getCurrentLanguage();
 
+    this.searchCriteria.state = 'HAS_SUGGESTION';
     this.searchCriteria.onlyAutomaticChanged = true;
+    this.searchCriteria.excludeAutomaticChanges = false;
     this.searchCriteria.searchDirection = 'ROMANSH';
     this.searchCriteria.showReviewLater = false;
 
@@ -103,6 +105,7 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   selectLemma(item: AutoReviewListItem) {
+    // if the item is already selected, we deselect it
     if (item.selected) {
       item.selected = false;
       this.selectedEntry = undefined;
@@ -116,14 +119,13 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), item.entryId).subscribe(entry => {
       this.selectedEntry = entry;
 
-      // newly created entries have current == most recent and current != approved -> to have a correct diff, we set current to an empty lemmaValue
-      // TODO: there was another condition here. needed? //  && !(this.selectedEntry.current.versionStatus === "Accepted")
+      // newly created entries have current == most recent -> to have a correct diff, we set current to an empty lemmaValue
       if (this.selectedEntry.current?.versionId === this.selectedEntry.mostRecent.versionId) {
         this.selectedEntry.current = new EntryVersionInternalDto();
       }
 
       if (this.languageSelectionService.getCurrentLanguage() === Language.SURSILVAN) {
-        this.editorService.getReferenceInflection(Language.SURSILVAN, this.selectedEntry.mostRecent.rmStichwort!).subscribe(reference => {
+        this.editorService.getReferenceInflection(Language.SURSILVAN, this.selectedEntry.current?.rmStichwort!).subscribe(reference => {
           this.referenceInflection = reference;
         });
       }
@@ -135,7 +137,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       return;
     }
     const lemma = this.selectedEntryVersion;
-    this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version).subscribe((entry) => {
+    this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version.version).subscribe((entry) => {
       this.selectedEntryVersion!.local_review_status = 'ACCEPTED';
       this.downOne();
     }, (error) => {
@@ -147,7 +149,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
-    this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version).subscribe((entry) => {
+    this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version.version).subscribe((entry) => {
       this.selectedEntryVersion!.local_review_status = 'REJECTED';
       this.downOne();
     }, (error) => {
@@ -159,7 +161,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
-    this.editorService.reviewEntryLater(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version).subscribe((entry) => {
+    this.editorService.reviewEntryLater(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version.version).subscribe((entry) => {
       this.selectedEntryVersion!.local_review_status = 'LATER';
       this.downOne();
     }, (error) => {
@@ -182,7 +184,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
         entryIdToChange: this.selectedEntryVersion.entryId,
-        entryVersionToChange: this.selectedEntryVersion,
+        entryVersionToChange: this.selectedEntryVersion.version.version,
         directlyLoadDetailView: true,
         replaceSuggestion: true,
       },
@@ -201,11 +203,11 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   nounChangeOnlyMale() {
-    this.generateNewInflection('NOUN', "1", this.selectedEntryVersion!.version.rmStichwort!);
+    this.generateNewInflection('NOUN', "1", this.selectedEntryVersion!.version.version.rmStichwort!);
   }
 
   adjectiveNoAdverbialForm() {
-    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.mostRecent));
+    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current));
 
     // TODO implement me correctly
     // delete adverbial form
@@ -234,7 +236,8 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (pageNumber > 0) {
       pageNumber--;
     }
-    this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, pageNumber, 50).subscribe(page => {
+    this.isLoadingData = true;
+    this.editorService.getAllEntries(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, pageNumber).subscribe(page => {
       this.isLoadingData = false;
       this.currentPage = page;
       this.reviewItems = page.content.map(value => ({
@@ -292,11 +295,21 @@ export class ReviewAutoChangesComponent implements OnInit {
 
   private generateNewInflection(type: InflectionType, subTypeId: string, baseForm: string) {
     this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), type, subTypeId, baseForm).subscribe(values => {
-      const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.mostRecent)) as EntryVersionInternalDto;
+      const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current)) as EntryVersionInternalDto;
       workingLemmaVersion.inflection = new Inflection();
-      // workingLemmaVersion.inflection.inflectionSubtype = subTypeId; // TODO: do this
 
-      // TODO: save inflection
+      if (type === 'VERB') {
+        workingLemmaVersion.inflection.inflectionType = 'VERB';
+        workingLemmaVersion.inflection.verb = values.verb;
+      } else if (type === 'NOUN') {
+        workingLemmaVersion.inflection.inflectionType = 'NOUN';
+        workingLemmaVersion.inflection.noun = values.noun;
+      } else if (type === 'ADJECTIVE') {
+        workingLemmaVersion.inflection.inflectionType = 'ADJECTIVE';
+        workingLemmaVersion.inflection.adjective = values.adjective;
+      } else {
+        throw new Error('Unknown inflection type');
+      }
 
       this.editorService.modifyEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntry!.entryId, workingLemmaVersion).subscribe((entry) => {
         this.replaceLemma(entry);
@@ -308,7 +321,11 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.selectedEntry = entry;
     this.selectedEntryVersion = {
       entryId: entry.entryId,
-      version: entry.mostRecent,
+      version: {
+        entryId: entry.entryId,
+        publicationStatus: 'HAS_SUGGESTION',
+        version: entry.current!
+      },
       selected: true,
       local_review_status: 'UNDEFINED',
     };

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
-import { EditorQuery } from 'src/app/models/editor-query';
-import { SearchCriteria } from 'src/app/models/search-criteria';
+import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
+import { LuceneSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,7 +15,7 @@ export class ExportOption {
 }
 
 export class ExportData {
-  filter?: SearchCriteria | EditorQuery;
+  filter?: LuceneSearchCriteria | DbSearchCriteria;
 }
 
 @Component({
@@ -26,7 +26,7 @@ export class ExportData {
 })
 export class ExportComponent implements OnInit {
 
-  filter?: SearchCriteria | EditorQuery;
+  filter?: LuceneSearchCriteria | DbSearchCriteria;
 
   allChecked = false;
   indeterminate = false;
@@ -97,7 +97,7 @@ export class ExportComponent implements OnInit {
   export() {
     this.isExporting = true;
 
-    if (this.filter instanceof SearchCriteria) {
+    if (this.filter instanceof LuceneSearchCriteria) {
       this.editorService.exportFieldsBySearchCriteria(this.languageSelectionService.getCurrentLanguage(), this.filter, this.selectedFields as string[]).subscribe(data => {
         const fileName = this.fileUtils.getFileNameFromContentDispositionHeader(data.headers, "pledarigrond_field_export_tsv.zip");
         this.fileUtils.downloadFile(data, fileName);
@@ -108,7 +108,7 @@ export class ExportComponent implements OnInit {
       });
     }
 
-    if (this.filter instanceof EditorQuery) {
+    if (this.filter instanceof DbSearchCriteria) {
       this.editorService.exportFieldsByEditorQuery(this.languageSelectionService.getCurrentLanguage(), this.filter, this.selectedFields as string[]).subscribe(data => {
         const fileName = this.fileUtils.getFileNameFromContentDispositionHeader(data.headers, "pledarigrond_field_export_tsv.zip");
         this.fileUtils.downloadFile(data, fileName);

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import moment from 'moment';
-import { EditorQuery } from 'src/app/models/editor-query';
+import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { ngDebounce } from "../../../decorators/debounce.decorator";
 
 @Component({
@@ -12,15 +12,15 @@ import { ngDebounce } from "../../../decorators/debounce.decorator";
 export class DurationComponent implements OnInit {
 
   @Output()
-  dateRangeSelected = new EventEmitter<EditorQuery>();
+  dateRangeSelected = new EventEmitter<DbSearchCriteria>();
 
   @Input()  set userFilter(userFilter: string | undefined)  { this.selectedUserFilter = userFilter; this.filter(); };
   @Output() userFilterChange = new EventEmitter<string | undefined>();
-  
+
   selectedDuration: Date[] = [];
   selectedUserFilter?: string;
 
-  private editorQuery: EditorQuery = new EditorQuery();
+  private editorQuery: DbSearchCriteria = new DbSearchCriteria();
 
   constructor() { }
 

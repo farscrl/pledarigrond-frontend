@@ -1,4 +1,4 @@
-import { EntryInfos, EntryVersionInternalDto, PublicationStatus } from './dictionary';
+import { EntryInfos, EntryVersionInternalDto, NormalizedEntryVersionDto, PublicationStatus } from './dictionary';
 import { Page } from './page';
 
 export class DictionaryListItem implements EntryInfos {
@@ -14,7 +14,7 @@ export class DictionaryListItem implements EntryInfos {
 
 export class AutoReviewListItem {
   entryId!: string;
-  version!: EntryVersionInternalDto;
+  version!: NormalizedEntryVersionDto;
 
   selected: boolean = false;
   local_review_status: 'ACCEPTED'|'REJECTED'|'EDITED'|'LATER'|'UNDEFINED' = 'UNDEFINED';

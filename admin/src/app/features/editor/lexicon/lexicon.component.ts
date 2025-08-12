@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
-import { EditorSearchCriteria } from 'src/app/models/search-criteria';
+import { EditorSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { Subject, takeUntil } from 'rxjs';

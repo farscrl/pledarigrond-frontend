@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorQuery } from 'src/app/models/editor-query';
+import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
@@ -17,7 +17,7 @@ export class HistoryComponent implements OnInit {
   items: DictionaryListItem[]  = [];
   columns: LemmaListColumn = new LemmaListColumn();
 
-  currentEditorQuery?: EditorQuery;
+  currentEditorQuery?: DbSearchCriteria;
 
   selectedEntry?: EntryDto;
 
@@ -31,7 +31,7 @@ export class HistoryComponent implements OnInit {
     this.loadPage(0);
   }
 
-  search(editorQuery: EditorQuery) {
+  search(editorQuery: DbSearchCriteria) {
     // verified entries
     editorQuery.state = 'PUBLISHED';
     this.currentEditorQuery = editorQuery;

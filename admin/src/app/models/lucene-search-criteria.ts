@@ -1,11 +1,11 @@
-export class SearchCriteria {
+export class LuceneSearchCriteria {
   searchPhrase: string = "";
   searchDirection: SearchDirection = 'BOTH';
   searchMethod: SearchMethod = 'NORMAL';
   highlight: boolean = false;
 }
 
-export class EditorSearchCriteria extends SearchCriteria {
+export class EditorSearchCriteria extends LuceneSearchCriteria {
   category: string = "";
   subSemantics: string = "";
   gender: string = "";

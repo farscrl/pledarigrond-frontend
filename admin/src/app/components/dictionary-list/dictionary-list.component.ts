@@ -8,8 +8,8 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { LemmaListColumn } from 'src/app/models/lemma-list-column';
 import { MainEntryComponent } from 'src/app/features/modify-entry/main-entry/main-entry.component';
 import { firstValueFrom } from 'rxjs';
-import { SearchCriteria } from 'src/app/models/search-criteria';
-import { EditorQuery } from 'src/app/models/editor-query';
+import { LuceneSearchCriteria } from 'src/app/models/lucene-search-criteria';
+import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
 import { TranslateService } from '@ngx-translate/core';
@@ -29,7 +29,7 @@ export class DictionaryListComponent {
   columns: LemmaListColumn = new LemmaListColumn();
 
   @Input()
-  filter?: SearchCriteria | EditorQuery;
+  filter?: LuceneSearchCriteria | DbSearchCriteria;
 
   @Input()
   items!: DictionaryListItem[];
