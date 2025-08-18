@@ -190,9 +190,14 @@ export class ReviewAutoChangesComponent implements OnInit {
       },
       nzOnOk: () => {
         this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion!.entryId).subscribe(entry => {
-          this.replaceLemma(entry);
-          this.selectedEntryVersion!.local_review_status = 'ACCEPTED';
-          this.downOne();
+          if (entry.suggestions.length > 0) {
+            this.replaceLemma(entry, true);
+            this.selectedEntryVersion!.local_review_status = 'EDITED';
+          } else {
+            this.replaceLemma(entry, false);
+            this.selectedEntryVersion!.local_review_status = 'ACCEPTED';
+            this.downOne();
+          }
         });
       },
     });
@@ -317,18 +322,34 @@ export class ReviewAutoChangesComponent implements OnInit {
     });
   }
 
-  private replaceLemma(entry: EntryDto) {
+  private replaceLemma(entry: EntryDto, updateSuggestion = false) {
     this.selectedEntry = entry;
-    this.selectedEntryVersion = {
-      entryId: entry.entryId,
-      version: {
+
+    if (updateSuggestion) {
+      const version = entry.suggestions.length > 0 ? entry.suggestions[0] : entry.current!;
+
+      this.selectedEntryVersion = {
         entryId: entry.entryId,
-        publicationStatus: 'HAS_SUGGESTION',
-        version: entry.current!
-      },
-      selected: true,
-      local_review_status: 'UNDEFINED',
-    };
+        version: {
+          entryId: entry.entryId,
+          publicationStatus: 'HAS_SUGGESTION',
+          version: version
+        },
+        selected: true,
+        local_review_status: 'EDITED',
+      };
+    } else {
+      this.selectedEntryVersion = {
+        entryId: entry.entryId,
+        version: {
+          entryId: entry.entryId,
+          publicationStatus: 'HAS_SUGGESTION',
+          version: entry.current!
+        },
+        selected: true,
+        local_review_status: 'ACCEPTED',
+      };
+    }
 
     for (let i = 0; i < this.reviewItems.length; i++) {
       if (this.reviewItems[i].entryId === entry.entryId) {
