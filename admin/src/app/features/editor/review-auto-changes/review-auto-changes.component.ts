@@ -120,7 +120,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       this.selectedEntry = entry;
 
       // newly created entries have current == most recent -> to have a correct diff, we set current to an empty lemmaValue
-      if (this.selectedEntry.current?.versionId === this.selectedEntry.mostRecent.versionId) {
+      if (this.selectedEntry.current?.versionId === this.selectedEntry.mostRecent?.versionId) {
         this.selectedEntry.current = new EntryVersionInternalDto();
       }
 
