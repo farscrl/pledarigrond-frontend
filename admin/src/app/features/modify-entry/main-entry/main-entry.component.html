@@ -104,13 +104,13 @@
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <nz-select formControlName="inflectionType" id="inflectionType" class="inflection-selection">
             <nz-option nzValue="" [nzLabel]="'edit.lemma.inflection.none' | translate"></nz-option>
-            <nz-option nzValue="V" [nzLabel]="'edit.lemma.inflection.verb' | translate"></nz-option>
+            <nz-option nzValue="VERB" [nzLabel]="'edit.lemma.inflection.verb' | translate"></nz-option>
             <nz-option nzValue="NOUN" [nzLabel]="'edit.lemma.inflection.noun' | translate"></nz-option>
             <nz-option nzValue="ADJECTIVE" [nzLabel]="'edit.lemma.inflection.adjective' | translate"></nz-option>
             <nz-option nzValue="PRONOUN" [nzLabel]="'edit.lemma.inflection.pronoun' | translate"></nz-option>
             <nz-option nzValue="OTHER" [nzLabel]="'edit.lemma.inflection.other' | translate"></nz-option>
           </nz-select>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editVerb()" *ngIf="validateForm.controls['inflectionType'].value === 'V'"></i>
+          <i nz-icon nzType="edit" class="inflection-edit" (click)="editVerb()" *ngIf="validateForm.controls['inflectionType'].value === 'VERB'"></i>
           <i nz-icon nzType="edit" class="inflection-edit" (click)="editNoun()" *ngIf="validateForm.controls['inflectionType'].value === 'NOUN'"></i>
           <i nz-icon nzType="edit" class="inflection-edit" (click)="editAdjective()" *ngIf="validateForm.controls['inflectionType'].value === 'ADJECTIVE'"></i>
           <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronoun()" *ngIf="validateForm.controls['inflectionType'].value === 'PRONOUN'"></i>

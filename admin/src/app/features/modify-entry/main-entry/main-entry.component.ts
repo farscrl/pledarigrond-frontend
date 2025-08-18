@@ -428,7 +428,7 @@ export class MainEntryComponent implements OnInit {
     this.loadExamples(this.entryVersion.examples);
 
     if (this.directlyLoadDetailView) {
-      if (this.validateForm.controls['inflectionType'].value === 'V') {
+      if (this.validateForm.controls['inflectionType'].value === 'VERB') {
         this.editVerb();
         this.directlyLoadDetailView = false;
       } else if (this.validateForm.controls['inflectionType'].value === 'NOUN') {
