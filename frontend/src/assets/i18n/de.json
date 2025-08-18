@@ -157,7 +157,14 @@
     "conditional": "Konditional",
     "future": "Futur",
     "gerund": "Gerundium",
-    "imperative": "Imperativ"
+    "imperative": "Imperativ",
+    "conditionalIndirect": "Konditional in direkt",
+    "conjunctive2": "Konjunktiv imperfekt",
+    "etymology": "Etymologie",
+    "examples": "Beispiele",
+    "futureDubitativ": "Futur dubitativ",
+    "hideEnclitic": "Enklitische Formen ausblenden",
+    "showEnclitic": "Enklitische Formen anzeigen"
   },
   "editor": {
     "modify": {
