@@ -62,7 +62,7 @@
 <nz-descriptions nzTitle="Conjugaziun da verbs" *ngIf="originalVersion.inflection?.inflectionType === 'VERB' || changedVersion.inflection?.inflectionType === 'VERB'">
   <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="originalVersion.inflection?.verb?.infinitiv" [new]="changedVersion.inflection?.verb?.infinitiv"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="originalVersion.inflection?.verb?.inflectionSubtype" [new]="changedVersion.inflection?.verb?.inflectionSubtype"></app-diff></nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Conjugaziun regulara"><app-diff [old]="originalVersion.inflection?.verb?.irregular?.toString() ?? '-'" [new]="changedVersion.inflection?.verb?.irregular?.toString() ?? '-'"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Conjugaziun irregulara"><app-diff [old]="originalVersion.inflection?.verb?.irregular?.toString() ?? '-'" [new]="changedVersion.inflection?.verb?.irregular?.toString() ?? '-'"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
 <div class="conjugaziuns" *ngIf="(originalVersion.inflection?.inflectionType === 'VERB' || changedVersion.inflection?.inflectionType === 'VERB') && !referenceVerb">
