@@ -7,6 +7,7 @@ import { ExportDumpComponent } from './export-dump/export-dump.component';
 import { ImportDumpComponent } from './import-dump/import-dump.component';
 import { TranslateService } from '@ngx-translate/core';
 import { FileUtils } from 'src/app/utils/file.utils';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
     selector: 'app-db-administration',
@@ -27,6 +28,7 @@ export class DbAdministrationComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private translateService: TranslateService,
     private fileUtils: FileUtils,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnInit(): void {
@@ -98,9 +100,18 @@ export class DbAdministrationComponent implements OnInit {
 
   dropDbConfirmed() {
     this.dbService.dropDb(this.languageSelectionService.getCurrentLanguage()).subscribe(() => {
-      // TODO: notification
+      this.notificationService.success(
+        'Stizzà cun success',
+        `La banca da datas per ${this.languageSelectionService.getCurrentLanguage()} è vegnida stizzada cun success.`,
+        15000
+      )
     }, error => {
       console.error(error);
+      this.notificationService.error(
+        'Errur cun stizzar',
+        `La banca da datas per ${this.languageSelectionService.getCurrentLanguage()} na po betg vegnir stizzada.`,
+        15000
+      )
     });
   }
 }

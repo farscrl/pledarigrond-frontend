@@ -5,6 +5,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { EditComponent } from './edit/edit.component';
 import { TranslateService } from '@ngx-translate/core';
 import { EnvironmentService } from "../../services/environment.service";
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
     selector: 'app-user-administration',
@@ -22,6 +23,7 @@ export class UserAdministrationComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private translateService: TranslateService,
     public environmentService: EnvironmentService,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnInit(): void {
@@ -66,10 +68,10 @@ export class UserAdministrationComponent implements OnInit {
   private deleteConfirmed(email: string) {
     this.usersService.delete(email).subscribe(() => {
       this.loadUsers();
-      // TODO: message success
+      this.notificationService.success('Stizzà cun success l\'utilisader', '', 5000);
     }, error => {
       console.error(error);
-      // TODO: message error
+      this.notificationService.error('Errur cun stizzar l\'utilisader', '', 15000);
     });
   }
 

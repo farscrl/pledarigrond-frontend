@@ -4,6 +4,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { EditNameComponent } from "./edit-name/edit-name.component";
 import { NameService } from "../../services/name.service";
 import { Name } from "../../models/name";
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
     selector: 'app-name-administration',
@@ -27,6 +28,7 @@ export class NameAdministrationComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private translateService: TranslateService,
     private nameService: NameService,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnInit(): void {
@@ -74,10 +76,10 @@ export class NameAdministrationComponent implements OnInit {
   private deleteConfirmed(email: string) {
     this.nameService.delete(email).subscribe(() => {
       this.loadPage(this.pageNumber, this.pageSize);
-      // TODO: message success
+      this.notificationService.success('names.success', '', 5000);
     }, error => {
       console.error(error);
-      // TODO: message error
+      this.notificationService.error('names.error', '', 15000);
     });
   }
 

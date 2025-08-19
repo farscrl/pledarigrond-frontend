@@ -47,7 +47,9 @@
       "cancel": "Interrumper",
       "save": "Memorisar midadas",
       "create": "Crear num"
-    }
+    },
+    "success": "Memorisà cun success il num",
+    "error": "Errur durant memorisar il num"
   },
   "lexicon": {
     "suggestions_menu_item": "Propostas",
@@ -417,7 +419,9 @@
     "title_rm": "rumantsch",
     "instructions": "Midar la successiun da las endataziuns cun trair e deponer u cun agid da las frizzas survart.",
     "cancel": "Interrumper",
-    "save": "Memorisar"
+    "save": "Memorisar",
+    "success": "Successiun memorisada",
+    "error": "Errur durant memorisar la successiun"
   },
   "login": {
     "email": "E-mail",

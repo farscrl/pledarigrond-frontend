@@ -1,10 +1,10 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { Roles, User } from "../../../models/user";
 import { NZ_MODAL_DATA, NzModalRef } from "ng-zorro-antd/modal";
 import { Name } from "../../../models/name";
 import { NameService } from "../../../services/name.service";
-import { OtherGenerationData } from '../../modify-entry/other-generation/other-generation.component';
+import { NotificationService } from '../../../services/notification.service';
+import { TranslateService } from '@ngx-translate/core';
 
 export class EditNameData {
   id?: string;
@@ -31,6 +31,8 @@ export class EditNameComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private nameService: NameService,
     @Inject(NZ_MODAL_DATA) data: EditNameData,
+    private notificationService: NotificationService,
+    private translateService: TranslateService,
   ) {
     this.id = data.id;
   }
@@ -45,7 +47,7 @@ export class EditNameComponent implements OnInit {
         },
         error => {
           console.error(error);
-          // TODO: inform notification service
+          this.notificationService.error('names.error', '', 15000);
           this.modal.close();
         })
     }
@@ -77,7 +79,11 @@ export class EditNameComponent implements OnInit {
     const name = this.toName(this.validateForm.value);
     this.nameService.create(name).subscribe(result => {
       this.modal.triggerOk();
-      // TODO: notification service
+      this.notificationService.success('names.success', '', 5000);
+    }, error => {
+      console.error(error);
+      this.notificationService.error('names.error', '', 15000);
+      this.modal.close();
     });
   }
 
@@ -85,7 +91,11 @@ export class EditNameComponent implements OnInit {
     const name = this.toName(this.validateForm.value);
     this.nameService.update(id, name).subscribe(result => {
       this.modal.triggerOk();
-      // TODO: notification service
+      this.notificationService.success('names.success', '', 5000);
+    }, error => {
+      console.error(error);
+      this.notificationService.error('names.error', '', 15000);
+      this.modal.close();
     });
   }
 

@@ -4,6 +4,8 @@ import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { Roles, User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 import { EnvironmentService } from "../../../services/environment.service";
+import { NotificationService } from '../../../services/notification.service';
+import { error } from '@angular/compiler-cli/src/transformers/util';
 
 export class EditUserData {
   email?: string;
@@ -31,6 +33,7 @@ export class EditComponent implements OnInit {
     private userService: UsersService,
     public environmentService: EnvironmentService,
     @Inject(NZ_MODAL_DATA) data: EditUserData,
+    private notificationService: NotificationService,
   ) {
     this.email = data.email;
   }
@@ -45,7 +48,7 @@ export class EditComponent implements OnInit {
       },
       error => {
         console.error(error);
-        // TODO: inform notification service
+        this.notificationService.error('Errur cun chargiar l\'utilisader', '', 15000);
         this.modal.close();
       })
     }
@@ -77,7 +80,11 @@ export class EditComponent implements OnInit {
     const user = this.toUser(this.validateForm.value);
     this.userService.create(user).subscribe(result => {
       this.modal.triggerOk();
-      // TODO: notification service
+      this.notificationService.success('Memorisà l\'utilisader', '', 5000);
+    }, error => {
+      console.error(error);
+      this.notificationService.error('Errur cun memorisar l\'utilisader', '', 15000);
+      this.modal.close();
     });
   }
 
@@ -85,7 +92,11 @@ export class EditComponent implements OnInit {
     const user = this.toUser(this.validateForm.value);
     this.userService.update(email, user).subscribe(result => {
       this.modal.triggerOk();
-      // TODO: notification service
+      this.notificationService.success('Memorisà l\'utilisader', '', 5000);
+    }, error => {
+      console.error(error);
+      this.notificationService.error('Errur cun memorisar l\'utilisader', '', 15000);
+      this.modal.close();
     });
   }
 

@@ -158,7 +158,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }, (error) => {
       console.error(error);
       this.notificationService.error(
-        'Error durant acceptar',
+        'Errur durant acceptar',
         'La proposta na po betg vegnir acceptada. Emprova per plaschair anc ina giada.',
         15000
       );
@@ -181,7 +181,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }, (error) => {
       console.error(error);
       this.notificationService.error(
-        'Error durant refusar',
+        'Errur durant refusar',
         'La proposta na po betg vegnir refusada. Emprova per plaschair anc ina giada.',
         15000
       );
@@ -204,7 +204,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }, (error) => {
       console.error(error);
       this.notificationService.error(
-        'Error durant spustar',
+        'Errur durant spustar',
         'La proposta na po betg vegnir spustada. Emprova per plaschair anc ina giada.',
         15000
       );
@@ -255,7 +255,7 @@ export class ReviewAutoChangesComponent implements OnInit {
         }, error => {
           console.error(error);
           this.notificationService.error(
-            'Error durant modifitgar',
+            'Errur durant modifitgar',
             'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
             15000
           );
@@ -292,7 +292,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       }, error => {
         console.error(error);
         this.notificationService.error(
-          'Error durant modifitgar',
+          'Errur durant modifitgar',
           'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
           15000
         );
@@ -324,7 +324,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }, error => {
       console.error(error);
       this.notificationService.error(
-        'Error durant modifitgar',
+        'Errur durant modifitgar',
         'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
         15000
       );
