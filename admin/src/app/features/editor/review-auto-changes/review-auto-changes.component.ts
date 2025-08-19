@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit, ViewContainerRef } from '@angular/core';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { MainEntryComponent } from '../../modify-entry/main-entry/main-entry.component';
@@ -12,6 +11,7 @@ import { ReferenceVerbDto } from '../../../models/reference-verb-dto';
 import { EntryDto, EntryVersionInternalDto, Inflection, NormalizedEntryVersionDto } from '../../../models/dictionary';
 import { AutoReviewListItem } from '../../../models/dictionary-list';
 import { DbSearchCriteria } from '../../../models/db-search-criteria';
+import { NotificationService } from '../../../services/notification.service';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -84,11 +84,11 @@ export class ReviewAutoChangesComponent implements OnInit {
   constructor(
     private editorService: EditorService,
     private languageSelectionService: LanguageSelectionService,
-    private notification: NzNotificationService,
     private modalService: NzModalService,
     private translateService: TranslateService,
     private viewContainerRef: ViewContainerRef,
     private inflectionService: InflectionService,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnInit(): void {
@@ -132,6 +132,7 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   acceptSelectedLemma() {
+    // TODO
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
@@ -145,6 +146,7 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   rejectSelectedLemma() {
+    // TODO
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
@@ -157,6 +159,7 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   reviewLater() {
+    // TODO
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
@@ -194,9 +197,19 @@ export class ReviewAutoChangesComponent implements OnInit {
           if (entry.current?.versionId === currentId) {
             this.replaceLemma(entry, true);
             this.selectedEntryVersion!.local_review_status = 'EDITED';
+            this.notificationService.success(
+              'Midà la proposta',
+              'La proposta è vegnida midada. Ti las stos anc acceptar.',
+              5000
+            );
           } else {
             this.replaceLemma(entry, false);
             this.selectedEntryVersion!.local_review_status = 'ACCEPTED';
+            this.notificationService.success(
+              'Midà ed acceptà la proposta',
+              'La proposta è vegnida midada ed acceptada. Ti pos cuntinuar cun la proxima.',
+              5000
+            );
             this.downOne();
           }
         });
@@ -224,6 +237,11 @@ export class ReviewAutoChangesComponent implements OnInit {
         workingLemmaVersion
       ).subscribe((entry) => {
         this.replaceLemma(entry, true);
+        this.notificationService.success(
+          'Midà la proposta',
+          'La proposta è vegnida midada. Ti las stos anc acceptar.',
+          5000
+        );
       })
     });
   }
@@ -243,16 +261,13 @@ export class ReviewAutoChangesComponent implements OnInit {
       this.selectedEntryVersion!.version.version.versionId,
       workingLemmaVersion
     ).subscribe((entry) => {
-      this.replaceLemma(entry);
+      this.replaceLemma(entry, true);
+      this.notificationService.success(
+        'Midà la proposta',
+        'La proposta è vegnida midada. Ti las stos anc acceptar.',
+        5000
+      );
     });
-  }
-
-  createNotification(type: string, title: string, notification: string): void {
-    this.notification.create(
-      type,
-      title,
-      notification
-    );
   }
 
   changePage(pageNumber: number)  {
