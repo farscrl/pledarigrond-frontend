@@ -79,6 +79,7 @@ export class Example {
 
 export class Inflection {
   inflectionType?: InflectionType;
+  reviewLater?: boolean;
 
   // These types (Verb, Noun, Adjective, Pronoun, Other) should be defined elsewhere in your codebase.
   verb?: Verb;

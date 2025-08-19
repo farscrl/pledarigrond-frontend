@@ -14,7 +14,6 @@ import { RegistrationService } from '../../../services/registration.service';
 import { FindCorpusEntryComponent } from '../find-corpus-entry/find-corpus-entry.component';
 import {
   Adjective,
-  EntryVersionDto,
   EntryVersionInternalDto,
   Example,
   Inflection,
@@ -30,6 +29,7 @@ export class MainEntryData {
   entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView = false;
   replaceSuggestion = false;
+  isAutomaticChange = false;
 }
 
 @Component({
@@ -43,6 +43,7 @@ export class MainEntryComponent implements OnInit {
   entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView;
   replaceSuggestion;
+  isAutomaticChange: boolean = false;
 
   isLoading = false;
 
@@ -77,6 +78,7 @@ export class MainEntryComponent implements OnInit {
     this.entryVersionToChange = data.entryVersionToChange;
     this.directlyLoadDetailView = data.directlyLoadDetailView;
     this.replaceSuggestion = data.replaceSuggestion;
+    this.isAutomaticChange = data.isAutomaticChange;
   }
 
   ngOnInit(): void {
@@ -478,13 +480,16 @@ export class MainEntryComponent implements OnInit {
   }
 
   private updateEntry(asSuggestion: boolean) {
-    let entryVersion = new EntryVersionDto();
+    let entryVersion = new EntryVersionInternalDto();
     entryVersion.entryId = this.entryVersion.entryId;
     entryVersion = {
       ...this.entryVersion,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
     entryVersion.examples = this.joinExampleStrings();
+
+    // set automatic change flag
+    entryVersion.automaticChange = this.isAutomaticChange;
 
     if (this.replaceSuggestion && this.entryVersionToChange) {
       if (asSuggestion) {

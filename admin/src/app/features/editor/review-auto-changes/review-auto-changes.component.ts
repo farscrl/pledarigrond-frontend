@@ -6,7 +6,6 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { MainEntryComponent } from '../../modify-entry/main-entry/main-entry.component';
 import { Page } from 'src/app/models/page';
-import { InflectionType } from 'src/app/models/inflection';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { Language } from "../../../models/security";
 import { ReferenceVerbDto } from '../../../models/reference-verb-dto';
@@ -174,6 +173,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       return;
     }
 
+    const currentId = this.selectedEntry.current?.versionId;
     this.isWindowOpen = true;
     const modal = this.modalService.create({
       nzTitle: this.translateService.instant('edit.titles.edit'),
@@ -187,10 +187,11 @@ export class ReviewAutoChangesComponent implements OnInit {
         entryVersionToChange: this.selectedEntryVersion.version.version,
         directlyLoadDetailView: true,
         replaceSuggestion: true,
+        isAutomaticChange: true,
       },
       nzOnOk: () => {
         this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion!.entryId).subscribe(entry => {
-          if (entry.suggestions.length > 0) {
+          if (entry.current?.versionId === currentId) {
             this.replaceLemma(entry, true);
             this.selectedEntryVersion!.local_review_status = 'EDITED';
           } else {
@@ -208,23 +209,40 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   nounChangeOnlyMale() {
-    this.generateNewInflection('NOUN', "1", this.selectedEntryVersion!.version.version.rmStichwort!);
+    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), 'NOUN', "1", this.selectedEntryVersion!.version.version.rmStichwort!).subscribe(values => {
+      const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current)) as EntryVersionInternalDto;
+
+      workingLemmaVersion.inflection = new Inflection();
+      workingLemmaVersion.inflection.inflectionType = 'NOUN';
+      workingLemmaVersion.inflection.noun = values.noun;
+      workingLemmaVersion.automaticChange = true;
+
+      this.editorService.replaceSuggestionWithSuggestion(
+        this.languageSelectionService.getCurrentLanguage(),
+        this.selectedEntry!.entryId,
+        this.selectedEntryVersion!.version.version.versionId,
+        workingLemmaVersion
+      ).subscribe((entry) => {
+        this.replaceLemma(entry, true);
+      })
+    });
   }
 
   adjectiveNoAdverbialForm() {
-    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current));
+    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current)) as EntryVersionInternalDto;
 
-    // TODO implement me correctly
-    // delete adverbial form
-    delete workingLemmaVersion.lemmaValues.adverbialForm;
+    workingLemmaVersion.inflection = new Inflection();
+    workingLemmaVersion.inflection.inflectionType = 'ADJECTIVE';
+    workingLemmaVersion.inflection.adjective = this.selectedEntryVersion!.version.version.inflection?.adjective;
+    workingLemmaVersion.inflection.adjective!.adverbialForm = undefined;
+    workingLemmaVersion.automaticChange = true;
 
-    // reset automatically created values
-    delete workingLemmaVersion.pgValues.timestamp;
-    delete workingLemmaVersion.timestamp;
-    delete workingLemmaVersion.userId;
-    delete workingLemmaVersion.pgValues.creator;
-
-    this.editorService.modifyEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntry!.entryId, workingLemmaVersion).subscribe((entry) => {
+    this.editorService.replaceSuggestionWithSuggestion(
+      this.languageSelectionService.getCurrentLanguage(),
+      this.selectedEntry!.entryId,
+      this.selectedEntryVersion!.version.version.versionId,
+      workingLemmaVersion
+    ).subscribe((entry) => {
       this.replaceLemma(entry);
     });
   }
@@ -298,42 +316,24 @@ export class ReviewAutoChangesComponent implements OnInit {
     }
   }
 
-  private generateNewInflection(type: InflectionType, subTypeId: string, baseForm: string) {
-    this.inflectionService.getInflectionForms(this.languageSelectionService.getCurrentLanguage(), type, subTypeId, baseForm).subscribe(values => {
-      const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current)) as EntryVersionInternalDto;
-      workingLemmaVersion.inflection = new Inflection();
-
-      if (type === 'VERB') {
-        workingLemmaVersion.inflection.inflectionType = 'VERB';
-        workingLemmaVersion.inflection.verb = values.verb;
-      } else if (type === 'NOUN') {
-        workingLemmaVersion.inflection.inflectionType = 'NOUN';
-        workingLemmaVersion.inflection.noun = values.noun;
-      } else if (type === 'ADJECTIVE') {
-        workingLemmaVersion.inflection.inflectionType = 'ADJECTIVE';
-        workingLemmaVersion.inflection.adjective = values.adjective;
-      } else {
-        throw new Error('Unknown inflection type');
-      }
-
-      this.editorService.modifyEntryVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntry!.entryId, workingLemmaVersion).subscribe((entry) => {
-        this.replaceLemma(entry);
-      })
-    });
-  }
-
   private replaceLemma(entry: EntryDto, updateSuggestion = false) {
     this.selectedEntry = entry;
 
     if (updateSuggestion) {
-      const version = entry.suggestions.length > 0 ? entry.suggestions[0] : entry.current!;
+      let version: EntryVersionInternalDto = new EntryVersionInternalDto();
+
+      entry.suggestions.forEach((suggestion: EntryVersionInternalDto) => {
+        if (suggestion.automaticChange) {
+          version = suggestion;
+        }
+      });
 
       this.selectedEntryVersion = {
         entryId: entry.entryId,
         version: {
           entryId: entry.entryId,
           publicationStatus: 'HAS_SUGGESTION',
-          version: version
+          version: version!
         },
         selected: true,
         local_review_status: 'EDITED',

@@ -70,7 +70,7 @@
     <nz-content>
       <div class="content" *ngIf="selectedEntry">
         <nz-page-header [nzGhost]="false">
-          <nz-page-header-title>{{ selectedEntry.versions[selectedEntry.versions.length - 1].rmStichwort }} ⇔ {{ selectedEntry.versions[selectedEntry.versions.length - 1].deStichwort }}</nz-page-header-title>
+          <nz-page-header-title>{{ selectedEntryVersion?.version?.version?.rmStichwort }} ⇔ {{ selectedEntryVersion?.version?.version?.deStichwort }}</nz-page-header-title>
           <nz-page-header-extra>
             <button nz-button nzType="primary"  class="button-accept" (click)="acceptSelectedLemma()">{{ 'review.actions.accept' | translate }}<span class="keyboard">enter</span></button>
             <button nz-button nzType="primary" nzDanger (click)="rejectSelectedLemma()">{{ 'review.actions.reject' | translate }}<span class="keyboard">del</span></button>
@@ -79,14 +79,14 @@
           </nz-page-header-extra>
         </nz-page-header>
 
-        <div class="manual-actions" *ngIf="selectedEntry.versions[selectedEntry.versions.length - 1].inflection?.inflectionType === 'NOUN'">
+        <div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'NOUN'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
           <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} <span class="keyboard">1</span></button>
         </div>
-        <div class="manual-actions" *ngIf="selectedEntry.versions[selectedEntry.versions.length - 1].inflection?.inflectionType === 'VERB'">
+        <!--<div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'VERB'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
-        </div>
-        <div class="manual-actions" *ngIf="selectedEntry.versions[selectedEntry.versions.length - 1].inflection?.inflectionType === 'ADJECTIVE'">
+        </div>-->
+        <div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'ADJECTIVE'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
           <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} <span class="keyboard">1</span></button>
         </div>
