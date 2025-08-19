@@ -132,42 +132,82 @@ export class ReviewAutoChangesComponent implements OnInit {
   }
 
   acceptSelectedLemma() {
-    // TODO
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
+
+    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current)) as EntryVersionInternalDto;
+
+    workingLemmaVersion.inflection = this.selectedEntryVersion.version.version.inflection;
+    workingLemmaVersion.automaticChange = true;
+
     const lemma = this.selectedEntryVersion;
-    this.editorService.acceptVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version.version).subscribe((entry) => {
+    this.editorService.replaceSuggestionAndAccept(
+      this.languageSelectionService.getCurrentLanguage(),
+      this.selectedEntryVersion.entryId,
+      this.selectedEntryVersion.version.version.versionId,
+      workingLemmaVersion
+    ).subscribe((entry) => {
       this.selectedEntryVersion!.local_review_status = 'ACCEPTED';
       this.downOne();
+      this.notificationService.success(
+        'Acceptà la proposta',
+        'La proposta è vegnida acceptada. Ti pos cuntinuar cun la proxima.',
+        5000
+      );
     }, (error) => {
       console.error(error);
+      this.notificationService.error(
+        'Error durant acceptar',
+        'La proposta na po betg vegnir acceptada. Emprova per plaschair anc ina giada.',
+        15000
+      );
     });
   }
 
   rejectSelectedLemma() {
-    // TODO
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
+
     this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version.version).subscribe((entry) => {
       this.selectedEntryVersion!.local_review_status = 'REJECTED';
       this.downOne();
+      this.notificationService.success(
+        'Refusà la proposta',
+        'La proposta è vegnida refusada. Ti pos cuntinuar cun la proxima.',
+        5000
+      );
     }, (error) => {
       console.error(error);
+      this.notificationService.error(
+        'Error durant refusar',
+        'La proposta na po betg vegnir refusada. Emprova per plaschair anc ina giada.',
+        15000
+      );
     });
   }
 
   reviewLater() {
-    // TODO
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
+
     this.editorService.reviewEntryLater(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion.entryId, this.selectedEntryVersion.version.version).subscribe((entry) => {
       this.selectedEntryVersion!.local_review_status = 'LATER';
       this.downOne();
+      this.notificationService.success(
+        'Spustà la proposta',
+        'La proposta è vegnida spustada a pli tard. Ti pos cuntinuar cun la proxima.',
+        5000
+      );
     }, (error) => {
       console.error(error);
+      this.notificationService.error(
+        'Error durant spustar',
+        'La proposta na po betg vegnir spustada. Emprova per plaschair anc ina giada.',
+        15000
+      );
     });
   }
 
@@ -212,6 +252,13 @@ export class ReviewAutoChangesComponent implements OnInit {
             );
             this.downOne();
           }
+        }, error => {
+          console.error(error);
+          this.notificationService.error(
+            'Error durant modifitgar',
+            'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
+            15000
+          );
         });
       },
     });
@@ -242,6 +289,13 @@ export class ReviewAutoChangesComponent implements OnInit {
           'La proposta è vegnida midada. Ti las stos anc acceptar.',
           5000
         );
+      }, error => {
+        console.error(error);
+        this.notificationService.error(
+          'Error durant modifitgar',
+          'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
+          15000
+        );
       })
     });
   }
@@ -266,6 +320,13 @@ export class ReviewAutoChangesComponent implements OnInit {
         'Midà la proposta',
         'La proposta è vegnida midada. Ti las stos anc acceptar.',
         5000
+      );
+    }, error => {
+      console.error(error);
+      this.notificationService.error(
+        'Error durant modifitgar',
+        'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
+        15000
       );
     });
   }
