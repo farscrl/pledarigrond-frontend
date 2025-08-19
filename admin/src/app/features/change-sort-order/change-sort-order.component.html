@@ -9,14 +9,14 @@
 <ngx-sortable [items]="itemsToReorder" name="" (listSorted)="listSorted($event)" [listStyle]="listStyle">
   <ng-template let-item="item">
       <div class="sortable-list-item">
-        {{ item.lemmaValues.DStichwort }}<em></em>
-        <em *ngIf="item.lemmaValues.DSubsemantik"> ({{ item.lemmaValues.DSubsemantik }})</em>
-        <em *ngIf="item.lemmaValues.DGenus"> [{{ item.lemmaValues.DGenus }}]</em>
+        {{ item.deStichwort }}<em></em>
+        <em *ngIf="item.deSubsemantik"> ({{ item.deSubsemantik }})</em>
+        <em *ngIf="item.deGenus"> [{{ item.deGenus }}]</em>
          ⇔
-        {{ item.lemmaValues.RStichwort }}
-        <em *ngIf="item.lemmaValues.RFlex"> [{{ item.lemmaValues.RFlex }}]</em>
-        <em *ngIf="item.lemmaValues.RSubsemantik"> ({{ item.lemmaValues.RSubsemantik }})</em>
-        <em *ngIf="item.lemmaValues.RGenus"> [{{ item.lemmaValues.RGenus }}]</em>
+        {{ item.rmStichwort }}
+        <em *ngIf="item.rmFlex"> [{{ item.rmFlex }}]</em>
+        <em *ngIf="item.rmSubsemantik"> ({{ item.rmSubsemantik }})</em>
+        <em *ngIf="item.rmGenus"> [{{ item.rmGenus }}]</em>
       </div>
   </ng-template>
 </ngx-sortable>

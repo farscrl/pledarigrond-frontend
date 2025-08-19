@@ -164,12 +164,12 @@ export class EditorService {
     return this.httpClient.get<EntryVersionInternalDto[]>(this.generateUrl(language, 'get_order'), httpOptions);
   }
 
-  saveSortOrder(language: Language,  dictionaryLanguage: DictionaryLanguage, lemmas: EntryVersionInternalDto[]) {
+  saveSortOrder(language: Language,  dictionaryLanguage: DictionaryLanguage, entries: EntryVersionInternalDto[]) {
     let params: HttpParams = new HttpParams();
 
     params = params.set('dictionaryLanguage', dictionaryLanguage);
 
-    const body: any = Object.assign({}, { lemmas: lemmas });
+    const body: any = Object.assign({}, { entries: entries });
 
     const httpOptions = {
       params: params
