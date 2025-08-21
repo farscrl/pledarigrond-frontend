@@ -36,6 +36,7 @@
   :host {
     flex-direction: row;
     width: 100vw;
+    max-width:100%;
     margin-bottom: 40px;
     min-height: calc(100vh - 76px - 70px);
   }
