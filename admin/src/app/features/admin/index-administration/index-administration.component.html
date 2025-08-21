@@ -14,18 +14,7 @@
       <nz-statistic [nzValue]="(indexInfos.numberOfEntries| number)!" [nzTitle]="'index.stats.indexed' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(indexInfos.approvedEntries| number)!" [nzTitle]="'index.stats.approved' | translate"></nz-statistic>
-    </nz-col>
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(indexInfos.unverifiedEntries| number)!" [nzTitle]="'index.stats.unverified' | translate"></nz-statistic>
-    </nz-col>
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(indexInfos.unknown| number)!" [nzTitle]="'index.stats.other' | translate"></nz-statistic>
-    </nz-col>
-  </nz-row>
-  <nz-row [nzGutter]="16">
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(indexInfos.inflectionCount.V| number)!" [nzTitle]="'index.stats.verbs' | translate"></nz-statistic>
+      <nz-statistic [nzValue]="(indexInfos.inflectionCount.VERB| number)!" [nzTitle]="'index.stats.verbs' | translate"></nz-statistic>
     </nz-col>
     <nz-col [nzSpan]="6">
       <nz-statistic [nzValue]="(indexInfos.inflectionCount.NOUN| number)!" [nzTitle]="'index.stats.nouns' | translate"></nz-statistic>

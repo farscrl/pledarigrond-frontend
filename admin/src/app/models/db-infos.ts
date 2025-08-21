@@ -23,15 +23,14 @@ export class BackupFile {
 
 export class IndexInfos {
   numberOfEntries: number = 0;
-  approvedEntries: number = 0;
-  unverifiedEntries: number = 0;
-  unknown: number = 0;
   lastUpdated: number = 0;
   inflectionCount: InflectionCount = new InflectionCount();
 }
 
 export class InflectionCount {
-  V?: number = 0;
+  VERB?: number = 0;
   ADJECTIVE?: number = 0;
   NOUN?: number = 0;
+  OTHER?: number = 0;
+  PRONOUN?: number = 0;
 }
