@@ -10,10 +10,10 @@ import { FileUtils } from 'src/app/utils/file.utils';
 import { NotificationService } from '../../../services/notification.service';
 
 @Component({
-    selector: 'app-db-administration',
-    templateUrl: './db-administration.component.html',
-    styleUrls: ['./db-administration.component.scss'],
-    standalone: false
+  selector: 'app-db-administration',
+  templateUrl: './db-administration.component.html',
+  styleUrls: ['./db-administration.component.scss'],
+  standalone: false
 })
 export class DbAdministrationComponent implements OnInit {
 
@@ -34,23 +34,26 @@ export class DbAdministrationComponent implements OnInit {
   ngOnInit(): void {
     this.loadDbStats();
     this.dbService.getBackupInfos(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
-      this.backupInfos = data;
-    },
-    error => {
-      console.error(error);
-    });
+        this.backupInfos = data;
+      },
+      error => {
+        console.error(error);
+      });
   }
 
   loadDbStats() {
     this.isLoadingDbInfos = true;
     this.dbService.getDbInfos(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {
-      this.dbInfos = data;
-      this.isLoadingDbInfos = false;
-    },
-    error => {
-      this.isLoadingDbInfos = false;
-      console.error(error);
-    });
+        if (data === null) {
+          data = new DbInfos();
+        }
+        this.dbInfos = data;
+        this.isLoadingDbInfos = false;
+      },
+      error => {
+        this.isLoadingDbInfos = false;
+        console.error(error);
+      });
   }
 
   downloadBackupFile(fileName: string) {
