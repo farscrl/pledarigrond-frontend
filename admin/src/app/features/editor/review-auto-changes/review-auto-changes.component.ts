@@ -54,18 +54,18 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (this.isWindowOpen || !this.selectedEntryVersion) {
       return;
     }
-    if(event.keyCode == KEY_CODE.ENTER){
+    /*if(event.keyCode == KEY_CODE.ENTER){
       this.acceptSelectedLemma();
     } else if (event.keyCode === KEY_CODE.DELETE) {
       this.rejectSelectedLemma();
     } else if (event.keyCode === KEY_CODE.SPACE) {
       this.editSelectedLemma();
-    } else if (event.keyCode === KEY_CODE.DOWN_ARROW) {
+    } else*/ if (event.keyCode === KEY_CODE.DOWN_ARROW) {
       this.downOne();
     } else if (event.keyCode === KEY_CODE.UP_ARROW) {
       this.upOne();
     }
-    if (this.selectedEntry && this.selectedEntryVersion.version.version.inflection?.inflectionType === 'NOUN') {
+    /*if (this.selectedEntry && this.selectedEntryVersion.version.version.inflection?.inflectionType === 'NOUN') {
       if(event.keyCode == KEY_CODE.KEY1){
         this.nounChangeOnlyMale();
       }
@@ -75,8 +75,9 @@ export class ReviewAutoChangesComponent implements OnInit {
       if(event.keyCode == KEY_CODE.KEY1){
         this.adjectiveNoAdverbialForm();
       }
-    }
+    }*/
   }
+
 
   // used to pass math functions to template
   math = Math;
