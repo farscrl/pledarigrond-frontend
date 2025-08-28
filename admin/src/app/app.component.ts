@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { filter, interval, map } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -6,4 +8,29 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.scss'],
     standalone: false
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(private swUpdate: SwUpdate) {
+
+    if (this.swUpdate.isEnabled) {
+      // check every 6 hours while the tab is open
+      interval(6 * 60 * 60 * 1000).subscribe(() => {
+        this.swUpdate.checkForUpdate().catch(() => { /* ignore errors */ });
+      });
+
+      // reload when new version is ready
+      this.swUpdate.versionUpdates.pipe(
+        filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
+        map(evt => ({
+          type: 'UPDATE_AVAILABLE',
+          current: evt.currentVersion,
+          available: evt.latestVersion,
+        }))).subscribe((event) => {
+        console.log('current version: ', event.current);
+        console.log('available version: ', event.available);
+        this.swUpdate.activateUpdate().then(() => {
+          window.location.reload()
+        });
+      });
+    }
+  }
+}

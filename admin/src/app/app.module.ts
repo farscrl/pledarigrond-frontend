@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -72,6 +72,7 @@ import { NzFlexDirective } from 'ng-zorro-antd/flex';
 import { RegistrationStatusComponent } from './components/data/registration-status/registration-status.component';
 import { FindCorpusEntryComponent } from './features/modify-entry/find-corpus-entry/find-corpus-entry.component';
 import { ActionComponent } from './components/data/action/action.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(de);
 
@@ -159,6 +160,12 @@ export function tokenGetter() {
     }),
     NgxSortableModule,
     NzFlexDirective,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     UserLoggedInGuard,
