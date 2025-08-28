@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Page } from '../models/page';
@@ -14,7 +14,8 @@ export class UsersService {
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<Page<User>> {
-    return this.httpClient.get<Page<User>>(this.getUsersUrl());
+    let params: HttpParams = new HttpParams().set('pageSize', 1000);
+    return this.httpClient.get<Page<User>>(this.getUsersUrl(), { params });
   }
 
   getOne(email: string): Observable<User> {
