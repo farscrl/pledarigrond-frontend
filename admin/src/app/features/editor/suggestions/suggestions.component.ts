@@ -24,6 +24,8 @@ export class SuggestionsComponent implements OnInit {
 
   userFilter?: string;
 
+  isLoading = false;
+
   constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) {
     this.columns = this.generateColumns();
   }
@@ -44,6 +46,8 @@ export class SuggestionsComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
+
     this.editorService.getAllEntries(this.languageSelectionService.getCurrentLanguage(), this.currentEditorQuery!, page).subscribe(page => {
       this.paginationInfo = new PaginationInfo(page);
       this.items = page.content.map(v => ({
@@ -55,6 +59,10 @@ export class SuggestionsComponent implements OnInit {
         selected: false,
         disabled: false
       }));
+      this.isLoading = false;
+    }, error => {
+      this.isLoading = false;
+      console.error(error);
     });
   }
 

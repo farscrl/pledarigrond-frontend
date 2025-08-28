@@ -22,6 +22,8 @@ export class LexiconComponent implements OnInit {
 
   selectedEntry?: EntryDto;
 
+  isLoading = false;
+
   private cancelPreviousRequest = new Subject<void>();
 
   constructor(private languageSelectionService: LanguageSelectionService, private editorService: EditorService) {
@@ -40,6 +42,8 @@ export class LexiconComponent implements OnInit {
   loadPage(page: number) {
     this.cancelPreviousRequest.next();
 
+    this.isLoading = true;
+
     this.editorService.searchLemmaVersions(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, page).pipe(
       takeUntil(this.cancelPreviousRequest)
     ).subscribe(page => {
@@ -53,6 +57,10 @@ export class LexiconComponent implements OnInit {
         selected: false,
         disabled: false
       }));
+      this.isLoading = false;
+    }, error => {
+      this.isLoading = false;
+      console.error(error);
     });
   }
 

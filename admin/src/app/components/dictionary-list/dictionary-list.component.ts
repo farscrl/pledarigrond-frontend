@@ -43,6 +43,9 @@ export class DictionaryListComponent {
   @Input()
   replaceSuggestion = false;
 
+  @Input()
+  isLoading = false;
+
   @Output()
   updatePage = new EventEmitter<number>();
 
