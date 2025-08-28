@@ -13,8 +13,12 @@ export class UsersService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(): Observable<Page<User>> {
-    let params: HttpParams = new HttpParams().set('pageSize', 1000);
+  /**
+   * Get a page of all users. Index is 1-based.
+   * @param page
+   */
+  getAll(page: number = 1): Observable<Page<User>> {
+    let params: HttpParams = new HttpParams().set('page', page - 1);
     return this.httpClient.get<Page<User>>(this.getUsersUrl(), { params });
   }
 

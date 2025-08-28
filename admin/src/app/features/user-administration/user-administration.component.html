@@ -8,7 +8,7 @@
         </nz-page-header-extra>
       </nz-page-header>
 
-      <nz-table #basicTable [nzData]="listOfUsers">
+      <nz-table #basicTable [nzData]="listOfUsers" [nzFrontPagination]="false" (nzPageIndexChange)="loadPage($event)" [nzTotal]="totalItems" [nzLoading]="isLoading">
         <thead>
           <tr>
             <th>{{ 'users.email' | translate}}</th>

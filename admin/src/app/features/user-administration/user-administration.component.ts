@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { EditorRole, User } from 'src/app/models/user';
+import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 import { EditComponent } from './edit/edit.component';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,6 +16,9 @@ import { NotificationService } from '../../services/notification.service';
 export class UserAdministrationComponent implements OnInit {
 
   listOfUsers: User[] = [];
+  isLoading = false;
+  currentPage = 1;
+  totalItems = 0;
 
   constructor(
     private usersService: UsersService,
@@ -28,17 +31,6 @@ export class UserAdministrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUsers();
-  }
-
-  roleToColor(role: EditorRole) {
-    switch(role) {
-      case 'EDITOR':
-      case 'ADMIN':
-        return 'green';
-      case 'NONE':
-      case 'GUEST':
-        return 'red';
-    }
   }
 
   newOrEdit(email?: string): void {
@@ -65,6 +57,11 @@ export class UserAdministrationComponent implements OnInit {
     });
   }
 
+  loadPage(data: number) {
+    this.currentPage = data;
+    this.loadUsers();
+  }
+
   private deleteConfirmed(email: string) {
     this.usersService.delete(email).subscribe(() => {
       this.loadUsers();
@@ -76,8 +73,19 @@ export class UserAdministrationComponent implements OnInit {
   }
 
   private loadUsers() {
-    this.usersService.getAll().subscribe(data => {
+    this.isLoading = true;
+    this.usersService.getAll(this.currentPage).subscribe(data => {
       this.listOfUsers = data.content;
+      this.totalItems = data.totalElements;
+      this.isLoading = false;
+
+      if (data.number >= data.totalPages) {
+        this.currentPage--;
+        this.loadUsers();
+      }
+    }, error => {
+      console.error(error);
+      this.isLoading = false;
     });
   }
 }
