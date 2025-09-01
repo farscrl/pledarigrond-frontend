@@ -147,6 +147,10 @@ const routes: Routes = [
                 path: "automatic",
                 component: ReviewAutoChangesComponent,
               },
+              {
+                path: "pronunciation",
+                component: ReviewPronunciationComponent,
+              }
             ]
           },
           {
