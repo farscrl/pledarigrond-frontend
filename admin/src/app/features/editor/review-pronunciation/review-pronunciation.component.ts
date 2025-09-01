@@ -58,11 +58,11 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     if (!this.selectedRegistration || this.ignoreKeyEvents) {
       return;
     }
-    if(event.keyCode == KEY_CODE.ENTER){
+    /*if(event.keyCode == KEY_CODE.ENTER){
       this.acceptRegistration(this.selectedRegistration);
     } else if (event.keyCode === KEY_CODE.DELETE) {
       this.rejectRegistration(this.selectedRegistration);
-    } else if (event.keyCode === KEY_CODE.DOWN_ARROW) {
+    } else*/ if (event.keyCode === KEY_CODE.DOWN_ARROW) {
       this.downOne();
     } else if (event.keyCode === KEY_CODE.UP_ARROW) {
       this.upOne();
