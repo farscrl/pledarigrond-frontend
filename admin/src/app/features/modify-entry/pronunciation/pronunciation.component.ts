@@ -84,6 +84,7 @@ export class PronunciationComponent implements OnInit {
     registration.deStichwort = this.entryVersion?.deStichwort;
     registration.rmGenus = this.entryVersion?.rmGenus;
     registration.rmGrammatik = this.entryVersion?.rmGrammatik;
+    registration.lemmaIds = [this.entryId];
 
     this.registrationService.orderRegistration(registration).subscribe(() => {
       this.init();
