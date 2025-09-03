@@ -62,12 +62,16 @@ export class RegistrationService {
     return this.httpClient.delete<Registration>(this.generateUrl('', registration.id));
   }
 
-  addRegistrationToLemma(registration: Registration, lexEntryId: string) {
-    return this.httpClient.post<Registration>(this.generateUrl('/add_to_lemma/' + lexEntryId), registration);
+  addRegistrationToLemma(registration: Registration, entryId: string) {
+    return this.httpClient.post<Registration>(this.generateUrl('/add_to_lemma/' + entryId), registration);
   }
 
-  didOrderRegistration(lexEntryId: string) {
-    return this.httpClient.post<Registration | null>(this.generateUrl('/did_order/' + lexEntryId), null);
+  removeRegistrationFromLemma(entryId: string) {
+    return this.httpClient.post<Registration>(this.generateUrl('/remove_from_lemma/' + entryId), {});
+  }
+
+  didOrderRegistration(entryId: string) {
+    return this.httpClient.post<Registration | null>(this.generateUrl('/did_order/' + entryId), null);
   }
 
   orderRegistration(registration: Registration) {

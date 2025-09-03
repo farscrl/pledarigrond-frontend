@@ -91,6 +91,23 @@ export class PronunciationComponent implements OnInit {
     });
   }
 
+  removeRegistration() {
+    if (!this.entryVersion?.rmPronunciation) {
+      return;
+    }
+
+    this.modal.confirm({
+      nzTitle: 'Vuls ti propi allontanar la pronunzia?',
+      nzOkText: 'Allontanar',
+      nzCancelText: 'Interrumper',
+      nzOnOk: () => {
+        this.registrationService.removeRegistrationFromLemma(this.entryId).subscribe(() => {
+          this.init();
+        });
+      }
+    });
+  }
+
   private init() {
     this.isModifyActive = false;
     this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.entryId).subscribe(entry => {

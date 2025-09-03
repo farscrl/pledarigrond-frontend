@@ -62,6 +62,20 @@
       <span nz-icon nzType="download"></span>
       Empustar
     </button>
+
+    @if (!!entryVersion?.rmPronunciation) {
+      <nz-divider></nz-divider>
+
+      <h3>Allontanar la pronunzia</h3>
+      <p>
+        Cun quest button po ina pronunzia vegnir allontanada da «{{ entryVersion?.rmStichwort }}». Il pled resta en la glista da tut las
+        pronunzias registradas e stat vinavant era a disposiziun per autras endataziuns.
+      </p>
+      <button nz-button nzType="primary" nzDanger nzSize="large" (click)="removeRegistration()">
+        <span nz-icon nzType="close"></span>
+        Allontanar
+      </button>
+    }
   </div>
 </div>
 
