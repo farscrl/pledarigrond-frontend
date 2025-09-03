@@ -26,14 +26,14 @@ export class PronunciationComponent implements OnInit {
   searchResults: Registration[] = [];
 
   constructor(
-    @Inject(NZ_MODAL_DATA) data: {lexEntryId: string},
+    @Inject(NZ_MODAL_DATA) data: {entryId: string},
     private registrationService: RegistrationService,
     private editorService: EditorService,
     private languageSelectionService: LanguageSelectionService,
     private modalRef: NzModalRef,
     private modal: NzModalService,
   ) {
-    this.entryId = data.lexEntryId;
+    this.entryId = data.entryId;
   }
 
   ngOnInit() {
