@@ -21,6 +21,7 @@
   <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate"><app-diff [old]="originalVersion.rmSubsemantik" [new]="changedVersion.rmSubsemantik"></app-diff></nz-descriptions-item>
   <nz-descriptions-item [nzTitle]="'edit.lemma.rm_link' | translate"><app-diff [old]="originalVersion.rmRedirect" [new]="changedVersion.rmRedirect"></app-diff></nz-descriptions-item>
   <nz-descriptions-item [nzTitle]="'edit.lemma.inflection.title' | translate"><app-diff [old]="originalVersion.inflection?.inflectionType" [new]="changedVersion.inflection?.inflectionType"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'lexicon.lemma.columns.pronunciation' | translate"><app-diff [old]="originalVersion.rmPronunciation" [new]="changedVersion.rmPronunciation"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
 <nz-descriptions nzTitle="Flexiuns da substantivs" *ngIf="originalVersion.inflection?.inflectionType === 'NOUN' || changedVersion.inflection?.inflectionType === 'NOUN'">
