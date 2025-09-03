@@ -176,6 +176,14 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   }
 
   delete(registration: Registration) {
+    if (registration.status === 'COMPLETED') {
+      this.modal.error({
+        nzTitle: 'Quest pled è gia acceptà',
+        nzContent: 'I n’è betg pussaivel d’allontanar pleds acceptads perquai che la pronunzia è gia copiadà en il dicziunari. Ti pos dentant acceder al lemma ed allontanar là la colliaziun a la pronunzia correspundenta.'
+      });
+      return;
+    }
+
     this.modal.confirm({
       nzTitle: 'Vuls ti propi stizzar la pronunzia «' + registration.rmStichwort + '»?',
       nzOkText: 'Stizzar',
