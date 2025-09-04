@@ -15,10 +15,12 @@ export class UsersService {
 
   /**
    * Get a page of all users. Index is 1-based.
-   * @param page
    */
-  getAll(page: number = 1): Observable<Page<User>> {
+  getAll(page: number = 1, searchText?: string): Observable<Page<User>> {
     let params: HttpParams = new HttpParams().set('page', page - 1);
+    if (searchText && searchText !== '') {
+      params = params.set('searchText', searchText);
+    }
     return this.httpClient.get<Page<User>>(this.getUsersUrl(), { params });
   }
 

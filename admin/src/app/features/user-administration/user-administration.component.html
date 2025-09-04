@@ -8,6 +8,18 @@
         </nz-page-header-extra>
       </nz-page-header>
 
+      <nz-collapse>
+        <nz-collapse-panel nzHeader="Filter">
+          <form nz-form [nzLayout]="'inline'" (ngSubmit)="loadPage(1)">
+            <nz-form-item>
+              <nz-form-control [nzSpan]="8" [nzFlex]="1"style="min-width: 400px">
+                <input nz-input placeholder="Num" [(ngModel)]="searchText" name="name" (ngModelChange)="loadPage(1)" />
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+        </nz-collapse-panel>
+      </nz-collapse>
+
       <nz-table #basicTable [nzData]="listOfUsers" [nzFrontPagination]="false" (nzPageIndexChange)="loadPage($event)" [nzTotal]="totalItems" [nzLoading]="isLoading">
         <thead>
           <tr>

@@ -20,6 +20,8 @@ export class UserAdministrationComponent implements OnInit {
   currentPage = 1;
   totalItems = 0;
 
+  searchText = '';
+
   constructor(
     private usersService: UsersService,
     private modalService: NzModalService,
@@ -74,7 +76,7 @@ export class UserAdministrationComponent implements OnInit {
 
   private loadUsers() {
     this.isLoading = true;
-    this.usersService.getAll(this.currentPage).subscribe(data => {
+    this.usersService.getAll(this.currentPage, this.searchText).subscribe(data => {
       this.listOfUsers = data.content;
       this.totalItems = data.totalElements;
       this.isLoading = false;
