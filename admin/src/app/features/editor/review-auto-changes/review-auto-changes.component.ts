@@ -12,6 +12,7 @@ import { EntryDto, EntryVersionInternalDto, Inflection, NormalizedEntryVersionDt
 import { AutoReviewListItem } from '../../../models/dictionary-list';
 import { DbSearchCriteria } from '../../../models/db-search-criteria';
 import { NotificationService } from '../../../services/notification.service';
+import { Subject, takeUntil } from 'rxjs';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -78,6 +79,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     }*/
   }
 
+  private cancelPreviousRequest = new Subject<void>();
 
   // used to pass math functions to template
   math = Math;
@@ -336,8 +338,12 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (pageNumber > 0) {
       pageNumber--;
     }
+    this.cancelPreviousRequest.next();
+
     this.isLoadingData = true;
-    this.editorService.getAllEntries(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, pageNumber).subscribe(page => {
+    this.editorService.getAllEntries(this.languageSelectionService.getCurrentLanguage(), this.searchCriteria!, pageNumber).pipe(
+      takeUntil(this.cancelPreviousRequest)
+    ).subscribe(page => {
       this.isLoadingData = false;
       this.currentPage = page;
       this.reviewItems = page.content.map(value => ({

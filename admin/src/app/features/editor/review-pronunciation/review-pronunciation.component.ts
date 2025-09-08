@@ -9,6 +9,7 @@ import { LanguageSelectionService } from '../../../services/language-selection.s
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AudioPlayerComponent } from '../../../components/audio-player/audio-player.component';
 import { EntryVersionInternalDto } from '../../../models/dictionary';
+import { Subject, takeUntil } from 'rxjs';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -69,6 +70,8 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     }
   }
 
+  private cancelPreviousRequest = new Subject<void>();
+
   constructor(
     private registrationService: RegistrationService,
     private editorService: EditorService,
@@ -101,8 +104,12 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
     if (pageNumber > 0) {
       pageNumber--;
     }
+    this.cancelPreviousRequest.next();
+
     this.isLoadingData = true;
-    this.registrationService.getRegistrations(this.filter, pageNumber, 50).subscribe(page => {
+    this.registrationService.getRegistrations(this.filter, pageNumber, 50).pipe(
+      takeUntil(this.cancelPreviousRequest)
+    ).subscribe(page => {
       this.isLoadingData = false;
       this.currentPage = page as Page<Registration>;
 
