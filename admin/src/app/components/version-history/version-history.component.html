@@ -24,12 +24,12 @@
         <input type="radio" value="data" name="diffAfter" (change)="afterChanged(version)">
       </td>
       <td>
-        {{ formateDateTime(version.timestamp) }}
+        {{ formateDateTime(version.timestamp) }}<br>
         <app-action [action]="version.action"></app-action>
       </td>
       <td>
         <app-user-role [role]="version.creatorRole"></app-user-role><br>
-        {{ EntryVersionInternalDto.getName(version) }}
+        <span class="username">{{ EntryVersionInternalDto.getName(version) }}</span>
       </td>
       <td>
         {{ version.deStichwort }} ⇔ {{ version.rmStichwort }}
@@ -39,7 +39,6 @@
     <td>
       <input type="radio" value="data" name="diffBefore" (change)="beforeChanged()">
     </td>
-    <td>-</td>
     <td>-</td>
     <td>-</td>
     <td>-</td>
