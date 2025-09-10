@@ -329,7 +329,9 @@
       "examples": "Exempels",
       "example": "Exempel",
       "example_placeholder_rm": "Endatar l'exempel per rumantsch",
-      "example_placeholder_de": "Endatar l'exempel per tudestg"
+      "example_placeholder_de": "Endatar l'exempel per tudestg",
+      "sort_order_rm": "Successiun per zavrar (rumantsch)",
+      "sort_order_de": "Successiun per zavrar (tudestg)"
     },
     "conjugation": {
       "title": "Conjugaziun",
