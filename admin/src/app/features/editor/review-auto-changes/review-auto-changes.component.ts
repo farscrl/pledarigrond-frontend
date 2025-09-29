@@ -218,6 +218,7 @@ export class ReviewAutoChangesComponent implements OnInit {
     if (!this.selectedEntry || !this.selectedEntryVersion) {
       return;
     }
+    const replaceSuggestion = this.selectedEntryVersion.local_review_status !== 'ACCEPTED';
 
     const currentId = this.selectedEntry.current?.versionId;
     this.isWindowOpen = true;
@@ -231,7 +232,7 @@ export class ReviewAutoChangesComponent implements OnInit {
       nzData: {
         entryVersionToChange: this.selectedEntryVersion.version.version,
         directlyLoadDetailView: true,
-        replaceSuggestion: true,
+        replaceSuggestion: replaceSuggestion,
         isAutomaticChange: true,
       },
       nzOnOk: () => {
