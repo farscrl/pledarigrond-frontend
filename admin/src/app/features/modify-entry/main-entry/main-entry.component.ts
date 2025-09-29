@@ -25,7 +25,6 @@ import {
 import { ConjugationComponent } from '../conjugation/conjugation.component';
 
 export class MainEntryData {
-  entryIdToChange?: string;
   entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView = false;
   replaceSuggestion = false;
@@ -39,7 +38,6 @@ export class MainEntryData {
     standalone: false
 })
 export class MainEntryComponent implements OnInit {
-  entryIdToChange?: string;
   entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView;
   replaceSuggestion;
@@ -74,7 +72,6 @@ export class MainEntryComponent implements OnInit {
     @Inject(NZ_MODAL_DATA) data: MainEntryData,
     private registrationService: RegistrationService,
   ) {
-    this.entryIdToChange = data.entryIdToChange;
     this.entryVersionToChange = data.entryVersionToChange;
     this.directlyLoadDetailView = data.directlyLoadDetailView;
     this.replaceSuggestion = data.replaceSuggestion;

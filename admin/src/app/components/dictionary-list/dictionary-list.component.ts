@@ -291,7 +291,6 @@ export class DictionaryListComponent {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        entryIdToChange: entryId,
         entryVersionToChange: version,
         replaceSuggestion: this.replaceSuggestion,
       },

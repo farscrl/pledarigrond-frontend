@@ -229,7 +229,6 @@ export class ReviewAutoChangesComponent implements OnInit {
       nzWidth: 1100,
       nzViewContainerRef: this.viewContainerRef,
       nzData: {
-        entryIdToChange: this.selectedEntryVersion.entryId,
         entryVersionToChange: this.selectedEntryVersion.version.version,
         directlyLoadDetailView: true,
         replaceSuggestion: true,
