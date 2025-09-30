@@ -6,6 +6,7 @@ import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { EnvironmentService } from "../../../services/environment.service";
 import { Adjective, EntryVersionInternalDto } from '../../../models/dictionary';
+import { CopyService } from '../../../services/copy.service';
 
 export class AdjectiveGenerationData {
   version?: EntryVersionInternalDto;
@@ -33,6 +34,7 @@ export class AdjectiveGenerationComponent implements OnInit {
     private inflectionService: InflectionService,
     private languageSelectionService: LanguageSelectionService,
     private modal: NzModalRef,
+    public copyService: CopyService,
     public environmentService: EnvironmentService,
     @Inject(NZ_MODAL_DATA) data: AdjectiveGenerationData,
   ) {
@@ -83,7 +85,7 @@ export class AdjectiveGenerationComponent implements OnInit {
     }
   }
 
-  private returnValues() {
+  private generateAdjectiveObject() {
     this.working.baseForm = this.validateForm.get('baseForm')?.value;
     this.working.inflectionSubtype = this.validateForm.get('inflectionSubtype')?.value;
     this.working.irregular = this.validateForm.get('irregular')?.value;
@@ -93,7 +95,10 @@ export class AdjectiveGenerationComponent implements OnInit {
     this.working.mPlural = this.validateForm.get('mPlural')?.value;
     this.working.fPlural = this.validateForm.get('fPlural')?.value;
     this.working.adverbialForm = this.validateForm.get('adverbialForm')?.value;
+  }
 
+  private returnValues() {
+    this.generateAdjectiveObject();
     this.modal.close(this.working);
 }
 
@@ -154,5 +159,33 @@ export class AdjectiveGenerationComponent implements OnInit {
       this.working = inflection.adjective!;
       this.setUpForm();
     });
+  }
+
+  copyAdjective() {
+    this.generateAdjectiveObject();
+    const toCopy: Adjective = JSON.parse(JSON.stringify(this.working || new Adjective()));
+    this.copyService.copyInflectionAdjective(toCopy);
+  }
+
+  pasteAdjective() {
+    if (!this.copyService.canPasteInflectionAdjective()) {
+      return;
+    }
+
+    this.copyForms(this.copyService.inflectionAdjective);
+  }
+
+  private copyForms(from: Adjective) {
+    this.working.baseForm = from.baseForm;
+    this.working.inflectionSubtype = from.inflectionSubtype;
+    this.working.irregular = from.irregular;
+
+    this.working.mSingular = from.mSingular;
+    this.working.fSingular = from.fSingular;
+    this.working.mPlural = from.mPlural;
+    this.working.fPlural = from.fPlural;
+    this.working.adverbialForm = from.adverbialForm;
+
+    this.setUpForm();
   }
 }

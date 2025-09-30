@@ -1,6 +1,18 @@
 <app-pronunciation-characters *ngIf="environmentService.isLadin()"></app-pronunciation-characters>
 <form nz-form [formGroup]="validateForm">
   <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">surpigliar furma existenta</nz-form-label>
+    <nz-form-control [nzSm]="18" [nzXs]="24">
+      <button nz-button (click)="copyNoun()" style="margin-right: 12px;">
+        Copiar flexiun
+      </button>
+      <button nz-button *ngIf="copyService.canPasteInflectionNoun()" (click)="pasteNoun()">
+        Encollar flexiun ({{copyService.inflectionNounBaseForm}})
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="baseForm">{{ 'edit.noun.forms.baseForm' | translate }}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input formControlName="baseForm" id="baseForm" />

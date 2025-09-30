@@ -6,6 +6,7 @@ import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { EnvironmentService } from "../../../services/environment.service";
 import { EntryVersionInternalDto, Noun } from '../../../models/dictionary';
+import { CopyService } from '../../../services/copy.service';
 
 export class NounGenerationData {
   version?: EntryVersionInternalDto;
@@ -34,6 +35,7 @@ export class NounGenerationComponent implements OnInit {
     private inflectionService: InflectionService,
     private languageSelectionService: LanguageSelectionService,
     private modal: NzModalRef,
+    public copyService: CopyService,
     public environmentService: EnvironmentService,
     @Inject(NZ_MODAL_DATA) data: NounGenerationData,
   ) {
@@ -84,7 +86,7 @@ export class NounGenerationComponent implements OnInit {
     }
   }
 
-  private returnValues() {
+  private generateNounObject() {
     this.working.baseForm = this.validateForm.get('baseForm')?.value;
     this.working.inflectionSubtype = this.validateForm.get('inflectionSubtype')?.value;
     this.working.irregular = this.validateForm.get('irregular')?.value;
@@ -94,7 +96,10 @@ export class NounGenerationComponent implements OnInit {
     this.working.mPlural = this.validateForm.get('mPlural')?.value;
     this.working.fPlural = this.validateForm.get('fPlural')?.value;
     this.working.pluralCollectiv = this.validateForm.get('pluralCollectiv')?.value;
+  }
 
+  private returnValues() {
+    this.generateNounObject();
     this.modal.close(this.working);
   }
 
@@ -154,5 +159,33 @@ export class NounGenerationComponent implements OnInit {
       this.working = inflection.noun!;
       this.setUpForm();
     });
+  }
+
+  copyNoun() {
+    this.generateNounObject();
+    const toCopy: Noun = JSON.parse(JSON.stringify(this.working || new Noun()));
+    this.copyService.copyInflectionNoun(toCopy);
+  }
+
+  pasteNoun() {
+    if (!this.copyService.canPasteInflectionNoun()) {
+      return;
+    }
+
+    this.copyForms(this.copyService.inflectionNoun);
+  }
+
+  private copyForms(from: Noun) {
+    this.working.baseForm = from.baseForm;
+    this.working.inflectionSubtype = from.inflectionSubtype;
+    this.working.irregular = from.irregular;
+
+    this.working.mSingular = from.mSingular;
+    this.working.fSingular = from.fSingular;
+    this.working.mPlural = from.mPlural;
+    this.working.fPlural = from.fPlural;
+    this.working.pluralCollectiv = from.pluralCollectiv;
+
+    this.setUpForm();
   }
 }

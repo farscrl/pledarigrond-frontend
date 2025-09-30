@@ -130,16 +130,16 @@ export class ConjugationComponent implements OnInit {
   }
 
   copyConjugation() {
-    this.copyService.copyConjugation(this.version!.entryId!, this.working.infinitiv!);
+    this.generateVerbObject();
+    const toCopy= JSON.parse(JSON.stringify(this.working || new Verb()));
+    this.copyService.copyConjugation(toCopy);
   }
 
   pasteConjugation() {
     if (!this.copyService.canPasteConjugation()) {
       return;
     }
-    this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.copyService.entryId!).subscribe(entry => {
-      this.copyVerbForms(entry.current!);
-    });
+    this.copyVerbForms(this.copyService.conjugation);
   }
 
   triggerChangeDetectionForAutoSizeLater() {
@@ -148,7 +148,7 @@ export class ConjugationComponent implements OnInit {
     }, 150);
   }
 
-  private returnValues() {
+  private generateVerbObject() {
     this.working.infinitiv = this.validateForm.get('infinitiv')?.value;
     this.working.inflectionSubtype = this.validateForm.get('inflectionSubtype')?.value;
     this.working.irregular = this.validateForm.get('irregular')?.value;
@@ -294,7 +294,10 @@ export class ConjugationComponent implements OnInit {
       plural2: this.validateForm.get('futurdubitativplural2enclitic')?.value,
       plural3: this.validateForm.get('futurdubitativplural3enclitic')?.value
     }
+  }
 
+  private returnValues() {
+    this.generateVerbObject();
     this.modal.close(this.working);
   }
 
@@ -571,9 +574,7 @@ export class ConjugationComponent implements OnInit {
     });
   }
 
-  private copyVerbForms(toCopy: EntryVersionInternalDto) {
-    const valuesToCopy = toCopy.inflection!.verb!;
-
+  private copyVerbForms(valuesToCopy: Verb) {
     this.working.infinitiv = valuesToCopy.infinitiv;
     this.working.inflectionSubtype = valuesToCopy.inflectionSubtype;
     this.working.irregular = valuesToCopy.irregular;
