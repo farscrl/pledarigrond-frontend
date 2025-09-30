@@ -423,6 +423,7 @@ export class ConjugationComponent implements OnInit {
     this.validateForm.get("irregular")!.valueChanges.subscribe(value => {
       this.isRegular = !value;
     });
+    this.isRegular = !this.validateForm.get('irregular')?.value;
 
     this.triggerChangeDetectionForAutoSizeLater();
   }
