@@ -8,7 +8,13 @@ import { Page } from 'src/app/models/page';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { Language } from "../../../models/security";
 import { ReferenceVerbDto } from '../../../models/reference-verb-dto';
-import { EntryDto, EntryVersionInternalDto, Inflection, NormalizedEntryVersionDto } from '../../../models/dictionary';
+import {
+  EntryDto,
+  EntryVersionInternalDto,
+  Inflection,
+  NormalizedEntryVersionDto,
+  Verb
+} from '../../../models/dictionary';
 import { AutoReviewListItem } from '../../../models/dictionary-list';
 import { DbSearchCriteria } from '../../../models/db-search-criteria';
 import { NotificationService } from '../../../services/notification.service';
@@ -334,6 +340,110 @@ export class ReviewAutoChangesComponent implements OnInit {
     });
   }
 
+  copyReference() {
+    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current)) as EntryVersionInternalDto;
+
+    workingLemmaVersion.inflection = new Inflection();
+    workingLemmaVersion.inflection.inflectionType = 'VERB';
+    workingLemmaVersion.inflection.verb = JSON.parse(JSON.stringify(this.selectedEntryVersion!.version.version.inflection?.verb)) as Verb;
+    workingLemmaVersion.automaticChange = true;
+
+    const verb = workingLemmaVersion.inflection.verb!;
+    verb.infinitiv = this.referenceInflection?.infinitiv;
+    verb.irregular = true;
+    verb.preschent = {
+      sing1: this.referenceInflection?.preschentsing1,
+      sing2: this.referenceInflection?.preschentsing2,
+      sing3: this.referenceInflection?.preschentsing3,
+      plural1: this.referenceInflection?.preschentplural1,
+      plural2: this.referenceInflection?.preschentplural2,
+      plural3: this.referenceInflection?.preschentplural3,
+    }
+
+    verb.imperativ = {
+      singular: this.referenceInflection?.imperativ1,
+      plural: this.referenceInflection?.imperativ2,
+    }
+
+    verb.participPerfect = {
+      ms: this.referenceInflection?.participperfectms,
+      fs: this.referenceInflection?.participperfectfs,
+      mp: this.referenceInflection?.participperfectmp,
+      fp: this.referenceInflection?.participperfectfp,
+      msPredicativ: this.referenceInflection?.participperfectneut,
+    }
+
+    verb.gerundium = this.referenceInflection?.gerundium;
+
+    verb.imperfect = {
+      sing1: this.referenceInflection?.imperfectsing1,
+      sing2: this.referenceInflection?.imperfectsing2,
+      sing3: this.referenceInflection?.imperfectsing3,
+      plural1: this.referenceInflection?.imperfectplural1,
+      plural2: this.referenceInflection?.imperfectplural2,
+      plural3: this.referenceInflection?.imperfectplural3,
+    }
+
+    verb.cundiziunal = {
+      sing1: this.referenceInflection?.cundizionalsing1,
+      sing2: this.referenceInflection?.cundizionalsing2,
+      sing3: this.referenceInflection?.cundizionalsing3,
+      plural1: this.referenceInflection?.cundizionalplural1,
+      plural2: this.referenceInflection?.cundizionalplural2,
+      plural3: this.referenceInflection?.cundizionalplural3,
+    }
+
+    verb.cundiziunalIndirect = {
+      sing1: this.referenceInflection?.cundizionalindsing1,
+      sing2: this.referenceInflection?.cundizionalindsing2,
+      sing3: this.referenceInflection?.cundizionalindsing3,
+      plural1: this.referenceInflection?.cundizionalindplural1,
+      plural2: this.referenceInflection?.cundizionalindplural2,
+      plural3: this.referenceInflection?.cundizionalindplural3,
+    }
+
+    verb.conjunctiv = {
+      sing1: this.referenceInflection?.conjunctivsing1,
+      sing2: this.referenceInflection?.conjunctivsing2,
+      sing3: this.referenceInflection?.conjunctivsing3,
+      plural1: this.referenceInflection?.conjunctivplural1,
+      plural2: this.referenceInflection?.conjunctivplural2,
+      plural3: this.referenceInflection?.conjunctivplural3,
+    }
+
+    verb.conjunctivImperfect = {
+      sing1: this.referenceInflection?.conjunctivimpsing1,
+      sing2: this.referenceInflection?.conjunctivimpsing2,
+      sing3: this.referenceInflection?.conjunctivimpsing3,
+      plural1: this.referenceInflection?.conjunctivimpplural1,
+      plural2: this.referenceInflection?.conjunctivimpplural2,
+      plural3: this.referenceInflection?.conjunctivimpplural3,
+    }
+
+    this.addPronouns(verb);
+
+    this.editorService.replaceSuggestionWithSuggestion(
+      this.languageSelectionService.getCurrentLanguage(),
+      this.selectedEntry!.entryId,
+      this.selectedEntryVersion!.version.version.versionId,
+      workingLemmaVersion
+    ).subscribe((entry) => {
+      this.replaceLemma(entry, true);
+      this.notificationService.success(
+        'Copià la referenza',
+        'La referenza è vegnida copiada. Ti las stos anc acceptar.',
+        5000
+      );
+    }, error => {
+      console.error(error);
+      this.notificationService.error(
+        'Errur durant copiar',
+        'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
+        15000
+      );
+    });
+  }
+
   changePage(pageNumber: number)  {
     if (pageNumber > 0) {
       pageNumber--;
@@ -451,5 +561,67 @@ export class ReviewAutoChangesComponent implements OnInit {
     });
 
     return returnValue;
+  }
+
+  private addPronouns(verb: Verb): void {
+    // PRESCHENT
+    verb.preschent!.sing1 = this.setPronoun("jeu ", verb.preschent!.sing1!);
+    verb.preschent!.sing2 = this.setPronoun("ti ", verb.preschent!.sing2!);
+    verb.preschent!.sing3 = this.setPronoun("el/ella ", verb.preschent!.sing3!);
+    verb.preschent!.plural1 = this.setPronoun("nus ", verb.preschent!.plural1!);
+    verb.preschent!.plural2 = this.setPronoun("vus ", verb.preschent!.plural2!);
+    verb.preschent!.plural3 = this.setPronoun("els/ellas ", verb.preschent!.plural3!);
+
+    // IMPERFECT
+    verb.imperfect!.sing1 = this.setPronoun("jeu ", verb.imperfect!.sing1!);
+    verb.imperfect!.sing2 = this.setPronoun("ti ", verb.imperfect!.sing2!);
+    verb.imperfect!.sing3 = this.setPronoun("el/ella ", verb.imperfect!.sing3!);
+    verb.imperfect!.plural1 = this.setPronoun("nus ", verb.imperfect!.plural1!);
+    verb.imperfect!.plural2 = this.setPronoun("vus ", verb.imperfect!.plural2!);
+    verb.imperfect!.plural3 = this.setPronoun("els/ellas ", verb.imperfect!.plural3!);
+
+    // CONJUNCTIV
+    verb.conjunctiv!.sing1 = this.setPronoun("che " + "jeu ", verb.conjunctiv!.sing1!);
+    verb.conjunctiv!.sing2 = this.setPronoun("che " + "ti ", verb.conjunctiv!.sing2!);
+    verb.conjunctiv!.sing3 = this.setPronoun("ch'" + "el/ella ", verb.conjunctiv!.sing3!);
+    verb.conjunctiv!.plural1 = this.setPronoun("che " + "nus ", verb.conjunctiv!.plural1!);
+    verb.conjunctiv!.plural2 = this.setPronoun("che " + "vus ", verb.conjunctiv!.plural2!);
+    verb.conjunctiv!.plural3 = this.setPronoun("ch'" + "els/ellas ", verb.conjunctiv!.plural3!);
+
+    // CONJUNCTIV IMPERFECT
+    verb.conjunctivImperfect!.sing1 = this.setPronoun("che " + "jeu ", verb.conjunctivImperfect!.sing1!);
+    verb.conjunctivImperfect!.sing2 = this.setPronoun("che " + "ti ", verb.conjunctivImperfect!.sing2!);
+    verb.conjunctivImperfect!.sing3 = this.setPronoun("ch'" + "el/ella ", verb.conjunctivImperfect!.sing3!);
+    verb.conjunctivImperfect!.plural1 = this.setPronoun("che " + "nus ", verb.conjunctivImperfect!.plural1!);
+    verb.conjunctivImperfect!.plural2 = this.setPronoun("che " + "vus ", verb.conjunctivImperfect!.plural2!);
+    verb.conjunctivImperfect!.plural3 = this.setPronoun("ch'" + "els/ellas ", verb.conjunctivImperfect!.plural3!);
+
+    // CUNDIZIONAL
+    verb.cundiziunal!.sing1 = this.setPronoun("jeu ", verb.cundiziunal!.sing1!);
+    verb.cundiziunal!.sing2 = this.setPronoun("ti ", verb.cundiziunal!.sing2!);
+    verb.cundiziunal!.sing3 = this.setPronoun("el/ella ", verb.cundiziunal!.sing3!);
+    verb.cundiziunal!.plural1 = this.setPronoun("nus ", verb.cundiziunal!.plural1!);
+    verb.cundiziunal!.plural2 = this.setPronoun("vus ", verb.cundiziunal!.plural2!);
+    verb.cundiziunal!.plural3 = this.setPronoun("els/ellas ", verb.cundiziunal!.plural3!);
+
+    // CUNDIZIONAL INDIRECT
+    verb.cundiziunalIndirect!.sing1 = this.setPronoun("jeu ", verb.cundiziunalIndirect!.sing1!);
+    verb.cundiziunalIndirect!.sing2 = this.setPronoun("ti ", verb.cundiziunalIndirect!.sing2!);
+    verb.cundiziunalIndirect!.sing3 = this.setPronoun("el/ella ", verb.cundiziunalIndirect!.sing3!);
+    verb.cundiziunalIndirect!.plural1 = this.setPronoun("nus ", verb.cundiziunalIndirect!.plural1!);
+    verb.cundiziunalIndirect!.plural2 = this.setPronoun("vus ", verb.cundiziunalIndirect!.plural2!);
+    verb.cundiziunalIndirect!.plural3 = this.setPronoun("els/ellas ", verb.cundiziunalIndirect!.plural3!);
+
+    // FUTUR
+    verb.futur!.sing1 = this.setPronoun("jeu ", verb.futur!.sing1!);
+    verb.futur!.sing2 = this.setPronoun("ti ", verb.futur!.sing2!);
+    verb.futur!.sing3 = this.setPronoun("el/ella ", verb.futur!.sing3!);
+    verb.futur!.plural1 = this.setPronoun("nus ", verb.futur!.plural1!);
+    verb.futur!.plural2 = this.setPronoun("vus ", verb.futur!.plural2!);
+    verb.futur!.plural3 = this.setPronoun("els/ellas ", verb.futur!.plural3!);
+  }
+
+  private setPronoun(prefix: string, value: string): string {
+    return prefix + value;
   }
 }

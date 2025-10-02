@@ -83,9 +83,10 @@
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
           <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} <!--<span class="keyboard">1</span>--></button>
         </div>
-        <!--<div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'VERB'">
+        <div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'VERB' && !!referenceInflection">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
-        </div>-->
+          <button nz-button (click)="copyReference()">Copiar verb da referenza</button>
+        </div>
         <div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'ADJECTIVE'">
           <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
           <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} <!--<span class="keyboard">1</span>--></button>
