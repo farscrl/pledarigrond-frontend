@@ -119,7 +119,7 @@
     <app-diff [old]="originalVersion.inflection?.verb?.cundiziunal?.plural3" [new]="changedVersion.inflection?.verb?.cundiziunal?.plural3"></app-diff><br>
   </div>
 
-  <div class="conjugaziun" *ngIf="language === 'sutsilvan'">
+  <div class="conjugaziun" *ngIf="language === 'sutsilvan' || language === 'sursilvan'">
     <div><b>Cundiziunal indirect</b></div>
     <app-diff [old]="originalVersion.inflection?.verb?.cundiziunalIndirect?.sing1" [new]="changedVersion.inflection?.verb?.cundiziunalIndirect?.sing1"></app-diff><br>
     <app-diff [old]="originalVersion.inflection?.verb?.cundiziunalIndirect?.sing2" [new]="changedVersion.inflection?.verb?.cundiziunalIndirect?.sing2"></app-diff><br>
