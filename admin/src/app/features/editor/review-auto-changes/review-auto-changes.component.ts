@@ -611,14 +611,6 @@ export class ReviewAutoChangesComponent implements OnInit {
     verb.cundiziunalIndirect!.plural1 = this.setPronoun("nus ", verb.cundiziunalIndirect!.plural1!);
     verb.cundiziunalIndirect!.plural2 = this.setPronoun("vus ", verb.cundiziunalIndirect!.plural2!);
     verb.cundiziunalIndirect!.plural3 = this.setPronoun("els/ellas ", verb.cundiziunalIndirect!.plural3!);
-
-    // FUTUR
-    verb.futur!.sing1 = this.setPronoun("jeu ", verb.futur!.sing1!);
-    verb.futur!.sing2 = this.setPronoun("ti ", verb.futur!.sing2!);
-    verb.futur!.sing3 = this.setPronoun("el/ella ", verb.futur!.sing3!);
-    verb.futur!.plural1 = this.setPronoun("nus ", verb.futur!.plural1!);
-    verb.futur!.plural2 = this.setPronoun("vus ", verb.futur!.plural2!);
-    verb.futur!.plural3 = this.setPronoun("els/ellas ", verb.futur!.plural3!);
   }
 
   private setPronoun(prefix: string, value: string): string {
