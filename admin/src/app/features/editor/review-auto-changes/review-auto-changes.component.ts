@@ -613,7 +613,8 @@ export class ReviewAutoChangesComponent implements OnInit {
     verb.cundiziunalIndirect!.plural3 = this.setPronoun("els/ellas ", verb.cundiziunalIndirect!.plural3!);
   }
 
-  private setPronoun(prefix: string, value: string): string {
-    return prefix + value;
+  private setPronoun(pronoun: string, forms: string): string {
+    const singleForms = forms.split(/\r?\n/).map(f => pronoun + f);
+    return singleForms.join("\n");
   }
 }
