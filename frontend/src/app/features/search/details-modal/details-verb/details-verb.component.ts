@@ -131,7 +131,7 @@ export class DetailsVerbComponent implements OnChanges {
     this.versionCopy.inflection.verb.futurDubitativ = this.versionCopy.inflection.verb.futurDubitativ || {};
     this.versionCopy.inflection.verb.preschentEnclitic = this.versionCopy.inflection.verb.preschentEnclitic || {};
     this.versionCopy.inflection.verb.imperfectEnclitic = this.versionCopy.inflection.verb.imperfectEnclitic || {};
-    this.versionCopy.inflection.verb.cundizionalEnclitic = this.versionCopy.inflection.verb.cundizionalEnclitic || {};
+    this.versionCopy.inflection.verb.cundiziunalEnclitic = this.versionCopy.inflection.verb.cundiziunalEnclitic || {};
     this.versionCopy.inflection.verb.futurEnclitic = this.versionCopy.inflection.verb.futurEnclitic || {};
     this.versionCopy.inflection.verb.futurDubitativEnclitic = this.versionCopy.inflection.verb.futurDubitativEnclitic || {};
 
@@ -145,7 +145,7 @@ export class DetailsVerbComponent implements OnChanges {
     [this.versionCopy.inflection!.verb!.futurDubitativ!.sing1, this.pronouns.futurdubitativsing1] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativ?.sing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.preschentEnclitic!.sing1, this.pronouns.preschentsing1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.preschentEnclitic?.sing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.imperfectEnclitic!.sing1, this.pronouns.imperfectsing1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.imperfectEnclitic?.sing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
-    [this.versionCopy.inflection!.verb!.cundizionalEnclitic!.sing1, this.pronouns.cundizionalsing1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundizionalEnclitic?.sing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.versionCopy.inflection!.verb!.cundiziunalEnclitic!.sing1, this.pronouns.cundizionalsing1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundiziunalEnclitic?.sing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.futurEnclitic!.sing1, this.pronouns.futursing1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurEnclitic?.sing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.futurDubitativEnclitic!.sing1, this.pronouns.futurdubitativsing1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativEnclitic?.sing1, [ppConj[0], pp[0], ppRefl[0], ppReflVowel[0], ppConj[6], pp[6], ppConj[7], pp[7]]);
 
@@ -159,7 +159,7 @@ export class DetailsVerbComponent implements OnChanges {
     [this.versionCopy.inflection!.verb!.futurDubitativ!.sing2, this.pronouns.futurdubitativsing2] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativ?.sing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
     [this.versionCopy.inflection!.verb!.preschentEnclitic!.sing2, this.pronouns.preschentsing2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.preschentEnclitic?.sing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
     [this.versionCopy.inflection!.verb!.imperfectEnclitic!.sing2, this.pronouns.imperfectsing2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.imperfectEnclitic?.sing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
-    [this.versionCopy.inflection!.verb!.cundizionalEnclitic!.sing2, this.pronouns.cundizionalsing2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundizionalEnclitic?.sing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
+    [this.versionCopy.inflection!.verb!.cundiziunalEnclitic!.sing2, this.pronouns.cundizionalsing2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundiziunalEnclitic?.sing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
     [this.versionCopy.inflection!.verb!.futurEnclitic!.sing2, this.pronouns.futursing2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurEnclitic?.sing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
     [this.versionCopy.inflection!.verb!.futurDubitativEnclitic!.sing2, this.pronouns.futurdubitativsing2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativEnclitic?.sing2, [ppConj[1], pp[1], ppRefl[1], ppReflVowel[1]]);
 
@@ -175,8 +175,8 @@ export class DetailsVerbComponent implements OnChanges {
     [this.versionCopy.inflection!.verb!.preschentEnclitic!.sing3f, this.pronouns.preschentsing3encliticf] = this.extractPrefixes(this.versionCopy.inflection!.verb!.preschentEnclitic?.sing3f, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.imperfectEnclitic!.sing3m, this.pronouns.imperfectsing3encliticm] = this.extractPrefixes(this.versionCopy.inflection!.verb!.imperfectEnclitic?.sing3m, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.imperfectEnclitic!.sing3f, this.pronouns.imperfectsing3encliticf] = this.extractPrefixes(this.versionCopy.inflection!.verb!.imperfectEnclitic?.sing3f, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
-    [this.versionCopy.inflection!.verb!.cundizionalEnclitic!.sing3m, this.pronouns.cundizionalsing3encliticm] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundizionalEnclitic?.sing3m, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
-    [this.versionCopy.inflection!.verb!.cundizionalEnclitic!.sing3f, this.pronouns.cundizionalsing3encliticf] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundizionalEnclitic?.sing3f, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.versionCopy.inflection!.verb!.cundiziunalEnclitic!.sing3m, this.pronouns.cundizionalsing3encliticm] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundiziunalEnclitic?.sing3m, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
+    [this.versionCopy.inflection!.verb!.cundiziunalEnclitic!.sing3f, this.pronouns.cundizionalsing3encliticf] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundiziunalEnclitic?.sing3f, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.futurEnclitic!.sing3m, this.pronouns.futursing3encliticm] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurEnclitic?.sing3m, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.futurEnclitic!.sing3f, this.pronouns.futursing3encliticf] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurEnclitic?.sing3f, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
     [this.versionCopy.inflection!.verb!.futurDubitativEnclitic!.sing3m, this.pronouns.futurdubitativsing3encliticm] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativEnclitic?.sing3m, [ppConj[2], pp[2], ppRefl[2], ppReflVowel[2], ppConj[6], pp[6], ppConj[7], pp[7]]);
@@ -192,7 +192,7 @@ export class DetailsVerbComponent implements OnChanges {
     [this.versionCopy.inflection!.verb!.futurDubitativ!.plural1, this.pronouns.futurdubitativplural1] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativ?.plural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
     [this.versionCopy.inflection!.verb!.preschentEnclitic!.plural1, this.pronouns.preschentplural1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.preschentEnclitic?.plural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
     [this.versionCopy.inflection!.verb!.imperfectEnclitic!.plural1, this.pronouns.imperfectplural1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.imperfectEnclitic?.plural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
-    [this.versionCopy.inflection!.verb!.cundizionalEnclitic!.plural1, this.pronouns.cundizionalplural1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundizionalEnclitic?.plural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
+    [this.versionCopy.inflection!.verb!.cundiziunalEnclitic!.plural1, this.pronouns.cundizionalplural1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundiziunalEnclitic?.plural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
     [this.versionCopy.inflection!.verb!.futurEnclitic!.plural1, this.pronouns.futurplural1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurEnclitic?.plural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
     [this.versionCopy.inflection!.verb!.futurDubitativEnclitic!.plural1, this.pronouns.futurdubitativplural1enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativEnclitic?.plural1, [ppConj[3], pp[3], ppRefl[3], ppReflVowel[3]]);
 
@@ -206,7 +206,7 @@ export class DetailsVerbComponent implements OnChanges {
     [this.versionCopy.inflection!.verb!.futurDubitativ!.plural2, this.pronouns.futurdubitativplural2] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativ?.plural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
     [this.versionCopy.inflection!.verb!.preschentEnclitic!.plural2, this.pronouns.preschentplural2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.preschentEnclitic!.plural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
     [this.versionCopy.inflection!.verb!.imperfectEnclitic!.plural2, this.pronouns.imperfectplural2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.imperfectEnclitic?.plural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
-    [this.versionCopy.inflection!.verb!.cundizionalEnclitic!.plural2, this.pronouns.cundizionalplural2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundizionalEnclitic?.plural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
+    [this.versionCopy.inflection!.verb!.cundiziunalEnclitic!.plural2, this.pronouns.cundizionalplural2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundiziunalEnclitic?.plural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
     [this.versionCopy.inflection!.verb!.futurEnclitic!.plural2, this.pronouns.futurplural2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurEnclitic?.plural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
     [this.versionCopy.inflection!.verb!.futurDubitativEnclitic!.plural2, this.pronouns.futurdubitativplural2enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativEnclitic?.plural2, [ppConj[4], pp[4], ppRefl[4], ppReflVowel[4]]);
 
@@ -220,7 +220,7 @@ export class DetailsVerbComponent implements OnChanges {
     [this.versionCopy.inflection!.verb!.futurDubitativ!.plural3, this.pronouns.futurdubitativplural3] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativ?.plural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
     [this.versionCopy.inflection!.verb!.preschentEnclitic!.plural3, this.pronouns.preschentplural3enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.preschentEnclitic?.plural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
     [this.versionCopy.inflection!.verb!.imperfectEnclitic!.plural3, this.pronouns.imperfectplural3enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.imperfectEnclitic?.plural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
-    [this.versionCopy.inflection!.verb!.cundizionalEnclitic!.plural3, this.pronouns.cundizionalplural3enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundizionalEnclitic?.plural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
+    [this.versionCopy.inflection!.verb!.cundiziunalEnclitic!.plural3, this.pronouns.cundizionalplural3enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.cundiziunalEnclitic?.plural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
     [this.versionCopy.inflection!.verb!.futurEnclitic!.plural3, this.pronouns.futurplural3enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurEnclitic?.plural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
     [this.versionCopy.inflection!.verb!.futurDubitativEnclitic!.plural3, this.pronouns.futurdubitativplural3enclitic] = this.extractPrefixes(this.versionCopy.inflection!.verb!.futurDubitativEnclitic?.plural3, [ppConj[5], pp[5], ppRefl[5], ppReflVowel[5]]);
   }

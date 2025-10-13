@@ -265,7 +265,7 @@ export class ConjugationComponent implements OnInit {
       plural3: this.validateForm.get('imperfectplural3enclitic')?.value
     }
 
-    this.working.cundizionalEnclitic = {
+    this.working.cundiziunalEnclitic = {
       sing1: this.validateForm.get('cundizionalsing1enclitic')?.value,
       sing2: this.validateForm.get('cundizionalsing2enclitic')?.value,
       sing3m: this.validateForm.get('cundizionalsing3encliticm')?.value,
@@ -395,13 +395,13 @@ export class ConjugationComponent implements OnInit {
       imperfectplural2enclitic: new UntypedFormControl(this.working.imperfectEnclitic?.plural2),
       imperfectplural3enclitic: new UntypedFormControl(this.working.imperfectEnclitic?.plural3),
 
-      cundizionalsing1enclitic: new UntypedFormControl(this.working.cundizionalEnclitic?.sing1),
-      cundizionalsing2enclitic: new UntypedFormControl(this.working.cundizionalEnclitic?.sing2),
-      cundizionalsing3encliticm: new UntypedFormControl(this.working.cundizionalEnclitic?.sing3m),
-      cundizionalsing3encliticf: new UntypedFormControl(this.working.cundizionalEnclitic?.sing3f),
-      cundizionalplural1enclitic: new UntypedFormControl(this.working.cundizionalEnclitic?.plural1),
-      cundizionalplural2enclitic: new UntypedFormControl(this.working.cundizionalEnclitic?.plural2),
-      cundizionalplural3enclitic: new UntypedFormControl(this.working.cundizionalEnclitic?.plural3),
+      cundizionalsing1enclitic: new UntypedFormControl(this.working.cundiziunalEnclitic?.sing1),
+      cundizionalsing2enclitic: new UntypedFormControl(this.working.cundiziunalEnclitic?.sing2),
+      cundizionalsing3encliticm: new UntypedFormControl(this.working.cundiziunalEnclitic?.sing3m),
+      cundizionalsing3encliticf: new UntypedFormControl(this.working.cundiziunalEnclitic?.sing3f),
+      cundizionalplural1enclitic: new UntypedFormControl(this.working.cundiziunalEnclitic?.plural1),
+      cundizionalplural2enclitic: new UntypedFormControl(this.working.cundiziunalEnclitic?.plural2),
+      cundizionalplural3enclitic: new UntypedFormControl(this.working.cundiziunalEnclitic?.plural3),
 
       futursing1enclitic: new UntypedFormControl(this.working.futurEnclitic?.sing1),
       futursing2enclitic: new UntypedFormControl(this.working.futurEnclitic?.sing2),
@@ -526,13 +526,13 @@ export class ConjugationComponent implements OnInit {
       this.working.imperfectEnclitic?.plural2 ||
       this.working.imperfectEnclitic?.plural3 ||
 
-      this.working.cundizionalEnclitic?.sing1 ||
-      this.working.cundizionalEnclitic?.sing2 ||
-      this.working.cundizionalEnclitic?.sing3m ||
-      this.working.cundizionalEnclitic?.sing3f ||
-      this.working.cundizionalEnclitic?.plural1 ||
-      this.working.cundizionalEnclitic?.plural2 ||
-      this.working.cundizionalEnclitic?.plural3 ||
+      this.working.cundiziunalEnclitic?.sing1 ||
+      this.working.cundiziunalEnclitic?.sing2 ||
+      this.working.cundiziunalEnclitic?.sing3m ||
+      this.working.cundiziunalEnclitic?.sing3f ||
+      this.working.cundiziunalEnclitic?.plural1 ||
+      this.working.cundiziunalEnclitic?.plural2 ||
+      this.working.cundiziunalEnclitic?.plural3 ||
 
       this.working.futurEnclitic?.sing1 ||
       this.working.futurEnclitic?.sing2 ||
@@ -693,14 +693,14 @@ export class ConjugationComponent implements OnInit {
       plural3: valuesToCopy.imperfectEnclitic?.plural3
     };
 
-    this.working.cundizionalEnclitic = {
-      sing1: valuesToCopy.cundizionalEnclitic?.sing1,
-      sing2: valuesToCopy.cundizionalEnclitic?.sing2,
-      sing3m: valuesToCopy.cundizionalEnclitic?.sing3m,
-      sing3f: valuesToCopy.cundizionalEnclitic?.sing3f,
-      plural1: valuesToCopy.cundizionalEnclitic?.plural1,
-      plural2: valuesToCopy.cundizionalEnclitic?.plural2,
-      plural3: valuesToCopy.cundizionalEnclitic?.plural3
+    this.working.cundiziunalEnclitic = {
+      sing1: valuesToCopy.cundiziunalEnclitic?.sing1,
+      sing2: valuesToCopy.cundiziunalEnclitic?.sing2,
+      sing3m: valuesToCopy.cundiziunalEnclitic?.sing3m,
+      sing3f: valuesToCopy.cundiziunalEnclitic?.sing3f,
+      plural1: valuesToCopy.cundiziunalEnclitic?.plural1,
+      plural2: valuesToCopy.cundiziunalEnclitic?.plural2,
+      plural3: valuesToCopy.cundiziunalEnclitic?.plural3
     };
 
     this.working.futurEnclitic = {

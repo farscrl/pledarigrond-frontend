@@ -41,7 +41,7 @@ export class DiffModalComponent {
     this.originalVersion.inflection.verb.futurDubitativ = this.originalVersion.inflection.verb.futurDubitativ || {};
     this.originalVersion.inflection.verb.preschentEnclitic = this.originalVersion.inflection.verb.preschentEnclitic || {};
     this.originalVersion.inflection.verb.imperfectEnclitic = this.originalVersion.inflection.verb.imperfectEnclitic || {};
-    this.originalVersion.inflection.verb.cundizionalEnclitic = this.originalVersion.inflection.verb.cundizionalEnclitic || {};
+    this.originalVersion.inflection.verb.cundiziunalEnclitic = this.originalVersion.inflection.verb.cundiziunalEnclitic || {};
     this.originalVersion.inflection.verb.futurEnclitic = this.originalVersion.inflection.verb.futurEnclitic || {};
     this.originalVersion.inflection.verb.futurDubitativEnclitic = this.originalVersion.inflection.verb.futurDubitativEnclitic || {};
     this.originalVersion.inflection.noun = this.originalVersion.inflection.noun || {};
@@ -61,7 +61,7 @@ export class DiffModalComponent {
     this.changedVersion.inflection.verb.futurDubitativ = this.changedVersion.inflection.verb.futurDubitativ || {};
     this.changedVersion.inflection.verb.preschentEnclitic = this.changedVersion.inflection.verb.preschentEnclitic || {};
     this.changedVersion.inflection.verb.imperfectEnclitic = this.changedVersion.inflection.verb.imperfectEnclitic || {};
-    this.changedVersion.inflection.verb.cundizionalEnclitic = this.changedVersion.inflection.verb.cundizionalEnclitic || {};
+    this.changedVersion.inflection.verb.cundiziunalEnclitic = this.changedVersion.inflection.verb.cundiziunalEnclitic || {};
     this.changedVersion.inflection.verb.futurEnclitic = this.changedVersion.inflection.verb.futurEnclitic || {};
     this.changedVersion.inflection.verb.futurDubitativEnclitic = this.changedVersion.inflection.verb.futurDubitativEnclitic || {};
     this.changedVersion.inflection.noun = this.changedVersion.inflection.noun || {};

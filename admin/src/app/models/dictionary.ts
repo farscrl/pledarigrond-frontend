@@ -110,7 +110,7 @@ export class Verb {
 
   preschentEnclitic?: PersonalVerbEnclitic;
   imperfectEnclitic?: PersonalVerbEnclitic;
-  cundizionalEnclitic?: PersonalVerbEnclitic;
+  cundiziunalEnclitic?: PersonalVerbEnclitic;
   futurEnclitic?: PersonalVerbEnclitic;
   futurDubitativEnclitic?: PersonalVerbEnclitic;
 }
