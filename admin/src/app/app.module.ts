@@ -7,7 +7,7 @@ import { de_DE, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -37,8 +37,7 @@ import { NavigationHorizontalComponent } from './components/navigation-horizonta
 import { UserRoleComponent } from './components/data/user-role/user-role.component';
 import { MainEntryComponent } from './features/modify-entry/main-entry/main-entry.component';
 import { interceptorProviders } from './auth/interceptors';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
 import { ConjugationComponent } from './features/modify-entry/conjugation/conjugation.component';
 import { ExportDumpComponent } from './features/admin/db-administration/export-dump/export-dump.component';
 import { FileUtils } from './utils/file.utils';
@@ -73,12 +72,9 @@ import { RegistrationStatusComponent } from './components/data/registration-stat
 import { FindCorpusEntryComponent } from './features/modify-entry/find-corpus-entry/find-corpus-entry.component';
 import { ActionComponent } from './components/data/action/action.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 registerLocaleData(de);
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 const TOKEN_KEY = 'jwt';
 export function tokenGetter() {
@@ -151,12 +147,8 @@ export function tokenGetter() {
     }),
     ReactiveFormsModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'rm-rumgr',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (HttpLoaderFactory),
-        deps: [HttpClient]
-      }
+      fallbackLang: 'rm-rumgr',
+      loader: provideTranslateHttpLoader({prefix:'./assets/i18n/', suffix:'.json'}),
     }),
     NgxSortableModule,
     NzFlexDirective,
