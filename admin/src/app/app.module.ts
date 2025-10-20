@@ -73,6 +73,7 @@ import { FindCorpusEntryComponent } from './features/modify-entry/find-corpus-en
 import { ActionComponent } from './components/data/action/action.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { IconDirective } from '@ant-design/icons-angular';
 
 registerLocaleData(de);
 
@@ -138,6 +139,7 @@ export function tokenGetter() {
     FormsModule,
     NoopAnimationsModule,
     NgZorroAntdModule,
+    IconDirective,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
