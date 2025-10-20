@@ -5,7 +5,6 @@ import { Roles, User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 import { EnvironmentService } from "../../../services/environment.service";
 import { NotificationService } from '../../../services/notification.service';
-import { error } from '@angular/compiler-cli/src/transformers/util';
 
 export class EditUserData {
   email?: string;
