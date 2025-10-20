@@ -175,7 +175,7 @@ export class Adjective {
   fPlural?: string;
 
   adverbialForm?: string;
-  pridicative?: string;
+  predicative?: string;
 }
 
 export class Pronoun {

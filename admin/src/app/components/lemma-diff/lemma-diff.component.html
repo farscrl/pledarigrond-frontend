@@ -44,6 +44,7 @@
   <nz-descriptions-item nzTitle="m plural"><app-diff [old]="originalVersion.inflection?.adjective?.mPlural" [new]="changedVersion.inflection?.adjective?.mPlural"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="f plural"><app-diff [old]="originalVersion.inflection?.adjective?.fPlural" [new]="changedVersion.inflection?.adjective?.fPlural"></app-diff></nz-descriptions-item>
   <nz-descriptions-item nzTitle="Furma adverbiala"><app-diff [old]="originalVersion.inflection?.adjective?.adverbialForm" [new]="changedVersion.inflection?.adjective?.adverbialForm"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Furma predicativa" *ngIf="language === 'sursilvan'"><app-diff [old]="originalVersion.inflection?.adjective?.predicative" [new]="changedVersion.inflection?.adjective?.predicative"></app-diff></nz-descriptions-item>
 </nz-descriptions>
 
 <nz-descriptions nzTitle="Flexiuns da pronoms" *ngIf="originalVersion.inflection?.inflectionType === 'PRONOUN' || changedVersion.inflection?.inflectionType === 'PRONOUN'">

@@ -88,6 +88,12 @@
       </nz-form-item>
     </div>
     <div nz-col nzSpan="12">
+      <nz-form-item  *ngIf="hasPredicative()">
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="predicative">{{ 'edit.adjective.forms.predicative' | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <textarea nzAutosize nz-input formControlName="predicative" id="predicative" [readonly]="isRegular"></textarea>
+        </nz-form-control>
+      </nz-form-item>
     </div>
   </div>
 

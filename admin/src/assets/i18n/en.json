@@ -354,7 +354,8 @@
         "fSingular": "female singular",
         "mPlural": "male plural",
         "fPlural": "female plural",
-        "adverbialForm": "adverbial form"
+        "adverbialForm": "adverbial form",
+        "predicative": "predicative form"
       }
     },
     "pronoun": {

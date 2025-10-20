@@ -7,6 +7,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { EnvironmentService } from "../../../services/environment.service";
 import { Adjective, EntryVersionInternalDto } from '../../../models/dictionary';
 import { CopyService } from '../../../services/copy.service';
+import { Language } from '../../../models/security';
 
 export class AdjectiveGenerationData {
   version?: EntryVersionInternalDto;
@@ -95,6 +96,7 @@ export class AdjectiveGenerationComponent implements OnInit {
     this.working.mPlural = this.validateForm.get('mPlural')?.value;
     this.working.fPlural = this.validateForm.get('fPlural')?.value;
     this.working.adverbialForm = this.validateForm.get('adverbialForm')?.value;
+    this.working.predicative = this.validateForm.get('predicative')?.value;
   }
 
   private returnValues() {
@@ -113,6 +115,7 @@ export class AdjectiveGenerationComponent implements OnInit {
       mPlural: new UntypedFormControl(this.working.mPlural),
       fPlural: new UntypedFormControl(this.working.fPlural),
       adverbialForm: new UntypedFormControl(this.working.adverbialForm),
+      predicative: new UntypedFormControl(this.working.predicative),
     });
 
     this.validateForm.get("irregular")!.valueChanges.subscribe(value => {
@@ -135,7 +138,8 @@ export class AdjectiveGenerationComponent implements OnInit {
       this.working.fSingular ||
       this.working.mPlural ||
       this.working.fPlural ||
-      this.working.adverbialForm
+      this.working.adverbialForm ||
+      this.working.predicative
     ) {
       return false;
     }
@@ -176,6 +180,11 @@ export class AdjectiveGenerationComponent implements OnInit {
     this.copyForms(this.copyService.inflectionAdjective);
   }
 
+  hasPredicative(): boolean {
+    const language = this.languageSelectionService.getCurrentLanguage();
+    return (language === Language.SURSILVAN);
+  }
+
   private copyForms(from: Adjective) {
     this.working.baseForm = from.baseForm;
     this.working.inflectionSubtype = from.inflectionSubtype;
@@ -186,6 +195,7 @@ export class AdjectiveGenerationComponent implements OnInit {
     this.working.mPlural = from.mPlural;
     this.working.fPlural = from.fPlural;
     this.working.adverbialForm = from.adverbialForm;
+    this.working.predicative = from.predicative;
 
     this.setUpForm();
   }
