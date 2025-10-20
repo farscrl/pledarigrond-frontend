@@ -51,13 +51,13 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="mSingular">{{ 'edit.adjective.forms.mSingular' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="mSingular" id="mSingular" [readonly]="isRegular" />
+          <textarea nzAutosize nz-input formControlName="mSingular" id="mSingular" [readonly]="isRegular"></textarea>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="mPlural">{{ 'edit.adjective.forms.mPlural' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="mPlural" id="mPlural" [readonly]="isRegular" />
+          <textarea nzAutosize nz-input formControlName="mPlural" id="mPlural" [readonly]="isRegular"></textarea>
         </nz-form-control>
       </nz-form-item>
     </div>
@@ -65,13 +65,13 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fSingular">{{ 'edit.adjective.forms.fSingular' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="fSingular" id="fSingular" [readonly]="isRegular" />
+          <textarea nzAutosize nz-input formControlName="fSingular" id="fSingular" [readonly]="isRegular"></textarea>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fPlural">{{ 'edit.adjective.forms.fPlural' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="fPlural" id="fPlural" [readonly]="isRegular" />
+          <textarea nzAutosize nz-input formControlName="fPlural" id="fPlural" [readonly]="isRegular"></textarea>
         </nz-form-control>
       </nz-form-item>
 
@@ -83,7 +83,7 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="adverbialForm">{{ 'edit.adjective.forms.adverbialForm' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="adverbialForm" id="adverbialForm" />
+          <textarea nzAutosize nz-input formControlName="adverbialForm" id="adverbialForm"></textarea>
         </nz-form-control>
       </nz-form-item>
     </div>

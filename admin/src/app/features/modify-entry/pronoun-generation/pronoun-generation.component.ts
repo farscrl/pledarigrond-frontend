@@ -79,5 +79,15 @@ export class PronounGenerationComponent implements OnInit {
       mPlural: new UntypedFormControl(this.working.mPlural),
       fPlural: new UntypedFormControl(this.working.fPlural),
     });
+
+    setTimeout(() => {
+      this.triggerChangeDetectionForAutoSize();
+    }, 150);
+  }
+
+  private triggerChangeDetectionForAutoSize() {
+    // the autoresize check can't be triggered manually. But it reacts to resize events of the window.
+    // thus, we dispatch that event to force autoresize to be triggered.
+    window.dispatchEvent(new Event('resize'));
   }
 }

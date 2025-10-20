@@ -16,3 +16,9 @@ input:read-only {
   background-color: rgb(226, 226, 226);
   color: gray;
 }
+
+textarea {
+  &[readonly] {
+    background-color: #e2e2e2;
+  }
+}

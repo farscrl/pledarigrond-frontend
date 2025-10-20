@@ -119,6 +119,10 @@ export class NounGenerationComponent implements OnInit {
       this.isRegular = !value;
     });
     this.isRegular = !this.validateForm.get('irregular')?.value;
+
+    setTimeout(() => {
+      this.triggerChangeDetectionForAutoSize();
+    }, 150);
   }
 
   private generateForms(subTypeId: string, baseForm: string) {
@@ -188,5 +192,11 @@ export class NounGenerationComponent implements OnInit {
     this.working.pluralCollectiv = from.pluralCollectiv;
 
     this.setUpForm();
+  }
+
+  private triggerChangeDetectionForAutoSize() {
+    // the autoresize check can't be triggered manually. But it reacts to resize events of the window.
+    // thus, we dispatch that event to force autoresize to be triggered.
+    window.dispatchEvent(new Event('resize'));
   }
 }
