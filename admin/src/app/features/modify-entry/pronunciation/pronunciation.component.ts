@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef, NzModalService, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { RegistrationService } from '../../../services/registration.service';
 import { ListFilter } from '../../../models/registration-filter';
@@ -27,6 +27,12 @@ import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective
     imports: [RegistrationStatusComponent, AudioPlayerComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDividerComponent, NzFlexDirective, NzInputGroupComponent, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NzModalFooterDirective]
 })
 export class PronunciationComponent implements OnInit {
+  private registrationService = inject(RegistrationService);
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private modalRef = inject(NzModalRef);
+  private modal = inject(NzModalService);
+
 
   isModifyActive = false;
 
@@ -38,14 +44,11 @@ export class PronunciationComponent implements OnInit {
 
   searchResults: Registration[] = [];
 
-  constructor(
-    @Inject(NZ_MODAL_DATA) data: {entryId: string},
-    private registrationService: RegistrationService,
-    private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService,
-    private modalRef: NzModalRef,
-    private modal: NzModalService,
-  ) {
+  constructor() {
+    const data = inject<{
+    entryId: string;
+}>(NZ_MODAL_DATA);
+
     this.entryId = data.entryId;
   }
 

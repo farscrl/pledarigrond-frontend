@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, inject } from '@angular/core';
 import { NzModalService } from "ng-zorro-antd/modal";
 import { TranslateService, TranslatePipe } from "@ngx-translate/core";
 import { EditNameComponent } from "./edit-name/edit-name.component";
@@ -30,6 +30,12 @@ import { NzDividerComponent } from 'ng-zorro-antd/divider';
     imports: [NzLayoutComponent, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzCollapseComponent, NzCollapsePanelComponent, FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputDirective, NzSelectComponent, NzOptionComponent, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellAlignDirective, NzTbodyComponent, NameDisplayComponent, NameCategoryComponent, NzDividerComponent, TranslatePipe]
 })
 export class NameAdministrationComponent implements OnInit {
+  private modalService = inject(NzModalService);
+  private viewContainerRef = inject(ViewContainerRef);
+  private translateService = inject(TranslateService);
+  private nameService = inject(NameService);
+  private notificationService = inject(NotificationService);
+
 
   currentPage: Name[] = [];
   totalElements = 0;
@@ -39,14 +45,6 @@ export class NameAdministrationComponent implements OnInit {
 
   nameFilter = "";
   categoryFilter = "";
-
-  constructor(
-    private modalService: NzModalService,
-    private viewContainerRef: ViewContainerRef,
-    private translateService: TranslateService,
-    private nameService: NameService,
-    private notificationService: NotificationService,
-  ) { }
 
   ngOnInit(): void {
     this.applyFilter();

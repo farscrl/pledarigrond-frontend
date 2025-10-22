@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { InflectionSubType } from 'src/app/models/inflection';
@@ -31,6 +31,13 @@ export class NounGenerationData {
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class NounGenerationComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+  private inflectionService = inject(InflectionService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private modal = inject(NzModalRef);
+  copyService = inject(CopyService);
+  environmentService = inject(EnvironmentService);
+
 
   private version?: EntryVersionInternalDto;
 
@@ -42,15 +49,9 @@ export class NounGenerationComponent implements OnInit {
 
   isRegular = true;
 
-  constructor(
-    private fb: UntypedFormBuilder,
-    private inflectionService: InflectionService,
-    private languageSelectionService: LanguageSelectionService,
-    private modal: NzModalRef,
-    public copyService: CopyService,
-    public environmentService: EnvironmentService,
-    @Inject(NZ_MODAL_DATA) data: NounGenerationData,
-  ) {
+  constructor() {
+    const data = inject<NounGenerationData>(NZ_MODAL_DATA);
+
     this.version = data.version;
     if (this.version) {
       this.working = JSON.parse(JSON.stringify(this.version.inflection?.noun || new Noun()));

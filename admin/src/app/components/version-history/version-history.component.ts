@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewContainerRef, inject } from '@angular/core';
 
 import moment from 'moment';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -25,6 +25,12 @@ import { NzIconDirective } from 'ng-zorro-antd/icon';
     imports: [NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, ActionComponent, UserRoleComponent, NzEmptyComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzIconDirective, TranslatePipe]
 })
 export class VersionHistoryComponent implements OnChanges {
+  private modalService = inject(NzModalService);
+  private translateService = inject(TranslateService);
+  private viewContainerRef = inject(ViewContainerRef);
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+
 
   loading = false;
 
@@ -35,14 +41,6 @@ export class VersionHistoryComponent implements OnChanges {
 
   diffOldEntryVersion: EntryVersionInternalDto | undefined;
   diffNewEntryVersion: EntryVersionInternalDto | undefined;
-
-  constructor(
-    private modalService: NzModalService,
-    private translateService: TranslateService,
-    private viewContainerRef: ViewContainerRef,
-    private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService,
-  ) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['entry']) {

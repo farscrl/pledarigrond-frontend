@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
 import { EditorService } from 'src/app/services/editor.service';
@@ -20,6 +20,9 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, DurationComponent, VersionHistoryComponent, DictionaryListComponent, TranslatePipe]
 })
 export class HistoryComponent implements OnInit {
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+
   paginationInfo: PaginationInfo = new PaginationInfo();
   items: DictionaryListItem[]  = [];
   columns: LemmaListColumn = new LemmaListColumn();
@@ -32,7 +35,7 @@ export class HistoryComponent implements OnInit {
 
   isLoading = false;
 
-  constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) {
+  constructor() {
     this.columns = this.generateColumns();
   }
 

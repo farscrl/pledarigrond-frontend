@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { EditorSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
@@ -27,6 +27,9 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzDividerComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzRadioGroupComponent, NzRadioComponent, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzSelectComponent, NzOptionComponent, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LexiconFilterComponent implements OnInit {
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+
 
   @Input()
   searchCriteria: EditorSearchCriteria = new EditorSearchCriteria();
@@ -41,8 +44,6 @@ export class LexiconFilterComponent implements OnInit {
 
   categoryAutocomplete: string[] = [];
   semanticsAutocomplete: string[] = [];
-
-  constructor(private editorService: EditorService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
     this.editorService.getChoiceFieldsSuggestions(this.languageSelectionService.getCurrentLanguage()).subscribe(data => {

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef, NzModalTitleDirective, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { EditorService } from 'src/app/services/editor.service';
@@ -25,6 +25,12 @@ export class ChanceSortOrderData {
     imports: [NzModalTitleDirective, NgxSortableModule, NzModalFooterDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class ChangeSortOrderComponent implements OnInit {
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private modal = inject(NzModalRef);
+  private notificationService = inject(NotificationService);
+  private translateService = inject(TranslateService);
+
 
   entryVersion?: EntryVersionInternalDto;
   dictionaryLanguage?: DictionaryLanguage;
@@ -39,14 +45,9 @@ export class ChangeSortOrderComponent implements OnInit {
 
   isSaving = false;
 
-  constructor(
-    private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService,
-    private modal: NzModalRef,
-    @Inject(NZ_MODAL_DATA) data: ChanceSortOrderData,
-    private notificationService: NotificationService,
-    private translateService: TranslateService,
-  ) {
+  constructor() {
+    const data = inject<ChanceSortOrderData>(NZ_MODAL_DATA);
+
     this.entryVersion = data.entryVersion;
     this.dictionaryLanguage = data.dictionaryLanguage;
   }

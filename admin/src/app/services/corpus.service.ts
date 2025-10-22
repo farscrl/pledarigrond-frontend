@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -8,10 +8,10 @@ import { Language } from '../models/security';
   providedIn: 'root'
 })
 export class CorpusService {
+  private httpClient = inject(HttpClient);
+
 
   private namesBasePath = '/admin/corpus';
-
-  constructor(private httpClient: HttpClient) { }
 
   find(language: Language, s: string): Observable<string[]> {
     let params: HttpParams = new HttpParams();

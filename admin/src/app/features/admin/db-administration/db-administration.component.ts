@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, inject } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { BackupInfos, DbInfos } from 'src/app/models/db-infos';
 import { DbService } from 'src/app/services/db.service';
@@ -30,20 +30,18 @@ import { DecimalPipe } from '@angular/common';
     imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDropdownButtonDirective, NzNoAnimationDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, NzTimelineComponent, NzTimelineItemComponent, DecimalPipe, TranslatePipe]
 })
 export class DbAdministrationComponent implements OnInit {
+  private dbService = inject(DbService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private modalService = inject(NzModalService);
+  private viewContainerRef = inject(ViewContainerRef);
+  private translateService = inject(TranslateService);
+  private fileUtils = inject(FileUtils);
+  private notificationService = inject(NotificationService);
+
 
   dbInfos: DbInfos = new DbInfos();
   isLoadingDbInfos = false;
   backupInfos: BackupInfos = new BackupInfos();
-
-  constructor(
-    private dbService: DbService,
-    private languageSelectionService: LanguageSelectionService,
-    private modalService: NzModalService,
-    private viewContainerRef: ViewContainerRef,
-    private translateService: TranslateService,
-    private fileUtils: FileUtils,
-    private notificationService: NotificationService,
-  ) { }
 
   ngOnInit(): void {
     this.loadDbStats();

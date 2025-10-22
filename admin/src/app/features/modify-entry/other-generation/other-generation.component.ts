@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { EnvironmentService } from '../../../services/environment.service';
@@ -25,6 +25,10 @@ export class OtherGenerationData {
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class OtherGenerationComponent implements OnInit{
+  private fb = inject(UntypedFormBuilder);
+  private modal = inject(NzModalRef);
+  environmentService = inject(EnvironmentService);
+
 
   private version?: EntryVersionInternalDto;
 
@@ -32,12 +36,9 @@ export class OtherGenerationComponent implements OnInit{
 
   working: Other = new Other();
 
-  constructor(
-    private fb: UntypedFormBuilder,
-    private modal: NzModalRef,
-    public environmentService: EnvironmentService,
-    @Inject(NZ_MODAL_DATA) data: OtherGenerationData,
-  ) {
+  constructor() {
+    const data = inject<OtherGenerationData>(NZ_MODAL_DATA);
+
     this.version = data.version;
     if (this.version) {
       this.working = JSON.parse(JSON.stringify(this.version.inflection?.other || new Pronoun()));

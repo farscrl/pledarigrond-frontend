@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { Roles, User } from 'src/app/models/user';
@@ -28,6 +28,12 @@ export class EditUserData {
     imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class EditComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private fb = inject(UntypedFormBuilder);
+  private userService = inject(UsersService);
+  environmentService = inject(EnvironmentService);
+  private notificationService = inject(NotificationService);
+
 
   email?: string;
 
@@ -37,14 +43,9 @@ export class EditComponent implements OnInit {
 
   user: User = new User();
 
-  constructor(
-    private modal: NzModalRef,
-    private fb: UntypedFormBuilder,
-    private userService: UsersService,
-    public environmentService: EnvironmentService,
-    @Inject(NZ_MODAL_DATA) data: EditUserData,
-    private notificationService: NotificationService,
-  ) {
+  constructor() {
+    const data = inject<EditUserData>(NZ_MODAL_DATA);
+
     this.email = data.email;
   }
 

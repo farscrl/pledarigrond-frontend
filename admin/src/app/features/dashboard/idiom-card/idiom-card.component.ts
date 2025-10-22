@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NzCardComponent } from 'ng-zorro-antd/card';
 import { RouterLink } from '@angular/router';
@@ -12,16 +12,14 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [NzCardComponent, RouterLink, TranslatePipe]
 })
 export class IdiomCardComponent implements OnInit {
+  authService = inject(AuthService);
+
 
   @Input()
   name: string = "";
 
   @Input()
   url: string = "";
-
-  constructor(
-    public authService: AuthService,
-  ) { }
 
   ngOnInit(): void {
   }

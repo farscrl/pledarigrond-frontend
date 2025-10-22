@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -10,11 +10,9 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [TranslatePipe]
 })
 export class NoPermissionsComponent implements OnInit {
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) { }
 
   ngOnInit(): void {
   }

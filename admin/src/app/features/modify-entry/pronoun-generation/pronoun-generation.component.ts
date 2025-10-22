@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { EnvironmentService } from "../../../services/environment.service";
@@ -24,6 +24,10 @@ export class PronounGenerationData {
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzAutosizeDirective, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class PronounGenerationComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+  private modal = inject(NzModalRef);
+  environmentService = inject(EnvironmentService);
+
 
   private version?: EntryVersionInternalDto;
 
@@ -31,12 +35,9 @@ export class PronounGenerationComponent implements OnInit {
 
   working: Pronoun = new Pronoun();
 
-  constructor(
-    private fb: UntypedFormBuilder,
-    private modal: NzModalRef,
-    public environmentService: EnvironmentService,
-    @Inject(NZ_MODAL_DATA) data: PronounGenerationData,
-  ) {
+  constructor() {
+    const data = inject<PronounGenerationData>(NZ_MODAL_DATA);
+
     this.version = data.version;
     if (this.version) {
       this.working = JSON.parse(JSON.stringify(this.version.inflection?.pronoun || new Pronoun()));

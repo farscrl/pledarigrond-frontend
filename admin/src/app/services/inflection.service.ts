@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InflectionType } from '../models/inflection';
 import { Language } from '../models/security';
@@ -10,9 +10,9 @@ import { Inflection } from '../models/dictionary';
   providedIn: 'root'
 })
 export class InflectionService {
-  private editorBasePath = '/editor/inflection/';
+  private httpClient = inject(HttpClient);
 
-  constructor(private httpClient: HttpClient) { }
+  private editorBasePath = '/editor/inflection/';
 
   getInflectionSubtypes(language: Language, type: InflectionType) {
     return this.httpClient.get<any>(this.generateUrl(language, type, 'subtypes'));

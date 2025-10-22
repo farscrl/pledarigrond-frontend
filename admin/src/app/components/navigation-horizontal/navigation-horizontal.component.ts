@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { environment } from './../../../environments/environment';
@@ -18,13 +18,11 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [NzMenuDirective, ɵNzTransitionPatchDirective, NzIconDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, TranslatePipe]
 })
 export class NavigationHorizontalComponent implements OnInit {
+  languageSelectionService = inject(LanguageSelectionService);
+  authService = inject(AuthService);
+
 
   currentLanguage: Language = Language.UNDEFINED;
-
-  constructor(
-    public languageSelectionService: LanguageSelectionService,
-    public authService: AuthService,
-    ) { }
 
   ngOnInit(): void {
     this.languageSelectionService.getCurrentLanguageObservable().subscribe(l => {

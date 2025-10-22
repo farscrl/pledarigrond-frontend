@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from "ng-zorro-antd/modal";
 import { Name } from "../../../models/name";
@@ -25,6 +25,12 @@ export class EditNameData {
     imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class EditNameComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private fb = inject(UntypedFormBuilder);
+  private nameService = inject(NameService);
+  private notificationService = inject(NotificationService);
+  private translateService = inject(TranslateService);
+
 
   id?: string;
 
@@ -34,14 +40,9 @@ export class EditNameComponent implements OnInit {
 
   name: Name = new Name();
 
-  constructor(
-    private modal: NzModalRef,
-    private fb: UntypedFormBuilder,
-    private nameService: NameService,
-    @Inject(NZ_MODAL_DATA) data: EditNameData,
-    private notificationService: NotificationService,
-    private translateService: TranslateService,
-  ) {
+  constructor() {
+    const data = inject<EditNameData>(NZ_MODAL_DATA);
+
     this.id = data.id;
   }
 

@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Page } from '../models/page';
 import { User } from '../models/user';
@@ -9,9 +9,9 @@ import { environment } from './../../environments/environment';
   providedIn: 'root'
 })
 export class UsersService {
-  private usersBasePath = '/admin/users';
+  private httpClient = inject(HttpClient);
 
-  constructor(private httpClient: HttpClient) { }
+  private usersBasePath = '/admin/users';
 
   /**
    * Get a page of all users. Index is 1-based.

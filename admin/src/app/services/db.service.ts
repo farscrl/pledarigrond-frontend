@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BackupInfos, DbInfos, IndexInfos } from '../models/db-infos';
 import { Language } from '../models/security';
@@ -9,9 +9,9 @@ import { environment } from './../../environments/environment';
   providedIn: 'root'
 })
 export class DbService {
-  private dbBasePath = '/admin/db/';
+  private httpClient = inject(HttpClient);
 
-  constructor(private httpClient: HttpClient) { }
+  private dbBasePath = '/admin/db/';
 
   getDbInfos(language: Language): Observable<DbInfos> {
     return this.httpClient.get<DbInfos>(this.generateUrl(language, 'db_stats'));

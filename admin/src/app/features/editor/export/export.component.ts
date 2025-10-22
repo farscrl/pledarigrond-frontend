@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { LuceneSearchCriteria } from 'src/app/models/lucene-search-criteria';
@@ -30,6 +30,12 @@ export class ExportData {
     imports: [NzCheckboxComponent, FormsModule, NzCheckboxGroupComponent, NzModalFooterDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class ExportComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private translateService = inject(TranslateService);
+  private fileUtils = inject(FileUtils);
+
 
   filter?: LuceneSearchCriteria | DbSearchCriteria;
 
@@ -40,14 +46,9 @@ export class ExportComponent implements OnInit {
 
   isExporting = false;
 
-  constructor(
-    private modal: NzModalRef,
-    private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService,
-    private translateService: TranslateService,
-    private fileUtils: FileUtils,
-    @Inject(NZ_MODAL_DATA) data: ExportData
-  ) {
+  constructor() {
+    const data = inject<ExportData>(NZ_MODAL_DATA);
+
     this.filter = data.filter;
   }
 

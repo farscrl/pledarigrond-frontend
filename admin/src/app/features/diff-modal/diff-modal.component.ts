@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalTitleDirective } from "ng-zorro-antd/modal";
 import { Language } from "../../models/security";
 import { LanguageSelectionService } from "../../services/language-selection.service";
@@ -22,10 +22,10 @@ export class DiffModalComponent {
   originalVersion: EntryVersionInternalDto;
   changedVersion: EntryVersionInternalDto;
 
-  constructor(
-    languageSelectionService: LanguageSelectionService,
-    @Inject(NZ_MODAL_DATA) data: DiffModalData
-  ) {
+  constructor() {
+    const languageSelectionService = inject(LanguageSelectionService);
+    const data = inject<DiffModalData>(NZ_MODAL_DATA);
+
     this.originalVersion = data.original || new EntryVersionInternalDto();
     this.changedVersion = data.change || new EntryVersionInternalDto();
     this.language = languageSelectionService.getCurrentLanguage();

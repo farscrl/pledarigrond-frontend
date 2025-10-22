@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, inject } from '@angular/core';
 import { FormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef, NzModalService, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { EditorService } from 'src/app/services/editor.service';
@@ -53,6 +53,16 @@ export class MainEntryData {
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NzInputGroupComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class MainEntryComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private fb = inject(UntypedFormBuilder);
+  private editorService = inject(EditorService);
+  languageSelectionService = inject(LanguageSelectionService);
+  private modalService = inject(NzModalService);
+  private viewContainerRef = inject(ViewContainerRef);
+  private translateService = inject(TranslateService);
+  environmentService = inject(EnvironmentService);
+  private registrationService = inject(RegistrationService);
+
   entryVersionToChange?: EntryVersionInternalDto;
   directlyLoadDetailView;
   replaceSuggestion;
@@ -75,18 +85,9 @@ export class MainEntryComponent implements OnInit {
 
   validateForm!: UntypedFormGroup;
 
-  constructor(
-    private modal: NzModalRef,
-    private fb: UntypedFormBuilder,
-    private editorService: EditorService,
-    public languageSelectionService: LanguageSelectionService,
-    private modalService: NzModalService,
-    private viewContainerRef: ViewContainerRef,
-    private translateService: TranslateService,
-    public environmentService: EnvironmentService,
-    @Inject(NZ_MODAL_DATA) data: MainEntryData,
-    private registrationService: RegistrationService,
-  ) {
+  constructor() {
+    const data = inject<MainEntryData>(NZ_MODAL_DATA);
+
     this.entryVersionToChange = data.entryVersionToChange;
     this.directlyLoadDetailView = data.directlyLoadDetailView;
     this.replaceSuggestion = data.replaceSuggestion;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
@@ -20,11 +20,13 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, ɵNzTransitionPatchDirective, NzSpaceCompactItemDirective, NzInputGroupComponent, NzInputDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
 
   validateForm!: UntypedFormGroup;
   showError = false;
-
-  constructor(private fb: UntypedFormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({

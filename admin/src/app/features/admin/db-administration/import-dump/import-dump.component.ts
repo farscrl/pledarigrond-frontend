@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { NzUploadFile, NzUploadComponent } from 'ng-zorro-antd/upload';
 import { DbService } from 'src/app/services/db.service';
@@ -17,12 +17,14 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [NzUploadComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzIconDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class ImportDumpComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private dbService = inject(DbService);
+  private languageSelectionService = inject(LanguageSelectionService);
+
 
   uploading = false;
 
   fileToUpload?: NzUploadFile;
-
-  constructor(private modal: NzModalRef, private dbService: DbService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
   }

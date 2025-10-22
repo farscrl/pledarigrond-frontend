@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Language } from '../models/security';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,12 +9,12 @@ export type FrontendLanguage = 'en' | 'rm';
   providedIn: 'root'
 })
 export class LanguageSelectionService {
+  private translateService = inject(TranslateService);
+
 
   private frontendLanguageSubject = new BehaviorSubject<FrontendLanguage>('rm');
 
   private currentLanguageSubject = new BehaviorSubject<Language>(Language.UNDEFINED);
-
-  constructor(private translateService: TranslateService) {}
 
   getFrontendLanguageObservable(): Observable<FrontendLanguage> {
     return this.frontendLanguageSubject.asObservable();

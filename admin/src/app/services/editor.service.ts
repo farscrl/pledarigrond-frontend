@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DictionaryLanguage } from '../models/dictionary-language';
 import { DbSearchCriteria } from '../models/db-search-criteria';
@@ -20,10 +20,10 @@ import {
   providedIn: 'root'
 })
 export class EditorService {
+  private httpClient = inject(HttpClient);
+
 
   private editorBasePath = '/editor/';
-
-  constructor(private httpClient: HttpClient) { }
 
   getAllEntries(language: Language, editorQuery: DbSearchCriteria, page: number): Observable<Page<NormalizedEntryVersionDto>> {
     let params: HttpParams = new HttpParams();

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewContainerRef, inject } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ExportComponent } from 'src/app/features/editor/export/export.component';
 
@@ -42,6 +42,12 @@ import { HighlighterPipe } from '../../pipes/highlighter.pipe';
     imports: [NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDropdownButtonDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
 })
 export class DictionaryListComponent {
+  private modalService = inject(NzModalService);
+  private viewContainerRef = inject(ViewContainerRef);
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private translateService = inject(TranslateService);
+
 
   @Input()
   columns: LemmaListColumn = new LemmaListColumn();
@@ -81,14 +87,6 @@ export class DictionaryListComponent {
   loading = false;
   indeterminate = false;
   setOfCheckedId = new Set<string>();
-
-  constructor(
-    private modalService: NzModalService,
-    private viewContainerRef: ViewContainerRef,
-    private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService,
-    private translateService: TranslateService,
-  ) { }
 
   exportResults() {
     const modal = this.modalService.create({

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter, interval, map } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
@@ -10,7 +10,9 @@ import { RouterOutlet } from '@angular/router';
     imports: [RouterOutlet]
 })
 export class AppComponent {
-  constructor(private swUpdate: SwUpdate) {
+  private swUpdate = inject(SwUpdate);
+
+  constructor() {
 
     if (this.swUpdate.isEnabled) {
       // check every 6 hours while the tab is open

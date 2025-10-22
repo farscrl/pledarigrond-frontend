@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { IndexInfos } from 'src/app/models/db-infos';
 import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
@@ -20,13 +20,14 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, DecimalPipe, TranslatePipe]
 })
 export class IndexAdministrationComponent implements OnInit {
+  private dbService = inject(DbService);
+  private languageSelectionService = inject(LanguageSelectionService);
+
 
   indexInfos: IndexInfos = new IndexInfos();
   isLoading: boolean = false;
   isRebuilding: boolean = false;
   isRebuildingSuggestions: boolean = false;
-
-  constructor(private dbService: DbService, private languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
     this.loadIndexInfos();

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Page} from "../models/page";
@@ -9,10 +9,10 @@ import {Name} from "../models/name";
   providedIn: 'root'
 })
 export class NameService {
+  private httpClient = inject(HttpClient);
+
 
   private namesBasePath = '/editor/names';
-
-  constructor(private httpClient: HttpClient) { }
 
   getAll(pageNumber: number, pageSize: number, name?: string, category?: string): Observable<Page<Name>> {
     let params: HttpParams = new HttpParams();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
@@ -16,15 +16,13 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [NzModalFooterDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class ExportDumpComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private dbService = inject(DbService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private fileUtils = inject(FileUtils);
+
 
   isDownloadingDb = false;
-
-  constructor(
-    private modal: NzModalRef,
-    private dbService: DbService,
-    private languageSelectionService: LanguageSelectionService,
-    private fileUtils: FileUtils,
-  ) { }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
 import { EditorSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
@@ -21,6 +21,9 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, LexiconFilterComponent, VersionHistoryComponent, DictionaryListComponent, TranslatePipe]
 })
 export class LexiconComponent implements OnInit {
+  private languageSelectionService = inject(LanguageSelectionService);
+  private editorService = inject(EditorService);
+
   paginationInfo: PaginationInfo = new PaginationInfo();
   items: DictionaryListItem[]  = [];
   columns: LemmaListColumn = new LemmaListColumn();
@@ -33,7 +36,7 @@ export class LexiconComponent implements OnInit {
 
   private cancelPreviousRequest = new Subject<void>();
 
-  constructor(private languageSelectionService: LanguageSelectionService, private editorService: EditorService) {
+  constructor() {
     this.columns = this.generateColumns();
   }
 

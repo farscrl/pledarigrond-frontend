@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration, RegistrationStatus } from '../../../models/registration';
 import { Page } from '../../../models/page';
@@ -49,6 +49,11 @@ export enum KEY_CODE {
     imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzDividerComponent, NzSpaceCompactItemDirective, NzInputDirective, NzPageHeaderComponent, NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, AudioPlayerComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDescriptionsComponent, NzDescriptionsItemComponent, TranslatePipe]
 })
 export class ReviewPronunciationComponent implements OnInit, OnDestroy {
+  private registrationService = inject(RegistrationService);
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private modal = inject(NzModalService);
+
   filter: ListFilter = new ListFilter();
   currentPage: Page<Registration> = new Page();
   isLoadingData = true;
@@ -87,14 +92,6 @@ export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   }
 
   private cancelPreviousRequest = new Subject<void>();
-
-  constructor(
-    private registrationService: RegistrationService,
-    private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService,
-    private modal: NzModalService,
-  ) {
-  }
 
   ngOnInit(): void {
     this.idiomSubscription = this.languageSelectionService.getCurrentLanguageObservable().subscribe(idiom => {

@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, HostListener, OnInit, ViewContainerRef, inject } from '@angular/core';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -58,6 +58,14 @@ export enum KEY_CODE {
     imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzPageHeaderComponent, NzListComponent, NzListItemComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, LemmaDiffComponent, TranslatePipe]
 })
 export class ReviewAutoChangesComponent implements OnInit {
+  private editorService = inject(EditorService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private modalService = inject(NzModalService);
+  private translateService = inject(TranslateService);
+  private viewContainerRef = inject(ViewContainerRef);
+  private inflectionService = inject(InflectionService);
+  private notificationService = inject(NotificationService);
+
 
   isLoadingData = true;
   isWindowOpen = false;
@@ -106,16 +114,6 @@ export class ReviewAutoChangesComponent implements OnInit {
 
   // used to pass math functions to template
   math = Math;
-
-  constructor(
-    private editorService: EditorService,
-    private languageSelectionService: LanguageSelectionService,
-    private modalService: NzModalService,
-    private translateService: TranslateService,
-    private viewContainerRef: ViewContainerRef,
-    private inflectionService: InflectionService,
-    private notificationService: NotificationService,
-  ) { }
 
   ngOnInit(): void {
     this.language = this.languageSelectionService.getCurrentLanguage();

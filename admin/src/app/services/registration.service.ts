@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { LanguageSelectionService } from './language-selection.service';
@@ -11,11 +11,14 @@ import { Page } from '../models/page';
   providedIn: 'root'
 })
 export class RegistrationService {
+  private httpClient = inject(HttpClient);
+  private languageSelectionService = inject(LanguageSelectionService);
+
   private registrationsBasePath = '/editor/registrations';
 
   private idiom: Language = Language.RUMANTSCHGRISCHUN;
 
-  constructor(private httpClient: HttpClient, private languageSelectionService: LanguageSelectionService) {
+  constructor() {
     this.languageSelectionService.getCurrentLanguageObservable().subscribe(idiom => {
       this.idiom = idiom;
     });

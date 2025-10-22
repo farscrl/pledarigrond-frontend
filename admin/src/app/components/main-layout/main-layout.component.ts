@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { EnvironmentService } from "../../services/environment.service";
 import { NzLayoutComponent } from 'ng-zorro-antd/layout';
 
@@ -13,8 +13,8 @@ import { RouterOutlet } from '@angular/router';
     imports: [NzLayoutComponent, HeaderComponent, HeaderLadinComponent, RouterOutlet]
 })
 export class MainLayoutComponent implements OnInit {
+  environmentService = inject(EnvironmentService);
 
-  constructor(public environmentService: EnvironmentService) { }
 
   ngOnInit(): void {
   }

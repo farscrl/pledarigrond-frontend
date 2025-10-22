@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -18,12 +18,14 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [NzHeaderComponent, NzMenuDirective, ɵNzTransitionPatchDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, NzIconDirective, TranslatePipe]
 })
 export class HeaderComponent implements OnInit {
+  authService = inject(AuthService);
+  private router = inject(Router);
+  languageSelectionService = inject(LanguageSelectionService);
+
 
   frontendLanguage: FrontendLanguage = 'rm';
 
   private frontendLanguageSubscription: Subscription|null = null;
-
-  constructor(public authService: AuthService, private router: Router, public languageSelectionService: LanguageSelectionService) { }
 
   ngOnInit(): void {
     this.frontendLanguageSubscription = this.languageSelectionService.getFrontendLanguageObservable().subscribe(value => this.frontendLanguage = value);

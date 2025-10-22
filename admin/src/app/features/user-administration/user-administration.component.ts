@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, inject } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
@@ -30,6 +30,13 @@ import { NzDividerComponent } from 'ng-zorro-antd/divider';
     imports: [NzLayoutComponent, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzCollapseComponent, NzCollapsePanelComponent, FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellAlignDirective, NzTbodyComponent, NzIconDirective, UserRoleComponent, NzDividerComponent, TranslatePipe]
 })
 export class UserAdministrationComponent implements OnInit {
+  private usersService = inject(UsersService);
+  private modalService = inject(NzModalService);
+  private viewContainerRef = inject(ViewContainerRef);
+  private translateService = inject(TranslateService);
+  environmentService = inject(EnvironmentService);
+  private notificationService = inject(NotificationService);
+
 
   listOfUsers: User[] = [];
   isLoading = false;
@@ -37,15 +44,6 @@ export class UserAdministrationComponent implements OnInit {
   totalItems = 0;
 
   searchText = '';
-
-  constructor(
-    private usersService: UsersService,
-    private modalService: NzModalService,
-    private viewContainerRef: ViewContainerRef,
-    private translateService: TranslateService,
-    public environmentService: EnvironmentService,
-    private notificationService: NotificationService,
-  ) { }
 
   ngOnInit(): void {
     this.loadUsers();

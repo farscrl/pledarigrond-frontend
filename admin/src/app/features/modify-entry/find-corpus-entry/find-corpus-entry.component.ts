@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { CorpusService } from '../../../services/corpus.service';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
@@ -23,17 +23,18 @@ export class FindCorpusEntryData {
     imports: [ɵNzTransitionPatchDirective, NzSpaceCompactItemDirective, NzInputGroupComponent, NzInputDirective, NzButtonComponent, NzWaveDirective, NzIconDirective, NzListComponent, NzListItemComponent, NzListItemActionsComponent, NzListItemActionComponent, HighlighterPipe]
 })
 export class FindCorpusEntryComponent implements OnInit{
+  private corpusService = inject(CorpusService);
+  private languageSelectionService = inject(LanguageSelectionService);
+  private modal = inject(NzModalRef);
+
 
   searchTerm = '';
   examples: string[] = [];
   isLoading = false;
 
-  constructor(
-    @Inject(NZ_MODAL_DATA) data: FindCorpusEntryData,
-    private corpusService: CorpusService,
-    private languageSelectionService: LanguageSelectionService,
-    private modal: NzModalRef,
-  ) {
+  constructor() {
+    const data = inject<FindCorpusEntryData>(NZ_MODAL_DATA);
+
     this.searchTerm = data.searchTerm!;
   }
 
