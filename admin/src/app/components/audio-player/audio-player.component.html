@@ -1,6 +1,10 @@
 <button nz-button nzType="primary" nzShape="circle">
-  <span nz-icon nzType="caret-right" nzTheme="outline" *ngIf="!isPlaying" (click)="play()"></span>
-  <span nz-icon nzType="pause" nzTheme="outline" *ngIf="isPlaying" (click)="pause()"></span>
+  @if (!isPlaying) {
+    <span nz-icon nzType="caret-right" nzTheme="outline" (click)="play()"></span>
+  }
+  @if (isPlaying) {
+    <span nz-icon nzType="pause" nzTheme="outline" (click)="pause()"></span>
+  }
 </button>
 
 <audio #audioControl></audio>

@@ -21,13 +21,13 @@ import { NzCardComponent } from 'ng-zorro-antd/card';
 import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
 import { NzStatisticComponent } from 'ng-zorro-antd/statistic';
 import { NzTimelineComponent, NzTimelineItemComponent } from 'ng-zorro-antd/timeline';
-import { NgFor, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'app-db-administration',
     templateUrl: './db-administration.component.html',
     styleUrls: ['./db-administration.component.scss'],
-    imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDropdownButtonDirective, NzNoAnimationDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, NzTimelineComponent, NgFor, NzTimelineItemComponent, DecimalPipe, TranslatePipe]
+    imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDropdownButtonDirective, NzNoAnimationDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, NzTimelineComponent, NzTimelineItemComponent, DecimalPipe, TranslatePipe]
 })
 export class DbAdministrationComponent implements OnInit {
 

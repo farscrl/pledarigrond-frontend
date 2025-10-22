@@ -6,7 +6,7 @@ import { Registration } from '../../../models/registration';
 import { EditorService } from '../../../services/editor.service';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
 import { EntryVersionInternalDto } from '../../../models/dictionary';
-import { NgIf, NgFor } from '@angular/common';
+
 import { RegistrationStatusComponent } from '../../../components/data/registration-status/registration-status.component';
 import { AudioPlayerComponent } from '../../../components/audio-player/audio-player.component';
 import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
@@ -24,7 +24,7 @@ import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective
     selector: 'app-pronunciation',
     templateUrl: './pronunciation.component.html',
     styleUrl: './pronunciation.component.scss',
-    imports: [NgIf, RegistrationStatusComponent, AudioPlayerComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDividerComponent, NzFlexDirective, NzInputGroupComponent, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NgFor, NzModalFooterDirective]
+    imports: [RegistrationStatusComponent, AudioPlayerComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDividerComponent, NzFlexDirective, NzInputGroupComponent, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NzModalFooterDirective]
 })
 export class PronunciationComponent implements OnInit {
 

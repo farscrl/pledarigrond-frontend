@@ -52,14 +52,16 @@
     </nz-col>
     <nz-col [nzSpan]="12">
       <nz-timeline>
-        <nz-timeline-item nzColor="green" *ngFor="let backupInfo of backupInfos.infos">
-          <p>
-            {{ backupInfo.creationDate }}<br>
-            {{ backupInfo.name }}<br>
-            {{ 'database.backup.size' | translate }}: {{ backupInfo.size }} MB<br>
-            <a (click)="downloadBackupFile(backupInfo.name)">{{ 'database.backup.download_link' | translate }}</a>
-          </p>
-        </nz-timeline-item>
+        @for (backupInfo of backupInfos.infos; track backupInfo) {
+          <nz-timeline-item nzColor="green">
+            <p>
+              {{ backupInfo.creationDate }}<br>
+              {{ backupInfo.name }}<br>
+              {{ 'database.backup.size' | translate }}: {{ backupInfo.size }} MB<br>
+              <a (click)="downloadBackupFile(backupInfo.name)">{{ 'database.backup.download_link' | translate }}</a>
+            </p>
+          </nz-timeline-item>
+        }
       </nz-timeline>
     </nz-col>
   </nz-row>

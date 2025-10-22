@@ -1,23 +1,37 @@
 <div *nzModalTitle>
   {{ 'sort_order.title' |translate:{name: searchString} }}
-  <ng-container *ngIf="dictionaryLanguage === 'ROMANSH'">({{ 'sort_order.title_rm' |translate }})</ng-container>
-  <ng-container *ngIf="dictionaryLanguage === 'GERMAN'">({{ 'sort_order.title_de' |translate }})</ng-container>
+  @if (dictionaryLanguage === 'ROMANSH') {
+    ({{ 'sort_order.title_rm' |translate }})
+  }
+  @if (dictionaryLanguage === 'GERMAN') {
+    ({{ 'sort_order.title_de' |translate }})
+  }
 </div>
 
 <p>{{ 'sort_order.instructions' |translate }}</p>
 
 <ngx-sortable [items]="itemsToReorder" name="" (listSorted)="listSorted($event)" [listStyle]="listStyle">
   <ng-template let-item="item">
-      <div class="sortable-list-item">
-        {{ item.deStichwort }}<em></em>
-        <em *ngIf="item.deSubsemantik"> ({{ item.deSubsemantik }})</em>
-        <em *ngIf="item.deGenus"> [{{ item.deGenus }}]</em>
-         ⇔
-        {{ item.rmStichwort }}
-        <em *ngIf="item.rmFlex"> [{{ item.rmFlex }}]</em>
-        <em *ngIf="item.rmSubsemantik"> ({{ item.rmSubsemantik }})</em>
-        <em *ngIf="item.rmGenus"> [{{ item.rmGenus }}]</em>
-      </div>
+    <div class="sortable-list-item">
+      {{ item.deStichwort }}<em></em>
+      @if (item.deSubsemantik) {
+        <em> ({{ item.deSubsemantik }})</em>
+      }
+      @if (item.deGenus) {
+        <em> [{{ item.deGenus }}]</em>
+      }
+      ⇔
+      {{ item.rmStichwort }}
+      @if (item.rmFlex) {
+        <em> [{{ item.rmFlex }}]</em>
+      }
+      @if (item.rmSubsemantik) {
+        <em> ({{ item.rmSubsemantik }})</em>
+      }
+      @if (item.rmGenus) {
+        <em> [{{ item.rmGenus }}]</em>
+      }
+    </div>
   </ng-template>
 </ngx-sortable>
 

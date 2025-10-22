@@ -1,25 +1,41 @@
 <nz-layout>
-  <div nz-row [nzGutter]="16" *ngIf="!environmentService.isLadin()">
-    <div nz-col [nzSpan]="6" *ngIf="authService.isEditorRumantschgrischun()">
-      <app-idiom-card name="Rumantsch Grischun" url="rumantschgrischun"></app-idiom-card>
+  @if (!environmentService.isLadin()) {
+    <div nz-row [nzGutter]="16">
+      @if (authService.isEditorRumantschgrischun()) {
+        <div nz-col [nzSpan]="6">
+          <app-idiom-card name="Rumantsch Grischun" url="rumantschgrischun"></app-idiom-card>
+        </div>
+      }
+      @if (authService.isEditorSurmiran()) {
+        <div nz-col [nzSpan]="6">
+          <app-idiom-card name="Surmiran" url="surmiran"></app-idiom-card>
+        </div>
+      }
+      @if (authService.isEditorSursilvan()) {
+        <div nz-col [nzSpan]="6">
+          <app-idiom-card name="Sursilvan" url="sursilvan"></app-idiom-card>
+        </div>
+      }
+      @if (authService.isEditorSutsilvan()) {
+        <div nz-col [nzSpan]="6">
+          <app-idiom-card name="Sutsilvan" url="sutsilvan"></app-idiom-card>
+        </div>
+      }
     </div>
-    <div nz-col [nzSpan]="6" *ngIf="authService.isEditorSurmiran()">
-      <app-idiom-card name="Surmiran" url="surmiran"></app-idiom-card>
-    </div>
-    <div nz-col [nzSpan]="6" *ngIf="authService.isEditorSursilvan()">
-      <app-idiom-card name="Sursilvan" url="sursilvan"></app-idiom-card>
-    </div>
-    <div nz-col [nzSpan]="6" *ngIf="authService.isEditorSutsilvan()">
-      <app-idiom-card name="Sutsilvan" url="sutsilvan"></app-idiom-card>
-    </div>
-  </div>
+  }
 
-  <div nz-row [nzGutter]="16" *ngIf="environmentService.isLadin()">
-    <div nz-col [nzSpan]="12" *ngIf="authService.isEditorPuter()">
-      <app-idiom-card name="Puter" url="puter"></app-idiom-card>
+  @if (environmentService.isLadin()) {
+    <div nz-row [nzGutter]="16">
+      @if (authService.isEditorPuter()) {
+        <div nz-col [nzSpan]="12">
+          <app-idiom-card name="Puter" url="puter"></app-idiom-card>
+        </div>
+      }
+      @if (authService.isEditorVallader()) {
+        <div nz-col [nzSpan]="12">
+          <app-idiom-card name="Vallader" url="vallader"></app-idiom-card>
+        </div>
+      }
     </div>
-    <div nz-col [nzSpan]="12" *ngIf="authService.isEditorVallader()">
-      <app-idiom-card name="Vallader" url="vallader"></app-idiom-card>
-    </div>
-  </div>
+  }
 </nz-layout>

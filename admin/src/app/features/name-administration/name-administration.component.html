@@ -12,7 +12,7 @@
       <nz-collapse>
         <nz-collapse-panel
           nzHeader="Filter"
-        >
+          >
           <form nz-form [nzLayout]="'inline'" (ngSubmit)="applyFilter()">
             <nz-form-item>
               <nz-form-control [nzSpan]="8" [nzFlex]="1"style="min-width: 400px">
@@ -38,9 +38,9 @@
       </nz-collapse>
 
       <nz-table #basicTable [nzData]="currentPage" nzFrontPagination="false"
-                [nzTotal]="totalElements" [nzPageIndex]="pageNumber" [nzPageSize]="pageSize" nzBordered="true" nzOuterBordered="true"
-                [nzLoading]="isLoading" [nzPageSizeOptions]="[10,20,50,100]" [nzShowSizeChanger]="true" (nzPageIndexChange)="changePage($event)"
-                (nzPageSizeChange)="changePageSize($event)">
+        [nzTotal]="totalElements" [nzPageIndex]="pageNumber" [nzPageSize]="pageSize" nzBordered="true" nzOuterBordered="true"
+        [nzLoading]="isLoading" [nzPageSizeOptions]="[10,20,50,100]" [nzShowSizeChanger]="true" (nzPageIndexChange)="changePage($event)"
+        (nzPageSizeChange)="changePageSize($event)">
         <thead>
           <tr>
             <th>Rumantsch Grischun</th>
@@ -55,21 +55,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of basicTable.data">
-            <td><app-name-display [name]="data.nameRumantschGrischun"></app-name-display></td>
-            <td><app-name-display [name]="data.nameGerman"></app-name-display></td>
-            <td nzAlign="center"><app-name-category [category]="data.category"></app-name-category></td>
-            <td><app-name-display [name]="data.nameSursilvan"></app-name-display></td>
-            <td><app-name-display [name]="data.nameSutsilvan"></app-name-display></td>
-            <td><app-name-display [name]="data.nameSurmiran"></app-name-display></td>
-            <td><app-name-display [name]="data.namePuter"></app-name-display></td>
-            <td><app-name-display [name]="data.nameVallader"></app-name-display></td>
-            <td nzAlign="center">
-              <a (click)="newOrEdit(data.id!)">{{ 'names.edit_action' | translate}}</a>
-              <nz-divider nzType="vertical"></nz-divider>
-              <a (click)="delete(data!)">{{ 'names.delete_action' | translate}}</a>
-            </td>
-          </tr>
+          @for (data of basicTable.data; track data) {
+            <tr>
+              <td><app-name-display [name]="data.nameRumantschGrischun"></app-name-display></td>
+              <td><app-name-display [name]="data.nameGerman"></app-name-display></td>
+              <td nzAlign="center"><app-name-category [category]="data.category"></app-name-category></td>
+              <td><app-name-display [name]="data.nameSursilvan"></app-name-display></td>
+              <td><app-name-display [name]="data.nameSutsilvan"></app-name-display></td>
+              <td><app-name-display [name]="data.nameSurmiran"></app-name-display></td>
+              <td><app-name-display [name]="data.namePuter"></app-name-display></td>
+              <td><app-name-display [name]="data.nameVallader"></app-name-display></td>
+              <td nzAlign="center">
+                <a (click)="newOrEdit(data.id!)">{{ 'names.edit_action' | translate}}</a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="delete(data!)">{{ 'names.delete_action' | translate}}</a>
+              </td>
+            </tr>
+          }
         </tbody>
       </nz-table>
     </nz-content>

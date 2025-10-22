@@ -1,6 +1,18 @@
-<nz-tag [nzColor]="'blue'" *ngIf="category === 'GEOGRAPHY'">{{ 'data.name_category.geography' | translate}}</nz-tag>
-<nz-tag [nzColor]="'lime'" *ngIf="category === 'FIRSTNAME'">{{ 'data.name_category.firstname' | translate}}</nz-tag>
-<nz-tag [nzColor]="'green'" *ngIf="category === 'SURNAME'">{{ 'data.name_category.surname' | translate}}</nz-tag>
-<nz-tag [nzColor]="'orange'" *ngIf="category === 'COMPANY'">{{ 'data.name_category.company' | translate}}</nz-tag>
-<nz-tag [nzColor]="'purple'" *ngIf="category === 'ABBREVIATION'">{{ 'data.name_category.abbreviation' | translate}}</nz-tag>
-<nz-tag [nzColor]="'red'" *ngIf="category === 'OTHER'">{{ 'data.name_category.other' | translate}}</nz-tag>
+@if (category === 'GEOGRAPHY') {
+  <nz-tag [nzColor]="'blue'">{{ 'data.name_category.geography' | translate}}</nz-tag>
+}
+@if (category === 'FIRSTNAME') {
+  <nz-tag [nzColor]="'lime'">{{ 'data.name_category.firstname' | translate}}</nz-tag>
+}
+@if (category === 'SURNAME') {
+  <nz-tag [nzColor]="'green'">{{ 'data.name_category.surname' | translate}}</nz-tag>
+}
+@if (category === 'COMPANY') {
+  <nz-tag [nzColor]="'orange'">{{ 'data.name_category.company' | translate}}</nz-tag>
+}
+@if (category === 'ABBREVIATION') {
+  <nz-tag [nzColor]="'purple'">{{ 'data.name_category.abbreviation' | translate}}</nz-tag>
+}
+@if (category === 'OTHER') {
+  <nz-tag [nzColor]="'red'">{{ 'data.name_category.other' | translate}}</nz-tag>
+}

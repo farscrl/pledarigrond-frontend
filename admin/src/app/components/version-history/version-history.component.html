@@ -5,7 +5,7 @@
   nzShowSizeChanger
   [nzData]="versionHistory"
   [nzNoResult]="notFound"
->
+  >
   <thead>
     <tr>
       <th>-</th>
@@ -16,34 +16,40 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let version of versionHistory; let i = index">
-      <td>
-        <input type="radio" value="data" name="diffBefore" (change)="beforeChanged(version)" *ngIf="i !== 0">
-      </td>
-      <td>
-        <input type="radio" value="data" name="diffAfter" (change)="afterChanged(version)">
-      </td>
-      <td>
-        {{ formateDateTime(version.timestamp) }}<br>
-        <app-action [action]="version.action"></app-action>
-      </td>
-      <td>
-        <app-user-role [role]="version.creatorRole"></app-user-role><br>
-        <span class="username">{{ EntryVersionInternalDto.getName(version) }}</span>
-      </td>
-      <td>
-        {{ version.deStichwort }} ⇔ {{ version.rmStichwort }}
-      </td>
-    </tr>
-  <tr *ngIf="versionHistory.length > 0">
-    <td>
-      <input type="radio" value="data" name="diffBefore" (change)="beforeChanged()">
-    </td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
+    @for (version of versionHistory; track version; let i = $index) {
+      <tr>
+        <td>
+          @if (i !== 0) {
+            <input type="radio" value="data" name="diffBefore" (change)="beforeChanged(version)">
+          }
+        </td>
+        <td>
+          <input type="radio" value="data" name="diffAfter" (change)="afterChanged(version)">
+        </td>
+        <td>
+          {{ formateDateTime(version.timestamp) }}<br>
+          <app-action [action]="version.action"></app-action>
+        </td>
+        <td>
+          <app-user-role [role]="version.creatorRole"></app-user-role><br>
+          <span class="username">{{ EntryVersionInternalDto.getName(version) }}</span>
+        </td>
+        <td>
+          {{ version.deStichwort }} ⇔ {{ version.rmStichwort }}
+        </td>
+      </tr>
+    }
+    @if (versionHistory.length > 0) {
+      <tr>
+        <td>
+          <input type="radio" value="data" name="diffBefore" (change)="beforeChanged()">
+        </td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    }
   </tbody>
 </nz-table>
 
@@ -51,14 +57,15 @@
   <nz-empty nzNotFoundImage="simple" [nzNotFoundContent]="'lexicon.lemma_history.no_item_selected' | translate"></nz-empty>
 </ng-template>
 
-<div class="button-container" *ngIf="this.entry">
-  <button nz-button nzType="primary" (click)="showDiff()" [disabled]="!diffOldEntryVersion || !diffNewEntryVersion">
-    <span nz-icon nzType="diff" nzTheme="outline"></span>
-    {{ 'lexicon.lemma_history.show_diff_button' | translate}}
-  </button>
-
-  <button nz-button nzDanger nzType="primary" (click)="dropOutdatedHistory()" [disabled]="!this.entry">
-    <i nz-icon nzType="delete"></i>
-    {{ 'lexicon.lemma_history.delete_history_button' | translate}}
-  </button>
-</div>
+@if (this.entry) {
+  <div class="button-container">
+    <button nz-button nzType="primary" (click)="showDiff()" [disabled]="!diffOldEntryVersion || !diffNewEntryVersion">
+      <span nz-icon nzType="diff" nzTheme="outline"></span>
+      {{ 'lexicon.lemma_history.show_diff_button' | translate}}
+    </button>
+    <button nz-button nzDanger nzType="primary" (click)="dropOutdatedHistory()" [disabled]="!this.entry">
+      <i nz-icon nzType="delete"></i>
+      {{ 'lexicon.lemma_history.delete_history_button' | translate}}
+    </button>
+  </div>
+}

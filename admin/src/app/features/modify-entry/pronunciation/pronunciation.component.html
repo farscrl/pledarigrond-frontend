@@ -1,84 +1,94 @@
-<ng-container *ngIf="entryVersion && !entryVersion.rmPronunciation && (orderedRegistration === null)">
+@if (entryVersion && !entryVersion.rmPronunciation && (orderedRegistration === null)) {
   Anc è nagina registraziun attribuida a quest lemma.
-</ng-container>
-<ng-container *ngIf="entryVersion && !entryVersion.rmPronunciation && (orderedRegistration !== null) ">
+}
+@if (entryVersion && !entryVersion.rmPronunciation && (orderedRegistration !== null) ) {
   Ina registraziun per quest lemma è vegnida empustada:<br>
   <b>{{ orderedRegistration.rmStichwort }}</b>
-  <ng-container *ngIf="orderedRegistration.rmGrammatik">, {{ orderedRegistration.rmGrammatik }}</ng-container>
-  <ng-container *ngIf="orderedRegistration.rmGenus">, {{ orderedRegistration.rmGenus }}</ng-container>
+  @if (orderedRegistration.rmGrammatik) {
+    , {{ orderedRegistration.rmGrammatik }}
+  }
+  @if (orderedRegistration.rmGenus) {
+    , {{ orderedRegistration.rmGenus }}
+  }
   <br>
-  <app-registration-status [status]="orderedRegistration.status"></app-registration-status>
-</ng-container>
-<ng-container *ngIf="entryVersion && !!entryVersion.rmPronunciation">
-  Ina registraziun è gia attribuida a quest lemma:
-  <app-audio-player [url]="getAudioUrlById(entryVersion.rmPronunciation!)"></app-audio-player>
-</ng-container>
+    <app-registration-status [status]="orderedRegistration.status"></app-registration-status>
+  }
+  @if (entryVersion && !!entryVersion.rmPronunciation) {
+    Ina registraziun è gia attribuida a quest lemma:
+    <app-audio-player [url]="getAudioUrlById(entryVersion.rmPronunciation!)"></app-audio-player>
+  }
 
-<div style="text-align: right" *ngIf="!isModifyActive">
-  <button nz-button nzType="primary" (click)="isModifyActive = true;">Modifitgar</button>
-</div>
+  @if (!isModifyActive) {
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="isModifyActive = true;">Modifitgar</button>
+    </div>
+  }
 
-<nz-divider  *ngIf="isModifyActive"></nz-divider>
+  @if (isModifyActive) {
+    <nz-divider ></nz-divider>
+  }
 
-<div class="combination-wrapper" nz-flex [nzGap]="80"  *ngIf="isModifyActive">
-  <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
-    <h3>Attribuir registraziun existenta</h3>
-    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-      <input type="text" nz-input placeholder="input search text" [(ngModel)]="listFilter.searchTerm" (ngModelChange)="searchRegistrations()" />
-    </nz-input-group>
-    <ng-template #suffixIconButton>
-      <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search"></span></button>
-    </ng-template>
+  @if (isModifyActive) {
+    <div class="combination-wrapper" nz-flex [nzGap]="80" >
+      <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
+        <h3>Attribuir registraziun existenta</h3>
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+          <input type="text" nz-input placeholder="input search text" [(ngModel)]="listFilter.searchTerm" (ngModelChange)="searchRegistrations()" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+          <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search"></span></button>
+        </ng-template>
+        <nz-table #smallTable nzSize="small" [nzData]="searchResults" [nzFrontPagination]="false" [nzShowPagination]="false">
+          <thead>
+            <tr>
+              <th>Play</th>
+              <th>Pled per pronunziar</th>
+              <th>Status</th>
+              <th>Grammatica</th>
+              <th>Genus</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (data of smallTable.data; track data) {
+              <tr (click)="addPronunciation(data)" class="existing-pronunciation">
+                <td>@if (data.status === 'COMPLETED') {
+                  <app-audio-player [url]="getAudioUrlByRegistration(data)" />
+                }</td>
+                <td>{{ data.rmStichwort }}</td>
+                <td><app-registration-status [status]="data.status" /></td>
+                <td>{{ data.rmGrammatik }}</td>
+                <td>{{ data.rmGenus }}</td>
+              </tr>
+            }
+          </tbody>
+        </nz-table>
+      </div>
+      <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
+        <h3>Empustar ina pronunzia</h3>
+        <p>
+          Cun quest button po ina pronunzia vegnir empustada per «{{ entryVersion?.rmStichwort }}». Il pled vegn agiuntà a la glista da tut las
+          pronunzias da registrar.
+        </p>
+        <button nz-button nzType="primary" nzSize="large" (click)="orderRegistration()">
+          <span nz-icon nzType="download"></span>
+          Empustar
+        </button>
+        @if (!!entryVersion?.rmPronunciation) {
+          <nz-divider></nz-divider>
+          <h3>Allontanar la pronunzia</h3>
+          <p>
+            Cun quest button po ina pronunzia vegnir allontanada da «{{ entryVersion?.rmStichwort }}». Il pled resta en la glista da tut las
+            pronunzias registradas e stat vinavant era a disposiziun per autras endataziuns.
+          </p>
+          <button nz-button nzType="primary" nzDanger nzSize="large" (click)="removeRegistration()">
+            <span nz-icon nzType="close"></span>
+            Allontanar
+          </button>
+        }
+      </div>
+    </div>
+  }
 
-    <nz-table #smallTable nzSize="small" [nzData]="searchResults" [nzFrontPagination]="false" [nzShowPagination]="false">
-      <thead>
-      <tr>
-        <th>Play</th>
-        <th>Pled per pronunziar</th>
-        <th>Status</th>
-        <th>Grammatica</th>
-        <th>Genus</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let data of smallTable.data" (click)="addPronunciation(data)" class="existing-pronunciation">
-        <td><app-audio-player [url]="getAudioUrlByRegistration(data)" *ngIf="data.status === 'COMPLETED'" /></td>
-        <td>{{ data.rmStichwort }}</td>
-        <td><app-registration-status [status]="data.status" /></td>
-        <td>{{ data.rmGrammatik }}</td>
-        <td>{{ data.rmGenus }}</td>
-      </tr>
-      </tbody>
-    </nz-table>
-  </div>
-
-  <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
-    <h3>Empustar ina pronunzia</h3>
-    <p>
-      Cun quest button po ina pronunzia vegnir empustada per «{{ entryVersion?.rmStichwort }}». Il pled vegn agiuntà a la glista da tut las
-      pronunzias da registrar.
-    </p>
-    <button nz-button nzType="primary" nzSize="large" (click)="orderRegistration()">
-      <span nz-icon nzType="download"></span>
-      Empustar
-    </button>
-
-    @if (!!entryVersion?.rmPronunciation) {
-      <nz-divider></nz-divider>
-
-      <h3>Allontanar la pronunzia</h3>
-      <p>
-        Cun quest button po ina pronunzia vegnir allontanada da «{{ entryVersion?.rmStichwort }}». Il pled resta en la glista da tut las
-        pronunzias registradas e stat vinavant era a disposiziun per autras endataziuns.
-      </p>
-      <button nz-button nzType="primary" nzDanger nzSize="large" (click)="removeRegistration()">
-        <span nz-icon nzType="close"></span>
-        Allontanar
-      </button>
-    }
-  </div>
-</div>
-
-<ng-template [nzModalFooter]>
-  <button nz-button nzType="primary" (click)="handleOk()">OK</button>
-</ng-template>
+  <ng-template [nzModalFooter]>
+    <button nz-button nzType="primary" (click)="handleOk()">OK</button>
+  </ng-template>

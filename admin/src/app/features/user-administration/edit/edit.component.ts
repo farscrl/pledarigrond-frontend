@@ -9,7 +9,7 @@ import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormContr
 import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
 import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzInputDirective } from 'ng-zorro-antd/input';
-import { NgIf } from '@angular/common';
+
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -25,7 +25,7 @@ export class EditUserData {
     selector: 'app-edit',
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.scss'],
-    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NgIf, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
+    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class EditComponent implements OnInit {
 

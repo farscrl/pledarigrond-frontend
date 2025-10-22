@@ -25,7 +25,7 @@
     </ng-template>
   </nz-divider>
 
-  <ng-container *ngIf="showSearchDetails">
+  @if (showSearchDetails) {
     <nz-form-item>
       <nz-form-label>{{ 'lexicon.filter.language.title' | translate}}</nz-form-label>
       <nz-form-control>
@@ -36,7 +36,6 @@
         </nz-radio-group>
       </nz-form-control>
     </nz-form-item>
-
     <nz-form-item>
       <nz-form-label>{{ 'lexicon.filter.method.title' | translate}}</nz-form-label>
       <nz-form-control>
@@ -49,7 +48,6 @@
         </nz-radio-group>
       </nz-form-control>
     </nz-form-item>
-
     <nz-form-item>
       <nz-form-label>{{ 'lexicon.filter.category' | translate}}</nz-form-label>
       <nz-form-control>
@@ -57,7 +55,6 @@
         <nz-autocomplete [nzDataSource]="categoryAutocomplete" nzBackfill #categoryAuto></nz-autocomplete>
       </nz-form-control>
     </nz-form-item>
-
     <nz-form-item>
       <nz-form-label>{{ 'lexicon.filter.semantics' | translate}}</nz-form-label>
       <nz-form-control>
@@ -65,23 +62,25 @@
         <nz-autocomplete [nzDataSource]="semanticsAutocomplete" nzBackfill #semanticsAuto></nz-autocomplete>
       </nz-form-control>
     </nz-form-item>
-
     <nz-form-item>
       <nz-form-label>{{ 'lexicon.filter.gender' | translate}}</nz-form-label>
       <nz-select [(ngModel)]="searchCriteria.gender" (ngModelChange)="search()" nzSize="small" name="gender">
         <nz-option nzValue="" nzLabel=""></nz-option>
-        <nz-option [nzValue]="value" [nzLabel]="value" *ngFor="let value of genderValues"></nz-option>
+        @for (value of genderValues; track value) {
+          <nz-option [nzValue]="value" [nzLabel]="value"></nz-option>
+        }
       </nz-select>
     </nz-form-item>
-
     <nz-form-item>
       <nz-form-label>{{ 'lexicon.filter.grammar' | translate}}</nz-form-label>
       <nz-select [(ngModel)]="searchCriteria.grammar" (ngModelChange)="search()" nzSize="small" name="grammar">
         <nz-option nzValue="" nzLabel=""></nz-option>
-        <nz-option [nzValue]="value" [nzLabel]="value" *ngFor="let value of grammarValues"></nz-option>
+        @for (value of grammarValues; track value) {
+          <nz-option [nzValue]="value" [nzLabel]="value"></nz-option>
+        }
       </nz-select>
     </nz-form-item>
-  </ng-container>
+  }
 
   <div class="buttons">
     <button nz-button nzType="default" (click)="reset()" class="reset" type="button">{{ 'lexicon.filter.reset' | translate}}</button>

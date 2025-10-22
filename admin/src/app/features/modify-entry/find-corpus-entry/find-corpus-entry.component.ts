@@ -8,7 +8,7 @@ import { NzInputGroupComponent, NzInputDirective } from 'ng-zorro-antd/input';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
-import { NgIf } from '@angular/common';
+
 import { NzListComponent, NzListItemComponent, NzListItemActionsComponent, NzListItemActionComponent } from 'ng-zorro-antd/list';
 import { HighlighterPipe } from '../../../pipes/highlighter.pipe';
 
@@ -20,7 +20,7 @@ export class FindCorpusEntryData {
     selector: 'app-find-corpus-entry',
     templateUrl: './find-corpus-entry.component.html',
     styleUrl: './find-corpus-entry.component.scss',
-    imports: [ɵNzTransitionPatchDirective, NzSpaceCompactItemDirective, NzInputGroupComponent, NzInputDirective, NzButtonComponent, NzWaveDirective, NzIconDirective, NgIf, NzListComponent, NzListItemComponent, NzListItemActionsComponent, NzListItemActionComponent, HighlighterPipe]
+    imports: [ɵNzTransitionPatchDirective, NzSpaceCompactItemDirective, NzInputGroupComponent, NzInputDirective, NzButtonComponent, NzWaveDirective, NzIconDirective, NzListComponent, NzListItemComponent, NzListItemActionsComponent, NzListItemActionComponent, HighlighterPipe]
 })
 export class FindCorpusEntryComponent implements OnInit{
 

@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
 import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzInputDirective } from 'ng-zorro-antd/input';
-import { NgIf, NgFor } from '@angular/common';
+
 import { NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent } from 'ng-zorro-antd/list';
 import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -46,7 +46,7 @@ export enum KEY_CODE {
     selector: 'app-review-pronunciation',
     templateUrl: './review-pronunciation.component.html',
     styleUrl: './review-pronunciation.component.scss',
-    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzDividerComponent, NzSpaceCompactItemDirective, NzInputDirective, NzPageHeaderComponent, NgIf, NzListComponent, NgFor, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, AudioPlayerComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDescriptionsComponent, NzDescriptionsItemComponent, TranslatePipe]
+    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzDividerComponent, NzSpaceCompactItemDirective, NzInputDirective, NzPageHeaderComponent, NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, AudioPlayerComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDescriptionsComponent, NzDescriptionsItemComponent, TranslatePipe]
 })
 export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   filter: ListFilter = new ListFilter();

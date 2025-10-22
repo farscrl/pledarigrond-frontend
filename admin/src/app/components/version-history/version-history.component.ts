@@ -8,7 +8,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 import { EntryDto, EntryVersionInternalDto } from '../../models/dictionary';
 import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent } from 'ng-zorro-antd/table';
-import { NgFor, NgIf } from '@angular/common';
+
 import { ActionComponent } from '../data/action/action.component';
 import { UserRoleComponent } from '../data/user-role/user-role.component';
 import { NzEmptyComponent } from 'ng-zorro-antd/empty';
@@ -22,7 +22,7 @@ import { NzIconDirective } from 'ng-zorro-antd/icon';
     selector: 'app-version-history',
     templateUrl: './version-history.component.html',
     styleUrls: ['./version-history.component.scss'],
-    imports: [NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NgFor, NgIf, ActionComponent, UserRoleComponent, NzEmptyComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzIconDirective, TranslatePipe]
+    imports: [NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, ActionComponent, UserRoleComponent, NzEmptyComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzIconDirective, TranslatePipe]
 })
 export class VersionHistoryComponent implements OnChanges {
 

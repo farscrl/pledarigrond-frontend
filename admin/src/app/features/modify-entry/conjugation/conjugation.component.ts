@@ -9,7 +9,7 @@ import { CopyService } from "../../../services/copy.service";
 import { EditorService } from "../../../services/editor.service";
 import { EnvironmentService } from "../../../services/environment.service";
 import { EntryVersionInternalDto, Verb } from '../../../models/dictionary';
-import { NgIf, NgFor } from '@angular/common';
+
 import { PronunciationCharactersComponent } from '../../../components/pronunciation-characters/pronunciation-characters.component';
 import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
 import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
@@ -31,7 +31,7 @@ export class ConjugationData {
     selector: 'app-conjugation',
     templateUrl: './conjugation.component.html',
     styleUrls: ['./conjugation.component.scss'],
-    imports: [NgIf, PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NgFor, NzCheckboxComponent, NzTabsComponent, NzTabComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzTabsComponent, NzTabComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class ConjugationComponent implements OnInit {
 

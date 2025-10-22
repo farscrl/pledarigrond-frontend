@@ -16,7 +16,7 @@ import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 import { EntryVersionDto, EntryVersionInternalDto } from '../../models/dictionary';
 import { DictionaryListItem, PaginationInfo } from '../../models/dictionary-list';
-import { NgIf, NgFor, UpperCasePipe, SlicePipe } from '@angular/common';
+import { UpperCasePipe, SlicePipe } from '@angular/common';
 import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
@@ -39,7 +39,7 @@ import { HighlighterPipe } from '../../pipes/highlighter.pipe';
     selector: 'app-dictionary-list',
     templateUrl: './dictionary-list.component.html',
     styleUrls: ['./dictionary-list.component.scss'],
-    imports: [NgIf, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDropdownButtonDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NgFor, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
+    imports: [NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDropdownButtonDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
 })
 export class DictionaryListComponent {
 

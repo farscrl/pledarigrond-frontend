@@ -6,16 +6,22 @@
     </nz-form-control>
   </nz-form-item>
 
-  <nz-form-item *ngIf="!email">
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">{{ 'users.edit.password' | translate }}</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
-      <input nz-input type="password" formControlName="password" id="password" autocomplete="new-password" autocomplete="off"/>
-      <ng-template #errorTpl let-control>
-        <ng-container *ngIf="control.hasError('required')">{{ 'users.edit.password_missing' | translate }}</ng-container>
-        <ng-container *ngIf="control.hasError('minlength')">{{ 'users.edit.password_lenght' | translate }}</ng-container>
-      </ng-template>
-    </nz-form-control>
-  </nz-form-item>
+  @if (!email) {
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">{{ 'users.edit.password' | translate }}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <input nz-input type="password" formControlName="password" id="password" autocomplete="new-password" autocomplete="off"/>
+        <ng-template #errorTpl let-control>
+          @if (control.hasError('required')) {
+            {{ 'users.edit.password_missing' | translate }}
+          }
+          @if (control.hasError('minlength')) {
+            {{ 'users.edit.password_lenght' | translate }}
+          }
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  }
 
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="admin">{{ 'users.edit.is_admin' | translate }}</nz-form-label>
@@ -24,75 +30,89 @@
     </nz-form-control>
   </nz-form-item>
 
-  <nz-form-item *ngIf="environmentService.isLadin()">
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="rolePuter">{{ 'users.edit.role' | translate }} Puter</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" >
-      <nz-select formControlName="rolePuter">
-        <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
-        <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
+  @if (environmentService.isLadin()) {
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="rolePuter">{{ 'users.edit.role' | translate }} Puter</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select formControlName="rolePuter">
+          <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
+          <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  }
 
-  <nz-form-item *ngIf="!environmentService.isLadin()">
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleRumantschgrischun">{{ 'users.edit.role' | translate }} RG</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" >
-      <nz-select formControlName="roleRumantschgrischun">
-        <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
-        <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
+  @if (!environmentService.isLadin()) {
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleRumantschgrischun">{{ 'users.edit.role' | translate }} RG</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select formControlName="roleRumantschgrischun">
+          <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
+          <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  }
 
-  <nz-form-item *ngIf="!environmentService.isLadin()">
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSurmiran">{{ 'users.edit.role' | translate }} Surmiran</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" >
-      <nz-select formControlName="roleSurmiran">
-        <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
-        <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
+  @if (!environmentService.isLadin()) {
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSurmiran">{{ 'users.edit.role' | translate }} Surmiran</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select formControlName="roleSurmiran">
+          <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
+          <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  }
 
-  <nz-form-item *ngIf="!environmentService.isLadin()">
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSursilvan">{{ 'users.edit.role' | translate }} Sursilvan</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" >
-      <nz-select formControlName="roleSursilvan">
-        <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
-        <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
+  @if (!environmentService.isLadin()) {
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSursilvan">{{ 'users.edit.role' | translate }} Sursilvan</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select formControlName="roleSursilvan">
+          <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
+          <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  }
 
-  <nz-form-item *ngIf="!environmentService.isLadin()">
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSutsilvan">{{ 'users.edit.role' | translate }} Sutsilvan</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" >
-      <nz-select formControlName="roleSutsilvan">
-        <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
-        <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
+  @if (!environmentService.isLadin()) {
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleSutsilvan">{{ 'users.edit.role' | translate }} Sutsilvan</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select formControlName="roleSutsilvan">
+          <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
+          <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  }
 
-  <nz-form-item *ngIf="environmentService.isLadin()">
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleVallader">{{ 'users.edit.role' | translate }} Vallader</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" >
-      <nz-select formControlName="roleVallader">
-        <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
-        <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
+  @if (environmentService.isLadin()) {
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleVallader">{{ 'users.edit.role' | translate }} Vallader</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select formControlName="roleVallader">
+          <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
+          <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  }
 
-  <nz-form-item *ngIf="!environmentService.isLadin()">
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleNames">{{ 'users.edit.role' | translate }} {{ 'users.names' | translate }}</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" >
-      <nz-select formControlName="roleNames">
-        <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
-        <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
+  @if (!environmentService.isLadin()) {
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleNames">{{ 'users.edit.role' | translate }} {{ 'users.names' | translate }}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select formControlName="roleNames">
+          <nz-option nzValue="EDITOR" [nzLabel]="'users.edit.editor_role' | translate "></nz-option>
+          <nz-option nzValue="NONE" [nzLabel]="'users.edit.no_role' | translate "></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  }
 
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="roleNames">{{ 'users.edit.role' | translate }} {{ 'users.registrations' | translate }}</nz-form-label>

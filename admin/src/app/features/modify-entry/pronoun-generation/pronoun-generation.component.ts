@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, 
 import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { EnvironmentService } from "../../../services/environment.service";
 import { EntryVersionInternalDto, Pronoun } from '../../../models/dictionary';
-import { NgIf } from '@angular/common';
+
 import { PronunciationCharactersComponent } from '../../../components/pronunciation-characters/pronunciation-characters.component';
 import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
 import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
@@ -21,7 +21,7 @@ export class PronounGenerationData {
     selector: 'app-pronoun-generation',
     templateUrl: './pronoun-generation.component.html',
     styleUrls: ['./pronoun-generation.component.scss'],
-    imports: [NgIf, PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzAutosizeDirective, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzAutosizeDirective, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class PronounGenerationComponent implements OnInit {
 

@@ -1,4 +1,12 @@
-<nz-tag [nzColor]="'gold'" *ngIf="role === 'ADMIN'">{{ 'data.role.admin' | translate}}</nz-tag>
-<nz-tag [nzColor]="'green'" *ngIf="role === 'EDITOR'">{{ 'data.role.editor' | translate}}</nz-tag>
-<nz-tag [nzColor]="'geekblue'" *ngIf="role === 'GUEST'">{{ 'data.role.guest' | translate}}</nz-tag>
-<nz-tag [nzColor]="'red'" *ngIf="role === 'NONE'">{{ 'data.role.none' | translate}}</nz-tag>
+@if (role === 'ADMIN') {
+  <nz-tag [nzColor]="'gold'">{{ 'data.role.admin' | translate}}</nz-tag>
+}
+@if (role === 'EDITOR') {
+  <nz-tag [nzColor]="'green'">{{ 'data.role.editor' | translate}}</nz-tag>
+}
+@if (role === 'GUEST') {
+  <nz-tag [nzColor]="'geekblue'">{{ 'data.role.guest' | translate}}</nz-tag>
+}
+@if (role === 'NONE') {
+  <nz-tag [nzColor]="'red'">{{ 'data.role.none' | translate}}</nz-tag>
+}

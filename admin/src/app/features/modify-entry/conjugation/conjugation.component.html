@@ -1,4 +1,6 @@
-<app-pronunciation-characters *ngIf="environmentService.isLadin()"></app-pronunciation-characters>
+@if (environmentService.isLadin()) {
+  <app-pronunciation-characters></app-pronunciation-characters>
+}
 <form nz-form [formGroup]="validateForm">
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24">surpigliar furma existenta</nz-form-label>
@@ -6,9 +8,11 @@
       <button nz-button (click)="copyConjugation()" style="margin-right: 12px;">
         Copiar conjugaziun
       </button>
-      <button nz-button *ngIf="copyService.canPasteConjugation()" (click)="pasteConjugation()">
-        Encollar conjugaziun ({{copyService.infinitive}})
-      </button>
+      @if (copyService.canPasteConjugation()) {
+        <button nz-button (click)="pasteConjugation()">
+          Encollar conjugaziun ({{copyService.infinitive}})
+        </button>
+      }
     </nz-form-control>
   </nz-form-item>
 
@@ -26,9 +30,11 @@
         <div nz-col [nzSpan]="20">
           <nz-select formControlName="inflectionSubtype" id="inflectionSubtype">
             <nz-option nzValue="" nzLabel="none"></nz-option>
-            <nz-option [nzValue]="type.id" [nzLabel]="type.name" *ngFor="let type of subTypes" nzCustomContent>
-              <b [class.subtype]="type.isSubtype">{{type.name}}</b>: {{type.description}}
-            </nz-option>
+            @for (type of subTypes; track type) {
+              <nz-option [nzValue]="type.id" [nzLabel]="type.name" nzCustomContent>
+                <b [class.subtype]="type.isSubtype">{{type.name}}</b>: {{type.description}}
+              </nz-option>
+            }
           </nz-select>
         </div>
         <div nz-col [nzSpan]="4">
@@ -168,45 +174,47 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzSpan="12" *ngIf="hasConjunctiv2()">
-          <h2>{{ 'edit.conjugation.forms.conjunctiv2' | translate }}</h2>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="conjunctiv2sing1" id="conjunctiv2sing1" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="conjunctiv2sing2" id="conjunctiv2sing2" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="conjunctiv2sing3" id="conjunctiv2sing3" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="conjunctiv2plural1" id="conjunctiv2plural1" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="conjunctiv2plural2" id="conjunctiv2plural2" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="conjunctiv2plural3" id="conjunctiv2plural3" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+        @if (hasConjunctiv2()) {
+          <div nz-col nzSpan="12">
+            <h2>{{ 'edit.conjugation.forms.conjunctiv2' | translate }}</h2>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="conjunctiv2sing1" id="conjunctiv2sing1" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="conjunctiv2sing2" id="conjunctiv2sing2" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2sing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="conjunctiv2sing3" id="conjunctiv2sing3" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="conjunctiv2plural1" id="conjunctiv2plural1" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="conjunctiv2plural2" id="conjunctiv2plural2" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conjunctiv2plural3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="conjunctiv2plural3" id="conjunctiv2plural3" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        }
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.cundiziunal' | translate }}</h2>
           <nz-form-item>
@@ -246,45 +254,47 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzSpan="12" *ngIf="hasCundizionalIndirect()">
-          <h2>{{ 'edit.conjugation.forms.cundiziunal_indirect' | translate }}</h2>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalindirectsing1" id="cundizionalindirectsing1" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalindirectsing2" id="cundizionalindirectsing2" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalindirectsing3" id="cundizionalindirectsing3" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalindirectplural1" id="cundizionalindirectplural1" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalindirectplural2" id="cundizionalindirectplural2" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalindirectplural3" id="cundizionalindirectplural3" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+        @if (hasCundizionalIndirect()) {
+          <div nz-col nzSpan="12">
+            <h2>{{ 'edit.conjugation.forms.cundiziunal_indirect' | translate }}</h2>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalindirectsing1" id="cundizionalindirectsing1" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalindirectsing2" id="cundizionalindirectsing2" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectsing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalindirectsing3" id="cundizionalindirectsing3" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalindirectplural1" id="cundizionalindirectplural1" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalindirectplural2" id="cundizionalindirectplural2" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalindirectplural3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalindirectplural3" id="cundizionalindirectplural3" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        }
 
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.futur' | translate }}</h2>
@@ -325,45 +335,47 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzSpan="12" *ngIf="hasFuturDubitativ()">
-          <h2>{{ 'edit.conjugation.forms.futurdubitativ' | translate }}</h2>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativsing1" id="futurdubitativsing1" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativsing2" id="futurdubitativsing2" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativsing3" id="futurdubitativsing3" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativplural1" id="futurdubitativplural1" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativplural2" id="futurdubitativplural2" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativplural3" id="futurdubitativplural3" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+        @if (hasFuturDubitativ()) {
+          <div nz-col nzSpan="12">
+            <h2>{{ 'edit.conjugation.forms.futurdubitativ' | translate }}</h2>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="futurdubitativsing1" id="futurdubitativsing1" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="futurdubitativsing2" id="futurdubitativsing2" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="futurdubitativsing3" id="futurdubitativsing3" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="futurdubitativplural1" id="futurdubitativplural1" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="futurdubitativplural2" id="futurdubitativplural2" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="futurdubitativplural3" id="futurdubitativplural3" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        }
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.particip_perfect' | translate }}</h2>
           <nz-form-item>
@@ -390,12 +402,14 @@
               <textarea nzAutosize nz-input formControlName="participperfectfp" id="participperfectfp" [readonly]="isRegular"></textarea>
             </nz-form-control>
           </nz-form-item>
-          <nz-form-item *ngIf="hasPredicativ()">
-            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="participperfectmspredicativ">predicativ</nz-form-label>
-            <nz-form-control [nzSm]="14" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="participperfectmspredicativ" id="participperfectmspredicativ" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
+          @if (hasPredicativ()) {
+            <nz-form-item>
+              <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="participperfectmspredicativ">predicativ</nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="participperfectmspredicativ" id="participperfectmspredicativ" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          }
         </div>
 
         <div nz-col nzSpan="12">
@@ -412,7 +426,7 @@
               <textarea nzAutosize nz-input formControlName="imperativ2" id="imperativ2" [readonly]="isRegular"></textarea>
             </nz-form-control>
           </nz-form-item>
-          <ng-container *ngIf="hasExtendedImperativ()">
+          @if (hasExtendedImperativ()) {
             <nz-form-item>
               <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperativ3"></nz-form-label> -->
               <nz-form-control [nzSm]="18" [nzXs]="24">
@@ -437,7 +451,7 @@
                 <textarea nzAutosize nz-input formControlName="imperativ6" id="imperativ6" [readonly]="isRegular"></textarea>
               </nz-form-control>
             </nz-form-item>
-          </ng-container>
+          }
         </div>
         <div nz-col nzSpan="12">
           <h2>{{ 'edit.conjugation.forms.gerundi' | translate }}</h2>
@@ -448,7 +462,7 @@
             </nz-form-control>
           </nz-form-item>
 
-          <ng-container *ngIf="hasComposedWithFields()">
+          @if (hasComposedWithFields()) {
             <h2>{{ 'edit.conjugation.forms.composedWith' | translate }}</h2>
             <nz-form-item>
               <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="composedWith"></nz-form-label> -->
@@ -456,242 +470,247 @@
                 <textarea nzAutosize nz-input formControlName="composedWith" id="composedWith"></textarea>
               </nz-form-control>
             </nz-form-item>
-          </ng-container>
+          }
         </div>
       </div>
     </nz-tab>
-    <nz-tab [nzTitle]="'edit.conjugation.forms.enclitic' | translate" *ngIf="hasEncliticForms()" (nzClick)="triggerChangeDetectionForAutoSizeLater()">
-      <div nz-row>
-        <div nz-col nzSpan="12">
-          <h2>{{ 'edit.conjugation.forms.preschent' | translate }}</h2>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="preschentsing1enclitic" id="preschentsing1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="preschentsing2enclitic" id="preschentsing2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="preschentsing3encliticm" id="preschentsing3encliticm" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="preschentsing3encliticf" id="preschentsing3encliticf" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="preschentplural1enclitic" id="preschentplural1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="preschentplural2enclitic" id="preschentplural2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="preschentplural3enclitic" id="preschentplural3enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
+    @if (hasEncliticForms()) {
+      <nz-tab [nzTitle]="'edit.conjugation.forms.enclitic' | translate" (nzClick)="triggerChangeDetectionForAutoSizeLater()">
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <h2>{{ 'edit.conjugation.forms.preschent' | translate }}</h2>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="preschentsing1enclitic" id="preschentsing1enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="preschentsing2enclitic" id="preschentsing2enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="preschentsing3encliticm" id="preschentsing3encliticm" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentsing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="preschentsing3encliticf" id="preschentsing3encliticf" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="preschentplural1enclitic" id="preschentplural1enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="preschentplural2enclitic" id="preschentplural2enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="preschentplural3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="preschentplural3enclitic" id="preschentplural3enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <h2>{{ 'edit.conjugation.forms.imperfect' | translate }}</h2>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperfectsing1enclitic" id="imperfectsing1enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperfectsing2enclitic" id="imperfectsing2enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperfectsing3encliticm" id="imperfectsing3encliticm" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperfectsing3encliticf" id="imperfectsing3encliticf" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperfectplural1enclitic" id="imperfectplural1enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperfectplural2enclitic" id="imperfectplural2enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="imperfectplural3enclitic" id="imperfectplural3enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
         </div>
-        <div nz-col nzSpan="12">
-          <h2>{{ 'edit.conjugation.forms.imperfect' | translate }}</h2>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="imperfectsing1enclitic" id="imperfectsing1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="imperfectsing2enclitic" id="imperfectsing2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="imperfectsing3encliticm" id="imperfectsing3encliticm" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="imperfectsing3encliticf" id="imperfectsing3encliticf" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="imperfectplural1enclitic" id="imperfectplural1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="imperfectplural2enclitic" id="imperfectplural2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imperfectplural3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="imperfectplural3enclitic" id="imperfectplural3enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <h2>{{ 'edit.conjugation.forms.cundiziunal' | translate }}</h2>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalsing1enclitic" id="cundizionalsing1enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalsing2enclitic" id="cundizionalsing2enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalsing3encliticm" id="cundizionalsing3encliticm" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalsing3encliticf" id="cundizionalsing3encliticf" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural1"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalplural1enclitic" id="cundizionalplural1enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural2"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalplural2enclitic" id="cundizionalplural2enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural3"></nz-form-label> -->
+              <nz-form-control [nzSm]="18" [nzXs]="24">
+                <textarea nzAutosize nz-input formControlName="cundizionalplural3enclitic" id="cundizionalplural3enclitic" [readonly]="isRegular"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          @if (hasEncliticFutur()) {
+            <div nz-col nzSpan="12">
+              <h2>{{ 'edit.conjugation.forms.futur' | translate }}</h2>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing1"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futursing1enclitic" id="futursing1enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing2"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futursing2enclitic" id="futursing2enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing3"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futursing3encliticm" id="futursing3encliticm" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing3"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futursing3encliticf" id="futursing3encliticf" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural1"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurplural1enclitic" id="futurplural1enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural2"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurplural2enclitic" id="futurplural2enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural3"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurplural3enclitic" id="futurplural3enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          }
+          @if (hasEncliticFutur() && hasFuturDubitativ()) {
+            <div nz-col nzSpan="12">
+              <h2>{{ 'edit.conjugation.forms.futurdubitativ' | translate }}</h2>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing1"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurdubitativsing1enclitic" id="futurdubitativsing1enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing2"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurdubitativsing2enclitic" id="futurdubitativsing2enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurdubitativsing3encliticm" id="futurdubitativsing3encliticm" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurdubitativsing3encliticf" id="futurdubitativsing3encliticf" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural1"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurdubitativplural1enclitic" id="futurdubitativplural1enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural2"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurdubitativplural2enclitic" id="futurdubitativplural2enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural3"></nz-form-label> -->
+                <nz-form-control [nzSm]="18" [nzXs]="24">
+                  <textarea nzAutosize nz-input formControlName="futurdubitativplural3enclitic" id="futurdubitativplural3enclitic" [readonly]="isRegular"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          }
         </div>
-      </div>
-
-      <div nz-row>
-        <div nz-col nzSpan="12">
-          <h2>{{ 'edit.conjugation.forms.cundiziunal' | translate }}</h2>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalsing1enclitic" id="cundizionalsing1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalsing2enclitic" id="cundizionalsing2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalsing3encliticm" id="cundizionalsing3encliticm" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalsing3encliticf" id="cundizionalsing3encliticf" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalplural1enclitic" id="cundizionalplural1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalplural2enclitic" id="cundizionalplural2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cundizionalplural3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="cundizionalplural3enclitic" id="cundizionalplural3enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-        <div nz-col nzSpan="12" *ngIf="hasEncliticFutur()">
-          <h2>{{ 'edit.conjugation.forms.futur' | translate }}</h2>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futursing1enclitic" id="futursing1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futursing2enclitic" id="futursing2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futursing3encliticm" id="futursing3encliticm" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futursing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futursing3encliticf" id="futursing3encliticf" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurplural1enclitic" id="futurplural1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurplural2enclitic" id="futurplural2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurplural3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurplural3enclitic" id="futurplural3enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-        <div nz-col nzSpan="12" *ngIf="hasEncliticFutur() && hasFuturDubitativ()">
-          <h2>{{ 'edit.conjugation.forms.futurdubitativ' | translate }}</h2>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativsing1enclitic" id="futurdubitativsing1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativsing2enclitic" id="futurdubitativsing2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativsing3encliticm" id="futurdubitativsing3encliticm" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativsing3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativsing3encliticf" id="futurdubitativsing3encliticf" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural1"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativplural1enclitic" id="futurdubitativplural1enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural2"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativplural2enclitic" id="futurdubitativplural2enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="futurdubitativplural3"></nz-form-label> -->
-            <nz-form-control [nzSm]="18" [nzXs]="24">
-              <textarea nzAutosize nz-input formControlName="futurdubitativplural3enclitic" id="futurdubitativplural3enclitic" [readonly]="isRegular"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-      </div>
-    </nz-tab>
+      </nz-tab>
+    }
   </nz-tabs>
 
 

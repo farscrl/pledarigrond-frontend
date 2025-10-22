@@ -12,7 +12,7 @@ import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
 import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
-import { NgIf, NgFor } from '@angular/common';
+
 import { NzRadioGroupComponent, NzRadioComponent } from 'ng-zorro-antd/radio';
 import { NzAutocompleteTriggerDirective, NzAutocompleteComponent } from 'ng-zorro-antd/auto-complete';
 import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-lexicon-filter',
     templateUrl: './lexicon-filter.component.html',
     styleUrls: ['./lexicon-filter.component.scss'],
-    imports: [FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzDividerComponent, ɵNzTransitionPatchDirective, NzIconDirective, NgIf, NzRadioGroupComponent, NzRadioComponent, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzSelectComponent, NzOptionComponent, NgFor, NzButtonComponent, NzWaveDirective, TranslatePipe]
+    imports: [FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzDividerComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzRadioGroupComponent, NzRadioComponent, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzSelectComponent, NzOptionComponent, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LexiconFilterComponent implements OnInit {
 

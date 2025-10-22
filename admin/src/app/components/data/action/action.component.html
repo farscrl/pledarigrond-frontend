@@ -1,13 +1,33 @@
-<nz-tag [nzColor]="'yellow'" *ngIf="action === 'SUGGESTED_ENTRY'">{{ 'data.action.suggested_entry' | translate }}</nz-tag>
-<nz-tag [nzColor]="'blue'" *ngIf="action === 'ACCEPTED_ENTRY'">{{ 'data.action.accepted_entry' | translate }}</nz-tag>
-<nz-tag [nzColor]="'green'" *ngIf="action === 'CREATED_ENTRY'">{{ 'data.action.created_entry' | translate }}</nz-tag>
+@if (action === 'SUGGESTED_ENTRY') {
+  <nz-tag [nzColor]="'yellow'">{{ 'data.action.suggested_entry' | translate }}</nz-tag>
+}
+@if (action === 'ACCEPTED_ENTRY') {
+  <nz-tag [nzColor]="'blue'">{{ 'data.action.accepted_entry' | translate }}</nz-tag>
+}
+@if (action === 'CREATED_ENTRY') {
+  <nz-tag [nzColor]="'green'">{{ 'data.action.created_entry' | translate }}</nz-tag>
+}
 
-<nz-tag [nzColor]="'yellow'" *ngIf="action === 'SUGGESTED_MODIFICATION'">{{ 'data.action.suggested_modification' | translate }}</nz-tag>
-<nz-tag [nzColor]="'blue'" *ngIf="action === 'ACCEPTED_MODIFICATION'">{{ 'data.action.accepted_modification' | translate }}</nz-tag>
-<nz-tag [nzColor]="'red'" *ngIf="action === 'REFUSED_MODIFICATION'">{{ 'data.action.refused_modification' | translate }}</nz-tag>
-<nz-tag [nzColor]="'green'" *ngIf="action === 'CREATED_MODIFICATION'">{{ 'data.action.created_modification' | translate }}</nz-tag>
+@if (action === 'SUGGESTED_MODIFICATION') {
+  <nz-tag [nzColor]="'yellow'">{{ 'data.action.suggested_modification' | translate }}</nz-tag>
+}
+@if (action === 'ACCEPTED_MODIFICATION') {
+  <nz-tag [nzColor]="'blue'">{{ 'data.action.accepted_modification' | translate }}</nz-tag>
+}
+@if (action === 'REFUSED_MODIFICATION') {
+  <nz-tag [nzColor]="'red'">{{ 'data.action.refused_modification' | translate }}</nz-tag>
+}
+@if (action === 'CREATED_MODIFICATION') {
+  <nz-tag [nzColor]="'green'">{{ 'data.action.created_modification' | translate }}</nz-tag>
+}
 
-<nz-tag [nzColor]="'orange'" *ngIf="action === 'CHANGED_ORDER'">{{ 'data.action.changed_order' | translate }}</nz-tag>
-<nz-tag [nzColor]="'orange'" *ngIf="action === 'UPDATED_PRONUNCIATION'">{{ 'data.action.updated_pronunciation' | translate }}</nz-tag>
+@if (action === 'CHANGED_ORDER') {
+  <nz-tag [nzColor]="'orange'">{{ 'data.action.changed_order' | translate }}</nz-tag>
+}
+@if (action === 'UPDATED_PRONUNCIATION') {
+  <nz-tag [nzColor]="'orange'">{{ 'data.action.updated_pronunciation' | translate }}</nz-tag>
+}
 
-<nz-tag [nzColor]="'default'" *ngIf="action === 'UNKNOWN'">{{ 'data.action.unknown' | translate }}</nz-tag>
+@if (action === 'UNKNOWN') {
+  <nz-tag [nzColor]="'default'">{{ 'data.action.unknown' | translate }}</nz-tag>
+}

@@ -7,7 +7,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { EnvironmentService } from "../../../services/environment.service";
 import { EntryVersionInternalDto, Noun } from '../../../models/dictionary';
 import { CopyService } from '../../../services/copy.service';
-import { NgIf, NgFor } from '@angular/common';
+
 import { PronunciationCharactersComponent } from '../../../components/pronunciation-characters/pronunciation-characters.component';
 import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
 import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
@@ -28,7 +28,7 @@ export class NounGenerationData {
     selector: 'app-noun-generation',
     templateUrl: './noun-generation.component.html',
     styleUrls: ['./noun-generation.component.scss'],
-    imports: [NgIf, PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NgFor, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class NounGenerationComponent implements OnInit {
 

@@ -8,7 +8,7 @@ import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
 import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzInputGroupComponent, NzInputDirective } from 'ng-zorro-antd/input';
-import { NgIf } from '@angular/common';
+
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -17,7 +17,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, ɵNzTransitionPatchDirective, NzSpaceCompactItemDirective, NzInputGroupComponent, NzInputDirective, NgIf, NzButtonComponent, NzWaveDirective, TranslatePipe]
+    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, ɵNzTransitionPatchDirective, NzSpaceCompactItemDirective, NzInputGroupComponent, NzInputDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
 

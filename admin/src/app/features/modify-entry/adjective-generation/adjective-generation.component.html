@@ -1,4 +1,6 @@
-<app-pronunciation-characters *ngIf="environmentService.isLadin()"></app-pronunciation-characters>
+@if (environmentService.isLadin()) {
+  <app-pronunciation-characters></app-pronunciation-characters>
+}
 <form nz-form [formGroup]="validateForm">
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24">surpigliar furma existenta</nz-form-label>
@@ -6,9 +8,11 @@
       <button nz-button (click)="copyAdjective()" style="margin-right: 12px;">
         Copiar flexiun
       </button>
-      <button nz-button *ngIf="copyService.canPasteInflectionAdjective()" (click)="pasteAdjective()">
-        Encollar flexiun ({{copyService.inflectionAdjectiveBaseForm}})
-      </button>
+      @if (copyService.canPasteInflectionAdjective()) {
+        <button nz-button (click)="pasteAdjective()">
+          Encollar flexiun ({{copyService.inflectionAdjectiveBaseForm}})
+        </button>
+      }
     </nz-form-control>
   </nz-form-item>
 
@@ -26,9 +30,11 @@
         <div nz-col [nzSpan]="20">
           <nz-select formControlName="inflectionSubtype" id="inflectionSubtype">
             <nz-option nzValue="" nzLabel="none"></nz-option>
-            <nz-option [nzValue]="type.id" [nzLabel]="type.name" *ngFor="let type of subTypes" nzCustomContent>
-              <b>{{type.name}}</b>: {{type.description}}
-            </nz-option>
+            @for (type of subTypes; track type) {
+              <nz-option [nzValue]="type.id" [nzLabel]="type.name" nzCustomContent>
+                <b>{{type.name}}</b>: {{type.description}}
+              </nz-option>
+            }
           </nz-select>
         </div>
         <div nz-col [nzSpan]="4">
@@ -88,12 +94,14 @@
       </nz-form-item>
     </div>
     <div nz-col nzSpan="12">
-      <nz-form-item  *ngIf="hasPredicative()">
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="predicative">{{ 'edit.adjective.forms.predicative' | translate }}</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
-          <textarea nzAutosize nz-input formControlName="predicative" id="predicative" [readonly]="isRegular"></textarea>
-        </nz-form-control>
-      </nz-form-item>
+      @if (hasPredicative()) {
+        <nz-form-item >
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="predicative">{{ 'edit.adjective.forms.predicative' | translate }}</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <textarea nzAutosize nz-input formControlName="predicative" id="predicative" [readonly]="isRegular"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      }
     </div>
   </div>
 

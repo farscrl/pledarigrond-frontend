@@ -1,17 +1,25 @@
 <nz-header>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu" [nzSelectable]="false">
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/puter" *ngIf="authService.isEditorPuter()">
-      <span class="short">PT</span>
-      <span class="long">Puter</span>
-    </li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/vallader" *ngIf="authService.isEditorVallader()">
-      <span class="short">VL</span>
-      <span class="long">Vallader</span>
-    </li>
+    @if (authService.isEditorPuter()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/puter">
+        <span class="short">PT</span>
+        <span class="long">Puter</span>
+      </li>
+    }
+    @if (authService.isEditorVallader()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/vallader">
+        <span class="short">VL</span>
+        <span class="long">Vallader</span>
+      </li>
+    }
 
-    <nz-divider nzType="vertical" *ngIf="authService.isEditorNames()"></nz-divider>
+    @if (authService.isEditorNames()) {
+      <nz-divider nzType="vertical"></nz-divider>
+    }
 
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users" *ngIf="authService.isAdmin()">{{ 'users.menu_item' | translate}}</li>
+    @if (authService.isAdmin()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users">{{ 'users.menu_item' | translate}}</li>
+    }
   </ul>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu-right">
     <a [class.lang_selected]="frontendLanguage === 'en'" (click)="changeFrontendLanguage('en')">en</a>

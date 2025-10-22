@@ -1,4 +1,6 @@
-<app-pronunciation-characters *ngIf="environmentService.isLadin()"></app-pronunciation-characters>
+@if (environmentService.isLadin()) {
+  <app-pronunciation-characters></app-pronunciation-characters>
+}
 <form nz-form [formGroup]="validateForm">
   <div nz-row>
     <div nz-col nzSpan="12">
@@ -110,23 +112,33 @@
             <nz-option nzValue="PRONOUN" [nzLabel]="'edit.lemma.inflection.pronoun' | translate"></nz-option>
             <nz-option nzValue="OTHER" [nzLabel]="'edit.lemma.inflection.other' | translate"></nz-option>
           </nz-select>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editVerb()" *ngIf="validateForm.controls['inflectionType'].value === 'VERB'"></i>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editNoun()" *ngIf="validateForm.controls['inflectionType'].value === 'NOUN'"></i>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editAdjective()" *ngIf="validateForm.controls['inflectionType'].value === 'ADJECTIVE'"></i>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronoun()" *ngIf="validateForm.controls['inflectionType'].value === 'PRONOUN'"></i>
-          <i nz-icon nzType="edit" class="inflection-edit" (click)="editOther()" *ngIf="validateForm.controls['inflectionType'].value === 'OTHER'"></i>
+          @if (validateForm.controls['inflectionType'].value === 'VERB') {
+            <i nz-icon nzType="edit" class="inflection-edit" (click)="editVerb()"></i>
+          }
+          @if (validateForm.controls['inflectionType'].value === 'NOUN') {
+            <i nz-icon nzType="edit" class="inflection-edit" (click)="editNoun()"></i>
+          }
+          @if (validateForm.controls['inflectionType'].value === 'ADJECTIVE') {
+            <i nz-icon nzType="edit" class="inflection-edit" (click)="editAdjective()"></i>
+          }
+          @if (validateForm.controls['inflectionType'].value === 'PRONOUN') {
+            <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronoun()"></i>
+          }
+          @if (validateForm.controls['inflectionType'].value === 'OTHER') {
+            <i nz-icon nzType="edit" class="inflection-edit" (click)="editOther()"></i>
+          }
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inflectionType">{{ 'lexicon.lemma.columns.pronunciation' | translate }}</nz-form-label>
         <nz-form-control>
-          <ng-container *ngIf="!entryVersion?.rmPronunciation">
+          @if (!entryVersion?.rmPronunciation) {
             nagina
-          </ng-container>
-          <ng-container *ngIf="entryVersion?.rmPronunciation">
+          }
+          @if (entryVersion?.rmPronunciation) {
             <app-audio-player [url]="getAudioUrlById(entryVersion.rmPronunciation!)"></app-audio-player>
-          </ng-container>
+          }
           <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronunciation()"></i>
         </nz-form-control>
       </nz-form-item>
@@ -168,32 +180,32 @@
   <nz-divider></nz-divider>
   <h2>{{ 'edit.lemma.examples' | translate }}</h2>
   <div formArrayName="examples">
-    <div *ngFor="let example of exampleControls.controls; let i = index">
-      <div nz-row [formGroupName]="i">
-        <div nz-col nzSpan="11">
-          <nz-form-item>
-            <nz-input-group>
-              <input type="text" formControlName="exampleRm" nz-input [placeholder]="'edit.lemma.example_placeholder_rm' | translate" />
-            </nz-input-group>
-          </nz-form-item>
-        </div>
-        <div nz-col nzSpan="1">
-          <button nz-button nzType="primary" nzSearch  (click)="searchExamples(i)"><span nz-icon nzType="file-search" nzTheme="outline"></span></button>
-        </div>
-        <div nz-col nzSpan="11">
-          <nz-form-item>
-            <nz-input-group>
-              <input type="text" formControlName="exampleDe" nz-input [placeholder]="'edit.lemma.example_placeholder_de' | translate" />
-            </nz-input-group>
-          </nz-form-item>
-        </div>
-        <div nz-col nzSpan="1" class="remove-button">
-          <button nz-button nzType="primary" nzSearch  (click)="removeExample(i)"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
+    @for (example of exampleControls.controls; track example; let i = $index) {
+      <div>
+        <div nz-row [formGroupName]="i">
+          <div nz-col nzSpan="11">
+            <nz-form-item>
+              <nz-input-group>
+                <input type="text" formControlName="exampleRm" nz-input [placeholder]="'edit.lemma.example_placeholder_rm' | translate" />
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="1">
+            <button nz-button nzType="primary" nzSearch  (click)="searchExamples(i)"><span nz-icon nzType="file-search" nzTheme="outline"></span></button>
+          </div>
+          <div nz-col nzSpan="11">
+            <nz-form-item>
+              <nz-input-group>
+                <input type="text" formControlName="exampleDe" nz-input [placeholder]="'edit.lemma.example_placeholder_de' | translate" />
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="1" class="remove-button">
+            <button nz-button nzType="primary" nzSearch  (click)="removeExample(i)"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
+          </div>
         </div>
       </div>
-
-
-    </div>
+    }
     <div class="add-example-button">
       <button nz-button nzType="primary" (click)="addExample()"><span nz-icon nzType="plus-circle" nzTheme="outline"></span></button>
     </div>

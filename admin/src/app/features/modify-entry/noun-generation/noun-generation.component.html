@@ -1,4 +1,6 @@
-<app-pronunciation-characters *ngIf="environmentService.isLadin()"></app-pronunciation-characters>
+@if (environmentService.isLadin()) {
+  <app-pronunciation-characters></app-pronunciation-characters>
+}
 <form nz-form [formGroup]="validateForm">
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24">surpigliar furma existenta</nz-form-label>
@@ -6,9 +8,11 @@
       <button nz-button (click)="copyNoun()" style="margin-right: 12px;">
         Copiar flexiun
       </button>
-      <button nz-button *ngIf="copyService.canPasteInflectionNoun()" (click)="pasteNoun()">
-        Encollar flexiun ({{copyService.inflectionNounBaseForm}})
-      </button>
+      @if (copyService.canPasteInflectionNoun()) {
+        <button nz-button (click)="pasteNoun()">
+          Encollar flexiun ({{copyService.inflectionNounBaseForm}})
+        </button>
+      }
     </nz-form-control>
   </nz-form-item>
 
@@ -26,9 +30,11 @@
         <div nz-col [nzSpan]="20">
           <nz-select formControlName="inflectionSubtype" id="inflectionSubtype">
             <nz-option nzValue="" nzLabel="none"></nz-option>
-            <nz-option [nzValue]="type.id" [nzLabel]="type.name" *ngFor="let type of subTypes" nzCustomContent>
-              <b>{{type.name}}</b>: {{type.description}}
-            </nz-option>
+            @for (type of subTypes; track type) {
+              <nz-option [nzValue]="type.id" [nzLabel]="type.name" nzCustomContent>
+                <b>{{type.name}}</b>: {{type.description}}
+              </nz-option>
+            }
           </nz-select>
         </div>
         <div nz-col [nzSpan]="4">

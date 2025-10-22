@@ -6,7 +6,7 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { EntryVersionInternalDto } from '../../models/dictionary';
 import { NotificationService } from '../../services/notification.service';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
-import { NgIf } from '@angular/common';
+
 import { NgxSortableModule } from 'ngx-sortable';
 import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -22,7 +22,7 @@ export class ChanceSortOrderData {
     selector: 'app-change-sort-order',
     templateUrl: './change-sort-order.component.html',
     styleUrls: ['./change-sort-order.component.scss'],
-    imports: [NzModalTitleDirective, NgIf, NgxSortableModule, NzModalFooterDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
+    imports: [NzModalTitleDirective, NgxSortableModule, NzModalFooterDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class ChangeSortOrderComponent implements OnInit {
 

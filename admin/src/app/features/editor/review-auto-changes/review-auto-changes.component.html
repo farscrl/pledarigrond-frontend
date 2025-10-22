@@ -27,73 +27,84 @@
       </nz-page-header>
 
       {{ 'lexicon.lemma.results_info' | translate:{
-        start: (currentPage.number*currentPage.size) + 1,
-        end: math.min((currentPage.number + 1) * currentPage.size, currentPage.totalElements),
-        total: currentPage.totalElements
+      start: (currentPage.number*currentPage.size) + 1,
+      end: math.min((currentPage.number + 1) * currentPage.size, currentPage.totalElements),
+      total: currentPage.totalElements
       } }}
 
       <div class="lemma-list">
         <nz-list [nzLoading]="isLoadingData">
-          <nz-list-item *ngFor="let item of reviewItems" (click)="selectLemma(item)" [class.selected]="item.selected" id="list-id-{{ item.entryId }}">
-            <ng-container >
-              <i nz-icon
-              [nzType]="item.local_review_status === 'ACCEPTED' ? 'check-circle' : item.local_review_status === 'REJECTED' ? 'close-circle' : item.local_review_status === 'EDITED' ? 'info-circle' : item.local_review_status === 'LATER' ? 'clock-circle' : 'question-circle'"
-              class="state-icon"
-              [class.accepted]="item.local_review_status === 'ACCEPTED'"
-              [class.rejected]="item.local_review_status === 'REJECTED'"
-              [class.edited]="item.local_review_status === 'EDITED'"
-              [class.later]="item.local_review_status === 'LATER'"
-              ></i>
-              <nz-list-item-meta nzDescription="{{ item.version.version.rmGrammatik }}">
-                <nz-list-item-meta-title>
-                  <a>{{ item.version.version.rmStichwort }} ⇔ {{ item.version.version.deStichwort }}</a>
-                </nz-list-item-meta-title>
-              </nz-list-item-meta>
-            </ng-container>
-          </nz-list-item>
+          @for (item of reviewItems; track item) {
+            <nz-list-item (click)="selectLemma(item)" [class.selected]="item.selected" id="list-id-{{ item.entryId }}">
+              <ng-container >
+                <i nz-icon
+                  [nzType]="item.local_review_status === 'ACCEPTED' ? 'check-circle' : item.local_review_status === 'REJECTED' ? 'close-circle' : item.local_review_status === 'EDITED' ? 'info-circle' : item.local_review_status === 'LATER' ? 'clock-circle' : 'question-circle'"
+                  class="state-icon"
+                  [class.accepted]="item.local_review_status === 'ACCEPTED'"
+                  [class.rejected]="item.local_review_status === 'REJECTED'"
+                  [class.edited]="item.local_review_status === 'EDITED'"
+                  [class.later]="item.local_review_status === 'LATER'"
+                ></i>
+                <nz-list-item-meta nzDescription="{{ item.version.version.rmGrammatik }}">
+                  <nz-list-item-meta-title>
+                    <a>{{ item.version.version.rmStichwort }} ⇔ {{ item.version.version.deStichwort }}</a>
+                  </nz-list-item-meta-title>
+                </nz-list-item-meta>
+              </ng-container>
+            </nz-list-item>
+          }
         </nz-list>
       </div>
 
       <div class="pg-pagination">
-        <nz-pagination
-          [nzPageIndex]="(currentPage!.number) + 1"
-          [nzPageSize]="currentPage.size"
-          [nzTotal]="currentPage.totalElements"
-          [nzSize]="'small'"
-          *ngIf="currentPage && currentPage.totalElements > 0"
+        @if (currentPage && currentPage.totalElements > 0) {
+          <nz-pagination
+            [nzPageIndex]="(currentPage!.number) + 1"
+            [nzPageSize]="currentPage.size"
+            [nzTotal]="currentPage.totalElements"
+            [nzSize]="'small'"
           (nzPageIndexChange)="changePage($event)"></nz-pagination>
+        }
       </div>
     </nz-content>
   </div>
 
   <div nz-col nzSpan="15" class="right-side">
     <nz-content>
-      <div class="content" *ngIf="selectedEntry">
-        <nz-page-header [nzGhost]="false">
-          <nz-page-header-title>{{ selectedEntryVersion?.version?.version?.rmStichwort }} ⇔ {{ selectedEntryVersion?.version?.version?.deStichwort }}</nz-page-header-title>
-          <nz-page-header-extra>
-            <button nz-button nzType="primary"  class="button-accept" (click)="acceptSelectedLemma()">{{ 'review.actions.accept' | translate }}<!--<span class="keyboard">enter</span>--></button>
-            <button nz-button nzType="primary" nzDanger (click)="rejectSelectedLemma()">{{ 'review.actions.reject' | translate }}<!--<span class="keyboard">del</span>--></button>
-            <button nz-button nzType="primary" *ngIf="!searchCriteria.showReviewLater" style="background-color: rgb(82, 82, 82); border: none;" (click)="reviewLater()">{{ 'review.actions.later' | translate }}</button>
-            <button nz-button (click)="editSelectedLemma()">{{ 'review.actions.modify' | translate }}<!--<span class="keyboard">space</span>--></button>
-          </nz-page-header-extra>
-        </nz-page-header>
-
-        <div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'NOUN'">
-          <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
-          <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} <!--<span class="keyboard">1</span>--></button>
+      @if (selectedEntry) {
+        <div class="content">
+          <nz-page-header [nzGhost]="false">
+            <nz-page-header-title>{{ selectedEntryVersion?.version?.version?.rmStichwort }} ⇔ {{ selectedEntryVersion?.version?.version?.deStichwort }}</nz-page-header-title>
+            <nz-page-header-extra>
+              <button nz-button nzType="primary"  class="button-accept" (click)="acceptSelectedLemma()">{{ 'review.actions.accept' | translate }}<!--<span class="keyboard">enter</span>--></button>
+              <button nz-button nzType="primary" nzDanger (click)="rejectSelectedLemma()">{{ 'review.actions.reject' | translate }}<!--<span class="keyboard">del</span>--></button>
+              @if (!searchCriteria.showReviewLater) {
+                <button nz-button nzType="primary" style="background-color: rgb(82, 82, 82); border: none;" (click)="reviewLater()">{{ 'review.actions.later' | translate }}</button>
+              }
+              <button nz-button (click)="editSelectedLemma()">{{ 'review.actions.modify' | translate }}<!--<span class="keyboard">space</span>--></button>
+            </nz-page-header-extra>
+          </nz-page-header>
+          @if (selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'NOUN') {
+            <div class="manual-actions">
+              <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
+              <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} <!--<span class="keyboard">1</span>--></button>
+            </div>
+          }
+          @if (selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'VERB' && !!referenceInflection) {
+            <div class="manual-actions">
+              <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
+              <button nz-button (click)="copyReference()">Copiar verb da referenza</button>
+            </div>
+          }
+          @if (selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'ADJECTIVE') {
+            <div class="manual-actions">
+              <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
+              <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} <!--<span class="keyboard">1</span>--></button>
+            </div>
+          }
+          <app-lemma-diff [language]="language!" [originalVersion]="selectedEntry.current!" [changedVersion]="selectedEntryVersion!.version.version" [referenceVerb]="referenceInflection"></app-lemma-diff>
         </div>
-        <div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'VERB' && !!referenceInflection">
-          <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
-          <button nz-button (click)="copyReference()">Copiar verb da referenza</button>
-        </div>
-        <div class="manual-actions" *ngIf="selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'ADJECTIVE'">
-          <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
-          <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} <!--<span class="keyboard">1</span>--></button>
-        </div>
-
-        <app-lemma-diff [language]="language!" [originalVersion]="selectedEntry.current!" [changedVersion]="selectedEntryVersion!.version.version" [referenceVerb]="referenceInflection"></app-lemma-diff>
-      </div>
+      }
     </nz-content>
   </div>
 </div>

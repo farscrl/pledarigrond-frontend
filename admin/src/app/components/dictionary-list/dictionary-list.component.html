@@ -1,12 +1,14 @@
 <div class="header-actions">
   <div>
-    <span *ngIf="paginationInfo && paginationInfo.totalElements > 0">
-      {{ 'lexicon.lemma.results_info' | translate:{
+    @if (paginationInfo && paginationInfo.totalElements > 0) {
+      <span>
+        {{ 'lexicon.lemma.results_info' | translate:{
         start: (paginationInfo.number*paginationInfo.size) + 1,
         end: math.min((paginationInfo.number + 1) * paginationInfo.size, paginationInfo.totalElements),
         total: paginationInfo.totalElements
-      } }}
-    </span>
+        } }}
+      </span>
+    }
   </div>
   <div class="options">
     <button nz-button nz-dropdown [nzDropdownMenu]="menu4">
@@ -15,31 +17,79 @@
     </button>
     <nz-dropdown-menu #menu4="nzDropdownMenu">
       <ul nz-menu>
-        <li nz-menu-item *ngIf="columns.user.allowed"><label nz-checkbox [(ngModel)]="columns.user.active">{{ 'lexicon.lemma.columns.user' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.filter.allowed"><label nz-checkbox [(ngModel)]="columns.filter.active">{{ 'lexicon.lemma.columns.filter' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.entry.allowed"><label nz-checkbox [(ngModel)]="columns.entry.active">{{ 'lexicon.lemma.columns.entry' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.actions.allowed"><label nz-checkbox [(ngModel)]="columns.actions.active">{{ 'lexicon.lemma.columns.buttons' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.order.allowed"><label nz-checkbox [(ngModel)]="columns.order.active">{{ 'lexicon.lemma.columns.order' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.state.allowed"><label nz-checkbox [(ngModel)]="columns.state.active">{{ 'lexicon.lemma.columns.action' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.created.allowed"><label nz-checkbox [(ngModel)]="columns.created.active">{{ 'lexicon.lemma.columns.created' | translate }}</label></li>
+        @if (columns.user.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.user.active">{{ 'lexicon.lemma.columns.user' | translate }}</label></li>
+        }
+        @if (columns.filter.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.filter.active">{{ 'lexicon.lemma.columns.filter' | translate }}</label></li>
+        }
+        @if (columns.entry.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.entry.active">{{ 'lexicon.lemma.columns.entry' | translate }}</label></li>
+        }
+        @if (columns.actions.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.actions.active">{{ 'lexicon.lemma.columns.buttons' | translate }}</label></li>
+        }
+        @if (columns.order.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.order.active">{{ 'lexicon.lemma.columns.order' | translate }}</label></li>
+        }
+        @if (columns.state.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.state.active">{{ 'lexicon.lemma.columns.action' | translate }}</label></li>
+        }
+        @if (columns.created.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.created.active">{{ 'lexicon.lemma.columns.created' | translate }}</label></li>
+        }
         <nz-divider></nz-divider>
-        <li nz-menu-item *ngIf="columns.german.allowed"><label nz-checkbox [(ngModel)]="columns.german.active">{{ 'lexicon.lemma.columns.de' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.germanGrammar.allowed"><label nz-checkbox [(ngModel)]="columns.germanGrammar.active">{{ 'lexicon.lemma.columns.de_grammar' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.germanGender.allowed"><label nz-checkbox [(ngModel)]="columns.germanGender.active">{{ 'lexicon.lemma.columns.de_gender' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.germanSemantics.allowed"><label nz-checkbox [(ngModel)]="columns.germanSemantics.active">{{ 'lexicon.lemma.columns.de_semantics' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.germanLink.allowed"><label nz-checkbox [(ngModel)]="columns.germanLink.active">{{ 'lexicon.lemma.columns.de_link' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.germanAdditionalSearchTerms.allowed"><label nz-checkbox [(ngModel)]="columns.germanAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.de_additional_search' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romansh.allowed"><label nz-checkbox [(ngModel)]="columns.romansh.active">{{ 'lexicon.lemma.columns.rm' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romanshGrammar.allowed"><label nz-checkbox [(ngModel)]="columns.romanshGrammar.active">{{ 'lexicon.lemma.columns.rm_grammar' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romanshGender.allowed"><label nz-checkbox [(ngModel)]="columns.romanshGender.active">{{ 'lexicon.lemma.columns.rm_gender' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romanshSemantics.allowed"><label nz-checkbox [(ngModel)]="columns.romanshSemantics.active">{{ 'lexicon.lemma.columns.rm_semantics' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romanshLink.allowed"><label nz-checkbox [(ngModel)]="columns.romanshLink.active">{{ 'lexicon.lemma.columns.rm_link' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romanshConjugation.allowed"><label nz-checkbox [(ngModel)]="columns.romanshConjugation.active">{{ 'lexicon.lemma.columns.rm_conjugation' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romanshInflectionType.allowed"><label nz-checkbox [(ngModel)]="columns.romanshInflectionType.active">{{ 'lexicon.lemma.columns.rm_inflection_type' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romanshAdditionalSearchTerms.allowed"><label nz-checkbox [(ngModel)]="columns.romanshAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.rm_additional_search' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.romanshEtymology.allowed"><label nz-checkbox [(ngModel)]="columns.romanshEtymology.active">{{ 'lexicon.lemma.columns.rm_etymology' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.category.allowed"><label nz-checkbox [(ngModel)]="columns.category.active">{{ 'lexicon.lemma.columns.category' | translate }}</label></li>
-        <li nz-menu-item *ngIf="columns.comment.allowed"><label nz-checkbox [(ngModel)]="columns.comment.active">{{ 'lexicon.lemma.columns.comment' | translate }}</label></li>
+        @if (columns.german.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.german.active">{{ 'lexicon.lemma.columns.de' | translate }}</label></li>
+        }
+        @if (columns.germanGrammar.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.germanGrammar.active">{{ 'lexicon.lemma.columns.de_grammar' | translate }}</label></li>
+        }
+        @if (columns.germanGender.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.germanGender.active">{{ 'lexicon.lemma.columns.de_gender' | translate }}</label></li>
+        }
+        @if (columns.germanSemantics.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.germanSemantics.active">{{ 'lexicon.lemma.columns.de_semantics' | translate }}</label></li>
+        }
+        @if (columns.germanLink.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.germanLink.active">{{ 'lexicon.lemma.columns.de_link' | translate }}</label></li>
+        }
+        @if (columns.germanAdditionalSearchTerms.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.germanAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.de_additional_search' | translate }}</label></li>
+        }
+        @if (columns.romansh.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romansh.active">{{ 'lexicon.lemma.columns.rm' | translate }}</label></li>
+        }
+        @if (columns.romanshGrammar.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romanshGrammar.active">{{ 'lexicon.lemma.columns.rm_grammar' | translate }}</label></li>
+        }
+        @if (columns.romanshGender.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romanshGender.active">{{ 'lexicon.lemma.columns.rm_gender' | translate }}</label></li>
+        }
+        @if (columns.romanshSemantics.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romanshSemantics.active">{{ 'lexicon.lemma.columns.rm_semantics' | translate }}</label></li>
+        }
+        @if (columns.romanshLink.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romanshLink.active">{{ 'lexicon.lemma.columns.rm_link' | translate }}</label></li>
+        }
+        @if (columns.romanshConjugation.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romanshConjugation.active">{{ 'lexicon.lemma.columns.rm_conjugation' | translate }}</label></li>
+        }
+        @if (columns.romanshInflectionType.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romanshInflectionType.active">{{ 'lexicon.lemma.columns.rm_inflection_type' | translate }}</label></li>
+        }
+        @if (columns.romanshAdditionalSearchTerms.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romanshAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.rm_additional_search' | translate }}</label></li>
+        }
+        @if (columns.romanshEtymology.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.romanshEtymology.active">{{ 'lexicon.lemma.columns.rm_etymology' | translate }}</label></li>
+        }
+        @if (columns.category.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.category.active">{{ 'lexicon.lemma.columns.category' | translate }}</label></li>
+        }
+        @if (columns.comment.allowed) {
+          <li nz-menu-item><label nz-checkbox [(ngModel)]="columns.comment.active">{{ 'lexicon.lemma.columns.comment' | translate }}</label></li>
+        }
       </ul>
     </nz-dropdown-menu>
 
@@ -63,123 +113,236 @@
   nzShowPagination="false"
   [nzData]="items"
   [nzLoading]="isLoading"
->
+  >
   <thead>
     <tr>
-      <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" *ngIf="columns.checkMultiple.active" nzLeft nzWidth="70px"></th>
-      <th *ngIf="columns.diff.active" nzLeft nzWidth="44px">{{ 'lexicon.lemma.columns.diff' | translate }}</th>
-      <th *ngIf="columns.user.active" nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.user' | translate }}</th>
-      <th *ngIf="columns.filter.active" nzWidth="120px">{{ 'lexicon.lemma.columns.filter' | translate }}</th>
-      <th *ngIf="columns.entry.active" nzWidth="200px">{{ 'lexicon.lemma.columns.entry' | translate }}</th>
-      <th *ngIf="columns.actions.active" nzWidth="110px">{{ 'lexicon.lemma.columns.buttons' | translate }}</th>
-      <th *ngIf="columns.order.active" nzWidth="155px">{{ 'lexicon.lemma.columns.order' | translate }}</th>
-      <th *ngIf="columns.state.active" nzWidth="130px">{{ 'lexicon.lemma.columns.action' | translate }}</th>
-      <th *ngIf="columns.created.active" nzWidth="120px">{{ 'lexicon.lemma.columns.created' | translate }}</th>
-      <th *ngIf="columns.german.active">{{ 'lexicon.lemma.columns.de' | translate }}</th>
-      <th *ngIf="columns.germanGrammar.active">{{ 'lexicon.lemma.columns.de_grammar' | translate }}</th>
-      <th *ngIf="columns.germanGender.active">{{ 'lexicon.lemma.columns.de_gender' | translate }}</th>
-      <th *ngIf="columns.germanSemantics.active">{{ 'lexicon.lemma.columns.de_semantics' | translate }}</th>
-      <th *ngIf="columns.germanAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.de_additional_search' | translate }}</th>
-      <th *ngIf="columns.germanLink.active">{{ 'lexicon.lemma.columns.de_link' | translate }}</th>
-      <th *ngIf="columns.romansh.active">{{ 'lexicon.lemma.columns.rm' | translate }}</th>
-      <th *ngIf="columns.romanshGrammar.active">{{ 'lexicon.lemma.columns.rm_grammar' | translate }}</th>
-      <th *ngIf="columns.romanshGender.active">{{ 'lexicon.lemma.columns.rm_gender' | translate }}</th>
-      <th *ngIf="columns.romanshSemantics.active">{{ 'lexicon.lemma.columns.rm_semantics' | translate }}</th>
-      <th *ngIf="columns.romanshLink.active">{{ 'lexicon.lemma.columns.rm_link' | translate }}</th>
-      <th *ngIf="columns.romanshConjugation.active">{{ 'lexicon.lemma.columns.rm_conjugation' | translate }}</th>
-      <th *ngIf="columns.romanshInflectionType.active" nzWidth="85px">{{ 'lexicon.lemma.columns.rm_inflection_type' | translate }}</th>
-      <th *ngIf="columns.romanshAdditionalSearchTerms.active">{{ 'lexicon.lemma.columns.rm_additional_search' | translate }}</th>
-      <th *ngIf="columns.romanshEtymology.active">{{ 'lexicon.lemma.columns.rm_etymology' | translate }}</th>
-      <th *ngIf="columns.category.active">{{ 'lexicon.lemma.columns.category' | translate }}</th>
-      <th *ngIf="columns.comment.active">{{ 'lexicon.lemma.columns.comment' | translate }}</th>
+      @if (columns.checkMultiple.active) {
+        <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)" nzLeft nzWidth="70px"></th>
+      }
+      @if (columns.diff.active) {
+        <th nzLeft nzWidth="44px">{{ 'lexicon.lemma.columns.diff' | translate }}</th>
+      }
+      @if (columns.user.active) {
+        <th nzLeft nzWidth="120px">{{ 'lexicon.lemma.columns.user' | translate }}</th>
+      }
+      @if (columns.filter.active) {
+        <th nzWidth="120px">{{ 'lexicon.lemma.columns.filter' | translate }}</th>
+      }
+      @if (columns.entry.active) {
+        <th nzWidth="200px">{{ 'lexicon.lemma.columns.entry' | translate }}</th>
+      }
+      @if (columns.actions.active) {
+        <th nzWidth="110px">{{ 'lexicon.lemma.columns.buttons' | translate }}</th>
+      }
+      @if (columns.order.active) {
+        <th nzWidth="155px">{{ 'lexicon.lemma.columns.order' | translate }}</th>
+      }
+      @if (columns.state.active) {
+        <th nzWidth="130px">{{ 'lexicon.lemma.columns.action' | translate }}</th>
+      }
+      @if (columns.created.active) {
+        <th nzWidth="120px">{{ 'lexicon.lemma.columns.created' | translate }}</th>
+      }
+      @if (columns.german.active) {
+        <th>{{ 'lexicon.lemma.columns.de' | translate }}</th>
+      }
+      @if (columns.germanGrammar.active) {
+        <th>{{ 'lexicon.lemma.columns.de_grammar' | translate }}</th>
+      }
+      @if (columns.germanGender.active) {
+        <th>{{ 'lexicon.lemma.columns.de_gender' | translate }}</th>
+      }
+      @if (columns.germanSemantics.active) {
+        <th>{{ 'lexicon.lemma.columns.de_semantics' | translate }}</th>
+      }
+      @if (columns.germanAdditionalSearchTerms.active) {
+        <th>{{ 'lexicon.lemma.columns.de_additional_search' | translate }}</th>
+      }
+      @if (columns.germanLink.active) {
+        <th>{{ 'lexicon.lemma.columns.de_link' | translate }}</th>
+      }
+      @if (columns.romansh.active) {
+        <th>{{ 'lexicon.lemma.columns.rm' | translate }}</th>
+      }
+      @if (columns.romanshGrammar.active) {
+        <th>{{ 'lexicon.lemma.columns.rm_grammar' | translate }}</th>
+      }
+      @if (columns.romanshGender.active) {
+        <th>{{ 'lexicon.lemma.columns.rm_gender' | translate }}</th>
+      }
+      @if (columns.romanshSemantics.active) {
+        <th>{{ 'lexicon.lemma.columns.rm_semantics' | translate }}</th>
+      }
+      @if (columns.romanshLink.active) {
+        <th>{{ 'lexicon.lemma.columns.rm_link' | translate }}</th>
+      }
+      @if (columns.romanshConjugation.active) {
+        <th>{{ 'lexicon.lemma.columns.rm_conjugation' | translate }}</th>
+      }
+      @if (columns.romanshInflectionType.active) {
+        <th nzWidth="85px">{{ 'lexicon.lemma.columns.rm_inflection_type' | translate }}</th>
+      }
+      @if (columns.romanshAdditionalSearchTerms.active) {
+        <th>{{ 'lexicon.lemma.columns.rm_additional_search' | translate }}</th>
+      }
+      @if (columns.romanshEtymology.active) {
+        <th>{{ 'lexicon.lemma.columns.rm_etymology' | translate }}</th>
+      }
+      @if (columns.category.active) {
+        <th>{{ 'lexicon.lemma.columns.category' | translate }}</th>
+      }
+      @if (columns.comment.active) {
+        <th>{{ 'lexicon.lemma.columns.comment' | translate }}</th>
+      }
       <th><!--empty columnt to take up space--></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items" (click)="selectRow(item)" [class.selected]="item.selected">
-      <td
-        nzLeft
-        [nzChecked]="setOfCheckedId.has(item.version.versionId)"
-        [nzDisabled]="item.disabled"
-        (nzCheckedChange)="onItemChecked(item.version.versionId, $event)"
-        *ngIf="columns.checkMultiple.active"
-      ></td>
-      <td *ngIf="columns.diff.active" nzLeft class="small">
-        <span nz-icon nzType="diff" nzTheme="outline" (click)="showDiff(item, item.version)" class="button-icon"></span>
-      </td>
-      <td *ngIf="columns.user.active" nzLeft class="small">
-        <app-user-role [role]="item.version.creatorRole"></app-user-role><br>
-        <span *ngIf="item.version.creator" style="font-size: 90%;">{{ item.version.creator === 'guest@pledarigrond.ch' ? ('data.role.guest' | translate | uppercase ) : item.version.creator }}</span>
-        {{ item.version.creatorIp ? item.version.creatorIp : '-' }}
-      </td>
-      <td *ngIf="columns.filter.active" class="button-column">
-        <button nz-button nzSize="small" nzType="default" (click)="filterUser(item.version.creatorIp); $event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.filter_user' | translate }}</button>
-      </td>
-      <td *ngIf="columns.entry.active">
-        <div [innerHtml]="(getLemma(item.version, false) | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (getLemma(item.version, true) | highlighter:filter!.searchPhrase:filter!.highlight)"></div>
-        <div style="font-size: 85%; font-style: italic;">{{ (item.version.userComment && item.version.userComment.length > 35) ? ((item.version.userComment | slice:0:35)+'...') : (item.version.userComment) }}</div>
-      </td>
-      <td *ngIf="columns.actions.active" class="button-column">
-        <button nz-button nzSize="small" nzType="primary" (click)="editEntry(item); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.edit' | translate }}</button><br>
-        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(item); $event.stopPropagation();" *ngIf="(showRejectButton && item.version.action !== 'SUGGESTED_MODIFICATION') || !showRejectButton">{{ 'lexicon.lemma.table_actions.delete' | translate }}</button>
-        <button nz-button nzSize="small" nzType="primary" nzDanger (click)="rejectEntryVersion(item); $event.stopPropagation();" *ngIf="showRejectButton && item.version.action === 'SUGGESTED_MODIFICATION'">{{ 'lexicon.lemma.table_actions.reject' | translate }}</button>
-      </td>
-      <td *ngIf="columns.order.active" class="button-column">
-        <button nz-button nzSize="small" (click)="startReorder(item, 'ROMANSH');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_rm' | translate }}</button><br>
-        <button nz-button nzSize="small" (click)="startReorder(item, 'GERMAN');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_de' | translate }}</button>
-      </td>
-      <td *ngIf="columns.state.active" class="small">
-        <app-action [action]="item.version.action"></app-action>
-      </td>
-      <td *ngIf="columns.created.active" class="small">
-        {{ formateDate(item.version.timestamp) }}<br>
-        {{ formateTime(item.version.timestamp) }}
-      </td>
-      <td *ngIf="columns.german.active">{{ item.version.deStichwort }}</td>
-      <td *ngIf="columns.germanGrammar.active">{{ item.version.deGrammatik }}</td>
-      <td *ngIf="columns.germanGender.active">{{ item.version.deGenus }}</td>
-      <td *ngIf="columns.germanSemantics.active">{{ item.version.deSubsemantik }}</td>
-      <td *ngIf="columns.germanLink.active">{{ item.version.deRedirect }}</td>
-      <td *ngIf="columns.germanAdditionalSearchTerms.active">{{ item.version.deTags }}</td>
-      <td *ngIf="columns.romansh.active">{{ item.version.rmStichwort }}</td>
-      <td *ngIf="columns.romanshGrammar.active">{{ item.version.rmGrammatik }}</td>
-      <td *ngIf="columns.romanshGender.active">{{ item.version.rmGenus }}</td>
-      <td *ngIf="columns.romanshSemantics.active">{{ item.version.rmSubsemantik }}</td>
-      <td *ngIf="columns.romanshLink.active">{{ item.version.rmRedirect }}</td>
-      <td *ngIf="columns.romanshConjugation.active">{{ item.version.rmFlex }}</td>
-      <td *ngIf="columns.romanshInflectionType.active">{{ getInflectionType(item.version.inflection?.inflectionType) }}</td>
-      <td *ngIf="columns.romanshAdditionalSearchTerms.active">{{ item.version.rmTags }}</td>
-      <td *ngIf="columns.romanshEtymology.active">{{ item.version.rmEtymologie }}</td>
-      <td *ngIf="columns.category.active">{{ item.version.categories }}</td>
-      <td *ngIf="columns.comment.active">{{ item.version.userComment }}</td>
-      <td><!--empty column to take up space--></td>
-    </tr>
+    @for (item of items; track item) {
+      <tr (click)="selectRow(item)" [class.selected]="item.selected">
+        @if (columns.checkMultiple.active) {
+          <td
+            nzLeft
+            [nzChecked]="setOfCheckedId.has(item.version.versionId)"
+            [nzDisabled]="item.disabled"
+            (nzCheckedChange)="onItemChecked(item.version.versionId, $event)"
+          ></td>
+        }
+        @if (columns.diff.active) {
+          <td nzLeft class="small">
+            <span nz-icon nzType="diff" nzTheme="outline" (click)="showDiff(item, item.version)" class="button-icon"></span>
+          </td>
+        }
+        @if (columns.user.active) {
+          <td nzLeft class="small">
+            <app-user-role [role]="item.version.creatorRole"></app-user-role><br>
+            @if (item.version.creator) {
+              <span style="font-size: 90%;">{{ item.version.creator === 'guest@pledarigrond.ch' ? ('data.role.guest' | translate | uppercase ) : item.version.creator }}</span>
+            }
+            {{ item.version.creatorIp ? item.version.creatorIp : '-' }}
+          </td>
+        }
+        @if (columns.filter.active) {
+          <td class="button-column">
+            <button nz-button nzSize="small" nzType="default" (click)="filterUser(item.version.creatorIp); $event.stopPropagation();" class="wide-button">{{ 'lexicon.lemma.table_actions.filter_user' | translate }}</button>
+          </td>
+        }
+        @if (columns.entry.active) {
+          <td>
+            <div [innerHtml]="(getLemma(item.version, false) | highlighter:filter!.searchPhrase:filter!.highlight) + ' ⇔ ' + (getLemma(item.version, true) | highlighter:filter!.searchPhrase:filter!.highlight)"></div>
+            <div style="font-size: 85%; font-style: italic;">{{ (item.version.userComment && item.version.userComment.length > 35) ? ((item.version.userComment | slice:0:35)+'...') : (item.version.userComment) }}</div>
+          </td>
+        }
+        @if (columns.actions.active) {
+          <td class="button-column">
+            <button nz-button nzSize="small" nzType="primary" (click)="editEntry(item); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.edit' | translate }}</button><br>
+            @if ((showRejectButton && item.version.action !== 'SUGGESTED_MODIFICATION') || !showRejectButton) {
+              <button nz-button nzSize="small" nzType="primary" nzDanger (click)="dropEntry(item); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.delete' | translate }}</button>
+            }
+            @if (showRejectButton && item.version.action === 'SUGGESTED_MODIFICATION') {
+              <button nz-button nzSize="small" nzType="primary" nzDanger (click)="rejectEntryVersion(item); $event.stopPropagation();">{{ 'lexicon.lemma.table_actions.reject' | translate }}</button>
+            }
+          </td>
+        }
+        @if (columns.order.active) {
+          <td class="button-column">
+            <button nz-button nzSize="small" (click)="startReorder(item, 'ROMANSH');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_rm' | translate }}</button><br>
+            <button nz-button nzSize="small" (click)="startReorder(item, 'GERMAN');$event.stopPropagation();" class="very-wide-button">{{ 'lexicon.lemma.table_actions.order_de' | translate }}</button>
+          </td>
+        }
+        @if (columns.state.active) {
+          <td class="small">
+            <app-action [action]="item.version.action"></app-action>
+          </td>
+        }
+        @if (columns.created.active) {
+          <td class="small">
+            {{ formateDate(item.version.timestamp) }}<br>
+            {{ formateTime(item.version.timestamp) }}
+          </td>
+        }
+        @if (columns.german.active) {
+          <td>{{ item.version.deStichwort }}</td>
+        }
+        @if (columns.germanGrammar.active) {
+          <td>{{ item.version.deGrammatik }}</td>
+        }
+        @if (columns.germanGender.active) {
+          <td>{{ item.version.deGenus }}</td>
+        }
+        @if (columns.germanSemantics.active) {
+          <td>{{ item.version.deSubsemantik }}</td>
+        }
+        @if (columns.germanLink.active) {
+          <td>{{ item.version.deRedirect }}</td>
+        }
+        @if (columns.germanAdditionalSearchTerms.active) {
+          <td>{{ item.version.deTags }}</td>
+        }
+        @if (columns.romansh.active) {
+          <td>{{ item.version.rmStichwort }}</td>
+        }
+        @if (columns.romanshGrammar.active) {
+          <td>{{ item.version.rmGrammatik }}</td>
+        }
+        @if (columns.romanshGender.active) {
+          <td>{{ item.version.rmGenus }}</td>
+        }
+        @if (columns.romanshSemantics.active) {
+          <td>{{ item.version.rmSubsemantik }}</td>
+        }
+        @if (columns.romanshLink.active) {
+          <td>{{ item.version.rmRedirect }}</td>
+        }
+        @if (columns.romanshConjugation.active) {
+          <td>{{ item.version.rmFlex }}</td>
+        }
+        @if (columns.romanshInflectionType.active) {
+          <td>{{ getInflectionType(item.version.inflection?.inflectionType) }}</td>
+        }
+        @if (columns.romanshAdditionalSearchTerms.active) {
+          <td>{{ item.version.rmTags }}</td>
+        }
+        @if (columns.romanshEtymology.active) {
+          <td>{{ item.version.rmEtymologie }}</td>
+        }
+        @if (columns.category.active) {
+          <td>{{ item.version.categories }}</td>
+        }
+        @if (columns.comment.active) {
+          <td>{{ item.version.userComment }}</td>
+        }
+        <td><!--empty column to take up space--></td>
+      </tr>
+    }
   </tbody>
 </nz-table>
 
 
 <div class="footer-actions">
   <div class="multi">
-    <ng-container *ngIf="columns.checkMultiple.allowed">
+    @if (columns.checkMultiple.allowed) {
       <nz-switch
-      [(ngModel)]="columns.checkMultiple.active"
-      [nzCheckedChildren]="checkedTemplate"
-      [nzUnCheckedChildren]="unCheckedTemplate"
+        [(ngModel)]="columns.checkMultiple.active"
+        [nzCheckedChildren]="checkedTemplate"
+        [nzUnCheckedChildren]="unCheckedTemplate"
       ></nz-switch>
       <label style="margin-left: 12px;">{{ 'lexicon.lemma.multiedit.activate' | translate }}</label>
       <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
       <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
       <br>
+        @if (columns.checkMultiple.active && setOfCheckedId.size !== 0) {
+          <button nz-button nzType="primary" nzDanger (click)="rejectSelected()">{{ 'lexicon.lemma.multiedit.reject_button' | translate }}</button>
+        }
+      }
+    </div>
 
-      <button nz-button nzType="primary" nzDanger *ngIf="columns.checkMultiple.active && setOfCheckedId.size !== 0" (click)="rejectSelected()">{{ 'lexicon.lemma.multiedit.reject_button' | translate }}</button>
-    </ng-container>
+    @if (paginationInfo && paginationInfo.totalElements > 0) {
+      <nz-pagination
+        [nzPageIndex]="(paginationInfo!.number) + 1"
+        [nzPageSize]="paginationInfo.size"
+        [nzTotal]="paginationInfo.totalElements"
+      (nzPageIndexChange)="changePage($event)"></nz-pagination>
+    }
   </div>
-
-  <nz-pagination
-    [nzPageIndex]="(paginationInfo!.number) + 1"
-    [nzPageSize]="paginationInfo.size"
-    [nzTotal]="paginationInfo.totalElements"
-    *ngIf="paginationInfo && paginationInfo.totalElements > 0"
-    (nzPageIndexChange)="changePage($event)"></nz-pagination>
-</div>
 

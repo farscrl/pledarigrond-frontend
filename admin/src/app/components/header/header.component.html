@@ -1,26 +1,40 @@
 <nz-header>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu" [nzSelectable]="false">
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/rumantschgrischun" *ngIf="authService.isEditorRumantschgrischun()">
-      <span class="short">RG</span>
-      <span class="long">Rumantsch Grischun</span>
-    </li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/surmiran" *ngIf="authService.isEditorSurmiran()">
-      <span class="short">SM</span>
-      <span class="long">Surmiran</span>
-    </li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sursilvan" *ngIf="authService.isEditorSursilvan()">
-      <span class="short">SR</span>
-      <span class="long">Sursilvan</span>
-    </li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sutsilvan" *ngIf="authService.isEditorSutsilvan()">
-      <span class="short">ST</span>
-      <span class="long">Sutsilvan</span>
-    </li>
+    @if (authService.isEditorRumantschgrischun()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/rumantschgrischun">
+        <span class="short">RG</span>
+        <span class="long">Rumantsch Grischun</span>
+      </li>
+    }
+    @if (authService.isEditorSurmiran()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/surmiran">
+        <span class="short">SM</span>
+        <span class="long">Surmiran</span>
+      </li>
+    }
+    @if (authService.isEditorSursilvan()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sursilvan">
+        <span class="short">SR</span>
+        <span class="long">Sursilvan</span>
+      </li>
+    }
+    @if (authService.isEditorSutsilvan()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/sutsilvan">
+        <span class="short">ST</span>
+        <span class="long">Sutsilvan</span>
+      </li>
+    }
 
-    <nz-divider nzType="vertical" *ngIf="authService.isEditorNames()"></nz-divider>
+    @if (authService.isEditorNames()) {
+      <nz-divider nzType="vertical"></nz-divider>
+    }
 
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/names" *ngIf="authService.isEditorNames()">{{ 'names.menu_item' | translate}}</li>
-    <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users" *ngIf="authService.isAdmin()">{{ 'users.menu_item' | translate}}</li>
+    @if (authService.isEditorNames()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/names">{{ 'names.menu_item' | translate}}</li>
+    }
+    @if (authService.isAdmin()) {
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/admin/users">{{ 'users.menu_item' | translate}}</li>
+    }
   </ul>
   <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu-right">
     <a [class.lang_selected]="frontendLanguage === 'en'" (click)="changeFrontendLanguage('en')">en</a>

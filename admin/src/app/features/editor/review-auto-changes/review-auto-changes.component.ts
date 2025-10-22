@@ -29,7 +29,7 @@ import { NzInputDirective } from 'ng-zorro-antd/input';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
 import { NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent } from 'ng-zorro-antd/list';
-import { NgFor, NgIf } from '@angular/common';
+
 import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
@@ -55,7 +55,7 @@ export enum KEY_CODE {
     selector: 'app-review-auto-changes',
     templateUrl: './review-auto-changes.component.html',
     styleUrls: ['./review-auto-changes.component.scss'],
-    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzPageHeaderComponent, NzListComponent, NgFor, NzListItemComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzListItemMetaComponent, NzListItemMetaTitleComponent, NgIf, NzPaginationComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, LemmaDiffComponent, TranslatePipe]
+    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzPageHeaderComponent, NzListComponent, NzListItemComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, LemmaDiffComponent, TranslatePipe]
 })
 export class ReviewAutoChangesComponent implements OnInit {
 

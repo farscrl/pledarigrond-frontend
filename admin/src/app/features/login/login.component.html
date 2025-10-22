@@ -15,7 +15,9 @@
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-      <div class="error" *ngIf="showError">{{ 'login.error' | translate}}</div>
+      @if (showError) {
+        <div class="error">{{ 'login.error' | translate}}</div>
+      }
       <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">{{ 'login.login_button' | translate}}</button>
     </form>
   </div>

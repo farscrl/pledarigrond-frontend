@@ -5,7 +5,7 @@
   <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search" (click)="search(searchTermField.value)" [nzSpin]="isLoading"></span></button>
 </ng-template>
 
-<ng-container *ngIf="searchTerm">
+@if (searchTerm) {
   <ul nz-list [nzDataSource]="examples" nzBordered>
     @for (item of examples; track item) {
       <li nz-list-item nzNoFlex class="example-item">
@@ -18,4 +18,4 @@
       </li>
     }
   </ul>
-</ng-container>
+}

@@ -7,7 +7,7 @@ import { NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } fro
 import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzDatePickerComponent, NzRangePickerComponent } from 'ng-zorro-antd/date-picker';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective } from 'ng-zorro-antd/input';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
@@ -20,7 +20,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-duration',
     templateUrl: './duration.component.html',
     styleUrls: ['./duration.component.scss'],
-    imports: [NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzDatePickerComponent, NzRangePickerComponent, FormsModule, NgIf, ɵNzTransitionPatchDirective, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective, NzIconDirective, NzTooltipDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
+    imports: [NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzDatePickerComponent, NzRangePickerComponent, FormsModule, ɵNzTransitionPatchDirective, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective, NzIconDirective, NzTooltipDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class DurationComponent implements OnInit {
 

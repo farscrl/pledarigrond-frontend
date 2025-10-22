@@ -8,7 +8,7 @@ import { EnvironmentService } from "../../../services/environment.service";
 import { Adjective, EntryVersionInternalDto } from '../../../models/dictionary';
 import { CopyService } from '../../../services/copy.service';
 import { Language } from '../../../models/security';
-import { NgIf, NgFor } from '@angular/common';
+
 import { PronunciationCharactersComponent } from '../../../components/pronunciation-characters/pronunciation-characters.component';
 import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
 import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
@@ -28,7 +28,7 @@ export class AdjectiveGenerationData {
     selector: 'app-adjective-generation',
     templateUrl: './adjective-generation.component.html',
     styleUrls: ['./adjective-generation.component.scss'],
-    imports: [NgIf, PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NgFor, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class AdjectiveGenerationComponent implements OnInit {
 

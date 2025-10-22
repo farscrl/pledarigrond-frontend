@@ -23,7 +23,7 @@ import {
   Verb
 } from '../../../models/dictionary';
 import { ConjugationComponent } from '../conjugation/conjugation.component';
-import { NgIf, NgFor } from '@angular/common';
+
 import { PronunciationCharactersComponent } from '../../../components/pronunciation-characters/pronunciation-characters.component';
 import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
 import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
@@ -50,7 +50,7 @@ export class MainEntryData {
     selector: 'app-main-entry',
     templateUrl: './main-entry.component.html',
     styleUrls: ['./main-entry.component.scss'],
-    imports: [NgIf, PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NgFor, NzInputGroupComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NzInputGroupComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class MainEntryComponent implements OnInit {
   entryVersionToChange?: EntryVersionInternalDto;

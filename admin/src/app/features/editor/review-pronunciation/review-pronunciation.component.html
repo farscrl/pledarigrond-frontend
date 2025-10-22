@@ -23,21 +23,22 @@
         <nz-page-header-title>{{ 'pronunciation.list.title' | translate }}</nz-page-header-title>
       </nz-page-header>
 
-      <ng-container *ngIf="registrations.length > 0">
+      @if (registrations.length > 0) {
         {{ 'lexicon.lemma.results_info' | translate:{
-            start: (currentPage.number*currentPage.size) + 1,
-            end: math.min((currentPage.number + 1) * currentPage.size, currentPage.totalElements),
-            total: currentPage.totalElements
-          }
-        }}
-      </ng-container>
-      <ng-container *ngIf="registrations.length === 0">
-        {{ 'lexicon.lemma.no_results' | translate }}
-      </ng-container>
+        start: (currentPage.number*currentPage.size) + 1,
+        end: math.min((currentPage.number + 1) * currentPage.size, currentPage.totalElements),
+        total: currentPage.totalElements
+      }
+      }}
+    }
+    @if (registrations.length === 0) {
+      {{ 'lexicon.lemma.no_results' | translate }}
+    }
 
-      <div class="lemma-list">
-        <nz-list [nzLoading]="isLoadingData">
-          <nz-list-item *ngFor="let r of registrations" (click)="selectRegistration(r)" [class.selected]="r.id === selectedRegistration?.id" id="list-id-{{ r.id }}">
+    <div class="lemma-list">
+      <nz-list [nzLoading]="isLoadingData">
+        @for (r of registrations; track r) {
+          <nz-list-item (click)="selectRegistration(r)" [class.selected]="r.id === selectedRegistration?.id" id="list-id-{{ r.id }}">
             <ng-container >
               <nz-list-item-meta nzDescription="{{ r.deStichwort }}">
                 <nz-list-item-meta-title>
@@ -46,47 +47,62 @@
               </nz-list-item-meta>
             </ng-container>
           </nz-list-item>
-        </nz-list>
-      </div>
+        }
+      </nz-list>
+    </div>
 
-      <div class="pg-pagination">
+    <div class="pg-pagination">
+      @if (currentPage && currentPage.totalElements > 0) {
         <nz-pagination
           [nzPageIndex]="(currentPage!.number) + 1"
           [nzPageSize]="currentPage.size"
           [nzTotal]="currentPage.totalElements"
           [nzSize]="'small'"
-          *ngIf="currentPage && currentPage.totalElements > 0"
-          (nzPageIndexChange)="changePage($event, true)"></nz-pagination>
-      </div>
-    </nz-content>
-  </div>
+        (nzPageIndexChange)="changePage($event, true)"></nz-pagination>
+      }
+    </div>
+  </nz-content>
+</div>
 
-  <div nz-col nzSpan="15" class="right-side">
-    <nz-content *ngIf="selectedRegistration">
+<div nz-col nzSpan="15" class="right-side">
+  @if (selectedRegistration) {
+    <nz-content>
       <div class="content">
         <nz-page-header [nzGhost]="false">
           <nz-page-header-title>
-            <app-audio-player [url]="getAudioUrl(selectedRegistration)" *ngIf="showPlayButton(selectedRegistration.status)"></app-audio-player>
+            @if (showPlayButton(selectedRegistration.status)) {
+              <app-audio-player [url]="getAudioUrl(selectedRegistration)"></app-audio-player>
+            }
             {{ selectedRegistration.rmStichwort }} ⇔ {{ selectedRegistration.deStichwort }}
           </nz-page-header-title>
           <nz-page-header-extra>
-            <button nz-button nzType="primary" class="button-accept" (click)="acceptRegistration(selectedRegistration)" *ngIf="showAcceptButton(selectedRegistration.status)">{{ 'review.actions.accept' | translate }}<!--<span class="keyboard">enter</span>--></button>
-            <button nz-button nzType="primary" nzDanger (click)="rejectRegistration(selectedRegistration)" *ngIf="showRejectButton(selectedRegistration.status)">{{ 'review.actions.reject' | translate }}<!--<span class="keyboard">del</span>--></button>
-            <button nz-button nzType="primary" style="background-color: rgb(82, 82, 82); border: none;" (click)="reviewLater(selectedRegistration)" *ngIf="showPostponeButton(selectedRegistration.status)">{{ 'review.actions.later' | translate }}</button>
+            @if (showAcceptButton(selectedRegistration.status)) {
+              <button nz-button nzType="primary" class="button-accept" (click)="acceptRegistration(selectedRegistration)">{{ 'review.actions.accept' | translate }}<!--<span class="keyboard">enter</span>--></button>
+            }
+            @if (showRejectButton(selectedRegistration.status)) {
+              <button nz-button nzType="primary" nzDanger (click)="rejectRegistration(selectedRegistration)">{{ 'review.actions.reject' | translate }}<!--<span class="keyboard">del</span>--></button>
+            }
+            @if (showPostponeButton(selectedRegistration.status)) {
+              <button nz-button nzType="primary" style="background-color: rgb(82, 82, 82); border: none;" (click)="reviewLater(selectedRegistration)">{{ 'review.actions.later' | translate }}</button>
+            }
             <button nz-button nzType="primary" style="background-color: rgb(82, 82, 82); border: none;" (click)="delete(selectedRegistration)">{{ 'review.actions.delete' | translate }}</button>
           </nz-page-header-extra>
         </nz-page-header>
       </div>
     </nz-content>
+  }
 
-    <nz-content *ngIf="selectedRegistration">
+  @if (selectedRegistration) {
+    <nz-content>
       <nz-descriptions [nzTitle]="'pronunciation.list.comments' | translate">
         <nz-descriptions-item [nzTitle]="'pronunciation.list.comment_speaker' | translate">{{ selectedRegistration.speakerComment ?? '-' }}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'pronunciation.list.comment_reviewer' | translate">{{ selectedRegistration.reviewerComment ?? '-' }}</nz-descriptions-item>
       </nz-descriptions>
     </nz-content>
+  }
 
-    <nz-content *ngIf="selectedRegistration">
+  @if (selectedRegistration) {
+    <nz-content>
       <nz-descriptions [nzTitle]="'pronunciation.list.grammar' | translate">
         <nz-descriptions-item [nzTitle]="'edit.lemma.rm' | translate">{{ selectedRegistration.rmStichwort ?? '-' }}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'edit.lemma.de' | translate">{{ selectedRegistration.deStichwort ?? '-' }}</nz-descriptions-item>
@@ -95,14 +111,19 @@
         <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate">{{ selectedRegistration.rmSubsemantik  ?? '-'}}</nz-descriptions-item>
       </nz-descriptions>
     </nz-content>
+  }
 
-    <nz-content *ngIf="selectedRegistration && entryVersions.length > 0">
+  @if (selectedRegistration && entryVersions.length > 0) {
+    <nz-content>
       <nz-descriptions [nzTitle]="'Vign attribuì a quests lemmas'"></nz-descriptions>
       <ul>
-        <li *ngFor="let lv of entryVersions">
-          {{ lv.rmStichwort }} / {{ lv.deStichwort }}
-        </li>
+        @for (lv of entryVersions; track lv) {
+          <li>
+            {{ lv.rmStichwort }} / {{ lv.deStichwort }}
+          </li>
+        }
       </ul>
     </nz-content>
-  </div>
+  }
+</div>
 </div>
