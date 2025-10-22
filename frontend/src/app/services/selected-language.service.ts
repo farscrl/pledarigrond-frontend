@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,11 +9,16 @@ export type Idiom = 'puter'|'rumgr'|'surmiran'|'sursilv'|'sutsilv'|'vallader';
   providedIn: 'root'
 })
 export class SelectedLanguageService {
+  private router = inject(Router);
+  private translateService = inject(TranslateService);
+
 
   private frontendLanguageSubject = new BehaviorSubject<FrontendLanguage>('rm');
   private idiomSubject = new BehaviorSubject<Idiom>('rumgr');
 
-  constructor(private router: Router, private translateService: TranslateService) {
+  constructor() {
+    const router = this.router;
+
     router.events.subscribe((data) => {
       if(data instanceof NavigationEnd) {
         this.changeIdiomBasedOnUrl(data.urlAfterRedirects);

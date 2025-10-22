@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,18 +15,16 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [FormsModule, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private modalService = inject(NgxModalService);
+
 
   username = "";
   password = "";
 
   hasLoginError = false;
-
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private modalService: NgxModalService,
-  ) { }
 
   ngOnInit(): void {
     this.reset();

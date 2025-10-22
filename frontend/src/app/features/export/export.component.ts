@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { AuthService } from 'src/app/services/auth.service';
@@ -16,17 +16,13 @@ import { TranslateCutPipe } from '../../pipes/translate-cut.pipe';
     imports: [TranslatePipe, TranslateCutPipe]
 })
 export class ExportComponent extends NgxModalComponent<null, null>  implements OnInit {
+  authService = inject(AuthService);
+  private exportService = inject(ExportService);
+  private modalService = inject(NgxModalService);
+  private selectedLanguageService = inject(SelectedLanguageService);
+  private router = inject(Router);
+  private tracker = inject(MatomoTracker);
 
-  constructor(
-    public authService: AuthService,
-    private exportService: ExportService,
-    private modalService: NgxModalService,
-    private selectedLanguageService: SelectedLanguageService,
-    private router: Router,
-    private tracker: MatomoTracker,
-  ) {
-    super();
-  }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -16,6 +16,12 @@ import { EntryVersionDto } from '../../../models/dictionary';
     imports: [FormsModule, TranslatePipe]
 })
 export class SuggestionComponent extends NgxModalComponent<null, null> implements OnInit {
+  private modificationService = inject(ModificationService);
+  private selectedLanguageService = inject(SelectedLanguageService);
+  private authService = inject(AuthService);
+  private modalService = inject(NgxModalService);
+  private tracker = inject(MatomoTracker);
+
 
   deStichwort: string = '';
   rmStichwort: string = '';
@@ -23,18 +29,6 @@ export class SuggestionComponent extends NgxModalComponent<null, null> implement
   email: string = '';
 
   showFormError = false;
-
-
-
-  constructor(
-    private modificationService: ModificationService,
-    private selectedLanguageService: SelectedLanguageService,
-    private authService: AuthService,
-    private modalService: NgxModalService,
-    private tracker: MatomoTracker,
-  ) {
-    super();
-  }
 
   ngOnInit(): void {
     this.reset();

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { InfoService } from 'src/app/services/info.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
@@ -12,14 +12,15 @@ import { InfoRumgrDeComponent } from '../info-rumgr-de/info-rumgr-de.component';
     imports: [InfoRumgrRmComponent, InfoRumgrDeComponent]
 })
 export class InfoRumgrComponent implements OnInit {
+  private selectedLanguageService = inject(SelectedLanguageService);
+  private infoService = inject(InfoService);
+
 
   frontEndLanguage: FrontendLanguage = 'rm';
 
   nbrEntries?: number;
 
   private languageSubscription?: Subscription;
-
-  constructor(private selectedLanguageService: SelectedLanguageService, private infoService: InfoService) { }
 
   ngOnInit(): void {
     this.languageSubscription = this.selectedLanguageService.getFrontendLanguageObservable().subscribe(value => {

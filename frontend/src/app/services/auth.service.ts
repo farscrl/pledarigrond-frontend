@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Credentials, Language, Role } from '../models/security';
 import { User } from '../models/user';
@@ -13,6 +13,9 @@ const TOKEN_KEY = 'jwt';
   providedIn: 'root'
 })
 export class AuthService {
+  private jwtHelperService = inject(JwtHelperService);
+  private httpClient = inject(HttpClient);
+
 
   private authBasePath = '/user/token';
   private token = '';
@@ -23,10 +26,7 @@ export class AuthService {
   private usernameSubject = new BehaviorSubject<string>("");
   private editorRightsSubject = new BehaviorSubject<boolean>(false);
 
-  constructor(
-      private jwtHelperService: JwtHelperService,
-      private httpClient: HttpClient
-  ) {
+  constructor() {
     this.setToken(localStorage.getItem(TOKEN_KEY));
   }
 

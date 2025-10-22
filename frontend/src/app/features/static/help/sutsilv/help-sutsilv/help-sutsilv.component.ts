@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
@@ -11,12 +11,12 @@ import { HelpSutsilvDeComponent } from '../help-sutsilv-de/help-sutsilv-de.compo
     imports: [HelpSutsilvRmComponent, HelpSutsilvDeComponent]
 })
 export class HelpSutsilvComponent implements OnInit {
+  private selectedLanguageService = inject(SelectedLanguageService);
+
 
   frontEndLanguage: FrontendLanguage = 'rm';
 
   private languageSubscription?: Subscription;
-
-  constructor(private selectedLanguageService: SelectedLanguageService) { }
 
   ngOnInit(): void {
     this.languageSubscription = this.selectedLanguageService.getFrontendLanguageObservable().subscribe(value => {

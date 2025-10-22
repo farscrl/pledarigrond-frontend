@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { environment } from './../../environments/environment';
 import { EntryVersionDto } from '../models/dictionary';
 
@@ -7,8 +7,8 @@ import { EntryVersionDto } from '../models/dictionary';
   providedIn: 'root'
 })
 export class ModificationService {
+  private httpClient = inject(HttpClient);
 
-  constructor(private httpClient: HttpClient) { }
 
   create(language: string, version: EntryVersionDto) {
     const body: any = Object.assign({}, version);

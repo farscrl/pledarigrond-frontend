@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { OtherResourcesComponent, OtherResourcesType } from '../../other-resources/other-resources.component';
 import { NgxModalService } from "ngx-modalview";
 import { SelectedLanguageService } from "../../../services/selected-language.service";
@@ -12,15 +12,13 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [TranslatePipe]
 })
 export class GlossaryLinksComponent implements OnInit {
+  private modalService = inject(NgxModalService);
+  private selectedLanguageService = inject(SelectedLanguageService);
+
 
   idiom = '';
 
   private idiomSubscription?: Subscription;
-
-    constructor(
-    private modalService: NgxModalService,
-    private selectedLanguageService: SelectedLanguageService,
-  ) { }
 
   ngOnInit(): void {
     this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(lng => {

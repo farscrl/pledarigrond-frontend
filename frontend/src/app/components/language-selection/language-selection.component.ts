@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Idiom, SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { Router, RouterLink } from "@angular/router";
@@ -12,13 +12,14 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [RouterLink, TranslatePipe]
 })
 export class LanguageSelectionComponent implements OnInit, OnDestroy {
+  private selectedLanguageService = inject(SelectedLanguageService);
+  router = inject(Router);
+
 
   idiom: Idiom = 'rumgr';
   urlSegment = 'rumantschgrischun';
 
   private idiomSubscription: Subscription|null = null;
-
-  constructor(private selectedLanguageService: SelectedLanguageService, public router: Router) { }
 
   ngOnInit(): void {
     this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(idiom => {

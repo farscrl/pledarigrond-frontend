@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SearchPage } from '../models/page';
 import { SearchCriteria } from '../models/search-criteria';
@@ -10,8 +10,8 @@ import { EntryVersionDto } from '../models/dictionary';
   providedIn: 'root'
 })
 export class SearchService {
+  private httpClient = inject(HttpClient);
 
-  constructor(private httpClient: HttpClient) { }
 
   getResults(language: string, searchCriteria: SearchCriteria, page = 1): Observable<SearchPage<EntryVersionDto>> {
     let params: HttpParams = new HttpParams();

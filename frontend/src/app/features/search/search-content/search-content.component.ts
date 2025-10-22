@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
@@ -24,6 +24,14 @@ import { EntryVersionDto } from '../../../models/dictionary';
     imports: [SearchOptionsComponent, SuggestionsComponent, TranslatePipe, HighlighterPipe, ThousandSeparatorPipe]
 })
 export class SearchContentComponent implements OnInit, OnDestroy {
+  private searchService = inject(SearchService);
+  private selectedLanguageService = inject(SelectedLanguageService);
+  private translateService = inject(TranslateService);
+  private modalService = inject(NgxModalService);
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
+  private tracker = inject(MatomoTracker);
+
 
   searchCriteria: SearchCriteria = new SearchCriteria();
   searchResults: EntryVersionDto[] = [];
@@ -40,18 +48,6 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   updateUrlParamsTimer: any;
 
   private cancelPreviousRequest = new Subject<void>();
-
-  constructor(
-    private searchService: SearchService,
-    private selectedLanguageService: SelectedLanguageService,
-    private translateService: TranslateService,
-    private modalService: NgxModalService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private tracker: MatomoTracker,
-  ) {
-
-  }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FeedEntry } from 'src/app/models/feed';
 import { FeedService } from 'src/app/services/feed.service';
@@ -12,6 +12,9 @@ import { SlicePipe } from '@angular/common';
     imports: [SlicePipe]
 })
 export class RssFeedComponent implements OnInit, OnDestroy {
+  private feedService = inject(FeedService);
+  private selectedLanguageService = inject(SelectedLanguageService);
+
 
   private language: FrontendLanguage = 'rm';
   private frontendLanguageSubscription?: Subscription;
@@ -19,8 +22,6 @@ export class RssFeedComponent implements OnInit, OnDestroy {
 
   feedEntries: FeedEntry[] = [];
   visibleFeedIndex = 0;
-
-  constructor(private feedService: FeedService, private selectedLanguageService: SelectedLanguageService) { }
 
   ngOnInit(): void {
     this.selectedLanguageService.getFrontendLanguageObservable().subscribe(value => {

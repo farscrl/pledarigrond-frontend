@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SwUpdate, VersionReadyEvent } from "@angular/service-worker";
 import { filter } from "rxjs";
@@ -15,7 +15,11 @@ import { FooterComponent } from './components/footer/footer.component';
     imports: [HeaderComponent, LanguageSelectionComponent, MainComponent, FooterComponent]
 })
 export class AppComponent {
-  constructor(translate: TranslateService, private swUpdate: SwUpdate) {
+  private swUpdate = inject(SwUpdate);
+
+  constructor() {
+    const translate = inject(TranslateService);
+
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setFallbackLang('rm-rumgr');
 

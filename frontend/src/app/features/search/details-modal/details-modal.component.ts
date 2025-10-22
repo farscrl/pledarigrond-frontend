@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { NgxModalComponent, NgxModalService } from "ngx-modalview";
 import { Idiom, SelectedLanguageService } from '../../../services/selected-language.service';
 import { Subscription } from 'rxjs';
@@ -17,6 +17,9 @@ import { EntryVersionDto } from '../../../models/dictionary';
     imports: [DetailsExampleComponent, DetailsVerbComponent, DetailsSubstComponent, DetailsAdjComponent, TranslatePipe]
 })
 export class DetailsModalComponent extends NgxModalComponent<{version?: EntryVersionDto}, null> implements OnInit, OnDestroy {
+  private modalService = inject(NgxModalService);
+  private selectedLanguageService = inject(SelectedLanguageService);
+
 
   @Input()
   version?: EntryVersionDto;
@@ -24,7 +27,7 @@ export class DetailsModalComponent extends NgxModalComponent<{version?: EntryVer
   idiom: Idiom = 'rumgr';
   private idiomSubscription: Subscription;
 
-  constructor(private modalService: NgxModalService, private selectedLanguageService: SelectedLanguageService) {
+  constructor() {
     super();
 
     this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe((idiom) => {

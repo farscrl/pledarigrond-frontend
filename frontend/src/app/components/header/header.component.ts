@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,6 +14,10 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [RouterLink, TranslatePipe]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  selectedLanguageService = inject(SelectedLanguageService);
+
 
   isLoggedIn = false;
   loggedInUser = "";
@@ -25,8 +29,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private usernameSubscription: Subscription|null = null;
   private editorRightsSubscription: Subscription|null = null;
   private frontendLanguageSubscription: Subscription|null = null;
-
-  constructor(private authService: AuthService, private router: Router, public selectedLanguageService: SelectedLanguageService) { }
 
   ngOnInit(): void {
     this.loggedInSubscription = this.authService.getLoggedInObservable().subscribe(value => this.isLoggedIn = value);

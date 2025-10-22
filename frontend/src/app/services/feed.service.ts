@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FeedEntry } from '../models/feed';
 import { environment } from './../../environments/environment';
@@ -10,8 +10,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FeedService {
+  private httpClient = inject(HttpClient);
 
-  constructor(private httpClient: HttpClient) { }
 
   getFeed(language: FrontendLanguage): Observable<FeedEntry[]> {
     return this.httpClient.get<Array<any>>(this.getFeedUrl())

@@ -1,5 +1,5 @@
 import { AuthService } from '../services/auth.service';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -7,9 +7,8 @@ import { UserLoggedInGuard } from './logged-in.guard';
 
 @Injectable()
 export class UserNotLoggedInGuard  {
+  private userLoggedInGuard = inject(UserLoggedInGuard);
 
-  constructor(private userLoggedInGuard: UserLoggedInGuard) {
-  }
 
   canActivate(
     next: ActivatedRouteSnapshot,

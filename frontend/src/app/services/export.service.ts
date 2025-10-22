@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
 
@@ -7,8 +7,8 @@ import { environment } from './../../environments/environment';
   providedIn: 'root'
 })
 export class ExportService {
+  private httpClient = inject(HttpClient);
 
-  constructor(private httpClient: HttpClient) { }
 
   getJsonZip(language: string): Observable<Blob> {
     let zipHeaders = new HttpHeaders();

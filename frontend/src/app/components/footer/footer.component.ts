@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {FrontendLanguage, Idiom, SelectedLanguageService} from 'src/app/services/selected-language.service';
 import { NgxModalService } from "ngx-modalview";
@@ -16,6 +16,10 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [RouterLink, TranslatePipe]
 })
 export class FooterComponent implements OnInit, OnDestroy {
+  private selectedLanguageService = inject(SelectedLanguageService);
+  private modalService = inject(NgxModalService);
+  languageUtils = inject(LanguageUtils);
+
 
   idiom: Idiom = 'rumgr';
   idiomLong: string = 'rumantschgrischun';
@@ -23,8 +27,6 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   private languageSubscription?: Subscription;
   private frontendLanguageSubscription?: Subscription;
-
-  constructor(private selectedLanguageService: SelectedLanguageService, private modalService: NgxModalService, public languageUtils: LanguageUtils) { }
 
   ngOnInit(): void {
     this.languageSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(value => {

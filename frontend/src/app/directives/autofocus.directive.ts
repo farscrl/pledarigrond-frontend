@@ -1,9 +1,9 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, inject } from '@angular/core';
 
 @Directive({ selector: '[autofocus]' })
 export class AutofocusDirective {
+  private host = inject(ElementRef);
 
-  constructor(private host: ElementRef) {}
 
   ngAfterViewInit() {
     this.host.nativeElement.focus();

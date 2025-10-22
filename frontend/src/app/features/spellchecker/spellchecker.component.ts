@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import SpellcheckerExtension, {
@@ -35,6 +35,14 @@ import { EntryVersionDto } from '../../models/dictionary';
     imports: [SpellcheckerMenubarComponent, TiptapEditorDirective, FormsModule, TranslatePipe, TranslateCutPipe]
 })
 export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
+  private selectedLanguageService = inject(SelectedLanguageService);
+  private translateService = inject(TranslateService);
+  private tracker = inject(MatomoTracker);
+  private modificationService = inject(ModificationService);
+  private authService = inject(AuthService);
+  private modalService = inject(NgxModalService);
+  private route = inject(ActivatedRoute);
+
 
   editor?: Editor;
   value = '<p></p>';
@@ -51,16 +59,6 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
   sentSuggestionWord = '';
 
   proofreader?: Proofreader.Proofreader;
-
-  constructor(
-    private selectedLanguageService: SelectedLanguageService,
-    private translateService: TranslateService,
-    private tracker: MatomoTracker,
-    private modificationService: ModificationService,
-    private authService: AuthService,
-    private modalService: NgxModalService,
-    private route: ActivatedRoute,
-  ) { }
 
   ngOnInit(): void {
     this.idiomSubscription = this.selectedLanguageService.getIdiomObservable().subscribe(async (lng) => {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 
 import { TranslatePipe } from '@ngx-translate/core';
@@ -10,15 +10,11 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [TranslatePipe]
 })
 export class OtherResourcesComponent extends NgxModalComponent<{resourceType: OtherResourcesType|undefined}, null> implements OnInit {
+  private modalService = inject(NgxModalService);
+
 
   @Input()
   resourceType?: OtherResourcesType;
-
-  constructor(
-    private modalService: NgxModalService,
-  ) {
-    super();
-  }
 
   ngOnInit(): void {
   }

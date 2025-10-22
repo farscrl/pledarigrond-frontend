@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { User } from 'src/app/models/user';
@@ -13,21 +13,17 @@ import { FormsModule } from '@angular/forms';
     imports: [FormsModule, TranslatePipe]
 })
 export class RegistrationComponent extends NgxModalComponent<null, null> implements OnInit {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private translateService = inject(TranslateService);
+  private modalService = inject(NgxModalService);
+
 
   email = '';
   password = '';
   repeatedPassword = '';
   errorMessage?: string;
-
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private translateService: TranslateService,
-    private modalService: NgxModalService,
-  ) {
-    super();
-  }
 
   ngOnInit(): void {
   }
