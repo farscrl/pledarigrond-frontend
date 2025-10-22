@@ -8,8 +8,8 @@ describe('AdjectiveGenerationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdjectiveGenerationComponent ]
-    })
+    imports: [AdjectiveGenerationComponent]
+})
     .compileComponents();
   });
 

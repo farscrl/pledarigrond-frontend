@@ -3,15 +3,31 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 import { EditComponent } from './edit/edit.component';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { EnvironmentService } from "../../services/environment.service";
 import { NotificationService } from '../../services/notification.service';
+import { NzLayoutComponent, NzContentComponent } from 'ng-zorro-antd/layout';
+import { NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderExtraDirective } from 'ng-zorro-antd/page-header';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzCollapseComponent, NzCollapsePanelComponent } from 'ng-zorro-antd/collapse';
+import { FormsModule } from '@angular/forms';
+import { NzFormDirective, NzFormItemComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellAlignDirective, NzTbodyComponent } from 'ng-zorro-antd/table';
+import { NgIf, NgFor } from '@angular/common';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { UserRoleComponent } from '../../components/data/user-role/user-role.component';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
 
 @Component({
     selector: 'app-user-administration',
     templateUrl: './user-administration.component.html',
     styleUrls: ['./user-administration.component.scss'],
-    standalone: false
+    imports: [NzLayoutComponent, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzCollapseComponent, NzCollapsePanelComponent, FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellAlignDirective, NgIf, NzTbodyComponent, NgFor, NzIconDirective, UserRoleComponent, NzDividerComponent, TranslatePipe]
 })
 export class UserAdministrationComponent implements OnInit {
 

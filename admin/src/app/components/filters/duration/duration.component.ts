@@ -2,12 +2,25 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import moment from 'moment';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { ngDebounce } from "../../../decorators/debounce.decorator";
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzDatePickerComponent, NzRangePickerComponent } from 'ng-zorro-antd/date-picker';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective } from 'ng-zorro-antd/input';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { NzTooltipDirective } from 'ng-zorro-antd/tooltip';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-duration',
     templateUrl: './duration.component.html',
     styleUrls: ['./duration.component.scss'],
-    standalone: false
+    imports: [NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzDatePickerComponent, NzRangePickerComponent, FormsModule, NgIf, ɵNzTransitionPatchDirective, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective, NzIconDirective, NzTooltipDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class DurationComponent implements OnInit {
 

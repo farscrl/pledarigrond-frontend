@@ -1,14 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
+import { NzFormDirective, NzFormItemComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzInputGroupComponent, NzInputDirective } from 'ng-zorro-antd/input';
+import { NgIf } from '@angular/common';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    standalone: false
+    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, ɵNzTransitionPatchDirective, NzSpaceCompactItemDirective, NzInputGroupComponent, NzInputDirective, NgIf, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
 

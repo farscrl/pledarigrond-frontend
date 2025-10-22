@@ -5,12 +5,19 @@ import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { DictionaryListItem, PaginationInfo } from '../../../models/dictionary-list';
 import { EntryDto } from '../../../models/dictionary';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzContentComponent } from 'ng-zorro-antd/layout';
+import { NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective } from 'ng-zorro-antd/page-header';
+import { DurationComponent } from '../../../components/filters/duration/duration.component';
+import { VersionHistoryComponent } from '../../../components/version-history/version-history.component';
+import { DictionaryListComponent } from '../../../components/dictionary-list/dictionary-list.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-history',
     templateUrl: './history.component.html',
     styleUrls: ['./history.component.scss'],
-    standalone: false
+    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, DurationComponent, VersionHistoryComponent, DictionaryListComponent, TranslatePipe]
 })
 export class HistoryComponent implements OnInit {
   paginationInfo: PaginationInfo = new PaginationInfo();

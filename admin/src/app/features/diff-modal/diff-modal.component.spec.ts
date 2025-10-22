@@ -8,8 +8,8 @@ describe('DiffModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiffModalComponent ]
-    })
+    imports: [DiffModalComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(DiffModalComponent);

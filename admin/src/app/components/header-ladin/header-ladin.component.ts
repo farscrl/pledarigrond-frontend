@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FrontendLanguage, LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { NzHeaderComponent } from 'ng-zorro-antd/layout';
+import { NzMenuDirective, NzMenuItemComponent } from 'ng-zorro-antd/menu';
+import { NgIf } from '@angular/common';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-ladin-header',
     templateUrl: './header-ladin.component.html',
     styleUrls: ['./header-ladin.component.scss'],
-    standalone: false
+    imports: [NzHeaderComponent, NzMenuDirective, NgIf, ɵNzTransitionPatchDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, NzIconDirective, TranslatePipe]
 })
 export class HeaderLadinComponent implements OnInit {
 

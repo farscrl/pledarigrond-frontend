@@ -8,8 +8,8 @@ describe('ReviewAutoChangesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReviewAutoChangesComponent ]
-    })
+    imports: [ReviewAutoChangesComponent]
+})
     .compileComponents();
   });
 

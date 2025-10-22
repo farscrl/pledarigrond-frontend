@@ -8,8 +8,8 @@ describe('NounGenerationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NounGenerationComponent ]
-    })
+    imports: [NounGenerationComponent]
+})
     .compileComponents();
   });
 

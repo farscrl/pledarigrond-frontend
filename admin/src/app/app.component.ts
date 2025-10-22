@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter, interval, map } from 'rxjs';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: false
+    imports: [RouterOutlet]
 })
 export class AppComponent {
   constructor(private swUpdate: SwUpdate) {

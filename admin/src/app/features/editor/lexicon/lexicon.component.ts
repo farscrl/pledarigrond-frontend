@@ -6,12 +6,19 @@ import { LanguageSelectionService } from 'src/app/services/language-selection.se
 import { Subject, takeUntil } from 'rxjs';
 import { DictionaryListItem, PaginationInfo } from '../../../models/dictionary-list';
 import { EntryDto } from '../../../models/dictionary';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzContentComponent } from 'ng-zorro-antd/layout';
+import { NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective } from 'ng-zorro-antd/page-header';
+import { LexiconFilterComponent } from '../../../components/filters/lexicon-filter/lexicon-filter.component';
+import { VersionHistoryComponent } from '../../../components/version-history/version-history.component';
+import { DictionaryListComponent } from '../../../components/dictionary-list/dictionary-list.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-lexicon',
     templateUrl: './lexicon.component.html',
     styleUrls: ['./lexicon.component.scss'],
-    standalone: false
+    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, LexiconFilterComponent, VersionHistoryComponent, DictionaryListComponent, TranslatePipe]
 })
 export class LexiconComponent implements OnInit {
   paginationInfo: PaginationInfo = new PaginationInfo();

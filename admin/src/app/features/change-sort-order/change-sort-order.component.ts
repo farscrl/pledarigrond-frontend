@@ -1,11 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef, NzModalTitleDirective, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { EntryVersionInternalDto } from '../../models/dictionary';
 import { NotificationService } from '../../services/notification.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { NgIf } from '@angular/common';
+import { NgxSortableModule } from 'ngx-sortable';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 
 export class ChanceSortOrderData {
   entryVersion?: EntryVersionInternalDto;
@@ -16,7 +22,7 @@ export class ChanceSortOrderData {
     selector: 'app-change-sort-order',
     templateUrl: './change-sort-order.component.html',
     styleUrls: ['./change-sort-order.component.scss'],
-    standalone: false
+    imports: [NzModalTitleDirective, NgIf, NgxSortableModule, NzModalFooterDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class ChangeSortOrderComponent implements OnInit {
 

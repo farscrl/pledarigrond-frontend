@@ -1,17 +1,30 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { NZ_MODAL_DATA, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef, NzModalService, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { RegistrationService } from '../../../services/registration.service';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration } from '../../../models/registration';
 import { EditorService } from '../../../services/editor.service';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
 import { EntryVersionInternalDto } from '../../../models/dictionary';
+import { NgIf, NgFor } from '@angular/common';
+import { RegistrationStatusComponent } from '../../../components/data/registration-status/registration-status.component';
+import { AudioPlayerComponent } from '../../../components/audio-player/audio-player.component';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
+import { NzFlexDirective } from 'ng-zorro-antd/flex';
+import { NzInputGroupComponent, NzInputDirective } from 'ng-zorro-antd/input';
+import { FormsModule } from '@angular/forms';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent } from 'ng-zorro-antd/table';
 
 @Component({
     selector: 'app-pronunciation',
     templateUrl: './pronunciation.component.html',
     styleUrl: './pronunciation.component.scss',
-    standalone: false
+    imports: [NgIf, RegistrationStatusComponent, AudioPlayerComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDividerComponent, NzFlexDirective, NzInputGroupComponent, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NgFor, NzModalFooterDirective]
 })
 export class PronunciationComponent implements OnInit {
 

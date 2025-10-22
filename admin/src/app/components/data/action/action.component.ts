@@ -1,11 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Action } from '../../../models/dictionary';
+import { NgIf } from '@angular/common';
+import { NzTagComponent } from 'ng-zorro-antd/tag';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-action',
     templateUrl: './action.component.html',
     styleUrls: ['./action.component.scss'],
-    standalone: false
+    imports: [NgIf, NzTagComponent, TranslatePipe]
 })
 export class ActionComponent implements OnInit {
 

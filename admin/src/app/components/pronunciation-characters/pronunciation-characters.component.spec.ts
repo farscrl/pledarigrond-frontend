@@ -8,8 +8,8 @@ describe('PronunciationCharactersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PronunciationCharactersComponent ]
-    })
+    imports: [PronunciationCharactersComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(PronunciationCharactersComponent);

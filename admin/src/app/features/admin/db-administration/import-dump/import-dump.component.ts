@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { NzModalRef } from 'ng-zorro-antd/modal';
-import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
+import { NzUploadFile, NzUploadComponent } from 'ng-zorro-antd/upload';
 import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-import-dump',
     templateUrl: './import-dump.component.html',
     styleUrls: ['./import-dump.component.scss'],
-    standalone: false
+    imports: [NzUploadComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzIconDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class ImportDumpComponent implements OnInit {
 

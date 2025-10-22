@@ -8,8 +8,8 @@ describe('DbAdministrationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DbAdministrationComponent ]
-    })
+    imports: [DbAdministrationComponent]
+})
     .compileComponents();
   });
 

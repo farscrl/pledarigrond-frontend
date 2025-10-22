@@ -1,16 +1,33 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { NzModalService } from "ng-zorro-antd/modal";
-import { TranslateService } from "@ngx-translate/core";
+import { TranslateService, TranslatePipe } from "@ngx-translate/core";
 import { EditNameComponent } from "./edit-name/edit-name.component";
 import { NameService } from "../../services/name.service";
 import { Name } from "../../models/name";
 import { NotificationService } from '../../services/notification.service';
+import { NzLayoutComponent, NzContentComponent } from 'ng-zorro-antd/layout';
+import { NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective } from 'ng-zorro-antd/page-header';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzCollapseComponent, NzCollapsePanelComponent } from 'ng-zorro-antd/collapse';
+import { FormsModule } from '@angular/forms';
+import { NzFormDirective, NzFormItemComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
+import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellAlignDirective, NzTbodyComponent } from 'ng-zorro-antd/table';
+import { NgFor } from '@angular/common';
+import { NameDisplayComponent } from '../../components/data/name-display/name-display.component';
+import { NameCategoryComponent } from '../../components/data/name-category/name-category.component';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
 
 @Component({
     selector: 'app-name-administration',
     templateUrl: './name-administration.component.html',
     styleUrls: ['./name-administration.component.scss'],
-    standalone: false
+    imports: [NzLayoutComponent, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzCollapseComponent, NzCollapsePanelComponent, FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputDirective, NzSelectComponent, NzOptionComponent, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellAlignDirective, NzTbodyComponent, NgFor, NameDisplayComponent, NameCategoryComponent, NzDividerComponent, TranslatePipe]
 })
 export class NameAdministrationComponent implements OnInit {
 

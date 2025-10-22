@@ -1,8 +1,18 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { EnvironmentService } from '../../../services/environment.service';
 import { EntryVersionInternalDto, Other, Pronoun } from '../../../models/dictionary';
+import { NgIf } from '@angular/common';
+import { PronunciationCharactersComponent } from '../../../components/pronunciation-characters/pronunciation-characters.component';
+import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export class OtherGenerationData {
   version?: EntryVersionInternalDto;
@@ -12,7 +22,7 @@ export class OtherGenerationData {
     selector: 'app-other-generation',
     templateUrl: './other-generation.component.html',
     styleUrls: ['./other-generation.component.scss'],
-    standalone: false
+    imports: [NgIf, PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class OtherGenerationComponent implements OnInit{
 

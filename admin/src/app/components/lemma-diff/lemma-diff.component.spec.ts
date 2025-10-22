@@ -8,8 +8,8 @@ describe('LemmaDiffComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LemmaDiffComponent ]
-    })
+    imports: [LemmaDiffComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(LemmaDiffComponent);

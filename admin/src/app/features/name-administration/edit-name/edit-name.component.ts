@@ -1,10 +1,18 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { NZ_MODAL_DATA, NzModalRef } from "ng-zorro-antd/modal";
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from "ng-zorro-antd/modal";
 import { Name } from "../../../models/name";
 import { NameService } from "../../../services/name.service";
 import { NotificationService } from '../../../services/notification.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 
 export class EditNameData {
   id?: string;
@@ -14,7 +22,7 @@ export class EditNameData {
     selector: 'app-edit-name',
     templateUrl: './edit-name.component.html',
     styleUrls: ['./edit-name.component.scss'],
-    standalone: false
+    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class EditNameComponent implements OnInit {
 

@@ -3,12 +3,19 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { environment } from './../../../environments/environment';
 import { Language } from "../../models/security";
+import { NgIf } from '@angular/common';
+import { NzMenuDirective, NzMenuItemComponent } from 'ng-zorro-antd/menu';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { RouterLink } from '@angular/router';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-navigation-horizontal',
     templateUrl: './navigation-horizontal.component.html',
     styleUrls: ['./navigation-horizontal.component.scss'],
-    standalone: false
+    imports: [NgIf, NzMenuDirective, ɵNzTransitionPatchDirective, NzIconDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, TranslatePipe]
 })
 export class NavigationHorizontalComponent implements OnInit {
 

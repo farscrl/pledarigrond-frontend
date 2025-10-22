@@ -3,12 +3,28 @@ import { forkJoin, Observable } from 'rxjs';
 import { EditorSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
+import { FormsModule } from '@angular/forms';
+import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { NgIf, NgFor } from '@angular/common';
+import { NzRadioGroupComponent, NzRadioComponent } from 'ng-zorro-antd/radio';
+import { NzAutocompleteTriggerDirective, NzAutocompleteComponent } from 'ng-zorro-antd/auto-complete';
+import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-lexicon-filter',
     templateUrl: './lexicon-filter.component.html',
     styleUrls: ['./lexicon-filter.component.scss'],
-    standalone: false
+    imports: [FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzDividerComponent, ɵNzTransitionPatchDirective, NzIconDirective, NgIf, NzRadioGroupComponent, NzRadioComponent, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzSelectComponent, NzOptionComponent, NgFor, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LexiconFilterComponent implements OnInit {
 

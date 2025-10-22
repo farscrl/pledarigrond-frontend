@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
-import { FormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { NZ_MODAL_DATA, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { FormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NZ_MODAL_DATA, NzModalRef, NzModalService, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { NounGenerationComponent } from '../noun-generation/noun-generation.component';
 import { AdjectiveGenerationComponent } from '../adjective-generation/adjective-generation.component';
 import { PronounGenerationComponent } from "../pronoun-generation/pronoun-generation.component";
@@ -23,6 +23,21 @@ import {
   Verb
 } from '../../../models/dictionary';
 import { ConjugationComponent } from '../conjugation/conjugation.component';
+import { NgIf, NgFor } from '@angular/common';
+import { PronunciationCharactersComponent } from '../../../components/pronunciation-characters/pronunciation-characters.component';
+import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzInputDirective, NzInputGroupComponent } from 'ng-zorro-antd/input';
+import { NzAutocompleteTriggerDirective, NzAutocompleteComponent } from 'ng-zorro-antd/auto-complete';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { NzPopoverDirective } from 'ng-zorro-antd/popover';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
+import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
+import { AudioPlayerComponent } from '../../../components/audio-player/audio-player.component';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
 
 export class MainEntryData {
   entryVersionToChange?: EntryVersionInternalDto;
@@ -35,7 +50,7 @@ export class MainEntryData {
     selector: 'app-main-entry',
     templateUrl: './main-entry.component.html',
     styleUrls: ['./main-entry.component.scss'],
-    standalone: false
+    imports: [NgIf, PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NgFor, NzInputGroupComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class MainEntryComponent implements OnInit {
   entryVersionToChange?: EntryVersionInternalDto;

@@ -8,8 +8,8 @@ describe('DiffComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiffComponent ]
-    })
+    imports: [DiffComponent]
+})
     .compileComponents();
   });
 

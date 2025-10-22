@@ -8,8 +8,8 @@ describe('VersionHistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VersionHistoryComponent ]
-    })
+    imports: [VersionHistoryComponent]
+})
     .compileComponents();
   });
 

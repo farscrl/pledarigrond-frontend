@@ -8,8 +8,8 @@ describe('LemmaListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DictionaryListComponent ]
-    })
+    imports: [DictionaryListComponent]
+})
     .compileComponents();
   });
 

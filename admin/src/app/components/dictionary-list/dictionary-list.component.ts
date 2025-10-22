@@ -12,16 +12,34 @@ import { LuceneSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 import { EntryVersionDto, EntryVersionInternalDto } from '../../models/dictionary';
 import { DictionaryListItem, PaginationInfo } from '../../models/dictionary-list';
+import { NgIf, NgFor, UpperCasePipe, SlicePipe } from '@angular/common';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzDropdownButtonDirective, NzDropDownDirective, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { NzMenuDirective, NzMenuItemComponent } from 'ng-zorro-antd/menu';
+import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
+import { FormsModule } from '@angular/forms';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
+import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent } from 'ng-zorro-antd/table';
+import { NzNoAnimationDirective } from 'ng-zorro-antd/core/no-animation';
+import { UserRoleComponent } from '../data/user-role/user-role.component';
+import { ActionComponent } from '../data/action/action.component';
+import { NzSwitchComponent } from 'ng-zorro-antd/switch';
+import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
+import { HighlighterPipe } from '../../pipes/highlighter.pipe';
 
 @Component({
-  selector: 'app-dictionary-list',
-  templateUrl: './dictionary-list.component.html',
-  styleUrls: ['./dictionary-list.component.scss'],
-  standalone: false
+    selector: 'app-dictionary-list',
+    templateUrl: './dictionary-list.component.html',
+    styleUrls: ['./dictionary-list.component.scss'],
+    imports: [NgIf, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDropdownButtonDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NgFor, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
 })
 export class DictionaryListComponent {
 

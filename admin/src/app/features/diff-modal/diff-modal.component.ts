@@ -1,8 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { NZ_MODAL_DATA } from "ng-zorro-antd/modal";
+import { NZ_MODAL_DATA, NzModalTitleDirective } from "ng-zorro-antd/modal";
 import { Language } from "../../models/security";
 import { LanguageSelectionService } from "../../services/language-selection.service";
 import { EntryVersionInternalDto } from '../../models/dictionary';
+import { LemmaDiffComponent } from '../../components/lemma-diff/lemma-diff.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export class DiffModalData {
   original: EntryVersionInternalDto = new EntryVersionInternalDto();
@@ -13,7 +15,7 @@ export class DiffModalData {
     selector: 'app-diff-modal',
     templateUrl: './diff-modal.component.html',
     styleUrls: ['./diff-modal.component.scss'],
-    standalone: false
+    imports: [NzModalTitleDirective, LemmaDiffComponent, TranslatePipe]
 })
 export class DiffModalComponent {
   language: Language = Language.RUMANTSCHGRISCHUN;

@@ -8,8 +8,8 @@ describe('LexiconFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LexiconFilterComponent ]
-    })
+    imports: [LexiconFilterComponent]
+})
     .compileComponents();
   });
 

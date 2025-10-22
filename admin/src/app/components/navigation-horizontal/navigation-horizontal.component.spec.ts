@@ -8,8 +8,8 @@ describe('NavigationHorizontalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavigationHorizontalComponent ]
-    })
+    imports: [NavigationHorizontalComponent]
+})
     .compileComponents();
   });
 

@@ -8,8 +8,8 @@ describe('ChangeSortOrderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChangeSortOrderComponent ]
-    })
+    imports: [ChangeSortOrderComponent]
+})
     .compileComponents();
   });
 

@@ -8,8 +8,8 @@ describe('OtherGenerationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OtherGenerationComponent ]
-    })
+    imports: [OtherGenerationComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(OtherGenerationComponent);

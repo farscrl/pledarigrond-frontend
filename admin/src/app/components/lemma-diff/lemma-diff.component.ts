@@ -2,12 +2,17 @@ import { Component, Input } from '@angular/core';
 import { Language } from "../../models/security";
 import { ReferenceVerbDto } from '../../models/reference-verb-dto';
 import { EntryVersionInternalDto } from '../../models/dictionary';
+import { NzDescriptionsComponent, NzDescriptionsItemComponent } from 'ng-zorro-antd/descriptions';
+import { DiffComponent } from '../diff/diff.component';
+import { NgIf } from '@angular/common';
+import { NzTrDirective, NzTableCellDirective, NzThMeasureDirective } from 'ng-zorro-antd/table';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-lemma-diff',
     templateUrl: './lemma-diff.component.html',
     styleUrls: ['./lemma-diff.component.scss'],
-    standalone: false
+    imports: [NzDescriptionsComponent, NzDescriptionsItemComponent, DiffComponent, NgIf, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, TranslatePipe]
 })
 export class LemmaDiffComponent {
   @Input()

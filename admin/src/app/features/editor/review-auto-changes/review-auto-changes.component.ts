@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit, ViewContainerRef } from '@angular/core
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { MainEntryComponent } from '../../modify-entry/main-entry/main-entry.component';
 import { Page } from 'src/app/models/page';
 import { InflectionService } from 'src/app/services/inflection.service';
@@ -19,6 +19,23 @@ import { AutoReviewListItem } from '../../../models/dictionary-list';
 import { DbSearchCriteria } from '../../../models/db-search-criteria';
 import { NotificationService } from '../../../services/notification.service';
 import { Subject, takeUntil } from 'rxjs';
+import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzContentComponent } from 'ng-zorro-antd/layout';
+import { NzPageHeaderTitleDirective, NzPageHeaderComponent, NzPageHeaderExtraDirective } from 'ng-zorro-antd/page-header';
+import { NzRadioGroupComponent, NzRadioComponent } from 'ng-zorro-antd/radio';
+import { FormsModule } from '@angular/forms';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
+import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
+import { NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent } from 'ng-zorro-antd/list';
+import { NgFor, NgIf } from '@angular/common';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { LemmaDiffComponent } from '../../../components/lemma-diff/lemma-diff.component';
 
 export enum KEY_CODE {
   KEY1 = 49,
@@ -38,7 +55,7 @@ export enum KEY_CODE {
     selector: 'app-review-auto-changes',
     templateUrl: './review-auto-changes.component.html',
     styleUrls: ['./review-auto-changes.component.scss'],
-    standalone: false
+    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzPageHeaderComponent, NzListComponent, NgFor, NzListItemComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzListItemMetaComponent, NzListItemMetaTitleComponent, NgIf, NzPaginationComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, LemmaDiffComponent, TranslatePipe]
 })
 export class ReviewAutoChangesComponent implements OnInit {
 

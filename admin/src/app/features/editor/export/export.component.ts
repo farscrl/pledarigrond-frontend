@@ -1,12 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { LuceneSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { FileUtils } from 'src/app/utils/file.utils';
-import { NzCheckboxOption } from 'ng-zorro-antd/checkbox';
+import { NzCheckboxOption, NzCheckboxComponent, NzCheckboxGroupComponent } from 'ng-zorro-antd/checkbox';
+import { FormsModule } from '@angular/forms';
+import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 
 export class ExportOption {
   label: string = "";
@@ -22,7 +27,7 @@ export class ExportData {
     selector: 'app-export',
     templateUrl: './export.component.html',
     styleUrls: ['./export.component.scss'],
-    standalone: false
+    imports: [NzCheckboxComponent, FormsModule, NzCheckboxGroupComponent, NzModalFooterDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, TranslatePipe]
 })
 export class ExportComponent implements OnInit {
 
