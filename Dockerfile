@@ -1,16 +1,18 @@
 #stage 1
 ARG ANGULAR_ENV=prod
-FROM node:latest as node
+FROM node:22-alpine as node
 # https://benkyriakou.com/posts/docker-args-empty
 ARG ANGULAR_ENV
 RUN echo "Building Angular configuration: $ANGULAR_ENV"
 WORKDIR /app
 COPY . .
-RUN cd frontend && npm install
-#RUN cd frontend && npm run build --prod
-RUN cd frontend && (node_modules/.bin/ng build -c $ANGULAR_ENV)
-RUN cd admin && npm install
-RUN cd admin && (node_modules/.bin/ng build -c $ANGULAR_ENV)
+RUN npm install -g corepack
+RUN corepack enable
+RUN cd frontend && pnpm install
+#RUN cd frontend && pnpm run build --prod
+RUN cd frontend && (pnpm exec ng build -c $ANGULAR_ENV)
+RUN cd admin && pnpm install
+RUN cd admin && (pnpm exec ng build -c $ANGULAR_ENV)
 
 
 #stage 2
