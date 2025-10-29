@@ -1,6 +1,6 @@
 {
   "name": "pledarigrond-frontend",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "The frontend for Pledari Grond",
   "scripts": {
     "start": "(cd admin && ng serve --port=4222) & (cd frontend && ng serve --port=4221)",
