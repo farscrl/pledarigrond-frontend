@@ -156,6 +156,9 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
       case 'surmiran':
         this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-surmiran');
         break;
+      case 'sursilv':
+        this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-sursilv');
+        break;
       case 'sutsilv':
         this.proofreader = await Proofreader.Proofreader.CreateProofreader('rm-sutsilv');
         break;
