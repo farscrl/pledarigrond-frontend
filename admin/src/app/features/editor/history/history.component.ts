@@ -1,13 +1,17 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { DictionaryListItem, PaginationInfo } from '../../../models/dictionary-list';
 import { EntryDto } from '../../../models/dictionary';
-import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzContentComponent } from 'ng-zorro-antd/layout';
-import { NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective } from 'ng-zorro-antd/page-header';
+import {
+  NzPageHeaderComponent,
+  NzPageHeaderSubtitleDirective,
+  NzPageHeaderTitleDirective
+} from 'ng-zorro-antd/page-header';
 import { DurationComponent } from '../../../components/filters/duration/duration.component';
 import { VersionHistoryComponent } from '../../../components/version-history/version-history.component';
 import { DictionaryListComponent } from '../../../components/dictionary-list/dictionary-list.component';
@@ -46,6 +50,7 @@ export class HistoryComponent implements OnInit {
   search(editorQuery: DbSearchCriteria) {
     // verified entries
     editorQuery.state = 'PUBLISHED';
+    editorQuery.excludeAutomaticChanges = false;
     this.currentEditorQuery = editorQuery;
     this.loadPage(0);
   }
