@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
@@ -16,12 +16,14 @@ import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { HighlighterPipe } from '../../../pipes/highlighter.pipe';
 import { ThousandSeparatorPipe } from '../../../pipes/thousand-separator.pipe';
 import { EntryVersionDto } from '../../../models/dictionary';
+import { AudioPlayer } from '../../../components/audio-player/audio-player';
+import { RegistrationService } from '../../../services/registration';
 
 @Component({
     selector: 'app-search-content',
     templateUrl: './search-content.component.html',
     styleUrls: ['./search-content.component.scss'],
-    imports: [SearchOptionsComponent, SuggestionsComponent, TranslatePipe, HighlighterPipe, ThousandSeparatorPipe]
+  imports: [SearchOptionsComponent, SuggestionsComponent, TranslatePipe, HighlighterPipe, ThousandSeparatorPipe, AudioPlayer]
 })
 export class SearchContentComponent implements OnInit, OnDestroy {
   private searchService = inject(SearchService);
@@ -31,6 +33,7 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private tracker = inject(MatomoTracker);
+  private registrationService = inject(RegistrationService);
 
 
   searchCriteria: SearchCriteria = new SearchCriteria();
@@ -257,6 +260,23 @@ export class SearchContentComponent implements OnInit, OnDestroy {
       return false;
     }
     return true;
+  }
+
+  hasPlayer(version: EntryVersionDto, isFirst: boolean): boolean {
+    if (!version.rmPronunciation) {
+      return false;
+    }
+
+    if (
+      (this.searchCriteria.searchDirection === 'BOTH' || this.searchCriteria.searchDirection === 'GERMAN') && isFirst
+      || this.searchCriteria.searchDirection === 'ROMANSH' && !isFirst) {
+      return false;
+    }
+    return true;
+  }
+
+  getAudioUrlById(id: string) {
+    return this.registrationService.getMp3UrlById(id);
   }
 
   openSuggestionModal() {

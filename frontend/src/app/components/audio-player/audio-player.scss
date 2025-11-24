@@ -1,0 +1,26 @@
+.icon-container {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+i {
+  color: rgb(117 117 117);
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  position: absolute;
+
+  &.hidden {
+    opacity: 0;
+    transform: scale(0.8) rotate(-90deg);
+    pointer-events: none;
+  }
+
+  &:not(.hidden) {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}

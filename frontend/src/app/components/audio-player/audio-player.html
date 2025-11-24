@@ -1,0 +1,6 @@
+<div class="icon-container">
+  <i class="ri-volume-up-fill play-icon" [class.hidden]="isPlaying" (click)="play()"></i>
+  <i class="ri-stop-mini-fill stop-icon" [class.hidden]="!isPlaying" (click)="pause()"></i>
+</div>
+
+<audio #audioControl></audio>
