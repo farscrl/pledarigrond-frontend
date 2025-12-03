@@ -24,11 +24,25 @@
   <nz-descriptions-item [nzTitle]="'edit.lemma.rm_tags' | translate"><app-diff [old]="originalVersion.rmTags" [new]="changedVersion.rmTags"></app-diff></nz-descriptions-item>
   <nz-descriptions-item [nzTitle]="'edit.lemma.rm_grammar' | translate"><app-diff [old]="originalVersion.rmGrammatik" [new]="changedVersion.rmGrammatik"></app-diff></nz-descriptions-item>
   <nz-descriptions-item [nzTitle]="'edit.lemma.rm_semantics' | translate"><app-diff [old]="originalVersion.rmSubsemantik" [new]="changedVersion.rmSubsemantik"></app-diff></nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'edit.lemma.rm_synonym' | translate"><app-diff [old]="originalVersion.rmSynonym" [new]="changedVersion.rmSynonym"></app-diff></nz-descriptions-item>
   <nz-descriptions-item [nzTitle]="'edit.lemma.rm_link' | translate"><app-diff [old]="originalVersion.rmRedirect" [new]="changedVersion.rmRedirect"></app-diff></nz-descriptions-item>
   <nz-descriptions-item [nzTitle]="'edit.lemma.inflection.title' | translate"><app-diff [old]="originalVersion.inflection?.inflectionType" [new]="changedVersion.inflection?.inflectionType"></app-diff></nz-descriptions-item>
   <nz-descriptions-item [nzTitle]="'lexicon.lemma.columns.pronunciation' | translate"><app-diff [old]="originalVersion.rmPronunciation" [new]="changedVersion.rmPronunciation"></app-diff></nz-descriptions-item>
   <nz-descriptions-item [nzTitle]="'edit.lemma.sort_order_rm' | translate"><app-diff [old]="originalVersion.rmStichwortSort" [new]="changedVersion.rmStichwortSort"></app-diff></nz-descriptions-item>
 </nz-descriptions>
+
+@if (originalVersion.examples.length > 0 || changedVersion.examples.length > 0) {
+  <nz-descriptions [nzTitle]="'edit.lemma.examples' | translate">
+    @if (originalVersion.examples.length != changedVersion.examples.length) {
+      <nz-descriptions-item nzTitle="Errur"><span class="red">Diember dad exempels buca medem</span></nz-descriptions-item>
+    } @else {
+      @for (originalExample of originalVersion.examples; track originalExample; let idx = $index) {
+        <nz-descriptions-item nzTitle="Ex (rm)"><app-diff [old]="originalVersion.examples[idx].de" [new]="changedVersion.examples[idx].de"></app-diff></nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Ex (rm)"><app-diff [old]="originalVersion.examples[idx].rm" [new]="changedVersion.examples[idx].rm"></app-diff></nz-descriptions-item>
+      }
+    }
+  </nz-descriptions>
+}
 
 @if (originalVersion.inflection?.inflectionType === 'NOUN' || changedVersion.inflection?.inflectionType === 'NOUN') {
   <nz-descriptions nzTitle="Flexiuns da substantivs">

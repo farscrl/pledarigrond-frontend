@@ -16,6 +16,8 @@ export class EntryVersionDto {
   rmTags?: string;
   rmRedirect?: string;
   rmEtymologie?: string;
+  rmSynonym?: string;
+  rmPhonetics?: string;
   rmPronunciation?: string;
   inflection?: Inflection;
 
