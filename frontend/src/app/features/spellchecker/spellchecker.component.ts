@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import SpellcheckerExtension, {
@@ -98,7 +98,11 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
 
     this.editor = new Editor({
       extensions: [
-        StarterKit,
+        StarterKit.configure({
+          link: {
+            openOnClick: false,
+          }
+        }),
         Underline,
         Highlight,
         SpellcheckerExtension.configure({
