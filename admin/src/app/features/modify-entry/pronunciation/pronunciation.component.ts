@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { NZ_MODAL_DATA, NzModalRef, NzModalService, NzModalFooterDirective } from 'ng-zorro-antd/modal';
+import { Component, inject, OnInit } from '@angular/core';
+import { NZ_MODAL_DATA, NzModalFooterDirective, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { RegistrationService } from '../../../services/registration.service';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration } from '../../../models/registration';
@@ -7,24 +7,31 @@ import { EditorService } from '../../../services/editor.service';
 import { LanguageSelectionService } from '../../../services/language-selection.service';
 import { EntryVersionInternalDto } from '../../../models/dictionary';
 
-import { RegistrationStatusComponent } from '../../../components/data/registration-status/registration-status.component';
+import {
+  RegistrationStatusComponent
+} from '../../../components/data/registration-status/registration-status.component';
 import { AudioPlayerComponent } from '../../../components/audio-player/audio-player.component';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
 import { NzFlexDirective } from 'ng-zorro-antd/flex';
-import { NzInputGroupComponent, NzInputDirective } from 'ng-zorro-antd/input';
+import { NzInputDirective, NzInputGroupComponent } from 'ng-zorro-antd/input';
 import { FormsModule } from '@angular/forms';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
-import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent } from 'ng-zorro-antd/table';
+import {
+  NzTableCellDirective,
+  NzTableComponent,
+  NzTbodyComponent,
+  NzTheadComponent,
+  NzThMeasureDirective,
+  NzTrDirective
+} from 'ng-zorro-antd/table';
 
 @Component({
     selector: 'app-pronunciation',
     templateUrl: './pronunciation.component.html',
     styleUrl: './pronunciation.component.scss',
-    imports: [RegistrationStatusComponent, AudioPlayerComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDividerComponent, NzFlexDirective, NzInputGroupComponent, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NzModalFooterDirective]
+    imports: [RegistrationStatusComponent, AudioPlayerComponent, NzButtonComponent, NzWaveDirective, NzDividerComponent, NzFlexDirective, NzInputGroupComponent, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NzModalFooterDirective]
 })
 export class PronunciationComponent implements OnInit {
   private registrationService = inject(RegistrationService);

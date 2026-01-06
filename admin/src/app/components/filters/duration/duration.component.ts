@@ -2,14 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import moment from 'moment';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { ngDebounce } from "../../../decorators/debounce.decorator";
-import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
-import { NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
+import { NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent } from 'ng-zorro-antd/form';
 import { NzDatePickerComponent, NzRangePickerComponent } from 'ng-zorro-antd/date-picker';
 import { FormsModule } from '@angular/forms';
-
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
-import { NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective } from 'ng-zorro-antd/input';
+import { NzInputDirective, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective } from 'ng-zorro-antd/input';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzTooltipDirective } from 'ng-zorro-antd/tooltip';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -20,7 +17,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-duration',
     templateUrl: './duration.component.html',
     styleUrls: ['./duration.component.scss'],
-    imports: [NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzDatePickerComponent, NzRangePickerComponent, FormsModule, ɵNzTransitionPatchDirective, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective, NzIconDirective, NzTooltipDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
+    imports: [NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzDatePickerComponent, NzRangePickerComponent, FormsModule, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective, NzIconDirective, NzTooltipDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class DurationComponent implements OnInit {
 

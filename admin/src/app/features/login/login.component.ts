@@ -1,13 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
-import { NzFormDirective, NzFormItemComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
-import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
-import { NzInputGroupComponent, NzInputDirective } from 'ng-zorro-antd/input';
+import { NzFormControlComponent, NzFormDirective, NzFormItemComponent } from 'ng-zorro-antd/form';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
+import { NzInputDirective, NzInputGroupComponent } from 'ng-zorro-antd/input';
 
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
@@ -17,7 +15,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, ɵNzTransitionPatchDirective, NzSpaceCompactItemDirective, NzInputGroupComponent, NzInputDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
+    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputGroupComponent, NzInputDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
   private fb = inject(UntypedFormBuilder);

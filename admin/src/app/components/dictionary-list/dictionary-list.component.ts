@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewContainerRef, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, ViewContainerRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ExportComponent } from 'src/app/features/editor/export/export.component';
 
@@ -12,22 +12,30 @@ import { LuceneSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { ChangeSortOrderComponent } from 'src/app/features/change-sort-order/change-sort-order.component';
-import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 import { EntryVersionDto, EntryVersionInternalDto } from '../../models/dictionary';
 import { DictionaryListItem, PaginationInfo } from '../../models/dictionary-list';
-import { UpperCasePipe, SlicePipe } from '@angular/common';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import { SlicePipe, UpperCasePipe } from '@angular/common';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzDropdownButtonDirective, NzDropDownDirective, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzMenuDirective, NzMenuItemComponent } from 'ng-zorro-antd/menu';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { FormsModule } from '@angular/forms';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
-import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent } from 'ng-zorro-antd/table';
+import {
+  NzCellFixedDirective,
+  NzTableCellDirective,
+  NzTableComponent,
+  NzTbodyComponent,
+  NzTdAddOnComponent,
+  NzTheadComponent,
+  NzThMeasureDirective,
+  NzThSelectionComponent,
+  NzTrDirective
+} from 'ng-zorro-antd/table';
 import { NzNoAnimationDirective } from 'ng-zorro-antd/core/no-animation';
 import { UserRoleComponent } from '../data/user-role/user-role.component';
 import { ActionComponent } from '../data/action/action.component';
@@ -39,7 +47,7 @@ import { HighlighterPipe } from '../../pipes/highlighter.pipe';
     selector: 'app-dictionary-list',
     templateUrl: './dictionary-list.component.html',
     styleUrls: ['./dictionary-list.component.scss'],
-    imports: [NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDropdownButtonDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
+    imports: [NzButtonComponent, NzWaveDirective, NzDropdownButtonDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
 })
 export class DictionaryListComponent {
   private modalService = inject(NzModalService);

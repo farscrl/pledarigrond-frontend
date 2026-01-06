@@ -1,12 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FrontendLanguage, LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { NzHeaderComponent } from 'ng-zorro-antd/layout';
 import { NzMenuDirective, NzMenuItemComponent } from 'ng-zorro-antd/menu';
-
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -15,7 +13,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    imports: [NzHeaderComponent, NzMenuDirective, ɵNzTransitionPatchDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, NzIconDirective, TranslatePipe]
+    imports: [NzHeaderComponent, NzMenuDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, NzIconDirective, TranslatePipe]
 })
 export class HeaderComponent implements OnInit {
   authService = inject(AuthService);

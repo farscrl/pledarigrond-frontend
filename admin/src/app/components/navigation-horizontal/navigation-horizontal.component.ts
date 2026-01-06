@@ -1,11 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { environment } from './../../../environments/environment';
 import { Language } from "../../models/security";
 
 import { NzMenuDirective, NzMenuItemComponent } from 'ng-zorro-antd/menu';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { RouterLink } from '@angular/router';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
@@ -15,7 +14,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-navigation-horizontal',
     templateUrl: './navigation-horizontal.component.html',
     styleUrls: ['./navigation-horizontal.component.scss'],
-    imports: [NzMenuDirective, ɵNzTransitionPatchDirective, NzIconDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, TranslatePipe]
+    imports: [NzMenuDirective, NzIconDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, TranslatePipe]
 })
 export class NavigationHorizontalComponent implements OnInit {
   languageSelectionService = inject(LanguageSelectionService);

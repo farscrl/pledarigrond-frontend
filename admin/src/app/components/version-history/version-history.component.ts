@@ -1,28 +1,33 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewContainerRef, inject } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges, ViewContainerRef } from '@angular/core';
 
 import moment from 'moment';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { DiffModalComponent } from "../../features/diff-modal/diff-modal.component";
 import { EntryDto, EntryVersionInternalDto } from '../../models/dictionary';
-import { NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent } from 'ng-zorro-antd/table';
+import {
+  NzTableCellDirective,
+  NzTableComponent,
+  NzTbodyComponent,
+  NzTheadComponent,
+  NzThMeasureDirective,
+  NzTrDirective
+} from 'ng-zorro-antd/table';
 
 import { ActionComponent } from '../data/action/action.component';
 import { UserRoleComponent } from '../data/user-role/user-role.component';
 import { NzEmptyComponent } from 'ng-zorro-antd/empty';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 
 @Component({
     selector: 'app-version-history',
     templateUrl: './version-history.component.html',
     styleUrls: ['./version-history.component.scss'],
-    imports: [NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, ActionComponent, UserRoleComponent, NzEmptyComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzIconDirective, TranslatePipe]
+    imports: [NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, ActionComponent, UserRoleComponent, NzEmptyComponent, NzButtonComponent, NzWaveDirective, NzIconDirective, TranslatePipe]
 })
 export class VersionHistoryComponent implements OnChanges {
   private modalService = inject(NzModalService);

@@ -1,8 +1,8 @@
-import { Component, HostListener, OnInit, ViewContainerRef, inject } from '@angular/core';
+import { Component, HostListener, inject, OnInit, ViewContainerRef } from '@angular/core';
 import { EditorService } from 'src/app/services/editor.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MainEntryComponent } from '../../modify-entry/main-entry/main-entry.component';
 import { Page } from 'src/app/models/page';
 import { InflectionService } from 'src/app/services/inflection.service';
@@ -19,18 +19,24 @@ import { AutoReviewListItem } from '../../../models/dictionary-list';
 import { DbSearchCriteria } from '../../../models/db-search-criteria';
 import { NotificationService } from '../../../services/notification.service';
 import { Subject, takeUntil } from 'rxjs';
-import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzContentComponent } from 'ng-zorro-antd/layout';
-import { NzPageHeaderTitleDirective, NzPageHeaderComponent, NzPageHeaderExtraDirective } from 'ng-zorro-antd/page-header';
-import { NzRadioGroupComponent, NzRadioComponent } from 'ng-zorro-antd/radio';
+import {
+  NzPageHeaderComponent,
+  NzPageHeaderExtraDirective,
+  NzPageHeaderTitleDirective
+} from 'ng-zorro-antd/page-header';
+import { NzRadioComponent, NzRadioGroupComponent } from 'ng-zorro-antd/radio';
 import { FormsModule } from '@angular/forms';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
-import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
-import { NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent } from 'ng-zorro-antd/list';
-
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
+import {
+  NzListComponent,
+  NzListItemComponent,
+  NzListItemMetaComponent,
+  NzListItemMetaTitleComponent
+} from 'ng-zorro-antd/list';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -55,7 +61,7 @@ export enum KEY_CODE {
     selector: 'app-review-auto-changes',
     templateUrl: './review-auto-changes.component.html',
     styleUrls: ['./review-auto-changes.component.scss'],
-    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzSpaceCompactItemDirective, NzInputDirective, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzPageHeaderComponent, NzListComponent, NzListItemComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, LemmaDiffComponent, TranslatePipe]
+    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzInputDirective, NzCheckboxComponent, NzSelectComponent, NzOptionComponent, NzPageHeaderComponent, NzListComponent, NzListItemComponent, NzIconDirective, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, LemmaDiffComponent, TranslatePipe]
 })
 export class ReviewAutoChangesComponent implements OnInit {
   private editorService = inject(EditorService);

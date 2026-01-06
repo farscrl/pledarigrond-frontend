@@ -1,14 +1,17 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { IndexInfos } from 'src/app/models/db-infos';
 import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
-import { NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective } from 'ng-zorro-antd/page-header';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import {
+  NzPageHeaderComponent,
+  NzPageHeaderExtraDirective,
+  NzPageHeaderSubtitleDirective,
+  NzPageHeaderTitleDirective
+} from 'ng-zorro-antd/page-header';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzCardComponent } from 'ng-zorro-antd/card';
-import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzStatisticComponent } from 'ng-zorro-antd/statistic';
 import { DecimalPipe } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -17,7 +20,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-index-administration',
     templateUrl: './index-administration.component.html',
     styleUrls: ['./index-administration.component.scss'],
-    imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, DecimalPipe, TranslatePipe]
+    imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, DecimalPipe, TranslatePipe]
 })
 export class IndexAdministrationComponent implements OnInit {
   private dbService = inject(DbService);

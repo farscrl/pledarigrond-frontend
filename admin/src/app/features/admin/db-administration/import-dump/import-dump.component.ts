@@ -1,12 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
-import { NzUploadFile, NzUploadComponent } from 'ng-zorro-antd/upload';
+import { Component, inject, OnInit } from '@angular/core';
+import { NzModalFooterDirective, NzModalRef } from 'ng-zorro-antd/modal';
+import { NzUploadComponent, NzUploadFile } from 'ng-zorro-antd/upload';
 import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { TranslatePipe } from '@ngx-translate/core';
 
@@ -14,7 +12,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-import-dump',
     templateUrl: './import-dump.component.html',
     styleUrls: ['./import-dump.component.scss'],
-    imports: [NzUploadComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzIconDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [NzUploadComponent, NzButtonComponent, NzWaveDirective, NzIconDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class ImportDumpComponent implements OnInit {
   private modal = inject(NzModalRef);

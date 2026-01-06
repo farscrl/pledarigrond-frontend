@@ -1,6 +1,12 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NZ_MODAL_DATA, NzModalRef, NzModalFooterDirective } from 'ng-zorro-antd/modal';
+import { Component, inject, OnInit } from '@angular/core';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup
+} from '@angular/forms';
+import { NZ_MODAL_DATA, NzModalFooterDirective, NzModalRef } from 'ng-zorro-antd/modal';
 import { InflectionSubType } from 'src/app/models/inflection';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
@@ -9,15 +15,15 @@ import { Adjective, EntryVersionInternalDto } from '../../../models/dictionary';
 import { CopyService } from '../../../services/copy.service';
 import { Language } from '../../../models/security';
 
-import { PronunciationCharactersComponent } from '../../../components/pronunciation-characters/pronunciation-characters.component';
-import { NzFormDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent } from 'ng-zorro-antd/form';
-import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
+import {
+  PronunciationCharactersComponent
+} from '../../../components/pronunciation-characters/pronunciation-characters.component';
+import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLabelComponent } from 'ng-zorro-antd/form';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
-import { NzInputDirective, NzAutosizeDirective } from 'ng-zorro-antd/input';
-import { NzSelectComponent, NzOptionComponent } from 'ng-zorro-antd/select';
+import { NzAutosizeDirective, NzInputDirective } from 'ng-zorro-antd/input';
+import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { TranslatePipe } from '@ngx-translate/core';
 
@@ -28,7 +34,7 @@ export class AdjectiveGenerationData {
     selector: 'app-adjective-generation',
     templateUrl: './adjective-generation.component.html',
     styleUrls: ['./adjective-generation.component.scss'],
-    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzSpaceCompactItemDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzButtonComponent, NzWaveDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class AdjectiveGenerationComponent implements OnInit {
   private fb = inject(UntypedFormBuilder);

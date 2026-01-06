@@ -39,7 +39,6 @@ import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLab
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzInputDirective, NzInputGroupComponent } from 'ng-zorro-antd/input';
 import { NzAutocompleteComponent, NzAutocompleteTriggerDirective } from 'ng-zorro-antd/auto-complete';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzPopoverDirective } from 'ng-zorro-antd/popover';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
@@ -59,7 +58,7 @@ export class MainEntryData {
     selector: 'app-main-entry',
     templateUrl: './main-entry.component.html',
     styleUrls: ['./main-entry.component.scss'],
-  imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, ɵNzTransitionPatchDirective, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NzInputGroupComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NzInputGroupComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class MainEntryComponent implements OnInit {
   private modal = inject(NzModalRef);

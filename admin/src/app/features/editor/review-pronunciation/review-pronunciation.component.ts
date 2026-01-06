@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration, RegistrationStatus } from '../../../models/registration';
 import { Page } from '../../../models/page';
@@ -10,20 +10,27 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { AudioPlayerComponent } from '../../../components/audio-player/audio-player.component';
 import { EntryVersionInternalDto } from '../../../models/dictionary';
 import { Subject, takeUntil } from 'rxjs';
-import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzContentComponent } from 'ng-zorro-antd/layout';
-import { NzPageHeaderTitleDirective, NzPageHeaderComponent, NzPageHeaderExtraDirective } from 'ng-zorro-antd/page-header';
-import { NzRadioGroupComponent, NzRadioComponent } from 'ng-zorro-antd/radio';
+import {
+  NzPageHeaderComponent,
+  NzPageHeaderExtraDirective,
+  NzPageHeaderTitleDirective
+} from 'ng-zorro-antd/page-header';
+import { NzRadioComponent, NzRadioGroupComponent } from 'ng-zorro-antd/radio';
 import { FormsModule } from '@angular/forms';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
-import { NzSpaceCompactItemDirective } from 'ng-zorro-antd/space';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 
-import { NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent } from 'ng-zorro-antd/list';
+import {
+  NzListComponent,
+  NzListItemComponent,
+  NzListItemMetaComponent,
+  NzListItemMetaTitleComponent
+} from 'ng-zorro-antd/list';
 import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzDescriptionsComponent, NzDescriptionsItemComponent } from 'ng-zorro-antd/descriptions';
 import { TranslatePipe } from '@ngx-translate/core';
 
@@ -46,7 +53,7 @@ export enum KEY_CODE {
     selector: 'app-review-pronunciation',
     templateUrl: './review-pronunciation.component.html',
     styleUrl: './review-pronunciation.component.scss',
-    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzDividerComponent, NzSpaceCompactItemDirective, NzInputDirective, NzPageHeaderComponent, NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, AudioPlayerComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, ɵNzTransitionPatchDirective, NzDescriptionsComponent, NzDescriptionsItemComponent, TranslatePipe]
+    imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzDividerComponent, NzInputDirective, NzPageHeaderComponent, NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, AudioPlayerComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, NzDescriptionsComponent, NzDescriptionsItemComponent, TranslatePipe]
 })
 export class ReviewPronunciationComponent implements OnInit, OnDestroy {
   private registrationService = inject(RegistrationService);
