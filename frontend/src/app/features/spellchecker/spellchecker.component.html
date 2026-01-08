@@ -60,6 +60,16 @@
               <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'rumantschgrischun', 'rm-rumgr')">{{ 'spellchecker.install.other' | translate }}</a></li>
             </ul>
           }
+        @if (idiom === 'sursilv') {
+          <ul>
+            <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'sursilvan', 'rm-sursilv')">{{ 'spellchecker.install.word' | translate }}</a></li>
+            <li><a (click)="openManual('macos', frontEndLanguage === 'de' ? 'de' : 'sursilvan', 'rm-sursilv')">macOS</a></li>
+            <li><a href="https://extensions.libreoffice.org/en/extensions/show/99487" target="_blank">LibreOffice</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/spellchecker-sursilvan" target="_blank">Mozilla Firefox</a></li>
+            <li><a href="https://addons.thunderbird.net/thunderbird/addon/spellchecker-sursilvan" target="_blank">Mozilla Thunderbird</a></li>
+            <li><a (click)="openManual('hunspell', frontEndLanguage === 'de' ? 'de' : 'sursilvan', 'rm-sursilv')">{{ 'spellchecker.install.other' | translate }}</a></li>
+          </ul>
+        }
           @if (idiom === 'surmiran') {
             <ul>
               <li><a (click)="openManual('word', frontEndLanguage === 'de' ? 'de' : 'surmiran', 'rm-surmiran')">{{ 'spellchecker.install.word' | translate }}</a></li>

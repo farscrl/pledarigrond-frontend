@@ -39,4 +39,4 @@ export class ManualsSpellcheckerComponent extends NgxModalComponent<{manualType:
 
 export type ManualType = 'macos' | 'hunspell' | 'word';
 export type ManualLanguage = 'de' | 'surmiran' | 'sutsilvan' | 'rumantschgrischun' | 'puter' | 'vallader' | 'sursilvan';
-export type HunspellLanguage = 'rm-surmiran' | 'rm-sutsilv' | 'rm-rumgr' | 'rm-puter' | 'rm-vallader';
+export type HunspellLanguage = 'rm-sursilv' | 'rm-surmiran' | 'rm-sutsilv' | 'rm-rumgr' | 'rm-puter' | 'rm-vallader';
