@@ -96,6 +96,7 @@
     <nz-descriptions-item nzTitle="Infinitiv"><app-diff [old]="originalVersion.inflection?.verb?.infinitiv" [new]="changedVersion.inflection?.verb?.infinitiv"></app-diff></nz-descriptions-item>
     <nz-descriptions-item nzTitle="Tip da flexiun"><app-diff [old]="originalVersion.inflection?.verb?.inflectionSubtype" [new]="changedVersion.inflection?.verb?.inflectionSubtype"></app-diff></nz-descriptions-item>
     <nz-descriptions-item nzTitle="Conjugaziun irregulara"><app-diff [old]="originalVersion.inflection?.verb?.irregular?.toString() ?? '-'" [new]="changedVersion.inflection?.verb?.irregular?.toString() ?? '-'"></app-diff></nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Componì cun"><app-diff [old]="originalVersion.inflection?.verb?.composedWith ?? '-'" [new]="changedVersion.inflection?.verb?.composedWith ?? '-'"></app-diff></nz-descriptions-item>
   </nz-descriptions>
 }
 
