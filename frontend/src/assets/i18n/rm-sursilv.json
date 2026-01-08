@@ -9,6 +9,226 @@
   },
   "navi": {
     "pledari": "pledari",
-    "spellchecker": "program da correctura"
+    "spellchecker": "program da correctura ortografica"
+  },
+  "button": {
+    "cancel": "interrumper",
+    "clear": "reinizialisar",
+    "ok": "tarmetter"
+  },
+  "dialog": {
+    "comment": "remarca ni damonda",
+    "email": "adressa dad e-mail",
+    "error": {
+      "comment": "Deplorablamein eis ei buca pusseivel da transmetter la modificaziun. Vies commentari ei memia liungs, el astga buca surpassar 500 segns. ",
+      "field": "Vus stueis emplenir silmeins in dils camps!",
+      "lemma": "Deplorablamein eis ei buca pusseivel da transmetter la modificaziun. Vies commentari ei memia liungs, el astga buca surpassar 200 segns. "
+    },
+    "failure": "Vossa proposta ei buca vegnida memorisada. ",
+    "saving": "memorisar",
+    "success": "Engraziel fetg!"
+  },
+  "editor": {
+    "modify": {
+      "subtitle": "modificar"
+    },
+    "suggest": {
+      "title": "nova endataziun"
+    }
+  },
+  "export": {
+    "download": "telecargar",
+    "licence": "Las datas dil Pledari Grond ein licenziadas tenor CC Attribution 4.0 International (|CC BY 4.0|)",
+    "login": "Vus stueis emprem s'annunziar per saver telecargar las datas dil Pledari Grond. ",
+    "login_button": "s'annunziar",
+    "title": "export"
+  },
+  "footer": {
+    "export": "exportar",
+    "grammar": "grammatica",
+    "help": "agid",
+    "info": "infos",
+    "privacy": "protecziun da datas",
+    "suggest": "far ina nova proposta"
+  },
+  "header": {
+    "login": "s'annunziar",
+    "logout": "{0} sortir"
+  },
+  "index": {
+    "dict_title": "{0} vocabulari",
+    "dict_title_ext": "{0} vocabulari - '{1}' tochen '{2}'",
+    "entry_header": "translaziuns da",
+    "indexLang": {
+      "german": "tudestg",
+      "romansh": "romontsch"
+    },
+    "language": "index per",
+    "letter_link": "plaids che entscheivan cun {0}",
+    "letter_page": "plaids che entscheivan cun {0}, pagina {1}",
+    "translations_of": "translaziuns da"
+  },
+  "lemma": {
+    "DGenus": "genus",
+    "DGrammatik": "grammatica",
+    "DRedirect": "colligiaziun",
+    "DSemantik": "semantica",
+    "DStichwort": "tudestg",
+    "DStichwort_sort": "zavrada",
+    "DSubsemantik": "semantica",
+    "RFlex": "conjugaziun",
+    "RGenus": "genus",
+    "RGrammatik": "grammatica",
+    "RRedirect": "colligiaziun",
+    "RStichwort": "sursilvan",
+    "RStichwort_sort": "zavrada",
+    "RSubsemantik": "semantica",
+    "RTags": "tiarms da tscherca supplementars",
+    "categories": "categoria",
+    "category": "categoria",
+    "user_comment": "commentari"
+  },
+  "login": {
+    "email": "e-mail",
+    "error": "L'annunzia ei buca gartegiada. Fagei aschi bien e s'annunziei danovamein.",
+    "header": "annunzia",
+    "pwd": "plaid-clav",
+    "sendButton": "tarmetter l'annunzia",
+    "welcome": "Igl ei pusseivel d'utilisar il Pledari Grond era senza s'annunziar. L'annunzia ei voluntara e simplifichescha sulettamein il contact via e-mail, sche Vus fageis propostas ni remarcas. Datas sensiblas (specialmein plaids-clav) vegnan buca memorisai. "
+  },
+  "mail": {
+    "cc": "pg@rumantsch.ch",
+    "comment": "remarca",
+    "subject": "Vossa damonda al Pledari Grond"
+  },
+  "modify": {
+    "modify": "Fagei ina proposta per modificar quella endataziun",
+    "title": "Essas Vus d'in auter meini?"
+  },
+  "other_resources": {
+    "avionary": "terminologia d'utschals"
+  },
+  "pg": {
+    "version": "versiun"
+  },
+  "promo": {
+    "glossary": "glossaris",
+    "inclusive": "lingua inclusiva",
+    "other": "ulteriurs vocabularis",
+    "readmore": "legi dapli",
+    "spellchecker": "program da correctura ortografica"
+  },
+  "registration": {
+    "cancel": "interrumper",
+    "error": {
+      "already_exists": "L'adressa dad e-mail ei gia registrada!",
+      "email_invalid": "L'adressa dad e-mail ei buca valeivla!",
+      "email_or_pw_missing": "Il plaid-clav ni l'adressa dad e-mail maunca!",
+      "pw_not_same": "Ils plaids-clav corrispundan buc in a l'auter!",
+      "pw_too_short": "Il plaid-clav ei memia cuorts (min. 6 segns)!"
+    },
+    "header": "registraziun",
+    "information": "Fagei aschi bien ed endatei in'adressa dad e-mail valeivla. Tscharni silsuenter in plaid-clav (min. 6 segns).",
+    "repeat_pw": "repeter il plaid-clav",
+    "signup": "registrar",
+    "submit": "tarmetter"
+  },
+  "search": {
+    "both": "tudestg e romontsch",
+    "category": "categoria",
+    "exact": "exact",
+    "gender": "genus",
+    "german": "tudestg-romontsch",
+    "german_gender": "genus (t)",
+    "grammar": "grammatica",
+    "header_de": "tudestg",
+    "header_rm": "romontsch",
+    "highlight": "marcar il plaid ni l'expressiun che Vus encuris",
+    "intern": "dapertut",
+    "language": "lungatgs",
+    "less_options": "dameins opziuns",
+    "method": "pusseivladads d'encurir",
+    "more_options": "dapli opziuns",
+    "noresults_header": "Ei dat negins resultats per \"{{searchPhrase}}\".",
+    "noresults_hint": "Clichei sin 'far ina proposta' per proponer in plaid ni in'expressiun ni modifichei Vossa tscherca. ",
+    "normal": "normal",
+    "not_found": "Cun encurir \"{{searchPhrase}}\" ha ei dau negins resultats.",
+    "prefix": "entschatta",
+    "result_modify": "modificar",
+    "results": "(resultats {{start}} tochen {{end}} da {{total}})",
+    "results_first_page": "emprema",
+    "results_last_page": "davosa",
+    "romansh": "romontsch-tudestg",
+    "romansh_gender": "genus (r)",
+    "search": "encurir",
+    "searchPhrase": "plaid ni expressiun che Vus encuris",
+    "searchPhrase_submit": "encurir",
+    "subSemantics": "semantica",
+    "suffix": "finiziuns",
+    "suggestions": "mussar era novas propostas ni modificaziuns"
+  },
+  "spellchecker": {
+    "back": "turnar al Pledari Grond",
+    "credits": "La controlla ortografica romontscha ei in project dalla |Pro Svizra Rumantscha| realisaus en collaboraziun culla |Lia Rumantscha|. Igl Uffeci federal da cultura ed il cantun Grischun han sustegniu finanzialmein il project.",
+    "editor": {
+      "bold": "grass",
+      "bulletList": "enumeraziun",
+      "clear_format": "allontanar formataziuns",
+      "copy": "copiar",
+      "hard_break": "nova lingia",
+      "heading1": "tetel 1",
+      "heading2": "tetel 2",
+      "highlight": "marcar",
+      "italic": "cursiv",
+      "orderedList": "gliesta numerada",
+      "paragraph": "paragraf",
+      "redo": "repeter",
+      "selectAll": "tscharner tut",
+      "strike": "strihar",
+      "underline": "suttastrihar",
+      "undo": "revocar",
+      "version": "versiun"
+    },
+    "install": {
+      "office": "Microsoft Office (pli tard)",
+      "other": "auter (incl. separaziun da silbas)",
+      "title": "Installar sin il computer",
+      "word": "Microsoft Word"
+    },
+    "instructions": "Per schar curreger in text saveis Vus semplamein copiar el el formular cheu dasperas e cliccar sils plaids suttastrihai per veser las propostas da correctura.",
+    "loading": "Las datas vegnan cargadas - fagei aschi bien e spitgei in mument.",
+    "no_suggestion": "Anflau neginas propostas",
+    "privacy": "La protecziun da Vossas datas ei garantida: il text copiau banduna buca Vies computer.",
+    "send_suggestion": "Tarmetter quei plaid alla redacziun sco proposta",
+    "sent_suggestion": "Proponi alla redacziun d'aschuntar «{{ word }}» sco plaid valeivel al vocabulari dalla controlla ortografica."
+  },
+  "suggest": {
+    "button": "far ina proposta",
+    "suggest": "Fagei ina proposta",
+    "title": "Maunca enzatgei?"
+  },
+  "update": {
+    "entry_count": "{0} endataziuns",
+    "last_update": "Davosa actualisaziun: {0}"
+  },
+  "verbOverlayPopup": {
+    "closeButton": "serrar",
+    "conditional": "Cundiziunal",
+    "conditionalIndirect": "Cundiziunal indirect",
+    "conjunctive": "Conjunctiv",
+    "conjunctive2": "Conjunctiv imperfect",
+    "etymology": "Etimologia",
+    "examples": "Exempels",
+    "future": "Futur",
+    "futureDubitativ": "Futur dubitativ",
+    "gerund": "Gerundi",
+    "hideEnclitic": "Zuppentar las fuormas encliticas",
+    "imperative": "Imperativ",
+    "imperfect": "Imperfect",
+    "particip": "Particip perfect",
+    "present": "Present",
+    "showEnclitic": "Mussar las fuormas encliticas",
+    "type": "tip",
+    "verbs": "conjugaziuns da verbs"
   }
 }
