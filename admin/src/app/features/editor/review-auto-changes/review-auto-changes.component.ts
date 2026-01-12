@@ -122,8 +122,6 @@ export class ReviewAutoChangesComponent implements OnInit {
     this.language = this.languageSelectionService.getCurrentLanguage();
 
     this.searchCriteria.state = 'HAS_SUGGESTION';
-    this.searchCriteria.onlyAutomaticChanged = true;
-    this.searchCriteria.excludeAutomaticChanges = false;
     this.searchCriteria.searchDirection = 'ROMANSH';
     this.searchCriteria.showReviewLater = false;
 
@@ -160,7 +158,6 @@ export class ReviewAutoChangesComponent implements OnInit {
     const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current)) as EntryVersionInternalDto;
 
     workingLemmaVersion.inflection = this.selectedEntryVersion.version.version.inflection;
-    workingLemmaVersion.automaticChange = true;
 
     const lemma = this.selectedEntryVersion;
     this.editorService.replaceSuggestionAndAccept(
@@ -251,7 +248,6 @@ export class ReviewAutoChangesComponent implements OnInit {
         entryVersionToChange: this.selectedEntryVersion.version.version,
         directlyLoadDetailView: true,
         replaceSuggestion: replaceSuggestion,
-        isAutomaticChange: true,
       },
       nzOnOk: () => {
         this.editorService.getEntry(this.languageSelectionService.getCurrentLanguage(), this.selectedEntryVersion!.entryId).subscribe(entry => {
@@ -296,7 +292,6 @@ export class ReviewAutoChangesComponent implements OnInit {
       workingLemmaVersion.inflection = new Inflection();
       workingLemmaVersion.inflection.inflectionType = 'NOUN';
       workingLemmaVersion.inflection.noun = values.noun;
-      workingLemmaVersion.automaticChange = true;
 
       this.editorService.replaceSuggestionWithSuggestion(
         this.languageSelectionService.getCurrentLanguage(),
@@ -328,7 +323,6 @@ export class ReviewAutoChangesComponent implements OnInit {
     workingLemmaVersion.inflection.inflectionType = 'ADJECTIVE';
     workingLemmaVersion.inflection.adjective = this.selectedEntryVersion!.version.version.inflection?.adjective;
     workingLemmaVersion.inflection.adjective!.adverbialForm = undefined;
-    workingLemmaVersion.automaticChange = true;
 
     this.editorService.replaceSuggestionWithSuggestion(
       this.languageSelectionService.getCurrentLanguage(),
@@ -422,12 +416,6 @@ export class ReviewAutoChangesComponent implements OnInit {
 
     if (updateSuggestion) {
       let version: EntryVersionInternalDto = new EntryVersionInternalDto();
-
-      entry.suggestions.forEach((suggestion: EntryVersionInternalDto) => {
-        if (suggestion.automaticChange) {
-          version = suggestion;
-        }
-      });
 
       this.selectedEntryVersion = {
         entryId: entry.entryId,

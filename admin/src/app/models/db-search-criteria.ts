@@ -6,8 +6,6 @@ export class DbSearchCriteria {
   searchDirection?: SearchDirection;
   searchMethod?: SearchMethod;
   state?: PublicationStatus;
-  onlyAutomaticChanged?: boolean;
-  excludeAutomaticChanges?: boolean;
   inflectionType?: InflectionType;
   showReviewLater?: boolean;
 

@@ -50,7 +50,6 @@ export class HistoryComponent implements OnInit {
   search(editorQuery: DbSearchCriteria) {
     // verified entries
     editorQuery.state = 'PUBLISHED';
-    editorQuery.excludeAutomaticChanges = false;
     this.currentEditorQuery = editorQuery;
     this.loadPage(0);
   }

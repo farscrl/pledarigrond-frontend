@@ -220,14 +220,6 @@ export class EditorService {
       params = params.set('searchMethod', editorQuery.searchMethod);
     }
 
-    if (!!editorQuery.onlyAutomaticChanged && (editorQuery.onlyAutomaticChanged)) {
-      params = params.set('onlyAutomaticChanged', 'true');
-    }
-
-    if (editorQuery.excludeAutomaticChanges != null && !editorQuery.excludeAutomaticChanges) {
-      params = params.set('excludeAutomaticChanges', 'false');
-    }
-
     if (!!editorQuery.inflectionType) {
       params = params.set('inflectionType', editorQuery.inflectionType);
     }
@@ -283,18 +275,6 @@ export class EditorService {
 
     if (!!editorSearchCriteria.grammar && editorSearchCriteria.grammar != "") {
       params = params.set('grammar', editorSearchCriteria.grammar);
-    }
-
-    if (!!editorSearchCriteria.onlyAutomaticChanged && (editorSearchCriteria.onlyAutomaticChanged)) {
-      params = params.set('onlyAutomaticChanged', editorSearchCriteria.onlyAutomaticChanged);
-    }
-
-    if (!!editorSearchCriteria.excludeAutomaticChanged && (editorSearchCriteria.excludeAutomaticChanged)) {
-      params = params.set('excludeAutomaticChanged', editorSearchCriteria.excludeAutomaticChanged);
-    }
-
-    if (!!editorSearchCriteria.automaticChangesType && editorSearchCriteria.automaticChangesType != 'ALL') {
-      params = params.set('automaticChangesType', editorSearchCriteria.automaticChangesType);
     }
 
     if (editorSearchCriteria.showReviewLater !== undefined) {
