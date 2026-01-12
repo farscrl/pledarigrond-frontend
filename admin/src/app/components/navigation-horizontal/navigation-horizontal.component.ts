@@ -33,10 +33,6 @@ export class NavigationHorizontalComponent implements OnInit {
     window.open(environment.frontendUrl + "/" + this.currentLanguage, '_blank');
   }
 
-  showAutomaticReview(): boolean {
-    return false;
-  }
-
   showPronunciationReview(): boolean {
     return true;
   }

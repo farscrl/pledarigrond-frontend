@@ -10,7 +10,6 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { EditorComponent } from './features/editor/editor.component';
 import { HistoryComponent } from './features/editor/history/history.component';
 import { LexiconComponent } from './features/editor/lexicon/lexicon.component';
-import { ReviewAutoChangesComponent } from './features/editor/review-auto-changes/review-auto-changes.component';
 import { SuggestionsComponent } from './features/editor/suggestions/suggestions.component';
 import { LoginComponent } from './features/login/login.component';
 import { NoPermissionsComponent } from './features/no-permissions/no-permissions.component';
@@ -78,10 +77,6 @@ const routes: Routes = [
                 component: LexiconComponent,
               },
               {
-                path: "automatic",
-                component: ReviewAutoChangesComponent,
-              },
-              {
                 path: "pronunciation",
                 component: ReviewPronunciationComponent,
               }
@@ -142,10 +137,6 @@ const routes: Routes = [
               {
                 path: "lexicon",
                 component: LexiconComponent,
-              },
-              {
-                path: "automatic",
-                component: ReviewAutoChangesComponent,
               },
               {
                 path: "pronunciation",
@@ -210,10 +201,6 @@ const routes: Routes = [
                 component: LexiconComponent,
               },
               {
-                path: "automatic",
-                component: ReviewAutoChangesComponent,
-              },
-              {
                 path: "pronunciation",
                 component: ReviewPronunciationComponent,
               }
@@ -274,10 +261,6 @@ const routes: Routes = [
               {
                 path: "lexicon",
                 component: LexiconComponent,
-              },
-              {
-                path: "automatic",
-                component: ReviewAutoChangesComponent,
               },
               {
                 path: "pronunciation",
@@ -342,10 +325,6 @@ const routes: Routes = [
                 component: LexiconComponent,
               },
               {
-                path: "automatic",
-                component: ReviewAutoChangesComponent,
-              },
-              {
                 path: "pronunciation",
                 component: ReviewPronunciationComponent,
               }
@@ -406,10 +385,6 @@ const routes: Routes = [
               {
                 path: "lexicon",
                 component: LexiconComponent,
-              },
-              {
-                path: "automatic",
-                component: ReviewAutoChangesComponent,
               },
               {
                 path: "pronunciation",

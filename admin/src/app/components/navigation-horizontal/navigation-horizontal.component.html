@@ -10,11 +10,6 @@
     <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + currentLanguage + '/editor/lexicon'">
       {{ 'lexicon.lexicon_menu_item' | translate }}
     </li>
-    @if (showAutomaticReview()) {
-      <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + currentLanguage + '/editor/automatic'" >
-        {{ 'lexicon.review_menu_item' | translate }}
-      </li>
-    }
     @if (showPronunciationReview()) {
       <li nz-menu-item [nzMatchRouter]="true" [routerLink]="'/admin/' + currentLanguage + '/editor/pronunciation'" >
         {{ 'lexicon.pronunciation_menu_item' | translate }}
