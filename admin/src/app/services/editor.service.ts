@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DictionaryLanguage } from '../models/dictionary-language';
 import { DbSearchCriteria } from '../models/db-search-criteria';
@@ -7,7 +7,6 @@ import { Page } from '../models/page';
 import { EditorSearchCriteria, LuceneSearchCriteria } from '../models/lucene-search-criteria';
 import { Language } from '../models/security';
 import { environment } from '../../environments/environment';
-import { ReferenceVerbDto } from '../models/reference-verb-dto';
 import {
   EntryDto,
   EntryVersionDto,
@@ -137,18 +136,6 @@ export class EditorService {
     };
 
     return this.httpClient.get<any>(this.generateUrl(language, 'search_suggestions'), httpOptions);
-  }
-
-  getReferenceInflection(language: Language, searchTerm: string): Observable<ReferenceVerbDto> {
-    let params: HttpParams = new HttpParams();
-
-    params = params.set('searchTerm', searchTerm);
-
-    const httpOptions = {
-      params: params
-    };
-
-    return this.httpClient.get<any>(this.generateUrl(language, 'reference_inflection'), httpOptions);
   }
 
   getSortOrder(language: Language, lemma: string, dictionaryLanguage: DictionaryLanguage): Observable<EntryVersionInternalDto[]> {

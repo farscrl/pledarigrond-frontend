@@ -7,7 +7,6 @@ import { MainEntryComponent } from '../../modify-entry/main-entry/main-entry.com
 import { Page } from 'src/app/models/page';
 import { InflectionService } from 'src/app/services/inflection.service';
 import { Language } from "../../../models/security";
-import { ReferenceVerbDto } from '../../../models/reference-verb-dto';
 import {
   EntryDto,
   EntryVersionInternalDto,
@@ -81,8 +80,6 @@ export class ReviewAutoChangesComponent implements OnInit {
   selectedEntryVersion?: AutoReviewListItem;
   selectedEntry?: EntryDto;
 
-  referenceInflection?: ReferenceVerbDto;
-
   searchCriteria: DbSearchCriteria = new DbSearchCriteria();
 
   language: Language | undefined;
@@ -151,12 +148,6 @@ export class ReviewAutoChangesComponent implements OnInit {
       // newly created entries have current == most recent -> to have a correct diff, we set current to an empty lemmaValue
       if (this.selectedEntry.current?.versionId === this.selectedEntry.mostRecent?.versionId) {
         this.selectedEntry.current = new EntryVersionInternalDto();
-      }
-
-      if (this.languageSelectionService.getCurrentLanguage() === Language.SURSILVAN) {
-        this.editorService.getReferenceInflection(Language.SURSILVAN, this.selectedEntry.current?.rmStichwort!).subscribe(reference => {
-          this.referenceInflection = reference;
-        });
       }
     });
   }
@@ -355,110 +346,6 @@ export class ReviewAutoChangesComponent implements OnInit {
       console.error(error);
       this.notificationService.error(
         'Errur durant modifitgar',
-        'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
-        15000
-      );
-    });
-  }
-
-  copyReference() {
-    const workingLemmaVersion = JSON.parse(JSON.stringify(this.selectedEntry?.current)) as EntryVersionInternalDto;
-
-    workingLemmaVersion.inflection = new Inflection();
-    workingLemmaVersion.inflection.inflectionType = 'VERB';
-    workingLemmaVersion.inflection.verb = JSON.parse(JSON.stringify(this.selectedEntryVersion!.version.version.inflection?.verb)) as Verb;
-    workingLemmaVersion.automaticChange = true;
-
-    const verb = workingLemmaVersion.inflection.verb!;
-    verb.infinitiv = this.referenceInflection?.infinitiv;
-    verb.irregular = true;
-    verb.preschent = {
-      sing1: this.referenceInflection?.preschentsing1,
-      sing2: this.referenceInflection?.preschentsing2,
-      sing3: this.referenceInflection?.preschentsing3,
-      plural1: this.referenceInflection?.preschentplural1,
-      plural2: this.referenceInflection?.preschentplural2,
-      plural3: this.referenceInflection?.preschentplural3,
-    }
-
-    verb.imperativ = {
-      singular: this.referenceInflection?.imperativ1,
-      plural: this.referenceInflection?.imperativ2,
-    }
-
-    verb.participPerfect = {
-      ms: this.referenceInflection?.participperfectms,
-      fs: this.referenceInflection?.participperfectfs,
-      mp: this.referenceInflection?.participperfectmp,
-      fp: this.referenceInflection?.participperfectfp,
-      msPredicativ: this.referenceInflection?.participperfectneut,
-    }
-
-    verb.gerundium = this.referenceInflection?.gerundium;
-
-    verb.imperfect = {
-      sing1: this.referenceInflection?.imperfectsing1,
-      sing2: this.referenceInflection?.imperfectsing2,
-      sing3: this.referenceInflection?.imperfectsing3,
-      plural1: this.referenceInflection?.imperfectplural1,
-      plural2: this.referenceInflection?.imperfectplural2,
-      plural3: this.referenceInflection?.imperfectplural3,
-    }
-
-    verb.cundiziunal = {
-      sing1: this.referenceInflection?.cundizionalsing1,
-      sing2: this.referenceInflection?.cundizionalsing2,
-      sing3: this.referenceInflection?.cundizionalsing3,
-      plural1: this.referenceInflection?.cundizionalplural1,
-      plural2: this.referenceInflection?.cundizionalplural2,
-      plural3: this.referenceInflection?.cundizionalplural3,
-    }
-
-    verb.cundiziunalIndirect = {
-      sing1: this.referenceInflection?.cundizionalindsing1,
-      sing2: this.referenceInflection?.cundizionalindsing2,
-      sing3: this.referenceInflection?.cundizionalindsing3,
-      plural1: this.referenceInflection?.cundizionalindplural1,
-      plural2: this.referenceInflection?.cundizionalindplural2,
-      plural3: this.referenceInflection?.cundizionalindplural3,
-    }
-
-    verb.conjunctiv = {
-      sing1: this.referenceInflection?.conjunctivsing1,
-      sing2: this.referenceInflection?.conjunctivsing2,
-      sing3: this.referenceInflection?.conjunctivsing3,
-      plural1: this.referenceInflection?.conjunctivplural1,
-      plural2: this.referenceInflection?.conjunctivplural2,
-      plural3: this.referenceInflection?.conjunctivplural3,
-    }
-
-    verb.conjunctivImperfect = {
-      sing1: this.referenceInflection?.conjunctivimpsing1,
-      sing2: this.referenceInflection?.conjunctivimpsing2,
-      sing3: this.referenceInflection?.conjunctivimpsing3,
-      plural1: this.referenceInflection?.conjunctivimpplural1,
-      plural2: this.referenceInflection?.conjunctivimpplural2,
-      plural3: this.referenceInflection?.conjunctivimpplural3,
-    }
-
-    this.addPronouns(verb);
-
-    this.editorService.replaceSuggestionWithSuggestion(
-      this.languageSelectionService.getCurrentLanguage(),
-      this.selectedEntry!.entryId,
-      this.selectedEntryVersion!.version.version.versionId,
-      workingLemmaVersion
-    ).subscribe((entry) => {
-      this.replaceLemma(entry, true);
-      this.notificationService.success(
-        'Copià la referenza',
-        'La referenza è vegnida copiada. Ti las stos anc acceptar.',
-        5000
-      );
-    }, error => {
-      console.error(error);
-      this.notificationService.error(
-        'Errur durant copiar',
         'La proposta na po betg vegnir modifitgada. Emprova per plaschair anc ina giada.',
         15000
       );

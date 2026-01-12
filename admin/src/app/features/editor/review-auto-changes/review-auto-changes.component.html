@@ -90,19 +90,13 @@
               <button nz-button (click)="nounChangeOnlyMale()">{{ 'review.actions.automatic.only_m' | translate }} <!--<span class="keyboard">1</span>--></button>
             </div>
           }
-          @if (selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'VERB' && !!referenceInflection) {
-            <div class="manual-actions">
-              <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
-              <button nz-button (click)="copyReference()">Copiar verb da referenza</button>
-            </div>
-          }
           @if (selectedEntryVersion?.version?.version?.inflection?.inflectionType === 'ADJECTIVE') {
             <div class="manual-actions">
               <span style="margin-right: 16px;">{{ 'review.actions.automatic.title' | translate }}:</span>
               <button nz-button (click)="adjectiveNoAdverbialForm()">{{ 'review.actions.automatic.no_adverbial' | translate }} <!--<span class="keyboard">1</span>--></button>
             </div>
           }
-          <app-lemma-diff [language]="language!" [originalVersion]="selectedEntry.current!" [changedVersion]="selectedEntryVersion!.version.version" [referenceVerb]="referenceInflection"></app-lemma-diff>
+          <app-lemma-diff [language]="language!" [originalVersion]="selectedEntry.current!" [changedVersion]="selectedEntryVersion!.version.version"></app-lemma-diff>
         </div>
       }
     </nz-content>
