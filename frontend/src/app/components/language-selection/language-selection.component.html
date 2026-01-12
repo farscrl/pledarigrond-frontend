@@ -24,6 +24,7 @@
     <span class="hide-mobile">{{ 'languages.vallader' | translate }}</span>
   </a>
 </div>
+@if (idiom !== 'sursilv') {
 <div class="dic_navi_head secondary">
   <a class="dict_navi_item" [class.selected]="!this.router.url.includes('spellchecker')" [routerLink]="'/' + urlSegment">
     <span class="show-mobile">PLEDARI</span>
@@ -34,6 +35,7 @@
     <span class="hide-mobile">{{ 'navi.spellchecker' | translate }}</span>
   </a>
 </div>
+}
 
 <div id="dict_descript">
   @if (idiom === 'puter') {
