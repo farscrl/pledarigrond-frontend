@@ -34,7 +34,7 @@ export class NavigationHorizontalComponent implements OnInit {
   }
 
   showAutomaticReview(): boolean {
-    return this.currentLanguage === 'sursilvan';
+    return false;
   }
 
   showPronunciationReview(): boolean {
