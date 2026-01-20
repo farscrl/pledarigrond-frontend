@@ -56,7 +56,9 @@
   },
   "header": {
     "login": "s'annunztgier",
-    "logout": "{0} sorteir"
+    "logout": "{0} sorteir",
+    "login_short": "LOG",
+    "logout_tooltip": "sorteir"
   },
   "footer": {
     "help": "ageid",
@@ -221,6 +223,8 @@
   },
   "navi": {
     "pledari": "pledari",
-    "spellchecker": "program da correctura"
+    "spellchecker": "program da correctura",
+    "pledari_short": "PLEDARI",
+    "spellchecker_short": "CORRECTURA"
   }
 }

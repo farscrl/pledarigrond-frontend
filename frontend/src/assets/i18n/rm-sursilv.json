@@ -9,7 +9,9 @@
   },
   "navi": {
     "pledari": "pledari",
-    "spellchecker": "program da correctura ortografica"
+    "spellchecker": "program da correctura ortografica",
+    "pledari_short": "PLEDARI",
+    "spellchecker_short": "CORRECTURA"
   },
   "button": {
     "cancel": "interrumper",
@@ -53,7 +55,9 @@
   },
   "header": {
     "login": "s'annunziar",
-    "logout": "{0} sortir"
+    "logout": "{0} sortir",
+    "login_short": "LOG",
+    "logout_tooltip": "sortir"
   },
   "index": {
     "dict_title": "{0} vocabulari",
@@ -230,5 +234,16 @@
     "showEnclitic": "Mussar las fuormas encliticas",
     "type": "tip",
     "verbs": "conjugaziuns da verbs"
+  },
+  "details": {
+    "adjective_forms": "fuormas digl adjectiv",
+    "adverbial_form": "fuorma adverbiala",
+    "collective": "collectiv",
+    "conjugation": "Conjugaziun",
+    "feminine": "feminin",
+    "masculine": "masculin",
+    "noun_forms": "Fuormas dil substantiv",
+    "plural": "plural",
+    "singular": "singular"
   }
 }

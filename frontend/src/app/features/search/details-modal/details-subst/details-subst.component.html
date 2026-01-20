@@ -1,25 +1,25 @@
 @if (version) {
   <div class="content">
-    <h4>Furmas dal substantiv</h4>
+    <h4>{{ 'details.noun_forms' | translate }}</h4>
     <table>
       <tr>
         <th></th>
-        <th>masculin</th>
-        <th>feminin</th>
+        <th>{{ 'details.masculine' | translate }}</th>
+        <th>{{ 'details.feminine' | translate }}</th>
       </tr>
       <tr>
-        <td>singular</td>
+        <td>{{ 'details.singular' | translate }}</td>
         <td>{{ version.inflection!.noun!.mSingular ? version.inflection!.noun!.mSingular : '-' }}</td>
         <td>{{ version.inflection!.noun!.fSingular ? version.inflection!.noun!.fSingular : '-' }}</td>
       </tr>
       <tr>
-        <td>plural</td>
+        <td>{{ 'details.plural' | translate }}</td>
         <td>{{ version.inflection!.noun!.mPlural ? version.inflection!.noun!.mPlural : '-'  }}</td>
         <td>{{ version.inflection!.noun!.fPlural ? version.inflection!.noun!.fPlural : '-'  }}</td>
       </tr>
       @if (version.inflection!.noun!.pluralCollectiv) {
         <tr>
-          <td>collectiv</td>
+          <td>{{ 'details.collective' | translate }}</td>
           <td>-</td>
           <td>{{ version.inflection!.noun!.pluralCollectiv ? version.inflection!.noun!.pluralCollectiv : '-'  }}</td>
         </tr>

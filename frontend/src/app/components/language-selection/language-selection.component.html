@@ -27,11 +27,11 @@
 @if (idiom !== 'sursilv') {
 <div class="dic_navi_head secondary">
   <a class="dict_navi_item" [class.selected]="!this.router.url.includes('spellchecker')" [routerLink]="'/' + urlSegment">
-    <span class="show-mobile">PLEDARI</span>
+    <span class="show-mobile">{{ 'navi.pledari_short' | translate }}</span>
     <span class="hide-mobile">{{ 'navi.pledari' | translate }}</span>
   </a>
   <a class="dict_navi_item" [class.selected]="this.router.url.includes('spellchecker')" [routerLink]="'/' + urlSegment + '/spellchecker'">
-    <span class="show-mobile">CORRECTURA</span>
+    <span class="show-mobile">{{ 'navi.spellchecker_short' | translate }}</span>
     <span class="hide-mobile">{{ 'navi.spellchecker' | translate }}</span>
   </a>
 </div>

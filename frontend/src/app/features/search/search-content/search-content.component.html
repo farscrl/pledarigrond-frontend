@@ -103,7 +103,7 @@
           </p>
           <app-suggestions [searchCriteria]="searchCriteria" [searchSuggestionsDe]="searchSuggestionsDe" [searchSuggestionsRm]="searchSuggestionsRm" (linkTo)="linkToLemma($event)"></app-suggestions>
         </div>
-        <a class="btn" (click)="openSuggestionModal()"><i class="icon-info-sign"></i>far ina proposta </a>
+        <a class="btn" (click)="openSuggestionModal()"><i class="icon-info-sign"></i>{{ 'footer.suggest' | translate }}</a>
       </div>
     </div>
   }

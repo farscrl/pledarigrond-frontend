@@ -56,7 +56,9 @@
   },
   "header": {
     "login": "s'anunztgear",
-    "logout": "{0} sortir"
+    "logout": "{0} sortir",
+    "login_short": "LOG",
+    "logout_tooltip": "sortir"
   },
   "footer": {
     "help": "agid",
@@ -220,6 +222,8 @@
   },
   "navi": {
     "pledari": "pledari",
-    "spellchecker": "program da correctura"
+    "spellchecker": "program da correctura",
+    "pledari_short": "PLEDARI",
+    "spellchecker_short": "CORRECTURA"
   }
 }

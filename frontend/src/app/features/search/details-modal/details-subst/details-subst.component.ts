@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { EntryVersionDto } from '../../../../models/dictionary';
 
 
@@ -6,7 +7,7 @@ import { EntryVersionDto } from '../../../../models/dictionary';
     selector: 'app-details-subst',
     templateUrl: './details-subst.component.html',
     styleUrl: './details-subst.component.scss',
-    imports: []
+    imports: [TranslatePipe]
 })
 export class DetailsSubstComponent {
   @Input()

@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -37,6 +37,10 @@ export class SelectedLanguageService {
 
   getIdiomObservable(): Observable<Idiom> {
     return this.idiomSubject.asObservable();
+  }
+
+  getCurrentIdiom(): Idiom {
+    return this.idiomSubject.value;
   }
 
   setIdiom(idiom: Idiom) {

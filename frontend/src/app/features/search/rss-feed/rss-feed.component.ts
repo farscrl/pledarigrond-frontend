@@ -4,12 +4,13 @@ import { FeedEntry } from 'src/app/models/feed';
 import { FeedService } from 'src/app/services/feed.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { SlicePipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-rss-feed',
     templateUrl: './rss-feed.component.html',
     styleUrls: ['./rss-feed.component.scss'],
-    imports: [SlicePipe]
+    imports: [SlicePipe, TranslatePipe]
 })
 export class RssFeedComponent implements OnInit, OnDestroy {
   private feedService = inject(FeedService);

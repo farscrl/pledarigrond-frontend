@@ -9,7 +9,9 @@
   },
   "navi": {
     "pledari": "pledari",
-    "spellchecker": "program da correctura"
+    "pledari_short": "PLEDARI",
+    "spellchecker": "program da correctura",
+    "spellchecker_short": "CORRECTURA"
   },
   "search": {
     "header_rm": "rumantsch",
@@ -60,7 +62,9 @@
   },
   "header": {
     "login": "s'annunziar",
-    "logout": "{0} sortir"
+    "login_short": "LOG",
+    "logout": "{0} sortir",
+    "logout_tooltip": "sortir"
   },
   "footer": {
     "help": "agid",
@@ -149,6 +153,17 @@
       "comment": "Deplorablamain n'èsi betg pussaivel da transmetter la modificaziun. Voss commentari è memia lung, el na dastga betg surpassar 500 segns.",
       "lemma": "Deplorablamain n'èsi betg pussaivel da transmetter la modificaziun. Voss proposta è memia lung, el na dastga betg surpassar 200 segns."
     }
+  },
+  "details": {
+    "conjugation": "Conjugaziun",
+    "adjective_forms": "Furmas da l'adjectiv",
+    "noun_forms": "Furmas dal substantiv",
+    "masculine": "masculin",
+    "feminine": "feminin",
+    "singular": "singular",
+    "plural": "plural",
+    "adverbial_form": "furma adverbiala",
+    "collective": "collectiv"
   },
   "verbOverlayPopup": {
     "verbs": "conjugaziuns da verbs",

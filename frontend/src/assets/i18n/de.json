@@ -56,7 +56,9 @@
   },
   "header": {
     "login": "Anmelden",
-    "logout": "{0} abmelden"
+    "login_short": "LOG",
+    "logout": "{0} abmelden",
+    "logout_tooltip": "Abmelden"
   },
   "footer": {
     "help": "Hilfe",
@@ -146,6 +148,17 @@
       "lemma": "Es ist leider nicht möglich, die Änderung weiterzuleiten. Einträge können 200 Zeichen nicht überschreiten."
     }
   },
+  "details": {
+    "conjugation": "Konjugation",
+    "adjective_forms": "Formen des Adjektivs",
+    "noun_forms": "Formen des Substantivs",
+    "masculine": "maskulin",
+    "feminine": "feminin",
+    "singular": "Singular",
+    "plural": "Plural",
+    "adverbial_form": "Adverbialform",
+    "collective": "Kollektiv"
+  },
   "verbOverlayPopup": {
     "verbs": "Verbkonjugationen",
     "closeButton": "Schließen",
@@ -229,6 +242,8 @@
   },
   "navi": {
     "pledari": "Wörterbuch",
-    "spellchecker": "Rechtschreibekorrektur"
+    "pledari_short": "PLEDARI",
+    "spellchecker": "Rechtschreibekorrektur",
+    "spellchecker_short": "CORRECTURA"
   }
 }

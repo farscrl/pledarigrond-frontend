@@ -1,25 +1,25 @@
 @if (version) {
   <div class="content">
-    <h4>Furmas da l'adjectiv</h4>
+    <h4>{{ 'details.adjective_forms' | translate }}</h4>
     <table>
       <tr>
         <th></th>
-        <th>masculin</th>
-        <th>feminin</th>
+        <th>{{ 'details.masculine' | translate }}</th>
+        <th>{{ 'details.feminine' | translate }}</th>
       </tr>
       <tr>
-        <td>singular</td>
+        <td>{{ 'details.singular' | translate }}</td>
         <td>{{ version.inflection!.adjective!.mSingular ? version.inflection!.adjective!.mSingular : '-' }}</td>
         <td>{{ version.inflection!.adjective!.fSingular ? version.inflection!.adjective!.fSingular : '-' }}</td>
       </tr>
       <tr>
-        <td>plural</td>
+        <td>{{ 'details.plural' | translate }}</td>
         <td>{{ version.inflection!.adjective!.mPlural ? version.inflection!.adjective!.mPlural : '-'  }}</td>
         <td>{{ version.inflection!.adjective!.fPlural ? version.inflection!.adjective!.fPlural : '-'  }}</td>
       </tr>
       @if (version.inflection!.adjective!.adverbialForm) {
         <tr>
-          <td>furma adverbiala</td>
+          <td>{{ 'details.adverbial_form' | translate }}</td>
           <td>-</td>
           <td>{{ version.inflection!.adjective!.adverbialForm ? version.inflection!.adjective!.adverbialForm : '-'  }}</td>
         </tr>

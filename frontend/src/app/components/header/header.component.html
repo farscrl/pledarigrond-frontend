@@ -13,7 +13,7 @@
   @if (!isLoggedIn) {
     <div id="login-widget">
       <a class="navi_a_common login-icon link-icon" [title]="'header.login' | translate" (click)="login()">
-        LOG
+        {{ 'header.login_short' | translate }}
       </a>
     </div>
   }
@@ -25,7 +25,7 @@
         <span class="show-mobile">{{ loggedInUserShort }}</span>
       </a>
       <span class="navi_a_common"> | </span>
-      <a title="Logout" class="navi_a_common login-icon link-icon" (click)="logout()"></a>
+      <a [title]="'header.logout_tooltip' | translate" class="navi_a_common login-icon link-icon" (click)="logout()"></a>
     </div>
   }
 
