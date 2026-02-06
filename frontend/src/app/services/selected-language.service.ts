@@ -53,11 +53,15 @@ export class SelectedLanguageService {
   }
 
   getSelectedLanguageUrlSegment(): string {
-    switch(this.idiomSubject.getValue()) {
+    return this.getUrlSegmentForIdiom(this.idiomSubject.getValue());
+  }
+
+  getUrlSegmentForIdiom(idiom: Idiom): string {
+    switch(idiom) {
       case 'puter':
       case 'surmiran':
       case 'vallader':
-        return this.idiomSubject.getValue();
+        return idiom;
       case 'rumgr':
         return 'rumantschgrischun';
       case 'sursilv':

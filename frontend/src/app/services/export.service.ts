@@ -20,6 +20,14 @@ export class ExportService {
     return this.httpClient.get<Blob>(this.getExportUrl(language, 'json'), httpOptions);
   }
 
+  requestPronunciationDownloadLink(language: string, email: string, acceptedTerms: boolean): Observable<void> {
+    const body = {
+      email,
+      acceptedTerms
+    };
+    return this.httpClient.post<void>(this.getExportUrl(language, 'pronunciation/request-link'), body);
+  }
+
   private getExportUrl(language: string, segment: string): string {
     return environment.apiUrl + "/" + language + "/user/export/" + segment;
   }

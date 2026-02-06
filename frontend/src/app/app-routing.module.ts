@@ -15,6 +15,7 @@ import { StaticComponent } from './features/static/static.component';
 import { ValladerPlaceholderComponent } from './features/vallader-placeholder/vallader-placeholder.component';
 import { InfoSursilvanComponent } from './features/static/info/sursilvan/info-sursilvan/info-sursilvan.component';
 import { HelpSursilvanComponent } from './features/static/help/sursilvan/help-sursilvan/help-sursilvan.component';
+import {DownloadPronunzia} from "./features/static/download-pronunzia/download-pronunzia";
 
 const routes: Routes = [
   {
@@ -28,6 +29,16 @@ const routes: Routes = [
         path: 'spellchecker',
         component: SpellcheckerComponent,
       },
+      {
+        path: 'download-pronunzia',
+        component: StaticComponent,
+        children: [
+          {
+            path: "",
+            component: DownloadPronunzia
+          }
+        ]
+      }
     ]
   },
   {
@@ -63,6 +74,16 @@ const routes: Routes = [
           {
             path: "",
             component: HelpRumgrComponent
+          }
+        ]
+      },
+      {
+        path: 'download-pronunzia',
+        component: StaticComponent,
+        children: [
+          {
+            path: "",
+            component: DownloadPronunzia
           }
         ]
       }
@@ -103,6 +124,16 @@ const routes: Routes = [
             component: HelpSurmiranComponent
           }
         ]
+      },
+      {
+        path: 'download-pronunzia',
+        component: StaticComponent,
+        children: [
+          {
+            path: "",
+            component: DownloadPronunzia
+          }
+        ]
       }
     ]
   },
@@ -139,6 +170,16 @@ const routes: Routes = [
           {
             path: "",
             component: HelpSursilvanComponent
+          }
+        ]
+      },
+      {
+        path: 'download-pronunzia',
+        component: StaticComponent,
+        children: [
+          {
+            path: "",
+            component: DownloadPronunzia
           }
         ]
       }
@@ -179,6 +220,16 @@ const routes: Routes = [
             component: HelpSutsilvComponent
           }
         ]
+      },
+      {
+        path: 'download-pronunzia',
+        component: StaticComponent,
+        children: [
+          {
+            path: "",
+            component: DownloadPronunzia
+          }
+        ]
       }
     ]
   },
@@ -193,6 +244,16 @@ const routes: Routes = [
         path: 'spellchecker',
         component: SpellcheckerComponent,
       },
+      {
+        path: 'download-pronunzia',
+        component: StaticComponent,
+        children: [
+          {
+            path: "",
+            component: DownloadPronunzia
+          }
+        ]
+      }
     ]
   },
   {

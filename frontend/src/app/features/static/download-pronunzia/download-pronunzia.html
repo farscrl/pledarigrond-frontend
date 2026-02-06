@@ -1,0 +1,194 @@
+@if (frontEndLanguage == 'rm') {
+  <h1>Telechargiar las datotecas da pronunzia</h1>
+  <p>
+    Sin questa pagina pos ti telechargiar mintgamai tut las datotecas da pronunzia dad in dals tschintg idioms u dal
+    rumantsch grischun. Tscherna la varianta giavischada ed endatescha tia adressa dad e-mail. Ti retschaivas lura ina
+    colliaziun ad in ZIP che cuntegna tut las datotecas da tun. Il link è valaivel durant in’ura.
+  </p>
+  <p>Attenziun: Tut tenor idiom cuntegna il ZIP tranter circa 18’000 e radund 43’000 registraziuns!</p>
+} @else {
+  <h1>Aussprachedateien herunterladen</h1>
+  <p>
+    Auf dieser Seite kannst du jeweils alle Aussprachedateien in einem der fünf Idiome oder in Rumantsch Grischun
+    herunterladen. Wähle die gewünschte Variante und trage deine E-mail-Adresse ein. Du erhältst dann einen Link zu
+    einer Zip-Datei, die alle Audio-Dateien enthält. Der Link ist eine Stunde lang gültig.
+  </p>
+  <p>Achtung: Je nach Idiom enthält die Zip-Datei zwischen etwa 18’000 und ungefähr 43’000 Aufnahmen!</p>
+}
+
+@if (frontEndLanguage == 'rm') {
+  <h3>Tscherner l’idiom</h3>
+} @else {
+  <h3>Idiom wählen</h3>
+}
+<div class="idiom-selection">
+  <select name="idiom" [(ngModel)]="selectedIdiom">
+    @if (frontEndLanguage == 'rm') {
+      <option value="" disabled>-- Tscherner in idiom --</option>
+      <option value="puter">puter</option>
+      <option value="rumgr">rumantsch grischun</option>
+      <option value="surmiran">surmiran</option>
+      <option value="sursilv">sursilvan</option>
+      <option value="sutsilv">sutsilvan</option>
+      <option value="vallader">vallader</option>
+    } @else {
+      <option value="" disabled>-- Idiom wählen --</option>
+      <option value="puter">Puter</option>
+      <option value="rumgr">Rumantsch Grischun</option>
+      <option value="surmiran">Surmiran</option>
+      <option value="sursilv">Sursilvan</option>
+      <option value="sutsilv">Sutsilvan</option>
+      <option value="vallader">Vallader</option>
+    }
+  </select>
+</div>
+
+@if (frontEndLanguage == 'rm') {
+  <h3>Cundiziuns d’utilisaziun</h3>
+  <div class="legal-text">
+    <h4>1. En general</h4>
+    <p>Questas cundiziuns d’utilisaziun reglan il diever da las audiodatotecas rumantschas messas a disposiziun. Cun
+      telechargiar u utilisar las audiodatotecas acceptas ti questas cundiziuns.</p>
+
+    <h4>2. Utilisaziuns</h4>
+    <ul>
+      <li>Ti dastgas chargiar giu las audiodatotecas, memorisar ellas ed utilisar ellas per intents privats e
+        commerzials.</li>
+      <li>Las audiodatotecas dastgan vegnir utilisadas mo en la furma originala, nun che la vusch da las pledadras vegnia
+        remplazzada tras ina vusch che na cumpara betg en questas unitads da datas. Quai vala surtut per applicaziuns cun
+        sintesa vocala, ma era per tagliar e maschadar las datotecas ed autras modificaziuns.</li>
+      <li>Sche las audiodatotecas vegnan utilisadas en products analogs u digitals, ston las titularas ed ils titulars
+        dals dretgs vegnir menziunads a moda adequata.</li>
+      <li>Utilisaziuns da las datotecas che surpassan ils dievers numnads qua dovran il consentiment en scrit da la
+        Pro Svizra Rumantscha e da la Lia Rumantscha.</li>
+    </ul>
+
+    <h4>3. Restricziuns</h4>
+    <ul>
+      <li>Igl è scumandà da reproducir u d’imitar la vusch da las pledadras cun agid da questas audiodatotecas.</li>
+      <li>Igl è scumandà da vender u da licenziar vinavant las audiodatotecas.</li>
+    </ul>
+
+    <h4>4. Dretgs d’autur</h4>
+    <p>Las audiodatotecas restan en possess da las titularas e dals titulars dals dretgs ed èn protegidas cun ils dretgs
+      d’autur.</p>
+
+    <h4>5. Exclusiun da la responsabladad</h4>
+    <p>En la mesira che la lescha lubescha, excludain nus tutta responsabladad per donns che resultan dal diever da noss
+      servetschs.</p>
+
+    <h4>6. Auter</h4>
+    <p>Sch’ina disposiziun da questas cundiziuns d’utilisaziun duess esser inefficazia u nunrealisabla, restan las
+      autras disposiziuns intactas e vinavant en vigur. Quest contract suttastat al dretg svizzer. La dretgira cumpetenta
+      exclusiva per tut las dispitas en connex cun questas cundiziuns d’utilisaziun è Cuira.</p>
+  </div>
+} @else {
+  <h3>Nutzungsbedingungen</h3>
+  <div class="legal-text">
+    <h4>1. Allgemeines</h4>
+    <p>Diese Nutzungsbedingungen regeln die Nutzung der bereitgestellten rätoromanischen Audio-Dateien. Durch das
+      Herunterladen oder Verwenden der Audio-Dateien stimmst du diesen Bedingungen zu.</p>
+
+    <h4>2. Nutzungen</h4>
+    <ul>
+      <li>Du darfst die Audio-Dateien herunterladen, speichern und für private und kommerzielle Zwecke verwenden.</li>
+      <li>Die Audio-Dateien dürfen lediglich in unveränderter Form genutzt werden, ausser die Stimme der Sprecherinnen
+        wird durch eine Stimme ersetzt, die nicht in diesen Datensätzen vorkommt. Dies gilt insbesondere für
+        Anwendungen mit Sprachsynthese, aber auch für das Schneiden und Mischen der Dateien und anderweitige
+        Veränderung.</li>
+      <li>Bei der Verwendung in analogen oder digitalen Produkten sind die Rechteinhaber in angemessener Form zu
+        erwähnen.</li>
+      <li>Über die hier beschriebenen Nutzungen hinausgehende Verwendungen der Dateien bedürfen der schriftlichen
+        Genehmigung der Pro Svizra Rumantscha und der Lia Rumantscha.</li>
+    </ul>
+
+    <h4>3. Einschränkungen</h4>
+    <ul>
+      <li>Es ist untersagt, mithilfe dieser Audio-Dateien die Stimme der Sprecherinnen zu imitieren oder
+        nachzuahmen.</li>
+      <li>Der Weiterverkauf oder die Weiterlizenzierung der Audio-Dateien ist nicht gestattet.</li>
+    </ul>
+
+    <h4>4. Urheberrecht</h4>
+    <p>Die Audio-Dateien bleiben das Eigentum der Rechteinhaber und sind urheberrechtlich geschützt.</p>
+
+    <h4>5. Haftungsausschluss</h4>
+    <p>Soweit gesetzlich zulässig, schliessen wir jegliche Haftung für Schäden aus, die aus der Nutzung unserer
+      Dienstleistungen entstehen. </p>
+
+    <h4>6. Sonstiges</h4>
+    <p>Sollte eine Bestimmung dieser Nutzungsbedingungen unwirksam oder undurchführbar sein, bleiben die übrigen
+      Bestimmungen davon unberührt und weiterhin gültig. Dieser Vertrag untersteht schweizerischem Recht.
+      Ausschliesslicher Gerichtsstand für alle Streitigkeiten in Zusammenhang mit diesen Nutzungsbedingungen
+      ist Chur.</p>
+  </div>
+}
+
+<div class="accept-terms">
+  <label class="checkbox">
+    <input type="checkbox" name="acceptTerms" [(ngModel)]="acceptedTerms">
+    @if (frontEndLanguage == 'rm') {
+      <span>Jau hai legì, chapì ed accept las cundiziuns d’utilisaziun.</span>
+    } @else {
+      <span>Ich habe die Nutzungsbedingungen gelesen, verstanden und stimme ihnen zu.</span>
+    }
+    <span class="checkmark"></span>
+  </label>
+</div>
+
+@if (frontEndLanguage == 'rm') {
+  <h3>Adressa dad e-mail</h3>
+} @else {
+  <h3>E-mail-Adresse</h3>
+}
+<div class="email-input">
+  @if (frontEndLanguage == 'rm') {
+    <input type="email" name="email" [(ngModel)]="email" placeholder="Vossa adressa dad e-mail">
+  } @else {
+    <input type="email" name="email" [(ngModel)]="email" placeholder="Ihre E-Mail-Adresse">
+  }
+</div>
+
+@if (errorType) {
+  <div class="error-message">
+    @if (frontEndLanguage == 'rm') {
+      @if (errorType === 'no-idiom') { <span>P. pl. tscherner in idiom.</span> }
+      @if (errorType === 'no-terms') { <span>P. pl. acceptar las cundiziuns d’utilisaziun.</span> }
+      @if (errorType === 'invalid-email') { <span>P. pl. endatar in’adressa dad e-mail valaivla.</span> }
+      @if (errorType === 'server-error') { <span>Ina errur è cumparida. Emprova pli tard anc ina giada.</span> }
+    } @else {
+      @if (errorType === 'no-idiom') { <span>Bitte wählen ein Idiom aus.</span> }
+      @if (errorType === 'no-terms') { <span>Bitte akzeptieren die Nutzungsbedingungen.</span> }
+      @if (errorType === 'invalid-email') { <span>Bitte gib eine gültige E-Mail-Adresse ein.</span> }
+      @if (errorType === 'server-error') { <span>Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.</span> }
+    }
+  </div>
+}
+
+@if (showSuccess) {
+  <div class="success-message">
+    @if (frontEndLanguage == 'rm') {
+      Vossa dumonda è vegnida tramessa. Vus survegnis in e-mail cun il link per telechargiar.
+    } @else {
+      Ihre Anfrage wurde gesendet. Sie erhalten eine E-Mail mit dem Download-Link.
+    }
+  </div>
+}
+
+<div class="submit-section">
+  <button class="btn btn-primary" (click)="sendRequest()" [disabled]="isLoading">
+    @if (isLoading) {
+      @if (frontEndLanguage == 'rm') {
+        <span>Trametter…</span>
+      } @else {
+        <span>Wird gesendet…</span>
+      }
+    } @else {
+      @if (frontEndLanguage == 'rm') {
+        <span>Trametter la dumonda</span>
+      } @else {
+        <span>Anfrage senden</span>
+      }
+    }
+  </button>
+</div>
