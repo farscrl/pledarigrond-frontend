@@ -1,0 +1,15 @@
+li {
+  margin-top: 16px;
+}
+
+.video {
+  width: 90%;
+  aspect-ratio: 16 / 9;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+}
