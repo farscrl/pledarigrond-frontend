@@ -12,14 +12,6 @@ export class DictionaryListItem implements EntryInfos {
   selected: boolean = false;
 }
 
-export class AutoReviewListItem {
-  entryId!: string;
-  version!: NormalizedEntryVersionDto;
-
-  selected: boolean = false;
-  local_review_status: 'ACCEPTED'|'REJECTED'|'EDITED'|'LATER'|'UNDEFINED' = 'UNDEFINED';
-}
-
 export class PaginationInfo {
   totalElements: number = 0;
   size: number = 1;
