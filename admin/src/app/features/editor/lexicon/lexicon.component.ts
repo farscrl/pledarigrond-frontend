@@ -64,8 +64,7 @@ export class LexiconComponent implements OnInit {
 
         version: v,
 
-        selected: false,
-        disabled: false
+        selected: false
       }));
       this.isLoading = false;
     }, error => {

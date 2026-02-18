@@ -8,7 +8,6 @@ export class DictionaryListItem implements EntryInfos {
   version!: EntryVersionInternalDto;
 
   // for UI state
-  disabled: boolean = false;
   selected: boolean = false;
 }
 

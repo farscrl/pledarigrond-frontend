@@ -130,15 +130,12 @@ export class DictionaryListComponent {
   }
 
   refreshCheckedStatus(): void {
-    const listOfEnabledData = this.items.filter(({ disabled }) => !disabled);
-    this.checked = listOfEnabledData.every(({ version }) => this.setOfCheckedId.has(version.versionId));
-    this.indeterminate = listOfEnabledData.some(({ version }) => this.setOfCheckedId.has(version.versionId)) && !this.checked;
+    this.checked = this.items.every(({ version }) => this.setOfCheckedId.has(version.versionId));
+    this.indeterminate = this.items.some(({ version }) => this.setOfCheckedId.has(version.versionId)) && !this.checked;
   }
 
   onAllChecked(checked: boolean): void {
-    this.items
-      .filter(({ disabled }) => !disabled)
-      .forEach(({ version }) => this.updateCheckedSet(version.versionId, checked));
+    this.items.forEach(({ version }) => this.updateCheckedSet(version.versionId, checked));
     this.refreshCheckedStatus();
   }
 

@@ -204,7 +204,6 @@
           <td
             nzLeft
             [nzChecked]="setOfCheckedId.has(item.version.versionId)"
-            [nzDisabled]="item.disabled"
             (nzCheckedChange)="onItemChecked(item.version.versionId, $event)"
           ></td>
         }

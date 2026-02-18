@@ -69,8 +69,7 @@ export class HistoryComponent implements OnInit {
 
         version: v.version,
 
-        selected: false,
-        disabled: false
+        selected: false
       }));
       this.isLoading = false;
     }, error => {
