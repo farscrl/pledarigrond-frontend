@@ -92,7 +92,6 @@ export class DictionaryListComponent {
 
 
   checked = false;
-  loading = false;
   indeterminate = false;
   setOfCheckedId = new Set<string>();
 
@@ -132,27 +131,27 @@ export class DictionaryListComponent {
 
   refreshCheckedStatus(): void {
     const listOfEnabledData = this.items.filter(({ disabled }) => !disabled);
-    this.checked = listOfEnabledData.every(({ entryId }) => this.setOfCheckedId.has(entryId!));
-    this.indeterminate = listOfEnabledData.some(({ entryId }) => this.setOfCheckedId.has(entryId!)) && !this.checked;
+    this.checked = listOfEnabledData.every(({ version }) => this.setOfCheckedId.has(version.versionId));
+    this.indeterminate = listOfEnabledData.some(({ version }) => this.setOfCheckedId.has(version.versionId)) && !this.checked;
   }
 
   onAllChecked(checked: boolean): void {
     this.items
       .filter(({ disabled }) => !disabled)
-      .forEach(({ entryId }) => this.updateCheckedSet(entryId!, checked));
+      .forEach(({ version }) => this.updateCheckedSet(version.versionId, checked));
     this.refreshCheckedStatus();
   }
 
-  onItemChecked(entryId: string, checked: boolean): void {
-    this.updateCheckedSet(entryId, checked);
+  onItemChecked(versionId: string, checked: boolean): void {
+    this.updateCheckedSet(versionId, checked);
     this.refreshCheckedStatus();
   }
 
-  updateCheckedSet(entryId: string, checked: boolean): void {
+  updateCheckedSet(versionId: string, checked: boolean): void {
     if (checked) {
-      this.setOfCheckedId.add(entryId);
+      this.setOfCheckedId.add(versionId);
     } else {
-      this.setOfCheckedId.delete(entryId);
+      this.setOfCheckedId.delete(versionId);
     }
   }
 
@@ -213,18 +212,19 @@ export class DictionaryListComponent {
   }
 
   async rejectSelectedItemsConfirmed() {
-    for (const id of this.setOfCheckedId) {
-      const items = this.items.filter(entry => entry.version.versionId === id);
-      if (items && items.length === 1) {
-        const item = items[0];
-
-        // only applicable to unverified items
+    const idsToReject = [...this.setOfCheckedId];
+    for (const versionId of idsToReject) {
+      const item = this.items.find(entry => entry.version.versionId === versionId);
+      if (item) {
         if (item.version.action === 'SUGGESTED_MODIFICATION') {
           await firstValueFrom(this.editorService.rejectVersion(this.languageSelectionService.getCurrentLanguage(), item.entryId, item.version));
+        } else if (item.version.action === 'SUGGESTED_ENTRY') {
+          await firstValueFrom(this.editorService.dropEntry(this.languageSelectionService.getCurrentLanguage(), item.entryId));
         }
-        this.onItemChecked(id, false);
       }
     }
+    this.setOfCheckedId.clear();
+    this.refreshCheckedStatus();
     this.reloadCurrentPage();
   }
 

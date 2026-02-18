@@ -161,8 +161,8 @@
         "order_de": "Successiun tudestg"
       },
       "multiedit": {
-        "activate": "Activar la modificaziun da pliras endataziuns",
-        "reject_button": "Refusar las endataziuns selecziunadas...",
+        "activate": "Modificaziun da pliras endataziuns",
+        "reject_button": "Refusar endataziuns selecziunadas...",
         "title": "Refusar las endataziuns selecziunadas sin quella pagina?",
         "content": "Vuleis Vus refusar las {{count}} endataziuns selecziunadas?"
       },

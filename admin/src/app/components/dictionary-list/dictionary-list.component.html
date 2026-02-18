@@ -330,11 +330,11 @@
       <label style="margin-left: 12px;">{{ 'lexicon.lemma.multiedit.activate' | translate }}</label>
       <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
       <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
-      <br>
-        @if (columns.checkMultiple.active && setOfCheckedId.size !== 0) {
-          <button nz-button nzType="primary" nzDanger (click)="rejectSelected()">{{ 'lexicon.lemma.multiedit.reject_button' | translate }}</button>
-        }
+
+      @if (columns.checkMultiple.active && setOfCheckedId.size !== 0) {
+        <button nz-button nzType="primary" nzDanger (click)="rejectSelected()" id="refuse-selected">{{ 'lexicon.lemma.multiedit.reject_button' | translate }}</button>
       }
+    }
     </div>
 
     @if (paginationInfo && paginationInfo.totalElements > 0) {
