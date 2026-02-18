@@ -14,7 +14,7 @@ nz-content {
 }
 
 .right-side {
-  min-height: calc(100vh - 64px - 48px);
+  min-height: calc(100vh - 64px - 48px - 24px - 24px);
 
   nz-content {
     height: 100%;
