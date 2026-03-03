@@ -1,0 +1,27 @@
+<div class="pg-modal-wrapper">
+  <div class="modal-content">
+    <h1>{{ 'spellchecker.suggest.title' | translate }}</h1>
+
+    <p>{{ 'spellchecker.suggest.description' | translate }}</p>
+
+    <div class="control-group">
+      <label class="control-label" for="word">{{ 'spellchecker.suggest.word_label' | translate }}*</label>
+      <input type="text" name="word" [(ngModel)]="word" spellcheck="false">
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="comment">{{ 'spellchecker.suggest.comment_label' | translate }}</label>
+      <textarea [(ngModel)]="comment" spellcheck="false" name="comment"></textarea>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="email">{{ 'spellchecker.suggest.email_label' | translate }}</label>
+      <input type="email" [(ngModel)]="email" spellcheck="false" name="email">
+    </div>
+
+    <div class="pg-modal-footer">
+      <button (click)="cancel()" class="btn">{{ 'spellchecker.suggest.cancel' | translate }}</button>
+      <button (click)="confirm()" class="btn btn-primary">{{ 'spellchecker.suggest.submit' | translate }}</button>
+    </div>
+  </div>
+</div>

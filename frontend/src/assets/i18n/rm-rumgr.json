@@ -226,6 +226,15 @@
       "office": "Microsoft Office"
     },
     "credits": "La controlla ortografica rumantscha è in project da la |Pro Svizra Rumantscha| realisà en collavuraziun cun la |Lia Rumantscha|. L'Uffizi federal da cultura ed il chantun Grischun sustegnan finanzialmain il project.",
+    "suggest": {
+      "title": "Trametter proposta",
+      "description": "Na vegn in pled scrit endretg betg renconuschì? Qua pos ti l’annunziar.",
+      "word_label": "pled rumantsch",
+      "comment_label": "remartga (facultativ)",
+      "email_label": "adressa dad e-mail (facultativ)",
+      "cancel": "interrumper",
+      "submit": "trametter"
+    },
     "editor": {
       "version": "versiun",
       "bold": "grass",

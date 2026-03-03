@@ -1,0 +1,13 @@
+.pg-modal-wrapper {
+  max-width: 860px;
+  line-height: 20px;
+
+  .pg-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  textarea {
+    min-height: 60px;
+  }
+}

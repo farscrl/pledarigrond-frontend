@@ -44,12 +44,12 @@
     margin-top: 16px;
     text-align: right;
 
-    a.btn {
+    a.btn, button.btn {
       margin-top: 16px;
     }
   }
 
-  a.btn {
+  a.btn, button.btn {
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -92,7 +92,7 @@
   }
 
   .pg-modal-footer {
-    a.btn {
+    a.btn, button.btn {
       margin-left: 16px;
       margin-top: auto;
     }

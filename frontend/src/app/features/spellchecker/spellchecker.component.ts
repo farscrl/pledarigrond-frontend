@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import SpellcheckerExtension, {
@@ -27,6 +27,10 @@ import { TiptapEditorDirective } from 'ngx-tiptap';
 import { FormsModule } from '@angular/forms';
 import { TranslateCutPipe } from '../../pipes/translate-cut.pipe';
 import { EntryVersionDto } from '../../models/dictionary';
+import {
+  SuggestWordSpellchecker, SuggestWordSpellcheckerModalInput,
+  SuggestWordSpellcheckerModalOutput
+} from "./suggest-word-spellchecker/suggest-word-spellchecker";
 
 @Component({
     selector: 'app-spellchecker',
@@ -34,7 +38,7 @@ import { EntryVersionDto } from '../../models/dictionary';
     styleUrls: ['./spellchecker.component.scss'],
     imports: [SpellcheckerMenubarComponent, TiptapEditorDirective, FormsModule, TranslatePipe, TranslateCutPipe]
 })
-export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
+export class SpellcheckerComponent implements OnInit, OnDestroy, IProofreaderInterface {
   private selectedLanguageService = inject(SelectedLanguageService);
   private translateService = inject(TranslateService);
   private tracker = inject(MatomoTracker);
@@ -203,22 +207,35 @@ export class SpellcheckerComponent implements OnInit, IProofreaderInterface {
   }
 
   private suggestWord(word: string) {
+    this.modalService.addModal(SuggestWordSpellchecker, {
+      word: word,
+    }).subscribe((result: SuggestWordSpellcheckerModalOutput) => {
+      if (result.send && result.word != '') {
+        this.sendWordSuggestion(result);
+      }
+    });
+
+    const suggestionsBox = document.getElementById('suggestions-box');
+    if (suggestionsBox) {
+      suggestionsBox.textContent = '';
+      suggestionsBox.style.display = 'none'
+    }
+  }
+
+  private sendWordSuggestion(result: SuggestWordSpellcheckerModalOutput) {
     const version = new EntryVersionDto();
-    version.rmStichwort = word;
+    version.rmStichwort = result.word;
     version.deStichwort = '';
     version.userComment = 'Proposta via spellchecker online';
-    version.userEmail = this.authService.getUsername();
+    if (result.comment) {
+      version.userComment = result.comment + '\n\n' + version.userComment;
+    }
+    version.userEmail = result.email;
 
     this.tracker.trackEvent('PROPOSTA-SPELLCHECKER', 'proposta spellcheker ' + this.selectedLanguageService.getSelectedLanguageUrlSegment());
     this.modificationService.spellcheckerSuggestion(this.selectedLanguageService.getSelectedLanguageUrlSegment(), version).subscribe(data => {
       this.sentSuggestion = true;
-      this.sentSuggestionWord = word;
-
-      const suggestionsBox = document.getElementById('suggestions-box');
-      if (suggestionsBox) {
-        suggestionsBox.textContent = '';
-        suggestionsBox.style.display = 'none'
-      }
+      this.sentSuggestionWord = result.word;
     }, error => {
       console.error(error);
     });
