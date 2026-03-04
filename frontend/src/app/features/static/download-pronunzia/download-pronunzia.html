@@ -1,16 +1,16 @@
 @if (frontEndLanguage == 'rm') {
   <h1>Telechargiar las datotecas da pronunzia</h1>
   <p>
-    Sin questa pagina pos ti telechargiar mintgamai tut las datotecas da pronunzia dad in dals tschintg idioms u dal
-    rumantsch grischun. Tscherna la varianta giavischada ed endatescha tia adressa dad e-mail. Ti retschaivas lura ina
+    Sin questa pagina pudais Vus telechargiar mintgamai tut las datotecas da pronunzia dad in dals tschintg idioms u dal
+    rumantsch grischun. Tscherni la varianta giavischada ed endatai Vossa adressa dad e-mail. Vus retschavais lura ina
     colliaziun ad in ZIP che cuntegna tut las datotecas da tun. Il link è valaivel durant in’ura.
   </p>
   <p>Attenziun: Tut tenor idiom cuntegna il ZIP tranter circa 18’000 e radund 43’000 registraziuns!</p>
 } @else {
   <h1>Aussprachedateien herunterladen</h1>
   <p>
-    Auf dieser Seite kannst du jeweils alle Aussprachedateien in einem der fünf Idiome oder in Rumantsch Grischun
-    herunterladen. Wähle die gewünschte Variante und trage deine E-mail-Adresse ein. Du erhältst dann einen Link zu
+    Auf dieser Seite können Sie jeweils alle Aussprachedateien in einem der fünf Idiome oder in Rumantsch Grischun
+    herunterladen. Wählen Sie die gewünschte Variante und tragen Sie Ihre E-mail-Adresse ein. Sie erhalten dann einen Link zu
     einer Zip-Datei, die alle Audio-Dateien enthält. Der Link ist eine Stunde lang gültig.
   </p>
   <p>Achtung: Je nach Idiom enthält die Zip-Datei zwischen etwa 18’000 und ungefähr 43’000 Aufnahmen!</p>
@@ -48,11 +48,11 @@
   <div class="legal-text">
     <h4>1. En general</h4>
     <p>Questas cundiziuns d’utilisaziun reglan il diever da las audiodatotecas rumantschas messas a disposiziun. Cun
-      telechargiar u utilisar las audiodatotecas acceptas ti questas cundiziuns.</p>
+      telechargiar u utilisar las audiodatotecas acceptais Vus questas cundiziuns.</p>
 
     <h4>2. Utilisaziuns</h4>
     <ul>
-      <li>Ti dastgas chargiar giu las audiodatotecas, memorisar ellas ed utilisar ellas per intents privats e
+      <li>Vus dastgais chargiar giu las audiodatotecas, memorisar ellas ed utilisar ellas per intents privats e
         commerzials.</li>
       <li>Las audiodatotecas dastgan vegnir utilisadas mo en la furma originala, nun che la vusch da las pledadras vegnia
         remplazzada tras ina vusch che na cumpara betg en questas unitads da datas. Quai vala surtut per applicaziuns cun
@@ -87,11 +87,11 @@
   <div class="legal-text">
     <h4>1. Allgemeines</h4>
     <p>Diese Nutzungsbedingungen regeln die Nutzung der bereitgestellten rätoromanischen Audio-Dateien. Durch das
-      Herunterladen oder Verwenden der Audio-Dateien stimmst du diesen Bedingungen zu.</p>
+      Herunterladen oder Verwenden der Audio-Dateien stimmen Sie diesen Bedingungen zu.</p>
 
     <h4>2. Nutzungen</h4>
     <ul>
-      <li>Du darfst die Audio-Dateien herunterladen, speichern und für private und kommerzielle Zwecke verwenden.</li>
+      <li>Sie dürfen die Audio-Dateien herunterladen, speichern und für private und kommerzielle Zwecke verwenden.</li>
       <li>Die Audio-Dateien dürfen lediglich in unveränderter Form genutzt werden, ausser die Stimme der Sprecherinnen
         wird durch eine Stimme ersetzt, die nicht in diesen Datensätzen vorkommt. Dies gilt insbesondere für
         Anwendungen mit Sprachsynthese, aber auch für das Schneiden und Mischen der Dateien und anderweitige
@@ -157,10 +157,10 @@
       @if (errorType === 'invalid-email') { <span>P. pl. endatar in’adressa dad e-mail valaivla.</span> }
       @if (errorType === 'server-error') { <span>Ina errur è cumparida. Emprova pli tard anc ina giada.</span> }
     } @else {
-      @if (errorType === 'no-idiom') { <span>Bitte wählen ein Idiom aus.</span> }
-      @if (errorType === 'no-terms') { <span>Bitte akzeptieren die Nutzungsbedingungen.</span> }
-      @if (errorType === 'invalid-email') { <span>Bitte gib eine gültige E-Mail-Adresse ein.</span> }
-      @if (errorType === 'server-error') { <span>Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.</span> }
+      @if (errorType === 'no-idiom') { <span>Bitte wählen Sie ein Idiom.</span> }
+      @if (errorType === 'no-terms') { <span>Bitte akzeptieren Sie die Nutzungsbedingungen.</span> }
+      @if (errorType === 'invalid-email') { <span>Bitte geben Sie eine gültige E-Mail-Adresse ein.</span> }
+      @if (errorType === 'server-error') { <span>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.</span> }
     }
   </div>
 }
@@ -168,7 +168,7 @@
 @if (showSuccess) {
   <div class="success-message">
     @if (frontEndLanguage == 'rm') {
-      Vossa dumonda è vegnida tramessa. Vus survegnis in e-mail cun il link per telechargiar.
+      Vossa dumonda è vegnida tramessa. Vus retschavais in e-mail cun il link per telechargiar.
     } @else {
       Ihre Anfrage wurde gesendet. Sie erhalten eine E-Mail mit dem Download-Link.
     }
