@@ -51,7 +51,7 @@
           <tbody>
             @for (data of smallTable.data; track data) {
               <tr (click)="addPronunciation(data)" class="existing-pronunciation">
-                <td>@if (data.status === 'COMPLETED') {
+                <td (click)="$event.stopPropagation()">@if (data.status === 'COMPLETED') {
                   <app-audio-player [url]="getAudioUrlByRegistration(data)" />
                 }</td>
                 <td>{{ data.rmStichwort }}</td>
