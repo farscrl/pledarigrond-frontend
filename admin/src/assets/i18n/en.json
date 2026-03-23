@@ -299,6 +299,7 @@
       "rm_semantics": "Semantics",
       "rm_link": "Link",
       "rm_conjugation": "Special forms",
+      "rm_flex_info": "Inflected forms. No longer to be used.",
       "rm_tags": "Additional search terms",
       "inflection": {
         "title": "Inflection",

@@ -171,7 +171,8 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rmFlex">{{ 'edit.lemma.rm_conjugation' | translate }}</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
-          <input nz-input formControlName="rmFlex" id="rmFlex" />
+          <input nz-input formControlName="rmFlex" id="rmFlex" class="info-input" />
+          <i nz-icon nzType="info-circle" class="info-button" nz-popover [nzPopoverContent]="'edit.lemma.rm_flex_info' | translate" nzPopoverPlacement="right"></i>
         </nz-form-control>
       </nz-form-item>
     </div>
