@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { EntryVersionDto } from '../../../../models/dictionary';
+import { formatFormVariants } from '../../../../utils/word-utils';
 
 
 @Component({
@@ -12,4 +13,6 @@ import { EntryVersionDto } from '../../../../models/dictionary';
 export class DetailsAdjComponent {
   @Input()
   version?: EntryVersionDto;
+
+  public formatFormVariants = formatFormVariants;
 }

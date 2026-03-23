@@ -4,44 +4,44 @@
 <table>
   @if (sing1) {
     <tr>
-      <td class="pronoun" [innerHTML]="replaceComma(sing1Pronoun)"></td>
-      <td [innerHtml]="replaceComma(sing1)"></td>
+      <td class="pronoun" [innerHTML]="formatFormVariants(sing1Pronoun)"></td>
+      <td [innerHtml]="formatFormVariants(sing1)"></td>
     </tr>
   }
   @if (sing2) {
     <tr>
-      <td class="pronoun" [innerHTML]="replaceComma(sing2Pronoun)"></td>
-      <td [innerHtml]="replaceComma(sing2)"></td>
+      <td class="pronoun" [innerHTML]="formatFormVariants(sing2Pronoun)"></td>
+      <td [innerHtml]="formatFormVariants(sing2)"></td>
     </tr>
   }
   @if (sing3) {
     <tr>
-      <td class="pronoun" [innerHTML]="replaceComma(sing3Pronoun)"></td>
-      <td [innerHtml]="replaceComma(sing3)"></td>
+      <td class="pronoun" [innerHTML]="formatFormVariants(sing3Pronoun)"></td>
+      <td [innerHtml]="formatFormVariants(sing3)"></td>
     </tr>
   }
   @if (sing3Alt) {
     <tr>
-      <td class="pronoun" [innerHTML]="replaceComma(sing3PronounAlt)"></td>
-      <td [innerHtml]="replaceComma(sing3Alt)"></td>
+      <td class="pronoun" [innerHTML]="formatFormVariants(sing3PronounAlt)"></td>
+      <td [innerHtml]="formatFormVariants(sing3Alt)"></td>
     </tr>
   }
   @if (plural1) {
     <tr>
-      <td class="pronoun" [innerHTML]="replaceComma(plural1Pronoun)"></td>
-      <td [innerHtml]="replaceComma(plural1)"></td>
+      <td class="pronoun" [innerHTML]="formatFormVariants(plural1Pronoun)"></td>
+      <td [innerHtml]="formatFormVariants(plural1)"></td>
     </tr>
   }
   @if (plural2) {
     <tr>
-      <td class="pronoun" [innerHTML]="replaceComma(plural2Pronoun)"></td>
-      <td [innerHtml]="replaceComma(plural2)"></td>
+      <td class="pronoun" [innerHTML]="formatFormVariants(plural2Pronoun)"></td>
+      <td [innerHtml]="formatFormVariants(plural2)"></td>
     </tr>
   }
   @if (plural3) {
     <tr>
-      <td class="pronoun" [innerHTML]="replaceComma(plural3Pronoun)"></td>
-      <td [innerHtml]="replaceComma(plural3)"></td>
+      <td class="pronoun" [innerHTML]="formatFormVariants(plural3Pronoun)"></td>
+      <td [innerHtml]="formatFormVariants(plural3)"></td>
     </tr>
   }
 </table>

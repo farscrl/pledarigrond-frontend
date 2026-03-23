@@ -9,19 +9,19 @@
       </tr>
       <tr>
         <td>{{ 'details.singular' | translate }}</td>
-        <td>{{ version.inflection!.noun!.mSingular ? version.inflection!.noun!.mSingular : '-' }}</td>
-        <td>{{ version.inflection!.noun!.fSingular ? version.inflection!.noun!.fSingular : '-' }}</td>
+        <td [innerHTML]="formatFormVariants(version.inflection!.noun!.mSingular) || '-'"></td>
+        <td [innerHTML]="formatFormVariants(version.inflection!.noun!.fSingular) || '-'"></td>
       </tr>
       <tr>
         <td>{{ 'details.plural' | translate }}</td>
-        <td>{{ version.inflection!.noun!.mPlural ? version.inflection!.noun!.mPlural : '-'  }}</td>
-        <td>{{ version.inflection!.noun!.fPlural ? version.inflection!.noun!.fPlural : '-'  }}</td>
+        <td [innerHTML]="formatFormVariants(version.inflection!.noun!.mPlural) || '-'"></td>
+        <td [innerHTML]="formatFormVariants(version.inflection!.noun!.fPlural) || '-'"></td>
       </tr>
       @if (version.inflection!.noun!.pluralCollectiv) {
         <tr>
           <td>{{ 'details.collective' | translate }}</td>
           <td>-</td>
-          <td>{{ version.inflection!.noun!.pluralCollectiv ? version.inflection!.noun!.pluralCollectiv : '-'  }}</td>
+          <td [innerHTML]="formatFormVariants(version.inflection!.noun!.pluralCollectiv) || '-'"></td>
         </tr>
       }
     </table>
