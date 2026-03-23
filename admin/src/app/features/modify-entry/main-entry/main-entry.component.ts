@@ -325,8 +325,11 @@ export class MainEntryComponent implements OnInit {
         entryId: this.entryVersion.entryId,
       },
     });
-    modal.afterClose.subscribe((rPronunciation: string | undefined) => {
-      this.entryVersion.rmPronunciation = rPronunciation;
+    modal.afterClose.subscribe((result: { rmPronunciation: string | undefined } | undefined) => {
+      if (result === undefined) {
+        return;
+      }
+      this.entryVersion.rmPronunciation = result.rmPronunciation;
     })
   }
 

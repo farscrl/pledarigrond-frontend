@@ -98,7 +98,7 @@ export class PronunciationComponent implements OnInit {
   }
 
   handleOk() {
-    this.modalRef.close(this.entryVersion?.rmPronunciation);
+    this.modalRef.close({ rmPronunciation: this.entryVersion?.rmPronunciation });
   }
 
   orderRegistration() {
