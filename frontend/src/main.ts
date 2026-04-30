@@ -1,4 +1,4 @@
-import { enableProdMode, importProvidersFrom, isDevMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { environment } from './environments/environment';
 import { UserLoggedInGuard } from './app/auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './app/auth/not-logged-in.guard';
@@ -27,6 +27,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
+        provideZoneChangeDetection(),
         importProvidersFrom(BrowserModule, AppRoutingModule, FormsModule, JwtModule.forRoot({
             config: {
                 tokenGetter: tokenGetter,
