@@ -39,8 +39,8 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0(@angular/common@21.2.11(@angular/core@21.2.11(@angular/compiler@21.2.11)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))
       '@farscrl/rumantsch-language-tools':
-        specifier: ^1.0.4
-        version: 1.0.4
+        specifier: ^1.0.5
+        version: 1.0.5
       '@farscrl/tiptap-extension-spellchecker':
         specifier: ^2.0.1
         version: 2.0.1(@tiptap/core@3.22.5(@tiptap/pm@3.22.5))
@@ -1161,8 +1161,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@farscrl/rumantsch-language-tools@1.0.4':
-    resolution: {integrity: sha512-Xz9Bzb37iGmDERDLwS2O3z9i7HxsLpynREx8jnVH3LgdEacaP+VGmBZ0qFXcaLC1aLnz2yEr7B0NxRbrJHKcEA==}
+  '@farscrl/rumantsch-language-tools@1.0.5':
+    resolution: {integrity: sha512-YX65MuzrqLo8ZWkIXc1PD3WWu/6OntvyLD1VLIOYmnvNi2fiDorb6X7LLfsaaGFo1QTdJ7gum/8cm1ZFxtz5KA==}
 
   '@farscrl/tiptap-extension-spellchecker@2.0.1':
     resolution: {integrity: sha512-VmLp4ridqdLw/VVTDXY80RdGC8otUA7dS0Ong6JiUfLYkd2CwSKyC7fbi8lAfZYLwWH0UZhjdXxhGM4ZgdOy2A==}
@@ -6293,7 +6293,7 @@ snapshots:
   '@esbuild/win32-x64@0.27.3':
     optional: true
 
-  '@farscrl/rumantsch-language-tools@1.0.4':
+  '@farscrl/rumantsch-language-tools@1.0.5':
     dependencies:
       hunspell-asm: 4.0.2
 
