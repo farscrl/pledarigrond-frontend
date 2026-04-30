@@ -19,7 +19,7 @@ import { DictionaryListItem, PaginationInfo } from '../../models/dictionary-list
 import { SlicePipe, UpperCasePipe } from '@angular/common';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { NzDropdownButtonDirective, NzDropDownDirective, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
+import { NzDropdownDirective, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzMenuDirective, NzMenuItemComponent } from 'ng-zorro-antd/menu';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
@@ -36,7 +36,7 @@ import {
   NzThSelectionComponent,
   NzTrDirective
 } from 'ng-zorro-antd/table';
-import { NzNoAnimationDirective } from 'ng-zorro-antd/core/no-animation';
+import { NzNoAnimationDirective } from 'ng-zorro-antd/core/animation';
 import { UserRoleComponent } from '../data/user-role/user-role.component';
 import { ActionComponent } from '../data/action/action.component';
 import { NzSwitchComponent } from 'ng-zorro-antd/switch';
@@ -47,7 +47,7 @@ import { HighlighterPipe } from '../../pipes/highlighter.pipe';
     selector: 'app-dictionary-list',
     templateUrl: './dictionary-list.component.html',
     styleUrls: ['./dictionary-list.component.scss'],
-    imports: [NzButtonComponent, NzWaveDirective, NzDropdownButtonDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
+    imports: [NzButtonComponent, NzWaveDirective, NzDropdownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
 })
 export class DictionaryListComponent {
   private modalService = inject(NzModalService);

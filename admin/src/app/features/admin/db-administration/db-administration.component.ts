@@ -16,8 +16,8 @@ import {
 } from 'ng-zorro-antd/page-header';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { NzDropdownButtonDirective, NzDropDownDirective, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
-import { NzNoAnimationDirective } from 'ng-zorro-antd/core/no-animation';
+import { NzDropdownDirective, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
+import { NzNoAnimationDirective } from 'ng-zorro-antd/core/animation';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzMenuDirective, NzMenuItemComponent } from 'ng-zorro-antd/menu';
 import { NzCardComponent } from 'ng-zorro-antd/card';
@@ -30,7 +30,7 @@ import { DecimalPipe } from '@angular/common';
     selector: 'app-db-administration',
     templateUrl: './db-administration.component.html',
     styleUrls: ['./db-administration.component.scss'],
-    imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, NzDropdownButtonDirective, NzNoAnimationDirective, NzDropDownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, NzTimelineComponent, NzTimelineItemComponent, DecimalPipe, TranslatePipe]
+    imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, NzNoAnimationDirective, NzDropdownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, NzTimelineComponent, NzTimelineItemComponent, DecimalPipe, TranslatePipe]
 })
 export class DbAdministrationComponent implements OnInit {
   private dbService = inject(DbService);
