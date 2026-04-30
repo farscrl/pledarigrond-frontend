@@ -133,10 +133,10 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inflectionType">{{ 'lexicon.lemma.columns.pronunciation' | translate }}</nz-form-label>
         <nz-form-control>
-          @if (!entryVersion?.rmPronunciation) {
+          @if (!entryVersion.rmPronunciation) {
             nagina
           }
-          @if (entryVersion?.rmPronunciation) {
+          @if (entryVersion.rmPronunciation) {
             <app-audio-player [url]="getAudioUrlById(entryVersion.rmPronunciation!)"></app-audio-player>
           }
           <i nz-icon nzType="edit" class="inflection-edit" (click)="editPronunciation()"></i>
