@@ -49,6 +49,7 @@ export class SelectedLanguageService {
       return;
     }
     this.idiomSubject.next(idiom);
+    localStorage.setItem('last-idiom', this.getUrlSegmentForIdiom(idiom));
     this.changeUiLanguage();
   }
 

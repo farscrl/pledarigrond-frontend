@@ -258,7 +258,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'rumantschgrischun'
+    redirectTo: () => localStorage.getItem('last-idiom') ?? 'rumantschgrischun'
   }
 ];
 
