@@ -451,6 +451,8 @@ export class MainEntryComponent implements OnInit {
     this.validateForm.get('inflectionType')?.valueChanges.subscribe(value => {
       if (value === '' || value === null || value === undefined) {
         this.entryVersion.inflection = undefined;
+      } else if (this.entryVersion.inflection) {
+        this.entryVersion.inflection.inflectionType = value;
       }
     });
 
@@ -491,12 +493,23 @@ export class MainEntryComponent implements OnInit {
     this.dGenderAutocompleteChanged(this.entryVersion.deGenus);
   }
 
+  private cleanInflection(entryVersion: EntryVersionInternalDto): void {
+    if (!entryVersion.inflection) return;
+    const type = entryVersion.inflection.inflectionType;
+    if (type !== 'VERB')      entryVersion.inflection.verb = undefined;
+    if (type !== 'NOUN')      entryVersion.inflection.noun = undefined;
+    if (type !== 'ADJECTIVE') entryVersion.inflection.adjective = undefined;
+    if (type !== 'PRONOUN')   entryVersion.inflection.pronoun = undefined;
+    if (type !== 'OTHER')     entryVersion.inflection.other = undefined;
+  }
+
   private saveNewEntry(asSuggestion: boolean) {
     let entryVersion = {
       ...this.entryVersion,
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
     entryVersion.examples = this.joinExampleStrings();
+    this.cleanInflection(entryVersion);
 
     this.editorService.newEntry(this.languageSelectionService.getCurrentLanguage(), entryVersion, asSuggestion).subscribe(data => {
       this.modal.triggerOk();
@@ -514,6 +527,7 @@ export class MainEntryComponent implements OnInit {
       ...JSON.parse(JSON.stringify(this.validateForm.value)),
     };
     entryVersion.examples = this.joinExampleStrings();
+    this.cleanInflection(entryVersion);
 
     if (this.replaceSuggestion && this.entryVersionToChange) {
       if (asSuggestion) {
