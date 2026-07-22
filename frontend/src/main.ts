@@ -1,4 +1,4 @@
-import { enableProdMode, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { enableProdMode, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { environment } from './environments/environment';
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { provideMatomo, withRouter } from 'ngx-matomo-client';
@@ -6,7 +6,7 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
-import { JwtModule } from '@auth0/angular-jwt';
+import { provideJwtConfig } from '@jjmhalew/angular-jwt';
 import { provideServiceWorker } from '@angular/service-worker';
 import { AppComponent } from './app/app.component';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -30,15 +30,11 @@ bootstrapApplication(AppComponent, {
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    importProvidersFrom(
-      JwtModule.forRoot({
-        config: {
-          tokenGetter: tokenGetter,
-          allowedDomains: [environment.apiHost],
-          disallowedRoutes: [environment.apiUrl + '/users/token']
-        }
-      })
-    ),
+    provideJwtConfig({
+      tokenGetter: tokenGetter,
+      allowedDomains: [environment.apiHost],
+      disallowedRoutes: [environment.apiUrl + '/users/token']
+    }),
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
     provideMatomo({
       siteId: environment.matomoTrackingId,

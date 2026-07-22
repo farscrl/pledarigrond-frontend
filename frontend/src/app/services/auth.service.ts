@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtHelperService } from '@jjmhalew/angular-jwt';
 import { Credentials, Language, Role } from '../models/security';
 import { User } from '../models/user';
 
