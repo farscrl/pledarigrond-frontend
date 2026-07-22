@@ -4,14 +4,12 @@ import { UserLoggedInGuard } from './app/auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './app/auth/not-logged-in.guard';
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { LanguageUtils } from './app/utils/language-utils';
-import { MatomoTrackClickDirective, provideMatomo, withRouter } from 'ngx-matomo-client';
+import { provideMatomo, withRouter } from 'ngx-matomo-client';
 import { provideTranslateService } from '@ngx-translate/core';
-import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { AppRoutingModule } from './app/app-routing.module';
-import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { TiptapEditorDirective } from 'ngx-tiptap';
 import { AppComponent } from './app/app.component';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -28,9 +26,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideZoneChangeDetection(),
     importProvidersFrom(
-      BrowserModule,
       AppRoutingModule,
-      FormsModule,
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
@@ -43,9 +39,7 @@ bootstrapApplication(AppComponent, {
         // Register the ServiceWorker as soon as the application is stable
         // or after 30 seconds (whichever comes first).
         registrationStrategy: 'registerWhenStable:30000'
-      }),
-      MatomoTrackClickDirective,
-      TiptapEditorDirective
+      })
     ),
     UserLoggedInGuard,
     UserNotLoggedInGuard,
