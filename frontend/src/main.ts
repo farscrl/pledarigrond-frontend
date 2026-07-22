@@ -5,7 +5,7 @@ import { UserNotLoggedInGuard } from './app/auth/not-logged-in.guard';
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { LanguageUtils } from './app/utils/language-utils';
 import { MatomoTrackClickDirective, provideMatomo, withRouter } from 'ngx-matomo-client';
-import { provideTranslateService, TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app/app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -25,32 +25,40 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-    providers: [
-        provideZoneChangeDetection(),
-        importProvidersFrom(BrowserModule, AppRoutingModule, FormsModule, JwtModule.forRoot({
-            config: {
-                tokenGetter: tokenGetter,
-                allowedDomains: [environment.apiHost],
-                disallowedRoutes: [environment.apiUrl + '/users/token']
-            }
-        }), ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000'
-        }), TranslatePipe, TranslateDirective, MatomoTrackClickDirective, TiptapEditorDirective),
-        UserLoggedInGuard,
-        UserNotLoggedInGuard,
-        provideHttpClient(withXhr(), withInterceptorsFromDi()),
-        LanguageUtils,
-        provideMatomo({
-            siteId: environment.matomoTrackingId,
-            trackerUrl: environment.matomoTrackingUrl,
-        }, withRouter()),
-        provideTranslateService({
-            loader: provideTranslateHttpLoader({prefix:'./assets/i18n/', suffix:'.json'}),
-            fallbackLang: 'rm-rumgr'
-        })
-    ]
+  providers: [
+    provideZoneChangeDetection(),
+    importProvidersFrom(
+      BrowserModule,
+      AppRoutingModule,
+      FormsModule,
+      JwtModule.forRoot({
+        config: {
+          tokenGetter: tokenGetter,
+          allowedDomains: [environment.apiHost],
+          disallowedRoutes: [environment.apiUrl + '/users/token']
+        }
+      }),
+      ServiceWorkerModule.register('ngsw-worker.js', {
+        enabled: !isDevMode(),
+        // Register the ServiceWorker as soon as the application is stable
+        // or after 30 seconds (whichever comes first).
+        registrationStrategy: 'registerWhenStable:30000'
+      }),
+      MatomoTrackClickDirective,
+      TiptapEditorDirective
+    ),
+    UserLoggedInGuard,
+    UserNotLoggedInGuard,
+    provideHttpClient(withXhr(), withInterceptorsFromDi()),
+    LanguageUtils,
+    provideMatomo({
+      siteId: environment.matomoTrackingId,
+      trackerUrl: environment.matomoTrackingUrl,
+    }, withRouter()),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({prefix:'./assets/i18n/', suffix:'.json'}),
+      fallbackLang: 'rm-rumgr'
+    })
+  ]
 })
   .catch(err => console.error(err));
