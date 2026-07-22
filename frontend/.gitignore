@@ -34,11 +34,9 @@ chrome-profiler-events*.json
 /.angular/cache
 /.sass-cache
 /connect.lock
-/coverage
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
-testem.log
 /typings
 
 # System Files

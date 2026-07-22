@@ -4,8 +4,7 @@
     "ng": "ng",
     "start": "ng serve --port=4221",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
@@ -41,15 +40,7 @@
     "@angular-devkit/build-angular": "^22.0.7",
     "@angular/cli": "^22.0.7",
     "@angular/compiler-cli": "^22.0.7",
-    "@types/jasmine": "~5.1.12",
     "@types/node": "^22.18.12",
-    "istanbul-lib-instrument": "^6.0.3",
-    "jasmine-core": "~5.12.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.1",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~6.0.3"
   }
 }
