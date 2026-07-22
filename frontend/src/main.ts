@@ -7,7 +7,8 @@ import { LanguageUtils } from './app/utils/language-utils';
 import { provideMatomo, withRouter } from 'ngx-matomo-client';
 import { provideTranslateService } from '@ngx-translate/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppRoutingModule } from './app/app-routing.module';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app/app.component';
@@ -25,8 +26,8 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     provideZoneChangeDetection(),
+    provideRouter(routes),
     importProvidersFrom(
-      AppRoutingModule,
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,

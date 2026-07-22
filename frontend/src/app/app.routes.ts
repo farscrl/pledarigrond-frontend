@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import { LoginComponent } from './features/login/login.component';
 import { PuterPlaceholderComponent } from './features/puter-placeholder/puter-placeholder.component';
@@ -17,7 +16,7 @@ import { InfoSursilvanComponent } from './features/static/info/sursilvan/info-su
 import { HelpSursilvanComponent } from './features/static/help/sursilvan/help-sursilvan/help-sursilvan.component';
 import {DownloadPronunzia} from "./features/static/download-pronunzia/download-pronunzia";
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'puter',
     children: [
@@ -261,9 +260,3 @@ const routes: Routes = [
     redirectTo: () => localStorage.getItem('last-idiom') ?? 'rumantschgrischun'
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
