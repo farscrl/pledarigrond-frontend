@@ -2,7 +2,7 @@ import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/cor
 import { ActivatedRoute, Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
-import {NgxModalComponent, NgxModalService} from "ngx-modalview";
+import { ModalService } from 'src/app/services/modal.service';
 import { RegistrationComponent } from './registration/registration.component';
 
 import { FormsModule } from '@angular/forms';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
-  private modalService = inject(NgxModalService);
+  private modalService = inject(ModalService);
 
 
   username = "";

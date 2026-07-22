@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use '../node_modules/modern-css-reset/dist/reset.min.css';
 @use '../node_modules/remixicon/fonts/remixicon.css';
+@use '../node_modules/@angular/cdk/overlay-prebuilt.css';
 @use 'scss/bootstrap.scss';
 @use 'scss/fontawesome.scss';
 @use 'scss/main.scss';

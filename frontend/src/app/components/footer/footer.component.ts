@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {FrontendLanguage, Idiom, SelectedLanguageService} from 'src/app/services/selected-language.service';
-import { NgxModalService } from "ngx-modalview";
+import { ModalService } from 'src/app/services/modal.service';
 import { SuggestionComponent } from './suggestion/suggestion.component';
 import { ExportComponent } from 'src/app/features/export/export.component';
 import { LanguageUtils } from 'src/app/utils/language-utils';
@@ -18,7 +18,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class FooterComponent implements OnInit, OnDestroy {
   private selectedLanguageService = inject(SelectedLanguageService);
-  private modalService = inject(NgxModalService);
+  private modalService = inject(ModalService);
   languageUtils = inject(LanguageUtils);
 
 

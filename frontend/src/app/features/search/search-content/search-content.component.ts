@@ -3,7 +3,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
-import { NgxModalService } from "ngx-modalview";
+import { ModalService } from 'src/app/services/modal.service';
 import { DetailsModalComponent } from '../details-modal/details-modal.component';
 import { SuggestModificationComponent } from '../suggest-modification/suggest-modification.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,7 +30,7 @@ export class SearchContentComponent implements OnInit, OnDestroy {
   private searchService = inject(SearchService);
   private selectedLanguageService = inject(SelectedLanguageService);
   private translateService = inject(TranslateService);
-  private modalService = inject(NgxModalService);
+  private modalService = inject(ModalService);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private tracker = inject(MatomoTracker);

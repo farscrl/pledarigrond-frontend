@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { OtherResourcesComponent, OtherResourcesType } from '../../other-resources/other-resources.component';
-import { NgxModalService } from "ngx-modalview";
+import { ModalService } from '../../../services/modal.service';
 import { SelectedLanguageService } from "../../../services/selected-language.service";
 import { Subscription } from "rxjs";
 import { TranslatePipe } from '@ngx-translate/core';
@@ -13,7 +13,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [TranslatePipe]
 })
 export class GlossaryLinksComponent implements OnInit {
-  private modalService = inject(NgxModalService);
+  private modalService = inject(ModalService);
   private selectedLanguageService = inject(SelectedLanguageService);
 
 

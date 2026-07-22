@@ -11,6 +11,21 @@
   z-index: 1000;
 }
 
+// The CDK overlay pane is stretched to fill the viewport so .pg-modal-wrapper's
+// absolute positioning resolves correctly against it (see ModalService). Since
+// the pane covers the whole screen but only the wrapper is visible, the pane
+// itself must not swallow clicks meant for the backdrop underneath (click-outside-to-close).
+// !important is required: Angular's build wraps app global styles in a CSS cascade
+// layer, while the vendor overlay-prebuilt.css stays unlayered and would otherwise
+// always win regardless of source order.
+.pg-modal-pane {
+  pointer-events: none !important;
+
+  .pg-modal-wrapper {
+    pointer-events: auto !important;
+  }
+}
+
 .modal-open {
   overflow: hidden;
 }

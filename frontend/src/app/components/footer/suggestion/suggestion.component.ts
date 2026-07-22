@@ -2,7 +2,8 @@ import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/cor
 import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgxModalComponent, NgxModalService } from "ngx-modalview";
+import { ModalComponent } from 'src/app/services/modal-component';
+import { ModalService } from 'src/app/services/modal.service';
 import { MatomoTracker } from "ngx-matomo-client";
 
 import { FormsModule } from '@angular/forms';
@@ -16,11 +17,11 @@ import { EntryVersionDto } from '../../../models/dictionary';
     changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, TranslatePipe]
 })
-export class SuggestionComponent extends NgxModalComponent<null, null> implements OnInit {
+export class SuggestionComponent extends ModalComponent<null, null> implements OnInit {
   private modificationService = inject(ModificationService);
   private selectedLanguageService = inject(SelectedLanguageService);
   private authService = inject(AuthService);
-  private modalService = inject(NgxModalService);
+  private modalService = inject(ModalService);
   private tracker = inject(MatomoTracker);
 
 

@@ -10,6 +10,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^22.0.7",
+    "@angular/cdk": "^22.0.5",
     "@angular/common": "^22.0.7",
     "@angular/compiler": "^22.0.7",
     "@angular/core": "^22.0.7",
@@ -30,7 +31,6 @@
     "@tiptap/starter-kit": "^3.22.5",
     "modern-css-reset": "^1.4.0",
     "ngx-matomo-client": "^9.0.1",
-    "ngx-modalview": "^16.0.1",
     "ngx-tiptap": "^14.0.1",
     "remixicon": "^4.7.0",
     "rxjs": "~7.8.1",

@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import {NgxModalComponent, NgxModalService} from "ngx-modalview";
+import { ModalComponent } from 'src/app/services/modal-component';
+import { ModalService } from 'src/app/services/modal.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ExportService } from 'src/app/services/export.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
@@ -16,10 +17,10 @@ import { TranslateCutPipe } from '../../pipes/translate-cut.pipe';
     changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslatePipe, TranslateCutPipe]
 })
-export class ExportComponent extends NgxModalComponent<null, null>  implements OnInit {
+export class ExportComponent extends ModalComponent<null, null>  implements OnInit {
   authService = inject(AuthService);
   private exportService = inject(ExportService);
-  private modalService = inject(NgxModalService);
+  private modalService = inject(ModalService);
   private selectedLanguageService = inject(SelectedLanguageService);
   private router = inject(Router);
   private tracker = inject(MatomoTracker);

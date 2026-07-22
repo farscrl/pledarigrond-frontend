@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
-import {NgxModalComponent, NgxModalService} from "ngx-modalview";
+import { ModalComponent } from 'src/app/services/modal-component';
+import { ModalService } from 'src/app/services/modal.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -13,12 +14,12 @@ import { FormsModule } from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, TranslatePipe]
 })
-export class RegistrationComponent extends NgxModalComponent<null, null> implements OnInit {
+export class RegistrationComponent extends ModalComponent<null, null> implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private translateService = inject(TranslateService);
-  private modalService = inject(NgxModalService);
+  private modalService = inject(ModalService);
 
 
   email = '';

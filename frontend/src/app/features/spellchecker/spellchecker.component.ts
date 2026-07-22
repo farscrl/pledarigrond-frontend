@@ -13,7 +13,7 @@ import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import { MatomoTracker } from "ngx-matomo-client";
 import { ModificationService } from "../../services/modification.service";
 import { AuthService } from "../../services/auth.service";
-import { NgxModalService } from "ngx-modalview";
+import { ModalService } from "../../services/modal.service";
 import {
   HunspellLanguage,
   ManualsSpellcheckerComponent,
@@ -45,7 +45,7 @@ export class SpellcheckerComponent implements OnInit, OnDestroy, IProofreaderInt
   private tracker = inject(MatomoTracker);
   private modificationService = inject(ModificationService);
   private authService = inject(AuthService);
-  private modalService = inject(NgxModalService);
+  private modalService = inject(ModalService);
   private route = inject(ActivatedRoute);
 
 

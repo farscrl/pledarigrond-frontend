@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { NgxModalComponent } from "ngx-modalview";
+import { ModalComponent } from "../../../services/modal-component";
 
 import { ManualMacosComponent } from './manual-macos/manual-macos.component';
 import { ManualHunspellComponent } from './manual-hunspell/manual-hunspell.component';
@@ -12,7 +12,7 @@ import { ManualWordComponent } from './manual-word/manual-word.component';
     changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ManualMacosComponent, ManualHunspellComponent, ManualWordComponent]
 })
-export class ManualsSpellcheckerComponent extends NgxModalComponent<{manualType: ManualType, language: ManualLanguage, hunspellLanguage: HunspellLanguage }, null> {
+export class ManualsSpellcheckerComponent extends ModalComponent<{manualType: ManualType, language: ManualLanguage, hunspellLanguage: HunspellLanguage }, null> {
 
   @Input()
   manualType?: ManualType;

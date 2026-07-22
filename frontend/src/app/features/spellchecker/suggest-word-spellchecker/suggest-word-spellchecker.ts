@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import {NgxModalComponent} from "ngx-modalview";
+import { ModalComponent } from "../../../services/modal-component";
 import {FormsModule} from "@angular/forms";
 import {TranslatePipe} from "@ngx-translate/core";
 
@@ -24,7 +24,7 @@ export interface SuggestWordSpellcheckerModalOutput {
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './suggest-word-spellchecker.scss'
 })
-export class SuggestWordSpellchecker  extends NgxModalComponent<SuggestWordSpellcheckerModalInput, SuggestWordSpellcheckerModalOutput> {
+export class SuggestWordSpellchecker  extends ModalComponent<SuggestWordSpellcheckerModalInput, SuggestWordSpellcheckerModalOutput> {
   word: string = '';
   comment: string = '';
   email: string = '';

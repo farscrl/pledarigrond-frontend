@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
-import { NgxModalComponent, NgxModalService } from "ngx-modalview";
+import { ModalComponent } from '../../../services/modal-component';
+import { ModalService } from '../../../services/modal.service';
 import { Idiom, SelectedLanguageService } from '../../../services/selected-language.service';
 import { Subscription } from 'rxjs';
 
@@ -17,8 +18,8 @@ import { EntryVersionDto } from '../../../models/dictionary';
     changeDetection: ChangeDetectionStrategy.Eager,
     imports: [DetailsExampleComponent, DetailsVerbComponent, DetailsSubstComponent, DetailsAdjComponent, TranslatePipe]
 })
-export class DetailsModalComponent extends NgxModalComponent<{version?: EntryVersionDto}, null> implements OnInit, OnDestroy {
-  private modalService = inject(NgxModalService);
+export class DetailsModalComponent extends ModalComponent<{version?: EntryVersionDto}, null> implements OnInit, OnDestroy {
+  private modalService = inject(ModalService);
   private selectedLanguageService = inject(SelectedLanguageService);
 
 

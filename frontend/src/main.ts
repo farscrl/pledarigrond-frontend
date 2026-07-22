@@ -10,7 +10,6 @@ import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
-import { defaultNgxModalOptions, NgxModalView } from 'ngx-modalview';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TiptapEditorDirective } from 'ngx-tiptap';
 import { AppComponent } from './app/app.component';
@@ -33,16 +32,6 @@ bootstrapApplication(AppComponent, {
                 tokenGetter: tokenGetter,
                 allowedDomains: [environment.apiHost],
                 disallowedRoutes: [environment.apiUrl + '/users/token']
-            }
-        }), NgxModalView.forRoot({ container: 'modal-container' }, {
-            ...defaultNgxModalOptions,
-            ...{
-                closeOnEscape: true,
-                closeOnClickOutside: true,
-                wrapperDefaultClasses: 'pg-modal pg-modal--fade',
-                wrapperClass: 'pg-modal--fade-in',
-                animationDuration: 0,
-                autoFocus: false
             }
         }), ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: !isDevMode(),
