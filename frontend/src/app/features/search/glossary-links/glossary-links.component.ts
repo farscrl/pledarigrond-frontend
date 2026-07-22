@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { OtherResourcesComponent, OtherResourcesType } from '../../other-resources/other-resources.component';
 import { NgxModalService } from "ngx-modalview";
 import { SelectedLanguageService } from "../../../services/selected-language.service";
@@ -9,6 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-glossary-links',
     templateUrl: './glossary-links.component.html',
     styleUrls: ['./glossary-links.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslatePipe]
 })
 export class GlossaryLinksComponent implements OnInit {

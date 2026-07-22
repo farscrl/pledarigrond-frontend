@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { SearchCriteria } from '../../../../models/search-criteria';
 import { SelectedLanguageService } from '../../../../services/selected-language.service';
 
@@ -6,6 +6,7 @@ import { SelectedLanguageService } from '../../../../services/selected-language.
     selector: 'app-suggestions',
     templateUrl: './suggestions.component.html',
     styleUrl: './suggestions.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: []
 })
 export class SuggestionsComponent {

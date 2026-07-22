@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ExportService } from '../../../services/export.service';
@@ -10,6 +10,7 @@ export type ErrorType = 'no-idiom' | 'no-terms' | 'invalid-email' | 'server-erro
   selector: 'app-download-pronunzia',
   imports: [FormsModule],
   templateUrl: './download-pronunzia.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './download-pronunzia.scss'
 })
 export class DownloadPronunzia implements OnInit, OnDestroy {

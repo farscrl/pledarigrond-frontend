@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ModificationService } from 'src/app/services/modification.service';
 import { SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,6 +13,7 @@ import { EntryVersionDto } from '../../../models/dictionary';
     selector: 'app-suggest-modification',
     templateUrl: './suggest-modification.component.html',
     styleUrls: ['./suggest-modification.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, TranslatePipe]
 })
 export class SuggestModificationComponent extends NgxModalComponent<{version: EntryVersionDto}, null> implements OnInit {

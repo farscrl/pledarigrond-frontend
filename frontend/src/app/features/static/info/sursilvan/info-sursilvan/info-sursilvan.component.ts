@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FrontendLanguage, SelectedLanguageService } from '../../../../../services/selected-language.service';
 import { Subscription } from 'rxjs';
 import { InfoService } from '../../../../../services/info.service';
@@ -12,6 +12,7 @@ import { InfoSursilvanRmComponent } from '../info-sursilvan-rm/info-sursilvan-rm
     InfoSursilvanDeComponent,
     InfoSursilvanRmComponent
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './info-sursilvan.component.scss'
 })
 export class InfoSursilvanComponent {

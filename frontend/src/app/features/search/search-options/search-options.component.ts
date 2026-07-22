@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { SearchCriteria } from 'src/app/models/search-criteria';
 import { FormsModule } from '@angular/forms';
 import { AutofocusDirective } from '../../../directives/autofocus.directive';
@@ -8,6 +8,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-search-options',
     templateUrl: './search-options.component.html',
     styleUrls: ['./search-options.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, AutofocusDirective, TranslatePipe]
 })
 export class SearchOptionsComponent implements OnInit {

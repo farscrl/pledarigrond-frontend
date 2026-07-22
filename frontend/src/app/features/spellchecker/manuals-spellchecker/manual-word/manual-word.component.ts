@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { ManualLanguage } from "../manuals-spellchecker.component";
 
 
@@ -6,6 +6,7 @@ import { ManualLanguage } from "../manuals-spellchecker.component";
     selector: 'app-manual-word',
     templateUrl: './manual-word.component.html',
     styleUrls: ['./manual-word.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: []
 })
 export class ManualWordComponent {

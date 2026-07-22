@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
@@ -8,6 +8,7 @@ import { HelpSurmiranDeComponent } from '../help-surmiran-de/help-surmiran-de.co
 @Component({
     selector: 'app-help-surmiran',
     templateUrl: './help-surmiran.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [HelpSurmiranRmComponent, HelpSurmiranDeComponent]
 })
 export class HelpSurmiranComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { HunspellLanguage, ManualLanguage } from "../manuals-spellchecker.component";
 
 
@@ -6,6 +6,7 @@ import { HunspellLanguage, ManualLanguage } from "../manuals-spellchecker.compon
     selector: 'app-manual-hunspell',
     templateUrl: './manual-hunspell.component.html',
     styleUrls: ['./manual-hunspell.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: []
 })
 export class ManualHunspellComponent {

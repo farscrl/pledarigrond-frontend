@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,6 +12,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, TranslatePipe]
 })
 export class LoginComponent implements OnInit {

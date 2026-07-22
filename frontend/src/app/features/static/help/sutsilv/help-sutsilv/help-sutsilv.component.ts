@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
@@ -8,6 +8,7 @@ import { HelpSutsilvDeComponent } from '../help-sutsilv-de/help-sutsilv-de.compo
 @Component({
     selector: 'app-help-sutsilv',
     templateUrl: './help-sutsilv.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [HelpSutsilvRmComponent, HelpSutsilvDeComponent]
 })
 export class HelpSutsilvComponent implements OnInit {

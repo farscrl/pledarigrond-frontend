@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { formatFormVariants } from '../../../../../utils/word-utils';
 
 
@@ -6,6 +6,7 @@ import { formatFormVariants } from '../../../../../utils/word-utils';
     selector: 'app-conjugation-personal',
     templateUrl: './conjugation-personal.component.html',
     styleUrls: ['./conjugation-personal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: []
 })
 export class ConjugationPersonalComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GlossaryLinksComponent } from '../search/glossary-links/glossary-links.component';
 import { MatomoTrackClickDirective } from 'ngx-matomo-client';
 
@@ -6,6 +6,7 @@ import { MatomoTrackClickDirective } from 'ngx-matomo-client';
     selector: 'app-vallader-placeholder',
     templateUrl: './vallader-placeholder.component.html',
     styleUrls: ['./vallader-placeholder.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [GlossaryLinksComponent, MatomoTrackClickDirective]
 })
 export class ValladerPlaceholderComponent implements OnInit {

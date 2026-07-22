@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {FrontendLanguage, Idiom, SelectedLanguageService} from 'src/app/services/selected-language.service';
 import { NgxModalService } from "ngx-modalview";
@@ -13,6 +13,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterLink, TranslatePipe]
 })
 export class FooterComponent implements OnInit, OnDestroy {

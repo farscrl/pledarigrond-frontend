@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
 
@@ -8,6 +8,7 @@ import { HelpRumgrDeComponent } from '../help-rumgr-de/help-rumgr-de.component';
 @Component({
     selector: 'app-help-rumgr',
     templateUrl: './help-rumgr.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [HelpRumgrRmComponent, HelpRumgrDeComponent]
 })
 export class HelpRumgrComponent implements OnInit {

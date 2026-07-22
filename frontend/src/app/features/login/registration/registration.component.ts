@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { User } from 'src/app/models/user';
@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-registration',
     templateUrl: './registration.component.html',
     styleUrls: ['./registration.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, TranslatePipe]
 })
 export class RegistrationComponent extends NgxModalComponent<null, null> implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Pronouns } from '../../../../models/pronouns';
 import { Idiom } from '../../../../services/selected-language.service';
 
@@ -11,6 +11,7 @@ import { EntryVersionDto } from '../../../../models/dictionary';
     selector: 'app-details-verb',
     templateUrl: './details-verb.component.html',
     styleUrl: './details-verb.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ConjugationPersonalComponent, ConjugationImpersonalComponent, TranslatePipe]
 })
 export class DetailsVerbComponent implements OnChanges {

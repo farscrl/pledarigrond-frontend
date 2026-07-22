@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SwUpdate, VersionReadyEvent } from "@angular/service-worker";
 import { filter } from "rxjs";
@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [HeaderComponent, LanguageSelectionComponent, MainComponent, FooterComponent]
 })
 export class AppComponent {

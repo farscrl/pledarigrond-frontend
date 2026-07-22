@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { Editor } from '@tiptap/core';
 
 import { TranslatePipe } from '@ngx-translate/core';
@@ -7,6 +7,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-spellchecker-menubar',
     templateUrl: './spellchecker-menubar.component.html',
     styleUrls: ['./spellchecker-menubar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslatePipe]
 })
 export class SpellcheckerMenubarComponent implements OnInit {

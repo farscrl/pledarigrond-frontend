@@ -2,7 +2,7 @@ import { enableProdMode, importProvidersFrom, isDevMode, provideZoneChangeDetect
 import { environment } from './environments/environment';
 import { UserLoggedInGuard } from './app/auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './app/auth/not-logged-in.guard';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { LanguageUtils } from './app/utils/language-utils';
 import { MatomoTrackClickDirective, provideMatomo, withRouter } from 'ngx-matomo-client';
 import { provideTranslateService, TranslateDirective, TranslatePipe } from '@ngx-translate/core';
@@ -52,7 +52,7 @@ bootstrapApplication(AppComponent, {
         }), TranslatePipe, TranslateDirective, MatomoTrackClickDirective, TiptapEditorDirective),
         UserLoggedInGuard,
         UserNotLoggedInGuard,
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         LanguageUtils,
         provideMatomo({
             siteId: environment.matomoTrackingId,

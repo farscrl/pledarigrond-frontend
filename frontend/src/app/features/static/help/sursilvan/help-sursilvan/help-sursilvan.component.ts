@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FrontendLanguage, SelectedLanguageService } from '../../../../../services/selected-language.service';
 import { Subscription } from 'rxjs';
 import { HelpSursilvanRmComponent } from '../help-sursilvan-rm/help-sursilvan-rm.component';
@@ -11,6 +11,7 @@ import { HelpSursilvanDeComponent } from '../help-sursilvan-de/help-sursilvan-de
     HelpSursilvanRmComponent,
     HelpSursilvanDeComponent
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './help-sursilvan.component.scss'
 })
 export class HelpSursilvanComponent implements OnInit, OnDestroy {

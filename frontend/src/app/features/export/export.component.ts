@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgxModalComponent, NgxModalService} from "ngx-modalview";
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,6 +13,7 @@ import { TranslateCutPipe } from '../../pipes/translate-cut.pipe';
     selector: 'app-export',
     templateUrl: './export.component.html',
     styleUrls: ['./export.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslatePipe, TranslateCutPipe]
 })
 export class ExportComponent extends NgxModalComponent<null, null>  implements OnInit {

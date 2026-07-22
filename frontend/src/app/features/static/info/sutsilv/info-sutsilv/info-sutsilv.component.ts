@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { InfoService } from 'src/app/services/info.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
@@ -9,6 +9,7 @@ import { InfoSutsilvDeComponent } from '../info-sutsilv-de/info-sutsilv-de.compo
 @Component({
     selector: 'app-info-sutsilv',
     templateUrl: './info-sutsilv.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [InfoSutsilvRmComponent, InfoSutsilvDeComponent]
 })
 export class InfoSutsilvComponent implements OnInit, OnDestroy {

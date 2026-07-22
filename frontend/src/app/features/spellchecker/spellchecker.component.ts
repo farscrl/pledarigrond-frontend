@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import SpellcheckerExtension, {
@@ -36,6 +36,7 @@ import {
     selector: 'app-spellchecker',
     templateUrl: './spellchecker.component.html',
     styleUrls: ['./spellchecker.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [SpellcheckerMenubarComponent, TiptapEditorDirective, FormsModule, TranslatePipe, TranslateCutPipe]
 })
 export class SpellcheckerComponent implements OnInit, OnDestroy, IProofreaderInterface {

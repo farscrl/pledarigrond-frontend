@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { InfoService } from 'src/app/services/info.service';
 import { FrontendLanguage, SelectedLanguageService } from 'src/app/services/selected-language.service';
@@ -9,6 +9,7 @@ import { InfoSurmiranDeComponent } from '../info-surmiran-de/info-surmiran-de.co
 @Component({
     selector: 'app-info-surmiran',
     templateUrl: './info-surmiran.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [InfoSurmiranRmComponent, InfoSurmiranDeComponent]
 })
 export class InfoSurmiranComponent implements OnInit {

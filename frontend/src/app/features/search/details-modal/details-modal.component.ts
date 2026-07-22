@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NgxModalComponent, NgxModalService } from "ngx-modalview";
 import { Idiom, SelectedLanguageService } from '../../../services/selected-language.service';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,7 @@ import { EntryVersionDto } from '../../../models/dictionary';
     selector: 'app-details-modal',
     templateUrl: './details-modal.component.html',
     styleUrls: ['./details-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [DetailsExampleComponent, DetailsVerbComponent, DetailsSubstComponent, DetailsAdjComponent, TranslatePipe]
 })
 export class DetailsModalComponent extends NgxModalComponent<{version?: EntryVersionDto}, null> implements OnInit, OnDestroy {

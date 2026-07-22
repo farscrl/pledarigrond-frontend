@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Idiom, SelectedLanguageService } from 'src/app/services/selected-language.service';
 import { Router, RouterLink } from "@angular/router";
@@ -9,6 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-language-selection',
     templateUrl: './language-selection.component.html',
     styleUrls: ['./language-selection.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterLink, TranslatePipe]
 })
 export class LanguageSelectionComponent implements OnInit, OnDestroy {

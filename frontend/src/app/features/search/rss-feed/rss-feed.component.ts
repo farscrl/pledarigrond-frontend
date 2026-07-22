@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FeedEntry } from 'src/app/models/feed';
 import { FeedService } from 'src/app/services/feed.service';
@@ -10,6 +10,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-rss-feed',
     templateUrl: './rss-feed.component.html',
     styleUrls: ['./rss-feed.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [SlicePipe, TranslatePipe]
 })
 export class RssFeedComponent implements OnInit, OnDestroy {

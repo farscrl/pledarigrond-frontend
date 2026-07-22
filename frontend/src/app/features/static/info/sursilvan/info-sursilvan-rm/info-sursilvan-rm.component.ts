@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ThousandSeparatorPipe } from '../../../../../pipes/thousand-separator.pipe';
 
 @Component({
@@ -7,6 +7,7 @@ import { ThousandSeparatorPipe } from '../../../../../pipes/thousand-separator.p
     imports: [
         ThousandSeparatorPipe
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './info-sursilvan-rm.component.scss'
 })
 export class InfoSursilvanRmComponent {

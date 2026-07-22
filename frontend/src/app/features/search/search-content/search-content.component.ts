@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { SearchCriteria, SearchCriteriaUrl } from 'src/app/models/search-criteria';
 import { SearchService } from 'src/app/services/search.service';
@@ -23,6 +23,7 @@ import { RegistrationService } from '../../../services/registration';
     selector: 'app-search-content',
     templateUrl: './search-content.component.html',
     styleUrls: ['./search-content.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [SearchOptionsComponent, SuggestionsComponent, TranslatePipe, HighlighterPipe, ThousandSeparatorPipe, AudioPlayer]
 })
 export class SearchContentComponent implements OnInit, OnDestroy {

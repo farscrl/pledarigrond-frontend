@@ -1,9 +1,10 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-audio-player',
   imports: [],
   templateUrl: './audio-player.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './audio-player.scss'
 })
 export class AudioPlayer {
