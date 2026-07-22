@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Idiom } from "../services/selected-language.service";
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LanguageUtils {
 
   isSupportedLanguage(idiom: Idiom): boolean {

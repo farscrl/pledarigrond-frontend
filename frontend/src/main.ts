@@ -1,9 +1,6 @@
 import { enableProdMode, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { environment } from './environments/environment';
-import { UserLoggedInGuard } from './app/auth/logged-in.guard';
-import { UserNotLoggedInGuard } from './app/auth/not-logged-in.guard';
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
-import { LanguageUtils } from './app/utils/language-utils';
 import { provideMatomo, withRouter } from 'ngx-matomo-client';
 import { provideTranslateService } from '@ngx-translate/core';
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -42,10 +39,7 @@ bootstrapApplication(AppComponent, {
         }
       })
     ),
-    UserLoggedInGuard,
-    UserNotLoggedInGuard,
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
-    LanguageUtils,
     provideMatomo({
       siteId: environment.matomoTrackingId,
       trackerUrl: environment.matomoTrackingUrl,
