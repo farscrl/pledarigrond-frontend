@@ -72,8 +72,8 @@ importers:
         specifier: ^14.0.1
         version: 14.0.1(a45ef1471dfb79a01a71877030cb34a7)
       remixicon:
-        specifier: ^4.7.0
-        version: 4.7.0
+        specifier: ^4.9.1
+        version: 4.9.1
       rxjs:
         specifier: ~7.8.1
         version: 7.8.2
@@ -4263,8 +4263,8 @@ packages:
     resolution: {integrity: sha512-NZQZdC5wOE/H3UT28fVGL+ikOZcEzfMGk/c3iN9UGxzWHMa1op7274oyiUVrAG4B2EuFhus8SvkaYnhvW92p9Q==}
     hasBin: true
 
-  remixicon@4.7.0:
-    resolution: {integrity: sha512-g2pHOofQWARWpxdbrQu5+K3C8ZbqguQFzE54HIMWFCpFa63pumaAltIgZmFMRQpKKBScRWQASQfWxS9asNCcHQ==}
+  remixicon@4.9.1:
+    resolution: {integrity: sha512-36gLSoujkabnCFZFDyP17VNh9piuBA/rsXUb4auSJWLGsHVXtmxLj/EM5FjaEAGnk8oIAj1Azob/DZ2N+90lAQ==}
 
   remove-trailing-separator@1.1.0:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
@@ -9560,7 +9560,7 @@ snapshots:
     dependencies:
       jsesc: 3.1.0
 
-  remixicon@4.7.0: {}
+  remixicon@4.9.1: {}
 
   remove-trailing-separator@1.1.0: {}
 

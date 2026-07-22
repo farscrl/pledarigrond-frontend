@@ -29,7 +29,7 @@
     "modern-css-reset": "^1.4.0",
     "ngx-matomo-client": "^10.0.0",
     "ngx-tiptap": "^14.0.1",
-    "remixicon": "^4.7.0",
+    "remixicon": "^4.9.1",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
