@@ -12,8 +12,6 @@ import { routes } from './app/app.routes';
 import { provideJwtConfig } from '@jjmhalew/angular-jwt';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { NgxSortableModule } from 'ngx-sortable';
-import { NzFlexDirective } from 'ng-zorro-antd/flex';
 import { provideServiceWorker } from '@angular/service-worker';
 import { AppComponent } from './app/app.component';
 import { registerLocaleData } from '@angular/common';
@@ -36,10 +34,6 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideZoneChangeDetection(),
     provideRouter(routes),
-    importProvidersFrom(
-      NgxSortableModule,
-      NzFlexDirective
-    ),
     provideJwtConfig({
       tokenGetter: tokenGetter,
       allowedDomains: [environment.apiHost],
