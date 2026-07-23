@@ -1,9 +1,6 @@
-<nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton" class="search-bar">
-  <input type="text" nz-input placeholder="pled per tschertgar" [value]="searchTerm" #searchTermField (keyup.enter)=search(searchTermField.value) />
-</nz-input-group>
-<ng-template #suffixIconButton>
-  <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search" (click)="search(searchTermField.value)" [nzSpin]="isLoading"></span></button>
-</ng-template>
+<nz-input-search class="search-bar" [nzEnterButton]="true" [nzLoading]="isLoading" (nzSearch)="search($event.value)">
+  <input type="text" nz-input placeholder="pled per tschertgar" [value]="searchTerm" />
+</nz-input-search>
 
 @if (searchTerm) {
   <ul nz-list [nzDataSource]="examples" nzBordered>

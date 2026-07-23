@@ -6,7 +6,7 @@ import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent } from 'ng-zorro-antd/form';
 import { NzDatePickerComponent, NzRangePickerComponent } from 'ng-zorro-antd/date-picker';
 import { FormsModule } from '@angular/forms';
-import { NzInputDirective, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective } from 'ng-zorro-antd/input';
+import { NzInputDirective, NzInputSuffixDirective, NzInputWrapperComponent } from 'ng-zorro-antd/input';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzTooltipDirective } from 'ng-zorro-antd/tooltip';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -18,7 +18,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     templateUrl: './duration.component.html',
     styleUrls: ['./duration.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzDatePickerComponent, NzRangePickerComponent, FormsModule, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective, NzIconDirective, NzTooltipDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
+    imports: [NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzDatePickerComponent, NzRangePickerComponent, FormsModule, NzInputWrapperComponent, NzInputSuffixDirective, NzInputDirective, NzIconDirective, NzTooltipDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class DurationComponent implements OnInit {
 

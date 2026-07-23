@@ -5,7 +5,8 @@ import { Credentials } from 'src/app/models/security';
 import { AuthService } from 'src/app/services/auth.service';
 import { NzFormControlComponent, NzFormDirective, NzFormItemComponent } from 'ng-zorro-antd/form';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
-import { NzInputDirective, NzInputGroupComponent } from 'ng-zorro-antd/input';
+import { NzInputDirective, NzInputPrefixDirective, NzInputWrapperComponent } from 'ng-zorro-antd/input';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
 
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
@@ -16,7 +17,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputGroupComponent, NzInputDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
+    imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputWrapperComponent, NzInputPrefixDirective, NzIconDirective, NzInputDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
   private fb = inject(UntypedFormBuilder);

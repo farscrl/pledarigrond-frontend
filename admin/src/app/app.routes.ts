@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { UserLoggedInGuard } from './auth/logged-in.guard';
 import { UserNotLoggedInGuard } from './auth/not-logged-in.guard';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
@@ -19,7 +18,7 @@ import { ReviewPronunciationComponent } from './features/editor/review-pronuncia
 import { Language } from './models/security';
 import { LanguageResolver } from './resolver/language.resolver';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
@@ -445,9 +444,3 @@ const routes: Routes = [
     redirectTo: 'admin'
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

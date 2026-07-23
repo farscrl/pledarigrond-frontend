@@ -15,7 +15,7 @@ import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
 import { NzFlexDirective } from 'ng-zorro-antd/flex';
-import { NzInputDirective, NzInputGroupComponent } from 'ng-zorro-antd/input';
+import { NzInputDirective, NzInputSearchDirective, NzInputWrapperComponent } from 'ng-zorro-antd/input';
 import { FormsModule } from '@angular/forms';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import {
@@ -32,7 +32,7 @@ import {
     templateUrl: './pronunciation.component.html',
     styleUrl: './pronunciation.component.scss',
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [RegistrationStatusComponent, AudioPlayerComponent, NzButtonComponent, NzWaveDirective, NzDividerComponent, NzFlexDirective, NzInputGroupComponent, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NzModalFooterDirective]
+    imports: [RegistrationStatusComponent, AudioPlayerComponent, NzButtonComponent, NzWaveDirective, NzDividerComponent, NzFlexDirective, NzInputWrapperComponent, NzInputSearchDirective, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NzModalFooterDirective]
 })
 export class PronunciationComponent implements OnInit {
   private registrationService = inject(RegistrationService);

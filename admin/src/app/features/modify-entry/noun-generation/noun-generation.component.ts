@@ -21,7 +21,8 @@ import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLab
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { NzAutosizeDirective, NzInputDirective } from 'ng-zorro-antd/input';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -35,7 +36,7 @@ export class NounGenerationData {
     templateUrl: './noun-generation.component.html',
     styleUrls: ['./noun-generation.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzButtonComponent, NzWaveDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzButtonComponent, NzWaveDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, CdkTextareaAutosize, NzModalFooterDirective, TranslatePipe]
 })
 export class NounGenerationComponent implements OnInit {
   private fb = inject(UntypedFormBuilder);

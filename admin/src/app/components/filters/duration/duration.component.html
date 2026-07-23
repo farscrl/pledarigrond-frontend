@@ -19,12 +19,10 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">{{ 'lexicon.filter.user_ip' | translate}}</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <nz-input-group [nzSuffix]="userFilterSuffixTemplate">
+      <nz-input-wrapper>
         <input nz-input id="user" [value]="selectedUserFilter" [disabled]="true"/>
-      </nz-input-group>
-      <ng-template #userFilterSuffixTemplate>
-        <i nz-icon nz-tooltip nzTooltipTitle="Remove user filter" nzType="close-circle" (click)="removeUserFilter()"></i>
-      </ng-template>
+        <i nzInputSuffix nz-icon nz-tooltip nzTooltipTitle="Remove user filter" nzType="close-circle" (click)="removeUserFilter()"></i>
+      </nz-input-wrapper>
     </nz-form-control>
   </nz-form-item>
 }

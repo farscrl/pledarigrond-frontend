@@ -186,23 +186,19 @@
         <div nz-row [formGroupName]="i">
           <div nz-col nzSpan="11">
             <nz-form-item>
-              <nz-input-group>
-                <input type="text" formControlName="exampleRm" nz-input [placeholder]="'edit.lemma.example_placeholder_rm' | translate" />
-              </nz-input-group>
+              <input type="text" formControlName="exampleRm" nz-input [placeholder]="'edit.lemma.example_placeholder_rm' | translate" />
             </nz-form-item>
           </div>
           <div nz-col nzSpan="1">
-            <button nz-button nzType="primary" nzSearch  (click)="searchExamples(i)"><span nz-icon nzType="file-search" nzTheme="outline"></span></button>
+            <button nz-button nzType="primary" (click)="searchExamples(i)"><span nz-icon nzType="file-search" nzTheme="outline"></span></button>
           </div>
           <div nz-col nzSpan="11">
             <nz-form-item>
-              <nz-input-group>
-                <input type="text" formControlName="exampleDe" nz-input [placeholder]="'edit.lemma.example_placeholder_de' | translate" />
-              </nz-input-group>
+              <input type="text" formControlName="exampleDe" nz-input [placeholder]="'edit.lemma.example_placeholder_de' | translate" />
             </nz-form-item>
           </div>
           <div nz-col nzSpan="1" class="remove-button">
-            <button nz-button nzType="primary" nzSearch  (click)="removeExample(i)"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
+            <button nz-button nzType="primary" (click)="removeExample(i)"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
           </div>
         </div>
       </div>

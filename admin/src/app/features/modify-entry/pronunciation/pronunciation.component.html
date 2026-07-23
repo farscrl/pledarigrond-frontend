@@ -32,12 +32,9 @@
     <div class="combination-wrapper" nz-flex [nzGap]="80" >
       <div nz-flex nzFlex="1 0 calc(50% - 40px)" nzVertical="true">
         <h3>Attribuir registraziun existenta</h3>
-        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+        <nz-input-search [nzEnterButton]="true" (nzSearch)="searchRegistrations()">
           <input type="text" nz-input placeholder="input search text" [(ngModel)]="listFilter.searchTerm" (ngModelChange)="searchRegistrations()" />
-        </nz-input-group>
-        <ng-template #suffixIconButton>
-          <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search"></span></button>
-        </ng-template>
+        </nz-input-search>
         <nz-table #smallTable nzSize="small" [nzData]="searchResults" [nzFrontPagination]="false" [nzShowPagination]="false">
           <thead>
             <tr>

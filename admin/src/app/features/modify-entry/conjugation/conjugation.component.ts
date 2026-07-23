@@ -24,7 +24,8 @@ import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLab
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { NzAutosizeDirective, NzInputDirective } from 'ng-zorro-antd/input';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { NzTabComponent, NzTabsComponent } from 'ng-zorro-antd/tabs';
@@ -39,7 +40,7 @@ export class ConjugationData {
     templateUrl: './conjugation.component.html',
     styleUrls: ['./conjugation.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzButtonComponent, NzWaveDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzTabsComponent, NzTabComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzButtonComponent, NzWaveDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzTabsComponent, NzTabComponent, CdkTextareaAutosize, NzModalFooterDirective, TranslatePipe]
 })
 export class ConjugationComponent implements OnInit {
   private fb = inject(UntypedFormBuilder);

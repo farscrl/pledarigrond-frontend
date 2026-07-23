@@ -3,16 +3,18 @@
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
-          <nz-input-group nzPrefixIcon="user">
+          <nz-input-wrapper>
+            <span nzInputPrefix nz-icon nzType="user"></span>
             <input type="text" nz-input formControlName="userName" [placeholder]="'login.email' | translate" />
-          </nz-input-group>
+          </nz-input-wrapper>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your Password!">
-          <nz-input-group nzPrefixIcon="lock">
+          <nz-input-wrapper>
+            <span nzInputPrefix nz-icon nzType="lock"></span>
             <input type="password" nz-input formControlName="password" [placeholder]="'login.password' | translate" />
-          </nz-input-group>
+          </nz-input-wrapper>
         </nz-form-control>
       </nz-form-item>
       @if (showError) {

@@ -37,7 +37,7 @@ import {
 } from '../../../components/pronunciation-characters/pronunciation-characters.component';
 import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLabelComponent } from 'ng-zorro-antd/form';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
-import { NzInputDirective, NzInputGroupComponent } from 'ng-zorro-antd/input';
+import { NzInputDirective } from 'ng-zorro-antd/input';
 import { NzAutocompleteComponent, NzAutocompleteTriggerDirective } from 'ng-zorro-antd/auto-complete';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzPopoverDirective } from 'ng-zorro-antd/popover';
@@ -58,7 +58,7 @@ export class MainEntryData {
     templateUrl: './main-entry.component.html',
     styleUrls: ['./main-entry.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NzInputGroupComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class MainEntryComponent implements OnInit {
   private modal = inject(NzModalRef);

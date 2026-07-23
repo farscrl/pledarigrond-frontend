@@ -15,7 +15,8 @@ import {
 } from '../../../components/pronunciation-characters/pronunciation-characters.component';
 import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLabelComponent } from 'ng-zorro-antd/form';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
-import { NzAutosizeDirective, NzInputDirective } from 'ng-zorro-antd/input';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -28,7 +29,7 @@ export class PronounGenerationData {
     templateUrl: './pronoun-generation.component.html',
     styleUrls: ['./pronoun-generation.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzAutosizeDirective, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
+    imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, CdkTextareaAutosize, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class PronounGenerationComponent implements OnInit {
   private fb = inject(UntypedFormBuilder);
