@@ -42,7 +42,14 @@
             ],
             "scripts": [],
             "serviceWorker": "ngsw-config.json",
-            "browser": "src/main.ts"
+            "browser": "src/main.ts",
+            "externalDependencies": [
+              "node:module",
+              "node:fs",
+              "node:path",
+              "node:url",
+              "node:crypto"
+            ]
           },
           "configurations": {
             "production": {
