@@ -25,15 +25,15 @@
     "moment": "^2.30.1",
     "ng-zorro-antd": "^22.0.0",
     "ngx-sortable": "^2.1.0",
-    "rxjs": "~7.8.1",
-    "tslib": "^2.6.2",
-    "zone.js": "~0.15.0"
+    "rxjs": "~7.8.2",
+    "tslib": "^2.8.1",
+    "zone.js": "~0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "^22.0.7",
-    "@angular/cli": "^22.0.7",
+    "@angular/build": "^22.0.8",
+    "@angular/cli": "^22.0.8",
     "@angular/compiler-cli": "^22.0.8",
-    "@types/node": "^22.18.11",
+    "@types/node": "^22.20.1",
     "typescript": "~6.0.3"
   }
 }
