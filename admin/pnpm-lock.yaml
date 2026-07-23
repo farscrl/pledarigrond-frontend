@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  ng-zorro-antd@22.0.0:
+    hash: c2438b582fdc81aaf1250b7ddcd63c6bef3a246d90354d253b6766c0bdd3eb54
+    path: patches/ng-zorro-antd@22.0.0.patch
+
 importers:
 
   .:
@@ -55,7 +60,7 @@ importers:
         version: 2.30.1
       ng-zorro-antd:
         specifier: ^22.0.0
-        version: 22.0.0(61e5b2393a51548c79180d9dce967e7e)
+        version: 22.0.0(patch_hash=c2438b582fdc81aaf1250b7ddcd63c6bef3a246d90354d253b6766c0bdd3eb54)(61e5b2393a51548c79180d9dce967e7e)
       ngx-sortable:
         specifier: ^2.1.0
         version: 2.1.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
@@ -5655,7 +5660,7 @@ snapshots:
 
   negotiator@1.0.0: {}
 
-  ng-zorro-antd@22.0.0(61e5b2393a51548c79180d9dce967e7e):
+  ng-zorro-antd@22.0.0(patch_hash=c2438b582fdc81aaf1250b7ddcd63c6bef3a246d90354d253b6766c0bdd3eb54)(61e5b2393a51548c79180d9dce967e7e):
     dependencies:
       '@angular/cdk': 22.0.6(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)

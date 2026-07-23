@@ -1,0 +1,2 @@
+patchedDependencies:
+  ng-zorro-antd@22.0.0: patches/ng-zorro-antd@22.0.0.patch

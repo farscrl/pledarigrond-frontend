@@ -1,0 +1,21 @@
+diff --git a/fesm2022/ng-zorro-antd-button.mjs b/fesm2022/ng-zorro-antd-button.mjs
+index 651d0c03fd13481db3220cb5da321b5c134d1b2d..ce1c4762a54032b2b64f9a50b0b05a6eead70269 100644
+--- a/fesm2022/ng-zorro-antd-button.mjs
++++ b/fesm2022/ng-zorro-antd-button.mjs
+@@ -73,9 +73,14 @@ let NzButtonComponent = (() => {
+             });
+             afterEveryRender({
+                 read: () => {
+-                    const { children } = this.elementRef.nativeElement;
++                    const { children, childNodes } = this.elementRef.nativeElement;
+                     const visibleElement = Array.from(children).filter(element => element.style.display !== 'none');
+-                    this.elementOnly.set(visibleElement.length === 1);
++                    // Patched: `children` only counts Element nodes, so a button with an icon plus
++                    // plain interpolated text (e.g. `<i nz-icon></i> {{ label }}`) was always seen as
++                    // having exactly one child (the icon), permanently misclassifying it as icon-only.
++                    // See https://github.com/NG-ZORRO/ng-zorro-antd/issues/5609
++                    const hasNonEmptyText = Array.from(childNodes).some(node => node.nodeType === Node.TEXT_NODE && !!node.textContent && node.textContent.trim().length > 0);
++                    this.elementOnly.set(visibleElement.length === 1 && !hasNonEmptyText);
+                 }
+             });
+         }
