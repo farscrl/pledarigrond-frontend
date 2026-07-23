@@ -164,16 +164,6 @@
                 }
               ],
               "outputHashing": "all"
-            },
-            "testing": {
-              "aot": false,
-              "optimization": false,
-              "extractLicenses": false,
-              "assets": [
-                "src/favicon.png",
-                "src/assets"
-              ],
-              "polyfills": "src/polyfills.ts"
             }
           },
           "defaultConfiguration": "production"
@@ -197,24 +187,6 @@
           "builder": "@angular/build:extract-i18n",
           "options": {
             "buildTarget": "admin:build"
-          }
-        },
-        "test": {
-          "builder": "@angular/build:unit-test",
-          "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "reporters": [
-              "default"
-            ],
-            "coverageReporters": [
-              "html",
-              "text-summary"
-            ],
-            "setupFiles": [
-              "src/test.ts"
-            ],
-            "buildTarget": ":build:testing",
-            "runner": "vitest"
           }
         }
       }
