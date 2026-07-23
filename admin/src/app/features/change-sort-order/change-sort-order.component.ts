@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalFooterDirective, NzModalRef, NzModalTitleDirective } from 'ng-zorro-antd/modal';
 import { DictionaryLanguage } from 'src/app/models/dictionary-language';
 import { EditorService } from 'src/app/services/editor.service';
@@ -20,6 +20,7 @@ export class ChanceSortOrderData {
     selector: 'app-change-sort-order',
     templateUrl: './change-sort-order.component.html',
     styleUrls: ['./change-sort-order.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzModalTitleDirective, NgxSortableModule, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class ChangeSortOrderComponent implements OnInit {

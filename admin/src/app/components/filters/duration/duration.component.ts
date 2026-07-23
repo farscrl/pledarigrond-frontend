@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import moment from 'moment';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { ngDebounce } from "../../../decorators/debounce.decorator";
@@ -17,6 +17,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-duration',
     templateUrl: './duration.component.html',
     styleUrls: ['./duration.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzDatePickerComponent, NzRangePickerComponent, FormsModule, NzInputGroupComponent, NzInputGroupWhitSuffixOrPrefixDirective, NzInputDirective, NzIconDirective, NzTooltipDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class DurationComponent implements OnInit {

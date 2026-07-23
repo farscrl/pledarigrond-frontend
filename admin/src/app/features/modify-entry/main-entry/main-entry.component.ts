@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, inject, OnInit, ViewContainerRef, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormArray,
   FormsModule,
@@ -57,6 +57,7 @@ export class MainEntryData {
     selector: 'app-main-entry',
     templateUrl: './main-entry.component.html',
     styleUrls: ['./main-entry.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzColDirective, NzFormItemComponent, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzIconDirective, NzPopoverDirective, NzDividerComponent, NzSelectComponent, NzOptionComponent, AudioPlayerComponent, NzInputGroupComponent, NzButtonComponent, NzWaveDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class MainEntryComponent implements OnInit {

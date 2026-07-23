@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
 import { environment } from './../../../environments/environment';
@@ -14,6 +14,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-navigation-horizontal',
     templateUrl: './navigation-horizontal.component.html',
     styleUrls: ['./navigation-horizontal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzMenuDirective, NzIconDirective, NzMenuItemComponent, RouterLink, NzDividerComponent, TranslatePipe]
 })
 export class NavigationHorizontalComponent implements OnInit {

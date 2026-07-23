@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { EditorRole } from 'src/app/models/user';
 
 import { NzTagComponent } from 'ng-zorro-antd/tag';
@@ -8,6 +8,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-user-role',
     templateUrl: './user-role.component.html',
     styleUrls: ['./user-role.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzTagComponent, TranslatePipe]
 })
 export class UserRoleComponent implements OnInit {

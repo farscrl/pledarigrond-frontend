@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, inject, OnInit, ViewContainerRef, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from "ng-zorro-antd/modal";
 import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import { EditNameComponent } from "./edit-name/edit-name.component";
@@ -38,6 +38,7 @@ import { NzDividerComponent } from 'ng-zorro-antd/divider';
     selector: 'app-name-administration',
     templateUrl: './name-administration.component.html',
     styleUrls: ['./name-administration.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzLayoutComponent, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, NzCollapseComponent, NzCollapsePanelComponent, FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputDirective, NzSelectComponent, NzOptionComponent, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellAlignDirective, NzTbodyComponent, NameDisplayComponent, NameCategoryComponent, NzDividerComponent, TranslatePipe]
 })
 export class NameAdministrationComponent implements OnInit {

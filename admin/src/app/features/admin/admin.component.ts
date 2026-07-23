@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NzLayoutComponent, NzContentComponent } from 'ng-zorro-antd/layout';
 import { NavigationHorizontalComponent } from '../../components/navigation-horizontal/navigation-horizontal.component';
 import { RouterOutlet } from '@angular/router';
@@ -7,6 +7,7 @@ import { RouterOutlet } from '@angular/router';
     selector: 'app-admin',
     templateUrl: './admin.component.html',
     styleUrls: ['./admin.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzLayoutComponent, NavigationHorizontalComponent, NzContentComponent, RouterOutlet]
 })
 export class AdminComponent implements OnInit {

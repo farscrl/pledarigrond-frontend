@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalFooterDirective, NzModalRef } from 'ng-zorro-antd/modal';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { LuceneSearchCriteria } from 'src/app/models/lucene-search-criteria';
@@ -25,6 +25,7 @@ export class ExportData {
     selector: 'app-export',
     templateUrl: './export.component.html',
     styleUrls: ['./export.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzCheckboxComponent, FormsModule, NzCheckboxGroupComponent, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class ExportComponent implements OnInit {

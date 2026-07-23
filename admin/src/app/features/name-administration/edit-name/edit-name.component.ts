@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { NZ_MODAL_DATA, NzModalFooterDirective, NzModalRef } from "ng-zorro-antd/modal";
 import { Name } from "../../../models/name";
@@ -20,6 +20,7 @@ export class EditNameData {
     selector: 'app-edit-name',
     templateUrl: './edit-name.component.html',
     styleUrls: ['./edit-name.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzSelectComponent, NzOptionComponent, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class EditNameComponent implements OnInit {

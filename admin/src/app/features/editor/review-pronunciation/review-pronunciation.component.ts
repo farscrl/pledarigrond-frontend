@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ListFilter } from '../../../models/registration-filter';
 import { Registration, RegistrationStatus } from '../../../models/registration';
 import { Page } from '../../../models/page';
@@ -53,6 +53,7 @@ export enum KEY_CODE {
     selector: 'app-review-pronunciation',
     templateUrl: './review-pronunciation.component.html',
     styleUrl: './review-pronunciation.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderTitleDirective, NzRadioGroupComponent, FormsModule, NzRadioComponent, NzDividerComponent, NzInputDirective, NzPageHeaderComponent, NzListComponent, NzListItemComponent, NzListItemMetaComponent, NzListItemMetaTitleComponent, NzPaginationComponent, AudioPlayerComponent, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, NzDescriptionsComponent, NzDescriptionsItemComponent, TranslatePipe]
 })
 export class ReviewPronunciationComponent implements OnInit, OnDestroy {

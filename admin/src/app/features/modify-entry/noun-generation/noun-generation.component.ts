@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -34,6 +34,7 @@ export class NounGenerationData {
     selector: 'app-noun-generation',
     templateUrl: './noun-generation.component.html',
     styleUrls: ['./noun-generation.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzButtonComponent, NzWaveDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class NounGenerationComponent implements OnInit {

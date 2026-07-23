@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { EnvironmentService } from "../../services/environment.service";
 import { NzLayoutComponent } from 'ng-zorro-antd/layout';
 
@@ -10,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
     selector: 'app-main-layout',
     templateUrl: './main-layout.component.html',
     styleUrls: ['./main-layout.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzLayoutComponent, HeaderComponent, HeaderLadinComponent, RouterOutlet]
 })
 export class MainLayoutComponent implements OnInit {

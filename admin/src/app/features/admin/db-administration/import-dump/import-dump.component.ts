@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalFooterDirective, NzModalRef } from 'ng-zorro-antd/modal';
 import { NzUploadComponent, NzUploadFile } from 'ng-zorro-antd/upload';
 import { DbService } from 'src/app/services/db.service';
@@ -12,6 +12,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-import-dump',
     templateUrl: './import-dump.component.html',
     styleUrls: ['./import-dump.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzUploadComponent, NzButtonComponent, NzWaveDirective, NzIconDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class ImportDumpComponent implements OnInit {

@@ -5,7 +5,7 @@ import { UserNotLoggedInGuard } from './app/auth/not-logged-in.guard';
 import { interceptorProviders } from './app/auth/interceptors';
 import { de_DE, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { FileUtils } from './app/utils/file.utils';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -56,7 +56,7 @@ bootstrapApplication(AppComponent, {
     interceptorProviders,
     { provide: NZ_I18N, useValue: de_DE },
     FileUtils,
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withXhr(), withInterceptorsFromDi()),
     provideNoopAnimations(),
     importProvidersFrom(NzModalModule),
   ]

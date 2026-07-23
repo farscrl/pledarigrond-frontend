@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnChanges, SimpleChanges, ViewContainerRef } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges, ViewContainerRef, ChangeDetectionStrategy } from '@angular/core';
 
 import moment from 'moment';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -27,6 +27,7 @@ import { NzIconDirective } from 'ng-zorro-antd/icon';
     selector: 'app-version-history',
     templateUrl: './version-history.component.html',
     styleUrls: ['./version-history.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, ActionComponent, UserRoleComponent, NzEmptyComponent, NzButtonComponent, NzWaveDirective, NzIconDirective, TranslatePipe]
 })
 export class VersionHistoryComponent implements OnChanges {

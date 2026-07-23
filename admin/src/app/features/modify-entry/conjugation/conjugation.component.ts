@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -38,6 +38,7 @@ export class ConjugationData {
     selector: 'app-conjugation',
     templateUrl: './conjugation.component.html',
     styleUrls: ['./conjugation.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzButtonComponent, NzWaveDirective, NzInputDirective, NzSelectComponent, NzOptionComponent, NzCheckboxComponent, NzTabsComponent, NzTabComponent, NzAutosizeDirective, NzModalFooterDirective, TranslatePipe]
 })
 export class ConjugationComponent implements OnInit {

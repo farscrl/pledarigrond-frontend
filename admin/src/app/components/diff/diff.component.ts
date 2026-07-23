@@ -1,9 +1,10 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import {diffChars} from 'diff'
 
 @Component({
     selector: 'app-diff',
     templateUrl: './diff.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./diff.component.scss']
 })
 export class DiffComponent implements OnInit, OnChanges {

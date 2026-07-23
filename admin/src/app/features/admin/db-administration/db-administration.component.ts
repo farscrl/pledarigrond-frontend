@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, inject, OnInit, ViewContainerRef, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { BackupInfos, DbInfos } from 'src/app/models/db-infos';
 import { DbService } from 'src/app/services/db.service';
@@ -30,6 +30,7 @@ import { DecimalPipe } from '@angular/common';
     selector: 'app-db-administration',
     templateUrl: './db-administration.component.html',
     styleUrls: ['./db-administration.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, NzNoAnimationDirective, NzDropdownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCardComponent, NzRowDirective, NzColDirective, NzStatisticComponent, NzTimelineComponent, NzTimelineItemComponent, DecimalPipe, TranslatePipe]
 })
 export class DbAdministrationComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, inject, OnInit, ViewContainerRef, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
@@ -37,6 +37,7 @@ import { NzDividerComponent } from 'ng-zorro-antd/divider';
     selector: 'app-user-administration',
     templateUrl: './user-administration.component.html',
     styleUrls: ['./user-administration.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzLayoutComponent, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderExtraDirective, NzButtonComponent, NzWaveDirective, NzCollapseComponent, NzCollapsePanelComponent, FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormControlComponent, NzInputDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellAlignDirective, NzTbodyComponent, NzIconDirective, UserRoleComponent, NzDividerComponent, TranslatePipe]
 })
 export class UserAdministrationComponent implements OnInit {

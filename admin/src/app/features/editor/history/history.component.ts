@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
 import { EditorService } from 'src/app/services/editor.service';
@@ -21,6 +21,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-history',
     templateUrl: './history.component.html',
     styleUrls: ['./history.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, DurationComponent, VersionHistoryComponent, DictionaryListComponent, TranslatePipe]
 })
 export class HistoryComponent implements OnInit {

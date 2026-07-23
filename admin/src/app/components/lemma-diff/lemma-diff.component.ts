@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Language } from "../../models/security";
 import { EntryVersionInternalDto } from '../../models/dictionary';
 import { NzDescriptionsComponent, NzDescriptionsItemComponent } from 'ng-zorro-antd/descriptions';
@@ -9,6 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-lemma-diff',
     templateUrl: './lemma-diff.component.html',
     styleUrls: ['./lemma-diff.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzDescriptionsComponent, NzDescriptionsItemComponent, DiffComponent, TranslatePipe]
 })
 export class LemmaDiffComponent {

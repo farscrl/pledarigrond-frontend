@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalFooterDirective, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { RegistrationService } from '../../../services/registration.service';
 import { ListFilter } from '../../../models/registration-filter';
@@ -31,6 +31,7 @@ import {
     selector: 'app-pronunciation',
     templateUrl: './pronunciation.component.html',
     styleUrl: './pronunciation.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RegistrationStatusComponent, AudioPlayerComponent, NzButtonComponent, NzWaveDirective, NzDividerComponent, NzFlexDirective, NzInputGroupComponent, NzInputDirective, FormsModule, NzIconDirective, NzTableComponent, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzTbodyComponent, NzModalFooterDirective]
 })
 export class PronunciationComponent implements OnInit {

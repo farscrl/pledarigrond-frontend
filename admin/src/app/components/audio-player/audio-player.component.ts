@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
 
@@ -8,6 +8,7 @@ import { NzIconDirective } from 'ng-zorro-antd/icon';
     selector: 'app-audio-player',
     templateUrl: './audio-player.component.html',
     styleUrl: './audio-player.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzButtonComponent, NzWaveDirective, NzIconDirective]
 })
 export class AudioPlayerComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { EditorSearchCriteria } from 'src/app/models/lucene-search-criteria';
 import { EditorService } from 'src/app/services/editor.service';
@@ -22,6 +22,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-lexicon-filter',
     templateUrl: './lexicon-filter.component.html',
     styleUrls: ['./lexicon-filter.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, NzFormDirective, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzCheckboxComponent, NzDividerComponent, NzIconDirective, NzRadioGroupComponent, NzRadioComponent, NzAutocompleteTriggerDirective, NzAutocompleteComponent, NzSelectComponent, NzOptionComponent, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class LexiconFilterComponent implements OnInit {

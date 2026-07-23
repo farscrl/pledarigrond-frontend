@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -28,6 +28,7 @@ export class OtherGenerationData {
     selector: 'app-other-generation',
     templateUrl: './other-generation.component.html',
     styleUrls: ['./other-generation.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class OtherGenerationComponent implements OnInit{

@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 
 @Component({
     selector: 'app-name-display',
     templateUrl: './name-display.component.html',
     styleUrls: ['./name-display.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: []
 })
 export class NameDisplayComponent implements OnInit {

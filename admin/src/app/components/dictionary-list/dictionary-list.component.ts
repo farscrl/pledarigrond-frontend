@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, ViewContainerRef, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ExportComponent } from 'src/app/features/editor/export/export.component';
 
@@ -47,6 +47,7 @@ import { HighlighterPipe } from '../../pipes/highlighter.pipe';
     selector: 'app-dictionary-list',
     templateUrl: './dictionary-list.component.html',
     styleUrls: ['./dictionary-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzButtonComponent, NzWaveDirective, NzDropdownDirective, NzIconDirective, NzDropdownMenuComponent, NzMenuDirective, NzMenuItemComponent, NzCheckboxComponent, FormsModule, NzDividerComponent, NzTableComponent, NzNoAnimationDirective, NzTheadComponent, NzTrDirective, NzTableCellDirective, NzThMeasureDirective, NzCellFixedDirective, NzThSelectionComponent, NzTbodyComponent, NzTdAddOnComponent, UserRoleComponent, ActionComponent, NzSwitchComponent, NzPaginationComponent, UpperCasePipe, SlicePipe, TranslatePipe, HighlighterPipe]
 })
 export class DictionaryListComponent {

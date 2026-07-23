@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalFooterDirective, NzModalRef } from 'ng-zorro-antd/modal';
 import { DbService } from 'src/app/services/db.service';
 import { LanguageSelectionService } from 'src/app/services/language-selection.service';
@@ -11,6 +11,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-export-dump',
     templateUrl: './export-dump.component.html',
     styleUrls: ['./export-dump.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzModalFooterDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class ExportDumpComponent implements OnInit {

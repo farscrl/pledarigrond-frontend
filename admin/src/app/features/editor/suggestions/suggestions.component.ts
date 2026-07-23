@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { DbSearchCriteria } from 'src/app/models/db-search-criteria';
 import { LemmaListColumn, LemmaListColumnDetail } from 'src/app/models/lemma-list-column';
 import { EditorService } from 'src/app/services/editor.service';
@@ -18,6 +18,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-suggestions',
     templateUrl: './suggestions.component.html',
     styleUrls: ['./suggestions.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzRowDirective, NzColDirective, NzContentComponent, NzPageHeaderComponent, NzPageHeaderTitleDirective, NzPageHeaderSubtitleDirective, DurationComponent, VersionHistoryComponent, DictionaryListComponent, TranslatePipe]
 })
 export class SuggestionsComponent implements OnInit {

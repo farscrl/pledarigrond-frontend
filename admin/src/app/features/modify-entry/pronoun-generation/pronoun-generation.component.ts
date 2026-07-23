@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -27,6 +27,7 @@ export class PronounGenerationData {
     selector: 'app-pronoun-generation',
     templateUrl: './pronoun-generation.component.html',
     styleUrls: ['./pronoun-generation.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [PronunciationCharactersComponent, FormsModule, NzFormDirective, ReactiveFormsModule, NzRowDirective, NzFormItemComponent, NzColDirective, NzFormLabelComponent, NzFormControlComponent, NzInputDirective, NzAutosizeDirective, NzModalFooterDirective, NzButtonComponent, NzWaveDirective, TranslatePipe]
 })
 export class PronounGenerationComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NameCategory } from "../../../models/name";
 
 import { NzTagComponent } from 'ng-zorro-antd/tag';
@@ -8,6 +8,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-name-category',
     templateUrl: './name-category.component.html',
     styleUrls: ['./name-category.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzTagComponent, TranslatePipe]
 })
 export class NameCategoryComponent implements OnInit {

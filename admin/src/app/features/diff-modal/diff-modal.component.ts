@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalTitleDirective } from "ng-zorro-antd/modal";
 import { Language } from "../../models/security";
 import { LanguageSelectionService } from "../../services/language-selection.service";
@@ -15,6 +15,7 @@ export class DiffModalData {
     selector: 'app-diff-modal',
     templateUrl: './diff-modal.component.html',
     styleUrls: ['./diff-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzModalTitleDirective, LemmaDiffComponent, TranslatePipe]
 })
 export class DiffModalComponent {

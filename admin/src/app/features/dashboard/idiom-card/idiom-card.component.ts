@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NzCardComponent } from 'ng-zorro-antd/card';
 import { RouterLink } from '@angular/router';
@@ -9,6 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     selector: 'app-idiom-card',
     templateUrl: './idiom-card.component.html',
     styleUrls: ['./idiom-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NzCardComponent, RouterLink, TranslatePipe]
 })
 export class IdiomCardComponent implements OnInit {
