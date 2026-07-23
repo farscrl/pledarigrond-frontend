@@ -1,10 +1,7 @@
 import { enableProdMode, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { environment } from './environments/environment';
-import { UserLoggedInGuard } from './app/auth/logged-in.guard';
-import { UserNotLoggedInGuard } from './app/auth/not-logged-in.guard';
 import { interceptorProviders } from './app/auth/interceptors';
 import { de_DE, NZ_I18N } from 'ng-zorro-antd/i18n';
-import { FileUtils } from './app/utils/file.utils';
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
@@ -39,11 +36,8 @@ bootstrapApplication(AppComponent, {
       allowedDomains: [environment.apiHost],
       disallowedRoutes: [environment.apiUrl + '/users/token']
     }),
-    UserLoggedInGuard,
-    UserNotLoggedInGuard,
     interceptorProviders,
     { provide: NZ_I18N, useValue: de_DE },
-    FileUtils,
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
     importProvidersFrom(NzModalModule),
     provideNzDateFnsAdapter(),

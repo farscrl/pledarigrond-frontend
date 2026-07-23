@@ -5,7 +5,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route } from '@ang
 import { Observable } from 'rxjs';
 import { Role } from '../models/security';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserLoggedInGuard  {
   private authService = inject(AuthService);
   private router = inject(Router);

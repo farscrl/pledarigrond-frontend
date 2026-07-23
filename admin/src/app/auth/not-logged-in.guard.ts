@@ -5,7 +5,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route } from '@ang
 import { Observable } from 'rxjs';
 import { UserLoggedInGuard } from './logged-in.guard';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserNotLoggedInGuard  {
   private userLoggedInGuard = inject(UserLoggedInGuard);
 

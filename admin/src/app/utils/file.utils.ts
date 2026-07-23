@@ -1,7 +1,7 @@
 import { HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class FileUtils {
 
   getFileNameFromContentDispositionHeader(headers: HttpHeaders, fallback: string) {
