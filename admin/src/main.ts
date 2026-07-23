@@ -9,7 +9,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/com
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
-import { JwtModule } from '@auth0/angular-jwt';
+import { provideJwtConfig } from '@jjmhalew/angular-jwt';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxSortableModule } from 'ngx-sortable';
@@ -37,15 +37,14 @@ bootstrapApplication(AppComponent, {
     provideZoneChangeDetection(),
     provideRouter(routes),
     importProvidersFrom(
-      JwtModule.forRoot({
-        config: {
-          tokenGetter: tokenGetter,
-          allowedDomains: [environment.apiHost],
-          disallowedRoutes: [environment.apiUrl + '/users/token']
-        }
-      }),
       NgxSortableModule,
-      NzFlexDirective),
+      NzFlexDirective
+    ),
+    provideJwtConfig({
+      tokenGetter: tokenGetter,
+      allowedDomains: [environment.apiHost],
+      disallowedRoutes: [environment.apiUrl + '/users/token']
+    }),
     UserLoggedInGuard,
     UserNotLoggedInGuard,
     interceptorProviders,
