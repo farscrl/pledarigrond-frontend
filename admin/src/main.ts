@@ -10,7 +10,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { JwtModule } from '@auth0/angular-jwt';
-import { TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxSortableModule } from 'ngx-sortable';
 import { NzFlexDirective } from 'ng-zorro-antd/flex';
@@ -44,10 +44,6 @@ bootstrapApplication(AppComponent, {
           disallowedRoutes: [environment.apiUrl + '/users/token']
         }
       }),
-      TranslateModule.forRoot({
-        fallbackLang: 'rm-rumgr',
-        loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
-      }),
       NgxSortableModule,
       NzFlexDirective,
       ServiceWorkerModule.register('ngsw-worker.js', {
@@ -64,6 +60,10 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
     importProvidersFrom(NzModalModule),
     provideNzDateFnsAdapter(),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
+      fallbackLang: 'rm-rumgr'
+    }),
   ]
 })
   .catch(err => console.error(err));
