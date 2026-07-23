@@ -14,7 +14,7 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxSortableModule } from 'ngx-sortable';
 import { NzFlexDirective } from 'ng-zorro-antd/flex';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { provideServiceWorker } from '@angular/service-worker';
 import { AppComponent } from './app/app.component';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
@@ -45,13 +45,7 @@ bootstrapApplication(AppComponent, {
         }
       }),
       NgxSortableModule,
-      NzFlexDirective,
-      ServiceWorkerModule.register('ngsw-worker.js', {
-        enabled: !isDevMode(),
-        // Register the ServiceWorker as soon as the application is stable
-        // or after 30 seconds (whichever comes first).
-        registrationStrategy: 'registerWhenStable:30000'
-      })),
+      NzFlexDirective),
     UserLoggedInGuard,
     UserNotLoggedInGuard,
     interceptorProviders,
@@ -60,6 +54,12 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
     importProvidersFrom(NzModalModule),
     provideNzDateFnsAdapter(),
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
     provideTranslateService({
       loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
       fallbackLang: 'rm-rumgr'
