@@ -22,13 +22,9 @@ h1 {
 	margin-bottom: 28px;
 }
 
-.input_wrapper {
-	float: left;
-}
-
 input[type="text"],
 input[type="password"] {
-	width: 180px;
+	margin-bottom: 0;
 	background-color: rgb(245, 245, 245);
 	border: 1px solid rgb(245, 245, 245);
 }
@@ -51,18 +47,25 @@ input#internal_login {
 	line-height: 13px;
 }
 
+// label/input pairs share one grid (the wrappers use display: contents), so both
+// inputs are always the same width and stay on one line, whatever the label text or font
 #login_input {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto minmax(80px, 1fr) auto minmax(80px, 1fr);
+  align-items: center;
+  column-gap: 8px;
 
   .input_wrapper {
-    width: 50%;
+    display: contents;
+  }
+
+  .input_wrapper + .input_wrapper label {
+    margin-left: 16px;
   }
 
   label {
-    float: left;
-    margin: 0 8px 0 0;
-    padding-top: 4px;
+    margin: 0;
+    white-space: nowrap;
   }
 }
 
@@ -121,19 +124,24 @@ p#error_font {
     margin-bottom: 152px;
   }
 
-  .input_wrapper {
-    float: none;
-  }
-
   #login_input {
+    display: flex;
     flex-direction: column;
+    gap: 12px;
 
     .input_wrapper {
+      display: block;
       width: 100%;
     }
 
+    .input_wrapper + .input_wrapper label {
+      margin-left: 0;
+    }
+
     label {
-      float: none;
+      display: block;
+      margin-bottom: 4px;
+      white-space: normal;
     }
   }
 
